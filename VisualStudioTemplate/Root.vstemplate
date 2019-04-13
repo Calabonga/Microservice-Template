@@ -1,0 +1,25 @@
+<VSTemplate Version="2.0.0" Type="ProjectGroup" 
+  xmlns="http://schemas.microsoft.com/developer/vstemplate/2005">
+  <TemplateData>
+    <Name>ASP.NET Core Microservice Template</Name>
+    <Description>This template gives you a possibility to start developing a microservices</Description>
+    <ProjectType>CSharp</ProjectType>
+    <ProjectSubType></ProjectSubType>
+    <SortOrder>1000</SortOrder>
+    <CreateNewFolder>true</CreateNewFolder>
+    <DefaultName>Calabonga.AspNetCore.Microservice</DefaultName>
+    <ProvideDefaultName>true</ProvideDefaultName>
+    <LocationField>Enabled</LocationField>
+    <EnableLocationBrowseButton>true</EnableLocationBrowseButton>
+    <Icon>__TemplateIcon.png</Icon>
+    <PreviewImage>__PreviewImage.png</PreviewImage>
+  </TemplateData>
+  <TemplateContent>
+    <ProjectCollection>
+      <ProjectTemplateLink ProjectName="Calabonga.AspNetCore.Micro.Web">Calabonga.AspNetCore.Micro.Web\MyTemplate.vstemplate</ProjectTemplateLink>
+      <ProjectTemplateLink ProjectName="Calabonga.AspNetCore.Micro.Data">Calabonga.AspNetCore.Micro.Data\MyTemplate.vstemplate</ProjectTemplateLink>
+      <ProjectTemplateLink ProjectName="Calabonga.AspNetCore.Micro.Models">Calabonga.AspNetCore.Micro.Models\MyTemplate.vstemplate</ProjectTemplateLink>
+      <ProjectTemplateLink ProjectName="Calabonga.AspNetCore.Micro.Core">Calabonga.AspNetCore.Micro.Core\MyTemplate.vstemplate</ProjectTemplateLink>
+    </ProjectCollection>
+  </TemplateContent>
+</VSTemplate>
