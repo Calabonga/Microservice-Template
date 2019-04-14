@@ -22,10 +22,13 @@
       <Folder Name="DatabaseInitialization" TargetFolderName="DatabaseInitialization">
         <ProjectItem ReplaceParameters="true" TargetFileName="DatabaseInitializer.cs">DatabaseInitializer.cs</ProjectItem>
       </Folder>
-      <Folder Name="Migrations" TargetFolderName="Migrations">
-        <ProjectItem ReplaceParameters="true" TargetFileName="20190412071731_Initial.cs">20190412071731_Initial.cs</ProjectItem>
-        <ProjectItem ReplaceParameters="true" TargetFileName="20190412071731_Initial.Designer.cs">20190412071731_Initial.Designer.cs</ProjectItem>
-        <ProjectItem ReplaceParameters="true" TargetFileName="ApplicationDbContextModelSnapshot.cs">ApplicationDbContextModelSnapshot.cs</ProjectItem>
+      <Folder Name="ModelConfigurations" TargetFolderName="ModelConfigurations">
+        <Folder Name="Base" TargetFolderName="Base">
+          <ProjectItem ReplaceParameters="true" TargetFileName="AuditableModelConfigurationBase.cs">AuditableModelConfigurationBase.cs</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="IdentityModelConfigurationBase.cs">IdentityModelConfigurationBase.cs</ProjectItem>
+        </Folder>
+        <ProjectItem ReplaceParameters="true" TargetFileName="ApplicationUserProfileModelConfiguration.cs">ApplicationUserProfileModelConfiguration.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="LogModelConfiguration.cs">LogModelConfiguration.cs</ProjectItem>
       </Folder>
       <ProjectItem ReplaceParameters="true" TargetFileName="ApplicationDbContext.cs">ApplicationDbContext.cs</ProjectItem>
       <ProjectItem ReplaceParameters="true" TargetFileName="ApplicationRole.cs">ApplicationRole.cs</ProjectItem>

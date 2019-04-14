@@ -63,7 +63,7 @@ namespace $safeprojectname$.AppStart
                 var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
                 options.IncludeXmlComments(xmlPath);
                 options.DocumentFilter<LowercaseDocumentFilter>();
-
+                options.OperationFilter<ApplySummariesOperationFilter>();
             });
         }
 

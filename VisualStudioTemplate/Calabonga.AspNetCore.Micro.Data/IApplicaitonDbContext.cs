@@ -17,6 +17,8 @@ namespace $safeprojectname$
 
         DbSet<ApplicationUser> Users { get; set; }
 
+        DbSet<ApplicationUserProfile> Profiles { get; set; }
+
         DatabaseFacade Database { get; }
 
         ChangeTracker ChangeTracker { get; }

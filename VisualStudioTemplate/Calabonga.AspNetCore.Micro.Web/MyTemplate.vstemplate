@@ -21,6 +21,7 @@
       </Folder>
       <Folder Name="AppStart" TargetFolderName="AppStart">
         <Folder Name="SwaggerFilters" TargetFolderName="SwaggerFilters">
+          <ProjectItem ReplaceParameters="true" TargetFileName="ApplySummariesOperationFilter.cs">ApplySummariesOperationFilter.cs</ProjectItem>
           <ProjectItem ReplaceParameters="true" TargetFileName="LowercaseDocumentFilter.cs">LowercaseDocumentFilter.cs</ProjectItem>
         </Folder>
         <ProjectItem ReplaceParameters="true" TargetFileName="ConfigureApplication.cs">ConfigureApplication.cs</ProjectItem>
