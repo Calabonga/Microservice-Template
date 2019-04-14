@@ -143,22 +143,9 @@
             <ProjectItem ReplaceParameters="true" TargetFileName="LoginViewModel.cs">LoginViewModel.cs</ProjectItem>
             <ProjectItem ReplaceParameters="true" TargetFileName="RegisterViewModel.cs">RegisterViewModel.cs</ProjectItem>
           </Folder>
-          <Folder Name="CityViewModels" TargetFolderName="CityViewModels">
-            <ProjectItem ReplaceParameters="true" TargetFileName="CityViewModel.cs">CityViewModel.cs</ProjectItem>
-          </Folder>
-          <Folder Name="ConfigurationViewModels" TargetFolderName="ConfigurationViewModels">
-            <ProjectItem ReplaceParameters="true" TargetFileName="ConfigurationCreateViewModel.cs">ConfigurationCreateViewModel.cs</ProjectItem>
-            <ProjectItem ReplaceParameters="true" TargetFileName="ConfigurationUpdateViewModel.cs">ConfigurationUpdateViewModel.cs</ProjectItem>
-          </Folder>
-          <Folder Name="CountryViewModels" TargetFolderName="CountryViewModels">
-            <ProjectItem ReplaceParameters="true" TargetFileName="CountryViewModel.cs">CountryViewModel.cs</ProjectItem>
-          </Folder>
           <Folder Name="LogViewModels" TargetFolderName="LogViewModels">
             <ProjectItem ReplaceParameters="true" TargetFileName="LogCreateViewModel.cs">LogCreateViewModel.cs</ProjectItem>
             <ProjectItem ReplaceParameters="true" TargetFileName="LogViewModel.cs">LogViewModel.cs</ProjectItem>
-          </Folder>
-          <Folder Name="TimezoneViewModels" TargetFolderName="TimezoneViewModels">
-            <ProjectItem ReplaceParameters="true" TargetFileName="TimezoneViewModel.cs">TimezoneViewModel.cs</ProjectItem>
           </Folder>
           <ProjectItem ReplaceParameters="true" TargetFileName="ViewModelBase.cs">ViewModelBase.cs</ProjectItem>
         </Folder>
