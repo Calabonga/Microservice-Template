@@ -1,4 +1,4 @@
-﻿using Calabonga.AspNetCore.Micro.Models;
+﻿using $ext_safeprojectname$.Models;
 using $safeprojectname$.Infrastructure.Mappers.Base;
 using $safeprojectname$.Infrastructure.ViewModels.LogViewModels;
 using Calabonga.EntityFrameworkCore.UnitOfWork;

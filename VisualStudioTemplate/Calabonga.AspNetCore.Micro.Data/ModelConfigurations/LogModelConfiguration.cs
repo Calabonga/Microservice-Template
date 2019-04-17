@@ -1,6 +1,6 @@
 ﻿using System;
 using $safeprojectname$.ModelConfigurations.Base;
-using Calabonga.AspNetCore.Micro.Models;
+using $ext_safeprojectname$.Models;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace $safeprojectname$.ModelConfigurations

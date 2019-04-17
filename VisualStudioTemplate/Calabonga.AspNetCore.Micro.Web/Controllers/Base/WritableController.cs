@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Calabonga.AspNetCore.Micro.Core;
-using Calabonga.AspNetCore.Micro.Core.Exceptions;
-using Calabonga.AspNetCore.Micro.Data;
-using Calabonga.AspNetCore.Micro.Models.Base;
+using $ext_safeprojectname$.Core;
+using $ext_safeprojectname$.Core.Exceptions;
+using $ext_safeprojectname$.Data;
+using $ext_safeprojectname$.Models.Base;
 using $safeprojectname$.Extensions;
 using $safeprojectname$.Infrastructure.Factories.Base;
 using $safeprojectname$.Infrastructure.Managers.Base;

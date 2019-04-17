@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Calabonga.AspNetCore.Micro.Core\Calabonga.AspNetCore.Micro.Core.csproj" />
+    <ProjectReference Include="..\$ext_projectname$.Core\$ext_projectname$.Core.csproj" />
   </ItemGroup>
 
 </Project>

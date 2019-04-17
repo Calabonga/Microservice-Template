@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Calabonga.AspNetCore.Micro.Core;
+using $ext_safeprojectname$.Core;
 
 namespace $safeprojectname$.Infrastructure.Helpers
 {

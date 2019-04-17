@@ -1,4 +1,4 @@
-﻿using Calabonga.AspNetCore.Micro.Data;
+﻿using $ext_safeprojectname$.Data;
 using $safeprojectname$.Infrastructure.Auth;
 using $safeprojectname$.Infrastructure.Services;
 using IdentityServer4.Services;

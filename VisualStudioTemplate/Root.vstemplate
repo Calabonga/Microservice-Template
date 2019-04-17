@@ -15,11 +15,14 @@
     <PreviewImage>__PreviewImage.png</PreviewImage>
   </TemplateData>
   <TemplateContent>
+    <CustomParameters>
+      <CustomParameter Name="$SolutionName$" Value="$projectname$"/>
+    </CustomParameters>
     <ProjectCollection>
-      <ProjectTemplateLink ProjectName="Calabonga.AspNetCore.Micro.Web">Calabonga.AspNetCore.Micro.Web\MyTemplate.vstemplate</ProjectTemplateLink>
-      <ProjectTemplateLink ProjectName="Calabonga.AspNetCore.Micro.Data">Calabonga.AspNetCore.Micro.Data\MyTemplate.vstemplate</ProjectTemplateLink>
-      <ProjectTemplateLink ProjectName="Calabonga.AspNetCore.Micro.Models">Calabonga.AspNetCore.Micro.Models\MyTemplate.vstemplate</ProjectTemplateLink>
-      <ProjectTemplateLink ProjectName="Calabonga.AspNetCore.Micro.Core">Calabonga.AspNetCore.Micro.Core\MyTemplate.vstemplate</ProjectTemplateLink>
+      <ProjectTemplateLink ProjectName="$projectname$.Web" CopyParameters="true">Calabonga.AspNetCore.Micro.Web\MyTemplate.vstemplate</ProjectTemplateLink>
+      <ProjectTemplateLink ProjectName="$projectname$.Data" CopyParameters="true">Calabonga.AspNetCore.Micro.Data\MyTemplate.vstemplate</ProjectTemplateLink>
+      <ProjectTemplateLink ProjectName="$projectname$.Models" CopyParameters="true">Calabonga.AspNetCore.Micro.Models\MyTemplate.vstemplate</ProjectTemplateLink>
+      <ProjectTemplateLink ProjectName="$projectname$.Core" CopyParameters="true">Calabonga.AspNetCore.Micro.Core\MyTemplate.vstemplate</ProjectTemplateLink>
     </ProjectCollection>
   </TemplateContent>
 </VSTemplate>

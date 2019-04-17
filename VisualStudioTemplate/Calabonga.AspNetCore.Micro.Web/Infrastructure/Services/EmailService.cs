@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Calabonga.AspNetCore.Micro.Core;
-using Calabonga.AspNetCore.Micro.Core.Exceptions;
+using $ext_safeprojectname$.Core;
+using $ext_safeprojectname$.Core.Exceptions;
 using $safeprojectname$.Infrastructure.Settings;
 using MailKit;
 using MailKit.Net.Smtp;

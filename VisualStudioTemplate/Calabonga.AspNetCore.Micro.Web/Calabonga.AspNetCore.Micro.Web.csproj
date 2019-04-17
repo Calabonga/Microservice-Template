@@ -30,9 +30,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Calabonga.AspNetCore.Micro.Core\Calabonga.AspNetCore.Micro.Core.csproj" />
-    <ProjectReference Include="..\Calabonga.AspNetCore.Micro.Data\Calabonga.AspNetCore.Micro.Data.csproj" />
-    <ProjectReference Include="..\Calabonga.AspNetCore.Micro.Models\Calabonga.AspNetCore.Micro.Models.csproj" />
+    <ProjectReference Include="..\$ext_projectname$.Core\$ext_projectname$.Core.csproj" />
+    <ProjectReference Include="..\$ext_projectname$.Data\$ext_projectname$.Data.csproj" />
+    <ProjectReference Include="..\$ext_projectname$.Models\$ext_projectname$.Models.csproj" />
   </ItemGroup>
 
   <ProjectExtensions><VisualStudio><UserProperties appsettings_1development_1json__JsonSchema="http://json.schemastore.org/babelrc" /></VisualStudio></ProjectExtensions>

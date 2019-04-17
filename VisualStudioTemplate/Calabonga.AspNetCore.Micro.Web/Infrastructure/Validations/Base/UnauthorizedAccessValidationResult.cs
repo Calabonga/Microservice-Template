@@ -1,4 +1,4 @@
-﻿using Calabonga.AspNetCore.Micro.Core;
+﻿using $ext_safeprojectname$.Core;
 
 namespace $safeprojectname$.Infrastructure.Validations.Base
 {

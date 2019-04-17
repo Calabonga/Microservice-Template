@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Security.Claims;
 using System.Threading.Tasks;
-using Calabonga.AspNetCore.Micro.Data;
+using $ext_safeprojectname$.Data;
 using $safeprojectname$.Infrastructure.Validations.Base;
 using $safeprojectname$.Infrastructure.ViewModels.AccountViewModels;
 using Calabonga.OperationResultsCore;

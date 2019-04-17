@@ -4,7 +4,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using Calabonga.AspNetCore.Micro.Core.Exceptions;
+using $ext_safeprojectname$.Core.Exceptions;
 
 namespace $safeprojectname$.Infrastructure.Helpers
 {

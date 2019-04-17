@@ -1,4 +1,4 @@
-﻿using Calabonga.AspNetCore.Micro.Core;
+﻿using $ext_safeprojectname$.Core;
 using $safeprojectname$.Middlewares;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;

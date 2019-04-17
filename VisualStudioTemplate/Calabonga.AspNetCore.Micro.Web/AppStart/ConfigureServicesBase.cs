@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Text;
 using AutoMapper;
-using Calabonga.AspNetCore.Micro.Core;
-using Calabonga.AspNetCore.Micro.Data;
+using $ext_safeprojectname$.Core;
+using $ext_safeprojectname$.Data;
 using $safeprojectname$.Infrastructure.Attributes;
 using $safeprojectname$.Infrastructure.Services;
 using $safeprojectname$.Infrastructure.Settings;

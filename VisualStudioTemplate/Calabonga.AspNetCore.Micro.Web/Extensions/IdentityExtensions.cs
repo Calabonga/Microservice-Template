@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Security.Principal;
-using Calabonga.AspNetCore.Micro.Core;
+using $ext_safeprojectname$.Core;
 using IdentityServer4.Extensions;
 
 namespace $safeprojectname$.Extensions

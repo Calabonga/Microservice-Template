@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Calabonga.AspNetCore.Micro.Core;
+using $ext_safeprojectname$.Core;
 using Microsoft.AspNetCore.Http;
 
 namespace $safeprojectname$.Infrastructure.Services

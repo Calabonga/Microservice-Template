@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Security.Claims;
-using Calabonga.AspNetCore.Micro.Core.Exceptions;
+using $ext_safeprojectname$.Core.Exceptions;
 
 namespace $safeprojectname$.Infrastructure.Auth
 {

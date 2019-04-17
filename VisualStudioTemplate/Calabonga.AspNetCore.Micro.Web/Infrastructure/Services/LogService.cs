@@ -1,7 +1,7 @@
 ﻿using System;
-using Calabonga.AspNetCore.Micro.Core.Exceptions;
-using Calabonga.AspNetCore.Micro.Data;
-using Calabonga.AspNetCore.Micro.Models;
+using $ext_safeprojectname$.Core.Exceptions;
+using $ext_safeprojectname$.Data;
+using $ext_safeprojectname$.Models;
 using Calabonga.EntityFrameworkCore.UnitOfWork;
 using Microsoft.Extensions.Logging;
 

@@ -1,6 +1,6 @@
 ﻿using System.Security.Claims;
 using System.Threading.Tasks;
-using Calabonga.AspNetCore.Micro.Data;
+using $ext_safeprojectname$.Data;
 using Calabonga.EntityFrameworkCore.UnitOfWork;
 using IdentityModel;
 using Microsoft.AspNetCore.Identity;

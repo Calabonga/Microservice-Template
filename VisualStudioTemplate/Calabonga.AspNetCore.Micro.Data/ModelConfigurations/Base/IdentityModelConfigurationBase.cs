@@ -1,4 +1,4 @@
-﻿using Calabonga.AspNetCore.Micro.Models.Base;
+﻿using $ext_safeprojectname$.Models.Base;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 

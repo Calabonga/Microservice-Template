@@ -17,8 +17,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Calabonga.AspNetCore.Micro.Core\Calabonga.AspNetCore.Micro.Core.csproj" />
-    <ProjectReference Include="..\Calabonga.AspNetCore.Micro.Models\Calabonga.AspNetCore.Micro.Models.csproj" />
+    <ProjectReference Include="..\$ext_projectname$.Core\$ext_projectname$.Core.csproj" />
+    <ProjectReference Include="..\$ext_projectname$.Models\$ext_projectname$.Models.csproj" />
   </ItemGroup>
 
   <ItemGroup>

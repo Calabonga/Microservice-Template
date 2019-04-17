@@ -1,5 +1,5 @@
 ﻿using System;
-using Calabonga.AspNetCore.Micro.Models.Base;
+using $ext_safeprojectname$.Models.Base;
 using $safeprojectname$.Infrastructure.Factories.Base;
 
 namespace $safeprojectname$.Infrastructure.ViewModels

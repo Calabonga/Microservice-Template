@@ -3,7 +3,7 @@ using System.Linq;
 using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
-using Calabonga.AspNetCore.Micro.Models.Base;
+using $ext_safeprojectname$.Models.Base;
 using Calabonga.EntityFrameworkCore.UnitOfWork;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;

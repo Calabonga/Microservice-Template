@@ -1,4 +1,4 @@
-﻿using Calabonga.AspNetCore.Micro.Data.DatabaseInitialization;
+﻿using $ext_safeprojectname$.Data.DatabaseInitialization;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;

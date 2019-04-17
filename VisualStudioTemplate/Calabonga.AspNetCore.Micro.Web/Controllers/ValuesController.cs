@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using Calabonga.AspNetCore.Micro.Data;
+using $ext_safeprojectname$.Data;
 using $safeprojectname$.Controllers.Base;
 using $safeprojectname$.Infrastructure.Services;
 using $safeprojectname$.Infrastructure.Settings;

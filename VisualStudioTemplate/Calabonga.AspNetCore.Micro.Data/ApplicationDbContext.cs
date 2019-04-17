@@ -1,5 +1,5 @@
 ﻿using $safeprojectname$.Base;
-using Calabonga.AspNetCore.Micro.Models;
+using $ext_safeprojectname$.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace $safeprojectname$

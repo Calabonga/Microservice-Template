@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
-using Calabonga.AspNetCore.Micro.Core;
+using $ext_safeprojectname$.Core;
 using $safeprojectname$.Controllers.Base;
 using $safeprojectname$.Infrastructure.Services;
 using $safeprojectname$.Infrastructure.ViewModels.AccountViewModels;

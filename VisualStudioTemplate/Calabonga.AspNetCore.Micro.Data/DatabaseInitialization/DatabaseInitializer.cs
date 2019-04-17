@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Linq;
-using Calabonga.AspNetCore.Micro.Core;
+using $ext_safeprojectname$.Core;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;

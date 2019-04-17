@@ -1,5 +1,5 @@
 ﻿using System;
-using Calabonga.AspNetCore.Micro.Core.Exceptions;
+using $ext_safeprojectname$.Core.Exceptions;
 using Microsoft.Extensions.Caching.Memory;
 
 namespace $safeprojectname$.Infrastructure.Services

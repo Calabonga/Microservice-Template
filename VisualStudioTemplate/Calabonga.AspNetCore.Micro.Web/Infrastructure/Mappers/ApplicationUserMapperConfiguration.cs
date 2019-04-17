@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Security.Claims;
-using Calabonga.AspNetCore.Micro.Data;
+using $ext_safeprojectname$.Data;
 using $safeprojectname$.Infrastructure.Auth;
 using $safeprojectname$.Infrastructure.Mappers.Base;
 using $safeprojectname$.Infrastructure.ViewModels.AccountViewModels;
