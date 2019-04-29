@@ -15,7 +15,7 @@
     <Icon>__TemplateIcon.ico</Icon>
   </TemplateData>
   <TemplateContent>
-    <Project TargetFileName="Calabonga.AspNetCore.MicroModule.Models.csproj" File="Calabonga.AspNetCore.MicroModule.Models.csproj" ReplaceParameters="true">
+    <Project TargetFileName="Calabonga.AspNetCore.Micro.Models.csproj" File="Calabonga.AspNetCore.Micro.Models.csproj" ReplaceParameters="true">
       <Folder Name="Base" TargetFolderName="Base">
         <ProjectItem ReplaceParameters="true" TargetFileName="Auditable.cs">Auditable.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="IAuditable.cs">IAuditable.cs</ProjectItem>
