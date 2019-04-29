@@ -1,0 +1,1826 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>$safeprojectname$</name>
+    </assembly>
+    <members>
+        <member name="T:$safeprojectname$.AppStart.ConfigureApplication">
+            <summary>
+            Pipeline configuration
+            </summary>
+        </member>
+        <member name="M:$safeprojectname$.AppStart.ConfigureApplication.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IHostingEnvironment,Microsoft.Extensions.Logging.ILoggerFactory)">
+            <summary>
+            Configure pipeline
+            </summary>
+            <param name="app"></param>
+            <param name="env"></param>
+            <param name="loggerFactory"></param>
+        </member>
+        <member name="T:$safeprojectname$.AppStart.ConfigureServicesBase">
+            <summary>
+            ASP.NET Core services registration and configurations
+            </summary>
+        </member>
+        <member name="M:$safeprojectname$.AppStart.ConfigureServicesBase.Configure(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            Configure Services
+            </summary>
+            <param name="services"></param>
+            <param name="configuration"></param>
+        </member>
+        <member name="T:$safeprojectname$.AppStart.ConfigureServicesCors">
+            <summary>
+            Cors configurations
+            </summary>
+        </member>
+        <member name="M:$safeprojectname$.AppStart.ConfigureServicesCors.Configure(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            Configure
+            </summary>
+            <param name="services"></param>
+            <param name="configuration"></param>
+        </member>
+        <member name="T:$safeprojectname$.AppStart.ConfigureServicesEmailKit">
+            <summary>
+            ASP.NET Core services registration and configurations
+            </summary>
+        </member>
+        <member name="M:$safeprojectname$.AppStart.ConfigureServicesEmailKit.Configure(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            Configure Services
+            </summary>
+            <param name="services"></param>
+            <param name="configuration"></param>
+        </member>
+        <member name="T:$safeprojectname$.AppStart.ConfigureServicesSwagger">
+            <summary>
+            Swagger configuration
+            </summary>
+        </member>
+        <member name="M:$safeprojectname$.AppStart.ConfigureServicesSwagger.Configure(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            Configure Swagger services
+            </summary>
+            <param name="services"></param>
+            <param name="configuration"></param>
+        </member>
+        <member name="M:$safeprojectname$.AppStart.ConfigureServicesSwagger.SwaggerSettings(Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIOptions)">
+            <summary>
+            Set up some properties for swagger UI
+            </summary>
+            <param name="settings"></param>
+        </member>
+        <member name="T:$safeprojectname$.AppStart.MapperRegistration">
+            <summary>
+            AutoMapper profiles registration
+            </summary>
+        </member>
+        <member name="M:$safeprojectname$.AppStart.MapperRegistration.GetMapperConfiguration">
+            <summary>
+            Create and build mapper profiles
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:$safeprojectname$.AppStart.RoutesMaps">
+            <summary>
+            Routes mapper
+            </summary>
+        </member>
+        <member name="M:$safeprojectname$.AppStart.RoutesMaps.MapRoutes(Microsoft.AspNetCore.Routing.IRouteBuilder)">
+            <summary>
+            Map Routes
+            </summary>
+            <param name="routes"></param>
+        </member>
+        <member name="T:$safeprojectname$.AppStart.SwaggerFilters.ApplySummariesOperationFilter">
+            <summary>
+            Swagger Method Info Generator from summary for <see cref="M:GetPaged{T}"/>
+            </summary>
+        </member>
+        <member name="M:$safeprojectname$.AppStart.SwaggerFilters.ApplySummariesOperationFilter.Apply(Swashbuckle.AspNetCore.Swagger.Operation,Swashbuckle.AspNetCore.SwaggerGen.OperationFilterContext)">
+            <inheritdoc />
+        </member>
+        <member name="T:$safeprojectname$.AppStart.SwaggerFilters.LowercaseDocumentFilter">
+            <summary>
+            Lowercase routes filter
+            </summary>
+        </member>
+        <member name="M:$safeprojectname$.AppStart.SwaggerFilters.LowercaseDocumentFilter.Apply(Swashbuckle.AspNetCore.Swagger.SwaggerDocument,Swashbuckle.AspNetCore.SwaggerGen.DocumentFilterContext)">
+            <inheritdoc />
+        </member>
+        <member name="T:$safeprojectname$.Controllers.Base.AuditableViewModelBase">
+            <summary>
+            Audit-able View Model Base
+            </summary>
+        </member>
+        <member name="P:$safeprojectname$.Controllers.Base.AuditableViewModelBase.CreatedAt">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:$safeprojectname$.Controllers.Base.AuditableViewModelBase.CreatedBy">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:$safeprojectname$.Controllers.Base.AuditableViewModelBase.UpdatedAt">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:$safeprojectname$.Controllers.Base.AuditableViewModelBase.UpdatedBy">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:$safeprojectname$.Controllers.Base.AuditableViewModelBase.DeletedAt">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:$safeprojectname$.Controllers.Base.AuditableViewModelBase.DeletedBy">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:$safeprojectname$.Controllers.Base.AuditableViewModelBase.ArchivedAt">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:$safeprojectname$.Controllers.Base.AuditableViewModelBase.ArchivedBy">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:$safeprojectname$.Controllers.Base.OperationResultController">
+            <summary>
+            Base controller for PricePoint wrapped with OperationResult
+            </summary>
+        </member>
+        <member name="M:$safeprojectname$.Controllers.Base.OperationResultController.OperationResultResponse``1(Calabonga.OperationResultsCore.OperationResult{``0})">
+            <summary>
+            OperationResult Response
+            </summary>
+            <param name="operationResult"></param>
+            <returns></returns>
+        </member>
+        <member name="M:$safeprojectname$.Controllers.Base.OperationResultController.OperationResultInfo``1(``0,System.String)">
+            <summary>
+            OperationResult Response
+            </summary>
+            <param name="result"></param>
+            <param name="message"></param>
+            <returns></returns>
+        </member>
+        <member name="M:$safeprojectname$.Controllers.Base.OperationResultController.OperationResultSuccess``1(``0)">
+            <summary>
+            OperationResult Response
+            </summary>
+            <param name="result"></param>
+            <returns></returns>
+        </member>
+        <member name="M:$safeprojectname$.Controllers.Base.OperationResultController.OperationResultSuccess``1(``0,System.String)">
+            <summary>
+            OperationResult Response
+            </summary>
+            <param name="result"></param>
+            <param name="message"></param>
+            <returns></returns>
+        </member>
+        <member name="M:$safeprojectname$.Controllers.Base.OperationResultController.OperationResultWarning``1(``0,System.String)">
+            <summary>
+            OperationResult Response
+            </summary>
+            <param name="result"></param>
+            <param name="message"></param>
+            <returns></returns>
+        </member>
+        <member name="M:$safeprojectname$.Controllers.Base.OperationResultController.OperationResultError``1(``0,System.String)">
+            <summary>
+            OperationResult Response
+            </summary>
+            <param name="result"></param>
+            <param name="message"></param>
+            <returns></returns>
+        </member>
+        <member name="M:$safeprojectname$.Controllers.Base.OperationResultController.OperationResultError``1(``0,System.String[])">
+            <summary>
+            OperationResult Response
+            </summary>
+            <param name="result"></param>
+            <param name="messages"></param>
+            <returns></returns>
+        </member>
+        <member name="M:$safeprojectname$.Controllers.Base.OperationResultController.OperationResultError``1(``0)">
+            <summary>
+            OperationResult Response
+            </summary>
+            <param name="result"></param>
+            <returns></returns>
+        </member>
+        <member name="M:$safeprojectname$.Controllers.Base.OperationResultController.OperationResultError(System.String)">
+            <summary>
+            OperationResult Response
+            </summary>
+            <param name="message"></param>
+            <returns></returns>
+        </member>
+        <member name="M:$safeprojectname$.Controllers.Base.OperationResultController.OperationResultError``1(``0,System.Exception)">
+            <summary>
+            OperationResult Response
+            </summary>
+            <param name="result"></param>
+            <param name="exception"></param>
+            <returns></returns>
+        </member>
+        <member name="M:$safeprojectname$.Controllers.Base.OperationResultController.OperationResultError``1(``0,System.String,System.Exception)">
+            <summary>
+            OperationResult Response
+            </summary>
+            <param name="result"></param>
+            <param name="message"></param>
+            <param name="exception"></param>
+            <returns></returns>
+        </member>
+        <member name="M:$safeprojectname$.Controllers.Base.OperationResultController.OperationResultObject``1(``0,System.String)">
+            <summary>
+            OperationResult Response
+            </summary>
+            <param name="result"></param>
+            <param name="message"></param>
+            <returns></returns>
+        </member>
+        <member name="M:$safeprojectname$.Controllers.Base.OperationResultController.OperationResultResponse``1(``0,System.String,Calabonga.OperationResultsCore.OperationInfo,System.Exception)">
+            <summary>
+            OperationResult Response
+            </summary>
+            <param name="result"></param>
+            <param name="message"></param>
+            <param name="info"></param>
+            <param name="exception"></param>
+            <returns></returns>
+        </member>
+        <member name="T:$safeprojectname$.Controllers.Base.ReadOnlyController`3">
+            <summary>
+            Represent read only operations controller for entity. It's not required special ViewModels and other things
+            </summary>
+            <typeparam name="TEntity"></typeparam>
+            <typeparam name="TQueryParams"></typeparam>
+            <typeparam name="TViewModel"></typeparam>
+        </member>
+        <member name="M:$safeprojectname$.Controllers.Base.ReadOnlyController`3.#ctor(AutoMapper.IMapper,Microsoft.Extensions.Options.IOptions{$safeprojectname$.Infrastructure.Settings.CurrentAppSettings},Calabonga.EntityFrameworkCore.UOW.IUnitOfWork{Calabonga.AspNetCore.MicroModule.Data.ApplicationDbContext})">
+            <inheritdoc />
+        </member>
+        <member name="P:$safeprojectname$.Controllers.Base.ReadOnlyController`3.CurrentMapper">
+            <summary>
+            Active AutoMapper instance
+            </summary>
+        </member>
+        <member name="P:$safeprojectname$.Controllers.Base.ReadOnlyController`3.Repository">
+            <summary>
+            Current Entity repository
+            </summary>
+        </member>
+        <member name="M:$safeprojectname$.Controllers.Base.ReadOnlyController`3.GetIncludes">
+            <summary>
+            If you need to include something you need override this method
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:$safeprojectname$.Controllers.Base.ReadOnlyController`3.GetAsync(System.Guid)">
+            <summary>
+            Returns entity from repository by identifier
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:$safeprojectname$.Controllers.Base.ReadOnlyController`3.GetPaged(`2)">
+            <summary>
+            Summary description will be replaced by IOperationFilter (swagger)
+            </summary>
+            <param name="queryParams"></param>
+            <returns></returns>
+            <response code="404">Unauthorized access detected or parameters are not valid</response>
+        </member>
+        <member name="M:$safeprojectname$.Controllers.Base.ReadOnlyController`3.FilterItems(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},`2)">
+            <summary>
+            Return default predicate for filtering PagedList result
+            </summary>
+            <param name="predicate"></param>
+            <param name="queryParams"></param>
+            <returns></returns>
+        </member>
+        <member name="M:$safeprojectname$.Controllers.Base.ReadOnlyController`3.OrderByPropertyName">
+            <summary>
+            PropertyName for ordering by for enable pagination. You can override default behavior.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:$safeprojectname$.Controllers.Base.ReadOnlyController`3.ValidateQueryParams(`2)">
+            <summary>
+            Validate current user roles and access rights
+            </summary>
+            <param name="queryParams"></param>
+        </member>
+        <member name="M:$safeprojectname$.Controllers.Base.ReadOnlyController`3.ValidateUserRolesAndRights(`0)">
+            <summary>
+            Validate current user roles and access rights
+            </summary>
+            <param name="entity"></param>
+        </member>
+        <member name="M:$safeprojectname$.Controllers.Base.ReadOnlyController`3.ApplyDefaultSettings(`2)">
+            <summary>
+            Use CurrentAppSettings to apply some parameters when they are empty
+            </summary>
+            <param name="queryParams"></param>
+        </member>
+        <member name="T:$safeprojectname$.Controllers.Base.UnitOfWorkController">
+            <summary>
+            Unit Of Work controller
+            </summary>
+        </member>
+        <member name="M:$safeprojectname$.Controllers.Base.UnitOfWorkController.#ctor(Microsoft.Extensions.Options.IOptions{$safeprojectname$.Infrastructure.Settings.CurrentAppSettings},Calabonga.EntityFrameworkCore.UOW.IUnitOfWork{Calabonga.AspNetCore.MicroModule.Data.ApplicationDbContext})">
+            <inheritdoc />
+        </member>
+        <member name="M:$safeprojectname$.Controllers.Base.UnitOfWorkController.LogInformation(System.String,System.Exception)">
+            <summary>
+            Allows to save data logs to the database Logs table
+            </summary>
+        </member>
+        <member name="M:$safeprojectname$.Controllers.Base.UnitOfWorkController.Log(Microsoft.Extensions.Logging.LogLevel,System.String,System.Exception)">
+            <summary>
+            Allows to save data logs to the database Logs table
+            </summary>
+        </member>
+        <member name="P:$safeprojectname$.Controllers.Base.UnitOfWorkController.UnitOfWork">
+            <summary>
+            Current Unit Of Work 
+            </summary>
+        </member>
+        <member name="P:$safeprojectname$.Controllers.Base.UnitOfWorkController.CurrentSettings">
+            <summary>
+            Current application settings
+            </summary>
+        </member>
+        <member name="T:$safeprojectname$.Controllers.Base.WritableController`5">
+            <inheritdoc />
+            <summary>
+            Entity with Unit of Work (CRUD)
+            </summary>
+            <typeparam name="TEntity"></typeparam>
+            <typeparam name="TQueryParams"></typeparam>
+            <typeparam name="TUpdateViewModel"></typeparam>
+            <typeparam name="TCreateViewModel"></typeparam>
+            <typeparam name="TViewModel"></typeparam>
+        </member>
+        <member name="M:$safeprojectname$.Controllers.Base.WritableController`5.#ctor($safeprojectname$.Infrastructure.Managers.Base.IEntityManager{`0,`1,`2},Microsoft.Extensions.Options.IOptions{$safeprojectname$.Infrastructure.Settings.CurrentAppSettings},Calabonga.EntityFrameworkCore.UOW.IUnitOfWork{Calabonga.AspNetCore.MicroModule.Data.ApplicationDbContext})">
+            <inheritdoc />
+        </member>
+        <member name="P:$safeprojectname$.Controllers.Base.WritableController`5.EntityManager">
+            <summary>
+            EntityManager instance
+            </summary>
+        </member>
+        <member name="M:$safeprojectname$.Controllers.Base.WritableController`5.GetCreateViewModel">
+            <summary>
+            Returns predefined ViewModel for entity create operation.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:$safeprojectname$.Controllers.Base.WritableController`5.PostAsync(`1)">
+            <summary>
+            Creates entity. For viewModel generation you can use {get-create-viewmodel} method to
+            get viewModel with predefined properties
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:$safeprojectname$.Controllers.Base.WritableController`5.GetUpdateViewModel(System.Guid)">
+            <summary>
+            Returns predefined ViewModel for entity create operation.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:$safeprojectname$.Controllers.Base.WritableController`5.PutAsync(System.Guid,`2)">
+            <summary>
+            Updates entity. For viewModel generation you can use {get-create-viewmodel} method to get viewModel with predefined properties
+            </summary>
+            <param name="id"></param>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:$safeprojectname$.Controllers.Base.WritableController`5.DeleteAsync(System.Guid)">
+            <summary>
+            Deletes entity from repository by identifier and return it as response
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:$safeprojectname$.Controllers.Base.WritableController`5.UpdateAuditAsync(`0)">
+            <summary>
+            Fills the audit properties
+            </summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:$safeprojectname$.Controllers.Base.WritableController`5.FindEntity(System.Guid,`2)">
+            <summary>
+            Returns entity from database by default without any includes
+            </summary>
+            <param name="id"></param>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:$safeprojectname$.Controllers.Base.WritableController`5.ValidateRolesAndRights(`0)">
+            <summary>
+            Validates user access permissions
+            </summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="T:$safeprojectname$.Controllers.ValuesController">
+            <summary>
+            Demo purposes only
+            </summary>
+        </member>
+        <member name="M:$safeprojectname$.Controllers.ValuesController.#ctor(Microsoft.Extensions.Options.IOptions{$safeprojectname$.Infrastructure.Settings.CurrentAppSettings},Calabonga.EntityFrameworkCore.UOW.IUnitOfWork{Calabonga.AspNetCore.MicroModule.Data.ApplicationDbContext})">
+            <inheritdoc />
+        </member>
+        <member name="M:$safeprojectname$.Controllers.ValuesController.Get">
+            <summary>
+            Returns a collection.
+            Demo purposes only
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:$safeprojectname$.Controllers.ValuesController.Get(System.Int32)">
+            <summary>
+            Return something by identifier
+            Demo purposes only
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="T:$safeprojectname$.Extensions.AssemblyExtensions">
+            <summary>
+            Assembly helpers
+            </summary>
+        </member>
+        <member name="M:$safeprojectname$.Extensions.AssemblyExtensions.GetTypesAssignableFrom``1(System.Reflection.Assembly)">
+            <summary>
+            Returns types
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="assembly"></param>
+            <returns></returns>
+        </member>
+        <member name="T:$safeprojectname$.Extensions.DateTimeExtensions">
+            <summary>
+            DateTime extensions
+            </summary>
+        </member>
+        <member name="M:$safeprojectname$.Extensions.DateTimeExtensions.EachDay(System.DateTime,System.DateTime)">
+            <summary>
+            Each day enumeration
+            </summary>
+            <param name="from"></param>
+            <param name="thru"></param>
+            <returns></returns>
+        </member>
+        <member name="M:$safeprojectname$.Extensions.DateTimeExtensions.EachMonth(System.DateTime,System.DateTime)">
+            <summary>
+            Each month enumeration
+            </summary>
+            <param name="from"></param>
+            <param name="thru"></param>
+            <returns></returns>
+        </member>
+        <member name="M:$safeprojectname$.Extensions.DateTimeExtensions.EachDayTo(System.DateTime,System.DateTime)">
+            <summary>
+            Enumerates all days in period
+            </summary>
+            <param name="dateFrom"></param>
+            <param name="dateTo"></param>
+            <returns></returns>
+        </member>
+        <member name="M:$safeprojectname$.Extensions.DateTimeExtensions.EachMonthTo(System.DateTime,System.DateTime)">
+            <summary>
+            Enumerates all months in period
+            </summary>
+            <param name="dateFrom"></param>
+            <param name="dateTo"></param>
+            <returns></returns>
+        </member>
+        <member name="M:$safeprojectname$.Extensions.DateTimeExtensions.TotalMonths(System.DateTime,System.DateTime)">
+            <summary>
+            Total Month count between two dates
+            </summary>
+            <param name="start"></param>
+            <param name="end"></param>
+            <returns></returns>
+        </member>
+        <member name="T:$safeprojectname$.Extensions.EntityValidatorExtensions">
+            <summary>
+            Entity Validator Extensions
+            </summary>
+        </member>
+        <member name="M:$safeprojectname$.Extensions.EntityValidatorExtensions.GetResult(System.Collections.Generic.List{$safeprojectname$.Infrastructure.Validations.Base.ValidationResult})">
+            <summary>
+            Returns validator from validation results
+            </summary>
+            <param name="source"></param>
+            <returns></returns>
+        </member>
+        <member name="T:$safeprojectname$.Infrastructure.Attributes.SwaggerFormAttribute">
+            <summary>
+            Custom attribute for Swagger Upload Form
+            </summary>
+        </member>
+        <member name="M:$safeprojectname$.Infrastructure.Attributes.SwaggerFormAttribute.#ctor(System.String,System.String,System.Boolean)">
+            <inheritdoc />
+        </member>
+        <member name="P:$safeprojectname$.Infrastructure.Attributes.SwaggerFormAttribute.HasFileUpload">
+            <summary>
+            UploadFile enabled
+            </summary>
+        </member>
+        <member name="P:$safeprojectname$.Infrastructure.Attributes.SwaggerFormAttribute.ParameterName">
+            <summary>
+            Name for the parameter <see cref="T:IFormFile"/>
+            </summary>
+        </member>
+        <member name="P:$safeprojectname$.Infrastructure.Attributes.SwaggerFormAttribute.Description">
+            <summary>
+            Small description
+            </summary>
+        </member>
+        <member name="T:$safeprojectname$.Infrastructure.Attributes.ValidateModelStateAttribute">
+            <summary>
+            Custom validation handler for availability to whit OperationResult
+            </summary>
+        </member>
+        <member name="M:$safeprojectname$.Infrastructure.Attributes.ValidateModelStateAttribute.OnActionExecuting(Microsoft.AspNetCore.Mvc.Filters.ActionExecutingContext)">
+            <inheritdoc />
+        </member>
+        <member name="T:$safeprojectname$.Infrastructure.Auth.ClaimsHelper">
+            <summary>
+            Claim Helper
+            </summary>
+        </member>
+        <member name="M:$safeprojectname$.Infrastructure.Auth.ClaimsHelper.CreateClaims``1(``0,System.Collections.Generic.IEnumerable{System.Security.Claims.Claim})">
+            <summary>
+            Return Claim collection from domain model
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="entity"></param>
+            <param name="additionalClaims"></param>
+            <returns></returns>
+        </member>
+        <member name="M:$safeprojectname$.Infrastructure.Auth.ClaimsHelper.GetValue``1(System.Security.Claims.ClaimsIdentity,System.String)">
+            <summary>
+            Returns value from claim converted to T
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="identity"></param>
+            <param name="claimName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:$safeprojectname$.Infrastructure.Auth.ClaimsHelper.GetValues``1(System.Security.Claims.ClaimsIdentity,System.String)">
+            <summary>
+            Returns a set of claims
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="items"></param>
+            <param name="claimName"></param>
+            <returns></returns>
+        </member>
+        <member name="T:$safeprojectname$.Infrastructure.DependencyInjection.DependencyContainer">
+            <summary>
+            Registrations for both points: API and Scheduler
+            </summary>
+            <summary>
+            Dependency Injection Registration
+            </summary>
+            <summary>
+            Dependency Injection Registration
+            </summary>
+            <summary>
+            Dependency Injection Registration
+            </summary>
+            <summary>
+            Dependency Injection Registration
+            </summary>
+            <summary>
+            Dependency Injection Registration
+            </summary>
+            <summary>
+            Dependency Injection Registration
+            </summary>
+        </member>
+        <member name="M:$safeprojectname$.Infrastructure.DependencyInjection.DependencyContainer.Common(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Register 
+            </summary>
+            <param name="services"></param>
+        </member>
+        <member name="M:$safeprojectname$.Infrastructure.DependencyInjection.DependencyContainer.EntityManagers(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Registration Entity Managers
+            </summary>
+            <param name="services"></param>
+        </member>
+        <member name="M:$safeprojectname$.Infrastructure.DependencyInjection.DependencyContainer.EntityServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Registration EntityValidators
+            </summary>
+            <param name="services"></param>
+        </member>
+        <member name="M:$safeprojectname$.Infrastructure.DependencyInjection.DependencyContainer.Notifications(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Registering Notification infrastructure
+            </summary>
+            <param name="services"></param>
+        </member>
+        <member name="M:$safeprojectname$.Infrastructure.DependencyInjection.DependencyContainer.Repositories(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Registration Repositories
+            </summary>
+            <param name="services"></param>
+        </member>
+        <member name="M:$safeprojectname$.Infrastructure.DependencyInjection.DependencyContainer.Validators(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Registration EntityValidators
+            </summary>
+            <param name="services"></param>
+        </member>
+        <member name="M:$safeprojectname$.Infrastructure.DependencyInjection.DependencyContainer.ViewModelFactories(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Registration ViewModel factories
+            </summary>
+            <param name="services"></param>
+        </member>
+        <member name="T:$safeprojectname$.Infrastructure.Factories.Base.IViewModel">
+            <summary>
+            Just a stub for <see cref="T:$safeprojectname$.Infrastructure.Factories.Base.ViewModelFactory`3"/>see
+            </summary>
+        </member>
+        <member name="T:$safeprojectname$.Infrastructure.Factories.Base.IViewModelFactory`3">
+            <summary>
+            ViewModel Factory
+            </summary>
+            <typeparam name="TUpdateViewModel"></typeparam>
+            <typeparam name="TCreateViewModel"></typeparam>
+            <typeparam name="TEntity"></typeparam>
+        </member>
+        <member name="M:$safeprojectname$.Infrastructure.Factories.Base.IViewModelFactory`3.GenerateForCreate">
+            <summary>
+            Returns ViewModel for entity creation
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:$safeprojectname$.Infrastructure.Factories.Base.IViewModelFactory`3.GenerateForUpdate(System.Guid)">
+            <summary>
+            Returns ViewModel for entity editing
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="T:$safeprojectname$.Infrastructure.Factories.Base.ViewModelFactory`3">
+            <summary>
+            ViewModelFactory base class
+            </summary>
+            <typeparam name="TUpdateViewModel"></typeparam>
+            <typeparam name="TCreateViewModel"></typeparam>
+            <typeparam name="TEntity"></typeparam>
+        </member>
+        <member name="M:$safeprojectname$.Infrastructure.Factories.Base.ViewModelFactory`3.GenerateForCreate">
+            <inheritdoc />
+        </member>
+        <member name="M:$safeprojectname$.Infrastructure.Factories.Base.ViewModelFactory`3.GenerateForUpdate(System.Guid)">
+            <inheritdoc />
+        </member>
+        <member name="T:$safeprojectname$.Infrastructure.Helpers.AsyncHelper">
+            <summary>
+            Run Asynchronous methods as Synchronous.
+            </summary>
+        </member>
+        <member name="M:$safeprojectname$.Infrastructure.Helpers.AsyncHelper.RunSync``1(System.Func{System.Threading.Tasks.Task{``0}})">
+            <summary>
+            Run asynchronous method as synchronous
+            </summary>
+            <typeparam name="TResult"></typeparam>
+            <param name="func"></param>
+            <returns></returns>
+        </member>
+        <member name="M:$safeprojectname$.Infrastructure.Helpers.AsyncHelper.RunSync(System.Func{System.Threading.Tasks.Task})">
+            <summary>
+            Run asynchronous method as synchronous
+            </summary>
+            <param name="func"></param>
+        </member>
+        <member name="T:$safeprojectname$.Infrastructure.Helpers.EmailHelper">
+            <summary>
+            Email validation helper
+            </summary>
+        </member>
+        <member name="M:$safeprojectname$.Infrastructure.Helpers.EmailHelper.GetValidEmails(System.String)">
+            <summary>
+            Validates emails entries
+            </summary>
+            <param name="emails"></param>
+            <returns></returns>
+        </member>
+        <member name="T:$safeprojectname$.Infrastructure.Helpers.EnumHelper`1">
+            <summary>
+            Enum Helper
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:$safeprojectname$.Infrastructure.Helpers.EnumHelper`1.GetValuesWithDisplayNames">
+            <summary>
+            Returns Enum with DisplayNames
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:$safeprojectname$.Infrastructure.Helpers.EnumHelper`1.GetValues">
+            <summary>
+            Returns values from enum
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:$safeprojectname$.Infrastructure.Helpers.EnumHelper`1.Parse(System.String)">
+            <summary>
+            Parse value by string from Enum
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:$safeprojectname$.Infrastructure.Helpers.EnumHelper`1.TryParse(System.String)">
+            <summary>
+            Parse value by string from Enum
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:$safeprojectname$.Infrastructure.Helpers.EnumHelper`1.GetNames">
+            <summary>
+            Returns values from Enum
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:$safeprojectname$.Infrastructure.Helpers.EnumHelper`1.GetDisplayValues(System.Enum)">
+            <summary>
+            Returns values from Enum or Resource file if exists
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:$safeprojectname$.Infrastructure.Helpers.EnumHelper`1.GetDisplayValue(`0)">
+            <summary>
+            Returns display name for Enum
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="T:$safeprojectname$.Infrastructure.Helpers.Utilities">
+            <summary>
+            System utilities
+            </summary>
+        </member>
+        <member name="M:$safeprojectname$.Infrastructure.Helpers.Utilities.ComputeHash(System.String)">
+            <summary>
+            Compute Hash
+            </summary>
+            <param name="filePath"></param>
+            <returns></returns>
+        </member>
+        <member name="M:$safeprojectname$.Infrastructure.Helpers.Utilities.GetFileContent(System.String)">
+            <summary>
+            Return file content
+            </summary>
+            <param name="filePath"></param>
+            <returns></returns>
+        </member>
+        <member name="M:$safeprojectname$.Infrastructure.Helpers.Utilities.DeleteFile(System.String)">
+            <summary>
+            Remove file from directory (physical deleting)
+            </summary>
+            <param name="filePath"></param>
+        </member>
+        <member name="M:$safeprojectname$.Infrastructure.Helpers.Utilities.SetFileContent(System.String,System.String)">
+            <summary>
+            Save content to the text file
+            </summary>
+            <param name="filePath"></param>
+            <param name="content"></param>
+            <returns></returns>
+        </member>
+        <member name="M:$safeprojectname$.Infrastructure.Helpers.Utilities.GetETag(System.String,System.Byte[])">
+            <summary>
+            Generate ETag for content bytes
+            </summary>
+            <param name="key"></param>
+            <param name="contentBytes"></param>
+            <returns></returns>
+        </member>
+        <member name="M:$safeprojectname$.Infrastructure.Helpers.Utilities.GetWorkingFolder">
+            <summary>
+            Returns Working folder path
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:$safeprojectname$.Infrastructure.Helpers.ValidationContextHelper">
+            <summary>
+            ValidationContext Helper for validation operations
+            </summary>
+        </member>
+        <member name="M:$safeprojectname$.Infrastructure.Helpers.ValidationContextHelper.TryValidate(System.Object,System.Collections.ObjectModel.Collection{System.ComponentModel.DataAnnotations.ValidationResult}@,System.ComponentModel.DataAnnotations.ValidationContext)">
+            <summary>
+            Returns validation results of IValidatableObject
+            </summary>
+            <param name="obj"></param>
+            <param name="results"></param>
+            <param name="validationContext"></param>
+            <returns></returns>
+        </member>
+        <member name="T:$safeprojectname$.Infrastructure.Managers.Base.EntityManager`3">
+            <summary>
+            Entity manager represents a set of the tools for entity management
+            </summary>
+            <typeparam name="TEntity"></typeparam>
+            <typeparam name="TUpdateViewModel"></typeparam>
+            <typeparam name="TCreateViewModel"></typeparam>
+        </member>
+        <member name="M:$safeprojectname$.Infrastructure.Managers.Base.EntityManager`3.#ctor(AutoMapper.IMapper,$safeprojectname$.Infrastructure.Factories.Base.IViewModelFactory{`0,`1,`2},$safeprojectname$.Infrastructure.Validations.Base.IEntityValidator{`0})">
+            <inheritdoc />
+        </member>
+        <member name="P:$safeprojectname$.Infrastructure.Managers.Base.EntityManager`3.CurrentMapper">
+            <summary>
+            <see cref="T:AutoMapper.IMapper"/> instance for current manager
+            </summary>
+        </member>
+        <member name="P:$safeprojectname$.Infrastructure.Managers.Base.EntityManager`3.ViewModelFactory">
+            <summary>
+            ViewModel factory can help you to instantiate view models with initial data
+            </summary>
+        </member>
+        <member name="P:$safeprojectname$.Infrastructure.Managers.Base.EntityManager`3.Validator">
+            <summary>
+            Entity validator for current entity type. It can contains custom set of rules for entity validations
+            </summary>
+        </member>
+        <member name="M:$safeprojectname$.Infrastructure.Managers.Base.EntityManager`3.OnCreateBeforeAnyValidations(`1,`0)">
+            <inheritdoc />
+        </member>
+        <member name="M:$safeprojectname$.Infrastructure.Managers.Base.EntityManager`3.OnCreateBeforeInsert(`1,`0)">
+            <inheritdoc />
+        </member>
+        <member name="M:$safeprojectname$.Infrastructure.Managers.Base.EntityManager`3.OnCreateBeforeSaveChangesAsync(`1,`0)">
+            <inheritdoc />
+        </member>
+        <member name="M:$safeprojectname$.Infrastructure.Managers.Base.EntityManager`3.OnCreateAfterSaveChangesSuccessAsync(System.Collections.Generic.List{`0})">
+            <inheritdoc />
+        </member>
+        <member name="M:$safeprojectname$.Infrastructure.Managers.Base.EntityManager`3.OnEditBeforeUpdate(`2,`0)">
+            <inheritdoc />
+        </member>
+        <member name="M:$safeprojectname$.Infrastructure.Managers.Base.EntityManager`3.OnEditBeforeAnyValidations(`2,`0)">
+            <inheritdoc />
+        </member>
+        <member name="M:$safeprojectname$.Infrastructure.Managers.Base.EntityManager`3.OnEditBeforeMappings(`2,`0)">
+            <inheritdoc />
+        </member>
+        <member name="M:$safeprojectname$.Infrastructure.Managers.Base.EntityManager`3.OnEditAfterSaveChangesSuccessAsync(System.Collections.Generic.List{`0})">
+            <inheritdoc />
+        </member>
+        <member name="T:$safeprojectname$.Infrastructure.Managers.Base.IEntityManager`3">
+            <summary>
+            Entity Manager
+            </summary>
+            <typeparam name="TEntity"></typeparam>
+            <typeparam name="TCreateViewModel"></typeparam>
+            <typeparam name="TUpdateViewModel"></typeparam>
+        </member>
+        <member name="P:$safeprojectname$.Infrastructure.Managers.Base.IEntityManager`3.CurrentMapper">
+            <summary>
+            <see cref="T:AutoMapper.IMapper"/> instance for current manager
+            </summary>
+        </member>
+        <member name="P:$safeprojectname$.Infrastructure.Managers.Base.IEntityManager`3.ViewModelFactory">
+            <summary>
+            ViewModel factory can help you to instantiate view models with initial data
+            </summary>
+        </member>
+        <member name="P:$safeprojectname$.Infrastructure.Managers.Base.IEntityManager`3.Validator">
+            <summary>
+            Entity validator for current entity type. It can contains custom set of rules for entity validations
+            </summary>
+        </member>
+        <member name="M:$safeprojectname$.Infrastructure.Managers.Base.IEntityManager`3.OnCreateBeforeInsert(`1,`0)">
+            <summary>
+            Fires when validation already complete and next step is saving entity on insert operations
+            </summary>
+            <param name="model"></param>
+            <param name="entity"></param>
+        </member>
+        <member name="M:$safeprojectname$.Infrastructure.Managers.Base.IEntityManager`3.OnCreateBeforeSaveChangesAsync(`1,`0)">
+            <summary>
+            Fires when entity ready to Insert but some operations still need to do before saveChanges executed
+            </summary>
+            <param name="model"></param>
+            <param name="entity"></param>
+        </member>
+        <member name="M:$safeprojectname$.Infrastructure.Managers.Base.IEntityManager`3.OnCreateAfterSaveChangesSuccessAsync(System.Collections.Generic.List{`0})">
+            <summary>
+            Fires after changes successfully saved
+            </summary>
+            <param name="entities"></param>
+        </member>
+        <member name="M:$safeprojectname$.Infrastructure.Managers.Base.IEntityManager`3.OnCreateBeforeAnyValidations(`1,`0)">
+            <summary>
+            Fires before entity validation executed on entity creation
+            </summary>
+            <param name="model"></param>
+            <param name="entity"></param>
+        </member>
+        <member name="M:$safeprojectname$.Infrastructure.Managers.Base.IEntityManager`3.OnEditAfterSaveChangesSuccessAsync(System.Collections.Generic.List{`0})">
+            <summary>
+            Fires after changes successfully saved
+            </summary>
+            <param name="entities"></param>
+            <returns></returns>
+        </member>
+        <member name="M:$safeprojectname$.Infrastructure.Managers.Base.IEntityManager`3.OnEditBeforeUpdate(`2,`0)">
+            <summary>
+            Fires when validation already complete and next step is saving entity on update operations
+            </summary>
+            <param name="model"></param>
+            <param name="entity"></param>
+        </member>
+        <member name="M:$safeprojectname$.Infrastructure.Managers.Base.IEntityManager`3.OnEditBeforeAnyValidations(`2,`0)">
+            <summary>
+            Fires before entity validation executed on entity updating
+            </summary>
+            <param name="model"></param>
+            <param name="entity"></param>
+        </member>
+        <member name="M:$safeprojectname$.Infrastructure.Managers.Base.IEntityManager`3.OnEditBeforeMappings(`2,`0)">
+            <summary>
+            Fires before any mapping operations begin
+            </summary>
+            <param name="model"></param>
+            <param name="entity"></param>
+        </member>
+        <member name="T:$safeprojectname$.Infrastructure.Mappers.ApplicationUserMapperConfiguration">
+            <summary>
+            Mapper Configuration for entity ApplicationUser
+            </summary>
+        </member>
+        <member name="M:$safeprojectname$.Infrastructure.Mappers.ApplicationUserMapperConfiguration.#ctor">
+            <inheritdoc />
+        </member>
+        <member name="T:$safeprojectname$.Infrastructure.Mappers.ApplicationUserProfileMapperConfiguration">
+            <summary>
+            Mapper Configuration for entity Person
+            </summary>
+        </member>
+        <member name="M:$safeprojectname$.Infrastructure.Mappers.ApplicationUserProfileMapperConfiguration.#ctor">
+            <inheritdoc />
+        </member>
+        <member name="T:$safeprojectname$.Infrastructure.Mappers.Base.IAutoMapper">
+            <summary>
+            The stub for reflection helper profiles registrations
+            </summary>
+        </member>
+        <member name="T:$safeprojectname$.Infrastructure.Mappers.Base.MapperConfigurationBase">
+            <summary>
+            Base class for mapper configuration.
+            All ViewModel that will be mapped should implement IAutoMapper
+            </summary>
+        </member>
+        <member name="T:$safeprojectname$.Infrastructure.Mappers.Base.PagedListConverter`2">
+            <summary>
+            Generic converter for IPagedList collections
+            </summary>
+            <typeparam name="TMapFrom"></typeparam>
+            <typeparam name="TMapTo"></typeparam>
+        </member>
+        <member name="M:$safeprojectname$.Infrastructure.Mappers.Base.PagedListConverter`2.Convert(Calabonga.EntityFrameworkCore.UOW.IPagedList{`0},Calabonga.EntityFrameworkCore.UOW.IPagedList{`1},AutoMapper.ResolutionContext)">
+            <summary>Performs conversion from source to destination type</summary>
+            <param name="source">Source object</param>
+            <param name="destination">Destination object</param>
+            <param name="context">Resolution context</param>
+            <returns>Destination object</returns>
+        </member>
+        <member name="T:$safeprojectname$.Infrastructure.Mappers.LogMapperConfiguration">
+            <summary>
+            Mapper Configuration for entity Log
+            </summary>
+        </member>
+        <member name="M:$safeprojectname$.Infrastructure.Mappers.LogMapperConfiguration.#ctor">
+            <inheritdoc />
+        </member>
+        <member name="T:$safeprojectname$.Infrastructure.QueryParams.PagedListQueryParams">
+            <summary>
+            Default paged list query params for pagination
+            </summary>
+        </member>
+        <member name="M:$safeprojectname$.Infrastructure.QueryParams.PagedListQueryParams.#ctor">
+            <inheritdoc />
+        </member>
+        <member name="P:$safeprojectname$.Infrastructure.QueryParams.PagedListQueryParams.SortDirection">
+            <summary>
+            Sorting direction Ascending or Descending
+            </summary>
+        </member>
+        <member name="T:$safeprojectname$.Infrastructure.QueryParams.SortDirection">
+            <summary>
+            Sort Direction
+            </summary>
+        </member>
+        <member name="F:$safeprojectname$.Infrastructure.QueryParams.SortDirection.Ascending">
+            <summary>
+            Sort direction
+            </summary>
+        </member>
+        <member name="F:$safeprojectname$.Infrastructure.QueryParams.SortDirection.Descending">
+            <summary>
+            Sort direction
+            </summary>
+        </member>
+        <member name="T:$safeprojectname$.Infrastructure.Services.Base.EntityService`1">
+            <summary>
+            Base service for entity with default predefined actions (methods)
+            </summary>
+            <typeparam name="TEntity"></typeparam>
+        </member>
+        <member name="M:$safeprojectname$.Infrastructure.Services.Base.EntityService`1.#ctor(Calabonga.EntityFrameworkCore.UOW.IRepositoryFactory)">
+            <inheritdoc />
+        </member>
+        <member name="P:$safeprojectname$.Infrastructure.Services.Base.EntityService`1.Factory">
+            <summary>
+            Factory of Repositories
+            </summary>
+        </member>
+        <member name="P:$safeprojectname$.Infrastructure.Services.Base.EntityService`1.Repository">
+            <summary>
+            Repository
+            </summary>
+        </member>
+        <member name="T:$safeprojectname$.Infrastructure.Services.Base.IEntityService`1">
+            <summary>
+            Entity service
+            </summary>
+        </member>
+        <member name="M:$safeprojectname$.Infrastructure.Services.Base.IEntityService`1.FindEntity(System.Guid)">
+            <summary>
+            Returns object by his identifier
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="T:$safeprojectname$.Infrastructure.Services.CacheService">
+            <summary>
+            Cache service 
+            </summary>
+        </member>
+        <member name="M:$safeprojectname$.Infrastructure.Services.CacheService.#ctor(Microsoft.Extensions.Caching.Memory.IMemoryCache)">
+            <inheritdoc />
+        </member>
+        <member name="M:$safeprojectname$.Infrastructure.Services.CacheService.Get``1(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:$safeprojectname$.Infrastructure.Services.CacheService.SetForMinute``1(System.Object,``0)">
+            <inheritdoc />
+        </member>
+        <member name="M:$safeprojectname$.Infrastructure.Services.CacheService.SetForThirtyMinutes``1(System.Object,``0)">
+            <inheritdoc />
+        </member>
+        <member name="M:$safeprojectname$.Infrastructure.Services.CacheService.SetWithSlidingExpiration``1(System.Object,``0,System.TimeSpan)">
+            <summary>
+            Default set mechanism
+            </summary>
+            <typeparam name="TEntry"></typeparam>
+            <param name="key"></param>
+            <param name="cacheEntry"></param>
+            <param name="slidingExpiration"></param>
+        </member>
+        <member name="M:$safeprojectname$.Infrastructure.Services.CacheService.GetOrCreate``2(``0,System.Func{Microsoft.Extensions.Caching.Memory.ICacheEntry,``1})">
+            <inheritdoc />
+        </member>
+        <member name="T:$safeprojectname$.Infrastructure.Services.EmailService">
+            <summary>
+            Email service just send the mail. Nothing else!
+            </summary>
+        </member>
+        <member name="M:$safeprojectname$.Infrastructure.Services.EmailService.#ctor(Microsoft.Extensions.Options.IOptions{$safeprojectname$.Infrastructure.Settings.CurrentAppSettings},Microsoft.Extensions.Logging.ILogger{$safeprojectname$.Infrastructure.Services.EmailService})">
+            <inheritdoc />
+        </member>
+        <member name="M:$safeprojectname$.Infrastructure.Services.EmailService.SendMailAsync(System.String,System.String,System.String,System.Collections.Generic.ICollection{Microsoft.AspNetCore.Http.IFormFile})">
+            <summary>
+            Send email with attachments
+            </summary>
+            <param name="mailto"></param>
+            <param name="mailSubject"></param>
+            <param name="mailBody"></param>
+            <param name="files"></param>
+            <returns></returns>
+        </member>
+        <member name="M:$safeprojectname$.Infrastructure.Services.EmailService.SendMailAsync(System.String,System.String,System.String)">
+            <summary>
+            Send email
+            </summary>
+            <param name="mailto"></param>
+            <param name="mailSubject"></param>
+            <param name="mailBody"></param>
+            <returns></returns>
+        </member>
+        <member name="M:$safeprojectname$.Infrastructure.Services.EmailService.SendMailAsync(Calabonga.AspNetCore.MicroModule.Core.IEmailMessage)">
+            <summary>
+            Send email
+            </summary>
+            <param name="message"></param>
+            <returns></returns>
+        </member>
+        <member name="T:$safeprojectname$.Infrastructure.Services.ICacheService">
+            <summary>
+            Cache service interface
+            </summary>
+        </member>
+        <member name="M:$safeprojectname$.Infrastructure.Services.ICacheService.Get``1(System.Object)">
+            <summary>
+            Get the entry from the cache
+            </summary>
+            <typeparam name="TEntry"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:$safeprojectname$.Infrastructure.Services.ICacheService.SetForMinute``1(System.Object,``0)">
+            <summary>
+            Sets entry cache for one minute sliding expiration
+            </summary>
+            <typeparam name="TEntry"></typeparam>
+            <param name="key"></param>
+            <param name="cacheEntry"></param>
+        </member>
+        <member name="M:$safeprojectname$.Infrastructure.Services.ICacheService.SetForThirtyMinutes``1(System.Object,``0)">
+            <summary>
+            Sets entry cache for 30 minutes sliding expiration
+            </summary>
+            <typeparam name="TEntry"></typeparam>
+            <param name="key"></param>
+            <param name="cacheEntry"></param>
+        </member>
+        <member name="M:$safeprojectname$.Infrastructure.Services.ICacheService.SetWithSlidingExpiration``1(System.Object,``0,System.TimeSpan)">
+            <summary>
+            Sets entry cache for custom sliding expiration interval 
+            </summary>
+            <typeparam name="TEntry"></typeparam>
+            <param name="key"></param>
+            <param name="cacheEntry"></param>
+            <param name="slidingExpiration"></param>
+        </member>
+        <member name="M:$safeprojectname$.Infrastructure.Services.ICacheService.GetOrCreate``2(``0,System.Func{Microsoft.Extensions.Caching.Memory.ICacheEntry,``1})">
+            <summary>
+            Returns already exist entry or first put it to the cache and then return entry
+            </summary>
+            <typeparam name="TEntry"></typeparam>
+            <typeparam name="TKey"></typeparam>
+            <param name="key"></param>
+            <param name="findIfNotFoundFunc"></param>
+            <returns></returns>
+        </member>
+        <member name="T:$safeprojectname$.Infrastructure.Services.IEmailService">
+            <summary>
+            Email Service messaging
+            </summary>
+        </member>
+        <member name="M:$safeprojectname$.Infrastructure.Services.IEmailService.SendMailAsync(System.String,System.String,System.String,System.Collections.Generic.ICollection{Microsoft.AspNetCore.Http.IFormFile})">
+            <summary>
+            Send email with attachments
+            </summary>
+            <param name="mailto"></param>
+            <param name="mailSubject"></param>
+            <param name="mailBody"></param>
+            <param name="files"></param>
+            <returns></returns>
+        </member>
+        <member name="M:$safeprojectname$.Infrastructure.Services.IEmailService.SendMailAsync(System.String,System.String,System.String)">
+            <summary>
+            Send email
+            </summary>
+            <param name="mailto"></param>
+            <param name="mailSubject"></param>
+            <param name="mailBody"></param>
+            <returns></returns>
+        </member>
+        <member name="M:$safeprojectname$.Infrastructure.Services.IEmailService.SendMailAsync(Calabonga.AspNetCore.MicroModule.Core.IEmailMessage)">
+            <summary>
+            Send email
+            </summary>
+            <param name="message"></param>
+            <returns></returns>
+        </member>
+        <member name="T:$safeprojectname$.Infrastructure.Services.ILogService">
+            <summary>
+            Interface for Business logic logger can save messages to database
+            </summary>
+        </member>
+        <member name="M:$safeprojectname$.Infrastructure.Services.ILogService.LogInformation(System.String)">
+            <summary>
+            Log information message
+            </summary>
+            <param name="message"></param>
+        </member>
+        <member name="T:$safeprojectname$.Infrastructure.Services.LogService">
+            <summary>
+            Business logic logger can save messages to database
+            </summary>
+        </member>
+        <member name="M:$safeprojectname$.Infrastructure.Services.LogService.#ctor(Calabonga.EntityFrameworkCore.UOW.IUnitOfWork{Calabonga.AspNetCore.MicroModule.Data.ApplicationDbContext})">
+            <inheritdoc />
+        </member>
+        <member name="M:$safeprojectname$.Infrastructure.Services.LogService.LogInformation(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:$safeprojectname$.Infrastructure.Services.LogService.Log(Microsoft.Extensions.Logging.LogLevel,System.String,System.Exception)">
+            <summary>
+            Allows to save data logs to the database Logs table
+            </summary>
+        </member>
+        <member name="T:$safeprojectname$.Infrastructure.Settings.Base.ServiceBase">
+            <summary>
+            Base service behavior
+            </summary>
+        </member>
+        <member name="P:$safeprojectname$.Infrastructure.Settings.Base.ServiceBase.IsActive">
+            <summary>
+            Indicates that the processing available works is enabled
+            </summary>
+        </member>
+        <member name="T:$safeprojectname$.Infrastructure.Settings.CurrentAppSettings">
+            <summary>
+            Represents configuration file with current application settings
+            </summary>
+        </member>
+        <member name="P:$safeprojectname$.Infrastructure.Settings.CurrentAppSettings.DefaultPageSize">
+            <summary>
+            Default page size
+            </summary>
+        </member>
+        <member name="P:$safeprojectname$.Infrastructure.Settings.CurrentAppSettings.DomainName">
+            <summary>
+            Domain name link (example: for Notification Builder)
+            </summary>
+        </member>
+        <member name="P:$safeprojectname$.Infrastructure.Settings.CurrentAppSettings.DomainUrl">
+            <summary>
+            Default url to PricePoint site
+            </summary>
+        </member>
+        <member name="P:$safeprojectname$.Infrastructure.Settings.CurrentAppSettings.DefaultCurrencyId">
+            <summary>
+            For some operations currency identifier is required
+            </summary>
+        </member>
+        <member name="P:$safeprojectname$.Infrastructure.Settings.CurrentAppSettings.CurrentDateTime">
+            <summary>
+            Time machine emulation
+            </summary>
+        </member>
+        <member name="P:$safeprojectname$.Infrastructure.Settings.CurrentAppSettings.MailServerSettings">
+            <summary>
+            SMTP email server settings
+            </summary>
+        </member>
+        <member name="T:$safeprojectname$.Infrastructure.Settings.MailServerSettings">
+            <summary>
+            Mail service settings for <see cref="T:$safeprojectname$.Infrastructure.Settings.CurrentAppSettings"/>
+            </summary>
+        </member>
+        <member name="P:$safeprojectname$.Infrastructure.Settings.MailServerSettings.SmtpServer">
+            <summary>
+            SMTP server name
+            </summary>
+        </member>
+        <member name="P:$safeprojectname$.Infrastructure.Settings.MailServerSettings.Port">
+            <summary>
+            Smtp port
+            </summary>
+        </member>
+        <member name="P:$safeprojectname$.Infrastructure.Settings.MailServerSettings.RobotName">
+            <summary>
+            Sender name
+            </summary>
+        </member>
+        <member name="P:$safeprojectname$.Infrastructure.Settings.MailServerSettings.RobotEmail">
+            <summary>
+            Sender email (no reply)
+            </summary>
+        </member>
+        <member name="P:$safeprojectname$.Infrastructure.Settings.MailServerSettings.UserName">
+            <summary>
+            Account name for SmtpServer authentication
+            </summary>
+        </member>
+        <member name="P:$safeprojectname$.Infrastructure.Settings.MailServerSettings.Password">
+            <summary>
+            Password for SmtpServer authentication
+            </summary>
+        </member>
+        <member name="P:$safeprojectname$.Infrastructure.Settings.MailServerSettings.SslProtocol">
+            <summary>
+            SSL protocol for MailKit
+            </summary>
+        </member>
+        <member name="P:$safeprojectname$.Infrastructure.Settings.MailServerSettings.SmtpClientLoggerEnabled">
+            <summary>
+            Enables/Disable SmtpClient logger to console
+            </summary>
+        </member>
+        <member name="T:$safeprojectname$.Infrastructure.Validations.Base.EntityValidationType">
+            <summary>
+            Entity Validation Level operation
+            </summary>
+        </member>
+        <member name="F:$safeprojectname$.Infrastructure.Validations.Base.EntityValidationType.None">
+            <summary>
+            Note
+            </summary>
+        </member>
+        <member name="F:$safeprojectname$.Infrastructure.Validations.Base.EntityValidationType.Insert">
+            <summary>
+            Insert operations
+            </summary>
+        </member>
+        <member name="F:$safeprojectname$.Infrastructure.Validations.Base.EntityValidationType.Update">
+            <summary>
+            Update operations
+            </summary>
+        </member>
+        <member name="T:$safeprojectname$.Infrastructure.Validations.Base.EntityValidator`1">
+            <summary>
+            Entity validator base
+            </summary>
+            <typeparam name="TEntity"></typeparam>
+        </member>
+        <member name="M:$safeprojectname$.Infrastructure.Validations.Base.EntityValidator`1.#ctor(Calabonga.EntityFrameworkCore.UOW.IRepositoryFactory)">
+            <inheritdoc />
+        </member>
+        <member name="P:$safeprojectname$.Infrastructure.Validations.Base.EntityValidator`1.Repository">
+            <summary>
+            repository of the entity
+            </summary>
+        </member>
+        <member name="M:$safeprojectname$.Infrastructure.Validations.Base.EntityValidator`1.ValidateByOperationType($safeprojectname$.Infrastructure.Validations.Base.EntityValidationType,`0)">
+            <summary>
+            Common validations rules
+            </summary>
+            <param name="validationType"></param>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:$safeprojectname$.Infrastructure.Validations.Base.EntityValidator`1.ValidateOnInsert(`0)">
+            <summary>
+            Checks entity for errors and returns. Validates entity for business logic rules on Creating operations
+            </summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:$safeprojectname$.Infrastructure.Validations.Base.EntityValidator`1.ValidateOnUpdate(`0)">
+            <summary>
+            Checks entity for errors and returns. Validates entity for business logic rules on Editing operations
+            </summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:$safeprojectname$.Infrastructure.Validations.Base.EntityValidator`1.ValidateOnInsertOrUpdate(`0)">
+            <summary>
+            Returns common validation results for Insert and for Update operations
+            </summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:$safeprojectname$.Infrastructure.Validations.Base.EntityValidator`1.Find(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:$safeprojectname$.Infrastructure.Validations.Base.EntityValidator`1.AddValidationResult($safeprojectname$.Infrastructure.Validations.Base.ValidationResult)">
+            <inheritdoc />
+        </member>
+        <member name="P:$safeprojectname$.Infrastructure.Validations.Base.EntityValidator`1.IsNeedToStop">
+            <inheritdoc />
+        </member>
+        <member name="P:$safeprojectname$.Infrastructure.Validations.Base.EntityValidator`1.ValidationContext">
+            <inheritdoc />
+        </member>
+        <member name="T:$safeprojectname$.Infrastructure.Validations.Base.ValidationContext">
+            <summary>
+            Entity
+            </summary>
+        </member>
+        <member name="M:$safeprojectname$.Infrastructure.Validations.Base.ValidationContext.#ctor">
+            <inheritdoc />
+        </member>
+        <member name="M:$safeprojectname$.Infrastructure.Validations.Base.ValidationContext.#ctor(System.Collections.Generic.List{$safeprojectname$.Infrastructure.Validations.Base.ValidationResult})">
+            <inheritdoc />
+        </member>
+        <member name="P:$safeprojectname$.Infrastructure.Validations.Base.ValidationContext.Errors">
+            <summary>
+            Returns error list with <see cref="T:$safeprojectname$.Infrastructure.Validations.Base.ValidationResult"/>
+            </summary>
+        </member>
+        <member name="M:$safeprojectname$.Infrastructure.Validations.Base.ValidationContext.AddValidationResult($safeprojectname$.Infrastructure.Validations.Base.ValidationResult)">
+            <summary>
+            Adds validation result to collection of the results
+            </summary>
+            <param name="result"></param>
+        </member>
+        <member name="P:$safeprojectname$.Infrastructure.Validations.Base.ValidationContext.IsValid">
+            <summary>
+            Returns is validation completed successfully
+            </summary>
+        </member>
+        <member name="P:$safeprojectname$.Infrastructure.Validations.Base.ValidationContext.IsNeedToStop">
+            <summary>
+            Indicates that validation has a critical errors and need to be stopped
+            </summary>
+        </member>
+        <member name="M:$safeprojectname$.Infrastructure.Validations.Base.ValidationContext.ToString">
+            <summary>
+            Returns a string that represents the current object.
+            </summary>
+            <returns>
+            A string that represents the current object.
+            </returns>
+        </member>
+        <member name="T:$safeprojectname$.Infrastructure.Validations.Base.IEntityValidator`1">
+            <summary>
+            Entity Validator interface
+            </summary>
+            <typeparam name="TEntity"></typeparam>
+        </member>
+        <member name="M:$safeprojectname$.Infrastructure.Validations.Base.IEntityValidator`1.ValidateByOperationType($safeprojectname$.Infrastructure.Validations.Base.EntityValidationType,`0)">
+            <summary>
+            Common validations rules
+            </summary>
+            <param name="validationType"></param>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:$safeprojectname$.Infrastructure.Validations.Base.IEntityValidator`1.ValidateOnInsert(`0)">
+            <summary>
+            Checks entity for errors and returns. Validates entity for business logic rules on Creating operations
+            </summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:$safeprojectname$.Infrastructure.Validations.Base.IEntityValidator`1.ValidateOnUpdate(`0)">
+            <summary>
+            Checks entity for errors and returns. Validates entity for business logic rules on Editing operations
+            </summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:$safeprojectname$.Infrastructure.Validations.Base.IEntityValidator`1.ValidateOnInsertOrUpdate(`0)">
+            <summary>
+            Returns common validation results for Insert and for Update operations
+            </summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:$safeprojectname$.Infrastructure.Validations.Base.IEntityValidator`1.Find(System.Object)">
+            <summary>
+            Returns true if the entity exists
+            </summary>
+            <param name="property"></param>
+        </member>
+        <member name="M:$safeprojectname$.Infrastructure.Validations.Base.IEntityValidator`1.AddValidationResult($safeprojectname$.Infrastructure.Validations.Base.ValidationResult)">
+            <summary>
+            Add custom validation result
+            </summary>
+            <param name="validationResult"></param>
+        </member>
+        <member name="P:$safeprojectname$.Infrastructure.Validations.Base.IEntityValidator`1.IsNeedToStop">
+            <summary>
+            Indicates than the validator already has a critical errors. Validation process should be stopped.
+            </summary>
+        </member>
+        <member name="P:$safeprojectname$.Infrastructure.Validations.Base.IEntityValidator`1.ValidationContext">
+            <summary>
+            Validator result can accumulate errors for entity
+            </summary>
+        </member>
+        <member name="T:$safeprojectname$.Infrastructure.Validations.Base.PermissionValidationResult">
+            <summary>
+            Represent result for <see cref="M:ValidateUserRolesAndRights"/>
+            </summary>
+        </member>
+        <member name="M:$safeprojectname$.Infrastructure.Validations.Base.PermissionValidationResult.#ctor">
+            <inheritdoc />
+        </member>
+        <member name="P:$safeprojectname$.Infrastructure.Validations.Base.PermissionValidationResult.IsOk">
+            <summary>
+            Indicated that user authorized to execute operations
+            </summary>
+        </member>
+        <member name="P:$safeprojectname$.Infrastructure.Validations.Base.PermissionValidationResult.Errors">
+            <summary>
+            List of validation errors
+            </summary>
+        </member>
+        <member name="M:$safeprojectname$.Infrastructure.Validations.Base.PermissionValidationResult.AddError(System.String)">
+            <summary>
+            Append error to error list
+            </summary>
+            <param name="message"></param>
+        </member>
+        <member name="M:$safeprojectname$.Infrastructure.Validations.Base.PermissionValidationResult.ToString">
+            <inheritdoc />
+        </member>
+        <member name="T:$safeprojectname$.Infrastructure.Validations.Base.UnauthorizedPermissionValidationResult">
+            <summary>
+            Unauthorized access validation result
+            </summary>
+        </member>
+        <member name="M:$safeprojectname$.Infrastructure.Validations.Base.UnauthorizedPermissionValidationResult.#ctor(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="T:$safeprojectname$.Infrastructure.Validations.Base.ValidationResult">
+            <summary>
+            Entity Validation Result for validation
+            </summary>
+        </member>
+        <member name="M:$safeprojectname$.Infrastructure.Validations.Base.ValidationResult.#ctor(System.String,System.Boolean)">
+            <inheritdoc />
+        </member>
+        <member name="P:$safeprojectname$.Infrastructure.Validations.Base.ValidationResult.Message">
+            <summary>
+            Message text
+            </summary>
+        </member>
+        <member name="P:$safeprojectname$.Infrastructure.Validations.Base.ValidationResult.IsNeedToStop">
+            <summary>
+            Indicates that we should break entity validation 
+            </summary>
+        </member>
+        <member name="T:$safeprojectname$.Infrastructure.Validations.LogValidator">
+            <summary>
+            Validator for entity Log
+            </summary>
+        </member>
+        <member name="M:$safeprojectname$.Infrastructure.Validations.LogValidator.#ctor(Calabonga.EntityFrameworkCore.UOW.IRepositoryFactory)">
+            <inheritdoc />
+        </member>
+        <member name="T:$safeprojectname$.Infrastructure.ViewModels.AccountViewModels.ApplicationUserProfileViewModel">
+            <summary>
+            Application User Profile
+            </summary>
+        </member>
+        <member name="P:$safeprojectname$.Infrastructure.ViewModels.AccountViewModels.ApplicationUserProfileViewModel.Id">
+            <summary>
+            Identifier
+            </summary>
+        </member>
+        <member name="P:$safeprojectname$.Infrastructure.ViewModels.AccountViewModels.ApplicationUserProfileViewModel.FirstName">
+            <summary>
+            FirstName
+            </summary>
+        </member>
+        <member name="P:$safeprojectname$.Infrastructure.ViewModels.AccountViewModels.ApplicationUserProfileViewModel.LastName">
+            <summary>
+            LastName
+            </summary>
+        </member>
+        <member name="P:$safeprojectname$.Infrastructure.ViewModels.AccountViewModels.ApplicationUserProfileViewModel.Email">
+            <summary>
+            Email
+            </summary>
+        </member>
+        <member name="P:$safeprojectname$.Infrastructure.ViewModels.AccountViewModels.ApplicationUserProfileViewModel.Roles">
+            <summary>
+            User Roles
+            </summary>
+        </member>
+        <member name="P:$safeprojectname$.Infrastructure.ViewModels.AccountViewModels.ApplicationUserProfileViewModel.EmailVerified">
+            <summary>
+            Returns User email verified
+            </summary>
+        </member>
+        <member name="P:$safeprojectname$.Infrastructure.ViewModels.AccountViewModels.ApplicationUserProfileViewModel.PreferredUserName">
+            <summary>
+            Returns Preferred UserName
+            </summary>
+        </member>
+        <member name="P:$safeprojectname$.Infrastructure.ViewModels.AccountViewModels.ApplicationUserProfileViewModel.PhoneNumber">
+            <summary>
+            User PhoneNumber
+            </summary>
+        </member>
+        <member name="P:$safeprojectname$.Infrastructure.ViewModels.AccountViewModels.ApplicationUserProfileViewModel.PhoneNumberVerified">
+            <summary>
+            Returns is PhoneNumber Verified
+            </summary>
+        </member>
+        <member name="P:$safeprojectname$.Infrastructure.ViewModels.AccountViewModels.ApplicationUserProfileViewModel.PositionName">
+            <summary>
+            Position Name
+            </summary>
+        </member>
+        <member name="P:$safeprojectname$.Infrastructure.ViewModels.AccountViewModels.ApplicationUserProfileViewModel.AdditionalEmails">
+            <summary>
+            Additional Emails for subscription
+            </summary>
+        </member>
+        <member name="T:$safeprojectname$.Infrastructure.ViewModels.AccountViewModels.LoginViewModel">
+            <summary>
+            Login model
+            If both Password and Pin specified, password used only
+            
+            </summary>
+        </member>
+        <member name="P:$safeprojectname$.Infrastructure.ViewModels.AccountViewModels.LoginViewModel.Email">
+            <summary>
+            Email to login with. Booking is expected with this email address.
+            </summary>
+        </member>
+        <member name="P:$safeprojectname$.Infrastructure.ViewModels.AccountViewModels.LoginViewModel.Password">
+            <summary>
+            Password to login with (optional)
+            </summary>
+        </member>
+        <member name="P:$safeprojectname$.Infrastructure.ViewModels.AccountViewModels.LoginViewModel.Pin">
+            <summary>
+            Pin to login with (optional)
+            </summary>
+        </member>
+        <member name="T:$safeprojectname$.Infrastructure.ViewModels.AccountViewModels.RegisterViewModel">
+            <summary>
+            Data transfer object for user registration
+            </summary>
+        </member>
+        <member name="P:$safeprojectname$.Infrastructure.ViewModels.AccountViewModels.RegisterViewModel.FirstName">
+            <summary>
+            FirstName
+            </summary>
+        </member>
+        <member name="P:$safeprojectname$.Infrastructure.ViewModels.AccountViewModels.RegisterViewModel.LastName">
+            <summary>
+            LastName
+            </summary>
+        </member>
+        <member name="P:$safeprojectname$.Infrastructure.ViewModels.AccountViewModels.RegisterViewModel.Email">
+            <summary>
+            Email
+            </summary>
+        </member>
+        <member name="P:$safeprojectname$.Infrastructure.ViewModels.AccountViewModels.RegisterViewModel.Password">
+            <summary>
+            Password
+            </summary>
+        </member>
+        <member name="P:$safeprojectname$.Infrastructure.ViewModels.AccountViewModels.RegisterViewModel.ConfirmPassword">
+            <summary>
+            Password confirmation
+            </summary>
+        </member>
+        <member name="T:$safeprojectname$.Infrastructure.ViewModels.LogViewModels.LogCreateViewModel">
+            <summary>
+            Data Transfer Object for Log entity
+            </summary>
+        </member>
+        <member name="P:$safeprojectname$.Infrastructure.ViewModels.LogViewModels.LogCreateViewModel.CreatedAt">
+            <summary>
+            Log Created At
+            </summary>
+        </member>
+        <member name="P:$safeprojectname$.Infrastructure.ViewModels.LogViewModels.LogCreateViewModel.Logger">
+            <summary>
+            Service name or provider
+            </summary>
+        </member>
+        <member name="P:$safeprojectname$.Infrastructure.ViewModels.LogViewModels.LogCreateViewModel.Level">
+            <summary>
+            Log level for logging. See <see cref="T:Microsoft.Extensions.Logging.LogLevel"/>
+            </summary>
+        </member>
+        <member name="P:$safeprojectname$.Infrastructure.ViewModels.LogViewModels.LogCreateViewModel.Message">
+            <summary>
+            Log Message
+            </summary>
+        </member>
+        <member name="P:$safeprojectname$.Infrastructure.ViewModels.LogViewModels.LogCreateViewModel.ThreadId">
+            <summary>
+            Thread identifier
+            </summary>
+        </member>
+        <member name="P:$safeprojectname$.Infrastructure.ViewModels.LogViewModels.LogCreateViewModel.ExceptionMessage">
+            <summary>
+            Exception message
+            </summary>
+        </member>
+        <member name="T:$safeprojectname$.Infrastructure.ViewModels.LogViewModels.LogViewModel">
+            <summary>
+            Log ViewModel
+            </summary>
+        </member>
+        <member name="P:$safeprojectname$.Infrastructure.ViewModels.LogViewModels.LogViewModel.CreatedAt">
+            <summary>
+            Created at
+            </summary>
+        </member>
+        <member name="P:$safeprojectname$.Infrastructure.ViewModels.LogViewModels.LogViewModel.Logger">
+            <summary>
+            Logger name
+            </summary>
+        </member>
+        <member name="P:$safeprojectname$.Infrastructure.ViewModels.LogViewModels.LogViewModel.Level">
+            <summary>
+            Level
+            </summary>
+        </member>
+        <member name="P:$safeprojectname$.Infrastructure.ViewModels.LogViewModels.LogViewModel.Message">
+            <summary>
+            Message text
+            </summary>
+        </member>
+        <member name="P:$safeprojectname$.Infrastructure.ViewModels.LogViewModels.LogViewModel.ThreadId">
+            <summary>
+            Thread ID
+            </summary>
+        </member>
+        <member name="P:$safeprojectname$.Infrastructure.ViewModels.LogViewModels.LogViewModel.ExceptionMessage">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:$safeprojectname$.Infrastructure.ViewModels.ViewModelBase">
+            <summary>
+            ViewModelBase for WritableController
+            </summary>
+        </member>
+        <member name="P:$safeprojectname$.Infrastructure.ViewModels.ViewModelBase.Id">
+            <summary>
+            Identifier
+            </summary>
+        </member>
+        <member name="T:$safeprojectname$.Middlewares.ErrorHandlingMiddleware">
+            <summary>
+            Custom error handler. It allows to view error messages on UI
+            </summary>
+        </member>
+        <member name="M:$safeprojectname$.Middlewares.ErrorHandlingMiddleware.#ctor(Microsoft.AspNetCore.Http.RequestDelegate)">
+            <inheritdoc />
+        </member>
+        <member name="M:$safeprojectname$.Middlewares.ErrorHandlingMiddleware.Invoke(Microsoft.AspNetCore.Http.HttpContext)">
+            <summary>
+            Invoke middle ware. Entry point
+            </summary>
+            <param name="context"></param>
+            <returns></returns>
+        </member>
+        <member name="T:$safeprojectname$.Middlewares.ApplicationBuilderExtensions">
+            <summary>
+            ETagger extension
+            </summary>
+        </member>
+        <member name="M:$safeprojectname$.Middlewares.ApplicationBuilderExtensions.UseETagger(Microsoft.AspNetCore.Builder.IApplicationBuilder)">
+            <summary>
+            Use Custom middleware
+            </summary>
+            <param name="app"></param>
+        </member>
+        <member name="T:$safeprojectname$.Middlewares.ETagMiddleware">
+            <summary>
+            ETag middleware from Mads Kristensen.
+            See https://madskristensen.net/blog/send-etag-headers-in-aspnet-core/
+            </summary>
+        </member>
+        <member name="M:$safeprojectname$.Middlewares.ETagMiddleware.#ctor(Microsoft.AspNetCore.Http.RequestDelegate)">
+            <inheritdoc />
+        </member>
+        <member name="M:$safeprojectname$.Middlewares.ETagMiddleware.InvokeAsync(Microsoft.AspNetCore.Http.HttpContext)">
+            <summary>
+            Invoke middleware entry point
+            </summary>
+            <param name="context"></param>
+            <returns></returns>
+        </member>
+        <member name="M:$safeprojectname$.Program.CreateWebHostBuilder(System.String[])">
+            <summary>
+            Create web host
+            </summary>
+            <param name="args"></param>
+            <returns></returns>
+        </member>
+        <member name="M:$safeprojectname$.Startup.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IHostingEnvironment,AutoMapper.IConfigurationProvider,Microsoft.Extensions.Logging.ILoggerFactory)">
+            <summary>
+            This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+            </summary>
+            <param name="app"></param>
+            <param name="env"></param>
+            <param name="mapper"></param>
+            <param name="loggerFactory"></param>
+        </member>
+    </members>
+</doc>
