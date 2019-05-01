@@ -1,7 +1,7 @@
 <VSTemplate Version="2.0.0" Type="ProjectGroup" 
   xmlns="http://schemas.microsoft.com/developer/vstemplate/2005">
   <TemplateData>
-    <Name>ASP.NET Core Microservice Module Template</Name>
+    <Name>ASP.NET Core Microservice Template</Name>
     <Description>This template gives you a possibility to start developing a microservices modules with integrated Swagger</Description>
     <ProjectType>CSharp</ProjectType>
     <ProjectSubType></ProjectSubType>
