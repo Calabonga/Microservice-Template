@@ -23,6 +23,7 @@
         <Folder Name="SwaggerFilters" TargetFolderName="SwaggerFilters">
           <ProjectItem ReplaceParameters="true" TargetFileName="ApplySummariesOperationFilter.cs">ApplySummariesOperationFilter.cs</ProjectItem>
           <ProjectItem ReplaceParameters="true" TargetFileName="LowercaseDocumentFilter.cs">LowercaseDocumentFilter.cs</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="SwaggerGroupOperationFilter.cs">SwaggerGroupOperationFilter.cs</ProjectItem>
         </Folder>
         <ProjectItem ReplaceParameters="true" TargetFileName="ConfigureApplication.cs">ConfigureApplication.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="ConfigureServicesBase.cs">ConfigureServicesBase.cs</ProjectItem>
@@ -50,6 +51,7 @@
       <Folder Name="Infrastructure" TargetFolderName="Infrastructure">
         <Folder Name="Attributes" TargetFolderName="Attributes">
           <ProjectItem ReplaceParameters="true" TargetFileName="SwaggerFormAttribute.cs">SwaggerFormAttribute.cs</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="SwaggerGroupAttribute.cs">SwaggerGroupAttribute.cs</ProjectItem>
           <ProjectItem ReplaceParameters="true" TargetFileName="ValidateModelStateAttribute.cs">ValidateModelStateAttribute.cs</ProjectItem>
         </Folder>
         <Folder Name="Auth" TargetFolderName="Auth">
