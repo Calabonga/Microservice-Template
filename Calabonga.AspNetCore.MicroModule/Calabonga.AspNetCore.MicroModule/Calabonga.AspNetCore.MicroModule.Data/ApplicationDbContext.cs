@@ -16,8 +16,6 @@ namespace Calabonga.AspNetCore.MicroModule.Data
 
         public DbSet<Log> Logs { get; set; }
 
-        public DbSet<ApplicationUserProfile> Profiles { get; set; }
-
         #endregion
     }
 }

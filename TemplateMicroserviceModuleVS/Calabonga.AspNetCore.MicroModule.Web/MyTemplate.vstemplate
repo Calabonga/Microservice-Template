@@ -92,8 +92,6 @@
             <ProjectItem ReplaceParameters="true" TargetFileName="MapperConfigurationBase.cs">MapperConfigurationBase.cs</ProjectItem>
             <ProjectItem ReplaceParameters="true" TargetFileName="PagedListConverter.cs">PagedListConverter.cs</ProjectItem>
           </Folder>
-          <ProjectItem ReplaceParameters="true" TargetFileName="ApplicationUserMapperConfiguration.cs">ApplicationUserMapperConfiguration.cs</ProjectItem>
-          <ProjectItem ReplaceParameters="true" TargetFileName="ApplicationUserProfileMapperConfiguration.cs">ApplicationUserProfileMapperConfiguration.cs</ProjectItem>
           <ProjectItem ReplaceParameters="true" TargetFileName="LogMapperConfiguration.cs">LogMapperConfiguration.cs</ProjectItem>
         </Folder>
         <Folder Name="QueryParams" TargetFolderName="QueryParams">

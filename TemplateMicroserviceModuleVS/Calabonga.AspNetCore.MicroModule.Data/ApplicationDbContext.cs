@@ -16,8 +16,6 @@ namespace $safeprojectname$
 
         public DbSet<Log> Logs { get; set; }
 
-        public DbSet<ApplicationUserProfile> Profiles { get; set; }
-
         #endregion
     }
 }

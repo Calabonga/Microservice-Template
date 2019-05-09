@@ -27,12 +27,9 @@
           <ProjectItem ReplaceParameters="true" TargetFileName="AuditableModelConfigurationBase.cs">AuditableModelConfigurationBase.cs</ProjectItem>
           <ProjectItem ReplaceParameters="true" TargetFileName="IdentityModelConfigurationBase.cs">IdentityModelConfigurationBase.cs</ProjectItem>
         </Folder>
-        <ProjectItem ReplaceParameters="true" TargetFileName="ApplicationUserProfileModelConfiguration.cs">ApplicationUserProfileModelConfiguration.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="LogModelConfiguration.cs">LogModelConfiguration.cs</ProjectItem>
       </Folder>
       <ProjectItem ReplaceParameters="true" TargetFileName="ApplicationDbContext.cs">ApplicationDbContext.cs</ProjectItem>
-      <ProjectItem ReplaceParameters="true" TargetFileName="ApplicationUser.cs">ApplicationUser.cs</ProjectItem>
-      <ProjectItem ReplaceParameters="true" TargetFileName="ApplicationUserProfile.cs">ApplicationUserProfile.cs</ProjectItem>
       <ProjectItem ReplaceParameters="true" TargetFileName="IApplicaitonDbContext.cs">IApplicaitonDbContext.cs</ProjectItem>
     </Project>
   </TemplateContent>

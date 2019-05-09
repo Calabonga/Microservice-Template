@@ -109,6 +109,14 @@
         <member name="M:Calabonga.AspNetCore.MicroModule.Web.AppStart.SwaggerFilters.LowercaseDocumentFilter.Apply(Swashbuckle.AspNetCore.Swagger.SwaggerDocument,Swashbuckle.AspNetCore.SwaggerGen.DocumentFilterContext)">
             <inheritdoc />
         </member>
+        <member name="T:Calabonga.AspNetCore.MicroModule.Web.AppStart.SwaggerFilters.SwaggerGroupOperationFilter">
+            <summary>
+            Swagger operation filter for <see cref="T:Calabonga.AspNetCore.MicroModule.Web.Infrastructure.Attributes.SwaggerGroupAttribute"/>
+            </summary>
+        </member>
+        <member name="M:Calabonga.AspNetCore.MicroModule.Web.AppStart.SwaggerFilters.SwaggerGroupOperationFilter.Apply(Swashbuckle.AspNetCore.Swagger.Operation,Swashbuckle.AspNetCore.SwaggerGen.OperationFilterContext)">
+            <inheritdoc />
+        </member>
         <member name="T:Calabonga.AspNetCore.MicroModule.Web.Controllers.Base.AuditableViewModelBase">
             <summary>
             Audit-able View Model Base
@@ -556,6 +564,20 @@
             Small description
             </summary>
         </member>
+        <member name="T:Calabonga.AspNetCore.MicroModule.Web.Infrastructure.Attributes.SwaggerGroupAttribute">
+             <summary>
+             Swagger controller group attribute
+             </summary>
+            
+        </member>
+        <member name="M:Calabonga.AspNetCore.MicroModule.Web.Infrastructure.Attributes.SwaggerGroupAttribute.#ctor(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="P:Calabonga.AspNetCore.MicroModule.Web.Infrastructure.Attributes.SwaggerGroupAttribute.GroupName">
+            <summary>
+            Group name
+            </summary>
+        </member>
         <member name="T:Calabonga.AspNetCore.MicroModule.Web.Infrastructure.Attributes.ValidateModelStateAttribute">
             <summary>
             Custom validation handler for availability to whit OperationResult
@@ -972,22 +994,6 @@
             </summary>
             <param name="model"></param>
             <param name="entity"></param>
-        </member>
-        <member name="T:Calabonga.AspNetCore.MicroModule.Web.Infrastructure.Mappers.ApplicationUserMapperConfiguration">
-            <summary>
-            Mapper Configuration for entity ApplicationUser
-            </summary>
-        </member>
-        <member name="M:Calabonga.AspNetCore.MicroModule.Web.Infrastructure.Mappers.ApplicationUserMapperConfiguration.#ctor">
-            <inheritdoc />
-        </member>
-        <member name="T:Calabonga.AspNetCore.MicroModule.Web.Infrastructure.Mappers.ApplicationUserProfileMapperConfiguration">
-            <summary>
-            Mapper Configuration for entity Person
-            </summary>
-        </member>
-        <member name="M:Calabonga.AspNetCore.MicroModule.Web.Infrastructure.Mappers.ApplicationUserProfileMapperConfiguration.#ctor">
-            <inheritdoc />
         </member>
         <member name="T:Calabonga.AspNetCore.MicroModule.Web.Infrastructure.Mappers.Base.IAutoMapper">
             <summary>
