@@ -448,6 +448,23 @@
             <param name="entity"></param>
             <returns></returns>
         </member>
+        <member name="T:Calabonga.AspNetCore.MicroModule.Web.Controllers.MicroserviceController">
+            <summary>
+            Microservice information controller for main shell communications
+            </summary>
+        </member>
+        <member name="M:Calabonga.AspNetCore.MicroModule.Web.Controllers.MicroserviceController.#ctor(Microsoft.AspNetCore.Mvc.Infrastructure.IActionDescriptorCollectionProvider)">
+            <summary>
+            Returns all endpoint specification for current microservice
+            </summary>
+            <param name="actionDescriptorCollectionProvider"></param>
+        </member>
+        <member name="M:Calabonga.AspNetCore.MicroModule.Web.Controllers.MicroserviceController.GetModuleActions">
+            <summary>
+            Returns information about service
+            </summary>
+            <returns></returns>
+        </member>
         <member name="T:Calabonga.AspNetCore.MicroModule.Web.Controllers.ValuesController">
             <summary>
             Demo purposes only
@@ -1812,12 +1829,42 @@
             <param name="context"></param>
             <returns></returns>
         </member>
+        <member name="T:Calabonga.AspNetCore.MicroModule.Web.Program">
+            <summary>
+            Entry point
+            </summary>
+        </member>
+        <member name="M:Calabonga.AspNetCore.MicroModule.Web.Program.Main(System.String[])">
+            <summary>
+            Entry method
+            </summary>
+            <param name="args"></param>
+        </member>
         <member name="M:Calabonga.AspNetCore.MicroModule.Web.Program.CreateWebHostBuilder(System.String[])">
             <summary>
             Create web host
             </summary>
             <param name="args"></param>
             <returns></returns>
+        </member>
+        <member name="T:Calabonga.AspNetCore.MicroModule.Web.Startup">
+            <summary>
+            Startup entry
+            </summary>
+        </member>
+        <member name="M:Calabonga.AspNetCore.MicroModule.Web.Startup.#ctor(Microsoft.Extensions.Configuration.IConfiguration)">
+            <inheritdoc />
+        </member>
+        <member name="P:Calabonga.AspNetCore.MicroModule.Web.Startup.Configuration">
+            <summary>
+            Configurations
+            </summary>
+        </member>
+        <member name="M:Calabonga.AspNetCore.MicroModule.Web.Startup.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            This method gets called by the runtime. Use this method to add services to the container.
+            </summary>
+            <param name="services"></param>
         </member>
         <member name="M:Calabonga.AspNetCore.MicroModule.Web.Startup.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IHostingEnvironment,AutoMapper.IConfigurationProvider,Microsoft.Extensions.Logging.ILoggerFactory)">
             <summary>

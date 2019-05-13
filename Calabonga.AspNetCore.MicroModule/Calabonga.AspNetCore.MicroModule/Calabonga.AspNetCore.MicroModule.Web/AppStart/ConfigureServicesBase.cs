@@ -1,14 +1,16 @@
 ﻿using System;
 using System.Text;
 using AutoMapper;
+using Calabonga.AspNetCore.MicroModule.Core;
 using Calabonga.AspNetCore.MicroModule.Data;
 using Calabonga.AspNetCore.MicroModule.Web.Infrastructure.Attributes;
 using Calabonga.AspNetCore.MicroModule.Web.Infrastructure.Settings;
 using Calabonga.EntityFrameworkCore.UOW;
+using IdentityServer4.AccessTokenValidation;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Routing;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -43,6 +45,8 @@ namespace Calabonga.AspNetCore.MicroModule.Web.AppStart
 
             services.AddMemoryCache();
 
+            services.AddLocalization();
+
             services.Configure<ApiBehaviorOptions>(options => { options.SuppressModelStateInvalidFilter = true; });
 
             services.Configure<IdentityOptions>(options =>
@@ -72,14 +76,22 @@ namespace Calabonga.AspNetCore.MicroModule.Web.AppStart
             services.AddHttpContextAccessor();
             services.AddResponseCaching();
 
+            var url = configuration.GetSection("IdentityServer").GetValue<string>("Url");
             services
                 .AddAuthentication(options =>
                 {
                     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
                     options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
                     options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+                })
+                .AddIdentityServerAuthentication(options =>
+                {
+                    options.SupportedTokens = SupportedTokens.Jwt;
+                    options.Authority = $"{url}{AppData.AuthUrl}";
+                    options.EnableCaching = true;
+                    options.RequireHttpsMetadata = false;
                 });
-          
+
             services.AddAuthorization();
             services
                 .AddMvc(options => { options.Filters.Add<ValidateModelStateAttribute>(); })

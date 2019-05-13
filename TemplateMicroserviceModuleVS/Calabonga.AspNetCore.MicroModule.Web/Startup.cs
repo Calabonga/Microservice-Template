@@ -8,16 +8,26 @@ using Microsoft.Extensions.Logging;
 
 namespace $safeprojectname$
 {
+     /// <summary>
+    /// Startup entry
+    /// </summary>
     public class Startup
     {
+        /// <inheritdoc />
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
         }
 
+        /// <summary>
+        /// Configurations
+        /// </summary>
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
+        /// <summary>
+        /// This method gets called by the runtime. Use this method to add services to the container.
+        /// </summary>
+        /// <param name="services"></param>
         public void ConfigureServices(IServiceCollection services)
         {
             ConfigureServicesBase.Configure(services, Configuration);

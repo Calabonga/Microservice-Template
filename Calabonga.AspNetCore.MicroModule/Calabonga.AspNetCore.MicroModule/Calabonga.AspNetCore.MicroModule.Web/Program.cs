@@ -5,8 +5,15 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace Calabonga.AspNetCore.MicroModule.Web
 {
+    /// <summary>
+    /// Entry point
+    /// </summary>
     public class Program
     {
+        /// <summary>
+        /// Entry method
+        /// </summary>
+        /// <param name="args"></param>
         public static void Main(string[] args)
         {
             var webHost = CreateWebHostBuilder(args).Build();
@@ -14,7 +21,6 @@ namespace Calabonga.AspNetCore.MicroModule.Web
             {
                 DatabaseInitializer.Seed(scope.ServiceProvider);
             }
-
             webHost.Run();
         }
 

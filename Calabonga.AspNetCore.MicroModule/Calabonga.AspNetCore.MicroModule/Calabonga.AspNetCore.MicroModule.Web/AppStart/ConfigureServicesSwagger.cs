@@ -18,7 +18,7 @@ namespace Calabonga.AspNetCore.MicroModule.Web.AppStart
     public static class ConfigureServicesSwagger
     {
         private const string AppTitle = "Microservice API";
-        private const string AppVersion = "1.0.0-alpha-1";
+        private const string AppVersion = "1.0.0-alpha-2";
         private const string SwaggerConfig = "/swagger/v1/swagger.json";
         private const string SwaggerUrl = "api/manual";
 
