@@ -1,9 +1,18 @@
 # Микросервисы
-Пример построения инфраструктуры на базе ASP.NET Core
-( Visual Studio project template for microservice module base on ASP.NET Core)
+Шаблон (template) для Visual Studio для построения инфраструктуры на базе ASP.NET Core.
 
-[Плейлист на YouTube](https://www.youtube.com/playlist?list=PLIB8be7sunXMXTZKptqEtXAACpsYZdzi_)
+# Microservices
+Visual Studio project template for microservice module base on ASP.NET Core
 
+# Весрия (Version)
+ASP.NET Core 2.2 (done)
+
+ASP.NET Core 3.0 (in progress)
+
+# Инструкции (видео)
+[Плейлист на YouTube](https://www.youtube.com/playlist?list=PLIB8be7sunXMXTZKptqEtXAACpsYZdzi_) (rus)
+
+# Скриншоты (Screenshots)
 ![screenshot](https://github.com/Calabonga/microservice-template/blob/master/Presentation/Microservices.png)
 
 
