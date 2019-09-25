@@ -10,4 +10,8 @@
     <ProjectReference Include="..\Calabonga.AspNetCore.MicroModule.Models\Calabonga.AspNetCore.Micro.Models.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Controllers\" />
+  </ItemGroup>
+
 </Project>
