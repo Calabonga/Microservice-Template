@@ -3,7 +3,7 @@
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iisExpress": {
-      "applicationUrl": "http://localhost:51531/",
+      "applicationUrl": "http://localhost:10001/",
       "sslPort": 0
     }
   },
@@ -11,17 +11,19 @@
     "IIS Express": {
       "commandName": "IISExpress",
       "launchBrowser": true,
+      "launchUrl": "api/manual",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "Calabonga.AspNetCore.Micro.Web": {
+    "Kestrel": {
       "commandName": "Project",
       "launchBrowser": true,
+      "launchUrl": "api/manual",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
-      "applicationUrl": "http://localhost:51532/"
+      "applicationUrl": "http://localhost:10001/"
     }
   }
 }

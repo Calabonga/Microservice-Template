@@ -1,4 +1,6 @@
+using Calabonga.AspNetCore.Micro.Data.DatabaseInitialization;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
 namespace Calabonga.AspNetCore.Micro.Web
@@ -7,7 +9,12 @@ namespace Calabonga.AspNetCore.Micro.Web
     {
         public static void Main(string[] args)
         {
-            CreateHostBuilder(args).Build().Run();
+            var webHost = CreateHostBuilder(args).Build();
+            using (var scope = webHost.Services.CreateScope())
+            {
+                DatabaseInitializer.Seed(scope.ServiceProvider);
+            }
+            webHost.Run();
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>

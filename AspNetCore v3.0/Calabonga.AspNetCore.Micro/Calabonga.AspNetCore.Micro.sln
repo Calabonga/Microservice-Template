@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29318.209
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calabonga.AspNetCore.Micro.Web", "Calabonga.AspNetCore.Micro\Calabonga.AspNetCore.Micro.Web.csproj", "{721D20AC-A069-4CCA-8DBA-361D69B49A80}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calabonga.AspNetCore.Micro.Web", "Calabonga.AspNetCore.Micro.Web\Calabonga.AspNetCore.Micro.Web.csproj", "{721D20AC-A069-4CCA-8DBA-361D69B49A80}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calabonga.AspNetCore.Micro.Core", "Calabonga.AspNetCore.Micro.Core\Calabonga.AspNetCore.Micro.Core.csproj", "{516E0183-749E-4931-B297-21BBD45F0161}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calabonga.AspNetCore.Micro.Models", "Calabonga.AspNetCore.MicroModule.Models\Calabonga.AspNetCore.Micro.Models.csproj", "{6A4B1E96-3932-4737-95E1-BB1D081DC5AB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calabonga.AspNetCore.Micro.Models", "Calabonga.AspNetCore.Micro.Models\Calabonga.AspNetCore.Micro.Models.csproj", "{6A4B1E96-3932-4737-95E1-BB1D081DC5AB}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calabonga.AspNetCore.Micro.Data", "Calabonga.AspNetCore.Micro.Data\Calabonga.AspNetCore.Micro.Data.csproj", "{2376C6FA-BFFB-4050-B187-CC918C10E09C}"
 EndProject
