@@ -16,6 +16,7 @@
     <PackageReference Include="Calabonga.EntityFrameworkCore.UOW" Version="2.0.0" />
     <PackageReference Include="Calabonga.EntityFrameworkCore.UOW.Framework" Version="2.0.0" />
     <PackageReference Include="IdentityServer4.AccessTokenValidation" Version="3.0.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.0.0" />
     <PackageReference Include="OperationResultCore" Version="1.1.0" />
     <PackageReference Include="PagedListLiteCore" Version="1.0.4" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="5.0.0-rc3" />
