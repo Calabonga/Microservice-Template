@@ -1,5 +1,5 @@
 ﻿using System.Linq;
-using Swashbuckle.AspNetCore.Swagger;
+using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.SwaggerGen;
 
 namespace Calabonga.Microservice.IdentityModule.Web.AppStart.SwaggerFilters
@@ -9,16 +9,23 @@ namespace Calabonga.Microservice.IdentityModule.Web.AppStart.SwaggerFilters
     /// </summary>
     public class LowercaseDocumentFilter : IDocumentFilter
     {
-        /// <inheritdoc />
-        public void Apply(SwaggerDocument swaggerDoc, DocumentFilterContext context)
-        {
-            swaggerDoc.Paths = swaggerDoc.Paths.ToDictionary(entry => LowercaseEverythingButParameters(entry.Key),
-                entry => entry.Value);
-        }
+        ///// <inheritdoc />
+        //public void Apply(SwaggerDocument swaggerDoc, DocumentFilterContext context)
+        //{
+        //    swaggerDoc.Paths = swaggerDoc.Paths.ToDictionary(entry => LowercaseEverythingButParameters(entry.Key),
+        //        entry => entry.Value);
+        //}
 
         private static string LowercaseEverythingButParameters(string key)
         {
             return string.Join('/', key.Split('/').Select(x => x.Contains("{") ? x : x.ToLower()));
+        }
+
+        /// <inheritdoc />
+        public void Apply(OpenApiDocument swaggerDoc, DocumentFilterContext context)
+        {
+            //swaggerDoc.Paths = swaggerDoc.Paths.ToDictionary(entry => LowercaseEverythingButParameters(entry.Key), entry => entry.Value);
+            var paths = swaggerDoc.Paths;
         }
     }
 }

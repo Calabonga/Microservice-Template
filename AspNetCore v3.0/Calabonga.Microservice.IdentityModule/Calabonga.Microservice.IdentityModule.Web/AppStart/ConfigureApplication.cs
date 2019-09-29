@@ -41,8 +41,8 @@ namespace Calabonga.Microservice.IdentityModule.Web.AppStart
 
             app.Map($"{AppData.AuthUrl}", authServer => { authServer.UseIdentityServer(); });
 
-            // app.UseSwagger();
-            // app.UseSwaggerUI(ConfigureServicesSwagger.SwaggerSettings);
+            app.UseSwagger();
+             app.UseSwaggerUI(ConfigureServicesSwagger.SwaggerSettings);
 
             app.UseMiddleware(typeof(ErrorHandlingMiddleware));
 
@@ -50,10 +50,10 @@ namespace Calabonga.Microservice.IdentityModule.Web.AppStart
 
             //app.UseMvc(RoutesMaps.MapRoutes);
 
-            app.UseRouting();
-
             app.UseAuthorization();
 
+
+            app.UseRouting();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();

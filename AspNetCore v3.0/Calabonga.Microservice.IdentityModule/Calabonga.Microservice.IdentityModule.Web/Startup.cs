@@ -1,6 +1,7 @@
 using Calabonga.Microservice.IdentityModule.Web.AppStart;
 using Calabonga.Microservice.IdentityModule.Web.Infrastructure.DependencyInjection;
 using Calabonga.Microservice.IdentityModule.Web.Infrastructure.Mappers.Base;
+using Calabonga.Microservice.Module.Web.AppStart;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -22,8 +23,9 @@ namespace Calabonga.Microservice.IdentityModule.Web
         public void ConfigureServices(IServiceCollection services)
         {
             ConfigureServicesBase.ConfigureServices(services, Configuration);
-            //ConfigureServicesSwagger.ConfigureServices(services, Configuration);
+            ConfigureServicesSwagger.ConfigureServices(services, Configuration);
             ConfigureServicesCors.ConfigureServices(services, Configuration);
+            ConfigureServicesControllers.ConfigureServices(services);
 
             DependencyContainer.Common(services);
             DependencyContainer.Validators(services);

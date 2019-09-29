@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Calabonga.Microservice.IdentityModule.Web.Infrastructure.Attributes
+namespace Calabonga.Microservice.Module.Web.Infrastructure.Attributes
 {
     /// <summary>
     /// Custom attribute for Swagger Upload Form

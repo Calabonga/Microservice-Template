@@ -1,7 +1,7 @@
 ﻿using System.Linq;
-using Calabonga.Microservice.IdentityModule.Web.Infrastructure.Attributes;
+using Calabonga.Microservice.Module.Web.Infrastructure.Attributes;
 using Microsoft.AspNetCore.Mvc.Controllers;
-using Swashbuckle.AspNetCore.Swagger;
+using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.SwaggerGen;
 
 namespace Calabonga.Microservice.IdentityModule.Web.AppStart.SwaggerFilters
@@ -12,7 +12,7 @@ namespace Calabonga.Microservice.IdentityModule.Web.AppStart.SwaggerFilters
     public class SwaggerGroupOperationFilter : IOperationFilter
     {
         /// <inheritdoc />
-        public void Apply(Operation operation, OperationFilterContext context)
+        public void Apply(OpenApiOperation operation, OperationFilterContext context)
         {
             var controllerActionDescriptor = context.ApiDescription.ActionDescriptor as ControllerActionDescriptor;
             if (controllerActionDescriptor != null)
@@ -21,11 +21,14 @@ namespace Calabonga.Microservice.IdentityModule.Web.AppStart.SwaggerFilters
                 if (attributes.Any())
                 {
                     var groupNameAttribute = attributes.First();
-                    operation.Tags = new[] { groupNameAttribute.GroupName };
+                    operation.Tags = new[] {
+                        new OpenApiTag {Name = groupNameAttribute.GroupName}};
                 }
                 else
                 {
-                    operation.Tags = new[] { controllerActionDescriptor?.RouteValues["controller"] };
+                    operation.Tags = new[]
+                    {
+                        new OpenApiTag {Name = controllerActionDescriptor?.RouteValues["controller"]}};
                 }
             }
         }

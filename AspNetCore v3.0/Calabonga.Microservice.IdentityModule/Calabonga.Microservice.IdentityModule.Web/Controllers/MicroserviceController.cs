@@ -29,7 +29,7 @@ namespace Calabonga.Microservice.IdentityModule.Web.Controllers
         /// Returns information about service
         /// </summary>
         /// <returns></returns>
-        [Route("info")]
+        [Route("metadata")]
         [HttpGet]
         public IActionResult GetModuleActions()
         {

@@ -1,10 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Calabonga.Microservice.IdentityModule.Web.AppStart.SwaggerFilters;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Swashbuckle.AspNetCore.Swagger;
+using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.SwaggerUI;
 
 namespace Calabonga.Microservice.IdentityModule.Web.AppStart
@@ -14,7 +15,7 @@ namespace Calabonga.Microservice.IdentityModule.Web.AppStart
     /// </summary>
     public static class ConfigureServicesSwagger
     {
-        private const string AppTitle = "Microservice API";
+        private const string AppTitle = "Microservice API (with IdentityServer4)";
         private const string AppVersion = "1.0.0-alpha-1";
         private const string SwaggerConfig = "/swagger/v1/swagger.json";
         private const string SwaggerUrl = "api/manual";
@@ -28,32 +29,59 @@ namespace Calabonga.Microservice.IdentityModule.Web.AppStart
         {
             services.AddSwaggerGen(options =>
             {
-                options.SwaggerDoc("v1", new Info
+                options.SwaggerDoc("v1", new OpenApiInfo
                 {
                     Title = AppTitle,
                     Version = AppVersion,
-                    Description = "Microservice API documentation"
+                    Description = "Microservice (with IdentityServer4) module API documentation"
                 });
                 options.ResolveConflictingActions(x => x.First());
-                options.DescribeAllEnumsAsStrings();
-
-                var security = new Dictionary<string, IEnumerable<string>>
-                {
-                    { "Bearer", new string[] { } },
-                    { "oauth2", new string[] { } }
-                };
-                options.AddSecurityRequirement(security);
 
                 var url = configuration.GetSection("IdentityServer").GetValue<string>("SwaggerUrl");
-                options.AddSecurityDefinition("oauth2", new OAuth2Scheme
+
+                options.AddSecurityDefinition("oauth2", new OpenApiSecurityScheme
                 {
-                    Type = "oauth2",
-                    Flow = "password",
-                    TokenUrl = $"{url}/auth/connect/token",
-                    Scopes = new Dictionary<string, string>
+                    Type = SecuritySchemeType.OAuth2,
+                    Flows = new OpenApiOAuthFlows
+                    {
+                        Implicit = new OpenApiOAuthFlow
+                        {
+                            AuthorizationUrl = new Uri(url, UriKind.Absolute),
+                            Scopes = new Dictionary<string, string>
+                            {
+                                { "readAccess", "Access read operations" },
+                                { "writeAccess", "Access write operations" }
+                            }
+                        }
+                    }
+                });
+
+                options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
                 {
-                { "api1", "API Default" }
-                }
+                    Description = "JWT Authorization header using the Bearer scheme. \r\n\r\n Enter 'Bearer' [space] and then your token in the text input below.\r\n\r\nExample: \"Bearer 12345abcdef\"",
+                    Name = "Authorization",
+                    In = ParameterLocation.Header,
+                    Type = SecuritySchemeType.ApiKey,
+                    Scheme = "Bearer"
+                });
+
+                options.AddSecurityRequirement(new OpenApiSecurityRequirement()
+                {
+                    {
+                        new OpenApiSecurityScheme
+                        {
+                            Reference = new OpenApiReference
+                            {
+                                Type = ReferenceType.SecurityScheme,
+                                Id = "Bearer"
+                            },
+                            Scheme = "oauth2",
+                            Name = "Bearer",
+                            In = ParameterLocation.Header,
+
+                        },
+                        new List<string>()
+                    }
                 });
 
                 options.DocumentFilter<LowercaseDocumentFilter>();
@@ -78,7 +106,7 @@ namespace Calabonga.Microservice.IdentityModule.Web.AppStart
             settings.OAuthScopeSeparator(" ");
             settings.OAuthClientSecret("secret");
             settings.DisplayRequestDuration();
-            settings.OAuthAppName("Micro service");
+            settings.OAuthAppName("Microservice (with IdentityServer4)");
             settings.OAuthUseBasicAuthenticationWithAccessCodeGrant();
         }
     }

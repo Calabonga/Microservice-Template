@@ -27,15 +27,6 @@ namespace Calabonga.Microservice.Module.Web.AppStart
         /// <param name="configuration"></param>
         public static void ConfigureServices(IServiceCollection services, IConfiguration configuration)
         {
-            //var environment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
-            
-            //var currentDirectory = Environment.CurrentDirectory;
-            //var directoryName = Path.GetDirectoryName(currentDirectory);
-            //var namespaceName = Assembly.GetExecutingAssembly().GetName().Name;
-            //var path = Path.Combine(directoryName, $"{namespaceName}.Web");
-
-            
-
             services.AddDbContext<ApplicationDbContext>(config =>
             {
                 config.UseSqlServer(configuration.GetConnectionString(nameof(ApplicationDbContext)));
@@ -97,20 +88,6 @@ namespace Calabonga.Microservice.Module.Web.AppStart
                 });
 
             services.AddAuthorization();
-            // services
-            // .AddMvc(options => { options.Filters.Add<ValidateModelStateAttribute>(); })
-            // .SetCompatibilityVersion(CompatibilityVersion.Version_3_0)
-            // .AddJsonOptions(options =>
-            // {
-            // options.JsonSerializerOptions.PropertyNameCaseInsensitive = true;
-            // options.JsonSerializerOptions.IgnoreNullValues = true;   
-            //                    options.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
-            //                    options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
-            //                    options.SerializerSettings.Formatting = Formatting.Indented;
-            //                    options.SerializerSettings.DateParseHandling = DateParseHandling.DateTime;
-            // options.SerializerSettings.DateFormatHandling = DateFormatHandling.IsoDateFormat;
-            // });
-
 
         }
     }

@@ -34,9 +34,8 @@ namespace Calabonga.Microservice.Module.Web
             ConfigureServicesBase.ConfigureServices(services, Configuration);
             ConfigureServicesSwagger.ConfigureServices(services, Configuration);
             ConfigureServicesCors.ConfigureServices(services, Configuration);
+            ConfigureServicesControllers.ConfigureServices(services);
 
-            services.AddControllers();
-            
             DependencyContainer.Common(services);
             DependencyContainer.Validators(services);
             DependencyContainer.ViewModelFactories(services);

@@ -3,7 +3,7 @@ using Calabonga.OperationResultsCore;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 
-namespace Calabonga.Microservice.IdentityModule.Web.Infrastructure.Attributes
+namespace Calabonga.Microservice.Module.Web.Infrastructure.Attributes
 {
     /// <summary>
     /// Custom validation handler for availability to whit OperationResult
