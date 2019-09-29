@@ -5,18 +5,28 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Infrastructure\Managers\**" />
+    <Content Remove="Infrastructure\Managers\**" />
+    <EmbeddedResource Remove="Infrastructure\Managers\**" />
+    <None Remove="Infrastructure\Managers\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="AppStart\" />
     <Folder Include="Controllers\" />
-    <Folder Include="Infrastructure\Managers\" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="9.0.0" />
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="7.0.0" />
-    <PackageReference Include="Calabonga.EntityFrameworkCore.UOW" Version="2.0.0" />
+    <PackageReference Include="Calabonga.EntityFrameworkCore.UOW" Version="2.0.2-beta-1" />
     <PackageReference Include="Calabonga.EntityFrameworkCore.UOW.Framework" Version="2.0.0" />
     <PackageReference Include="IdentityServer4.AccessTokenValidation" Version="3.0.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.0.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="OperationResultCore" Version="1.1.0" />
     <PackageReference Include="PagedListLiteCore" Version="1.0.4" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="5.0.0-rc3" />

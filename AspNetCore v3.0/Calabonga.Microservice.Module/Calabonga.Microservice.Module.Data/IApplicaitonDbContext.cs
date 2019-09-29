@@ -1,4 +1,4 @@
-﻿using Calabonga.Microservice.Module.Models;
+﻿using Calabonga.Microservice.Module.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Microsoft.EntityFrameworkCore.Infrastructure;

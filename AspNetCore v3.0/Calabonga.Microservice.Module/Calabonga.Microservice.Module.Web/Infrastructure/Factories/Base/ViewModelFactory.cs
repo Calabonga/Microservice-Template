@@ -1,5 +1,5 @@
 ﻿using System;
-using Calabonga.Microservice.Module.Models.Base;
+using Calabonga.EntityFrameworkCore.Entities.Base;
 
 namespace Calabonga.Microservice.Module.Web.Infrastructure.Factories.Base
 {

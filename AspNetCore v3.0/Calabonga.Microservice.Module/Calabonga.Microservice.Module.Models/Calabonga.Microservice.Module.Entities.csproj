@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Calabonga.EntityFrameworkCore.Entities.Base" Version="1.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Calabonga.Microservice.Module.Core\Calabonga.Microservice.Module.Core.csproj" />
+  </ItemGroup>
+
+</Project>

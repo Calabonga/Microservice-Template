@@ -25,4 +25,6 @@ namespace Calabonga.Microservice.Module.Web.Infrastructure.DependencyInjection
             Notifications(services);
         }
     }
+
+
 }

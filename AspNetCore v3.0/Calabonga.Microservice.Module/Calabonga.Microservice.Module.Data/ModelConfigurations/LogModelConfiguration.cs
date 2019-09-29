@@ -1,6 +1,6 @@
 ﻿using System;
 using Calabonga.Microservice.Module.Data.ModelConfigurations.Base;
-using Calabonga.Microservice.Module.Models;
+using Calabonga.Microservice.Module.Entities;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Calabonga.Microservice.Module.Data.ModelConfigurations

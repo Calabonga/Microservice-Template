@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Text;
 using AutoMapper;
 using Calabonga.EntityFrameworkCore.UOW;
 using Calabonga.Microservice.Module.Core;
 using Calabonga.Microservice.Module.Data;
-using Calabonga.Microservice.Module.Web.Infrastructure.Attributes;
 using Calabonga.Microservice.Module.Web.Infrastructure.Settings;
 using IdentityServer4.AccessTokenValidation;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -23,18 +21,24 @@ namespace Calabonga.Microservice.Module.Web.AppStart
     public static class ConfigureServicesBase
     {
         /// <summary>
-        /// Configure Services
+        /// ConfigureServices Services
         /// </summary>
         /// <param name="services"></param>
         /// <param name="configuration"></param>
-        public static void Configure(IServiceCollection services, IConfiguration configuration)
+        public static void ConfigureServices(IServiceCollection services, IConfiguration configuration)
         {
-            // file upload dependency
-            Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
+            //var environment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
+            
+            //var currentDirectory = Environment.CurrentDirectory;
+            //var directoryName = Path.GetDirectoryName(currentDirectory);
+            //var namespaceName = Assembly.GetExecutingAssembly().GetName().Name;
+            //var path = Path.Combine(directoryName, $"{namespaceName}.Web");
 
-            services.AddDbContextPool<ApplicationDbContext>(config =>
+            
+
+            services.AddDbContext<ApplicationDbContext>(config =>
             {
-                config.UseSqlServer(configuration.GetConnectionString("DefaultConnection"));
+                config.UseSqlServer(configuration.GetConnectionString(nameof(ApplicationDbContext)));
             });
 
             services.AddAutoMapper(typeof(Startup));
@@ -93,19 +97,21 @@ namespace Calabonga.Microservice.Module.Web.AppStart
                 });
 
             services.AddAuthorization();
-            services
-                .AddMvc(options => { options.Filters.Add<ValidateModelStateAttribute>(); })
-                .SetCompatibilityVersion(CompatibilityVersion.Version_3_0)
-                .AddJsonOptions(options =>
-                {
-                    options.JsonSerializerOptions.PropertyNameCaseInsensitive = true;
-                    options.JsonSerializerOptions.IgnoreNullValues = true;   
-//                    options.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
-//                    options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
-//                    options.SerializerSettings.Formatting = Formatting.Indented;
-//                    options.SerializerSettings.DateParseHandling = DateParseHandling.DateTime;
-//                    options.SerializerSettings.DateFormatHandling = DateFormatHandling.IsoDateFormat;
-                });
+            // services
+            // .AddMvc(options => { options.Filters.Add<ValidateModelStateAttribute>(); })
+            // .SetCompatibilityVersion(CompatibilityVersion.Version_3_0)
+            // .AddJsonOptions(options =>
+            // {
+            // options.JsonSerializerOptions.PropertyNameCaseInsensitive = true;
+            // options.JsonSerializerOptions.IgnoreNullValues = true;   
+            //                    options.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+            //                    options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+            //                    options.SerializerSettings.Formatting = Formatting.Indented;
+            //                    options.SerializerSettings.DateParseHandling = DateParseHandling.DateTime;
+            // options.SerializerSettings.DateFormatHandling = DateFormatHandling.IsoDateFormat;
+            // });
+
+
         }
     }
 }

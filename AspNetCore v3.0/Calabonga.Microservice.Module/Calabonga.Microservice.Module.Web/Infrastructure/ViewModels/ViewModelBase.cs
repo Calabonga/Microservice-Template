@@ -1,6 +1,6 @@
 ﻿using System;
-using Calabonga.Microservice.Module.Models.Base;
-using Calabonga.Microservice.Module.Web.Infrastructure.Factories.Base;
+using Calabonga.EntityFrameworkCore.Entities.Base;
+using IViewModel = Calabonga.Microservice.Module.Web.Infrastructure.Factories.Base.IViewModel;
 
 namespace Calabonga.Microservice.Module.Web.Infrastructure.ViewModels
 {

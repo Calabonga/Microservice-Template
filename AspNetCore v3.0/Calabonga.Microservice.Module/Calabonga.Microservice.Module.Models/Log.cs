@@ -1,7 +1,7 @@
 ﻿using System;
-using Calabonga.Microservice.Module.Models.Base;
+using Calabonga.EntityFrameworkCore.Entities.Base;
 
-namespace Calabonga.Microservice.Module.Models
+namespace Calabonga.Microservice.Module.Entities
 {
     /// <summary>
     /// Logs

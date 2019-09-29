@@ -31,9 +31,11 @@ namespace Calabonga.Microservice.Module.Web
         /// <param name="services"></param>
         public void ConfigureServices(IServiceCollection services)
         {
-            ConfigureServicesBase.Configure(services, Configuration);
-            ConfigureServicesSwagger.Configure(services, Configuration);
-            ConfigureServicesCors.Configure(services, Configuration);
+            ConfigureServicesBase.ConfigureServices(services, Configuration);
+            ConfigureServicesSwagger.ConfigureServices(services, Configuration);
+            ConfigureServicesCors.ConfigureServices(services, Configuration);
+
+            services.AddControllers();
             
             DependencyContainer.Common(services);
             DependencyContainer.Validators(services);

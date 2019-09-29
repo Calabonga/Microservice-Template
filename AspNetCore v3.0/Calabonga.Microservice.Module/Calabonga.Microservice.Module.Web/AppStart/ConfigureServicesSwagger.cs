@@ -21,11 +21,11 @@ namespace Calabonga.Microservice.Module.Web.AppStart
         private const string SwaggerUrl = "api/manual";
 
         /// <summary>
-        /// Configure Swagger services
+        /// ConfigureServices Swagger services
         /// </summary>
         /// <param name="services"></param>
         /// <param name="configuration"></param>
-        public static void Configure(IServiceCollection services, IConfiguration configuration)
+        public static void ConfigureServices(IServiceCollection services, IConfiguration configuration)
         {
             services.AddSwaggerGen(options =>
             {

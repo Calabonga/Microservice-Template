@@ -11,16 +11,15 @@ namespace Calabonga.Microservice.Module.Data.DatabaseInitialization
     {
         public static async void Seed(IServiceProvider serviceProvider)
         {
-            using (var scope = serviceProvider.CreateScope())
-            using (var context = scope.ServiceProvider.GetService<ApplicationDbContext>())
+            using var scope = serviceProvider.CreateScope();
+            await using var context = scope.ServiceProvider.GetService<ApplicationDbContext>();
+            context.Database.Migrate();
+            
+            // TODO: Add your seed data here
+            
+            if (context.ChangeTracker.HasChanges())
             {
-                context.Database.Migrate();
-
-                // TODO: Add your seed data here
-                if (context.ChangeTracker.HasChanges())
-                {
-                    await context.SaveChangesAsync();
-                }
+                await context.SaveChangesAsync();
             }
         }
     }

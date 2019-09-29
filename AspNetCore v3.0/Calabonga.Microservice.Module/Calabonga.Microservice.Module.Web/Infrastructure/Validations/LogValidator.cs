@@ -1,5 +1,5 @@
 ﻿using Calabonga.EntityFrameworkCore.UOW.Framework.Validators;
-using Calabonga.Microservice.Module.Models;
+using Calabonga.Microservice.Module.Entities;
 
 namespace Calabonga.Microservice.Module.Web.Infrastructure.Validations
 {

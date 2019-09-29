@@ -3,8 +3,8 @@ using System.Linq;
 using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
+using Calabonga.EntityFrameworkCore.Entities.Base;
 using Calabonga.EntityFrameworkCore.UOW;
-using Calabonga.Microservice.Module.Models.Base;
 using Microsoft.EntityFrameworkCore;
 
 namespace Calabonga.Microservice.Module.Data.Base
@@ -12,18 +12,17 @@ namespace Calabonga.Microservice.Module.Data.Base
     /// <summary>
     /// Base DbContext with predefined configuration
     /// </summary>
-    public abstract class DbContextBase : DbContext
+    public abstract class DbContextBase<TContext> : DbContext where TContext : DbContext
     {
         private const string DefaultUserName = "Anonymous";
 
-        protected DbContextBase(DbContextOptions options) : base(options)
+        protected DbContextBase( DbContextOptions<TContext> options): base(options)
         {
             LastSaveChangesResult = new SaveChangesResult();
         }
 
         public SaveChangesResult LastSaveChangesResult { get; }
-
-
+        
         /// <summary>
         ///     Asynchronously saves all changes made in this context to the database.
         /// </summary>
@@ -68,8 +67,7 @@ namespace Calabonga.Microservice.Module.Data.Base
                 return Task.FromResult(0);
             }
         }
-
-
+        
         /// <summary>
         ///     Saves all changes made in this context to the database.
         /// </summary>
