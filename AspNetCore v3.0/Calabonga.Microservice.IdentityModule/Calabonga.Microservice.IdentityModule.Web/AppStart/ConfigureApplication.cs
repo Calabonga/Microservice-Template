@@ -46,7 +46,9 @@ namespace Calabonga.Microservice.IdentityModule.Web.AppStart
 
             app.UseETagger();
 
-            app.Map($"{AppData.AuthUrl}", authServer => { authServer.UseIdentityServer(); });
+            app.UseIdentityServer();
+
+            //app.Map($"{AppData.AuthUrl}", authServer => { authServer.UseIdentityServer(); });
 
             app.UseSwagger();
             app.UseSwaggerUI(ConfigureServicesSwagger.SwaggerSettings);
@@ -55,9 +57,8 @@ namespace Calabonga.Microservice.IdentityModule.Web.AppStart
 
             app.UseCors("CorsPolicy");
 
-            app.UseAuthorization();
 
-            app.UseIdentityServer();
+            app.UseAuthorization();
 
             app.UseRouting();
             app.UseEndpoints(endpoints =>

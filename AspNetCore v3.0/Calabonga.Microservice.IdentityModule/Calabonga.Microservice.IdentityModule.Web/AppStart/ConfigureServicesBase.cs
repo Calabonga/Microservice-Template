@@ -6,6 +6,7 @@ using Calabonga.Microservice.IdentityModule.Core;
 using Calabonga.Microservice.IdentityModule.Data;
 using Calabonga.Microservice.IdentityModule.Web.Infrastructure.Services;
 using Calabonga.Microservice.IdentityModule.Web.Infrastructure.Settings;
+using Calabonga.Microservice.Module.Web.Infrastructure.Attributes;
 using IdentityServer4.AccessTokenValidation;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
@@ -13,6 +14,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 
 namespace Calabonga.Microservice.IdentityModule.Web.AppStart
 {
@@ -73,40 +76,53 @@ namespace Calabonga.Microservice.IdentityModule.Web.AppStart
 
             services.AddHttpContextAccessor();
             services.AddResponseCaching();
-            
-            
 
             var url = configuration.GetSection("IdentityServer").GetValue<string>("Url");
+
             services.AddIdentityServer(options =>
-                {
-                    options.Authentication.CookieSlidingExpiration = true;
-                    options.IssuerUri = $"{url}{AppData.AuthUrl}";
-                })
-                .AddInMemoryPersistedGrants()
-                .AddDeveloperSigningCredential()
-                .AddInMemoryIdentityResources(IdentityServerConfig.GetIdentityResources())
-                .AddInMemoryApiResources(IdentityServerConfig.GetApiResources())
-                .AddInMemoryClients(IdentityServerConfig.GetClients())
-                .AddAspNetIdentity<ApplicationUser>()
-                .AddJwtBearerClientAuthentication()
-                .AddProfileService<IdentityProfileService>();
-           
-            services
-                .AddAuthentication(options =>
+            {
+                options.Authentication.CookieSlidingExpiration = true;
+                options.IssuerUri = $"{url}{AppData.AuthUrl}";
+            })
+            .AddInMemoryPersistedGrants()
+            .AddDeveloperSigningCredential()
+            .AddInMemoryIdentityResources(IdentityServerConfig.GetIdentityResources())
+            .AddInMemoryApiResources(IdentityServerConfig.GetApiResources())
+            .AddInMemoryClients(IdentityServerConfig.GetClients())
+            .AddAspNetIdentity<ApplicationUser>()
+            .AddJwtBearerClientAuthentication()
+            .AddProfileService<IdentityProfileService>();
+
+
+            services.AddAuthentication(options =>
                 {
                     options.DefaultAuthenticateScheme = IdentityServerAuthenticationDefaults.AuthenticationScheme;
                     options.DefaultChallengeScheme = IdentityServerAuthenticationDefaults.AuthenticationScheme;
                     options.DefaultScheme = IdentityServerAuthenticationDefaults.AuthenticationScheme;
                 })
-                .AddIdentityServerAuthentication(options =>
-                {
-                    options.SupportedTokens = SupportedTokens.Jwt;
-                    options.Authority = $"{url}{AppData.AuthUrl}";
-                    options.EnableCaching = true;
-                    options.RequireHttpsMetadata = false;
-                });
+            .AddIdentityServerAuthentication(options =>
+            {
+                options.SupportedTokens = SupportedTokens.Jwt;
+                options.Authority = $"{url}{AppData.AuthUrl}";
+                options.EnableCaching = true;
+                options.RequireHttpsMetadata = false;
+            });
 
             services.AddAuthorization();
+            services
+                .AddMvc(options => { options.Filters.Add<ValidateModelStateAttribute>(); })
+                .SetCompatibilityVersion(CompatibilityVersion.Version_3_0)
+                .AddJsonOptions(options =>
+                {
+                    options.JsonSerializerOptions.IgnoreReadOnlyProperties = true;
+                    options.JsonSerializerOptions.IgnoreNullValues = true;
+                    // options.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+                    // options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+                    // options.SerializerSettings.Formatting = Formatting.Indented;
+                    // options.SerializerSettings.DateParseHandling = DateParseHandling.DateTime;
+                    // options.SerializerSettings.DateFormatHandling = DateFormatHandling.IsoDateFormat;
+                });
+
         }
     }
 }
