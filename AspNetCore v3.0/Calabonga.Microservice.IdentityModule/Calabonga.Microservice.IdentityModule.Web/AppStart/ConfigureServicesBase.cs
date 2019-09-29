@@ -26,11 +26,11 @@ namespace Calabonga.Microservice.IdentityModule.Web.AppStart
     public static class ConfigureServicesBase
     {
         /// <summary>
-        /// Configure Services
+        /// ConfigureServices Services
         /// </summary>
         /// <param name="services"></param>
         /// <param name="configuration"></param>
-        public static void Configure(IServiceCollection services, IConfiguration configuration)
+        public static void ConfigureServices(IServiceCollection services, IConfiguration configuration)
         {
             // file upload dependency
             Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
@@ -43,7 +43,7 @@ namespace Calabonga.Microservice.IdentityModule.Web.AppStart
 
             services.AddDbContextPool<ApplicationDbContext>(config =>
             {
-                config.UseSqlServer(configuration.GetConnectionString("DefaultConnection"));
+                config.UseSqlServer(configuration.GetConnectionString(nameof(ApplicationDbContext)));
             });
 
             services.AddAutoMapper(typeof(Startup));
@@ -72,11 +72,6 @@ namespace Calabonga.Microservice.IdentityModule.Web.AppStart
                 // User settings.
                 options.User.AllowedUserNameCharacters = null;
                 options.User.RequireUniqueEmail = true;
-            });
-
-            services.Configure<RouteOptions>(routeOptions =>
-            {
-                //routeOptions.ConstraintMap.Add("email", typeof(EmailRouteConstraint));
             });
 
             services.AddOptions();
@@ -122,7 +117,7 @@ namespace Calabonga.Microservice.IdentityModule.Web.AppStart
                 .AddJsonOptions(options =>
                 {
                     options.JsonSerializerOptions.PropertyNameCaseInsensitive = true;
-                    options.JsonSerializerOptions.IgnoreNullValues = true;  
+                    options.JsonSerializerOptions.IgnoreNullValues = true;
                     // options.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
                     // options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
                     // options.SerializerSettings.Formatting = Formatting.Indented;

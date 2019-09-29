@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Security.Principal;
-using Calabonga.EntityFrameworkCore.UnitOfWork.Framework.Extensions;
+using Calabonga.Microservice.Module.Core;
 using IdentityServer4.Extensions;
 
 namespace Calabonga.Microservice.IdentityModule.Web.Extensions

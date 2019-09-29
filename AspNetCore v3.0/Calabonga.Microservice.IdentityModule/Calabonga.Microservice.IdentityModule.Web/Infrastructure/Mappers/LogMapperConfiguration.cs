@@ -1,5 +1,5 @@
 ﻿using Calabonga.EntityFrameworkCore.UnitOfWork;
-using Calabonga.Microservice.IdentityModule.Models;
+using Calabonga.Microservice.IdentityModule.Entities;
 using Calabonga.Microservice.IdentityModule.Web.Infrastructure.Mappers.Base;
 using Calabonga.Microservice.IdentityModule.Web.Infrastructure.ViewModels.LogViewModels;
 

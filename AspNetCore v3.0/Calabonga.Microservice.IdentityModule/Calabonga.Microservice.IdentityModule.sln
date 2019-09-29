@@ -5,11 +5,11 @@ VisualStudioVersion = 16.0.29324.140
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Calabonga.Microservice.IdentityModule.Web", "Calabonga.Microservice.IdentityModule.Web\Calabonga.Microservice.IdentityModule.Web.csproj", "{3E88A8C5-EEEE-4ACE-BF86-BCD86EC3D9AD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calabonga.Microservice.IdentityModule.Core", "Calabonga.Microservice.IdentityModule.Core\Calabonga.Microservice.IdentityModule.Core.csproj", "{0F6F76E6-CAE0-44D1-A58F-015D9A77C4CD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Calabonga.Microservice.IdentityModule.Core", "Calabonga.Microservice.IdentityModule.Core\Calabonga.Microservice.IdentityModule.Core.csproj", "{0F6F76E6-CAE0-44D1-A58F-015D9A77C4CD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calabonga.Microservice.IdentityModule.Models", "Calabonga.Microservice.IdentityModule.Models\Calabonga.Microservice.IdentityModule.Models.csproj", "{B0CD0126-151C-47F6-8C64-DFBA56098C69}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Calabonga.Microservice.IdentityModule.Entities", "Calabonga.Microservice.IdentityModule.Models\Calabonga.Microservice.IdentityModule.Entities.csproj", "{B0CD0126-151C-47F6-8C64-DFBA56098C69}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calabonga.Microservice.IdentityModule.Data", "Calabonga.Microservice.IdentityModule.Data\Calabonga.Microservice.IdentityModule.Data.csproj", "{96370E1A-425A-4E25-A783-9D59B42ADB83}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Calabonga.Microservice.IdentityModule.Data", "Calabonga.Microservice.IdentityModule.Data\Calabonga.Microservice.IdentityModule.Data.csproj", "{96370E1A-425A-4E25-A783-9D59B42ADB83}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

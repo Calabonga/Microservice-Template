@@ -2,7 +2,7 @@
 using Calabonga.EntityFrameworkCore.UnitOfWork;
 using Calabonga.Microservice.IdentityModule.Core.Exceptions;
 using Calabonga.Microservice.IdentityModule.Data;
-using Calabonga.Microservice.IdentityModule.Models;
+using Calabonga.Microservice.IdentityModule.Entities;
 using Microsoft.Extensions.Logging;
 
 namespace Calabonga.Microservice.IdentityModule.Web.Infrastructure.Services

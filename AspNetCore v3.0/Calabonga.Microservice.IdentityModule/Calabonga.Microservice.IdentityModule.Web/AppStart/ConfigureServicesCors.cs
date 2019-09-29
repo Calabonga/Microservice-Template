@@ -10,11 +10,11 @@ namespace Calabonga.Microservice.IdentityModule.Web.AppStart
     public class ConfigureServicesCors
     {
         /// <summary>
-        /// Configure
+        /// ConfigureServices
         /// </summary>
         /// <param name="services"></param>
         /// <param name="configuration"></param>
-        public static void Configure(IServiceCollection services, IConfiguration configuration)
+        public static void ConfigureServices(IServiceCollection services, IConfiguration configuration)
         {
             var origins = configuration.GetSection("Cors")?.GetSection("Origins")?.Value?.Split(',');
             services.AddCors(options =>

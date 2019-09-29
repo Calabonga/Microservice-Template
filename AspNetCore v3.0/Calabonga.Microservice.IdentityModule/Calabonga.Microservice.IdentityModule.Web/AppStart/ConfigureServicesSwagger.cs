@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
 using Calabonga.Microservice.IdentityModule.Web.AppStart.SwaggerFilters;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
@@ -23,11 +20,11 @@ namespace Calabonga.Microservice.IdentityModule.Web.AppStart
         private const string SwaggerUrl = "api/manual";
 
         /// <summary>
-        /// Configure Swagger services
+        /// ConfigureServices Swagger services
         /// </summary>
         /// <param name="services"></param>
         /// <param name="configuration"></param>
-        public static void Configure(IServiceCollection services, IConfiguration configuration)
+        public static void ConfigureServices(IServiceCollection services, IConfiguration configuration)
         {
             services.AddSwaggerGen(options =>
             {
@@ -59,9 +56,6 @@ namespace Calabonga.Microservice.IdentityModule.Web.AppStart
                 }
                 });
 
-                var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
-                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
-                options.IncludeXmlComments(xmlPath);
                 options.DocumentFilter<LowercaseDocumentFilter>();
                 options.OperationFilter<ApplySummariesOperationFilter>();
             });

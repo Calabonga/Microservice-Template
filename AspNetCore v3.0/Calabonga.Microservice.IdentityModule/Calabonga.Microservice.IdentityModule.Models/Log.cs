@@ -1,8 +1,7 @@
 ﻿using System;
 using Calabonga.EntityFrameworkCore.Entities.Base;
 
-
-namespace Calabonga.Microservice.IdentityModule.Models
+namespace Calabonga.Microservice.IdentityModule.Entities
 {
     /// <summary>
     /// Logs
