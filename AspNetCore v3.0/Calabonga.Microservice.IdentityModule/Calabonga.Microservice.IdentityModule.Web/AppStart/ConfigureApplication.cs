@@ -1,4 +1,5 @@
-﻿using Calabonga.Microservice.IdentityModule.Core;
+﻿using AutoMapper;
+using Calabonga.Microservice.IdentityModule.Core;
 using Calabonga.Microservice.IdentityModule.Web.Middlewares;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -17,11 +18,17 @@ namespace Calabonga.Microservice.IdentityModule.Web.AppStart
         /// </summary>
         /// <param name="app"></param>
         /// <param name="env"></param>
-        public static void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        /// <param name="mapper"></param>
+        public static void Configure(IApplicationBuilder app, IWebHostEnvironment env, AutoMapper.IConfigurationProvider mapper)
         {
             if (env.IsDevelopment())
             {
+                mapper.AssertConfigurationIsValid();
                 app.UseDeveloperExceptionPage();
+            }
+            else
+            {
+                mapper.CompileMappings();
             }
 
             app.UseDefaultFiles();
@@ -42,16 +49,15 @@ namespace Calabonga.Microservice.IdentityModule.Web.AppStart
             app.Map($"{AppData.AuthUrl}", authServer => { authServer.UseIdentityServer(); });
 
             app.UseSwagger();
-             app.UseSwaggerUI(ConfigureServicesSwagger.SwaggerSettings);
+            app.UseSwaggerUI(ConfigureServicesSwagger.SwaggerSettings);
 
             app.UseMiddleware(typeof(ErrorHandlingMiddleware));
 
             app.UseCors("CorsPolicy");
 
-            //app.UseMvc(RoutesMaps.MapRoutes);
-
             app.UseAuthorization();
 
+            app.UseIdentityServer();
 
             app.UseRouting();
             app.UseEndpoints(endpoints =>

@@ -49,23 +49,9 @@ namespace Calabonga.Microservice.Module.Web
         /// <param name="app"></param>
         /// <param name="env"></param>
         /// <param name="mapper"></param>
-        /// <param name="loggerFactory"></param>
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, AutoMapper.IConfigurationProvider mapper, ILoggerFactory loggerFactory)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, AutoMapper.IConfigurationProvider mapper)
         {
-            if (env.IsDevelopment())
-            {
-                mapper.AssertConfigurationIsValid();
-                app.UseDeveloperExceptionPage();
-            }
-            else
-            {
-                mapper.CompileMappings();
-            }
-            
-            ConfigureApplication.Configure(app, env, loggerFactory);
-
-         
-           
+            ConfigureApplication.Configure(app, env, mapper);
         }
     }
 }

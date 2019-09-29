@@ -17,12 +17,17 @@ namespace Calabonga.Microservice.Module.Web.AppStart
         /// </summary>
         /// <param name="app"></param>
         /// <param name="env"></param>
-        /// <param name="loggerFactory"></param>
-        public static void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory loggerFactory)
+        /// <param name="mapper"></param>
+        public static void Configure(IApplicationBuilder app, IWebHostEnvironment env, AutoMapper.IConfigurationProvider mapper)
         {
             if (env.IsDevelopment())
             {
+                mapper.AssertConfigurationIsValid();
                 app.UseDeveloperExceptionPage();
+            }
+            else
+            {
+                mapper.CompileMappings();
             }
 
             app.UseDefaultFiles();
@@ -54,7 +59,6 @@ namespace Calabonga.Microservice.Module.Web.AppStart
             app.UseAuthorization();
 
             app.UseRouting();
-
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();

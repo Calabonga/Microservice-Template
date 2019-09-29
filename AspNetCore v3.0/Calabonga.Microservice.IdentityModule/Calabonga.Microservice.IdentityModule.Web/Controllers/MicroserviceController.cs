@@ -11,6 +11,7 @@ namespace Calabonga.Microservice.IdentityModule.Web.Controllers
     /// <summary>
     /// Microservice information controller for main shell communications
     /// </summary>
+    [Authorize]
     [Route("api/[controller]")]
     public class MicroserviceController : Controller
     {
@@ -29,8 +30,8 @@ namespace Calabonga.Microservice.IdentityModule.Web.Controllers
         /// Returns information about service
         /// </summary>
         /// <returns></returns>
-        [Route("metadata")]
         [HttpGet]
+        [Route("metadata")]
         public IActionResult GetModuleActions()
         {
             var descriptors = _actionDescriptorCollectionProvider

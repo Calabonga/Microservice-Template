@@ -28,9 +28,6 @@ namespace Calabonga.Microservice.IdentityModule.Web.AppStart
         /// <param name="configuration"></param>
         public static void ConfigureServices(IServiceCollection services, IConfiguration configuration)
         {
-            // file upload dependency
-            Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
-
             services
                 .AddIdentity<ApplicationUser, ApplicationRole>()
                 .AddUserStore<ApplicationUserStore>()
@@ -76,6 +73,8 @@ namespace Calabonga.Microservice.IdentityModule.Web.AppStart
 
             services.AddHttpContextAccessor();
             services.AddResponseCaching();
+            
+            
 
             var url = configuration.GetSection("IdentityServer").GetValue<string>("Url");
             services.AddIdentityServer(options =>
@@ -91,7 +90,7 @@ namespace Calabonga.Microservice.IdentityModule.Web.AppStart
                 .AddAspNetIdentity<ApplicationUser>()
                 .AddJwtBearerClientAuthentication()
                 .AddProfileService<IdentityProfileService>();
-
+           
             services
                 .AddAuthentication(options =>
                 {
@@ -106,8 +105,8 @@ namespace Calabonga.Microservice.IdentityModule.Web.AppStart
                     options.EnableCaching = true;
                     options.RequireHttpsMetadata = false;
                 });
-            services.AddAuthorization();
 
+            services.AddAuthorization();
         }
     }
 }
