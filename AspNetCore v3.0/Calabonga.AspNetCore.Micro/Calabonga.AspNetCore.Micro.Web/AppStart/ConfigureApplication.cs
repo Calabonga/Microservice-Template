@@ -3,7 +3,7 @@ using Calabonga.AspNetCore.Micro.Web.Middlewares;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Hosting;
 
 namespace Calabonga.AspNetCore.Micro.Web.AppStart
 {
@@ -17,13 +17,11 @@ namespace Calabonga.AspNetCore.Micro.Web.AppStart
         /// </summary>
         /// <param name="app"></param>
         /// <param name="env"></param>
-        /// <param name="loggerFactory"></param>
-        public static void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+        public static void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseDatabaseErrorPage();
             }
 
             app.UseDefaultFiles();
@@ -50,7 +48,16 @@ namespace Calabonga.AspNetCore.Micro.Web.AppStart
 
             app.UseCors("CorsPolicy");
 
-            app.UseMvc(RoutesMaps.MapRoutes);
+            // Calabonga: Endpoint Authorization (2019-09-30 08:55 ConfigureApplication)
+            // https://aregcode.com/blog/2019/dotnetcore-understanding-aspnet-endpoint-routing/
+            // https://docs.microsoft.com/en-us/aspnet/core/migration/22-to-30?view=aspnetcore-3.0&tabs=visual-studio
+            // https://andrewlock.net/comparing-startup-between-the-asp-net-core-3-templates/
+
+            app.UseRouting();
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllers();
+            });
         }
     }
 }

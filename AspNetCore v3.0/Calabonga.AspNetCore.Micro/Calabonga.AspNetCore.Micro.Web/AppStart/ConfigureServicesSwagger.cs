@@ -1,9 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Calabonga.AspNetCore.Micro.Web.AppStart.SwaggerFilters;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.Swagger;
 using Swashbuckle.AspNetCore.SwaggerUI;
 
@@ -24,36 +26,72 @@ namespace Calabonga.AspNetCore.Micro.Web.AppStart
         /// </summary>
         /// <param name="services"></param>
         /// <param name="configuration"></param>
-        public static void Configure(IServiceCollection services, IConfiguration configuration)
+        public static void ConfigureServices(IServiceCollection services, IConfiguration configuration)
         {
             services.AddSwaggerGen(options =>
             {
-                options.SwaggerDoc("v1", new Info
+                options.SwaggerDoc("v1", new OpenApiInfo
                 {
                     Title = AppTitle,
                     Version = AppVersion,
                     Description = "Microservice API documentation"
                 });
                 options.ResolveConflictingActions(x => x.First());
-                options.DescribeAllEnumsAsStrings();
+                //options.DescribeAllEnumsAsStrings();
 
-                var security = new Dictionary<string, IEnumerable<string>>
+                //var security = new Dictionary<string, IEnumerable<string>>
+                //{
+                //    { "Bearer", new string[] { } },
+                //    { "oauth2", new string[] { } }
+                //};
+                //options.AddSecurityRequirement(security);
+
+                options.AddSecurityRequirement(new OpenApiSecurityRequirement()
                 {
-                    { "Bearer", new string[] { } },
-                    { "oauth2", new string[] { } }
-                };
-                options.AddSecurityRequirement(security);
+                    {
+                        new OpenApiSecurityScheme
+                        {
+                            Reference = new OpenApiReference
+                            {
+                                Type = ReferenceType.SecurityScheme,
+                                Id = "Bearer"
+                            },
+                            Scheme = "oauth2",
+                            Name = "Bearer",
+                            In = ParameterLocation.Header,
+
+                        },
+                        new List<string>()
+                    }
+                });
 
                 var url = configuration.GetSection("IdentityServer").GetValue<string>("SwaggerUrl");
-                options.AddSecurityDefinition("oauth2", new OAuth2Scheme
+
+                //options.AddSecurityDefinition("oauth2", new OAuth2Scheme
+                //{
+                //    Type = "oauth2",
+                //    Flow = "password",
+                //    TokenUrl = $"{url}/auth/connect/token",
+                //    Scopes = new Dictionary<string, string>{
+                //        { "api1", "API Default" }
+                //    }
+                //});
+
+                options.AddSecurityDefinition("oauth2", new OpenApiSecurityScheme
                 {
-                    Type = "oauth2",
-                    Flow = "password",
-                    TokenUrl = $"{url}/auth/connect/token",
-                    Scopes = new Dictionary<string, string>
-                {
-                { "api1", "API Default" }
-                }
+                    Type = SecuritySchemeType.OAuth2,
+                    Flows = new OpenApiOAuthFlows
+                    {
+                        Implicit = new OpenApiOAuthFlow
+                        {
+                            AuthorizationUrl = new Uri(url, UriKind.Absolute),
+                            Scopes = new Dictionary<string, string>
+                            {
+                                { "readAccess", "Access read operations" },
+                                { "writeAccess", "Access write operations" }
+                            }
+                        }
+                    }
                 });
 
                 options.DocumentFilter<LowercaseDocumentFilter>();

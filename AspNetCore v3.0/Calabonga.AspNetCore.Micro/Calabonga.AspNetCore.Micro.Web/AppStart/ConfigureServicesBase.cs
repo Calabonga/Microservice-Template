@@ -9,14 +9,11 @@ using Calabonga.AspNetCore.Micro.Web.Infrastructure.Settings;
 using Calabonga.EntityFrameworkCore.UnitOfWork;
 using IdentityServer4.AccessTokenValidation;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Serialization;
 
 namespace Calabonga.AspNetCore.Micro.Web.AppStart
 {
@@ -30,7 +27,7 @@ namespace Calabonga.AspNetCore.Micro.Web.AppStart
         /// </summary>
         /// <param name="services"></param>
         /// <param name="configuration"></param>
-        public static void Configure(IServiceCollection services, IConfiguration configuration)
+        public static void ConfigureServices(IServiceCollection services, IConfiguration configuration)
         {
             // file upload dependency
             Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
@@ -107,23 +104,25 @@ namespace Calabonga.AspNetCore.Micro.Web.AppStart
                 {
                     options.SupportedTokens = SupportedTokens.Jwt;
                         options.Authority = $"{url}{AppData.AuthUrl}";
-//                        options.Authority = "https://demo.identityserver.io";
                     options.EnableCaching = true;
                     
                     options.RequireHttpsMetadata = false;
                 });
             services.AddAuthorization();
-            services
-                .AddMvc(options => { options.Filters.Add<ValidateModelStateAttribute>(); })
-                .SetCompatibilityVersion(CompatibilityVersion.Version_2_1)
-                .AddJsonOptions(options =>
-                {
-                    options.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
-                    options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
-                    options.SerializerSettings.Formatting = Formatting.Indented;
-                    options.SerializerSettings.DateParseHandling = DateParseHandling.DateTime;
-                    options.SerializerSettings.DateFormatHandling = DateFormatHandling.IsoDateFormat;
-                });
+
+            //services
+            //    .AddMvc(options => { options.Filters.Add<ValidateModelStateAttribute>(); })
+            //    .SetCompatibilityVersion(CompatibilityVersion.Latest)
+            //    .AddJsonOptions(options =>
+            //    {
+            //        options.JsonSerializerOptions.IgnoreReadOnlyProperties = true;
+            //        options.JsonSerializerOptions.IgnoreNullValues = true;
+            //        //                    options.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+            //        //                    options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+            //        //                    options.SerializerSettings.Formatting = Formatting.Indented;
+            //        //                    options.SerializerSettings.DateParseHandling = DateParseHandling.DateTime;
+            //        //                    options.SerializerSettings.DateFormatHandling = DateFormatHandling.IsoDateFormat;
+            //    });
         }
     }
 }

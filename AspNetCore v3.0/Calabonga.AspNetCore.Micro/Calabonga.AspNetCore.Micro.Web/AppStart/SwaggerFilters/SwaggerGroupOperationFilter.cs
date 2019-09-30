@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using Calabonga.AspNetCore.Micro.Web.Infrastructure.Attributes;
 using Microsoft.AspNetCore.Mvc.Controllers;
-using Swashbuckle.AspNetCore.Swagger;
+using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.SwaggerGen;
 
 namespace Calabonga.AspNetCore.Micro.Web.AppStart.SwaggerFilters
@@ -12,20 +12,34 @@ namespace Calabonga.AspNetCore.Micro.Web.AppStart.SwaggerFilters
     public class SwaggerGroupOperationFilter : IOperationFilter
     {
         /// <inheritdoc />
-        public void Apply(Operation operation, OperationFilterContext context)
+        public void Apply(OpenApiOperation operation, OperationFilterContext context)
         {
             var controllerActionDescriptor = context.ApiDescription.ActionDescriptor as ControllerActionDescriptor;
             if (controllerActionDescriptor != null)
             {
+                //var attributes = controllerActionDescriptor.EndpointMetadata.OfType<SwaggerGroupAttribute>().ToList();
+                //if (attributes.Any())
+                //{
+                //    var groupNameAttribute = attributes.First();
+                //    operation.Tags = new[] { groupNameAttribute.GroupName };
+                //}
+                //else
+                //{
+                //    operation.Tags = new[] { controllerActionDescriptor?.RouteValues["controller"] };
+                //}
+
                 var attributes = controllerActionDescriptor.EndpointMetadata.OfType<SwaggerGroupAttribute>().ToList();
                 if (attributes.Any())
                 {
                     var groupNameAttribute = attributes.First();
-                    operation.Tags = new[] { groupNameAttribute.GroupName };
+                    operation.Tags = new[] {
+                        new OpenApiTag {Name = groupNameAttribute.GroupName}};
                 }
                 else
                 {
-                    operation.Tags = new[] { controllerActionDescriptor?.RouteValues["controller"] };
+                    operation.Tags = new[]
+                    {
+                        new OpenApiTag {Name = controllerActionDescriptor?.RouteValues["controller"]}};
                 }
             }
         }
