@@ -1,4 +1,4 @@
-﻿using Calabonga.AspNetCore.Micro.Models;
+﻿using Calabonga.AspNetCore.Micro.Entities;
 using Calabonga.AspNetCore.Micro.Web.Infrastructure.Mappers.Base;
 using Calabonga.AspNetCore.Micro.Web.Infrastructure.ViewModels.LogViewModels;
 using Calabonga.EntityFrameworkCore.UnitOfWork;

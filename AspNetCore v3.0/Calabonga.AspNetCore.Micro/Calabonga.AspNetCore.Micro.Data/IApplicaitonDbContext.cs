@@ -1,4 +1,4 @@
-﻿using Calabonga.AspNetCore.Micro.Models;
+﻿using Calabonga.AspNetCore.Micro.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Microsoft.EntityFrameworkCore.Infrastructure;

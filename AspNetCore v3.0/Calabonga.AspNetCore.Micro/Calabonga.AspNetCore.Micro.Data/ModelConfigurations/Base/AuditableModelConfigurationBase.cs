@@ -1,5 +1,5 @@
 ﻿using System;
-using Calabonga.AspNetCore.Micro.Models.Base;
+using Calabonga.AspNetCore.Micro.Entities.Base;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 

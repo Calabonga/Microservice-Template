@@ -7,7 +7,7 @@ using AutoMapper;
 using Calabonga.AspNetCore.Micro.Core;
 using Calabonga.AspNetCore.Micro.Core.Exceptions;
 using Calabonga.AspNetCore.Micro.Data;
-using Calabonga.AspNetCore.Micro.Models.Base;
+using Calabonga.AspNetCore.Micro.Entities.Base;
 using Calabonga.AspNetCore.Micro.Web.Infrastructure.QueryParams;
 using Calabonga.AspNetCore.Micro.Web.Infrastructure.Services;
 using Calabonga.AspNetCore.Micro.Web.Infrastructure.Settings;
@@ -237,7 +237,7 @@ namespace Calabonga.AspNetCore.Micro.Web.Controllers.Base
         {
             if (queryParams.PageSize < 1)
             {
-                queryParams.PageSize = CurrentSettings.DefaultPageSize;
+                queryParams.PageSize = CurrentSettings.PageSize;
             }
         }
     }

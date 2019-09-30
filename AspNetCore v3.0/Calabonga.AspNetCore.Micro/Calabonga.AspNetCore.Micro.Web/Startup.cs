@@ -23,7 +23,6 @@ namespace Calabonga.AspNetCore.Micro.Web
             ConfigureServicesBase.Configure(services, Configuration);
             ConfigureServicesSwagger.Configure(services, Configuration);
             ConfigureServicesCors.Configure(services, Configuration);
-            ConfigureServicesEmailKit.Configure(services, Configuration);
 
             DependencyContainer.Common(services);
             DependencyContainer.Validators(services);

@@ -1,5 +1,5 @@
 ﻿using Calabonga.AspNetCore.Micro.Data.Base;
-using Calabonga.AspNetCore.Micro.Models;
+using Calabonga.AspNetCore.Micro.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace Calabonga.AspNetCore.Micro.Data

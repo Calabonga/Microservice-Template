@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Calabonga.AspNetCore.Micro.Models.Base
+namespace Calabonga.AspNetCore.Micro.Entities.Base
 {
     /// <summary>
     /// Identifier

@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
 using Calabonga.AspNetCore.Micro.Web.AppStart.SwaggerFilters;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
@@ -59,9 +56,6 @@ namespace Calabonga.AspNetCore.Micro.Web.AppStart
                 }
                 });
 
-                var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
-                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
-                options.IncludeXmlComments(xmlPath);
                 options.DocumentFilter<LowercaseDocumentFilter>();
                 options.OperationFilter<ApplySummariesOperationFilter>();
             });

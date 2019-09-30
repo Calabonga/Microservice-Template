@@ -5,11 +5,11 @@ VisualStudioVersion = 16.0.28803.156
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Calabonga.AspNetCore.Micro.Web", "Calabonga.AspNetCore.Micro.Web\Calabonga.AspNetCore.Micro.Web.csproj", "{5CC58D92-C921-41D0-9FB4-A86C0A3F5F8B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calabonga.AspNetCore.Micro.Models", "Calabonga.AspNetCore.Micro.Models\Calabonga.AspNetCore.Micro.Models.csproj", "{AD18CEC6-E4D6-4052-B44A-60036A74B569}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Calabonga.AspNetCore.Micro.Entities", "Calabonga.AspNetCore.Micro.Entities\Calabonga.AspNetCore.Micro.Entities.csproj", "{AD18CEC6-E4D6-4052-B44A-60036A74B569}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calabonga.AspNetCore.Micro.Data", "Calabonga.AspNetCore.Micro.Data\Calabonga.AspNetCore.Micro.Data.csproj", "{FB25648F-677C-4F1B-9595-6EE433682E3D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Calabonga.AspNetCore.Micro.Data", "Calabonga.AspNetCore.Micro.Data\Calabonga.AspNetCore.Micro.Data.csproj", "{FB25648F-677C-4F1B-9595-6EE433682E3D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calabonga.AspNetCore.Micro.Core", "Calabonga.AspNetCore.Micro.Core\Calabonga.AspNetCore.Micro.Core.csproj", "{325AAFE8-48B3-42A6-97CA-92D2BD8227C2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Calabonga.AspNetCore.Micro.Core", "Calabonga.AspNetCore.Micro.Core\Calabonga.AspNetCore.Micro.Core.csproj", "{325AAFE8-48B3-42A6-97CA-92D2BD8227C2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

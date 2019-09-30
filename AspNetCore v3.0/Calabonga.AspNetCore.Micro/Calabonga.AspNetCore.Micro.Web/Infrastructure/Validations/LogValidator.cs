@@ -1,4 +1,4 @@
-﻿using Calabonga.AspNetCore.Micro.Models;
+﻿using Calabonga.AspNetCore.Micro.Entities;
 using Calabonga.AspNetCore.Micro.Web.Infrastructure.Validations.Base;
 using Calabonga.EntityFrameworkCore.UnitOfWork;
 

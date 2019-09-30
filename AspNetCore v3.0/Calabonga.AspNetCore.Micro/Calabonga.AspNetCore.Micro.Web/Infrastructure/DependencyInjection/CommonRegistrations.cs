@@ -27,7 +27,6 @@ namespace Calabonga.AspNetCore.Micro.Web.Infrastructure.DependencyInjection
             services.AddTransient<IProfileService, IdentityProfileService>();
             services.AddTransient<ICacheService, CacheService>();
             services.AddTransient<ICorsPolicyService, IdentityServerCorsPolicy>();
-            services.AddTransient<IEmailService, EmailService>();
 
            // notifications
             Notifications(services);

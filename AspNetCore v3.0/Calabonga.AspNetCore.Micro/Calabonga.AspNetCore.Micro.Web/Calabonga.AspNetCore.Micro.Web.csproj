@@ -32,7 +32,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Calabonga.AspNetCore.Micro.Core\Calabonga.AspNetCore.Micro.Core.csproj" />
     <ProjectReference Include="..\Calabonga.AspNetCore.Micro.Data\Calabonga.AspNetCore.Micro.Data.csproj" />
-    <ProjectReference Include="..\Calabonga.AspNetCore.Micro.Models\Calabonga.AspNetCore.Micro.Models.csproj" />
+    <ProjectReference Include="..\Calabonga.AspNetCore.Micro.Entities\Calabonga.AspNetCore.Micro.Entities.csproj" />
   </ItemGroup>
 
   <ProjectExtensions><VisualStudio><UserProperties appsettings_1development_1json__JsonSchema="http://json.schemastore.org/babelrc" /></VisualStudio></ProjectExtensions>

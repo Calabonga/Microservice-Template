@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Calabonga.AspNetCore.Micro.Core;
 using Calabonga.AspNetCore.Micro.Core.Exceptions;
 using Calabonga.AspNetCore.Micro.Data;
-using Calabonga.AspNetCore.Micro.Models.Base;
+using Calabonga.AspNetCore.Micro.Entities.Base;
 using Calabonga.AspNetCore.Micro.Web.Extensions;
 using Calabonga.AspNetCore.Micro.Web.Infrastructure.Factories.Base;
 using Calabonga.AspNetCore.Micro.Web.Infrastructure.Managers.Base;

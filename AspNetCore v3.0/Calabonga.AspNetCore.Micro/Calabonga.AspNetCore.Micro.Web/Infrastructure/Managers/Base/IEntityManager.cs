@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using AutoMapper;
-using Calabonga.AspNetCore.Micro.Models.Base;
+using Calabonga.AspNetCore.Micro.Entities.Base;
 using Calabonga.AspNetCore.Micro.Web.Infrastructure.Factories.Base;
 using Calabonga.AspNetCore.Micro.Web.Infrastructure.Validations.Base;
 

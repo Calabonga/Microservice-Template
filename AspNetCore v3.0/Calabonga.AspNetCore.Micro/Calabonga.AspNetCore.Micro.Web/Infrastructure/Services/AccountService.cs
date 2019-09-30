@@ -27,7 +27,6 @@ namespace Calabonga.AspNetCore.Micro.Web.Infrastructure.Services
     /// </summary>
     public class AccountService : IAccountService
     {
-        private readonly IEmailService _emailService;
         private readonly IUnitOfWork<ApplicationUser, ApplicationRole> _unitOfWork;
         private readonly ILogger<AccountService> _logger;
         private readonly ApplicationClaimsPrincipalFactory _claimsFactory;
@@ -37,7 +36,6 @@ namespace Calabonga.AspNetCore.Micro.Web.Infrastructure.Services
 
         /// <inheritdoc />
         public AccountService(
-            IEmailService emailService,
             IUnitOfWork<ApplicationUser, ApplicationRole> unitOfWork,
             ILogger<AccountService> logger,
             IOptions<CurrentAppSettings> options,
@@ -46,7 +44,6 @@ namespace Calabonga.AspNetCore.Micro.Web.Infrastructure.Services
             IMapper mapper)
         {
             _appSettings = options.Value;
-            _emailService = emailService;
             _unitOfWork = unitOfWork;
             _logger = logger;
             _claimsFactory = claimsFactory;

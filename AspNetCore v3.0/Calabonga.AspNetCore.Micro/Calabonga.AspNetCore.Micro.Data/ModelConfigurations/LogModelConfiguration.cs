@@ -1,6 +1,6 @@
 ﻿using System;
 using Calabonga.AspNetCore.Micro.Data.ModelConfigurations.Base;
-using Calabonga.AspNetCore.Micro.Models;
+using Calabonga.AspNetCore.Micro.Entities;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Calabonga.AspNetCore.Micro.Data.ModelConfigurations

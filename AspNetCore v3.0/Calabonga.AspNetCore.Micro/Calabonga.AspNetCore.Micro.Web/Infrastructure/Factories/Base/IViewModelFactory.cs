@@ -1,5 +1,5 @@
 ﻿using System;
-using Calabonga.AspNetCore.Micro.Models.Base;
+using Calabonga.AspNetCore.Micro.Entities.Base;
 
 namespace Calabonga.AspNetCore.Micro.Web.Infrastructure.Factories.Base
 {

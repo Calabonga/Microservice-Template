@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Calabonga.AspNetCore.Micro.Models.Base
+namespace Calabonga.AspNetCore.Micro.Entities.Base
 {
     /// <summary>
     /// Represents 'Audit-able' table from the Property Database

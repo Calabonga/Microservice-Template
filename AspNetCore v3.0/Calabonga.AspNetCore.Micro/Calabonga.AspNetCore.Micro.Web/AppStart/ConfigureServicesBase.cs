@@ -9,9 +9,9 @@ using Calabonga.AspNetCore.Micro.Web.Infrastructure.Settings;
 using Calabonga.EntityFrameworkCore.UnitOfWork;
 using IdentityServer4.AccessTokenValidation;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Routing;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -74,11 +74,6 @@ namespace Calabonga.AspNetCore.Micro.Web.AppStart
                 options.User.RequireUniqueEmail = true;
             });
 
-            services.Configure<RouteOptions>(routeOptions =>
-            {
-                //routeOptions.ConstraintMap.Add("email", typeof(EmailRouteConstraint));
-            });
-
             services.AddOptions();
 
             services.Configure<CurrentAppSettings>(configuration.GetSection(nameof(CurrentAppSettings)));
@@ -111,8 +106,10 @@ namespace Calabonga.AspNetCore.Micro.Web.AppStart
                 .AddIdentityServerAuthentication(options =>
                 {
                     options.SupportedTokens = SupportedTokens.Jwt;
-                    options.Authority = $"{url}{AppData.AuthUrl}";
+                        options.Authority = $"{url}{AppData.AuthUrl}";
+//                        options.Authority = "https://demo.identityserver.io";
                     options.EnableCaching = true;
+                    
                     options.RequireHttpsMetadata = false;
                 });
             services.AddAuthorization();
