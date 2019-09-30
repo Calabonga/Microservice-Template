@@ -11,7 +11,7 @@ namespace Calabonga.Microservice.IdentityModule.Web.AppStart
     /// <summary>
     /// Pipeline configuration
     /// </summary>
-    public static class ConfigureApplication
+    public static class ConfigureCommon
     {
         /// <summary>
         /// Configure pipeline
@@ -40,15 +40,12 @@ namespace Calabonga.Microservice.IdentityModule.Web.AppStart
                 }
             });
 
-            app.UseAuthentication();
 
             app.UseResponseCaching();
 
             app.UseETagger();
 
-            app.UseIdentityServer();
-
-            //app.Map($"{AppData.AuthUrl}", authServer => { authServer.UseIdentityServer(); });
+            app.Map($"{AppData.AuthUrl}", authServer => { authServer.UseIdentityServer(); });
 
             app.UseSwagger();
             app.UseSwaggerUI(ConfigureServicesSwagger.SwaggerSettings);
@@ -56,15 +53,6 @@ namespace Calabonga.Microservice.IdentityModule.Web.AppStart
             app.UseMiddleware(typeof(ErrorHandlingMiddleware));
 
             app.UseCors("CorsPolicy");
-
-
-            app.UseAuthorization();
-
-            app.UseRouting();
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllers();
-            });
         }
     }
 }

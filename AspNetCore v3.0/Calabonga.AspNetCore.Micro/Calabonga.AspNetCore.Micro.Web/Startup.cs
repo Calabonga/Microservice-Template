@@ -5,7 +5,6 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 
 namespace Calabonga.AspNetCore.Micro.Web
 {
@@ -21,10 +20,10 @@ namespace Calabonga.AspNetCore.Micro.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            ConfigureServicesControllers.ConfigureServices(services);
             ConfigureServicesBase.ConfigureServices(services, Configuration);
             ConfigureServicesSwagger.ConfigureServices(services, Configuration);
             ConfigureServicesCors.ConfigureServices(services, Configuration);
-            ConfigureServicesControllers.ConfigureServices(services);
 
             DependencyContainer.Common(services);
             DependencyContainer.Validators(services);
@@ -41,7 +40,7 @@ namespace Calabonga.AspNetCore.Micro.Web
         /// <param name="env"></param>
         /// <param name="mapper"></param>
         /// <param name="loggerFactory"></param>
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, AutoMapper.IConfigurationProvider mapper, ILoggerFactory loggerFactory)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, AutoMapper.IConfigurationProvider mapper)
         {
             if (env.IsDevelopment())
             {
@@ -53,6 +52,7 @@ namespace Calabonga.AspNetCore.Micro.Web
             }
             
             ConfigureApplication.Configure(app, env);
+            ConfigureEndpoints.Configure(app);
         }
     }
 }

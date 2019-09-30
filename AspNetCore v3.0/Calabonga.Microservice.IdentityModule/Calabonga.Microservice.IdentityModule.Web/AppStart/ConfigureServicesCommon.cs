@@ -22,7 +22,7 @@ namespace Calabonga.Microservice.IdentityModule.Web.AppStart
     /// <summary>
     /// ASP.NET Core services registration and configurations
     /// </summary>
-    public static class ConfigureServicesBase
+    public static class ConfigureServicesCommon
     {
         /// <summary>
         /// ConfigureServices Services

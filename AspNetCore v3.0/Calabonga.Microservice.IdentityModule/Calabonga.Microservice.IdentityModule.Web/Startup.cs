@@ -20,7 +20,7 @@ namespace Calabonga.Microservice.IdentityModule.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            ConfigureServicesBase.ConfigureServices(services, Configuration);
+            ConfigureServicesCommon.ConfigureServices(services, Configuration);
             ConfigureServicesSwagger.ConfigureServices(services, Configuration);
             ConfigureServicesCors.ConfigureServices(services, Configuration);
             ConfigureServicesControllers.ConfigureServices(services);
@@ -36,7 +36,8 @@ namespace Calabonga.Microservice.IdentityModule.Web
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, AutoMapper.IConfigurationProvider mapper)
         {
-            ConfigureApplication.Configure(app, env, mapper);
+            ConfigureCommon.Configure(app, env, mapper);
+            ConfigureEndpoints.Configure(app);
         }
     }
 }
