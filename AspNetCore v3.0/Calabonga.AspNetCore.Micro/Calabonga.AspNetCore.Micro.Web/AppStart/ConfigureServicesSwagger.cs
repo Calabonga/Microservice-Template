@@ -22,7 +22,7 @@ namespace Calabonga.AspNetCore.Micro.Web.AppStart
         private const string SwaggerUrl = "api/manual";
 
         /// <summary>
-        /// Configure Swagger services
+        /// ConfigureServices Swagger services
         /// </summary>
         /// <param name="services"></param>
         /// <param name="configuration"></param>
@@ -34,17 +34,28 @@ namespace Calabonga.AspNetCore.Micro.Web.AppStart
                 {
                     Title = AppTitle,
                     Version = AppVersion,
-                    Description = "Microservice API documentation"
+                    Description = "Microservice API (with IdentityServer4) module API documentation"
                 });
                 options.ResolveConflictingActions(x => x.First());
-                //options.DescribeAllEnumsAsStrings();
 
-                //var security = new Dictionary<string, IEnumerable<string>>
-                //{
-                //    { "Bearer", new string[] { } },
-                //    { "oauth2", new string[] { } }
-                //};
-                //options.AddSecurityRequirement(security);
+                var url = configuration.GetSection("IdentityServer").GetValue<string>("SwaggerUrl");
+
+                options.AddSecurityDefinition("bearer", new OpenApiSecurityScheme
+                {
+                    Type = SecuritySchemeType.OAuth2,
+                    Flows = new OpenApiOAuthFlows
+                    {
+                        Password = new OpenApiOAuthFlow
+                        {
+                            TokenUrl = new Uri($"{url}/auth/connect/token", UriKind.Absolute),
+                            AuthorizationUrl = new Uri(url, UriKind.Absolute),
+                            Scopes = new Dictionary<string, string>
+                            {
+                                { "api1", "Default scope" }
+                            }
+                        }
+                    }
+                });
 
                 options.AddSecurityRequirement(new OpenApiSecurityRequirement()
                 {
@@ -62,35 +73,6 @@ namespace Calabonga.AspNetCore.Micro.Web.AppStart
 
                         },
                         new List<string>()
-                    }
-                });
-
-                var url = configuration.GetSection("IdentityServer").GetValue<string>("SwaggerUrl");
-
-                //options.AddSecurityDefinition("oauth2", new OAuth2Scheme
-                //{
-                //    Type = "oauth2",
-                //    Flow = "password",
-                //    TokenUrl = $"{url}/auth/connect/token",
-                //    Scopes = new Dictionary<string, string>{
-                //        { "api1", "API Default" }
-                //    }
-                //});
-
-                options.AddSecurityDefinition("oauth2", new OpenApiSecurityScheme
-                {
-                    Type = SecuritySchemeType.OAuth2,
-                    Flows = new OpenApiOAuthFlows
-                    {
-                        Implicit = new OpenApiOAuthFlow
-                        {
-                            AuthorizationUrl = new Uri(url, UriKind.Absolute),
-                            Scopes = new Dictionary<string, string>
-                            {
-                                { "readAccess", "Access read operations" },
-                                { "writeAccess", "Access write operations" }
-                            }
-                        }
                     }
                 });
 
@@ -116,7 +98,7 @@ namespace Calabonga.AspNetCore.Micro.Web.AppStart
             settings.OAuthScopeSeparator(" ");
             settings.OAuthClientSecret("secret");
             settings.DisplayRequestDuration();
-            settings.OAuthAppName("Micro service");
+            settings.OAuthAppName("Microservice API (with IdentityServer4)");
             settings.OAuthUseBasicAuthenticationWithAccessCodeGrant();
         }
     }

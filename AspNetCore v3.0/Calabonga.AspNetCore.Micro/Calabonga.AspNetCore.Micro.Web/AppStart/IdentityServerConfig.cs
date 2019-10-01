@@ -32,6 +32,10 @@ namespace Calabonga.AspNetCore.Micro.Web.AppStart
                     SlidingRefreshTokenLifetime = 1296000, //in seconds = 15 days
                     AllowedGrantTypes = GrantTypes.ResourceOwnerPassword,
                     RequireClientSecret = false,
+                    ClientSecrets =
+                    {
+                        new Secret("secret".Sha256())
+                    },
                     AllowedScopes = {
                         IdentityServerConstants.StandardScopes.OpenId,
                         IdentityServerConstants.StandardScopes.Profile,

@@ -5,7 +5,6 @@ using Calabonga.AspNetCore.Micro.Entities;
 using Calabonga.AspNetCore.Micro.Web.Infrastructure.Services;
 using Calabonga.AspNetCore.Micro.Web.Infrastructure.Settings;
 using Calabonga.EntityFrameworkCore.UnitOfWork;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
@@ -15,7 +14,6 @@ namespace Calabonga.AspNetCore.Micro.Web.Controllers.Base
     /// <summary>
     /// Unit Of Work controller
     /// </summary>
-    [Authorize]
     [Route("api/[controller]")]
     public abstract class UnitOfWorkController : OperationResultController
     {

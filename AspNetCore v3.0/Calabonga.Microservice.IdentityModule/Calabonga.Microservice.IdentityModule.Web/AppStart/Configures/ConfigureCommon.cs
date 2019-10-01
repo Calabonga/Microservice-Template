@@ -1,12 +1,12 @@
-﻿using AutoMapper;
-using Calabonga.Microservice.IdentityModule.Core;
+﻿using Calabonga.Microservice.IdentityModule.Core;
+using Calabonga.Microservice.IdentityModule.Web.AppStart.ConfigureServices;
 using Calabonga.Microservice.IdentityModule.Web.Middlewares;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Hosting;
 
-namespace Calabonga.Microservice.IdentityModule.Web.AppStart
+namespace Calabonga.Microservice.IdentityModule.Web.AppStart.Configures
 {
     /// <summary>
     /// Pipeline configuration
@@ -47,12 +47,12 @@ namespace Calabonga.Microservice.IdentityModule.Web.AppStart
 
             app.Map($"{AppData.AuthUrl}", authServer => { authServer.UseIdentityServer(); });
 
-            app.UseSwagger();
             app.UseSwaggerUI(ConfigureServicesSwagger.SwaggerSettings);
 
             app.UseMiddleware(typeof(ErrorHandlingMiddleware));
-
-            app.UseCors("CorsPolicy");
+            
+            app.UseSwagger();
+            
         }
     }
 }

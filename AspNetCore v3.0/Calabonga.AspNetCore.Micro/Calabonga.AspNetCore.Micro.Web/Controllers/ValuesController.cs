@@ -23,29 +23,10 @@ namespace Calabonga.AspNetCore.Micro.Web.Controllers
         {
         }
 
-        /// <summary>
-        /// Returns a collection.
-        /// Demo purposes only
-        /// </summary>
-        /// <returns></returns>
-        [HttpGet]
-        public ActionResult<OperationResult<IEnumerable<string>>> Get()
+        [HttpGet("user-data")]
+        public IActionResult Get()
         {
-            var items = new string[] { "Calabonga", "Template", "For", "Micro", "Services" };
-            return OperationResultSuccess<IEnumerable<string>>(items);
-        }
-
-        /// <summary>
-        /// Return something by identifier
-        /// Demo purposes only
-        /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
-
-        [HttpGet("{id}")]
-        public ActionResult<OperationResult<string>> Get(int id)
-        {
-            return OperationResultInfo("MicroService","Information");
+            return Ok(User.Identity.Name);
         }
     }
 }

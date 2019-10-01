@@ -8,7 +8,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.SwaggerUI;
 
-namespace Calabonga.Microservice.IdentityModule.Web.AppStart
+namespace Calabonga.Microservice.IdentityModule.Web.AppStart.ConfigureServices
 {
     /// <summary>
     /// Swagger configuration
@@ -33,7 +33,7 @@ namespace Calabonga.Microservice.IdentityModule.Web.AppStart
                 {
                     Title = AppTitle,
                     Version = AppVersion,
-                    Description = "Microservice (with IdentityServer4) module API documentation"
+                    Description = "Microservice API (with IdentityServer4) module API documentation"
                 });
                 options.ResolveConflictingActions(x => x.First());
 
@@ -47,7 +47,7 @@ namespace Calabonga.Microservice.IdentityModule.Web.AppStart
                         Password = new OpenApiOAuthFlow
                         {
                             TokenUrl = new Uri($"{url}/auth/connect/token", UriKind.Absolute),
-                            AuthorizationUrl = new Uri(url, UriKind.Absolute),
+                            AuthorizationUrl = new Uri($"{url}/auth/connect/authorize", UriKind.Absolute),
                             Scopes = new Dictionary<string, string>
                             {
                                 { "api1", "Default scope" }
@@ -55,15 +55,6 @@ namespace Calabonga.Microservice.IdentityModule.Web.AppStart
                         }
                     }
                 });
-
-                //options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
-                //{
-                //    Description = "JWT Authorization header using the Bearer scheme. \r\n\r\n Enter 'Bearer' [space] and then your token in the text input below.\r\n\r\nExample: \"Bearer 12345abcdef\"",
-                //    Name = "Authorization",
-                //    In = ParameterLocation.Header,
-                //    Type = SecuritySchemeType.ApiKey,
-                //    Scheme = "Bearer"
-                //});
 
                 options.AddSecurityRequirement(new OpenApiSecurityRequirement()
                 {
@@ -83,8 +74,7 @@ namespace Calabonga.Microservice.IdentityModule.Web.AppStart
                         new List<string>()
                     }
                 });
-
-                options.DocumentFilter<LowercaseDocumentFilter>();
+                
                 options.OperationFilter<ApplySummariesOperationFilter>();
             });
         }
@@ -95,6 +85,7 @@ namespace Calabonga.Microservice.IdentityModule.Web.AppStart
         /// <param name="settings"></param>
         public static void SwaggerSettings(SwaggerUIOptions settings)
         {
+            
             settings.SwaggerEndpoint(SwaggerConfig, $"{AppTitle} v.{AppVersion}");
             settings.RoutePrefix = SwaggerUrl;
             settings.DocumentTitle = "API documentation";
@@ -106,8 +97,8 @@ namespace Calabonga.Microservice.IdentityModule.Web.AppStart
             settings.OAuthScopeSeparator(" ");
             settings.OAuthClientSecret("secret");
             settings.DisplayRequestDuration();
-            settings.OAuthAppName("Microservice (with IdentityServer4)");
-            settings.OAuthUseBasicAuthenticationWithAccessCodeGrant();
+            settings.OAuthAppName("Microservice API (with IdentityServer4) module API documentation");
+            //settings.OAuthUseBasicAuthenticationWithAccessCodeGrant();
         }
     }
 }

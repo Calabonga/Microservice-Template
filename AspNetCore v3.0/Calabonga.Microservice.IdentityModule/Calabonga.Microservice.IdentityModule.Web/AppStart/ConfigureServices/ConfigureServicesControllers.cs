@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 
-namespace Calabonga.Microservice.Module.Web.AppStart
+namespace Calabonga.Microservice.IdentityModule.Web.AppStart.ConfigureServices
 {
     /// <summary>
     /// Configure controllers

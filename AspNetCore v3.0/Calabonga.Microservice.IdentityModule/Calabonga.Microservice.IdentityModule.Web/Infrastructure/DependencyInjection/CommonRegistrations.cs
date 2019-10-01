@@ -2,6 +2,7 @@
 using Calabonga.Microservice.IdentityModule.Web.Infrastructure.Auth;
 using Calabonga.Microservice.IdentityModule.Web.Infrastructure.Services;
 using IdentityServer4.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Calabonga.Microservice.IdentityModule.Web.Infrastructure.DependencyInjection
@@ -27,6 +28,9 @@ namespace Calabonga.Microservice.IdentityModule.Web.Infrastructure.DependencyInj
             services.AddTransient<IProfileService, IdentityProfileService>();
             services.AddTransient<ICacheService, CacheService>();
             services.AddTransient<ICorsPolicyService, IdentityServerCorsPolicy>();
+
+            services.AddSingleton<IAuthorizationPolicyProvider, AuthorizationPolicyProvider>();
+            services.AddSingleton<IAuthorizationHandler, MicroservicePermissionHandler>();
 
            // notifications
             Notifications(services);

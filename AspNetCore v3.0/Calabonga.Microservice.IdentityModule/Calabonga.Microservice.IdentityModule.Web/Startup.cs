@@ -1,6 +1,7 @@
 using Calabonga.Microservice.IdentityModule.Web.AppStart;
+using Calabonga.Microservice.IdentityModule.Web.AppStart.Configures;
+using Calabonga.Microservice.IdentityModule.Web.AppStart.ConfigureServices;
 using Calabonga.Microservice.IdentityModule.Web.Infrastructure.DependencyInjection;
-using Calabonga.Microservice.Module.Web.AppStart;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;

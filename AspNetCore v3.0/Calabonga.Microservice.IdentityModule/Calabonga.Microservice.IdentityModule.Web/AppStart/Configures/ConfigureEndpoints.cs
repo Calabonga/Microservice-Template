@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 
-namespace Calabonga.Microservice.IdentityModule.Web.AppStart
+namespace Calabonga.Microservice.IdentityModule.Web.AppStart.Configures
 {
     /// <summary>
     /// Configure pipeline
@@ -20,6 +15,7 @@ namespace Calabonga.Microservice.IdentityModule.Web.AppStart
             // https://andrewlock.net/comparing-startup-between-the-asp-net-core-3-templates/
 
             app.UseRouting();
+            app.UseCors("CorsPolicy");
             app.UseAuthentication();
             app.UseAuthorization();
             app.UseEndpoints(endpoints =>

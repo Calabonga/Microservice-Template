@@ -2,7 +2,7 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Calabonga.Microservice.IdentityModule.Web.AppStart
+namespace Calabonga.Microservice.IdentityModule.Web.AppStart.ConfigureServices
 {
     /// <summary>
     /// Cors configurations
