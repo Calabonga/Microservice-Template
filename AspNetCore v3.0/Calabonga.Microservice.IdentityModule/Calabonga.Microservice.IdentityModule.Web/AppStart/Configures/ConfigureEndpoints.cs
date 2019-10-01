@@ -7,13 +7,12 @@ namespace Calabonga.Microservice.IdentityModule.Web.AppStart.Configures
     /// </summary>
     public static class ConfigureEndpoints
     {
+        /// <summary>
+        /// Configure Routing
+        /// </summary>
+        /// <param name="app"></param>
         public static void Configure(IApplicationBuilder app)
         {
-            // Calabonga: Endpoint Authorization (2019-09-30 08:55 ConfigureApplication)
-            // https://aregcode.com/blog/2019/dotnetcore-understanding-aspnet-endpoint-routing/
-            // https://docs.microsoft.com/en-us/aspnet/core/migration/22-to-30?view=aspnetcore-3.0&tabs=visual-studio
-            // https://andrewlock.net/comparing-startup-between-the-asp-net-core-3-templates/
-
             app.UseRouting();
             app.UseCors("CorsPolicy");
             app.UseAuthentication();

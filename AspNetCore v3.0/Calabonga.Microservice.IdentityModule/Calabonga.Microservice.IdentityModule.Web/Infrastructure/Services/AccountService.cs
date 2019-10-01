@@ -73,7 +73,7 @@ namespace Calabonga.Microservice.IdentityModule.Web.Infrastructure.Services
             {
                 var userManager = _unitOfWork.GetUserManager();
                 var result = await userManager.CreateAsync(user, model.Password);
-                var role = AppData.CompanyRoleName;
+                var role = AppData.ManagerRoleName;
 
                 if (result.Succeeded)
                 {

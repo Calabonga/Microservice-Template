@@ -58,7 +58,7 @@ namespace Calabonga.Microservice.IdentityModule.Web.Infrastructure.Auth
                 return default(T);
             }
 
-            if (String.IsNullOrWhiteSpace(claim.Value))
+            if (string.IsNullOrWhiteSpace(claim.Value))
             {
                 return default(T);
             }
@@ -92,7 +92,7 @@ namespace Calabonga.Microservice.IdentityModule.Web.Infrastructure.Auth
 
             enumerable.ToList().ForEach(x =>
             {
-                if (String.IsNullOrWhiteSpace(x.Value))
+                if (string.IsNullOrWhiteSpace(x.Value))
                 {
                     return;
                 }

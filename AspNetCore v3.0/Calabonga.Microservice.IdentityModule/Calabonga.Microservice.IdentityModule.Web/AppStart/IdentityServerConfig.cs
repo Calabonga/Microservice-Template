@@ -19,6 +19,7 @@ namespace Calabonga.Microservice.IdentityModule.Web.AppStart
             return new List<Client>
             {
                 // resource owner password grant client
+                // you can create your own client
                 new Client
                 {
                     ClientId = "microservice1",

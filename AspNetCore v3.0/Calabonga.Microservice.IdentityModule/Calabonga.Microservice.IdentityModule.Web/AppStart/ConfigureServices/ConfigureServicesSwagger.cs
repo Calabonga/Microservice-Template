@@ -74,42 +74,6 @@ namespace Calabonga.Microservice.IdentityModule.Web.AppStart.ConfigureServices
                     }
                 });
 
-                //// Define the OAuth2.0 scheme that's in use (i.e. Implicit Flow)
-                //options.AddSecurityDefinition("oauth2", new OpenApiSecurityScheme
-                //{
-                //    Type = SecuritySchemeType.OAuth2,
-                //    Flows = new OpenApiOAuthFlows
-                //    {
-                //        Password = new OpenApiOAuthFlow
-                //        {
-                //            TokenUrl = new Uri($"{url}/auth/connect/token", UriKind.Relative),
-                //            Scopes = new Dictionary<string, string>
-                //            {
-                //                { "api1", "Default API scope" },
-                //                { "readAccess", "Access read operations" },
-                //                { "writeAccess", "Access write operations" }
-                //            }
-                //        }
-                //    }
-                //});
-
-                //options.AddSecurityRequirement(new OpenApiSecurityRequirement
-                //{
-                //    {
-                //        new OpenApiSecurityScheme
-                //        {
-                //            Reference = new OpenApiReference
-                //            {
-                //                Type = ReferenceType.SecurityScheme, 
-                //                Id = "oauth2"
-                //            }
-                //        },
-                //        new[] { "api1","readAccess", "writeAccess" }
-                //    }
-                //});
-
-                
-
                 options.OperationFilter<ApplySummariesOperationFilter>();
             });
         }
@@ -120,10 +84,9 @@ namespace Calabonga.Microservice.IdentityModule.Web.AppStart.ConfigureServices
         /// <param name="settings"></param>
         public static void SwaggerSettings(SwaggerUIOptions settings)
         {
-
             settings.SwaggerEndpoint(SwaggerConfig, $"{AppTitle} v.{AppVersion}");
             settings.RoutePrefix = SwaggerUrl;
-            settings.DocumentTitle = "API documentation";
+            settings.DocumentTitle = "Microservice API";
             settings.DefaultModelExpandDepth(0);
             settings.DefaultModelRendering(ModelRendering.Model);
             settings.DefaultModelsExpandDepth(0);
@@ -133,7 +96,6 @@ namespace Calabonga.Microservice.IdentityModule.Web.AppStart.ConfigureServices
             settings.OAuthClientSecret("secret");
             settings.DisplayRequestDuration();
             settings.OAuthAppName("Microservice API (with IdentityServer4) module API documentation");
-            //settings.OAuthUseBasicAuthenticationWithAccessCodeGrant();
         }
     }
 }

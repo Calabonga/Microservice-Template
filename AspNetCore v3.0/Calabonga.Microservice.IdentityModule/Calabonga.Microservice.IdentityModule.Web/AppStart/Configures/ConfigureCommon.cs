@@ -40,16 +40,15 @@ namespace Calabonga.Microservice.IdentityModule.Web.AppStart.Configures
                 }
             });
 
-
             app.UseResponseCaching();
 
             app.UseETagger();
 
             app.Map($"{AppData.AuthUrl}", authServer => { authServer.UseIdentityServer(); });
 
-            app.UseSwaggerUI(ConfigureServicesSwagger.SwaggerSettings);
-
             app.UseMiddleware(typeof(ErrorHandlingMiddleware));
+
+            app.UseSwaggerUI(ConfigureServicesSwagger.SwaggerSettings);
             
             app.UseSwagger();
             

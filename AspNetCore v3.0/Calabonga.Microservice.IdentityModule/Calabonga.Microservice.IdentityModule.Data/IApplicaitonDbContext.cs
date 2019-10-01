@@ -25,8 +25,6 @@ namespace Calabonga.Microservice.IdentityModule.Data
 
         DbSet<TEntity> Set<TEntity>() where TEntity : class;
 
-        DbQuery<TQuery> Query<TQuery>() where TQuery : class;
-
         int SaveChanges();
 
         #endregion

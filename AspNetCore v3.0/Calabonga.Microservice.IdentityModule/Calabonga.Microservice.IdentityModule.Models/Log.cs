@@ -4,7 +4,7 @@ using Calabonga.EntityFrameworkCore.Entities.Base;
 namespace Calabonga.Microservice.IdentityModule.Entities
 {
     /// <summary>
-    /// Logs
+    /// Log entity for demo purposes only
     /// </summary>
     public class Log: Identity
     {

@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 namespace Calabonga.Microservice.IdentityModule.Data.ModelConfigurations
 {
     /// <summary>
-    /// Entity Type Configuration for entity Person
+    /// Entity Type Configuration for entity <see cref="ApplicationUserProfile"/>
     /// </summary>
 
     public class ApplicationUserProfileModelConfiguration : AuditableModelConfigurationBase<ApplicationUserProfile>

@@ -1,14 +1,11 @@
 ﻿using System;
-using System.Threading.Tasks;
 using AutoMapper;
 using Calabonga.EntityFrameworkCore.UnitOfWork;
 using Calabonga.Microservice.IdentityModule.Core;
 using Calabonga.Microservice.IdentityModule.Data;
 using Calabonga.Microservice.IdentityModule.Web.Infrastructure.Services;
 using Calabonga.Microservice.IdentityModule.Web.Infrastructure.Settings;
-using Calabonga.Microservice.Module.Web.Infrastructure.Attributes;
 using IdentityServer4.AccessTokenValidation;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -91,7 +88,6 @@ namespace Calabonga.Microservice.IdentityModule.Web.AppStart.ConfigureServices
                    options.SupportedTokens = SupportedTokens.Jwt;
                    options.Authority = $"{url}{AppData.AuthUrl}";
                    options.EnableCaching = true;
-                   options.JwtBearerEvents.OnAuthenticationFailed += OnAuthenticationFailed;
                    options.RequireHttpsMetadata = false;
                });
 
@@ -115,25 +111,8 @@ namespace Calabonga.Microservice.IdentityModule.Web.AppStart.ConfigureServices
 
             services.AddAuthorization();
 
-            //services
-            //.AddMvc(options => { options.Filters.Add<ValidateModelStateAttribute>(); })
-            //.SetCompatibilityVersion(CompatibilityVersion.Version_3_0)
-            //.AddJsonOptions(options =>
-            //{
-            //    options.JsonSerializerOptions.IgnoreReadOnlyProperties = true;
-            //    options.JsonSerializerOptions.IgnoreNullValues = true;
-            //    // options.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
-            //    // options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
-            //    // options.SerializerSettings.Formatting = Formatting.Indented;
-            //    // options.SerializerSettings.DateParseHandling = DateParseHandling.DateTime;
-            //    // options.SerializerSettings.DateFormatHandling = DateFormatHandling.IsoDateFormat;
-            //});
 
-        }
 
-        private static Task OnAuthenticationFailed(AuthenticationFailedContext arg)
-        {
-            throw new NotImplementedException();
         }
     }
 }

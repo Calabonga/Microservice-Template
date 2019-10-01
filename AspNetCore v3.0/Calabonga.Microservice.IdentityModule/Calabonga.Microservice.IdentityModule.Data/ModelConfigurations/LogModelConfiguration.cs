@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 namespace Calabonga.Microservice.IdentityModule.Data.ModelConfigurations
 {
     /// <summary>
-    /// Entity Type Configuration for Log entity
+    /// Entity Type Configuration for <see cref="Log"/> entity
     /// </summary>
     public class LogModelConfiguration: IdentityModelConfigurationBase<Log>
     {

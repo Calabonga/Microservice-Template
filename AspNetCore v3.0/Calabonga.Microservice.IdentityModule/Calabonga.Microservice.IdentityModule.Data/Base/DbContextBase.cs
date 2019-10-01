@@ -69,8 +69,7 @@ namespace Calabonga.Microservice.IdentityModule.Data.Base
                 return Task.FromResult(0);
             }
         }
-
-
+        
         /// <summary>
         ///     Saves all changes made in this context to the database.
         /// </summary>

@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 namespace Calabonga.Microservice.IdentityModule.Data
 {
     /// <summary>
-    /// Database for application
+    /// Database context for current application
     /// </summary>
     public class ApplicationDbContext : DbContextBase, IApplicationDbContext
     {
