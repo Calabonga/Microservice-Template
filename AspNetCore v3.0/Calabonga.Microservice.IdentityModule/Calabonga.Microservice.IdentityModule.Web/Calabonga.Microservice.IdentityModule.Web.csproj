@@ -15,7 +15,6 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="OperationResultCore" Version="1.1.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="5.0.0-rc4" />
     <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="5.0.0-rc4" />
     <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="5.0.0-rc4" />
@@ -23,6 +22,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\..\NugetPackages\Calabonga.OperationResult\Calabonga.OperationResultsCore\Calabonga.OperationResultsCore.csproj" />
     <ProjectReference Include="..\Calabonga.Microservice.IdentityModule.Core\Calabonga.Microservice.IdentityModule.Core.csproj" />
     <ProjectReference Include="..\Calabonga.Microservice.IdentityModule.Data\Calabonga.Microservice.IdentityModule.Data.csproj" />
   </ItemGroup>

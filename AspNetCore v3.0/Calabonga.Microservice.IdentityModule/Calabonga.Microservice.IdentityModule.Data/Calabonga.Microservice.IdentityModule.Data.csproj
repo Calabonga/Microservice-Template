@@ -1,11 +1,10 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.0</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Calabonga.EntityFrameworkCore.UnitOfWork.Framework" Version="2.0.0-beta-2" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.0.0">
@@ -17,6 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\..\NugetPackages\Calabonga.EntityFrameworkCore.UnitOfWork.Framework\Calabonga.EntityFrameworkCore.UnitOfWork.Framework\Calabonga.EntityFrameworkCore.UnitOfWork.Framework.csproj" />
     <ProjectReference Include="..\Calabonga.Microservice.IdentityModule.Core\Calabonga.Microservice.IdentityModule.Core.csproj" />
     <ProjectReference Include="..\Calabonga.Microservice.IdentityModule.Models\Calabonga.Microservice.IdentityModule.Entities.csproj" />
   </ItemGroup>

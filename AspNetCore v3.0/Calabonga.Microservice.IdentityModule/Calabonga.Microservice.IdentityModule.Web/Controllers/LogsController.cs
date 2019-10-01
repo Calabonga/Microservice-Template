@@ -31,7 +31,6 @@ namespace Calabonga.Microservice.IdentityModule.Web.Controllers
         {
             //Get Roles for current user
             var roles = ClaimsHelper.GetValues<string>((ClaimsIdentity)User.Identity, "role");
-
             return Ok($"Current user ({User.Identity.Name}) have following roles: {string.Join("|", roles)}");
         }
     }
