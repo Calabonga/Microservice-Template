@@ -22,7 +22,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\NugetPackages\Calabonga.OperationResult\Calabonga.OperationResultsCore\Calabonga.OperationResultsCore.csproj" />
     <ProjectReference Include="..\Calabonga.Microservice.IdentityModule.Core\Calabonga.Microservice.IdentityModule.Core.csproj" />
     <ProjectReference Include="..\Calabonga.Microservice.IdentityModule.Data\Calabonga.Microservice.IdentityModule.Data.csproj" />
   </ItemGroup>

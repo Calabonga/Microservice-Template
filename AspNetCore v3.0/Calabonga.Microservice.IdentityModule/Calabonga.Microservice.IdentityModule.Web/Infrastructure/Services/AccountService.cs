@@ -80,7 +80,7 @@ namespace Calabonga.Microservice.IdentityModule.Web.Infrastructure.Services
                     var roleManager = _unitOfWork.GetRoleManager();
                     if (await roleManager.FindByNameAsync(role) == null)
                     {
-                        operation.Error = new MicroserviceUserNotFoundException();
+                        operation.Exception = new MicroserviceUserNotFoundException();
                         operation.AddError(AppData.Exceptions.UserNotFoundException);
                         return await Task.FromResult(operation);
                     }
@@ -102,16 +102,8 @@ namespace Calabonga.Microservice.IdentityModule.Web.Infrastructure.Services
                     }
                 }
                 var errors = result.Errors.Select(x => $"{x.Code}: {x.Description}");
-                if (result.Errors.Select(x => x.Code).Contains("DuplicateEmail"))
-                {
-                    operation.AddError(result.Errors.SingleOrDefault(x => x.Code == "DuplicateEmail"));
-                    operation.Error = _unitOfWork.LastSaveChangesResult.Exception;
-                }
-                else
-                {
-                    operation.AddError(string.Join(", ", errors));
-                    operation.Error = _unitOfWork.LastSaveChangesResult.Exception;
-                }
+                operation.AddError(string.Join(", ", errors));
+                operation.Exception = _unitOfWork.LastSaveChangesResult.Exception;
                 transaction.Rollback();
                 return await Task.FromResult(operation);
             }
