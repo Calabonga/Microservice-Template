@@ -16,7 +16,7 @@ namespace Calabonga.Microservice.IdentityModule.Web.AppStart.ConfigureServices
     public static class ConfigureServicesSwagger
     {
         private const string AppTitle = "Microservice API (with IdentityServer4)";
-        private const string AppVersion = "1.0.0-alpha-1";
+        private const string AppVersion = "2.0.0-alpha-1";
         private const string SwaggerConfig = "/swagger/v1/swagger.json";
         private const string SwaggerUrl = "api/manual";
 
@@ -33,7 +33,7 @@ namespace Calabonga.Microservice.IdentityModule.Web.AppStart.ConfigureServices
                 {
                     Title = AppTitle,
                     Version = AppVersion,
-                    Description = "Microservice API (with IdentityServer4) module API documentation"
+                    Description = "Microservice API (with IdentityServer4) module API documentation. This template based on ASP.NET Core 3.0."
                 });
                 options.ResolveConflictingActions(x => x.First());
 

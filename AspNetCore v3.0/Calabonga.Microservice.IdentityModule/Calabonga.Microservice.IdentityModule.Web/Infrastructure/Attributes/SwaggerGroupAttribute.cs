@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Calabonga.Microservice.Module.Web.Infrastructure.Attributes
+namespace Calabonga.Microservice.IdentityModule.Web.Infrastructure.Attributes
 {
     /// <summary>
     /// Swagger controller group attribute

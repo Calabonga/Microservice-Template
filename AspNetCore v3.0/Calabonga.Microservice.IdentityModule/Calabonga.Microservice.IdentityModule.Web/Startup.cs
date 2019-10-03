@@ -8,6 +8,12 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace Calabonga.Microservice.IdentityModule.Web
 {
+    /// <summary>
+    /// Name: Microservice Template
+    /// Author: Calabonga (calabonga.net)
+    /// Version: 2.0.0
+    /// Based on: ASP.NET Core 3.0
+    /// </summary>
     public class Startup
     {
         public Startup(IConfiguration configuration)
