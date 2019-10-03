@@ -7,17 +7,17 @@ using Calabonga.Microservice.IdentityModule.Entities;
 using Calabonga.Microservice.IdentityModule.Web.Infrastructure.Auth;
 using Calabonga.Microservice.IdentityModule.Web.Infrastructure.QueryParams;
 using Calabonga.Microservice.IdentityModule.Web.Infrastructure.ViewModels.LogViewModels;
+using Calabonga.Microservices.Core;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Calabonga.Microservice.IdentityModule.Web.Controllers
 {
     /// <summary>
-    /// Demo controller
+    /// ReadOnlyController Demo
     /// </summary>
-    [Route("api/[controller]")]
+    [Route("api/[controller]-v1")]
     [Authorize]
-    // Calabonga: REDUNDANT GENERICS should be REMOVED (2019-10-02 02:36 LogsController)
     public class LogsController : ReadOnlyController<ApplicationDbContext, ApplicationUser, ApplicationRole, Log, LogViewModel, DefaultPagedListQueryParams>
     {
         /// <inheritdoc />

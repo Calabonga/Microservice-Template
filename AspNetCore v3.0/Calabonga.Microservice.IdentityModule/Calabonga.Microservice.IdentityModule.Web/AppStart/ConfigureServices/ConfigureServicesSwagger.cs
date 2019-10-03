@@ -55,7 +55,7 @@ namespace Calabonga.Microservice.IdentityModule.Web.AppStart.ConfigureServices
                     }
                 });
 
-                options.AddSecurityRequirement(new OpenApiSecurityRequirement()
+                options.AddSecurityRequirement(new OpenApiSecurityRequirement
                 {
                     {
                         new OpenApiSecurityScheme

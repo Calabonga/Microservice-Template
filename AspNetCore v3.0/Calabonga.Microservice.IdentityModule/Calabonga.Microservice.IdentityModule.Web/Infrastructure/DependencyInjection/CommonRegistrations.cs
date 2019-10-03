@@ -31,9 +31,6 @@ namespace Calabonga.Microservice.IdentityModule.Web.Infrastructure.DependencyInj
 
             services.AddSingleton<IAuthorizationPolicyProvider, AuthorizationPolicyProvider>();
             services.AddSingleton<IAuthorizationHandler, MicroservicePermissionHandler>();
-
-           // notifications
-            Notifications(services);
         }
     }
 }

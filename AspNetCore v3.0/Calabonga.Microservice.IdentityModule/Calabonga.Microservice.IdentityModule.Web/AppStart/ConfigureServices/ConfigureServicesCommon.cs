@@ -43,6 +43,8 @@ namespace Calabonga.Microservice.IdentityModule.Web.AppStart.ConfigureServices
             services.AddUnitOfWork<ApplicationDbContext, ApplicationUser, ApplicationRole>();
 
             services.AddMemoryCache();
+            
+            services.AddRouting(options => options.LowercaseUrls = true);
 
             services.Configure<ApiBehaviorOptions>(options => { options.SuppressModelStateInvalidFilter = true; });
 

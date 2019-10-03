@@ -29,7 +29,6 @@ namespace Calabonga.Microservice.IdentityModule.Web
             DependencyContainer.Validators(services);
             DependencyContainer.ViewModelFactories(services);
             DependencyContainer.EntityManagers(services);
-            DependencyContainer.Repositories(services);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

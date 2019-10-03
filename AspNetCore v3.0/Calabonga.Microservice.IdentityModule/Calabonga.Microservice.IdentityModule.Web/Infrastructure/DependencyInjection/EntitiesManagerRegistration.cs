@@ -17,8 +17,6 @@ namespace Calabonga.Microservice.IdentityModule.Web.Infrastructure.DependencyInj
         public static void EntityManagers(IServiceCollection services)
         {
             // Register Entity Managers
-            //services.AddScoped<IEntityManager<TextCard, TextCardCreateViewModel, TextCardUpdateViewModel>, TextCardManager>();
-
             var types = Assembly.GetExecutingAssembly().GetTypes().Where(t => t.IsClass && !t.IsAbstract);
             foreach (var type in types)
             {

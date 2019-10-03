@@ -13,13 +13,13 @@ namespace Calabonga.Microservice.IdentityModule.Web.Infrastructure.Auth
     /// </summary>
     public class ApplicationClaimsPrincipalFactory : UserClaimsPrincipalFactory<ApplicationUser, ApplicationRole>
     {
-        private readonly IUnitOfWork<ApplicationUser, ApplicationRole> _initOfWork;
-
         /// <inheritdoc />
-        public ApplicationClaimsPrincipalFactory(IUnitOfWork<ApplicationUser, ApplicationRole> initOfWork, UserManager<ApplicationUser> userManager, RoleManager<ApplicationRole> roleManager, IOptions<IdentityOptions> optionsAccessor)
+        public ApplicationClaimsPrincipalFactory(
+            UserManager<ApplicationUser> userManager, RoleManager<ApplicationRole> roleManager, 
+            IOptions<IdentityOptions> optionsAccessor)
             : base(userManager, roleManager, optionsAccessor)
         {
-            _initOfWork = initOfWork;
+
         }
 
         /// <summary>
@@ -40,7 +40,7 @@ namespace Calabonga.Microservice.IdentityModule.Web.Infrastructure.Auth
             {
                 ((ClaimsIdentity)principal.Identity).AddClaim(new Claim(ClaimTypes.Surname, user.LastName));
             }
-            
+
             return principal;
         }
 
