@@ -1,6 +1,5 @@
 ﻿using System;
-using Calabonga.EntityFrameworkCore.UnitOfWork.Framework.Exceptions;
-using Calabonga.Microservice.IdentityModule.Core.Exceptions;
+using Calabonga.Microservices.Core.Exceptions;
 using Microsoft.Extensions.Caching.Memory;
 
 namespace Calabonga.Microservice.IdentityModule.Web.Infrastructure.Services

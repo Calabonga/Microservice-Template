@@ -1,4 +1,3 @@
-using Calabonga.Microservice.IdentityModule.Web.AppStart;
 using Calabonga.Microservice.IdentityModule.Web.AppStart.Configures;
 using Calabonga.Microservice.IdentityModule.Web.AppStart.ConfigureServices;
 using Calabonga.Microservice.IdentityModule.Web.Infrastructure.DependencyInjection;

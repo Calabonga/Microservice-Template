@@ -4,7 +4,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using Calabonga.Microservice.IdentityModule.Core.Exceptions;
+using Calabonga.Microservices.Core.Exceptions;
 
 namespace Calabonga.Microservice.IdentityModule.Web.Infrastructure.Helpers
 {

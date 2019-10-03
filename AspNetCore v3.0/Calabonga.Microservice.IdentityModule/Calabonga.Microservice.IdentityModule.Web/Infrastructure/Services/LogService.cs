@@ -1,8 +1,8 @@
 ﻿using System;
 using Calabonga.EntityFrameworkCore.UnitOfWork;
-using Calabonga.Microservice.IdentityModule.Core.Exceptions;
 using Calabonga.Microservice.IdentityModule.Data;
 using Calabonga.Microservice.IdentityModule.Entities;
+using Calabonga.Microservices.Core.Exceptions;
 using Microsoft.Extensions.Logging;
 
 namespace Calabonga.Microservice.IdentityModule.Web.Infrastructure.Services
@@ -44,7 +44,7 @@ namespace Calabonga.Microservice.IdentityModule.Web.Infrastructure.Services
             _unitOfWork.SaveChanges();
             if (!_unitOfWork.LastSaveChangesResult.IsOk)
             {
-                throw new MicroserviceInvalidOperationException();
+                throw new MicroserviceArgumentNullException();
             }
         }
     }

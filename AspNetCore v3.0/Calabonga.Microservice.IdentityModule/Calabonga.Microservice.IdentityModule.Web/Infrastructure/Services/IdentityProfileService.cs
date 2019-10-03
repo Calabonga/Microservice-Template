@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 using System.Threading.Tasks;
-using Calabonga.EntityFrameworkCore.UnitOfWork.Framework.Extensions;
+using Calabonga.Microservices.Core.Extensions;
 using IdentityServer4.Extensions;
 using IdentityServer4.Models;
 using IdentityServer4.Services;

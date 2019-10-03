@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Security.Claims;
-using Calabonga.Microservice.IdentityModule.Core.Exceptions;
+using Calabonga.Microservices.Core.Exceptions;
 
 namespace Calabonga.Microservice.IdentityModule.Web.Infrastructure.Auth
 {

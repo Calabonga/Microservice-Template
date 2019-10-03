@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Calabonga.Microservice.IdentityModule.Web.Infrastructure.Settings
+﻿namespace Calabonga.Microservice.IdentityModule.Web.Infrastructure.Settings
 {
     /// <summary>
     /// Represents configuration file with current application settings

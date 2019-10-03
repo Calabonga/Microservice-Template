@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 using System.Reflection;
-using Calabonga.Microservice.IdentityModule.Web.Infrastructure.Factories.Base;
+using Calabonga.EntityFrameworkCore.UnitOfWork.Framework.Factories;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Calabonga.Microservice.IdentityModule.Web.Infrastructure.DependencyInjection
@@ -21,12 +21,12 @@ namespace Calabonga.Microservice.IdentityModule.Web.Infrastructure.DependencyInj
             {
                 foreach (var i in type.GetInterfaces())
                 {
-                    if (!i.IsGenericType || i.GetGenericTypeDefinition() != typeof(IViewModelFactory<,,>))
+                    if (!i.IsGenericType || i.GetGenericTypeDefinition() != typeof(IViewModelFactory<,>))
                     {
                         continue;
                     }
 
-                    var interfaceType = typeof(IViewModelFactory<,,>).MakeGenericType(i.GetGenericArguments());
+                    var interfaceType = typeof(IViewModelFactory<,>).MakeGenericType(i.GetGenericArguments());
                     services.AddTransient(interfaceType, type);
                 }
             }

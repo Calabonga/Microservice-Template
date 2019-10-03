@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Calabonga.EntityFrameworkCore.UnitOfWork.Framework.Extensions;
-using Calabonga.Microservice.IdentityModule.Core;
+using Calabonga.Microservices.Core.Extensions;
 
 namespace Calabonga.Microservice.IdentityModule.Web.Infrastructure.Helpers
 {
