@@ -34,33 +34,13 @@ namespace Calabonga.Microservice.IdentityModule.Web.Infrastructure.ViewModels.Ac
         public List<string> Roles { get; set; }
 
         /// <summary>
-        /// Returns User email verified
-        /// </summary>
-        public bool EmailVerified { get; set; }
-
-        /// <summary>
-        /// Returns Preferred UserName
-        /// </summary>
-        public string PreferredUserName { get; set; }
-
-        /// <summary>
         /// User PhoneNumber
         /// </summary>
         public string PhoneNumber { get; set; }
 
         /// <summary>
-        /// Returns is PhoneNumber Verified
-        /// </summary>
-        public bool PhoneNumberVerified { get; set; }
-
-        /// <summary>
         /// Position Name
         /// </summary>
         public string PositionName { get; set; }
-
-        /// <summary>
-        /// Additional Emails for subscription
-        /// </summary>
-        public string AdditionalEmails { get; set; }
     }
 }

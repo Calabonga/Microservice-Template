@@ -18,10 +18,5 @@ namespace Calabonga.Microservice.IdentityModule.Data
         /// LastName
         /// </summary>
         public string LastName { get; set; }
-
-        /// <summary>
-        /// Additional email for subscriptions
-        /// </summary>
-        public string AdditionalEmails { get; set; }
     }
 }

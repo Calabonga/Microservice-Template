@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 using System.Reflection;
-using Calabonga.Microservice.IdentityModule.Web.Infrastructure.Validations.Base;
+using Calabonga.Microservices.Core.Validators;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Calabonga.Microservice.IdentityModule.Web.Infrastructure.DependencyInjection

@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Calabonga.Microservice.IdentityModule.Data;
-using Calabonga.Microservice.IdentityModule.Web.Infrastructure.Validations.Base;
 using Calabonga.Microservice.IdentityModule.Web.Infrastructure.ViewModels.AccountViewModels;
+using Calabonga.Microservices.Core.Validators;
 using Calabonga.OperationResultsCore;
 
 namespace Calabonga.Microservice.IdentityModule.Web.Infrastructure.Services

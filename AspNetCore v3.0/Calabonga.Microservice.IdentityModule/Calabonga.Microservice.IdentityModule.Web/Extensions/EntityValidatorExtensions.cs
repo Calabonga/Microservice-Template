@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using Calabonga.Microservice.IdentityModule.Web.Infrastructure.Validations.Base;
+using Calabonga.Microservices.Core.Validators;
 
 namespace Calabonga.Microservice.IdentityModule.Web.Extensions
 {

@@ -31,11 +31,6 @@ namespace Calabonga.Microservice.IdentityModule.Web.Infrastructure.Auth
         {
             var principal = await base.CreateAsync(user);
 
-            if (!string.IsNullOrWhiteSpace(user.AdditionalEmails))
-            {
-                ((ClaimsIdentity)principal.Identity).AddClaim(new Claim("AdditionalEmails", user.AdditionalEmails));
-            }
-
             if (!string.IsNullOrWhiteSpace(user.FirstName))
             {
                 ((ClaimsIdentity)principal.Identity).AddClaim(new Claim(JwtClaimTypes.GivenName, user.FirstName));

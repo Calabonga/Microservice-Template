@@ -32,11 +32,7 @@ namespace Calabonga.Microservice.IdentityModule.Web.Infrastructure.Mappers
                 .ForMember(x => x.LastName, o => o.MapFrom(claims => ClaimsHelper.GetValue<string>(claims, ClaimTypes.Surname)))
                 .ForMember(x => x.Roles, o => o.MapFrom(claims => ClaimsHelper.GetValues<string>(claims, JwtClaimTypes.Role)))
                 .ForMember(x => x.Email, o => o.MapFrom(claims => ClaimsHelper.GetValue<string>(claims, JwtClaimTypes.Name)))
-                .ForMember(x => x.EmailVerified, o => o.MapFrom(claims => ClaimsHelper.GetValue<bool>(claims, JwtClaimTypes.EmailVerified)))
-                .ForMember(x => x.PreferredUserName, o => o.MapFrom(claims => ClaimsHelper.GetValue<string>(claims, JwtClaimTypes.PreferredUserName)))
                 .ForMember(x => x.PhoneNumber, o => o.MapFrom(claims => ClaimsHelper.GetValue<string>(claims, JwtClaimTypes.PhoneNumber)))
-                .ForMember(x => x.PhoneNumberVerified, o => o.MapFrom(claims => ClaimsHelper.GetValue<bool>(claims, JwtClaimTypes.PhoneNumberVerified)))
-                .ForMember(x => x.AdditionalEmails, o => o.MapFrom(claims => ClaimsHelper.GetValue<string>(claims, "AdditionalEmails")))
                 .ForAllOtherMembers(x => x.Ignore());
         }
     }

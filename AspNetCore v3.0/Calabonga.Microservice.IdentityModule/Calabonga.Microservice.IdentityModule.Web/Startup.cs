@@ -29,7 +29,6 @@ namespace Calabonga.Microservice.IdentityModule.Web
             DependencyContainer.Validators(services);
             DependencyContainer.ViewModelFactories(services);
             DependencyContainer.EntityManagers(services);
-            DependencyContainer.EntityServices(services);
             DependencyContainer.Repositories(services);
         }
 
