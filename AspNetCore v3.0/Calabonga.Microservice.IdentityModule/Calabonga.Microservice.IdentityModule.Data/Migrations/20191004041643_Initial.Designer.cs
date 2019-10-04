@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Calabonga.Microservice.IdentityModule.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20190929044252_Initial")]
+    [Migration("20191004041643_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -58,8 +58,8 @@ namespace Calabonga.Microservice.IdentityModule.Data.Migrations
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("int");
 
-                    b.Property<string>("AdditionalEmails")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<Guid>("ApplicationUserProfileId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
@@ -113,6 +113,9 @@ namespace Calabonga.Microservice.IdentityModule.Data.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("ApplicationUserProfileId")
+                        .IsUnique();
+
                     b.HasIndex("NormalizedEmail")
                         .HasName("EmailIndex");
 
@@ -128,9 +131,6 @@ namespace Calabonga.Microservice.IdentityModule.Data.Migrations
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("ApplicationUserId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("CreatedAt")
@@ -150,9 +150,47 @@ namespace Calabonga.Microservice.IdentityModule.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ApplicationUserId");
+                    b.ToTable("ApplicationUserProfiles");
+                });
 
-                    b.ToTable("Profiles");
+            modelBuilder.Entity("Calabonga.Microservice.IdentityModule.Data.MicroservicePermission", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("ApplicationUserProfileId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedBy")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(256)")
+                        .HasMaxLength(256);
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(1024)")
+                        .HasMaxLength(1024);
+
+                    b.Property<string>("PolicyName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(64)")
+                        .HasMaxLength(64);
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UpdatedBy")
+                        .HasColumnType("nvarchar(256)")
+                        .HasMaxLength(256);
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ApplicationUserProfileId");
+
+                    b.ToTable("MicroservicePermissions");
                 });
 
             modelBuilder.Entity("Calabonga.Microservice.IdentityModule.Entities.Log", b =>
@@ -324,11 +362,20 @@ namespace Calabonga.Microservice.IdentityModule.Data.Migrations
                     b.ToTable("AutoHistory");
                 });
 
-            modelBuilder.Entity("Calabonga.Microservice.IdentityModule.Data.ApplicationUserProfile", b =>
+            modelBuilder.Entity("Calabonga.Microservice.IdentityModule.Data.ApplicationUser", b =>
                 {
-                    b.HasOne("Calabonga.Microservice.IdentityModule.Data.ApplicationUser", "ApplicationUser")
-                        .WithMany()
-                        .HasForeignKey("ApplicationUserId")
+                    b.HasOne("Calabonga.Microservice.IdentityModule.Data.ApplicationUserProfile", "ApplicationUserProfile")
+                        .WithOne("ApplicationUser")
+                        .HasForeignKey("Calabonga.Microservice.IdentityModule.Data.ApplicationUser", "ApplicationUserProfileId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Calabonga.Microservice.IdentityModule.Data.MicroservicePermission", b =>
+                {
+                    b.HasOne("Calabonga.Microservice.IdentityModule.Data.ApplicationUserProfile", "ApplicationUserProfile")
+                        .WithMany("Permissions")
+                        .HasForeignKey("ApplicationUserProfileId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

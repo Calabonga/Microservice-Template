@@ -1,8 +1,9 @@
 ﻿using System.Linq;
+using Calabonga.Microservices.Web.Core;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Calabonga.Microservice.Module.Web.AppStart
+namespace Calabonga.Microservice.Module.Web.AppStart.ConfigureServices
 {
     /// <summary>
     /// Cors configurations
@@ -42,6 +43,8 @@ namespace Calabonga.Microservice.Module.Web.AppStart
                     }
                 });
             });
+
+            services.UseMicroserviceAuthorizationPolicy();
         }
     }
 }

@@ -10,14 +10,15 @@ namespace Calabonga.Microservice.IdentityModule.Data
     /// </summary>
     public interface IApplicationDbContext
     {
-
         #region System
-
+        
         DbSet<Log> Logs { get; set; }
 
         DbSet<ApplicationUser> Users { get; set; }
 
         DbSet<ApplicationUserProfile> Profiles { get; set; }
+
+        DbSet<MicroservicePermission> Permissions { get; set; }
 
         DatabaseFacade Database { get; }
 

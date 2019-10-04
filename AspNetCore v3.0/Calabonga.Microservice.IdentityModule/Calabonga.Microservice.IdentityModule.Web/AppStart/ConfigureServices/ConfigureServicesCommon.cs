@@ -72,7 +72,10 @@ namespace Calabonga.Microservice.IdentityModule.Web.AppStart.ConfigureServices
 
             services.Configure<CurrentAppSettings>(configuration.GetSection(nameof(CurrentAppSettings)));
 
+            services.AddLocalization();
+
             services.AddHttpContextAccessor();
+            
             services.AddResponseCaching();
 
             var url = configuration.GetSection("IdentityServer").GetValue<string>("Url");
@@ -112,9 +115,6 @@ namespace Calabonga.Microservice.IdentityModule.Web.AppStart.ConfigureServices
                 .AddProfileService<IdentityProfileService>();
 
             services.AddAuthorization();
-
-
-
         }
     }
 }

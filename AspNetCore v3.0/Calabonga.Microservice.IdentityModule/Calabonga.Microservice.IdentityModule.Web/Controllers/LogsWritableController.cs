@@ -39,7 +39,7 @@ namespace Calabonga.Microservice.IdentityModule.Web.Controllers
             {
                 queryParams.PageSize = _appSettings.PageSize;
             }
-            return base.ValidateQueryParams(queryParams);
+            return new PermissionValidationResult();
         }
     }
 }

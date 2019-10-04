@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using Calabonga.EntityFrameworkCore.UOW.Framework.Validators;
+using Calabonga.Microservices.Core.Validators;
 
 namespace Calabonga.Microservice.Module.Web.Extensions
 {

@@ -18,5 +18,15 @@ namespace Calabonga.Microservice.IdentityModule.Data
         /// LastName
         /// </summary>
         public string LastName { get; set; }
+
+        /// <summary>
+        /// Profile identity
+        /// </summary>
+        public Guid ApplicationUserProfileId { get; set; }
+
+        /// <summary>
+        /// User Profile
+        /// </summary>
+        public virtual ApplicationUserProfile ApplicationUserProfile { get; set; }
     }
 }

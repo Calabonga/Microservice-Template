@@ -1,11 +1,10 @@
-using Calabonga.Microservice.Module.Web.AppStart;
+using Calabonga.Microservice.Module.Web.AppStart.Configures;
+using Calabonga.Microservice.Module.Web.AppStart.ConfigureServices;
 using Calabonga.Microservice.Module.Web.Infrastructure.DependencyInjection;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 
 namespace Calabonga.Microservice.Module.Web
 {
@@ -31,7 +30,7 @@ namespace Calabonga.Microservice.Module.Web
         /// <param name="services"></param>
         public void ConfigureServices(IServiceCollection services)
         {
-            ConfigureServicesBase.ConfigureServices(services, Configuration);
+            ConfigureServicesCommon.ConfigureServices(services, Configuration);
             ConfigureServicesSwagger.ConfigureServices(services, Configuration);
             ConfigureServicesCors.ConfigureServices(services, Configuration);
             ConfigureServicesControllers.ConfigureServices(services);
@@ -40,7 +39,6 @@ namespace Calabonga.Microservice.Module.Web
             DependencyContainer.Validators(services);
             DependencyContainer.ViewModelFactories(services);
             DependencyContainer.EntityManagers(services);
-            DependencyContainer.Repositories(services);
         }
 
         /// <summary>
@@ -51,7 +49,8 @@ namespace Calabonga.Microservice.Module.Web
         /// <param name="mapper"></param>
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, AutoMapper.IConfigurationProvider mapper)
         {
-            ConfigureApplication.Configure(app, env, mapper);
+            ConfigureCommon.Configure(app, env, mapper);
+            ConfigureEndpoints.Configure(app);
         }
     }
 }

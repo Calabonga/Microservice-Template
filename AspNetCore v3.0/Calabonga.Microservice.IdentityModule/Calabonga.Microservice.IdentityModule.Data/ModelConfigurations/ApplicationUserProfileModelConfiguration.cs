@@ -11,13 +11,16 @@ namespace Calabonga.Microservice.IdentityModule.Data.ModelConfigurations
     {
         protected override void AddBuilder(EntityTypeBuilder<ApplicationUserProfile> builder)
         {
-            builder.Property(x => x.ApplicationUserId).IsRequired();
-            builder.HasOne(x => x.ApplicationUser);
+            builder.HasMany(x => x.Permissions);
+
+            builder.HasOne(x => x.ApplicationUser)
+                .WithOne(x => x.ApplicationUserProfile)
+                .HasForeignKey<ApplicationUser>(x => x.ApplicationUserProfileId);
         }
 
         protected override string TableName()
         {
-            return "Profiles";
+            return "ApplicationUserProfiles";
         }
     }
 }

@@ -8,8 +8,6 @@
         /// <summary>
         /// Default page size
         /// </summary>
-        public int DefaultPageSize { get; set; }
-
-        
+        public int PageSize { get; set; }
     }
 }

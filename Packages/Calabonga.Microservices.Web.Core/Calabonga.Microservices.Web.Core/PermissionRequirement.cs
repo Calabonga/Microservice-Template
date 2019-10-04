@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 
-namespace Calabonga.Microservice.IdentityModule.Web.Infrastructure.Auth
+namespace Calabonga.Microservices.Web.Core
 {
     /// <summary>
     /// Permission requirement for user or service authorization

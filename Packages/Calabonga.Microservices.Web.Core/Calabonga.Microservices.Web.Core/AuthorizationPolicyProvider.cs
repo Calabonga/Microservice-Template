@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.Extensions.Options;
 
-namespace Calabonga.Microservice.IdentityModule.Web.Infrastructure.Auth
+namespace Calabonga.Microservices.Web.Core
 {
     /// <summary>
     /// 

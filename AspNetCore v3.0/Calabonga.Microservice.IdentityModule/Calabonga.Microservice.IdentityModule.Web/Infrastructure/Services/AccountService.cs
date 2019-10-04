@@ -88,7 +88,7 @@ namespace Calabonga.Microservice.IdentityModule.Web.Infrastructure.Services
                     await AddClaimsToUser(userManager, user, role);
                     var profile = _mapper.Map<ApplicationUserProfile>(model);
                     var profileRepository = _unitOfWork.GetRepository<ApplicationUserProfile>();
-                    profile.ApplicationUserId = user.Id;
+                    
                     await profileRepository.InsertAsync(profile);
                     await _unitOfWork.SaveChangesAsync();
                     if (_unitOfWork.LastSaveChangesResult.IsOk)

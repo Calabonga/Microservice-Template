@@ -1,4 +1,4 @@
-﻿using System;
+﻿using System.Collections.Generic;
 using Calabonga.EntityFrameworkCore.Entities.Base;
 
 namespace Calabonga.Microservice.IdentityModule.Data
@@ -9,13 +9,13 @@ namespace Calabonga.Microservice.IdentityModule.Data
     public class ApplicationUserProfile: Auditable
     {
         /// <summary>
-        /// Account <see cref="Data.ApplicationUser"/>
-        /// </summary>
-        public Guid ApplicationUserId { get; set; }
-
-        /// <summary>
         /// Account
         /// </summary>
         public virtual ApplicationUser ApplicationUser { get; set; }
+
+        /// <summary>
+        /// Microservice permission for policy-based authorization
+        /// </summary>
+        public ICollection<MicroservicePermission> Permissions { get; set; }
     }
 }

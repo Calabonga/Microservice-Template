@@ -1,9 +1,10 @@
-﻿using System.Security.Claims;
+﻿using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
-using Calabonga.EntityFrameworkCore.UnitOfWork;
 using Calabonga.Microservice.IdentityModule.Data;
 using IdentityModel;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore.Internal;
 using Microsoft.Extensions.Options;
 
 namespace Calabonga.Microservice.IdentityModule.Web.Infrastructure.Auth
@@ -15,7 +16,8 @@ namespace Calabonga.Microservice.IdentityModule.Web.Infrastructure.Auth
     {
         /// <inheritdoc />
         public ApplicationClaimsPrincipalFactory(
-            UserManager<ApplicationUser> userManager, RoleManager<ApplicationRole> roleManager, 
+            UserManager<ApplicationUser> userManager,
+            RoleManager<ApplicationRole> roleManager,
             IOptions<IdentityOptions> optionsAccessor)
             : base(userManager, roleManager, optionsAccessor)
         {
@@ -31,6 +33,14 @@ namespace Calabonga.Microservice.IdentityModule.Web.Infrastructure.Auth
         {
             var principal = await base.CreateAsync(user);
 
+            if (user.ApplicationUserProfile?.Permissions != null)
+            {
+                var permissions = user.ApplicationUserProfile.Permissions.ToList();
+                if (permissions.Any())
+                {
+                    permissions.ForEach(x => ((ClaimsIdentity)principal.Identity).AddClaim(new Claim(x.PolicyName, JwtClaimTypes.Role)));
+                }
+            }
             if (!string.IsNullOrWhiteSpace(user.FirstName))
             {
                 ((ClaimsIdentity)principal.Identity).AddClaim(new Claim(JwtClaimTypes.GivenName, user.FirstName));

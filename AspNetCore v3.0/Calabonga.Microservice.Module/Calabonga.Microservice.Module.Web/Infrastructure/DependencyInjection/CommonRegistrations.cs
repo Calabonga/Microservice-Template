@@ -1,5 +1,6 @@
 ﻿using Calabonga.Microservice.Module.Data;
 using Calabonga.Microservice.Module.Web.Infrastructure.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Calabonga.Microservice.Module.Web.Infrastructure.DependencyInjection
@@ -16,15 +17,12 @@ namespace Calabonga.Microservice.Module.Web.Infrastructure.DependencyInjection
         public static void Common(IServiceCollection services)
         {
             services.AddTransient<IApplicationDbContext, ApplicationDbContext>();
-            
+
             // services
             services.AddTransient<ILogService, LogService>();
             services.AddTransient<ICacheService, CacheService>();
-
-            // notifications
-            Notifications(services);
         }
     }
 
-
+    
 }

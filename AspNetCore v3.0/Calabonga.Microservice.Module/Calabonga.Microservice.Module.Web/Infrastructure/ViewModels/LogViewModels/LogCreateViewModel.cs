@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using Calabonga.EntityFrameworkCore.Entities.Base;
 using Microsoft.Extensions.Logging;
 
 namespace Calabonga.Microservice.Module.Web.Infrastructure.ViewModels.LogViewModels
@@ -7,7 +8,7 @@ namespace Calabonga.Microservice.Module.Web.Infrastructure.ViewModels.LogViewMod
     /// <summary>
     /// Data Transfer Object for Log entity
     /// </summary>
-    public class LogCreateViewModel
+    public class LogCreateViewModel : IViewModel
     {
         /// <summary>
         /// Log Created At

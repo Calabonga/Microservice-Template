@@ -15,7 +15,7 @@ namespace Calabonga.Microservice.Module.Core
         /// <summary>
         /// "BusinessOwner"
         /// </summary>
-        public const string CompanyRoleName = "Company";
+        public const string ManagerRoleName = "Manager";
 
         /// <summary>
         /// Roles
@@ -25,7 +25,7 @@ namespace Calabonga.Microservice.Module.Core
             get
             {
                 yield return SystemAdministratorRoleName;
-                yield return CompanyRoleName;
+                yield return ManagerRoleName;
             }
         }
 

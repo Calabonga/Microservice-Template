@@ -1,15 +1,16 @@
-﻿using Calabonga.Microservice.Module.Web.Middlewares;
+﻿using Calabonga.Microservice.Module.Web.AppStart.ConfigureServices;
+using Calabonga.Microservice.Module.Web.Middlewares;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Hosting;
 
-namespace Calabonga.Microservice.Module.Web.AppStart
+namespace Calabonga.Microservice.Module.Web.AppStart.Configures
 {
     /// <summary>
     /// Pipeline configuration
     /// </summary>
-    public static class ConfigureApplication
+    public static class ConfigureCommon
     {
         /// <summary>
         /// Configure pipeline
@@ -38,31 +39,15 @@ namespace Calabonga.Microservice.Module.Web.AppStart
                 }
             });
 
-            app.UseAuthentication();
-
             app.UseResponseCaching();
-
+            
             app.UseETagger();
-
-            //app.Map($"{AppData.AuthUrl}", authServer => { authServer.UseIdentityServer(); });
-
-            app.UseSwagger();
-            app.UseSwaggerUI(ConfigureServicesSwagger.SwaggerSettings);
 
             app.UseMiddleware(typeof(ErrorHandlingMiddleware));
 
-            app.UseCors("CorsPolicy");
-
-            app.UseHttpsRedirection();
-
-            app.UseAuthorization();
-
-            app.UseRouting();
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllers();
-            });
-
+            app.UseSwagger();
+            
+            app.UseSwaggerUI(ConfigureServicesSwagger.SwaggerSettings);
         }
     }
 }

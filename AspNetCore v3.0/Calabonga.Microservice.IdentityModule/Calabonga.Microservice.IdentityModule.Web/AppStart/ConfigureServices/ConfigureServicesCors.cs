@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using Calabonga.Microservices.Web.Core;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -42,6 +43,8 @@ namespace Calabonga.Microservice.IdentityModule.Web.AppStart.ConfigureServices
                     }
                 });
             });
+
+            services.UseMicroserviceAuthorizationPolicy();
         }
     }
 }

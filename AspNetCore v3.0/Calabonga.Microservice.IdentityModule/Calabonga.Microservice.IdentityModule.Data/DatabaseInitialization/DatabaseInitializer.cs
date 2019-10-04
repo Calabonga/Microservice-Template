@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Calabonga.Microservice.IdentityModule.Core;
 using Microsoft.AspNetCore.Identity;
@@ -42,12 +43,28 @@ namespace Calabonga.Microservice.IdentityModule.Data.DatabaseInitialization
                 PhoneNumber = "+79000000000",
                 EmailConfirmed = true,
                 PhoneNumberConfirmed = true,
-                SecurityStamp = Guid.NewGuid().ToString("D")
+                SecurityStamp = Guid.NewGuid().ToString("D"),
+                ApplicationUserProfile = new ApplicationUserProfile
+                {
+                    CreatedAt = DateTime.Now,
+                    CreatedBy = "SEED",
+                    Permissions = new List<MicroservicePermission>
+                    {
+                        new MicroservicePermission
+                        {
+                            CreatedAt = DateTime.Now,
+                            CreatedBy = "SEED",   
+                            PolicyName = "Logs:UserRoles:View",
+                            Description = "Access policy for Logs controller user view"
+                        }
+                    }
+                }
             };
+            
             if (!context.Users.Any(u => u.UserName == developer1.UserName))
             {
                 var password = new PasswordHasher<ApplicationUser>();
-                var hashed = password.HashPassword(developer1, "123123!");
+                var hashed = password.HashPassword(developer1, "123qwe!@#");
                 developer1.PasswordHash = hashed;
                 var userStore = scope.ServiceProvider.GetService<ApplicationUserStore>();
                 var result = await userStore.CreateAsync(developer1);

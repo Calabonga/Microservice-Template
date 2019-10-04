@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 using System.Reflection;
-using Calabonga.EntityFrameworkCore.UOW.Framework.Validators;
+using Calabonga.Microservices.Core.Validators;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Calabonga.Microservice.Module.Web.Infrastructure.DependencyInjection

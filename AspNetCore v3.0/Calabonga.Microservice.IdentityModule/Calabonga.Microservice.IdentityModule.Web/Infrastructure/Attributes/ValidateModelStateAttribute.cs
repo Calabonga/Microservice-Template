@@ -13,14 +13,12 @@ namespace Calabonga.Microservice.IdentityModule.Web.Infrastructure.Attributes
         /// <inheritdoc />
         public override void OnActionExecuting(ActionExecutingContext context)
         {
-            if (!context.ModelState.IsValid)
-            {
-                var operation = OperationResult.CreateResult<object>();
-                var messages = context.ModelState.Values.SelectMany(x => x.Errors.Select(xx => xx.ErrorMessage));
-                var message = string.Join(" ", messages);
-                operation.AddError(message);
-                context.Result = new OkObjectResult(operation);
-            }
+            if (context.ModelState.IsValid) return;
+            var operation = OperationResult.CreateResult<object>();
+            var messages = context.ModelState.Values.SelectMany(x => x.Errors.Select(xx => xx.ErrorMessage));
+            var message = string.Join(" ", messages);
+            operation.AddError(message);
+            context.Result = new OkObjectResult(operation);
         }
     }
 }

@@ -1,34 +1,33 @@
 ﻿using System.Security.Claims;
 using AutoMapper;
-using Calabonga.EntityFrameworkCore.UnitOfWork;
-using Calabonga.EntityFrameworkCore.UnitOfWork.Framework.Controllers;
-using Calabonga.EntityFrameworkCore.UnitOfWork.Framework.QueryParams;
-using Calabonga.Microservice.IdentityModule.Core;
-using Calabonga.Microservice.IdentityModule.Data;
-using Calabonga.Microservice.IdentityModule.Entities;
-using Calabonga.Microservice.IdentityModule.Web.Infrastructure.Settings;
-using Calabonga.Microservice.IdentityModule.Web.Infrastructure.ViewModels.LogViewModels;
+using Calabonga.EntityFrameworkCore.UOW;
+using Calabonga.EntityFrameworkCore.UOW.Framework.Controllers;
+using Calabonga.EntityFrameworkCore.UOW.Framework.QueryParams;
+using Calabonga.Microservice.Module.Data;
+using Calabonga.Microservice.Module.Entities;
+using Calabonga.Microservice.Module.Web.Infrastructure.Settings;
+using Calabonga.Microservice.Module.Web.Infrastructure.ViewModels.LogViewModels;
 using Calabonga.Microservices.Core;
 using Calabonga.Microservices.Core.Validators;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 
-namespace Calabonga.Microservice.IdentityModule.Web.Controllers
+namespace Calabonga.Microservice.Module.Web.Controllers
 {
     /// <summary>
     /// ReadOnlyController Demo
     /// </summary>
     [Route("api/[controller]")]
     [Authorize]
-    public class LogsReadOnlyController : ReadOnlyController<ApplicationDbContext, ApplicationUser, ApplicationRole, Log, LogViewModel, PagedListQueryParams>
+    public class LogsReadOnlyController : ReadOnlyController<ApplicationDbContext, Log, LogViewModel, PagedListQueryParams>
     {
         private readonly CurrentAppSettings _appSettings;
 
         /// <inheritdoc />
         public LogsReadOnlyController(
             IOptions<CurrentAppSettings> appSettings,
-            IUnitOfWork<ApplicationDbContext, ApplicationUser, ApplicationRole> unitOfWork,
+            IUnitOfWork<ApplicationDbContext> unitOfWork, 
             IMapper mapper)
             : base(unitOfWork, mapper)
         {
@@ -36,7 +35,7 @@ namespace Calabonga.Microservice.IdentityModule.Web.Controllers
         }
 
         [HttpGet("user-roles")]
-        [Authorize(Policy = "Logs:UserRoles:View", Roles = AppData.SystemAdministratorRoleName)]
+        [Authorize(Policy = "Logs:UserRoles:View")]
         public IActionResult Get()
         {
             //Get Roles for current user

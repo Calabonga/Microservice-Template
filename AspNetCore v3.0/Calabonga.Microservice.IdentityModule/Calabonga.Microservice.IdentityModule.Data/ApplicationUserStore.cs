@@ -15,13 +15,16 @@ namespace Calabonga.Microservice.IdentityModule.Data
         public ApplicationUserStore(ApplicationDbContext context, IdentityErrorDescriber describer = null)
             : base(context, describer)
         {
-            
+
         }
 
         /// <inheritdoc />
         public override Task<ApplicationUser> FindByIdAsync(string userId, CancellationToken cancellationToken = new CancellationToken())
         {
-            return Users.FirstOrDefaultAsync(u => u.Id.ToString() == userId, cancellationToken: cancellationToken);
+            return Users
+                .Include(x => x.ApplicationUserProfile)
+                .ThenInclude(x => x.Permissions)
+                .FirstOrDefaultAsync(u => u.Id.ToString() == userId, cancellationToken: cancellationToken);
         }
     }
 }

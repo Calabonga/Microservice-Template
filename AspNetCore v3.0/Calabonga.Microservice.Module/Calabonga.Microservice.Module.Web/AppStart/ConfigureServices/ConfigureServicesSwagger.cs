@@ -8,7 +8,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.SwaggerUI;
 
-namespace Calabonga.Microservice.Module.Web.AppStart
+namespace Calabonga.Microservice.Module.Web.AppStart.ConfigureServices
 {
     /// <summary>
     /// Swagger configuration
@@ -16,7 +16,7 @@ namespace Calabonga.Microservice.Module.Web.AppStart
     public static class ConfigureServicesSwagger
     {
         private const string AppTitle = "Microservice API";
-        private const string AppVersion = "1.0.0-alpha-1";
+        private const string AppVersion = "2.0.0-alpha-1";
         private const string SwaggerConfig = "/swagger/v1/swagger.json";
         private const string SwaggerUrl = "api/manual";
 
@@ -33,39 +33,29 @@ namespace Calabonga.Microservice.Module.Web.AppStart
                 {
                     Title = AppTitle,
                     Version = AppVersion,
-                    Description = "Microservice module API documentation"
+                    Description = "Microservice API module API documentation. This template based on ASP.NET Core 3.0."
                 });
                 options.ResolveConflictingActions(x => x.First());
 
                 var url = configuration.GetSection("IdentityServer").GetValue<string>("SwaggerUrl");
-          
+
                 options.AddSecurityDefinition("oauth2", new OpenApiSecurityScheme
                 {
                     Type = SecuritySchemeType.OAuth2,
                     Flows = new OpenApiOAuthFlows
                     {
-                        Implicit = new OpenApiOAuthFlow
+                        Password = new OpenApiOAuthFlow
                         {
-                            AuthorizationUrl = new Uri(url, UriKind.Absolute),
+                            TokenUrl = new Uri($"{url}/auth/connect/token", UriKind.Absolute),
                             Scopes = new Dictionary<string, string>
                             {
-                                { "readAccess", "Access read operations" },
-                                { "writeAccess", "Access write operations" }
+                                { "api1", "Default scope" }
                             }
                         }
                     }
                 });
 
-                options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
-                {
-                    Description = "JWT Authorization header using the Bearer scheme. \r\n\r\n Enter 'Bearer' [space] and then your token in the text input below.\r\n\r\nExample: \"Bearer 12345abcdef\"",
-                    Name = "Authorization",
-                    In = ParameterLocation.Header,
-                    Type = SecuritySchemeType.ApiKey,
-                    Scheme = "Bearer"
-                });
-
-                options.AddSecurityRequirement(new OpenApiSecurityRequirement()
+                options.AddSecurityRequirement(new OpenApiSecurityRequirement
                 {
                     {
                         new OpenApiSecurityScheme
@@ -73,7 +63,7 @@ namespace Calabonga.Microservice.Module.Web.AppStart
                             Reference = new OpenApiReference
                             {
                                 Type = ReferenceType.SecurityScheme,
-                                Id = "Bearer"
+                                Id = "oauth2"
                             },
                             Scheme = "oauth2",
                             Name = "Bearer",
@@ -84,7 +74,6 @@ namespace Calabonga.Microservice.Module.Web.AppStart
                     }
                 });
 
-                options.DocumentFilter<LowercaseDocumentFilter>();
                 options.OperationFilter<ApplySummariesOperationFilter>();
             });
         }
@@ -97,7 +86,7 @@ namespace Calabonga.Microservice.Module.Web.AppStart
         {
             settings.SwaggerEndpoint(SwaggerConfig, $"{AppTitle} v.{AppVersion}");
             settings.RoutePrefix = SwaggerUrl;
-            settings.DocumentTitle = "API documentation";
+            settings.DocumentTitle = "Microservice API";
             settings.DefaultModelExpandDepth(0);
             settings.DefaultModelRendering(ModelRendering.Model);
             settings.DefaultModelsExpandDepth(0);
@@ -106,8 +95,7 @@ namespace Calabonga.Microservice.Module.Web.AppStart
             settings.OAuthScopeSeparator(" ");
             settings.OAuthClientSecret("secret");
             settings.DisplayRequestDuration();
-            settings.OAuthAppName("Micro service");
-            settings.OAuthUseBasicAuthenticationWithAccessCodeGrant();
+            settings.OAuthAppName("Microservice API module API documentation");
         }
     }
 }

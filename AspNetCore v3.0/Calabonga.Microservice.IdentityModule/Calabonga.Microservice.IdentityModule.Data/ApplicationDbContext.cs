@@ -18,6 +18,9 @@ namespace Calabonga.Microservice.IdentityModule.Data
 
         public DbSet<ApplicationUserProfile> Profiles { get; set; }
 
+        /// <inheritdoc />
+        public DbSet<MicroservicePermission> Permissions { get; set; }
+
         #endregion
     }
 }
