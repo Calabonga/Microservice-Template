@@ -4,8 +4,4 @@
     <TargetFramework>netcoreapp3.0</TargetFramework>
   </PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Calabonga.Microservices.Core" Version="1.0.0-beta-3" />
-  </ItemGroup>
-
 </Project>

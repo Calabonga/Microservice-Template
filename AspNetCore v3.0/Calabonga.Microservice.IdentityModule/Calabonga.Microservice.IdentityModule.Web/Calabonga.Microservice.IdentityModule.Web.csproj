@@ -7,8 +7,7 @@
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="9.0.0" />
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="7.0.0" />
-    <PackageReference Include="Calabonga.EntityFrameworkCore.UnitOfWork.Framework" Version="2.0.0-beta-7" />
-    <PackageReference Include="Calabonga.Microservices.Core" Version="1.0.0-beta-3" />
+    <PackageReference Include="Calabonga.EntityFrameworkCore.UnitOfWork.Framework" Version="2.0.0-beta-8" />
     <PackageReference Include="Calabonga.Microservices.Web.Core" Version="1.0.0-beta-3" />
     <PackageReference Include="IdentityServer4.AccessTokenValidation" Version="3.0.1" />
     <PackageReference Include="IdentityServer4.AspNetIdentity" Version="3.0.1" />
