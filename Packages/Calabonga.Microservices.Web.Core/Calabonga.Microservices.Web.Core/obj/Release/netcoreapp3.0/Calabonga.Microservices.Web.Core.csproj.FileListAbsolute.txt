@@ -1,8 +1,0 @@
-D:\Projects\MicroserviceTemplate\Packages\Calabonga.Microservices.Web.Core\Calabonga.Microservices.Web.Core\bin\Release\netcoreapp3.0\Calabonga.Microservices.Web.Core.deps.json
-D:\Projects\MicroserviceTemplate\Packages\Calabonga.Microservices.Web.Core\Calabonga.Microservices.Web.Core\bin\Release\netcoreapp3.0\Calabonga.Microservices.Web.Core.dll
-D:\Projects\MicroserviceTemplate\Packages\Calabonga.Microservices.Web.Core\Calabonga.Microservices.Web.Core\bin\Release\netcoreapp3.0\Calabonga.Microservices.Web.Core.pdb
-D:\Projects\MicroserviceTemplate\Packages\Calabonga.Microservices.Web.Core\Calabonga.Microservices.Web.Core\obj\Release\netcoreapp3.0\Calabonga.Microservices.Web.Core.AssemblyInfoInputs.cache
-D:\Projects\MicroserviceTemplate\Packages\Calabonga.Microservices.Web.Core\Calabonga.Microservices.Web.Core\obj\Release\netcoreapp3.0\Calabonga.Microservices.Web.Core.AssemblyInfo.cs
-D:\Projects\MicroserviceTemplate\Packages\Calabonga.Microservices.Web.Core\Calabonga.Microservices.Web.Core\obj\Release\netcoreapp3.0\Calabonga.Microservices.Web.Core.dll
-D:\Projects\MicroserviceTemplate\Packages\Calabonga.Microservices.Web.Core\Calabonga.Microservices.Web.Core\obj\Release\netcoreapp3.0\Calabonga.Microservices.Web.Core.pdb
-D:\Projects\MicroserviceTemplate\Packages\Calabonga.Microservices.Web.Core\Calabonga.Microservices.Web.Core\obj\Release\netcoreapp3.0\Calabonga.Microservices.Web.Core.csprojAssemblyReference.cache

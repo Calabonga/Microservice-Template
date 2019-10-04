@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Authors>Calabonga</Authors>
+    <Company>Calabonga SOFT</Company>
+    <Description>UnitOfWork for Microservices. All microservices in the system should and can use Unit of Work pattern. This package implements this pattern.</Description>
+    <Copyright>Calabonga SOFT © 2019</Copyright>
+    <PackageLicenseExpression>MIT OR Apache-2.0</PackageLicenseExpression>
+    <PackageProjectUrl>https://www.calabonga.net/blog/post/microservices-2-shablon-dlya-bystrogo-sozdaniya-mikroservisa-na-baze--net-core</PackageProjectUrl>
+    <PackageIcon>logo.png</PackageIcon>
+    <RepositoryUrl>https://github.com/Calabonga/microservice-template</RepositoryUrl>
+    <RepositoryType></RepositoryType>
+    <PackageTags>calabonga, microservice, base, entity, unitofwork, framework</PackageTags>
+    <PackageReleaseNotes>First release</PackageReleaseNotes>
+    <Version>1.0.0</Version>
+    <PackageIcon>logo.png</PackageIcon>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="logo.png" Pack="true" PackagePath=""/>
+  </ItemGroup>
+
+</Project>
