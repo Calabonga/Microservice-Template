@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using Calabonga.EntityFrameworkCore.UOW;
 using Calabonga.EntityFrameworkCore.UOW.Framework.Factories;
-using Calabonga.Microservice.Module.Entities;
+using $ext_projectname$.Entities;
 using $safeprojectname$.Infrastructure.ViewModels.LogViewModels;
 using Calabonga.OperationResultsCore;
 using Microsoft.Extensions.Logging;

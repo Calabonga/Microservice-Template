@@ -1,4 +1,4 @@
-using Calabonga.Microservice.Module.Data.DatabaseInitialization;
+using $ext_projectname$.Data.DatabaseInitialization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;

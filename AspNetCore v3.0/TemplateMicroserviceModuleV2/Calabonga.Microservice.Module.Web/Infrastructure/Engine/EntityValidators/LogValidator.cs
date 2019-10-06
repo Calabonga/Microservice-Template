@@ -1,4 +1,4 @@
-﻿using Calabonga.Microservice.Module.Entities;
+﻿using $ext_projectname$.Entities;
 using Calabonga.Microservices.Core.Validators;
 
 namespace $safeprojectname$.Infrastructure.Engine.EntityValidators

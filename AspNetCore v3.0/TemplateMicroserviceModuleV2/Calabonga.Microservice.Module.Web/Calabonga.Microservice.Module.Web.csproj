@@ -33,9 +33,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Calabonga.Microservice.Module.Core\Calabonga.Microservice.Module.Core.csproj" />
-    <ProjectReference Include="..\Calabonga.Microservice.Module.Data\Calabonga.Microservice.Module.Data.csproj" />
-    <ProjectReference Include="..\Calabonga.Microservice.Module.Models\Calabonga.Microservice.Module.Entities.csproj" />
+    <ProjectReference Include="..\$ext_projectname$.Core\$ext_projectname$.Core.csproj" />
+    <ProjectReference Include="..\$ext_projectname$.Data\$ext_projectname$.Data.csproj" />
   </ItemGroup>
 
 </Project>

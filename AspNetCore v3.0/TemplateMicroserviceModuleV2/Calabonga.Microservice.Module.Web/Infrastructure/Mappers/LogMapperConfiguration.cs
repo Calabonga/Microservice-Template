@@ -1,5 +1,5 @@
 ﻿using Calabonga.EntityFrameworkCore.UOW;
-using Calabonga.Microservice.Module.Entities;
+using $ext_projectname$.Entities;
 using $safeprojectname$.Infrastructure.Mappers.Base;
 using $safeprojectname$.Infrastructure.ViewModels.LogViewModels;
 

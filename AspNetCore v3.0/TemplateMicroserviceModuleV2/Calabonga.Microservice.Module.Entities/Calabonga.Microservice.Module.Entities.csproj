@@ -9,7 +9,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Calabonga.Microservice.Module.Core\Calabonga.Microservice.Module.Core.csproj" />
+    <ProjectReference Include="..\$ext_projectname$.Core\$ext_projectname$.Core.csproj" />
   </ItemGroup>
 
 </Project>

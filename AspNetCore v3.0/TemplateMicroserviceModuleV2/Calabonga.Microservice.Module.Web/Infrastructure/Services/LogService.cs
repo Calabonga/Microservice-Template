@@ -1,8 +1,8 @@
 ﻿using System;
 using Calabonga.EntityFrameworkCore.UOW;
-using Calabonga.Microservice.Module.Core.Exceptions;
-using Calabonga.Microservice.Module.Data;
-using Calabonga.Microservice.Module.Entities;
+using $ext_projectname$.Core.Exceptions;
+using $ext_projectname$.Data;
+using $ext_projectname$.Entities;
 using Microsoft.Extensions.Logging;
 
 namespace $safeprojectname$.Infrastructure.Services

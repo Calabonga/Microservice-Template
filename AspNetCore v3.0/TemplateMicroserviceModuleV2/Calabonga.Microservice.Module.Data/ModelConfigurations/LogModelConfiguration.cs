@@ -1,6 +1,6 @@
 ﻿using System;
 using $safeprojectname$.ModelConfigurations.Base;
-using Calabonga.Microservice.Module.Entities;
+using $ext_projectname$.Entities;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace $safeprojectname$.ModelConfigurations

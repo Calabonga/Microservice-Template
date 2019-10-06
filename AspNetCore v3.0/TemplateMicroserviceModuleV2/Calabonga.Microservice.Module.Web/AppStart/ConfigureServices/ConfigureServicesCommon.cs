@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using Calabonga.EntityFrameworkCore.UOW;
-using Calabonga.Microservice.Module.Core;
-using Calabonga.Microservice.Module.Data;
+using $ext_projectname$.Core;
+using $ext_projectname$.Data;
 using $safeprojectname$.Infrastructure.Settings;
 using IdentityServer4.AccessTokenValidation;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
