@@ -1,0 +1,131 @@
+<VSTemplate Version="3.0.0" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" Type="Project">
+  <TemplateData>
+    <Name>Calabonga.Microservice.Module.Web</Name>
+    <Description>&lt;No description available&gt;</Description>
+    <ProjectType>CSharp</ProjectType>
+    <ProjectSubType>
+    </ProjectSubType>
+    <SortOrder>1000</SortOrder>
+    <CreateNewFolder>true</CreateNewFolder>
+    <DefaultName>Calabonga.Microservice.Module.Web</DefaultName>
+    <ProvideDefaultName>true</ProvideDefaultName>
+    <LocationField>Enabled</LocationField>
+    <EnableLocationBrowseButton>true</EnableLocationBrowseButton>
+    <CreateInPlace>true</CreateInPlace>
+    <Icon>__TemplateIcon.ico</Icon>
+  </TemplateData>
+  <TemplateContent>
+    <Project TargetFileName="Calabonga.Microservice.Module.Web.csproj" File="Calabonga.Microservice.Module.Web.csproj" ReplaceParameters="true">
+      <Folder Name="Properties" TargetFolderName="Properties">
+        <ProjectItem ReplaceParameters="true" TargetFileName="launchSettings.json">launchSettings.json</ProjectItem>
+      </Folder>
+      <Folder Name="AppStart" TargetFolderName="AppStart">
+        <Folder Name="Configures" TargetFolderName="Configures">
+          <ProjectItem ReplaceParameters="true" TargetFileName="ConfigureCommon.cs">ConfigureCommon.cs</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="ConfigureEndpoints.cs">ConfigureEndpoints.cs</ProjectItem>
+        </Folder>
+        <Folder Name="ConfigureServices" TargetFolderName="ConfigureServices">
+          <ProjectItem ReplaceParameters="true" TargetFileName="ConfigureServicesCommon.cs">ConfigureServicesCommon.cs</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="ConfigureServicesControllers.cs">ConfigureServicesControllers.cs</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="ConfigureServicesCors.cs">ConfigureServicesCors.cs</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="ConfigureServicesSwagger.cs">ConfigureServicesSwagger.cs</ProjectItem>
+        </Folder>
+        <Folder Name="SwaggerFilters" TargetFolderName="SwaggerFilters">
+          <ProjectItem ReplaceParameters="true" TargetFileName="ApplySummariesOperationFilter.cs">ApplySummariesOperationFilter.cs</ProjectItem>
+        </Folder>
+      </Folder>
+      <Folder Name="Controllers" TargetFolderName="Controllers">
+        <ProjectItem ReplaceParameters="true" TargetFileName="LogsReadOnlyController.cs">LogsReadOnlyController.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="LogsWritableController.cs">LogsWritableController.cs</ProjectItem>
+      </Folder>
+      <Folder Name="Extensions" TargetFolderName="Extensions">
+        <ProjectItem ReplaceParameters="true" TargetFileName="AssemblyExtensions.cs">AssemblyExtensions.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="DateTimeExtensions.cs">DateTimeExtensions.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="EntityValidatorExtensions.cs">EntityValidatorExtensions.cs</ProjectItem>
+      </Folder>
+      <Folder Name="Infrastructure" TargetFolderName="Infrastructure">
+        <Folder Name="Attributes" TargetFolderName="Attributes">
+          <ProjectItem ReplaceParameters="true" TargetFileName="SwaggerFormAttribute.cs">SwaggerFormAttribute.cs</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="SwaggerGroupAttribute.cs">SwaggerGroupAttribute.cs</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="ValidateModelStateAttribute.cs">ValidateModelStateAttribute.cs</ProjectItem>
+        </Folder>
+        <Folder Name="DependencyInjection" TargetFolderName="DependencyInjection">
+          <ProjectItem ReplaceParameters="true" TargetFileName="CommonRegistrations.cs">CommonRegistrations.cs</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="EntitiesManagerRegistration.cs">EntitiesManagerRegistration.cs</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="ValidatorsRegistration.cs">ValidatorsRegistration.cs</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="ViewModelFactoriesRegistration.cs">ViewModelFactoriesRegistration.cs</ProjectItem>
+        </Folder>
+        <Folder Name="Engine" TargetFolderName="Engine">
+          <Folder Name="EntityManagers" TargetFolderName="EntityManagers">
+            <ProjectItem ReplaceParameters="true" TargetFileName="LogManager.cs">LogManager.cs</ProjectItem>
+          </Folder>
+          <Folder Name="EntityValidators" TargetFolderName="EntityValidators">
+            <ProjectItem ReplaceParameters="true" TargetFileName="LogValidator.cs">LogValidator.cs</ProjectItem>
+          </Folder>
+          <Folder Name="ViewModelFactories" TargetFolderName="ViewModelFactories">
+            <ProjectItem ReplaceParameters="true" TargetFileName="LogViewModelFactory.cs">LogViewModelFactory.cs</ProjectItem>
+          </Folder>
+        </Folder>
+        <Folder Name="Factories" TargetFolderName="Factories">
+          <Folder Name="Base" TargetFolderName="Base">
+            <ProjectItem ReplaceParameters="true" TargetFileName="IViewModel.cs">IViewModel.cs</ProjectItem>
+            <ProjectItem ReplaceParameters="true" TargetFileName="IViewModelFactory.cs">IViewModelFactory.cs</ProjectItem>
+            <ProjectItem ReplaceParameters="true" TargetFileName="ViewModelFactory.cs">ViewModelFactory.cs</ProjectItem>
+          </Folder>
+        </Folder>
+        <Folder Name="Helpers" TargetFolderName="Helpers">
+          <ProjectItem ReplaceParameters="true" TargetFileName="AsyncHelper.cs">AsyncHelper.cs</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="EmailHelper.cs">EmailHelper.cs</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="EnumHelper.cs">EnumHelper.cs</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="Utilites.cs">Utilites.cs</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="ValidationContextHelper.cs">ValidationContextHelper.cs</ProjectItem>
+        </Folder>
+        <Folder Name="Mappers" TargetFolderName="Mappers">
+          <Folder Name="Base" TargetFolderName="Base">
+            <ProjectItem ReplaceParameters="true" TargetFileName="IAutoMapper.cs">IAutoMapper.cs</ProjectItem>
+            <ProjectItem ReplaceParameters="true" TargetFileName="MapperConfigurationBase.cs">MapperConfigurationBase.cs</ProjectItem>
+            <ProjectItem ReplaceParameters="true" TargetFileName="PagedListConverter.cs">PagedListConverter.cs</ProjectItem>
+          </Folder>
+          <ProjectItem ReplaceParameters="true" TargetFileName="LogMapperConfiguration.cs">LogMapperConfiguration.cs</ProjectItem>
+        </Folder>
+        <Folder Name="Services" TargetFolderName="Services">
+          <ProjectItem ReplaceParameters="true" TargetFileName="CacheService.cs">CacheService.cs</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="ICacheService.cs">ICacheService.cs</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="ILogService.cs">ILogService.cs</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="LogService.cs">LogService.cs</ProjectItem>
+        </Folder>
+        <Folder Name="Settings" TargetFolderName="Settings">
+          <Folder Name="Base" TargetFolderName="Base">
+            <ProjectItem ReplaceParameters="true" TargetFileName="ServiceBase.cs">ServiceBase.cs</ProjectItem>
+          </Folder>
+          <ProjectItem ReplaceParameters="true" TargetFileName="CurrentAppSettings.cs">CurrentAppSettings.cs</ProjectItem>
+        </Folder>
+        <Folder Name="Validations" TargetFolderName="Validations">
+          <ProjectItem ReplaceParameters="true" TargetFileName="LogValidator.cs">LogValidator.cs</ProjectItem>
+        </Folder>
+        <Folder Name="ViewModels" TargetFolderName="ViewModels">
+          <Folder Name="AccountViewModels" TargetFolderName="AccountViewModels">
+            <ProjectItem ReplaceParameters="true" TargetFileName="ApplicationUserProfileViewModel.cs">ApplicationUserProfileViewModel.cs</ProjectItem>
+            <ProjectItem ReplaceParameters="true" TargetFileName="LoginViewModel.cs">LoginViewModel.cs</ProjectItem>
+            <ProjectItem ReplaceParameters="true" TargetFileName="RegisterViewModel.cs">RegisterViewModel.cs</ProjectItem>
+          </Folder>
+          <Folder Name="LogViewModels" TargetFolderName="LogViewModels">
+            <ProjectItem ReplaceParameters="true" TargetFileName="LogCreateViewModel.cs">LogCreateViewModel.cs</ProjectItem>
+            <ProjectItem ReplaceParameters="true" TargetFileName="LogUpdateViewModel.cs">LogUpdateViewModel.cs</ProjectItem>
+            <ProjectItem ReplaceParameters="true" TargetFileName="LogViewModel.cs">LogViewModel.cs</ProjectItem>
+          </Folder>
+        </Folder>
+      </Folder>
+      <Folder Name="Middlewares" TargetFolderName="Middlewares">
+        <ProjectItem ReplaceParameters="true" TargetFileName="ErrorHandle.cs">ErrorHandle.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="ETagMiddleware.cs">ETagMiddleware.cs</ProjectItem>
+      </Folder>
+      <ProjectItem ReplaceParameters="true" TargetFileName="appsettings.json">appsettings.json</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="appsettings.Development.json">appsettings.Development.json</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="appsettings.Production.json">appsettings.Production.json</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="Program.cs">Program.cs</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="Startup.cs">Startup.cs</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="WeatherForecast.cs">WeatherForecast.cs</ProjectItem>
+    </Project>
+  </TemplateContent>
+</VSTemplate>
