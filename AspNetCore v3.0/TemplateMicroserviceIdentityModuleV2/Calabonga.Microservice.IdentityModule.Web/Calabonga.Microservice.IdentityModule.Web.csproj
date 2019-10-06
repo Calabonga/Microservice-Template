@@ -14,6 +14,7 @@
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="9.0.0" />
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="7.0.0" />
+    <PackageReference Include="Calabonga.EntityFrameworkCore.Entities.Base" Version="2.0.0" />
     <PackageReference Include="Calabonga.EntityFrameworkCore.UnitOfWork.Framework" Version="2.0.0" />
     <PackageReference Include="Calabonga.Microservices.Web.Core" Version="1.0.0" />
     <PackageReference Include="IdentityServer4.AccessTokenValidation" Version="3.0.1" />
@@ -30,8 +31,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Calabonga.Microservice.IdentityModule.Core\Calabonga.Microservice.IdentityModule.Core.csproj" />
-    <ProjectReference Include="..\Calabonga.Microservice.IdentityModule.Data\Calabonga.Microservice.IdentityModule.Data.csproj" />
+    <ProjectReference Include="..\$ext_projectname$.Core\$ext_projectname$.Core.csproj" />
+    <ProjectReference Include="..\$ext_projectname$.Data\$ext_projectname$.Data.csproj" />
+    <ProjectReference Include="..\$ext_projectname$.Entities\$ext_projectname$.Entities.csproj" />
   </ItemGroup>
 
 </Project>

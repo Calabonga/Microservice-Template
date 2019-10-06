@@ -1,12 +1,12 @@
-using Calabonga.Microservice.IdentityModule.Web.AppStart.Configures;
-using Calabonga.Microservice.IdentityModule.Web.AppStart.ConfigureServices;
-using Calabonga.Microservice.IdentityModule.Web.Infrastructure.DependencyInjection;
+using $safeprojectname$.AppStart.Configures;
+using $safeprojectname$.AppStart.ConfigureServices;
+using $safeprojectname$.Infrastructure.DependencyInjection;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Calabonga.Microservice.IdentityModule.Web
+namespace $safeprojectname$
 {
     /// <summary>
     /// Entry point

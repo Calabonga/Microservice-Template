@@ -6,12 +6,12 @@
 // Created Date: 2019-10-06
 // ---------------------------------------
 
-using Calabonga.Microservice.IdentityModule.Data.DatabaseInitialization;
+using $ext_projectname$.Data.DatabaseInitialization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
-namespace Calabonga.Microservice.IdentityModule.Web
+namespace $safeprojectname$
 {
     public class Program
     {
