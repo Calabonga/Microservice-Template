@@ -19,6 +19,6 @@ Visual Studio project template for microservice module base on ASP.NET Core
 
 [Микросервисы: Прокси для frontend](https://www.calabonga.net/blog/post/odin-frontend-dolzhen-rabotat-tolko-so-svoim-backend)
 
-[YouTube](https://www.youtube.com/playlist?list=PLIB8be7sunXMXTZKptqEtXAACpsYZdzi_) (rus) (видео)
+[YouTube по версии ASP.NET Core 2.2](https://www.youtube.com/playlist?list=PLIB8be7sunXMXTZKptqEtXAACpsYZdzi_) (rus) (видео)
 
 [Вопросы можно задать в блоге](https://www.calabonga.net/blog)
