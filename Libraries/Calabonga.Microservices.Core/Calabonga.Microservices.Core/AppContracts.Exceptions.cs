@@ -60,6 +60,11 @@ namespace Calabonga.Microservices.Core
             /// "Type Converter Exception"
             /// </summary>
             public static string TypeConverterException => "Type Converter Exception";
+
+            /// <summary>
+            /// "AutoMapper Mapping exception";
+            /// </summary>
+            public static string MappingException => "AutoMapper Mapping exception";
         }
     }
 }

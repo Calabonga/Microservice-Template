@@ -10,8 +10,8 @@
     <RepositoryUrl>https://github.com/Calabonga/microservice-template</RepositoryUrl>
     <RepositoryType />
     <PackageTags>calabonga, microservice, base, entity, unitofwork, framework, authorization, policies</PackageTags>
-    <PackageReleaseNotes>First release</PackageReleaseNotes>
-    <Version>1.0.0</Version>
+    <PackageReleaseNotes>Nuget-packages updated</PackageReleaseNotes>
+    <Version>1.0.1-beta-2</Version>
     <Description>Base authorization entities for Microservices. All microservices in the system should and can use Unit of Work pattern. This package implements this pattern.</Description>
     <PackageProjectUrl>https://www.calabonga.net/blog/post/microservices-2-shablon-dlya-bystrogo-sozdaniya-mikroservisa-na-baze--net-core</PackageProjectUrl>
     <Copyright>Calabonga</Copyright>
@@ -20,12 +20,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="logo.png" Pack="true" PackagePath=""/>
+    <None Include="logo.png" Pack="true" PackagePath="" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Calabonga.Microservices.Core" Version="1.0.0" />
+    <PackageReference Include="Calabonga.Microservices.Core" Version="1.0.1-beta-2" />
     <PackageReference Include="Microsoft.AspNetCore.Authorization" Version="3.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Abstractions" Version="2.2.0" />
   </ItemGroup>
 
 </Project>

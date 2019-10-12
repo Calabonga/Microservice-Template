@@ -3,7 +3,7 @@
 namespace Calabonga.Microservices.Core.Exceptions
 {
     /// <summary>
-    /// Represent Price Point Exception
+    /// Represent Invalid casting Exception
     /// </summary>
     public class MicroserviceInvalidCastException : Exception
     {
