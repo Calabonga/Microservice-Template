@@ -13,7 +13,7 @@ namespace $safeprojectname$.Infrastructure.Engine.ViewModelFactories
     /// <summary>
     /// ViewModel factory for <see cref="Log"/>
     /// </summary>
-    public class LogViewModelFactory : ViewModelFactory<Log, LogCreateViewModel, LogUpdateViewModel>
+    public class LogViewModelFactory : ViewModelFactory<LogCreateViewModel, LogUpdateViewModel>
     {
         private readonly IUnitOfWork _context;
         private readonly IMapper _mapper;

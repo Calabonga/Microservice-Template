@@ -14,7 +14,7 @@ namespace Calabonga.Microservice.IdentityModule.Web.Infrastructure.Engine.ViewMo
     /// <summary>
     /// ViewModel factory for <see cref="Log"/>
     /// </summary>
-    public class LogViewModelFactory: ViewModelFactory<Log, LogCreateViewModel, LogUpdateViewModel>
+    public class LogViewModelFactory: ViewModelFactory<LogCreateViewModel, LogUpdateViewModel>
     {
         private readonly IUnitOfWork<ApplicationDbContext, ApplicationUser, ApplicationRole> _context;
         private readonly IMapper _mapper;

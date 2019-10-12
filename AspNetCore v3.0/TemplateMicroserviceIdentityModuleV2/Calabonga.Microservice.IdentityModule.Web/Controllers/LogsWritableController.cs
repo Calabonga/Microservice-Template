@@ -1,11 +1,11 @@
 ﻿using Calabonga.EntityFrameworkCore.UnitOfWork;
 using Calabonga.EntityFrameworkCore.UnitOfWork.Framework.Controllers;
 using Calabonga.EntityFrameworkCore.UnitOfWork.Framework.Managers;
-using Calabonga.EntityFrameworkCore.UnitOfWork.Framework.QueryParams;
 using $ext_projectname$.Data;
 using $ext_projectname$.Entities;
 using $safeprojectname$.Infrastructure.Settings;
 using $safeprojectname$.Infrastructure.ViewModels.LogViewModels;
+using Calabonga.Microservices.Core.QueryParams;
 using Calabonga.Microservices.Core.Validators;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -25,7 +25,7 @@ namespace $safeprojectname$.Controllers
         /// <inheritdoc />
         public LogsWritableController(
             IOptions<CurrentAppSettings> appSettings,
-            IEntityManager<Log, LogCreateViewModel, LogUpdateViewModel> entityManager,
+            IEntityManager<LogViewModel, Log, LogCreateViewModel, LogUpdateViewModel> entityManager,
             IUnitOfWork<ApplicationDbContext, ApplicationUser, ApplicationRole> unitOfWork)
             : base(entityManager, unitOfWork)
         {

@@ -7,6 +7,7 @@ using $ext_projectname$.Data;
 using $ext_projectname$.Entities;
 using $safeprojectname$.Infrastructure.Settings;
 using $safeprojectname$.Infrastructure.ViewModels.LogViewModels;
+using Calabonga.Microservices.Core.QueryParams;
 using Calabonga.Microservices.Core;
 using Calabonga.Microservices.Core.Validators;
 using Microsoft.AspNetCore.Authorization;
@@ -20,7 +21,7 @@ namespace $safeprojectname$.Controllers
     /// </summary>
     [Route("api/[controller]")]
     [Authorize]
-    public class LogsReadOnlyController : ReadOnlyController<ApplicationDbContext, Log, LogViewModel, PagedListQueryParams>
+    public class LogsReadOnlyController : ReadOnlyController<Log, LogViewModel, PagedListQueryParams>
     {
         private readonly CurrentAppSettings _appSettings;
 

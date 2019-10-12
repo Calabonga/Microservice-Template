@@ -10,7 +10,7 @@ namespace Calabonga.Microservice.IdentityModule.Web.Infrastructure.Engine.Entity
     /// <summary>
     /// Entity manager for <see cref="Log"/>
     /// </summary>
-    public class LogManager: EntityManager<Log, LogCreateViewModel, LogUpdateViewModel>
+    public class LogManager: EntityManager<LogViewModel, Log, LogCreateViewModel, LogUpdateViewModel>
     {
         /// <inheritdoc />
         public LogManager(IMapper mapper, IViewModelFactory<LogCreateViewModel, LogUpdateViewModel> viewModelFactory, IEntityValidator<Log> validator)

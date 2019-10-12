@@ -7,6 +7,7 @@ using $ext_projectname$.Data;
 using $ext_projectname$.Entities;
 using $safeprojectname$.Infrastructure.Settings;
 using $safeprojectname$.Infrastructure.ViewModels.LogViewModels;
+using Calabonga.Microservices.Core.QueryParams;
 using Calabonga.Microservices.Core.Validators;
 using Calabonga.OperationResultsCore;
 using Microsoft.AspNetCore.Authorization;
@@ -20,14 +21,14 @@ namespace $safeprojectname$.Controllers
     /// </summary>
     [Route("api/[controller]")]
     [Authorize]
-    public class LogsWritableController : WritableController<ApplicationDbContext, Log, LogCreateViewModel, LogUpdateViewModel, LogViewModel, PagedListQueryParams>
+    public class LogsWritableController : WritableController<LogViewModel, Log, LogCreateViewModel, LogUpdateViewModel, PagedListQueryParams>
     {
         private readonly CurrentAppSettings _appSettings;
 
         /// <inheritdoc />
         public LogsWritableController(
             IOptions<CurrentAppSettings> appSettings,
-            IEntityManager<Log, LogCreateViewModel, LogUpdateViewModel> entityManager,
+            IEntityManager<LogViewModel, Log, LogCreateViewModel, LogUpdateViewModel> entityManager,
             IUnitOfWork<ApplicationDbContext> unitOfWork)
             : base(entityManager, unitOfWork)
         {
@@ -35,10 +36,10 @@ namespace $safeprojectname$.Controllers
         }
 
         /// <inheritdoc />
-        [Authorize(Policy = "LogsWritable:GetCreateViewModelAsync:View")]
-        public override Task<ActionResult<OperationResult<LogCreateViewModel>>> GetCreateViewModelAsync()
+        [Authorize(Policy = "LogsWritable:GetCreateViewModelAsync:View")] 
+        public override Task<ActionResult<OperationResult<LogCreateViewModel>>> GetViewmodelForCreation()
         {
-            return base.GetCreateViewModelAsync();
+            return base.GetViewmodelForCreation();
         }
 
         /// <inheritdoc />

@@ -2,12 +2,12 @@
 using AutoMapper;
 using Calabonga.EntityFrameworkCore.UOW;
 using Calabonga.EntityFrameworkCore.UOW.Framework.Controllers;
-using Calabonga.EntityFrameworkCore.UOW.Framework.QueryParams;
 using Calabonga.Microservice.Module.Data;
 using Calabonga.Microservice.Module.Entities;
 using Calabonga.Microservice.Module.Web.Infrastructure.Settings;
 using Calabonga.Microservice.Module.Web.Infrastructure.ViewModels.LogViewModels;
 using Calabonga.Microservices.Core;
+using Calabonga.Microservices.Core.QueryParams;
 using Calabonga.Microservices.Core.Validators;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -20,7 +20,7 @@ namespace Calabonga.Microservice.Module.Web.Controllers
     /// </summary>
     [Route("api/[controller]")]
     [Authorize]
-    public class LogsReadOnlyController : ReadOnlyController<ApplicationDbContext, Log, LogViewModel, PagedListQueryParams>
+    public class LogsReadOnlyController : ReadOnlyController<Log, LogViewModel, PagedListQueryParams>
     {
         private readonly CurrentAppSettings _appSettings;
 

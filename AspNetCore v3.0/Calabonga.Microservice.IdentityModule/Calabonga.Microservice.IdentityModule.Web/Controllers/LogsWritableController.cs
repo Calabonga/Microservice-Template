@@ -6,6 +6,7 @@ using Calabonga.Microservice.IdentityModule.Data;
 using Calabonga.Microservice.IdentityModule.Entities;
 using Calabonga.Microservice.IdentityModule.Web.Infrastructure.Settings;
 using Calabonga.Microservice.IdentityModule.Web.Infrastructure.ViewModels.LogViewModels;
+using Calabonga.Microservices.Core.QueryParams;
 using Calabonga.Microservices.Core.Validators;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -25,7 +26,7 @@ namespace Calabonga.Microservice.IdentityModule.Web.Controllers
         /// <inheritdoc />
         public LogsWritableController(
             IOptions<CurrentAppSettings> appSettings,
-            IEntityManager<Log, LogCreateViewModel, LogUpdateViewModel> entityManager,
+            IEntityManager<LogViewModel, Log, LogCreateViewModel, LogUpdateViewModel> entityManager,
             IUnitOfWork<ApplicationDbContext, ApplicationUser, ApplicationRole> unitOfWork)
             : base(entityManager, unitOfWork)
         {

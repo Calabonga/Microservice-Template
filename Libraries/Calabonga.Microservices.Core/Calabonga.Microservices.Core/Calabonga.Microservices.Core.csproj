@@ -15,8 +15,9 @@
     <RepositoryType></RepositoryType>
     <PackageTags>calabonga, microservice, base, entity, unitofwork, framework</PackageTags>
     <PackageReleaseNotes>New exception message added</PackageReleaseNotes>
-    <Version>1.0.1-beta-2</Version>
-    <FileVersion>1.0.1.0</FileVersion>
+    <Version>1.0.2</Version>
+    <FileVersion>1.0.2.0</FileVersion>
+    <AssemblyVersion>1.0.2.0</AssemblyVersion>
   </PropertyGroup>
 
   <ItemGroup>

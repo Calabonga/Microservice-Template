@@ -24,12 +24,12 @@ namespace $safeprojectname$.Infrastructure.DependencyInjection
             {
                 foreach (var i in type.GetInterfaces())
                 {
-                    if (!i.IsGenericType || i.GetGenericTypeDefinition() != typeof(IEntityManager<,,>))
+                    if (!i.IsGenericType || i.GetGenericTypeDefinition() != typeof(IEntityManager<,,,>))
                     {
                         continue;
                     }
 
-                    var interfaceType = typeof(IEntityManager<,,>).MakeGenericType(i.GetGenericArguments());
+                    var interfaceType = typeof(IEntityManager<,,,>).MakeGenericType(i.GetGenericArguments());
                     services.AddTransient(interfaceType, type);
                 }
             }
