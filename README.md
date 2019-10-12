@@ -1,5 +1,5 @@
 # Микросервисы
-Шаблон (template) для Visual Studio для построения инфраструктуры на базе ASP.NET Core.
+Шаблон (template) для Visual Studio для построения инфраструктуры микросервисов на базе ASP.NET Core.
 
 # Microservices
 Visual Studio project template for microservice module base on ASP.NET Core
