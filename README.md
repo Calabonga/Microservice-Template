@@ -1,5 +1,5 @@
 # Документация
-Документация доступна на GitHub в разделе [Wiki](https://github.com/Calabonga/Microservice-Template/wiki).
+Документация доступна на GitHub в разделе [Wiki](https://github.com/Calabonga/Microservice-Template/wiki) (в режиме наполнения).
 
 # Микросервисы
 Шаблон (template) для Visual Studio для построения инфраструктуры микросервисов на базе ASP.NET Core.
