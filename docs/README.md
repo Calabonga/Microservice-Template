@@ -12,7 +12,7 @@ Nimble Framework представляет собой набор из двух ш
 
 # Ключевые моменты
 
-1. [Установка шаблонов](/Nimble/О фреймворке/)
+1. [Установка шаблонов](./Nimble/О фреймворке/)
 
 2. [Микросервис с сервером авторизации (IdentityServer4)](https://github.com/Calabonga/Microservice-Template/wiki/%D0%A2%D0%B8%D0%BF%D1%8B-%D1%88%D0%B0%D0%B1%D0%BB%D0%BE%D0%BD%D0%BE%D0%B2)
 
