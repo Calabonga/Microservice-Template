@@ -22,6 +22,15 @@ Visual Studio project template for microservice module base on ASP.NET Core
 
 [Микросервисы: Прокси для frontend](https://www.calabonga.net/blog/post/odin-frontend-dolzhen-rabotat-tolko-so-svoim-backend)
 
-[YouTube по версии ASP.NET Core 2.2](https://www.youtube.com/playlist?list=PLIB8be7sunXMXTZKptqEtXAACpsYZdzi_) (rus) (видео)
-
 [Вопросы можно задать в блоге](https://www.calabonga.net/blog)
+
+# Видео по версии 3.0
+
+[Nimble: Установка шаблонов для микросервисов](https://youtu.be/rc0wvL0jlzc)
+[Nimble: Демонстрация шаблона микросервиса на примере](https://youtu.be/N0dRGGV2iEg)
+
+[Микросервисы 2](https://www.youtube.com/playlist?list=PLIB8be7sunXMh9dckizdXz65hLX_HRzlc) (плей-лист)
+
+# Видео по версии 2.2
+
+[Микросервисы](https://www.youtube.com/playlist?list=PLIB8be7sunXMXTZKptqEtXAACpsYZdzi_) (плей-лист)
