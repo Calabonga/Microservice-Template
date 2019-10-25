@@ -26,9 +26,11 @@ Visual Studio project template for microservice module base on ASP.NET Core
 
 # Видео по версии 3.0
 
-[Nimble: Установка шаблонов для микросервисов](https://youtu.be/rc0wvL0jlzc)
+Часть 1. [Nimble: Установка шаблонов для микросервисов](https://youtu.be/rc0wvL0jlzc)
 
-[Nimble: Демонстрация шаблона микросервиса на примере](https://youtu.be/N0dRGGV2iEg)
+Часть 2. [Nimble: Демонстрация шаблона микросервиса на примере](https://youtu.be/N0dRGGV2iEg)
+
+Часть 3. [Nimble: Установка шаблонов для микросервисов](https://youtu.be/rc0wvL0jlzc)
 
 [Микросервисы 2](https://www.youtube.com/playlist?list=PLIB8be7sunXMh9dckizdXz65hLX_HRzlc) (плей-лист)
 
