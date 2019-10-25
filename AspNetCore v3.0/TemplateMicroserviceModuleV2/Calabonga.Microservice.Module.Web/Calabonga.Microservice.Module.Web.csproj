@@ -15,16 +15,16 @@
     <PackageReference Include="AutoMapper" Version="9.0.0" />
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="7.0.0" />
     <PackageReference Include="Calabonga.EntityFrameworkCore.UOW" Version="2.0.2" />
-    <PackageReference Include="Calabonga.EntityFrameworkCore.UOW.Framework" Version="2.0.2" /> 
-    <PackageReference Include="Calabonga.Microservices.Core" Version="1.0.2" />
-    <PackageReference Include="Calabonga.Microservices.Web.Core" Version="1.0.2" />
+    <PackageReference Include="Calabonga.EntityFrameworkCore.UOW.Framework" Version="2.0.3" /> 
+    <PackageReference Include="Calabonga.Microservices.Core" Version="1.0.3" />
+    <PackageReference Include="Calabonga.Microservices.Web.Core" Version="1.0.3" />
     <PackageReference Include="IdentityServer4.AccessTokenValidation" Version="3.0.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.0.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="OperationResultCore" Version="2.0.1" />
+    <PackageReference Include="OperationResultCore" Version="2.0.7" />
     <PackageReference Include="PagedListLiteCore" Version="1.0.4" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="5.0.0-rc4" />
     <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="5.0.0-rc4" />
