@@ -1,4 +1,4 @@
-![Logo](https://github.com/Calabonga/Microservice-Template/blob/master/Whatnot/MicriserviceArchitecture.png)
+![Logo](/Whatnot/MicriserviceArchitecture.png)
 
 # Документация
 Документация доступна на GitHub в разделе [Wiki](https://github.com/Calabonga/Microservice-Template/wiki) (в режиме наполнения).
