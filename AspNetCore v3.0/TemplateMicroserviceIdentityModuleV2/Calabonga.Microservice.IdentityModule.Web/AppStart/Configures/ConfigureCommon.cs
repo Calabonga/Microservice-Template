@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace $safeprojectname$.AppStart.Configures
 {
@@ -51,7 +52,8 @@ namespace $safeprojectname$.AppStart.Configures
             app.UseSwaggerUI(ConfigureServicesSwagger.SwaggerSettings);
             
             app.UseSwagger();
-            
+
+            UserIdentity.Instance.Configure(app.ApplicationServices.GetService<IHttpContextAccessor>());            
         }
     }
 }

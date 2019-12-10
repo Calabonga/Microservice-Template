@@ -1,10 +1,12 @@
 ﻿using Calabonga.Microservice.IdentityModule.Core;
 using Calabonga.Microservice.IdentityModule.Web.AppStart.ConfigureServices;
 using Calabonga.Microservice.IdentityModule.Web.Middlewares;
+using Calabonga.Microservices.Web.Core;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Calabonga.Microservice.IdentityModule.Web.AppStart.Configures
 {
@@ -49,9 +51,10 @@ namespace Calabonga.Microservice.IdentityModule.Web.AppStart.Configures
             app.UseMiddleware(typeof(ErrorHandlingMiddleware));
 
             app.UseSwaggerUI(ConfigureServicesSwagger.SwaggerSettings);
-            
+
             app.UseSwagger();
-            
+
+            UserIdentity.Instance.Configure(app.ApplicationServices.GetService<IHttpContextAccessor>());
         }
     }
 }
