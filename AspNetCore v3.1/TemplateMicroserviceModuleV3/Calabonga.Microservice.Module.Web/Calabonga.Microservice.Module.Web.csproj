@@ -1,0 +1,42 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Infrastructure\Managers\**" />
+    <Content Remove="Infrastructure\Managers\**" />
+    <EmbeddedResource Remove="Infrastructure\Managers\**" />
+    <None Remove="Infrastructure\Managers\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="9.0.0" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="7.0.0" />
+    <PackageReference Include="Calabonga.EntityFrameworkCore.UOW" Version="2.0.2" />
+    <PackageReference Include="Calabonga.EntityFrameworkCore.UOW.Framework" Version="2.0.4" />
+    <PackageReference Include="Calabonga.Microservices.Core" Version="1.0.3" />
+    <PackageReference Include="Calabonga.Microservices.Web.Core" Version="1.0.3" />
+    <PackageReference Include="IdentityServer4.AccessTokenValidation" Version="3.0.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="OperationResultCore" Version="2.0.14" />
+    <PackageReference Include="PagedListLiteCore" Version="1.0.4" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.0.0-rc4" />
+    <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="5.0.0-rc4" />
+    <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="5.0.0-rc4" />
+    <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUi" Version="5.0.0-rc4" />
+    <PackageReference Include="System.Text.Json" Version="4.7.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\$ext_projectname$.Core\$ext_projectname$.Core.csproj" />
+    <ProjectReference Include="..\$ext_projectname$.Data\$ext_projectname$.Data.csproj" />
+    <ProjectReference Include="..\$ext_projectname$.Entities\$ext_projectname$.Entities.csproj" />
+  </ItemGroup>
+
+</Project>
