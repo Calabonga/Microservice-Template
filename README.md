@@ -22,6 +22,8 @@ Visual Studio project template for microservice module base on ASP.NET Core
 
 [ASP NET Core 3.0](https://github.com/Calabonga/microservice-template/tree/master/Output/AspNetCore-v.3.0) - Шаблоны для версии ASP.NET Core 3.0
 
+[ASP NET Core 3.1](https://github.com/Calabonga/microservice-template/tree/master/Output/AspNetCore-v.3.1) - Шаблоны для версии ASP.NET Core 3.1
+
 # Инструкции и дополнительные материалы
 
 [Микросервисы: Шаблон для микросервиса](https://www.calabonga.net/blog/post/microservises-template)
