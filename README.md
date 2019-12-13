@@ -1,3 +1,11 @@
+# Версии шаблонов
+
+Шаблон (пока только для версии с сервером авторизации) уже доступны для скачивания.
+
+![Logo](/Whatnot/MicriserviceArchitecture31.png)
+
+Шаблоны (с сервером авторизации и без него) для версии ASP.NET Core 2.2 и ASP.NET Core 3.0 остаются также доступны для загрузки. 
+
 ![Logo](/Whatnot/MicriserviceArchitecture.png)
 
 # Документация
@@ -14,6 +22,8 @@ Visual Studio project template for microservice module base on ASP.NET Core
 
 [ASP NET Core 3.0](https://github.com/Calabonga/microservice-template/tree/master/Output/AspNetCore-v.3.0) - Шаблоны для версии ASP.NET Core 3.0
 
+[ASP NET Core 3.1](https://github.com/Calabonga/microservice-template/tree/master/Output/AspNetCore-v.3.1) - Шаблоны для версии ASP.NET Core 3.1
+
 # Инструкции и дополнительные материалы
 
 [Микросервисы: Шаблон для микросервиса](https://www.calabonga.net/blog/post/microservises-template)
@@ -26,7 +36,7 @@ Visual Studio project template for microservice module base on ASP.NET Core
 
 [Вопросы можно задать в блоге](https://www.calabonga.net/blog)
 
-# Видео по версии 3.0
+# Видео по версии 3.0 и (3.1 не имеет изменений)
 
 Часть 0. [Nimble: Установка шаблонов для микросервисов](https://youtu.be/rc0wvL0jlzc)
 
