@@ -2,6 +2,7 @@
 using Calabonga.EntityFrameworkCore.UOW;
 using Calabonga.Microservice.Module.Core;
 using Calabonga.Microservice.Module.Data;
+using Calabonga.Microservice.Module.Web.Extensions;
 using Calabonga.Microservice.Module.Web.Infrastructure.Settings;
 using IdentityServer4.AccessTokenValidation;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -31,25 +32,16 @@ namespace Calabonga.Microservice.Module.Web.AppStart.ConfigureServices
             });
 
             services.AddAutoMapper(typeof(Startup));
-
             services.AddControllers();
-
             services.AddUnitOfWork<ApplicationDbContext>();
-
             services.AddMemoryCache();
-
             services.AddRouting();
-
             services.Configure<ApiBehaviorOptions>(options => { options.SuppressModelStateInvalidFilter = true; });
-
             services.AddOptions();
-            
             services.Configure<CurrentAppSettings>(configuration.GetSection(nameof(CurrentAppSettings)));
-
+            services.Configure<MvcOptions>(options => options.UseRouteSlugify());
             services.AddLocalization();
-
             services.AddHttpContextAccessor();
-
             services.AddResponseCaching();
 
             var url = configuration.GetSection("IdentityServer").GetValue<string>("Url");

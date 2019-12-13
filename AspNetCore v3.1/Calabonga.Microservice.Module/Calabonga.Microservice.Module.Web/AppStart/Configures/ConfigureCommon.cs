@@ -40,13 +40,9 @@ namespace Calabonga.Microservice.Module.Web.AppStart.Configures
             });
 
             app.UseResponseCaching();
-            
             app.UseETagger();
-
             app.UseMiddleware(typeof(ErrorHandlingMiddleware));
-
             app.UseSwagger();
-            
             app.UseSwaggerUI(ConfigureServicesSwagger.SwaggerSettings);
         }
     }
