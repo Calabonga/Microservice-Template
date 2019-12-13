@@ -1,9 +1,11 @@
 # Версии шаблонов
 
 Шаблон (пока только для версии с сервером авторизации) уже доступны для скачивания.
+
 ![Logo](/Whatnot/MicriserviceArchitecture31.png)
 
 Шаблоны (с сервером авторизации и без него) для версии ASP.NET Core 2.2 и ASP.NET Core 3.0 остаются также доступны для загрузки. 
+
 ![Logo](/Whatnot/MicriserviceArchitecture.png)
 
 # Документация
