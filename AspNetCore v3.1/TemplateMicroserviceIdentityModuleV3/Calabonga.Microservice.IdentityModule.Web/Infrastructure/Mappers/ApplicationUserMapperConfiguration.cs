@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Security.Claims;
-using Calabonga.Microservice.IdentityModule.Data;
-using Calabonga.Microservice.IdentityModule.Web.Infrastructure.Mappers.Base;
-using Calabonga.Microservice.IdentityModule.Web.Infrastructure.ViewModels.AccountViewModels;
+using $ext_projectname$.Data;
+using $safeprojectname$.Infrastructure.Mappers.Base;
+using $safeprojectname$.Infrastructure.ViewModels.AccountViewModels;
 using Calabonga.Microservices.Core;
 using IdentityModel;
 
-namespace Calabonga.Microservice.IdentityModule.Web.Infrastructure.Mappers
+namespace $safeprojectname$.Infrastructure.Mappers
 {
     /// <summary>
     /// Mapper Configuration for entity ApplicationUser

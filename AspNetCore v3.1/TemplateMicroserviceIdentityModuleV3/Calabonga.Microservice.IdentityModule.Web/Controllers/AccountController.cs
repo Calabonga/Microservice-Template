@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Calabonga.EntityFrameworkCore.UnitOfWork.Framework.Controllers;
-using Calabonga.Microservice.IdentityModule.Web.Infrastructure.Services;
-using Calabonga.Microservice.IdentityModule.Web.Infrastructure.ViewModels.AccountViewModels;
+using $safeprojectname$.Infrastructure.Services;
+using $safeprojectname$.Infrastructure.ViewModels.AccountViewModels;
 using Calabonga.Microservices.Core.Exceptions;
 using Calabonga.OperationResultsCore;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Calabonga.Microservice.IdentityModule.Web.Controllers
+namespace $safeprojectname$.Controllers
 {
     /// <summary>
     /// Account Controller

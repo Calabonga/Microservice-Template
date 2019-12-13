@@ -5,11 +5,11 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using AutoMapper;
 using Calabonga.EntityFrameworkCore.UnitOfWork;
-using Calabonga.Microservice.IdentityModule.Core;
-using Calabonga.Microservice.IdentityModule.Data;
-using Calabonga.Microservice.IdentityModule.Web.Infrastructure.Auth;
-using Calabonga.Microservice.IdentityModule.Web.Infrastructure.Settings;
-using Calabonga.Microservice.IdentityModule.Web.Infrastructure.ViewModels.AccountViewModels;
+using $ext_projectname$.Core;
+using $ext_projectname$.Data;
+using $safeprojectname$.Infrastructure.Auth;
+using $safeprojectname$.Infrastructure.Settings;
+using $safeprojectname$.Infrastructure.ViewModels.AccountViewModels;
 using Calabonga.Microservices.Core.Exceptions;
 using Calabonga.Microservices.Core.Extensions;
 using Calabonga.Microservices.Core.Validators;
@@ -21,7 +21,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
-namespace Calabonga.Microservice.IdentityModule.Web.Infrastructure.Services
+namespace $safeprojectname$.Infrastructure.Services
 {
     /// <summary>
     /// Account service

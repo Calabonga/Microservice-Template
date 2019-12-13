@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using System.Security.Claims;
 using System.Threading.Tasks;
-using Calabonga.Microservice.IdentityModule.Data;
-using Calabonga.Microservice.IdentityModule.Web.Infrastructure.ViewModels.AccountViewModels;
+using $ext_projectname$.Data;
+using $safeprojectname$.Infrastructure.ViewModels.AccountViewModels;
 using Calabonga.Microservices.Core.Validators;
 using Calabonga.OperationResultsCore;
 
-namespace Calabonga.Microservice.IdentityModule.Web.Infrastructure.Services
+namespace $safeprojectname$.Infrastructure.Services
 {
     /// <summary>
     /// Represent interface for account management

@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Calabonga.Microservice.IdentityModule.Web.Infrastructure.ViewModels.AccountViewModels
+namespace $safeprojectname$.Infrastructure.ViewModels.AccountViewModels
 {
     /// <summary>
     /// Application User Profile
     /// </summary>
-    public class ApplicationUserProfileViewModel
+    public class UserProfileViewModel
     {
         /// <summary>
         /// Identifier
