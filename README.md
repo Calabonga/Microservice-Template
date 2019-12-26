@@ -1,6 +1,6 @@
 # Версии шаблонов
 
-Шаблон (пока только для версии с сервером авторизации) уже доступны для скачивания.
+Шаблон (с сервером авторизации и без него) уже доступны для скачивания.
 
 ![Logo](/Whatnot/MicriserviceArchitecture31.png)
 
@@ -36,7 +36,7 @@ Visual Studio project template for microservice module base on ASP.NET Core
 
 [Вопросы можно задать в блоге](https://www.calabonga.net/blog)
 
-# Видео по версии 3.0 и (3.1 не имеет изменений)
+# Видео по версии 3.1 (3.0)
 
 Часть 0. [Nimble: Установка шаблонов для микросервисов](https://youtu.be/rc0wvL0jlzc)
 
