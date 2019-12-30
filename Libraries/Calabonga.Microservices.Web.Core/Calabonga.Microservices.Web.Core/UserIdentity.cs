@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Security.Principal;
-using System.Text;
-using System.Threading.Tasks;
 using Calabonga.Microservices.Core.Exceptions;
 using Microsoft.AspNetCore.Http;
 
@@ -20,8 +16,8 @@ namespace Calabonga.Microservices.Web.Core
 
         public void Configure(IHttpContextAccessor httpContextAccessor)
         {
+            ContextAccessor = httpContextAccessor ?? throw new MicroserviceArgumentNullException(nameof(IHttpContextAccessor));
             IsInitialized = true;
-            ContextAccessor = httpContextAccessor;
         }
 
         public IIdentity User
@@ -34,7 +30,7 @@ namespace Calabonga.Microservices.Web.Core
                         ? ContextAccessor.HttpContext.User.Identity
                         : null;
                 }
-                throw new MicroserviceArgumentNullException($"{nameof(HttpContext)} has not been initialized");
+                throw new MicroserviceArgumentNullException($"{nameof(UserIdentity)} has not been initialized. Please use {nameof(UserIdentity)}.Configure(...) in Configure method in Startup.cs");
             }
         }
 

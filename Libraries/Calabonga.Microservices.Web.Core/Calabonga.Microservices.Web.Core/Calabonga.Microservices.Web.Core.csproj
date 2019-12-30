@@ -11,14 +11,14 @@
     <RepositoryUrl>https://github.com/Calabonga/microservice-template</RepositoryUrl>
     <RepositoryType />
     <PackageTags>calabonga, microservice, base, entity, unitofwork, framework, authorization, policies</PackageTags>
-    <PackageReleaseNotes>Nuget-packages updated</PackageReleaseNotes>
-    <Version>1.0.3</Version>
+    <PackageReleaseNotes>IHttpContextAccessor null referrence cheching added</PackageReleaseNotes>
+    <Version>1.0.4</Version>
     <Description>Base authorization entities for Microservices. All microservices in the system should and can use Unit of Work pattern. This package implements this pattern.</Description>
     <PackageProjectUrl>https://www.calabonga.net/blog/post/microservices-2-shablon-dlya-bystrogo-sozdaniya-mikroservisa-na-baze--net-core</PackageProjectUrl>
     <Copyright>Calabonga</Copyright>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <PackageIcon>logo.png</PackageIcon>
-    <AssemblyVersion>1.0.3.0</AssemblyVersion>
+    <AssemblyVersion>1.0.4.0</AssemblyVersion>
   </PropertyGroup>
 
   <ItemGroup>
