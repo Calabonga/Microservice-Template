@@ -9,7 +9,7 @@
 ![Logo](/Whatnot/MicriserviceArchitecture.png)
 
 # Документация
-Документация доступна на GitHub в разделе [Wiki](https://github.com/Calabonga/Microservice-Template/wiki) (в режиме наполнения).
+Документация доступна на GitHub в разделе [Wiki](https://github.com/Calabonga/Microservice-Template/wiki/Nimble-Microservice-Templates) (в режиме наполнения).
 
 # Микросервисы
 Шаблон (template) для Visual Studio для построения инфраструктуры микросервисов на базе ASP.NET Core.
