@@ -1,8 +1,8 @@
 ﻿using System;
-using Calabonga.EntityFrameworkCore.UOW;
 using Calabonga.Microservice.Module.Core.Exceptions;
 using Calabonga.Microservice.Module.Data;
 using Calabonga.Microservice.Module.Entities;
+using Calabonga.UnitOfWork;
 using Microsoft.Extensions.Logging;
 
 namespace Calabonga.Microservice.Module.Web.Infrastructure.Services

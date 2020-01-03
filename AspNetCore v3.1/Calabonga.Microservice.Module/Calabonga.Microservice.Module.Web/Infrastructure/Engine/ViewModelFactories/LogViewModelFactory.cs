@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Threading.Tasks;
 using AutoMapper;
-using Calabonga.EntityFrameworkCore.UOW;
-using Calabonga.EntityFrameworkCore.UOW.Framework.Factories;
 using Calabonga.Microservice.Module.Entities;
 using Calabonga.Microservice.Module.Web.Infrastructure.ViewModels.LogViewModels;
 using Calabonga.OperationResultsCore;
+using Calabonga.UnitOfWork;
+using Calabonga.UnitOfWork.Controllers.Factories;
 using Microsoft.Extensions.Logging;
 
 namespace Calabonga.Microservice.Module.Web.Infrastructure.Engine.ViewModelFactories

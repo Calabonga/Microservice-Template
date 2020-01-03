@@ -1,6 +1,5 @@
 ﻿using Calabonga.Microservice.Module.Data;
 using Calabonga.Microservice.Module.Web.Infrastructure.Services;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Calabonga.Microservice.Module.Web.Infrastructure.DependencyInjection

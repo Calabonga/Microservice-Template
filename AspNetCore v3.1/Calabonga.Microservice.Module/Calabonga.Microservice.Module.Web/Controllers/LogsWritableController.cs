@@ -1,7 +1,4 @@
 ﻿using System.Threading.Tasks;
-using Calabonga.EntityFrameworkCore.UOW;
-using Calabonga.EntityFrameworkCore.UOW.Framework.Controllers;
-using Calabonga.EntityFrameworkCore.UOW.Framework.Managers;
 using Calabonga.Microservice.Module.Data;
 using Calabonga.Microservice.Module.Entities;
 using Calabonga.Microservice.Module.Web.Infrastructure.Settings;
@@ -9,6 +6,9 @@ using Calabonga.Microservice.Module.Web.Infrastructure.ViewModels.LogViewModels;
 using Calabonga.Microservices.Core.QueryParams;
 using Calabonga.Microservices.Core.Validators;
 using Calabonga.OperationResultsCore;
+using Calabonga.UnitOfWork;
+using Calabonga.UnitOfWork.Controllers.Controllers;
+using Calabonga.UnitOfWork.Controllers.Managers;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;

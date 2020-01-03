@@ -1,9 +1,9 @@
 ﻿using AutoMapper;
-using Calabonga.EntityFrameworkCore.UOW;
 using Calabonga.Microservice.Module.Core;
 using Calabonga.Microservice.Module.Data;
 using Calabonga.Microservice.Module.Web.Extensions;
 using Calabonga.Microservice.Module.Web.Infrastructure.Settings;
+using Calabonga.UnitOfWork;
 using IdentityServer4.AccessTokenValidation;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
