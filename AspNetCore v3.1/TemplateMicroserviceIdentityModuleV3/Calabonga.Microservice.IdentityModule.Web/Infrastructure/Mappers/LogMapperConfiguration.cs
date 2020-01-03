@@ -1,7 +1,7 @@
-﻿using Calabonga.EntityFrameworkCore.UnitOfWork;
-using $ext_projectname$.Entities;
+﻿using $ext_projectname$.Entities;
 using $safeprojectname$.Infrastructure.Mappers.Base;
 using $safeprojectname$.Infrastructure.ViewModels.LogViewModels;
+using Calabonga.UnitOfWork;
 
 namespace $safeprojectname$.Infrastructure.Mappers
 {

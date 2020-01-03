@@ -1,8 +1,8 @@
 ﻿using System;
-using Calabonga.EntityFrameworkCore.UnitOfWork;
 using $ext_projectname$.Data;
 using $ext_projectname$.Entities;
 using Calabonga.Microservices.Core.Exceptions;
+using Calabonga.UnitOfWork;
 using Microsoft.Extensions.Logging;
 
 namespace $safeprojectname$.Infrastructure.Services
@@ -12,10 +12,10 @@ namespace $safeprojectname$.Infrastructure.Services
     /// </summary>
     public class LogService : ILogService
     {
-        private readonly IUnitOfWork<ApplicationDbContext, ApplicationUser, ApplicationRole> _unitOfWork;
+        private readonly IUnitOfWork<ApplicationDbContext> _unitOfWork;
 
         /// <inheritdoc />
-        public LogService(IUnitOfWork<ApplicationDbContext, ApplicationUser, ApplicationRole> unitOfWork)
+        public LogService(IUnitOfWork<ApplicationDbContext> unitOfWork)
         {
             _unitOfWork = unitOfWork;
         }

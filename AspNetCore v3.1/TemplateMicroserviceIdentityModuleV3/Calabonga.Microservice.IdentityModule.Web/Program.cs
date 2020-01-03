@@ -1,11 +1,10 @@
-// ----------------------------------------------------------------------------------------
+// ---------------------------------------
 // Name: Microservice Template
 // Author: Calabonga (calabonga.net)
-// Version: 3.1.0
-// Based on: ASP.NET Core 3.1
-// Created Date: 2019-12-13
-// Presentation: https://www.youtube.com/playlist?list=PLIB8be7sunXMh9dckizdXz65hLX_HRzlc
-// ----------------------------------------------------------------------------------------
+// Version: 2.0.0
+// Based on: ASP.NET Core 3.0
+// Created Date: 2019-10-06
+// ---------------------------------------
 
 using $ext_projectname$.Data.DatabaseInitialization;
 using Microsoft.AspNetCore.Hosting;

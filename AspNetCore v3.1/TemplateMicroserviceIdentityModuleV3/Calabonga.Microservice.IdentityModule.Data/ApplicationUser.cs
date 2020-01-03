@@ -22,7 +22,7 @@ namespace $safeprojectname$
         /// <summary>
         /// Profile identity
         /// </summary>
-        public Guid ApplicationUserProfileId { get; set; }
+        public Guid? ApplicationUserProfileId { get; set; }
 
         /// <summary>
         /// User Profile

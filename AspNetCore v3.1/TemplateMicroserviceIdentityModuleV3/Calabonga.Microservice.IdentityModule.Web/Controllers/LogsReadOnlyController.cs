@@ -1,7 +1,5 @@
 ﻿using System.Security.Claims;
 using AutoMapper;
-using Calabonga.EntityFrameworkCore.UnitOfWork;
-using Calabonga.EntityFrameworkCore.UnitOfWork.Framework.Controllers;
 using $ext_projectname$.Core;
 using $ext_projectname$.Data;
 using $ext_projectname$.Entities;
@@ -10,6 +8,8 @@ using $safeprojectname$.Infrastructure.ViewModels.LogViewModels;
 using Calabonga.Microservices.Core;
 using Calabonga.Microservices.Core.QueryParams;
 using Calabonga.Microservices.Core.Validators;
+using Calabonga.UnitOfWork;
+using Calabonga.UnitOfWork.Controllers.Controllers;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
@@ -21,14 +21,14 @@ namespace $safeprojectname$.Controllers
     /// </summary>
     [Route("api/[controller]")]
     [Authorize]
-    public class LogsReadOnlyController : ReadOnlyController<ApplicationDbContext, ApplicationUser, ApplicationRole, Log, LogViewModel, PagedListQueryParams>
+    public class LogsReadOnlyController : ReadOnlyController<Log, LogViewModel, PagedListQueryParams>
     {
         private readonly CurrentAppSettings _appSettings;
 
         /// <inheritdoc />
         public LogsReadOnlyController(
             IOptions<CurrentAppSettings> appSettings,
-            IUnitOfWork<ApplicationDbContext, ApplicationUser, ApplicationRole> unitOfWork,
+            IUnitOfWork<ApplicationDbContext> unitOfWork,
             IMapper mapper)
             : base(unitOfWork, mapper)
         {

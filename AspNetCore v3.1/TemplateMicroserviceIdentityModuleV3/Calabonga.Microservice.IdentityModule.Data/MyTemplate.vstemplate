@@ -27,6 +27,7 @@
           <ProjectItem ReplaceParameters="true" TargetFileName="AuditableModelConfigurationBase.cs">AuditableModelConfigurationBase.cs</ProjectItem>
           <ProjectItem ReplaceParameters="true" TargetFileName="IdentityModelConfigurationBase.cs">IdentityModelConfigurationBase.cs</ProjectItem>
         </Folder>
+        <ProjectItem ReplaceParameters="true" TargetFileName="ApplicationUserModelConfiguration.cs">ApplicationUserModelConfiguration.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="ApplicationUserProfileModelConfiguration.cs">ApplicationUserProfileModelConfiguration.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="LogModelConfiguration.cs">LogModelConfiguration.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="MicroservicePermissionModelConfiguration.cs">MicroservicePermissionModelConfiguration.cs</ProjectItem>

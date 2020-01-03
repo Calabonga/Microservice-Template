@@ -1,11 +1,11 @@
 ﻿using System;
 using AutoMapper;
-using Calabonga.EntityFrameworkCore.UnitOfWork;
 using $ext_projectname$.Core;
 using $ext_projectname$.Data;
 using $safeprojectname$.Extensions;
 using $safeprojectname$.Infrastructure.Services;
 using $safeprojectname$.Infrastructure.Settings;
+using Calabonga.UnitOfWork;
 using IdentityServer4.AccessTokenValidation;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
@@ -41,7 +41,7 @@ namespace $safeprojectname$.AppStart.ConfigureServices
 
             services.AddAutoMapper(typeof(Startup));
 
-            services.AddUnitOfWork<ApplicationDbContext, ApplicationUser, ApplicationRole>();
+            services.AddUnitOfWork<ApplicationDbContext>();
 
             services.AddMemoryCache();
 

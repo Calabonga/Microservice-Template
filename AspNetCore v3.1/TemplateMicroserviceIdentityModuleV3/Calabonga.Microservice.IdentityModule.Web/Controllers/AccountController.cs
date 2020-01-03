@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Threading.Tasks;
-using Calabonga.EntityFrameworkCore.UnitOfWork.Framework.Controllers;
 using $safeprojectname$.Infrastructure.Services;
 using $safeprojectname$.Infrastructure.ViewModels.AccountViewModels;
 using Calabonga.Microservices.Core.Exceptions;
 using Calabonga.OperationResultsCore;
+using Calabonga.UnitOfWork.Controllers.Controllers;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 

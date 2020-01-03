@@ -4,20 +4,20 @@ using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using AutoMapper;
-using Calabonga.EntityFrameworkCore.UnitOfWork;
 using $ext_projectname$.Core;
 using $ext_projectname$.Data;
 using $safeprojectname$.Infrastructure.Auth;
-using $safeprojectname$.Infrastructure.Settings;
 using $safeprojectname$.Infrastructure.ViewModels.AccountViewModels;
 using Calabonga.Microservices.Core.Exceptions;
 using Calabonga.Microservices.Core.Extensions;
 using Calabonga.Microservices.Core.Validators;
 using Calabonga.OperationResultsCore;
+using Calabonga.UnitOfWork;
 using IdentityModel;
 using IdentityServer4.Extensions;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
@@ -28,28 +28,43 @@ namespace $safeprojectname$.Infrastructure.Services
     /// </summary>
     public class AccountService : IAccountService
     {
-        private readonly IUnitOfWork<ApplicationUser, ApplicationRole> _unitOfWork;
+        private readonly IUnitOfWork<ApplicationDbContext> _unitOfWork;
         private readonly ILogger<AccountService> _logger;
         private readonly ApplicationClaimsPrincipalFactory _claimsFactory;
         private readonly IHttpContextAccessor _httpContext;
         private readonly IMapper _mapper;
-        private readonly CurrentAppSettings _appSettings;
+        private readonly UserManager<ApplicationUser> _userManager;
+        private readonly RoleManager<ApplicationRole> _roleManager;
 
-        /// <inheritdoc />
         public AccountService(
-            IUnitOfWork<ApplicationUser, ApplicationRole> unitOfWork,
+            IUserStore<ApplicationUser> userStore,
+            IOptions<IdentityOptions> optionsAccessor,
+            IPasswordHasher<ApplicationUser> passwordHasher,
+            IEnumerable<IUserValidator<ApplicationUser>> userValidators,
+            IEnumerable<IPasswordValidator<ApplicationUser>> passwordValidators,
+            ILookupNormalizer keyNormalizer,
+            IdentityErrorDescriber errors,
+            IServiceProvider services,
+            ILogger<RoleManager<ApplicationRole>> loggerRole,
+            IEnumerable<IRoleValidator<ApplicationRole>> roleValidators,
+            IUnitOfWork<ApplicationDbContext> unitOfWork,
             ILogger<AccountService> logger,
-            IOptions<CurrentAppSettings> options,
+            ILogger<UserManager<ApplicationUser>> loggerUser,
             ApplicationClaimsPrincipalFactory claimsFactory,
             IHttpContextAccessor httpContext,
             IMapper mapper)
         {
-            _appSettings = options.Value;
             _unitOfWork = unitOfWork;
             _logger = logger;
             _claimsFactory = claimsFactory;
             _httpContext = httpContext;
             _mapper = mapper;
+
+            // We need to created a custom instance for current service
+            // It'll help to use Transaction in the Unit Of Work
+            _userManager = new UserManager<ApplicationUser>(userStore, optionsAccessor, passwordHasher, userValidators, passwordValidators, keyNormalizer, errors, services, loggerUser);
+            var roleStore = new RoleStore<ApplicationRole, ApplicationDbContext, Guid>(_unitOfWork.DbContext);
+            _roleManager = new RoleManager<ApplicationRole>(roleStore, roleValidators, keyNormalizer, errors, loggerRole);
         }
 
         /// <inheritdoc />
@@ -69,44 +84,40 @@ namespace $safeprojectname$.Infrastructure.Services
         {
             var operation = OperationResult.CreateResult<UserProfileViewModel>();
             var user = _mapper.Map<ApplicationUser>(model);
-            using (var transaction = await _unitOfWork.BeginTransactionAsync())
-            {
-                var userManager = _unitOfWork.GetUserManager();
-                var result = await userManager.CreateAsync(user, model.Password);
-                var role = AppData.ManagerRoleName;
+            await using var transaction = await _unitOfWork.BeginTransactionAsync();
+            var result = await _userManager.CreateAsync(user, model.Password);
+            const string role = AppData.ManagerRoleName;
 
-                if (result.Succeeded)
+            if (result.Succeeded)
+            {
+                if (await _roleManager.FindByNameAsync(role) == null)
                 {
-                    var roleManager = _unitOfWork.GetRoleManager();
-                    if (await roleManager.FindByNameAsync(role) == null)
-                    {
-                        operation.Exception = new MicroserviceUserNotFoundException();
-                        operation.AddError(AppData.Exceptions.UserNotFoundException);
-                        return await Task.FromResult(operation);
-                    }
-                    await userManager.AddToRoleAsync(user, role);
-                    await AddClaimsToUser(userManager, user, role);
-                    var profile = _mapper.Map<ApplicationUserProfile>(model);
-                    var profileRepository = _unitOfWork.GetRepository<ApplicationUserProfile>();
-                    
-                    await profileRepository.InsertAsync(profile);
-                    await _unitOfWork.SaveChangesAsync();
-                    if (_unitOfWork.LastSaveChangesResult.IsOk)
-                    {
-                        var principal = await _claimsFactory.CreateAsync(user);
-                        operation.Result = _mapper.Map<UserProfileViewModel>(principal.Identity);
-                        operation.AddSuccess(AppData.Messages.UserSuccessfullyRegistered);
-                        _logger.LogInformation(operation.GetMetadataMessages());
-                        transaction.Commit();
-                        return await Task.FromResult(operation);
-                    }
+                    operation.Exception = new MicroserviceUserNotFoundException();
+                    operation.AddError(AppData.Exceptions.UserNotFoundException);
+                    return await Task.FromResult(operation);
                 }
-                var errors = result.Errors.Select(x => $"{x.Code}: {x.Description}");
-                operation.AddError(string.Join(", ", errors));
-                operation.Exception = _unitOfWork.LastSaveChangesResult.Exception;
-                transaction.Rollback();
-                return await Task.FromResult(operation);
+                await _userManager.AddToRoleAsync(user, role);
+                await AddClaimsToUser(_userManager, user, role);
+                var profile = _mapper.Map<ApplicationUserProfile>(model);
+                var profileRepository = _unitOfWork.GetRepository<ApplicationUserProfile>();
+
+                await profileRepository.InsertAsync(profile);
+                await _unitOfWork.SaveChangesAsync();
+                if (_unitOfWork.LastSaveChangesResult.IsOk)
+                {
+                    var principal = await _claimsFactory.CreateAsync(user);
+                    operation.Result = _mapper.Map<UserProfileViewModel>(principal.Identity);
+                    operation.AddSuccess(AppData.Messages.UserSuccessfullyRegistered);
+                    _logger.LogInformation(operation.GetMetadataMessages());
+                    transaction.Commit();
+                    return await Task.FromResult(operation);
+                }
             }
+            var errors = result.Errors.Select(x => $"{x.Code}: {x.Description}");
+            operation.AddError(string.Join(", ", errors));
+            operation.Exception = _unitOfWork.LastSaveChangesResult.Exception;
+            transaction.Rollback();
+            return await Task.FromResult(operation);
         }
 
         /// <summary>
@@ -133,7 +144,7 @@ namespace $safeprojectname$.Infrastructure.Services
             {
                 throw new MicroserviceException();
             }
-            var userManager = _unitOfWork.GetUserManager();
+            var userManager = _userManager;
             var user = await userManager.FindByIdAsync(identifier);
             if (user == null)
             {
@@ -151,7 +162,7 @@ namespace $safeprojectname$.Infrastructure.Services
         /// <returns></returns>
         public Task<ApplicationUser> GetByIdAsync(Guid id)
         {
-            var userManager = _unitOfWork.GetUserManager();
+            var userManager = _userManager;
             return userManager.FindByIdAsync(id.ToString());
         }
 
@@ -161,7 +172,7 @@ namespace $safeprojectname$.Infrastructure.Services
         /// <returns></returns>
         public async Task<ApplicationUser> GetCurrentUserAsync()
         {
-            var userManager = _unitOfWork.GetUserManager();
+            var userManager = _userManager;
             var userId = GetCurrentUserId().ToString();
             var user = await userManager.FindByIdAsync(userId);
             return user;
@@ -170,7 +181,7 @@ namespace $safeprojectname$.Infrastructure.Services
         /// <inheritdoc />
         public async Task<IEnumerable<ApplicationUser>> GetUsersByEmailsAsync(IEnumerable<string> emails)
         {
-            var userManager = _unitOfWork.GetUserManager();
+            var userManager = _userManager;
             var result = new List<ApplicationUser>();
             foreach (var email in emails)
             {
@@ -190,7 +201,7 @@ namespace $safeprojectname$.Infrastructure.Services
         /// <returns></returns>
         public async Task<PermissionValidationResult> IsInRolesAsync(string[] roleNames)
         {
-            var userManager = _unitOfWork.GetUserManager();
+            var userManager = _userManager;
             var userId = GetCurrentUserId().ToString();
             var user = await userManager.FindByIdAsync(userId);
             if (user == null)
@@ -216,7 +227,7 @@ namespace $safeprojectname$.Infrastructure.Services
         /// <inheritdoc />
         public async Task<IEnumerable<ApplicationUser>> GetUsersInRoleAsync(string roleName)
         {
-            var userManager = _unitOfWork.GetUserManager();
+            var userManager = _userManager;
             return await userManager.GetUsersInRoleAsync(roleName);
         }
 
