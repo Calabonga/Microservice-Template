@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 using System.Reflection;
-using Calabonga.EntityFrameworkCore.UnitOfWork.Framework.Managers;
+using Calabonga.UnitOfWork.Controllers.Managers;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Calabonga.Microservice.IdentityModule.Web.Infrastructure.DependencyInjection

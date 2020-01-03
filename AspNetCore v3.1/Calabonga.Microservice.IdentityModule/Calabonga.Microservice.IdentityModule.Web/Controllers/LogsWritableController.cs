@@ -1,12 +1,12 @@
-﻿using Calabonga.EntityFrameworkCore.UnitOfWork;
-using Calabonga.EntityFrameworkCore.UnitOfWork.Framework.Controllers;
-using Calabonga.EntityFrameworkCore.UnitOfWork.Framework.Managers;
-using Calabonga.Microservice.IdentityModule.Data;
+﻿using Calabonga.Microservice.IdentityModule.Data;
 using Calabonga.Microservice.IdentityModule.Entities;
 using Calabonga.Microservice.IdentityModule.Web.Infrastructure.Settings;
 using Calabonga.Microservice.IdentityModule.Web.Infrastructure.ViewModels.LogViewModels;
 using Calabonga.Microservices.Core.QueryParams;
 using Calabonga.Microservices.Core.Validators;
+using Calabonga.UnitOfWork;
+using Calabonga.UnitOfWork.Controllers.Controllers;
+using Calabonga.UnitOfWork.Controllers.Managers;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
@@ -18,7 +18,7 @@ namespace Calabonga.Microservice.IdentityModule.Web.Controllers
     /// </summary>
     [Route("api/[controller]")]
     [Authorize]
-    public class LogsWritableController : WritableController<ApplicationDbContext, ApplicationUser, ApplicationRole, Log, LogCreateViewModel, LogUpdateViewModel, LogViewModel, PagedListQueryParams>
+    public class LogsWritableController : WritableController<LogViewModel, Log, LogCreateViewModel, LogUpdateViewModel, PagedListQueryParams>
     {
         private readonly CurrentAppSettings _appSettings;
 
@@ -26,7 +26,7 @@ namespace Calabonga.Microservice.IdentityModule.Web.Controllers
         public LogsWritableController(
             IOptions<CurrentAppSettings> appSettings,
             IEntityManager<LogViewModel, Log, LogCreateViewModel, LogUpdateViewModel> entityManager,
-            IUnitOfWork<ApplicationDbContext, ApplicationUser, ApplicationRole> unitOfWork)
+            IUnitOfWork<ApplicationDbContext> unitOfWork)
             : base(entityManager, unitOfWork)
         {
             _appSettings = appSettings.Value;

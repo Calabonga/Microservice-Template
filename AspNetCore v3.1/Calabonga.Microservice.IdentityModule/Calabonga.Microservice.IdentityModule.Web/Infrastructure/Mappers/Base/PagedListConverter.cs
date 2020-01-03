@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using AutoMapper;
-using Calabonga.EntityFrameworkCore.UnitOfWork;
+using Calabonga.UnitOfWork;
 
 namespace Calabonga.Microservice.IdentityModule.Web.Infrastructure.Mappers.Base {
 

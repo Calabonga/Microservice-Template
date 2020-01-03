@@ -14,12 +14,12 @@
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="9.0.0" />
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="7.0.0" />
-    <PackageReference Include="Calabonga.EntityFrameworkCore.UnitOfWork.Framework" Version="2.0.5" />
     <PackageReference Include="Calabonga.Microservices.Core" Version="1.0.3" />
     <PackageReference Include="Calabonga.Microservices.Web.Core" Version="1.0.4" />
+    <PackageReference Include="Calabonga.UnitOfWork.Controllers" Version="1.0.0" />
     <PackageReference Include="IdentityServer4.AccessTokenValidation" Version="3.0.1" />
-    <PackageReference Include="IdentityServer4.AspNetIdentity" Version="3.0.2" />
-    <PackageReference Include="IdentityServer4.EntityFramework" Version="3.0.2" />
+    <PackageReference Include="IdentityServer4.AspNetIdentity" Version="3.1.0" />
+    <PackageReference Include="IdentityServer4.EntityFramework" Version="3.1.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>

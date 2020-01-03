@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Threading.Tasks;
 using AutoMapper;
-using Calabonga.EntityFrameworkCore.UnitOfWork;
-using Calabonga.EntityFrameworkCore.UnitOfWork.Framework.Factories;
 using Calabonga.Microservice.IdentityModule.Data;
 using Calabonga.Microservice.IdentityModule.Entities;
 using Calabonga.Microservice.IdentityModule.Web.Infrastructure.ViewModels.LogViewModels;
 using Calabonga.OperationResultsCore;
+using Calabonga.UnitOfWork;
+using Calabonga.UnitOfWork.Controllers.Factories;
 using Microsoft.Extensions.Logging;
 
 namespace Calabonga.Microservice.IdentityModule.Web.Infrastructure.Engine.ViewModelFactories
@@ -16,11 +16,11 @@ namespace Calabonga.Microservice.IdentityModule.Web.Infrastructure.Engine.ViewMo
     /// </summary>
     public class LogViewModelFactory: ViewModelFactory<LogCreateViewModel, LogUpdateViewModel>
     {
-        private readonly IUnitOfWork<ApplicationDbContext, ApplicationUser, ApplicationRole> _context;
+        private readonly IUnitOfWork<ApplicationDbContext> _context;
         private readonly IMapper _mapper;
 
         public LogViewModelFactory(
-            IUnitOfWork<ApplicationDbContext, ApplicationUser, ApplicationRole> context,
+            IUnitOfWork<ApplicationDbContext> context,
             IMapper mapper)
         {
             _context = context;

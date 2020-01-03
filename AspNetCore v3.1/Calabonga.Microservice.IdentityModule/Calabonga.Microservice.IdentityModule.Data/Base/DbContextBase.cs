@@ -4,7 +4,7 @@ using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
 using Calabonga.EntityFrameworkCore.Entities.Base;
-using Calabonga.EntityFrameworkCore.UnitOfWork;
+using Calabonga.UnitOfWork;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 

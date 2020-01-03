@@ -1,11 +1,11 @@
 ﻿using System;
 using AutoMapper;
-using Calabonga.EntityFrameworkCore.UnitOfWork;
 using Calabonga.Microservice.IdentityModule.Core;
 using Calabonga.Microservice.IdentityModule.Data;
 using Calabonga.Microservice.IdentityModule.Web.Extensions;
 using Calabonga.Microservice.IdentityModule.Web.Infrastructure.Services;
 using Calabonga.Microservice.IdentityModule.Web.Infrastructure.Settings;
+using Calabonga.UnitOfWork;
 using IdentityServer4.AccessTokenValidation;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
@@ -41,7 +41,7 @@ namespace Calabonga.Microservice.IdentityModule.Web.AppStart.ConfigureServices
 
             services.AddAutoMapper(typeof(Startup));
 
-            services.AddUnitOfWork<ApplicationDbContext, ApplicationUser, ApplicationRole>();
+            services.AddUnitOfWork<ApplicationDbContext>();
 
             services.AddMemoryCache();
 
