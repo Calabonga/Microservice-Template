@@ -1,9 +1,9 @@
 ﻿using AutoMapper;
-using Calabonga.EntityFrameworkCore.UOW.Framework.Factories;
-using Calabonga.EntityFrameworkCore.UOW.Framework.Managers;
 using $ext_projectname$.Entities;
 using $safeprojectname$.Infrastructure.ViewModels.LogViewModels;
 using Calabonga.Microservices.Core.Validators;
+using Calabonga.UnitOfWork.Controllers.Factories;
+using Calabonga.UnitOfWork.Controllers.Managers;
 
 namespace $safeprojectname$.Infrastructure.Engine.EntityManagers
 {

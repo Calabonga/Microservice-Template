@@ -1,6 +1,5 @@
 ﻿using $ext_projectname$.Data;
 using $safeprojectname$.Infrastructure.Services;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace $safeprojectname$.Infrastructure.DependencyInjection

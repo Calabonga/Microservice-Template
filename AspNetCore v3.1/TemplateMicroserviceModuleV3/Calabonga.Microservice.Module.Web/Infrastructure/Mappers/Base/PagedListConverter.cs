@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using AutoMapper;
-using Calabonga.EntityFrameworkCore.UOW;
+using Calabonga.UnitOfWork;
 
 namespace $safeprojectname$.Infrastructure.Mappers.Base {
 

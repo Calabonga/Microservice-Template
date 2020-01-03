@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 using System.Reflection;
-using Calabonga.EntityFrameworkCore.UOW.Framework.Managers;
+using Calabonga.UnitOfWork.Controllers.Managers;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace $safeprojectname$.Infrastructure.DependencyInjection

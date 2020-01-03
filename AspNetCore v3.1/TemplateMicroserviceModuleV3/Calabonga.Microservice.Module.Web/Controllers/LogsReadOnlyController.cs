@@ -1,7 +1,5 @@
 ﻿using System.Security.Claims;
 using AutoMapper;
-using Calabonga.EntityFrameworkCore.UOW;
-using Calabonga.EntityFrameworkCore.UOW.Framework.Controllers;
 using $ext_projectname$.Data;
 using $ext_projectname$.Entities;
 using $safeprojectname$.Infrastructure.Settings;
@@ -9,6 +7,8 @@ using $safeprojectname$.Infrastructure.ViewModels.LogViewModels;
 using Calabonga.Microservices.Core;
 using Calabonga.Microservices.Core.QueryParams;
 using Calabonga.Microservices.Core.Validators;
+using Calabonga.UnitOfWork;
+using Calabonga.UnitOfWork.Controllers.Controllers;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
