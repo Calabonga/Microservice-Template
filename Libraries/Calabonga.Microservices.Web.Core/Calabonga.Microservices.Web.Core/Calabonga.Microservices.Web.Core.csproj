@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netcoreapp2.2;netcoreapp3.0;netstandard2.1</TargetFrameworks>
+    <TargetFrameworks>netcoreapp2.2;netcoreapp3.1</TargetFrameworks>
     <RuntimeFrameworkVersion Condition="'$(TargetFramework)' == 'netcoreapp2.2'">2.2.0-*</RuntimeFrameworkVersion>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
@@ -11,14 +11,14 @@
     <RepositoryUrl>https://github.com/Calabonga/microservice-template</RepositoryUrl>
     <RepositoryType />
     <PackageTags>calabonga, microservice, base, entity, unitofwork, framework, authorization, policies</PackageTags>
-    <PackageReleaseNotes>IHttpContextAccessor null referrence cheching added</PackageReleaseNotes>
-    <Version>1.0.4</Version>
+    <PackageReleaseNotes>Nugets updated</PackageReleaseNotes>
+    <Version>1.0.5</Version>
     <Description>Base authorization entities for Microservices. All microservices in the system should and can use Unit of Work pattern. This package implements this pattern.</Description>
     <PackageProjectUrl>https://www.calabonga.net/blog/post/microservices-2-shablon-dlya-bystrogo-sozdaniya-mikroservisa-na-baze--net-core</PackageProjectUrl>
     <Copyright>Calabonga</Copyright>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <PackageIcon>logo.png</PackageIcon>
-    <AssemblyVersion>1.0.4.0</AssemblyVersion>
+    <AssemblyVersion>1.0.5.0</AssemblyVersion>
   </PropertyGroup>
 
   <ItemGroup>
@@ -27,7 +27,7 @@
 
   <ItemGroup>
     <PackageReference Include="Calabonga.Microservices.Core" Version="1.0.3" />
-    <PackageReference Include="Microsoft.AspNetCore.Authorization" Version="3.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Authorization" Version="3.1.1" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Abstractions" Version="2.2.0" />
   </ItemGroup>
 
