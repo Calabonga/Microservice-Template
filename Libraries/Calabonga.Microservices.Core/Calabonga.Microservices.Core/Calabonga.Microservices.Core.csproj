@@ -2,7 +2,6 @@
 
   <PropertyGroup>
     <TargetFrameworks>netcoreapp2.2;netcoreapp3.1;</TargetFrameworks>
-    <RuntimeFrameworkVersion Condition="'$(TargetFramework)' == 'netcoreapp2.2'">2.2.0-*</RuntimeFrameworkVersion>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Authors>Calabonga</Authors>
     <Company>Calabonga SOFT</Company>
@@ -16,9 +15,9 @@
     <RepositoryType></RepositoryType>
     <PackageTags>calabonga, microservice, base, entity, unitofwork, framework</PackageTags>
     <PackageReleaseNotes>New exception message added</PackageReleaseNotes>
-    <Version>1.0.5</Version>
-    <FileVersion>1.0.5.0</FileVersion>
-    <AssemblyVersion>1.0.5.0</AssemblyVersion>
+    <Version>2.0.0</Version>
+    <FileVersion>2.0.0.0</FileVersion>
+    <AssemblyVersion>2.0.0.0</AssemblyVersion>
   </PropertyGroup>
 
   <ItemGroup>
