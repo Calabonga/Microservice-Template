@@ -5,6 +5,7 @@ namespace Calabonga.Microservices.Core.Exceptions
     /// <summary>
     /// FileAlreadyExists 
     /// </summary>
+    [Serializable]
     public class MicroserviceFileAlreadyExistsException: Exception
     {
         public MicroserviceFileAlreadyExistsException() : base(AppContracts.Exceptions.FileAlreadyExists)

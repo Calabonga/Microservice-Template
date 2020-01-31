@@ -5,6 +5,7 @@ namespace Calabonga.Microservices.Core.Exceptions
     /// <summary>
     /// Represent Invalid casting Exception
     /// </summary>
+    [Serializable]
     public class MicroserviceInvalidCastException : Exception
     {
         public MicroserviceInvalidCastException() : base(AppContracts.Exceptions.TypeConverterException)

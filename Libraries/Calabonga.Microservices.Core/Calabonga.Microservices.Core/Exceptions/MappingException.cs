@@ -5,6 +5,7 @@ namespace Calabonga.Microservices.Core.Exceptions
     /// <summary>
     /// Mapping exception
     /// </summary>
+    [Serializable]
     public class MappingException : Exception
     {
         public MappingException() : base(AppContracts.Exceptions.MappingException)
