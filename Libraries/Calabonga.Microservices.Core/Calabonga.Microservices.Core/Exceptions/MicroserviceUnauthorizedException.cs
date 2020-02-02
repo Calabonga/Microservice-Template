@@ -5,6 +5,7 @@ namespace Calabonga.Microservices.Core.Exceptions
     /// <summary>
     /// Represent Price Point Exception
     /// </summary>
+    [Serializable]
     public class MicroserviceUnauthorizedException : Exception
     {
         public MicroserviceUnauthorizedException() : base(AppContracts.Exceptions.UnauthorizedException)
