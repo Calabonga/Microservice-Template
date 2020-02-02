@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using AutoMapper;
+using System.Threading.Tasks;
 using $ext_projectname$.Data;
 using $ext_projectname$.Entities;
 using $safeprojectname$.Infrastructure.Settings;
@@ -8,7 +9,7 @@ using Calabonga.Microservices.Core.Validators;
 using Calabonga.OperationResultsCore;
 using Calabonga.UnitOfWork;
 using Calabonga.UnitOfWork.Controllers.Controllers;
-using Calabonga.UnitOfWork.Controllers.Managers;
+using Calabonga.UnitOfWork.Controllers.Factories;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
@@ -27,9 +28,10 @@ namespace $safeprojectname$.Controllers
         /// <inheritdoc />
         public LogsWritableController(
             IOptions<CurrentAppSettings> appSettings,
-            IEntityManager<LogViewModel, Log, LogCreateViewModel, LogUpdateViewModel> entityManager,
-            IUnitOfWork<ApplicationDbContext> unitOfWork)
-            : base(entityManager, unitOfWork)
+            IEntityManagerFactory entityManagerFactory,
+            IUnitOfWork<ApplicationDbContext> unitOfWork,
+            IMapper mapper)
+            : base(entityManagerFactory, unitOfWork, mapper)
         {
             _appSettings = appSettings.Value;
         }

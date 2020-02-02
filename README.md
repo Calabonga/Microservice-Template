@@ -6,7 +6,12 @@
 
 ![Logo](/Whatnot/MicriserviceArchitecture31.png)
 
-Шаблоны (с сервером авторизации и без него) для версии ASP.NET Core 2.2 и ASP.NET Core 3.0 остаются также доступны для загрузки. 
+Новая версия от 02.02.2020 для ASP.NET Core 3.1:
+1. Обновился `WritableController`, теперь он принимает в конструктор `IEntityManagerFactory`.
+2. Обновились сборки для ASP.NET Core и EntityFramework Core (3.1.1)
+3. Обновился Swagger до версии 5.0.0
+
+>Винимание: Шаблоны (с сервером авторизации и без него) для версии ASP.NET Core 2.2 и ASP.NET Core 3.0 остаются также доступны для загрузки. 
 
 ![Logo](/Whatnot/MicriserviceArchitecture.png)
 

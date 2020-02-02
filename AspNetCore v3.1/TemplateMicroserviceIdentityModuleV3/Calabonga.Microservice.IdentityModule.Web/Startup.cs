@@ -1,6 +1,7 @@
 using $safeprojectname$.AppStart.Configures;
 using $safeprojectname$.AppStart.ConfigureServices;
 using $safeprojectname$.Infrastructure.DependencyInjection;
+using Calabonga.UnitOfWork.Controllers.DependencyContainer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -35,9 +36,7 @@ namespace $safeprojectname$
             ConfigureServicesControllers.ConfigureServices(services);
 
             DependencyContainer.Common(services);
-            DependencyContainer.Validators(services);
-            DependencyContainer.ViewModelFactories(services);
-            DependencyContainer.EntityManagers(services);
+            NimbleDependencyContainer.ConfigureServices(services);
         }
         /// <summary>
         /// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

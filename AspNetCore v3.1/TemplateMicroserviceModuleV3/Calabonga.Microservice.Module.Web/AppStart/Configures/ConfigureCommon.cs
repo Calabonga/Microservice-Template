@@ -1,8 +1,10 @@
 ﻿using $safeprojectname$.AppStart.ConfigureServices;
 using $safeprojectname$.Middlewares;
+using Calabonga.Microservices.Web.Core;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
 namespace $safeprojectname$.AppStart.Configures
@@ -44,6 +46,9 @@ namespace $safeprojectname$.AppStart.Configures
             app.UseMiddleware(typeof(ErrorHandlingMiddleware));
             app.UseSwagger();
             app.UseSwaggerUI(ConfigureServicesSwagger.SwaggerSettings);
+
+            // Singleton setup for User Identity
+            UserIdentity.Instance.Configure(app.ApplicationServices.GetService<IHttpContextAccessor>());
         }
     }
 }

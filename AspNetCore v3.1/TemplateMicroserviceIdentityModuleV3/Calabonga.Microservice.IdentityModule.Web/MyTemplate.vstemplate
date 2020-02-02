@@ -60,9 +60,6 @@
         </Folder>
         <Folder Name="DependencyInjection" TargetFolderName="DependencyInjection">
           <ProjectItem ReplaceParameters="true" TargetFileName="CommonRegistrations.cs">CommonRegistrations.cs</ProjectItem>
-          <ProjectItem ReplaceParameters="true" TargetFileName="EntitiesManagerRegistration.cs">EntitiesManagerRegistration.cs</ProjectItem>
-          <ProjectItem ReplaceParameters="true" TargetFileName="ValidatorsRegistration.cs">ValidatorsRegistration.cs</ProjectItem>
-          <ProjectItem ReplaceParameters="true" TargetFileName="ViewModelFactoriesRegistration.cs">ViewModelFactoriesRegistration.cs</ProjectItem>
         </Folder>
         <Folder Name="Engine" TargetFolderName="Engine">
           <Folder Name="EntityManagers" TargetFolderName="EntityManagers">

@@ -1,6 +1,7 @@
 using Calabonga.Microservice.IdentityModule.Web.AppStart.Configures;
 using Calabonga.Microservice.IdentityModule.Web.AppStart.ConfigureServices;
 using Calabonga.Microservice.IdentityModule.Web.Infrastructure.DependencyInjection;
+using Calabonga.UnitOfWork.Controllers.DependencyContainer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -35,9 +36,7 @@ namespace Calabonga.Microservice.IdentityModule.Web
             ConfigureServicesControllers.ConfigureServices(services);
 
             DependencyContainer.Common(services);
-            DependencyContainer.Validators(services);
-            DependencyContainer.ViewModelFactories(services);
-            DependencyContainer.EntityManagers(services);
+            NimbleDependencyContainer.ConfigureServices(services);
         }
         /// <summary>
         /// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

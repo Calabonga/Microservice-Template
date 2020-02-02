@@ -1,6 +1,7 @@
 using Calabonga.Microservice.Module.Web.AppStart.Configures;
 using Calabonga.Microservice.Module.Web.AppStart.ConfigureServices;
 using Calabonga.Microservice.Module.Web.Infrastructure.DependencyInjection;
+using Calabonga.UnitOfWork.Controllers.DependencyContainer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -13,7 +14,6 @@ namespace Calabonga.Microservice.Module.Web
     /// </summary>
     public class Startup
     {
-        /// <inheritdoc />
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -36,9 +36,7 @@ namespace Calabonga.Microservice.Module.Web
             ConfigureServicesControllers.ConfigureServices(services);
 
             DependencyContainer.Common(services);
-            DependencyContainer.Validators(services);
-            DependencyContainer.ViewModelFactories(services);
-            DependencyContainer.EntityManagers(services);
+            NimbleDependencyContainer.ConfigureServices(services);
         }
 
         /// <summary>
