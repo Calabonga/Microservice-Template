@@ -32,7 +32,7 @@ namespace Calabonga.Microservices.Web.Core
                         ? ContextAccessor.HttpContext.User.Identity
                         : null;
                 }
-                throw new MicroserviceArgumentNullException($"{nameof(UserIdentity)} has not been initialized. Please use {nameof(UserIdentity)}.Configure(...) in Configure method in Startup.cs");
+                throw new MicroserviceArgumentNullException($"{nameof(UserIdentity)} has not been initialized. Please use {nameof(UserIdentity)}.Instance.Configure(...) in Configure Application method in Startup.cs");
             }
         }
 
