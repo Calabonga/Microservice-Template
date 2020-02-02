@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Security.Claims;
 using System.Security.Principal;
 using Calabonga.Microservices.Core.Exceptions;
 using Microsoft.AspNetCore.Http;
@@ -31,6 +33,18 @@ namespace Calabonga.Microservices.Web.Core
                         : null;
                 }
                 throw new MicroserviceArgumentNullException($"{nameof(UserIdentity)} has not been initialized. Please use {nameof(UserIdentity)}.Configure(...) in Configure method in Startup.cs");
+            }
+        }
+
+        public IEnumerable<Claim> Claims
+        {
+            get
+            {
+                if (User != null)
+                {
+                    return ContextAccessor.HttpContext.User.Claims;
+                }
+                return null;
             }
         }
 
