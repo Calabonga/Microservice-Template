@@ -7,6 +7,8 @@
 // Updated Date: 2020-04-14
 // ---------------------------------------
 
+using System;
+using $ext_projectname$.Core;
 using $ext_projectname$.Data.DatabaseInitialization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
