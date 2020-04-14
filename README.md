@@ -62,6 +62,8 @@ Visual Studio project template for microservice module base on ASP.NET Core
 
 Часть 3. [Nimble: Основные и базовые понятия](https://youtu.be/WbSwp1Aa7hM)
 
+Часть 4. [Nimble: Создаем свой Query и Handler для IMediator](https://youtu.be/wUfT5aLHVV8)
+
 [Микросервисы 2](https://www.youtube.com/playlist?list=PLIB8be7sunXMh9dckizdXz65hLX_HRzlc) (плей-лист)
 
 # Видео по версии 2.2
