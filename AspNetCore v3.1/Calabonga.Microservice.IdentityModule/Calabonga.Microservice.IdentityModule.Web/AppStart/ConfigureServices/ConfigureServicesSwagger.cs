@@ -16,7 +16,7 @@ namespace Calabonga.Microservice.IdentityModule.Web.AppStart.ConfigureServices
     public static class ConfigureServicesSwagger
     {
         private const string AppTitle = "Microservice API (with IdentityServer4)";
-        private const string AppVersion = "3.1.0";
+        private static readonly string AppVersion = $"v.{ThisAssembly.Git.SemVer.Major}.{ThisAssembly.Git.SemVer.Minor}.{ThisAssembly.Git.SemVer.Patch}";
         private const string SwaggerConfig = "/swagger/v1/swagger.json";
         private const string SwaggerUrl = "api/manual";
 
@@ -37,7 +37,7 @@ namespace Calabonga.Microservice.IdentityModule.Web.AppStart.ConfigureServices
                 });
                 options.ResolveConflictingActions(x => x.First());
 
-                var url = configuration.GetSection("IdentityServer").GetValue<string>("SwaggerUrl");
+                var url = configuration.GetSection("IdentityServer").GetValue<string>("Url");
 
                 options.AddSecurityDefinition("oauth2", new OpenApiSecurityScheme
                 {

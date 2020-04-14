@@ -1,9 +1,10 @@
 // ---------------------------------------
 // Name: Microservice Template
 // Author: Calabonga (calabonga.net)
-// Version: 2.0.0
-// Based on: ASP.NET Core 3.0
+// Version: 2.0.1
+// Based on: ASP.NET Core 3.1
 // Created Date: 2019-10-06
+// Updated Date: 2020-04-14
 // ---------------------------------------
 
 using $ext_projectname$.Data.DatabaseInitialization;
@@ -22,7 +23,7 @@ namespace $safeprojectname$
             {
                 DatabaseInitializer.Seed(scope.ServiceProvider);
             }
-
+            Console.Title = $"{AppData.ServiceName} v.{ThisAssembly.Git.SemVer.Major}.{ThisAssembly.Git.SemVer.Minor}.{ThisAssembly.Git.SemVer.Patch}";
             webHost.Run();
         }
 

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace Calabonga.Microservice.IdentityModule.Core
 {
@@ -7,6 +8,11 @@ namespace Calabonga.Microservice.IdentityModule.Core
     /// </summary>
     public static partial class AppData
     {
+        /// <summary>
+        /// Current service name
+        /// </summary>
+        public const string ServiceName = "IdentityModule";
+
         /// <summary>
         /// "SystemAdministrator"
         /// </summary>
