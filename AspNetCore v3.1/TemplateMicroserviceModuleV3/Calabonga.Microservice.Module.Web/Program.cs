@@ -1,3 +1,4 @@
+using System;
 using $ext_projectname$.Core;
 using $ext_projectname$.Data.DatabaseInitialization;
 using Microsoft.AspNetCore.Hosting;
