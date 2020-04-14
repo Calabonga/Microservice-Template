@@ -1,3 +1,5 @@
+using System;
+using Calabonga.Microservice.Module.Core;
 using Calabonga.Microservice.Module.Data.DatabaseInitialization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
@@ -14,6 +16,7 @@ namespace Calabonga.Microservice.Module.Web
             {
                 DatabaseInitializer.Seed(scope.ServiceProvider);
             }
+            Console.Title = $"{AppData.ServiceName} v.{ThisAssembly.Git.SemVer.Major}.{ThisAssembly.Git.SemVer.Minor}.{ThisAssembly.Git.SemVer.Patch}";
             webHost.Run();
         }
 

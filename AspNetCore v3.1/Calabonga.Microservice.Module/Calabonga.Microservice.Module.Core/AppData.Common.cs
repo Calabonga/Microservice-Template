@@ -8,6 +8,11 @@ namespace Calabonga.Microservice.Module.Core
     public static partial class AppData
     {
         /// <summary>
+        /// Current service name
+        /// </summary>
+        public const string ServiceName = "Module";
+
+        /// <summary>
         /// "SystemAdministrator"
         /// </summary>
         public const string SystemAdministratorRoleName = "Administrator";

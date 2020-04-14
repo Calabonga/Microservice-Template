@@ -1,3 +1,4 @@
+using $ext_projectname$.Core;
 using $ext_projectname$.Data.DatabaseInitialization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
@@ -14,6 +15,7 @@ namespace $safeprojectname$
             {
                 DatabaseInitializer.Seed(scope.ServiceProvider);
             }
+            Console.Title = $"{AppData.ServiceName} v.{ThisAssembly.Git.SemVer.Major}.{ThisAssembly.Git.SemVer.Minor}.{ThisAssembly.Git.SemVer.Patch}";
             webHost.Run();
         }
 
