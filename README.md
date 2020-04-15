@@ -17,7 +17,6 @@ v2.0.0-beta1 от 02.02.2020 для ASP.NET Core 3.1:
 2. Обновились сборки для ASP.NET Core и EntityFramework Core (3.1.1)
 3. Обновился Swagger до версии 5.0.0
 
-
 ![Logo](/Whatnot/MicriserviceArchitecture31.png)
 
 >Винимание: Шаблоны (с сервером авторизации и без него) для версии ASP.NET Core 2.2 и ASP.NET Core 3.0 остаются также доступны для загрузки. 
@@ -69,3 +68,13 @@ Visual Studio project template for microservice module base on ASP.NET Core
 # Видео по версии 2.2
 
 [Микросервисы](https://www.youtube.com/playlist?list=PLIB8be7sunXMXTZKptqEtXAACpsYZdzi_) (плей-лист)
+
+# Visual Studio Extensions
+
+Теперь шаблоны для генерации микросервисов доступны также и в Visual Studio Marketplace
+
+![marketplace](https://github.com/Calabonga/Microservice-Template/blob/master/Whatnot/vs-extension-market-view.png)
+
+Также можно установить прямо из Visual Studio
+
+![extension](https://github.com/Calabonga/Microservice-Template/blob/master/Whatnot/vs-extension.png)
