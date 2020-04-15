@@ -5,13 +5,13 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Calabonga.Microservice.Template.Module.VSIX")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("MicroserviceTemplate")]
+[assembly: AssemblyDescription("Microservice Templates for microservices")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Calabonga.Microservice.Template.Module.VSIX")]
-[assembly: AssemblyCopyright("")]
-[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCompany("Calabonga SOFT")]
+[assembly: AssemblyProduct("MicroserviceTemplate")]
+[assembly: AssemblyCopyright("Calabonga")]
+[assembly: AssemblyTrademark("Calabonga")]
 [assembly: AssemblyCulture("")]
 
 // Setting ComVisible to false makes the types in this assembly not visible 
