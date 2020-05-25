@@ -55,11 +55,11 @@
     <Compile Include="MicroserviceTemplate.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="ProjectTemplates\pack.zip">
+    <Content Include="ProjectTemplates\identity.zip">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
-    <Content Include="ProjectTemplates\pack2.zip">
+    <Content Include="ProjectTemplates\module.zip">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
