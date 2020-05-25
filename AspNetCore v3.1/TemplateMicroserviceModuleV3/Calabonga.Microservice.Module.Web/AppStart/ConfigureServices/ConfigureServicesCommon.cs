@@ -1,12 +1,8 @@
 ﻿using AutoMapper;
-using $ext_projectname$.Core;
 using $ext_projectname$.Data;
 using $safeprojectname$.Extensions;
 using $safeprojectname$.Infrastructure.Settings;
 using Calabonga.UnitOfWork;
-using IdentityServer4.AccessTokenValidation;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -28,7 +24,12 @@ namespace $safeprojectname$.AppStart.ConfigureServices
         {
             services.AddDbContextPool<ApplicationDbContext>(config =>
             {
-                config.UseSqlServer(configuration.GetConnectionString(nameof(ApplicationDbContext)));
+                // This for demo only.
+                // Should uninstall package "Microsoft.EntityFrameworkCore.InMemory" and
+                // uncomment line below to use UseSqlServer(). Don't forget setup connection string in appSettings.json 
+                config.UseInMemoryDatabase("DEMO_PURPOSES_ONLY");
+
+                //config.UseSqlServer(configuration.GetConnectionString(nameof(ApplicationDbContext)));
             });
 
             services.AddAutoMapper(typeof(Startup));
@@ -43,24 +44,6 @@ namespace $safeprojectname$.AppStart.ConfigureServices
             services.AddLocalization();
             services.AddHttpContextAccessor();
             services.AddResponseCaching();
-
-            var url = configuration.GetSection("IdentityServer").GetValue<string>("Url");
-            services
-                .AddAuthentication(options =>
-                {
-                    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-                    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-                    options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
-                })
-                .AddIdentityServerAuthentication(options =>
-                {
-                    options.SupportedTokens = SupportedTokens.Jwt;
-                    options.Authority = $"{url}{AppData.AuthUrl}";
-                    options.EnableCaching = true;
-                    options.RequireHttpsMetadata = false;
-                });
-
-            services.AddAuthorization();
         }
     }
 }

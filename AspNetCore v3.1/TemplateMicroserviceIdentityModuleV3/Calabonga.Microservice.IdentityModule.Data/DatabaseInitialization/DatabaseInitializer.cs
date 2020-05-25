@@ -18,7 +18,9 @@ namespace $safeprojectname$.DatabaseInitialization
             using var scope = serviceProvider.CreateScope();
             await using var context = scope.ServiceProvider.GetService<ApplicationDbContext>();
 
-            context.Database.Migrate();
+            // Should be uncomment when using UseSqlServer() settings or any other provider.
+            // This is should not be used when UseInMemoryDatabase()
+            // context.Database.Migrate();
 
             var roles = AppData.Roles.ToArray();
 
