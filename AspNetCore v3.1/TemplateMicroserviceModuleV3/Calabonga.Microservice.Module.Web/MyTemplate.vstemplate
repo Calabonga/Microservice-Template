@@ -27,6 +27,7 @@
         <Folder Name="ConfigureServices" TargetFolderName="ConfigureServices">
           <ProjectItem ReplaceParameters="true" TargetFileName="ConfigureServicesCommon.cs">ConfigureServicesCommon.cs</ProjectItem>
           <ProjectItem ReplaceParameters="true" TargetFileName="ConfigureServicesControllers.cs">ConfigureServicesControllers.cs</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="ConfigureServicesAuthentication.cs">ConfigureServicesAuthentication.cs</ProjectItem>
           <ProjectItem ReplaceParameters="true" TargetFileName="ConfigureServicesCors.cs">ConfigureServicesCors.cs</ProjectItem>
           <ProjectItem ReplaceParameters="true" TargetFileName="ConfigureServicesSwagger.cs">ConfigureServicesSwagger.cs</ProjectItem>
         </Folder>

@@ -1,7 +1,0 @@
-This is first release. 
-
-More information: 
-1. GitHub (https://github.com/Calabonga/Microservice-Template)
-2. https://www.calabonga.net/
-3. https://www.youtube.com/playlist?list=PLIB8be7sunXMh9dckizdXz65hLX_HRzlc
-4. https://www.youtube.com/playlist?list=PLIB8be7sunXMXTZKptqEtXAACpsYZdzi_

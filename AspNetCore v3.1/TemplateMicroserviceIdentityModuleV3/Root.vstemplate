@@ -1,7 +1,7 @@
 <VSTemplate Version="3.0.0" Type="ProjectGroup" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005">
   <TemplateData>
     <Name>Microservice Template with IdentityServer4</Name>
-    <Description>This template gives you a possibility to start developing a microservices system with integrated UI (Swagger) and Authorization Server (IdentityServer4). Template developed for ASP.NET Core 3.1. More information https://www.youtube.com/playlist?list=PLIB8be7sunXMXTZKptqEtXAACpsYZdzi_</Description>
+    <Description>This template gives you a possibility to start developing a microservices system with integrated UI (Swagger) and Authorization Server (IdentityServer4). Template developed for ASP.NET Core 3.1.</Description>
     <ProjectType>CSharp</ProjectType>
     <ProjectSubType></ProjectSubType>
     <SortOrder>1000</SortOrder>

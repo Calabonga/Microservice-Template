@@ -1,13 +1,9 @@
 ﻿using System;
 using AutoMapper;
-using Calabonga.Microservice.IdentityModule.Core;
 using Calabonga.Microservice.IdentityModule.Data;
 using Calabonga.Microservice.IdentityModule.Web.Extensions;
-using Calabonga.Microservice.IdentityModule.Web.Infrastructure.Services;
 using Calabonga.Microservice.IdentityModule.Web.Infrastructure.Settings;
 using Calabonga.UnitOfWork;
-using IdentityServer4.AccessTokenValidation;
-using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -36,7 +32,12 @@ namespace Calabonga.Microservice.IdentityModule.Web.AppStart.ConfigureServices
 
             services.AddDbContextPool<ApplicationDbContext>(config =>
             {
-                config.UseSqlServer(configuration.GetConnectionString(nameof(ApplicationDbContext)));
+                // This for demo only.
+                // Should uninstall package "Microsoft.EntityFrameworkCore.InMemory" and
+                // uncomment line below to use UseSqlServer(). Don't forget setup connection string in appSettings.json 
+                config.UseInMemoryDatabase("DEMO_PURPOSES_ONLY");
+
+                //config.UseSqlServer(configuration.GetConnectionString(nameof(ApplicationDbContext)));
             });
 
             services.AddAutoMapper(typeof(Startup));
@@ -76,40 +77,7 @@ namespace Calabonga.Microservice.IdentityModule.Web.AppStart.ConfigureServices
             services.AddHttpContextAccessor();
             services.AddResponseCaching();
 
-            var url = configuration.GetSection("IdentityServer").GetValue<string>("Url");
-            services.AddAuthentication(options =>
-            {
-                options.DefaultAuthenticateScheme = IdentityServerAuthenticationDefaults.AuthenticationScheme;
-                options.DefaultChallengeScheme = IdentityServerAuthenticationDefaults.AuthenticationScheme;
-                options.DefaultScheme = IdentityServerAuthenticationDefaults.AuthenticationScheme;
-                options.DefaultSignInScheme = IdentityServerAuthenticationDefaults.AuthenticationScheme;
-                options.DefaultSignOutScheme = IdentityServerAuthenticationDefaults.AuthenticationScheme;
-            })
-               .AddIdentityServerAuthentication(options =>
-               {
-                   options.SupportedTokens = SupportedTokens.Jwt;
-                   options.Authority = $"{url}{AppData.AuthUrl}";
-                   options.EnableCaching = true;
-                   options.RequireHttpsMetadata = false;
-               });
-
-            services.AddIdentityServer(options =>
-                {
-                    options.Authentication.CookieSlidingExpiration = true;
-                    options.IssuerUri = $"{url}{AppData.AuthUrl}";
-                    options.Events.RaiseErrorEvents = true;
-                    options.Events.RaiseInformationEvents = true;
-                    options.Events.RaiseFailureEvents = true;
-                    options.Events.RaiseSuccessEvents = true;
-                })
-                .AddInMemoryPersistedGrants()
-                .AddDeveloperSigningCredential()
-                .AddInMemoryIdentityResources(IdentityServerConfig.GetIdentityResources())
-                .AddInMemoryApiResources(IdentityServerConfig.GetApiResources())
-                .AddInMemoryClients(IdentityServerConfig.GetClients())
-                .AddAspNetIdentity<ApplicationUser>()
-                .AddJwtBearerClientAuthentication()
-                .AddProfileService<IdentityProfileService>();
+           
 
             services.AddAuthorization();
         }

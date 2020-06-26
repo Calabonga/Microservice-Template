@@ -36,7 +36,12 @@ namespace $safeprojectname$.AppStart.ConfigureServices
 
             services.AddDbContextPool<ApplicationDbContext>(config =>
             {
-                config.UseSqlServer(configuration.GetConnectionString(nameof(ApplicationDbContext)));
+                 // This for demo only.
+                // Should uninstall package "Microsoft.EntityFrameworkCore.InMemory" and
+                // uncomment line below to use UseSqlServer(). Don't forget setup connection string in appSettings.json 
+                config.UseInMemoryDatabase("DEMO_PURPOSES_ONLY");
+
+                //config.UseSqlServer(configuration.GetConnectionString(nameof(ApplicationDbContext)));
             });
 
             services.AddAutoMapper(typeof(Startup));
@@ -74,44 +79,7 @@ namespace $safeprojectname$.AppStart.ConfigureServices
             services.Configure<MvcOptions>(options => options.UseRouteSlugify());
             services.AddLocalization();
             services.AddHttpContextAccessor();
-            services.AddResponseCaching();
-
-            var url = configuration.GetSection("IdentityServer").GetValue<string>("Url");
-            services.AddAuthentication(options =>
-            {
-                options.DefaultAuthenticateScheme = IdentityServerAuthenticationDefaults.AuthenticationScheme;
-                options.DefaultChallengeScheme = IdentityServerAuthenticationDefaults.AuthenticationScheme;
-                options.DefaultScheme = IdentityServerAuthenticationDefaults.AuthenticationScheme;
-                options.DefaultSignInScheme = IdentityServerAuthenticationDefaults.AuthenticationScheme;
-                options.DefaultSignOutScheme = IdentityServerAuthenticationDefaults.AuthenticationScheme;
-            })
-               .AddIdentityServerAuthentication(options =>
-               {
-                   options.SupportedTokens = SupportedTokens.Jwt;
-                   options.Authority = $"{url}{AppData.AuthUrl}";
-                   options.EnableCaching = true;
-                   options.RequireHttpsMetadata = false;
-               });
-
-            services.AddIdentityServer(options =>
-                {
-                    options.Authentication.CookieSlidingExpiration = true;
-                    options.IssuerUri = $"{url}{AppData.AuthUrl}";
-                    options.Events.RaiseErrorEvents = true;
-                    options.Events.RaiseInformationEvents = true;
-                    options.Events.RaiseFailureEvents = true;
-                    options.Events.RaiseSuccessEvents = true;
-                })
-                .AddInMemoryPersistedGrants()
-                .AddDeveloperSigningCredential()
-                .AddInMemoryIdentityResources(IdentityServerConfig.GetIdentityResources())
-                .AddInMemoryApiResources(IdentityServerConfig.GetApiResources())
-                .AddInMemoryClients(IdentityServerConfig.GetClients())
-                .AddAspNetIdentity<ApplicationUser>()
-                .AddJwtBearerClientAuthentication()
-                .AddProfileService<IdentityProfileService>();
-
-            services.AddAuthorization();
+            services.AddResponseCaching();            
         }
     }
 }

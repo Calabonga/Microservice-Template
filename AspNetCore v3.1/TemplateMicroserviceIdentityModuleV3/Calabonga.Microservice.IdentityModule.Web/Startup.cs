@@ -31,6 +31,7 @@ namespace $safeprojectname$
         public void ConfigureServices(IServiceCollection services)
         {
             ConfigureServicesCommon.ConfigureServices(services, Configuration);
+            ConfigureServicesAuthentication.ConfigureServices(services, Configuration);
             ConfigureServicesSwagger.ConfigureServices(services, Configuration);
             ConfigureServicesCors.ConfigureServices(services, Configuration);
             ConfigureServicesControllers.ConfigureServices(services);
