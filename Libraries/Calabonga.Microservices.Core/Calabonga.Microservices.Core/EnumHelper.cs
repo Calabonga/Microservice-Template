@@ -38,7 +38,7 @@ namespace Calabonga.Microservices.Core
         }
 
         /// <summary>
-        /// Parse value by string from Enum
+        /// Parse displayValue by string from Enum
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
@@ -48,7 +48,7 @@ namespace Calabonga.Microservices.Core
         }
 
         /// <summary>
-        /// Parse value by string from Enum
+        /// Parse displayValue by string from Enum
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
@@ -59,7 +59,37 @@ namespace Calabonga.Microservices.Core
                 return result;
             }
             return null;
+        }
 
+        /// <summary>
+        /// Parse displayValue by string from Enum
+        /// </summary>
+        /// <param name="displayValue"></param>
+        /// <returns></returns>
+        public static T? TryParseDisplayValue(string displayValue)
+        {
+
+            var fieldInfos = typeof(T).GetFields();
+
+            foreach (var field in fieldInfos)
+            {
+                var descriptionAttributes = field.GetCustomAttributes(typeof(DisplayAttribute), false) as DisplayAttribute[];
+                if (!(descriptionAttributes?.Length > 0)) continue;
+                if (descriptionAttributes[0].ResourceType != null)
+                {
+                    // Calabonga: Implement search in resources (resx) (2020-06-26 02:48 EnumHelper)
+                    // var stringValue = LookupResource(descriptionAttributes[0].ResourceType, descriptionAttributes[0].Name);
+                    return default(T);
+                }
+                if (descriptionAttributes[0].Name.Equals(displayValue, StringComparison.OrdinalIgnoreCase))
+                {
+                    if (Enum.TryParse(field.Name, true, out T result1))
+                    {
+                        return result1;
+                    }
+                }
+            }
+            return default(T);
         }
 
         /// <summary>
