@@ -52,6 +52,7 @@ namespace Calabonga.Microservice.IdentityModule.Web.AppStart.ConfigureServices
                 .AddInMemoryIdentityResources(IdentityServerConfig.GetIdentityResources())
                 .AddInMemoryApiResources(IdentityServerConfig.GetApiResources())
                 .AddInMemoryClients(IdentityServerConfig.GetClients())
+                .AddInMemoryApiScopes(IdentityServerConfig.GetAPiScopes())
                 .AddAspNetIdentity<ApplicationUser>()
                 .AddJwtBearerClientAuthentication()
                 .AddProfileService<IdentityProfileService>();

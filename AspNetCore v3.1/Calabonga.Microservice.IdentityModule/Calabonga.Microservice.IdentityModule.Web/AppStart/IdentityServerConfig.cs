@@ -69,5 +69,10 @@ namespace Calabonga.Microservice.IdentityModule.Web.AppStart
                 new ApiResource("api1", "API Default")
             };
         }
+
+        public static IEnumerable<ApiScope> GetAPiScopes()
+        {
+            yield return new ApiScope("api1");
+        }
     }
 }
