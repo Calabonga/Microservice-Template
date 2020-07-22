@@ -3,6 +3,11 @@
 
 # Версии шаблонов (ASP.NET Core 3.1)
 
+v.2.0.1 от 14.04.2020 для ASP.NET Core 3.1:
+1. Обновились сборки для ASP.NET Core и EntityFramework Core (3.1.6)
+2. Обновились все сборки от Swagger до версии 5.5.1
+3. Обновились Calabonga.UnitOfWork.Controllers до версии 1.2.0
+
 v.2.0.2 от 25.05.2020:
 1. Установлена сборка `Microsoft.EntityFrameworkCore.InMemory`, чтобы можно было вновь созданный проект запустить без подключения к базе данных. В этой связи обновлена конфигурация сервиса.
 2. Обновились сборки для ASP.NET Core и EntityFramework Core (3.1.4)
