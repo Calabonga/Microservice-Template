@@ -1,7 +1,6 @@
 // ---------------------------------------
 // Name: Microservice Template
 // Author: Calabonga (calabonga.net)
-// Telegram: t.me/calabongaNet
 // Version: 2.0.4   
 // Based on: ASP.NET Core 3.1
 // Created Date: 2019-10-06
