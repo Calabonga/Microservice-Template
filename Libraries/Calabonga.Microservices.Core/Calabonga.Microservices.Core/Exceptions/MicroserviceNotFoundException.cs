@@ -3,7 +3,7 @@
 namespace Calabonga.Microservices.Core.Exceptions
 {
     /// <summary>
-    /// Represent Price Point Exception
+    /// Represent NotFound Exception
     /// </summary>
     [Serializable]
     public class MicroserviceNotFoundException : Exception
