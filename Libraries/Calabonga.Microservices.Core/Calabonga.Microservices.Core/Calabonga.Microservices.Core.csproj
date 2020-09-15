@@ -14,11 +14,11 @@
     <RepositoryUrl>https://github.com/Calabonga/microservice-template</RepositoryUrl>
     <RepositoryType></RepositoryType>
     <PackageTags>calabonga, microservice, base, entity, unitofwork, framework, helpers</PackageTags>
-    <PackageReleaseNotes>New type of Microservice exception added MicroserviceDatabaseException</PackageReleaseNotes>
-    <Version>2.1.1</Version>
-    <FileVersion>2.1.1.0</FileVersion>
-    <AssemblyVersion>2.1.1.0</AssemblyVersion>
-    <PackageVersion>2.1.1</PackageVersion>
+    <PackageReleaseNotes>New attribute created for EnumHelper.Parse()</PackageReleaseNotes>
+    <Version>2.1.2</Version>
+    <FileVersion>2.1.2.0</FileVersion>
+    <AssemblyVersion>2.1.2.0</AssemblyVersion>
+    <PackageVersion>2.1.2</PackageVersion>
   </PropertyGroup>
 
   <ItemGroup>

@@ -10,7 +10,7 @@ namespace Calabonga.Microservices.Core
     /// Enum Helper
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public static class EnumHelper<T> where T: struct
+    public static class EnumHelper<T> where T : struct
     {
         /// <summary>
         /// Returns Enum with DisplayNames
@@ -27,7 +27,7 @@ namespace Calabonga.Microservices.Core
             }
             return list;
         }
-        
+
         /// <summary>
         /// Returns values from enum
         /// </summary>
@@ -44,6 +44,11 @@ namespace Calabonga.Microservices.Core
         /// <returns></returns>
         public static T Parse(string value)
         {
+            var displayName = TryParseDisplayValue(value);
+            if (displayName != null)
+            {
+                return (T)displayName;
+            }
             return (T)Enum.Parse(typeof(T), value, true);
         }
 
@@ -52,7 +57,7 @@ namespace Calabonga.Microservices.Core
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
-        public static T? TryParse(string value) 
+        public static T? TryParse(string value)
         {
             if (Enum.TryParse(value, true, out T result))
             {
@@ -68,11 +73,26 @@ namespace Calabonga.Microservices.Core
         /// <returns></returns>
         public static T? TryParseDisplayValue(string displayValue)
         {
-
             var fieldInfos = typeof(T).GetFields();
 
             foreach (var field in fieldInfos)
             {
+                var valuesAttributes = field.GetCustomAttributes(typeof(DisplayNamesAttribute), false) as DisplayNamesAttribute[];
+                if (valuesAttributes?.Length > 0)
+                {
+                    if (valuesAttributes[0].Names.Any())
+                    {
+                        var exists = valuesAttributes[0].Names.Any(x => x.Equals(displayValue));
+                        if (exists)
+                        {
+                            if (Enum.TryParse(field.Name, true, out T result1))
+                            {
+                                return result1;
+                            }
+                        }
+                    }
+                }
+
                 var descriptionAttributes = field.GetCustomAttributes(typeof(DisplayAttribute), false) as DisplayAttribute[];
                 if (!(descriptionAttributes?.Length > 0)) continue;
                 if (descriptionAttributes[0].ResourceType != null)
@@ -88,8 +108,12 @@ namespace Calabonga.Microservices.Core
                         return result1;
                     }
                 }
+                if (Enum.TryParse(displayValue, true, out T result2))
+                {
+                    return result2;
+                }
             }
-            return default(T);
+            return null;
         }
 
         /// <summary>
@@ -134,7 +158,8 @@ namespace Calabonga.Microservices.Core
         {
             var fieldInfo = value.GetType().GetField(value.ToString());
 
-            var descriptionAttributes = fieldInfo.GetCustomAttributes(typeof(DisplayAttribute), false) as DisplayAttribute[];
+
+            var descriptionAttributes = fieldInfo.GetCustomAttributes(typeof(DisplayAttribute), true) as DisplayAttribute[];
             if (descriptionAttributes?.Length > 0 && descriptionAttributes[0].ResourceType != null)
             {
                 return LookupResource(descriptionAttributes[0].ResourceType, descriptionAttributes[0].Name);
@@ -147,5 +172,21 @@ namespace Calabonga.Microservices.Core
 
             return (descriptionAttributes.Length > 0) ? descriptionAttributes[0].Name : value.ToString();
         }
+    }
+
+    /// <summary>
+    /// EnumHelper Attribute
+    /// Provides a general-purpose attribute that lets you specify localizable strings
+    /// for types and members of entity partial classes.
+    /// </summary>
+    [AttributeUsage(AttributeTargets.Field, Inherited = false, AllowMultiple = false)]
+    public class DisplayNamesAttribute : Attribute
+    {
+        public DisplayNamesAttribute(params string[] values)
+        {
+            Names = values;
+        }
+
+        public IEnumerable<string> Names { get; }
     }
 }
