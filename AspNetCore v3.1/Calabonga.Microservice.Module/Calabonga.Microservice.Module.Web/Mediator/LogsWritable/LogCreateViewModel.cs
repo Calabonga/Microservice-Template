@@ -2,10 +2,10 @@
 using System.Threading.Tasks;
 using Calabonga.AspNetCore.Controllers.Handlers;
 using Calabonga.AspNetCore.Controllers.Queries;
-using Calabonga.Microservice.IdentityModule.Web.ViewModels.LogViewModels;
+using Calabonga.Microservice.Module.Web.ViewModels.LogViewModels;
 using Microsoft.Extensions.Logging;
 
-namespace Calabonga.Microservice.IdentityModule.Web.Mediator.LogsWritable
+namespace Calabonga.Microservice.Module.Web.Mediator.LogsWritable
 {
     /// <summary>
     /// Request: Returns ViewModel for entity Log creation

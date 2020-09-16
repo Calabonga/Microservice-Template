@@ -3,7 +3,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using Calabonga.AspNetCore.Controllers.Base;
 using Calabonga.Microservice.IdentityModule.Web.Infrastructure.Services;
-using Calabonga.Microservice.IdentityModule.Web.Infrastructure.ViewModels.AccountViewModels;
 using Calabonga.Microservice.IdentityModule.Web.ViewModels.AccountViewModels;
 using Calabonga.OperationResultsCore;
 

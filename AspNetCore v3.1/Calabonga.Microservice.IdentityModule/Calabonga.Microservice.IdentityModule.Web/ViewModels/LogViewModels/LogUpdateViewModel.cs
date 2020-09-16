@@ -1,6 +1,6 @@
 ﻿using Calabonga.EntityFrameworkCore.Entities.Base;
 
-namespace Calabonga.Microservice.IdentityModule.Web.Infrastructure.ViewModels.LogViewModels
+namespace Calabonga.Microservice.IdentityModule.Web.ViewModels.LogViewModels
 {
     /// <summary>
     /// Log View model for Update operations

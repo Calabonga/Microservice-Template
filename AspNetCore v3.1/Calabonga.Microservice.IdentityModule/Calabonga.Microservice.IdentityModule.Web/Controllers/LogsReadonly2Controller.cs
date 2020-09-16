@@ -6,7 +6,6 @@ using Calabonga.Microservice.IdentityModule.Core;
 using Calabonga.Microservice.IdentityModule.Data;
 using Calabonga.Microservice.IdentityModule.Entities;
 using Calabonga.Microservice.IdentityModule.Web.Infrastructure.Settings;
-using Calabonga.Microservice.IdentityModule.Web.Infrastructure.ViewModels.LogViewModels;
 using Calabonga.Microservice.IdentityModule.Web.ViewModels.LogViewModels;
 using Calabonga.Microservices.Core;
 using Calabonga.Microservices.Core.QueryParams;

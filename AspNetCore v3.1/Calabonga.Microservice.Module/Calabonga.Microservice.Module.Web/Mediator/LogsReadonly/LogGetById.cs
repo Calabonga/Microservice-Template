@@ -2,11 +2,11 @@
 using AutoMapper;
 using Calabonga.AspNetCore.Controllers.Handlers;
 using Calabonga.AspNetCore.Controllers.Queries;
-using Calabonga.Microservice.IdentityModule.Entities;
-using Calabonga.Microservice.IdentityModule.Web.ViewModels.LogViewModels;
+using Calabonga.Microservice.Module.Entities;
+using Calabonga.Microservice.Module.Web.ViewModels.LogViewModels;
 using Calabonga.UnitOfWork;
 
-namespace Calabonga.Microservice.IdentityModule.Web.Mediator.LogsReadonly
+namespace Calabonga.Microservice.Module.Web.Mediator.LogsReadonly
 {
     /// <summary>
     /// Request for Log by Identifier

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Calabonga.Microservice.IdentityModule.Web.Infrastructure.ViewModels.AccountViewModels
+namespace Calabonga.Microservice.IdentityModule.Web.ViewModels.AccountViewModels
 {
     /// <summary>
     /// Application User Profile

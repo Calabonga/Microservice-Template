@@ -1,19 +1,13 @@
 ﻿using System;
-using System.Security.Claims;
-using System.Threading;
 using System.Threading.Tasks;
-using Calabonga.Microservice.IdentityModule.Core;
-using Calabonga.Microservice.IdentityModule.Web.Mediator.LogsReadonly;
-using Calabonga.Microservice.IdentityModule.Web.ViewModels.LogViewModels;
-using Calabonga.Microservices.Core;
+using Calabonga.Microservice.Module.Core;
+using Calabonga.Microservice.Module.Web.Mediator.LogsReadonly;
 using Calabonga.Microservices.Core.QueryParams;
-using Calabonga.OperationResultsCore;
-using Calabonga.UnitOfWork;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Calabonga.Microservice.IdentityModule.Web.Controllers
+namespace Calabonga.Microservice.Module.Web.Controllers
 {
     /// <summary>
     /// ReadOnlyController Demo

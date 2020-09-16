@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Calabonga.AspNetCore.Controllers.Extensions;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Calabonga.Microservice.Module.Web.AppStart.ConfigureServices
 {
@@ -14,6 +15,8 @@ namespace Calabonga.Microservice.Module.Web.AppStart.ConfigureServices
         public static void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            
+            services.AddCommandAndQueries(typeof(Startup).Assembly);
         }
     }
 }

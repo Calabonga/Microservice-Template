@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Calabonga.Microservice.IdentityModule.Web.Infrastructure.Services;
-using Calabonga.Microservice.IdentityModule.Web.Infrastructure.ViewModels.AccountViewModels;
 using Calabonga.Microservice.IdentityModule.Web.ViewModels.AccountViewModels;
 using Calabonga.Microservices.Core.Exceptions;
 using Calabonga.OperationResultsCore;

@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Threading.Tasks;
-using Calabonga.Microservice.IdentityModule.Web.Infrastructure.ViewModels.LogViewModels;
 using Calabonga.Microservice.IdentityModule.Web.Mediator.LogsReadonly;
 using Calabonga.Microservice.IdentityModule.Web.Mediator.LogsWritable;
+using Calabonga.Microservice.IdentityModule.Web.ViewModels.LogViewModels;
 using Calabonga.Microservices.Core.QueryParams;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;

@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using Calabonga.Microservice.IdentityModule.Data;
 using Calabonga.Microservice.IdentityModule.Entities;
-using Calabonga.Microservice.IdentityModule.Web.Infrastructure.ViewModels.LogViewModels;
+using Calabonga.Microservice.IdentityModule.Web.ViewModels.LogViewModels;
 using Calabonga.OperationResultsCore;
 using Calabonga.UnitOfWork;
 using Calabonga.UnitOfWork.Controllers.Factories;

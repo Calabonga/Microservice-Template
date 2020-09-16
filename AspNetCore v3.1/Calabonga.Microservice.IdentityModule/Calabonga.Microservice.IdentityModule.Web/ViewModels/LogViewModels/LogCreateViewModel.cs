@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 using Calabonga.EntityFrameworkCore.Entities.Base;
 using Microsoft.Extensions.Logging;
 
-namespace Calabonga.Microservice.IdentityModule.Web.Infrastructure.ViewModels.LogViewModels
+namespace Calabonga.Microservice.IdentityModule.Web.ViewModels.LogViewModels
 {
     /// <summary>
     /// Data Transfer Object for Log entity

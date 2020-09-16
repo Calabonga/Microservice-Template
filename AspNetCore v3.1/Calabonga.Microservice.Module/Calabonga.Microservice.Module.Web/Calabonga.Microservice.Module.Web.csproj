@@ -14,6 +14,7 @@
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="10.0.0" />
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.0.1" />
+    <PackageReference Include="Calabonga.AspNetCore.Controllers" Version="1.1.0" />
     <PackageReference Include="Calabonga.EntityFrameworkCore.UnitOfWork" Version="2.0.2" />
     <PackageReference Include="Calabonga.Microservices.Core" Version="2.1.1" />
     <PackageReference Include="Calabonga.Microservices.Web.Core" Version="2.0.2" />
@@ -43,6 +44,10 @@
     <ProjectReference Include="..\Calabonga.Microservice.Module.Core\Calabonga.Microservice.Module.Core.csproj" />
     <ProjectReference Include="..\Calabonga.Microservice.Module.Data\Calabonga.Microservice.Module.Data.csproj" />
     <ProjectReference Include="..\Calabonga.Microservice.Module.Models\Calabonga.Microservice.Module.Entities.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Mediator" />
   </ItemGroup>
 
 </Project>

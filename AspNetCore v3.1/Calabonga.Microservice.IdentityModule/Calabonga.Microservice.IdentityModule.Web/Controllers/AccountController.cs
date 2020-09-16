@@ -1,5 +1,4 @@
 ﻿using System.Threading.Tasks;
-using Calabonga.Microservice.IdentityModule.Web.Infrastructure.ViewModels.AccountViewModels;
 using Calabonga.Microservice.IdentityModule.Web.Mediator.Account;
 using Calabonga.Microservice.IdentityModule.Web.ViewModels.AccountViewModels;
 using Calabonga.OperationResultsCore;
