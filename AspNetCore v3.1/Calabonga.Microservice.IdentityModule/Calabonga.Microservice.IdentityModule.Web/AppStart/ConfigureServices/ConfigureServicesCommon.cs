@@ -35,9 +35,9 @@ namespace Calabonga.Microservice.IdentityModule.Web.AppStart.ConfigureServices
                 // This for demo only.
                 // Should uninstall package "Microsoft.EntityFrameworkCore.InMemory" and
                 // uncomment line below to use UseSqlServer(). Don't forget setup connection string in appSettings.json 
-                config.UseInMemoryDatabase("DEMO_PURPOSES_ONLY");
+                //config.UseInMemoryDatabase("DEMO_PURPOSES_ONLY");
 
-                //config.UseSqlServer(configuration.GetConnectionString(nameof(ApplicationDbContext)));
+                config.UseSqlServer(configuration.GetConnectionString(nameof(ApplicationDbContext)));
             });
 
             services.AddAutoMapper(typeof(Startup));
@@ -76,9 +76,6 @@ namespace Calabonga.Microservice.IdentityModule.Web.AppStart.ConfigureServices
             services.AddLocalization();
             services.AddHttpContextAccessor();
             services.AddResponseCaching();
-
-           
-
             services.AddAuthorization();
         }
     }

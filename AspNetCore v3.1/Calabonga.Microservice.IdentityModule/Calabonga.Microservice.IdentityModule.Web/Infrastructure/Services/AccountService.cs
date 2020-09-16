@@ -8,6 +8,7 @@ using Calabonga.Microservice.IdentityModule.Core;
 using Calabonga.Microservice.IdentityModule.Data;
 using Calabonga.Microservice.IdentityModule.Web.Infrastructure.Auth;
 using Calabonga.Microservice.IdentityModule.Web.Infrastructure.ViewModels.AccountViewModels;
+using Calabonga.Microservice.IdentityModule.Web.ViewModels.AccountViewModels;
 using Calabonga.Microservices.Core.Exceptions;
 using Calabonga.Microservices.Core.Extensions;
 using Calabonga.Microservices.Core.Validators;

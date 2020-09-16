@@ -17,7 +17,6 @@ namespace Calabonga.Microservice.IdentityModule.Web.AppStart
             return (from t in typeof(Startup).GetTypeInfo().Assembly.GetTypes()
                     where typeof(IAutoMapper).IsAssignableFrom(t) && !t.GetTypeInfo().IsAbstract
                     select t).ToList();
-
         }
 
         /// <summary>

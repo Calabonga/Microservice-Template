@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Calabonga.Microservice.IdentityModule.Web.Infrastructure.ViewModels.AccountViewModels
+namespace Calabonga.Microservice.IdentityModule.Web.ViewModels.AccountViewModels
 {
     /// <summary>
     /// Data transfer object for user registration

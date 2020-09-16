@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Calabonga.Microservice.IdentityModule.Entities;
 using Calabonga.Microservice.IdentityModule.Web.Infrastructure.ViewModels.LogViewModels;
+using Calabonga.Microservice.IdentityModule.Web.ViewModels.LogViewModels;
 using Calabonga.Microservices.Core.Validators;
 using Calabonga.UnitOfWork.Controllers.Factories;
 using Calabonga.UnitOfWork.Controllers.Managers;
