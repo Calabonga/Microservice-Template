@@ -1,7 +1,7 @@
 <VSTemplate Version="3.0.0" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" Type="Project">
   <TemplateData>
     <Name>Calabonga.Microservice.Module.Web</Name>
-    <Description>&lt;No description available&gt;</Description>
+    <Description>API service for microservice</Description>
     <ProjectType>CSharp</ProjectType>
     <ProjectSubType>
     </ProjectSubType>
@@ -13,6 +13,7 @@
     <EnableLocationBrowseButton>true</EnableLocationBrowseButton>
     <CreateInPlace>true</CreateInPlace>
     <Icon>__TemplateIcon.ico</Icon>
+    <PreviewImage>__PreviewImage.png</PreviewImage>
   </TemplateData>
   <TemplateContent>
     <Project TargetFileName="Calabonga.Microservice.Module.Web.csproj" File="Calabonga.Microservice.Module.Web.csproj" ReplaceParameters="true">
@@ -25,9 +26,9 @@
           <ProjectItem ReplaceParameters="true" TargetFileName="ConfigureEndpoints.cs">ConfigureEndpoints.cs</ProjectItem>
         </Folder>
         <Folder Name="ConfigureServices" TargetFolderName="ConfigureServices">
+          <ProjectItem ReplaceParameters="true" TargetFileName="ConfigureServicesAuthentication.cs">ConfigureServicesAuthentication.cs</ProjectItem>
           <ProjectItem ReplaceParameters="true" TargetFileName="ConfigureServicesCommon.cs">ConfigureServicesCommon.cs</ProjectItem>
           <ProjectItem ReplaceParameters="true" TargetFileName="ConfigureServicesControllers.cs">ConfigureServicesControllers.cs</ProjectItem>
-          <ProjectItem ReplaceParameters="true" TargetFileName="ConfigureServicesAuthentication.cs">ConfigureServicesAuthentication.cs</ProjectItem>
           <ProjectItem ReplaceParameters="true" TargetFileName="ConfigureServicesCors.cs">ConfigureServicesCors.cs</ProjectItem>
           <ProjectItem ReplaceParameters="true" TargetFileName="ConfigureServicesSwagger.cs">ConfigureServicesSwagger.cs</ProjectItem>
         </Folder>
@@ -36,8 +37,9 @@
         </Folder>
       </Folder>
       <Folder Name="Controllers" TargetFolderName="Controllers">
-        <ProjectItem ReplaceParameters="true" TargetFileName="LogsReadOnlyController.cs">LogsReadOnlyController.cs</ProjectItem>
-        <ProjectItem ReplaceParameters="true" TargetFileName="LogsWritableController.cs">LogsWritableController.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="LogsReadonly2Controller.cs">LogsReadonly2Controller.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="LogsReadonlyController.cs">LogsReadonlyController.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="LogsWritable2Controller.cs">LogsWritable2Controller.cs</ProjectItem>
       </Folder>
       <Folder Name="Extensions" TargetFolderName="Extensions">
         <ProjectItem ReplaceParameters="true" TargetFileName="ApplicationBuilderExtensions.cs">ApplicationBuilderExtensions.cs</ProjectItem>
@@ -102,22 +104,31 @@
         <Folder Name="Validations" TargetFolderName="Validations">
           <ProjectItem ReplaceParameters="true" TargetFileName="LogValidator.cs">LogValidator.cs</ProjectItem>
         </Folder>
-        <Folder Name="ViewModels" TargetFolderName="ViewModels">
-          <Folder Name="AccountViewModels" TargetFolderName="AccountViewModels">
-            <ProjectItem ReplaceParameters="true" TargetFileName="ApplicationUserProfileViewModel.cs">ApplicationUserProfileViewModel.cs</ProjectItem>
-            <ProjectItem ReplaceParameters="true" TargetFileName="LoginViewModel.cs">LoginViewModel.cs</ProjectItem>
-            <ProjectItem ReplaceParameters="true" TargetFileName="RegisterViewModel.cs">RegisterViewModel.cs</ProjectItem>
-          </Folder>
-          <Folder Name="LogViewModels" TargetFolderName="LogViewModels">
-            <ProjectItem ReplaceParameters="true" TargetFileName="LogCreateViewModel.cs">LogCreateViewModel.cs</ProjectItem>
-            <ProjectItem ReplaceParameters="true" TargetFileName="LogUpdateViewModel.cs">LogUpdateViewModel.cs</ProjectItem>
-            <ProjectItem ReplaceParameters="true" TargetFileName="LogViewModel.cs">LogViewModel.cs</ProjectItem>
-          </Folder>
+      </Folder>
+      <Folder Name="Mediator" TargetFolderName="Mediator">
+        <Folder Name="LogsReadonly" TargetFolderName="LogsReadonly">
+          <ProjectItem ReplaceParameters="true" TargetFileName="GetRoles.cs">GetRoles.cs</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="LogGetById.cs">LogGetById.cs</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="LogGetPaged.cs">LogGetPaged.cs</ProjectItem>
+        </Folder>
+        <Folder Name="LogsWritable" TargetFolderName="LogsWritable">
+          <ProjectItem ReplaceParameters="true" TargetFileName="LogCreateViewModel.cs">LogCreateViewModel.cs</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="LogDeleteItem.cs">LogDeleteItem.cs</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="LogPostItem.cs">LogPostItem.cs</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="LogPutItem.cs">LogPutItem.cs</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="LogUpdateViewModel.cs">LogUpdateViewModel.cs</ProjectItem>
         </Folder>
       </Folder>
       <Folder Name="Middlewares" TargetFolderName="Middlewares">
         <ProjectItem ReplaceParameters="true" TargetFileName="ErrorHandle.cs">ErrorHandle.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="ETagMiddleware.cs">ETagMiddleware.cs</ProjectItem>
+      </Folder>
+      <Folder Name="ViewModels" TargetFolderName="ViewModels">
+        <Folder Name="LogViewModels" TargetFolderName="LogViewModels">
+          <ProjectItem ReplaceParameters="true" TargetFileName="LogCreateViewModel.cs">LogCreateViewModel.cs</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="LogUpdateViewModel.cs">LogUpdateViewModel.cs</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="LogViewModel.cs">LogViewModel.cs</ProjectItem>
+        </Folder>
       </Folder>
       <ProjectItem ReplaceParameters="true" TargetFileName="appsettings.json">appsettings.json</ProjectItem>
       <ProjectItem ReplaceParameters="true" TargetFileName="appsettings.Development.json">appsettings.Development.json</ProjectItem>

@@ -14,7 +14,6 @@ namespace $safeprojectname$
     /// </summary>
     public class Startup
     {
-        /// <inheritdoc />
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;

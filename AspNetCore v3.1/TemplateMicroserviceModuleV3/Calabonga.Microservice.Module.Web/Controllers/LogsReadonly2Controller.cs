@@ -1,15 +1,14 @@
-﻿using AutoMapper;
-using System.Threading.Tasks;
+﻿using System.Security.Claims;
+using AutoMapper;
 using $ext_projectname$.Data;
 using $ext_projectname$.Entities;
 using $safeprojectname$.Infrastructure.Settings;
-using $safeprojectname$.Infrastructure.ViewModels.LogViewModels;
+using $safeprojectname$.ViewModels.LogViewModels;
+using Calabonga.Microservices.Core;
 using Calabonga.Microservices.Core.QueryParams;
 using Calabonga.Microservices.Core.Validators;
-using Calabonga.OperationResultsCore;
 using Calabonga.UnitOfWork;
 using Calabonga.UnitOfWork.Controllers.Controllers;
-using Calabonga.UnitOfWork.Controllers.Factories;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
@@ -17,30 +16,31 @@ using Microsoft.Extensions.Options;
 namespace $safeprojectname$.Controllers
 {
     /// <summary>
-    /// WritableController Demo
+    /// ReadOnlyController Demo
     /// </summary>
     [Route("api/[controller]")]
     [Authorize]
-    public class LogsWritableController : WritableController<LogViewModel, Log, LogCreateViewModel, LogUpdateViewModel, PagedListQueryParams>
+    public class LogsReadonly2Controller : ReadOnlyController<Log, LogViewModel, PagedListQueryParams>
     {
         private readonly CurrentAppSettings _appSettings;
 
         /// <inheritdoc />
-        public LogsWritableController(
+        public LogsReadonly2Controller(
             IOptions<CurrentAppSettings> appSettings,
-            IEntityManagerFactory entityManagerFactory,
-            IUnitOfWork<ApplicationDbContext> unitOfWork,
+            IUnitOfWork<ApplicationDbContext> unitOfWork, 
             IMapper mapper)
-            : base(entityManagerFactory, unitOfWork, mapper)
+            : base(unitOfWork, mapper)
         {
             _appSettings = appSettings.Value;
         }
 
-        /// <inheritdoc />
-        [Authorize(Policy = "LogsWritable:GetCreateViewModelAsync:View")] 
-        public override Task<ActionResult<OperationResult<LogCreateViewModel>>> GetViewmodelForCreation()
+        [HttpGet("user-roles")]
+        [Authorize(Policy = "Logs:UserRoles:View")]
+        public IActionResult Get()
         {
-            return base.GetViewmodelForCreation();
+            //Get Roles for current user
+            var roles = ClaimsHelper.GetValues<string>((ClaimsIdentity)User.Identity, "role");
+            return Ok($"Current user ({User.Identity.Name}) have following roles: {string.Join("|", roles)}");
         }
 
         /// <inheritdoc />

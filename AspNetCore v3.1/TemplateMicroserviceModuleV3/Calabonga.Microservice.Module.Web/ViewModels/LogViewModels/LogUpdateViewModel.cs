@@ -1,6 +1,6 @@
 ﻿using Calabonga.EntityFrameworkCore.Entities.Base;
 
-namespace $safeprojectname$.Infrastructure.ViewModels.LogViewModels
+namespace $safeprojectname$.ViewModels.LogViewModels
 {
     /// <summary>
     /// Log View model for Update operations

@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace $ext_projectname$.Web.AppStart.ConfigureServices
+namespace $safeprojectname$.AppStart.ConfigureServices
 {
     /// <summary>
     /// ASP.NET Core services registration and configurations

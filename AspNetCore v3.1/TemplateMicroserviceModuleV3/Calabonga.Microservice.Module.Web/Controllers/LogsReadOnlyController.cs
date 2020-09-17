@@ -1,17 +1,11 @@
-﻿using System.Security.Claims;
-using AutoMapper;
-using $ext_projectname$.Data;
-using $ext_projectname$.Entities;
-using $safeprojectname$.Infrastructure.Settings;
-using $safeprojectname$.Infrastructure.ViewModels.LogViewModels;
-using Calabonga.Microservices.Core;
+﻿using System;
+using System.Threading.Tasks;
+using $ext_projectname$.Core;
+using $safeprojectname$.Mediator.LogsReadonly;
 using Calabonga.Microservices.Core.QueryParams;
-using Calabonga.Microservices.Core.Validators;
-using Calabonga.UnitOfWork;
-using Calabonga.UnitOfWork.Controllers.Controllers;
+using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Options;
 
 namespace $safeprojectname$.Controllers
 {
@@ -20,37 +14,36 @@ namespace $safeprojectname$.Controllers
     /// </summary>
     [Route("api/[controller]")]
     [Authorize]
-    public class LogsReadOnlyController : ReadOnlyController<Log, LogViewModel, PagedListQueryParams>
+    public class LogsReadonlyController : ControllerBase
     {
-        private readonly CurrentAppSettings _appSettings;
+        private readonly IMediator _mediator;
 
-        /// <inheritdoc />
-        public LogsReadOnlyController(
-            IOptions<CurrentAppSettings> appSettings,
-            IUnitOfWork<ApplicationDbContext> unitOfWork, 
-            IMapper mapper)
-            : base(unitOfWork, mapper)
+        public LogsReadonlyController(IMediator mediator)
         {
-            _appSettings = appSettings.Value;
+            _mediator = mediator;
         }
 
-        [HttpGet("user-roles")]
-        [Authorize(Policy = "Logs:UserRoles:View")]
-        public IActionResult Get()
+        [HttpGet("[action]")]
+        [Authorize(Policy = "Logs:UserRoles:View", Roles = AppData.SystemAdministratorRoleName)]
+        public async Task<IActionResult> GetRoles()
         {
             //Get Roles for current user
-            var roles = ClaimsHelper.GetValues<string>((ClaimsIdentity)User.Identity, "role");
-            return Ok($"Current user ({User.Identity.Name}) have following roles: {string.Join("|", roles)}");
+            return Ok(await _mediator.Send(new GetRolesRequest(), HttpContext.RequestAborted));
         }
 
-        /// <inheritdoc />
-        protected override PermissionValidationResult ValidateQueryParams(PagedListQueryParams queryParams)
+        [HttpGet("[action]/{id:guid}")]
+        [ProducesResponseType(200)]
+        public async Task<IActionResult> GetById(Guid id)
         {
-            if (queryParams.PageSize <= 0)
-            {
-                queryParams.PageSize = _appSettings.PageSize;
-            }
-            return new PermissionValidationResult();
+            return Ok(await _mediator.Send(new LogGetByIdRequest(id), HttpContext.RequestAborted));
+        }
+
+
+        [HttpGet("[action]")]
+        [ProducesResponseType(200)]
+        public async Task<IActionResult> GetPaged([FromQuery] PagedListQueryParams queryParams)
+        {
+            return Ok(await _mediator.Send(new LogGetPagedRequest(queryParams), HttpContext.RequestAborted));
         }
     }
 }

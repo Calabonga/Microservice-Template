@@ -1,5 +1,5 @@
 ﻿using System;
-using $ext_projectname$.Core.Exceptions;
+using Calabonga.Microservices.Core.Exceptions;
 using Microsoft.Extensions.Caching.Memory;
 
 namespace $safeprojectname$.Infrastructure.Services

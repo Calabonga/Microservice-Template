@@ -1,49 +1,40 @@
 ﻿using System;
-using System.ComponentModel.DataAnnotations;
 using Calabonga.EntityFrameworkCore.Entities.Base;
-using Microsoft.Extensions.Logging;
 
-namespace $safeprojectname$.Infrastructure.ViewModels.LogViewModels
+namespace $safeprojectname$.ViewModels.LogViewModels
 {
     /// <summary>
-    /// Data Transfer Object for Log entity
+    /// Log ViewModel
     /// </summary>
-    public class LogCreateViewModel : IViewModel
+    public class LogViewModel: ViewModelBase
     {
         /// <summary>
-        /// Log Created At
+        /// Created at
         /// </summary>
-        [Required]
         public DateTime CreatedAt { get; set; }
-        
+
         /// <summary>
-        /// Service name or provider
+        /// Logger name
         /// </summary>
-        [Required]
-        [StringLength(255)]
         public string Logger { get; set; }
 
         /// <summary>
-        /// Log level for logging. See <see cref="LogLevel"/>
+        /// Level
         /// </summary>
-        [Required]
-        [StringLength(50)]
         public string Level { get; set; }
 
         /// <summary>
-        /// Log Message
+        /// Message text
         /// </summary>
-        [Required]
-        [StringLength(4000)]
         public string Message { get; set; }
 
         /// <summary>
-        /// Thread identifier
+        /// Thread ID
         /// </summary>
         public string ThreadId { get; set; }
 
         /// <summary>
-        /// Exception message
+        /// 
         /// </summary>
         public string ExceptionMessage { get; set; }
     }
