@@ -1,5 +1,11 @@
 # Версии шаблонов (ASP.NET Core 3.1)
 
+v.2.1.0 от 17.09.2020:
+1. Обновились сборки для `ASP.NET Core` и `EntityFramework Core` (3.1.8)
+2. Обновились все сборки от `Swagger` до версии 5.6.0
+3. Обновились примеры (контроллеры) использования сборки Calabonga.UnitOfWork.Controllers, которая имеет базовые реализации для контроллеров ReadonlyOntroller и WritableController.
+4. Добавлены примеры (контроллеры и методы) и Calabonga.AspNetCore.Controllers, которая реализована на базе Mediatr, где базовыми являются принципы CQRS и Vertical Slice Architecture.
+
 v.2.0.4 от 04.09.2020:
 1. Обновились сборки для ASP.NET Core и EntityFramework Core (3.1.7)
 
