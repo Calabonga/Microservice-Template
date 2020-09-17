@@ -35,7 +35,7 @@ namespace $safeprojectname$
             ConfigureServicesSwagger.ConfigureServices(services, Configuration);
             ConfigureServicesCors.ConfigureServices(services, Configuration);
             ConfigureServicesControllers.ConfigureServices(services);
-
+            
             DependencyContainer.Common(services);
             NimbleDependencyContainer.ConfigureServices(services);
         }

@@ -34,6 +34,7 @@ namespace $safeprojectname$.DatabaseInitialization
             }
 
             #region developer
+
             var developer1 = new ApplicationUser
             {
                 Email = "microservice@yopmail.com",

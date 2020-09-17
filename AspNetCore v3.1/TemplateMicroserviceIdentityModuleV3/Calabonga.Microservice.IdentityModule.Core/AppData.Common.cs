@@ -7,7 +7,6 @@ namespace $safeprojectname$
     /// </summary>
     public static partial class AppData
     {
-        
         /// <summary>
         /// Current service name
         /// </summary>

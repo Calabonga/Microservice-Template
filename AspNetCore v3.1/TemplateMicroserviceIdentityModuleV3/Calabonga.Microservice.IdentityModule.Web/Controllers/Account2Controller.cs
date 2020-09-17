@@ -1,8 +1,10 @@
-﻿using System.Threading.Tasks;
-using $safeprojectname$.Mediator.Account;
+﻿using System;
+using System.Threading.Tasks;
+using $safeprojectname$.Infrastructure.Services;
 using $safeprojectname$.ViewModels.AccountViewModels;
+using Calabonga.Microservices.Core.Exceptions;
 using Calabonga.OperationResultsCore;
-using MediatR;
+using Calabonga.UnitOfWork.Controllers.Controllers;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -13,16 +15,17 @@ namespace $safeprojectname$.Controllers
     /// </summary>
     [Route("api/[controller]")]
     [Authorize]
-    public class AccountController : ControllerBase
+    public class Account2Controller : OperationResultController
     {
-        private readonly IMediator _mediator;
+        private readonly IAccountService _accountService;
 
         /// <summary>
         /// Register controller
         /// </summary>
-        public AccountController(IMediator mediator)
+        /// <param name="accountService"></param>
+        public Account2Controller(IAccountService accountService)
         {
-            _mediator = mediator;
+            _accountService = accountService;
         }
 
         /// <summary>
@@ -35,7 +38,12 @@ namespace $safeprojectname$.Controllers
         [ProducesResponseType(200, Type = typeof(OperationResult<UserProfileViewModel>))]
         public async Task<ActionResult<OperationResult<UserProfileViewModel>>> Register(RegisterViewModel model)
         {
-            return Ok(await _mediator.Send(new RegisterRequest(model), HttpContext.RequestAborted));
+            if (!ModelState.IsValid)
+            {
+                return ValidationProblem(ModelState);
+            }
+
+            return OperationResultResponse(await _accountService.RegisterAsync(model));
         }
 
         /// <summary>
@@ -46,7 +54,19 @@ namespace $safeprojectname$.Controllers
         [ProducesResponseType(200, Type = typeof(OperationResult<UserProfileViewModel>))]
         public async Task<ActionResult<OperationResult<UserProfileViewModel>>> Profile()
         {
-            return await _mediator.Send(new ProfileRequest(), HttpContext.RequestAborted);
+            if (!User.Identity.IsAuthenticated)
+            {
+                return OperationResultError<UserProfileViewModel>(null, new MicroserviceUnauthorizedException());
+            }
+
+            var userId = _accountService.GetCurrentUserId();
+            if (Guid.Empty == userId)
+            {
+                return BadRequest();
+            }
+
+            var claimsOperationResult = await _accountService.GetProfileAsync(userId.ToString());
+            return Ok(claimsOperationResult);
         }
     }
 }

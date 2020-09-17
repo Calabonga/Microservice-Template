@@ -2,7 +2,7 @@
 using System.Security.Claims;
 using $ext_projectname$.Data;
 using $safeprojectname$.Infrastructure.Mappers.Base;
-using $safeprojectname$.Infrastructure.ViewModels.AccountViewModels;
+using $safeprojectname$.ViewModels.AccountViewModels;
 using Calabonga.Microservices.Core;
 using IdentityModel;
 
@@ -11,10 +11,10 @@ namespace $safeprojectname$.Infrastructure.Mappers
     /// <summary>
     /// Mapper Configuration for entity ApplicationUser
     /// </summary>
-    public class ApplicationUserMapperConfiguration : MapperConfigurationBase
+    public class UserMapperConfiguration : MapperConfigurationBase
     {
         /// <inheritdoc />
-        public ApplicationUserMapperConfiguration()
+        public UserMapperConfiguration()
         {
             CreateMap<RegisterViewModel, ApplicationUser>()
                 .ForMember(x => x.UserName, o => o.MapFrom(p => p.Email))

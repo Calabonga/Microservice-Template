@@ -1,6 +1,6 @@
 ﻿using $ext_projectname$.Data;
 using $safeprojectname$.Infrastructure.Mappers.Base;
-using $safeprojectname$.Infrastructure.ViewModels.AccountViewModels;
+using $safeprojectname$.ViewModels.AccountViewModels;
 
 namespace $safeprojectname$.Infrastructure.Mappers
 {

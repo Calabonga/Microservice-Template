@@ -1,13 +1,9 @@
 ﻿using System;
 using AutoMapper;
-using $ext_projectname$.Core;
 using $ext_projectname$.Data;
 using $safeprojectname$.Extensions;
-using $safeprojectname$.Infrastructure.Services;
 using $safeprojectname$.Infrastructure.Settings;
 using Calabonga.UnitOfWork;
-using IdentityServer4.AccessTokenValidation;
-using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -36,12 +32,12 @@ namespace $safeprojectname$.AppStart.ConfigureServices
 
             services.AddDbContextPool<ApplicationDbContext>(config =>
             {
-                 // This for demo only.
-                // Should uninstall package "Microsoft.EntityFrameworkCore.InMemory" and
+                // UseInMemoryDatabase - This for demo purposes only!
+                // Should uninstall package "Microsoft.EntityFrameworkCore.InMemory" and install what you need. 
+                // For example: "Microsoft.EntityFrameworkCore.SqlServer"
                 // uncomment line below to use UseSqlServer(). Don't forget setup connection string in appSettings.json 
                 config.UseInMemoryDatabase("DEMO_PURPOSES_ONLY");
-
-                //config.UseSqlServer(configuration.GetConnectionString(nameof(ApplicationDbContext)));
+                // config.UseSqlServer(configuration.GetConnectionString(nameof(ApplicationDbContext)));
             });
 
             services.AddAutoMapper(typeof(Startup));
@@ -79,7 +75,8 @@ namespace $safeprojectname$.AppStart.ConfigureServices
             services.Configure<MvcOptions>(options => options.UseRouteSlugify());
             services.AddLocalization();
             services.AddHttpContextAccessor();
-            services.AddResponseCaching();            
+            services.AddResponseCaching();
+            services.AddAuthorization();
         }
     }
 }

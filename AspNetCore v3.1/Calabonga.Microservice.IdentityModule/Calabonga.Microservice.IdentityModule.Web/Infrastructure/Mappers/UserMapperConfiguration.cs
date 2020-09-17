@@ -11,10 +11,10 @@ namespace Calabonga.Microservice.IdentityModule.Web.Infrastructure.Mappers
     /// <summary>
     /// Mapper Configuration for entity ApplicationUser
     /// </summary>
-    public class ApplicationUserMapperConfiguration : MapperConfigurationBase
+    public class UserMapperConfiguration : MapperConfigurationBase
     {
         /// <inheritdoc />
-        public ApplicationUserMapperConfiguration()
+        public UserMapperConfiguration()
         {
             CreateMap<RegisterViewModel, ApplicationUser>()
                 .ForMember(x => x.UserName, o => o.MapFrom(p => p.Email))

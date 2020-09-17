@@ -25,9 +25,9 @@
           <ProjectItem ReplaceParameters="true" TargetFileName="ConfigureEndpoints.cs">ConfigureEndpoints.cs</ProjectItem>
         </Folder>
         <Folder Name="ConfigureServices" TargetFolderName="ConfigureServices">
+          <ProjectItem ReplaceParameters="true" TargetFileName="ConfigureServicesAuthentication.cs">ConfigureServicesAuthentication.cs</ProjectItem>
           <ProjectItem ReplaceParameters="true" TargetFileName="ConfigureServicesCommon.cs">ConfigureServicesCommon.cs</ProjectItem>
           <ProjectItem ReplaceParameters="true" TargetFileName="ConfigureServicesControllers.cs">ConfigureServicesControllers.cs</ProjectItem>
-          <ProjectItem ReplaceParameters="true" TargetFileName="ConfigureServicesAuthentication.cs">ConfigureServicesAuthentication.cs</ProjectItem>
           <ProjectItem ReplaceParameters="true" TargetFileName="ConfigureServicesCors.cs">ConfigureServicesCors.cs</ProjectItem>
           <ProjectItem ReplaceParameters="true" TargetFileName="ConfigureServicesSwagger.cs">ConfigureServicesSwagger.cs</ProjectItem>
         </Folder>
@@ -38,8 +38,11 @@
         <ProjectItem ReplaceParameters="true" TargetFileName="MapperRegistration.cs">MapperRegistration.cs</ProjectItem>
       </Folder>
       <Folder Name="Controllers" TargetFolderName="Controllers">
+        <ProjectItem ReplaceParameters="true" TargetFileName="Account2Controller.cs">Account2Controller.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="AccountController.cs">AccountController.cs</ProjectItem>
-        <ProjectItem ReplaceParameters="true" TargetFileName="LogsReadOnlyController.cs">LogsReadOnlyController.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="LogsReadonly2Controller.cs">LogsReadonly2Controller.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="LogsReadonlyController.cs">LogsReadonlyController.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="LogsWritable2Controller.cs">LogsWritable2Controller.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="LogsWritableController.cs">LogsWritableController.cs</ProjectItem>
       </Folder>
       <Folder Name="Extensions" TargetFolderName="Extensions">
@@ -82,7 +85,7 @@
             <ProjectItem ReplaceParameters="true" TargetFileName="MapperConfigurationBase.cs">MapperConfigurationBase.cs</ProjectItem>
             <ProjectItem ReplaceParameters="true" TargetFileName="PagedListConverter.cs">PagedListConverter.cs</ProjectItem>
           </Folder>
-          <ProjectItem ReplaceParameters="true" TargetFileName="ApplicationUserMapperConfiguration.cs">ApplicationUserMapperConfiguration.cs</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="UserMapperConfiguration.cs">UserMapperConfiguration.cs</ProjectItem>
           <ProjectItem ReplaceParameters="true" TargetFileName="ApplicationUserProfileMapperConfiguration.cs">ApplicationUserProfileMapperConfiguration.cs</ProjectItem>
           <ProjectItem ReplaceParameters="true" TargetFileName="LogMapperConfiguration.cs">LogMapperConfiguration.cs</ProjectItem>
         </Folder>
@@ -98,27 +101,47 @@
         <Folder Name="Settings" TargetFolderName="Settings">
           <ProjectItem ReplaceParameters="true" TargetFileName="CurrentAppSettings.cs">CurrentAppSettings.cs</ProjectItem>
         </Folder>
-        <Folder Name="ViewModels" TargetFolderName="ViewModels">
-          <Folder Name="AccountViewModels" TargetFolderName="AccountViewModels">
-            <ProjectItem ReplaceParameters="true" TargetFileName="RegisterViewModel.cs">RegisterViewModel.cs</ProjectItem>
-            <ProjectItem ReplaceParameters="true" TargetFileName="UserProfileViewModel.cs">UserProfileViewModel.cs</ProjectItem>
-          </Folder>
-          <Folder Name="LogViewModels" TargetFolderName="LogViewModels">
-            <ProjectItem ReplaceParameters="true" TargetFileName="LogCreateViewModel.cs">LogCreateViewModel.cs</ProjectItem>
-            <ProjectItem ReplaceParameters="true" TargetFileName="LogUpdateViewModel.cs">LogUpdateViewModel.cs</ProjectItem>
-            <ProjectItem ReplaceParameters="true" TargetFileName="LogViewModel.cs">LogViewModel.cs</ProjectItem>
-          </Folder>
+      </Folder>
+      <Folder Name="Mediator" TargetFolderName="Mediator">
+        <Folder Name="Account" TargetFolderName="Account">
+          <ProjectItem ReplaceParameters="true" TargetFileName="Profile.cs">Profile.cs</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="Register.cs">Register.cs</ProjectItem>
+        </Folder>
+        <Folder Name="LogsReadonly" TargetFolderName="LogsReadonly">
+          <ProjectItem ReplaceParameters="true" TargetFileName="GetRoles.cs">GetRoles.cs</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="LogGetById.cs">LogGetById.cs</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="LogGetPaged.cs">LogGetPaged.cs</ProjectItem>
+        </Folder>
+        <Folder Name="LogsWritable" TargetFolderName="LogsWritable">
+          <ProjectItem ReplaceParameters="true" TargetFileName="LogCreateViewModel.cs">LogCreateViewModel.cs</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="LogDeleteItem.cs">LogDeleteItem.cs</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="LogPostItem.cs">LogPostItem.cs</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="LogPutItem.cs">LogPutItem.cs</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="LogUpdateViewModel.cs">LogUpdateViewModel.cs</ProjectItem>
         </Folder>
       </Folder>
       <Folder Name="Middlewares" TargetFolderName="Middlewares">
         <ProjectItem ReplaceParameters="true" TargetFileName="ErrorHandle.cs">ErrorHandle.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="ETagMiddleware.cs">ETagMiddleware.cs</ProjectItem>
       </Folder>
+      <Folder Name="ViewModels" TargetFolderName="ViewModels">
+        <Folder Name="AccountViewModels" TargetFolderName="AccountViewModels">
+          <ProjectItem ReplaceParameters="true" TargetFileName="RegisterViewModel.cs">RegisterViewModel.cs</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="RegisterViewModelValidator.cs">RegisterViewModelValidator.cs</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="UserProfileViewModel.cs">UserProfileViewModel.cs</ProjectItem>
+        </Folder>
+        <Folder Name="LogViewModels" TargetFolderName="LogViewModels">
+          <ProjectItem ReplaceParameters="true" TargetFileName="LogCreateViewModel.cs">LogCreateViewModel.cs</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="LogUpdateViewModel.cs">LogUpdateViewModel.cs</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="LogViewModel.cs">LogViewModel.cs</ProjectItem>
+        </Folder>
+      </Folder>
       <ProjectItem ReplaceParameters="true" TargetFileName="appsettings.json">appsettings.json</ProjectItem>
       <ProjectItem ReplaceParameters="true" TargetFileName="appsettings.Development.json">appsettings.Development.json</ProjectItem>
       <ProjectItem ReplaceParameters="true" TargetFileName="appsettings.Production.json">appsettings.Production.json</ProjectItem>
       <ProjectItem ReplaceParameters="true" TargetFileName="Program.cs">Program.cs</ProjectItem>
       <ProjectItem ReplaceParameters="true" TargetFileName="Startup.cs">Startup.cs</ProjectItem>
+      <ProjectItem ReplaceParameters="false" TargetFileName="tempkey.jwk">tempkey.jwk</ProjectItem>
       <ProjectItem ReplaceParameters="false" TargetFileName="tempkey.rsa">tempkey.rsa</ProjectItem>
     </Project>
   </TemplateContent>

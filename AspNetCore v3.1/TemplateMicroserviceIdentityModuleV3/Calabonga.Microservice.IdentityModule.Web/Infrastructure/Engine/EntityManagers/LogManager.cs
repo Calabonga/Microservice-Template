@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using $ext_projectname$.Entities;
-using $safeprojectname$.Infrastructure.ViewModels.LogViewModels;
+using $safeprojectname$.ViewModels.LogViewModels;
 using Calabonga.Microservices.Core.Validators;
 using Calabonga.UnitOfWork.Controllers.Factories;
 using Calabonga.UnitOfWork.Controllers.Managers;

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using $ext_projectname$.Data;
-using $safeprojectname$.Infrastructure.ViewModels.AccountViewModels;
+using $safeprojectname$.ViewModels.AccountViewModels;
 using Calabonga.Microservices.Core.Validators;
 using Calabonga.OperationResultsCore;
 

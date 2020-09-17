@@ -1,12 +1,12 @@
 ﻿using $ext_projectname$.Core;
 using $ext_projectname$.Data;
-using $ext_projectname$.Web.Infrastructure.Services;
+using $safeprojectname$.Infrastructure.Services;
 using IdentityServer4.AccessTokenValidation;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace $ext_projectname$.Web.AppStart.ConfigureServices
+namespace $safeprojectname$.AppStart.ConfigureServices
 {
     /// <summary>
     /// ASP.NET Core services registration and configurations

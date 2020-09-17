@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace $safeprojectname$.Infrastructure.ViewModels.AccountViewModels
+namespace $safeprojectname$.ViewModels.AccountViewModels
 {
     /// <summary>
     /// Application User Profile

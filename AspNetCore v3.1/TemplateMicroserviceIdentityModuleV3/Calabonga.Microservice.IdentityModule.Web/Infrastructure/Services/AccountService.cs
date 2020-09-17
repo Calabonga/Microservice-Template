@@ -7,7 +7,7 @@ using AutoMapper;
 using $ext_projectname$.Core;
 using $ext_projectname$.Data;
 using $safeprojectname$.Infrastructure.Auth;
-using $safeprojectname$.Infrastructure.ViewModels.AccountViewModels;
+using $safeprojectname$.ViewModels.AccountViewModels;
 using Calabonga.Microservices.Core.Exceptions;
 using Calabonga.Microservices.Core.Extensions;
 using Calabonga.Microservices.Core.Validators;

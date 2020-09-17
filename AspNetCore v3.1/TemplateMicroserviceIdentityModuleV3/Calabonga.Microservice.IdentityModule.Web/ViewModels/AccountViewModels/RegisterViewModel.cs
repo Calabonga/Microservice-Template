@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace $safeprojectname$.Infrastructure.ViewModels.AccountViewModels
+namespace $safeprojectname$.ViewModels.AccountViewModels
 {
     /// <summary>
     /// Data transfer object for user registration
