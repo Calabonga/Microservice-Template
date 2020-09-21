@@ -3,12 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-
 using Calabonga.AspNetCore.Controllers.Base;
+using Calabonga.Microservices.Core.Exceptions;
 using Calabonga.OperationResultsCore;
-
 using FluentValidation;
-
 using MediatR;
 
 namespace Calabonga.Microservice.IdentityModule.Web.Mediator.Behaviors
@@ -19,7 +17,7 @@ namespace Calabonga.Microservice.IdentityModule.Web.Mediator.Behaviors
     /// <typeparam name="TRequest"></typeparam>
     /// <typeparam name="TResponse"></typeparam>
     public class ValidatorBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse>
-        where TRequest: IRequest<TResponse>
+        where TRequest : IRequest<TResponse>
     {
         private readonly IEnumerable<IValidator<TRequest>> _validators;
 
@@ -45,15 +43,20 @@ namespace Calabonga.Microservice.IdentityModule.Web.Mediator.Behaviors
 
             if (!failures.Any()) return next();
 
-            if (request is RequestBase<OperationResult<TResponse>>)
+            var type = typeof(TResponse);
+            if (!type.IsSubclassOf(typeof(OperationResult)))
             {
-                var operation = OperationResult.CreateResult<TResponse>();
-                operation.AddError(new ValidationException(failures));
-                // return Task.FromResult(operation);
+                var exception = new ValidationException(failures);
+                throw exception;
             }
-            // return Task.FromResult(operation);
-            return Task.FromResult(default(TResponse));
-        }
 
+            var result = Activator.CreateInstance(type);
+            (result as OperationResult).AddError(new MicroserviceEntityValidationException());
+            foreach (var failure in failures)
+            {
+                (result as OperationResult)?.AppendLog($"{failure.PropertyName}: {failure.ErrorMessage}");
+            }
+            return Task.FromResult((TResponse) result);
+        }
     }
 }
