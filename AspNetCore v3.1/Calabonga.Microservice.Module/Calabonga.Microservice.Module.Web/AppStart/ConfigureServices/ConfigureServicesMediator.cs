@@ -1,20 +1,23 @@
 ﻿using Calabonga.AspNetCore.Controllers.Extensions;
+using Calabonga.Microservice.Module.Web.Mediator.Behaviors;
+using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Calabonga.Microservice.Module.Web.AppStart.ConfigureServices
 {
     /// <summary>
-    /// Configure controllers
+    /// ASP.NET Core services registration and configurations
     /// </summary>
-    public static class ConfigureServicesControllers
+    public static class ConfigureServicesMediator
     {
         /// <summary>
-        /// Configure services
+        /// ConfigureServices Services
         /// </summary>
         /// <param name="services"></param>
         public static void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers();
+            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidatorBehavior<,>));
+            services.AddCommandAndQueries(typeof(Startup).Assembly);
         }
     }
 }

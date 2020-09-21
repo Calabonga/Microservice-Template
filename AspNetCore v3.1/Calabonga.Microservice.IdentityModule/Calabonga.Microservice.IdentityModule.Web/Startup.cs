@@ -30,11 +30,13 @@ namespace Calabonga.Microservice.IdentityModule.Web
         /// <param name="services"></param>
         public void ConfigureServices(IServiceCollection services)
         {
-            ConfigureServicesCommon.ConfigureServices(services, Configuration);
+            ConfigureServicesBase.ConfigureServices(services, Configuration);
             ConfigureServicesAuthentication.ConfigureServices(services, Configuration);
             ConfigureServicesSwagger.ConfigureServices(services, Configuration);
             ConfigureServicesCors.ConfigureServices(services, Configuration);
             ConfigureServicesControllers.ConfigureServices(services);
+            ConfigureServicesMediator.ConfigureServices(services);
+            ConfigureServicesValidators.ConfigureServices(services);
             
             DependencyContainer.Common(services);
             NimbleDependencyContainer.ConfigureServices(services);
