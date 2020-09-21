@@ -16,11 +16,13 @@
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.0.1" />
     <PackageReference Include="Calabonga.AspNetCore.Controllers" Version="1.1.0" />
     <PackageReference Include="Calabonga.EntityFrameworkCore.UnitOfWork" Version="2.0.2" />
-    <PackageReference Include="Calabonga.Microservices.Core" Version="2.1.1" />
+    <PackageReference Include="Calabonga.Microservices.Core" Version="2.1.2" />
     <PackageReference Include="Calabonga.Microservices.Web.Core" Version="2.0.2" />
     <PackageReference Include="Calabonga.UnitOfWork" Version="1.0.6" />
     <PackageReference Include="Calabonga.UnitOfWork.Controllers" Version="1.2.0" />
-    <PackageReference Include="GitInfo" Version="2.0.34">
+    <PackageReference Include="FluentValidation" Version="9.2.2" />
+    <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="9.2.0" />
+    <PackageReference Include="GitInfo" Version="2.0.37">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
@@ -33,21 +35,16 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="3.1.8" />
     <PackageReference Include="OperationResultCore" Version="2.1.2" />
     <PackageReference Include="PagedListLiteCore" Version="1.0.4" />
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.5.1" />
-    <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="5.5.1" />
-    <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="5.5.1" />
-    <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUi" Version="5.5.1" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.1" />
+    <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="5.6.1" />
+    <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="5.6.1" />
+    <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUi" Version="5.6.1" />
     <PackageReference Include="System.Text.Json" Version="4.7.2" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\$ext_projectname$.Core\$ext_projectname$.Core.csproj" />
     <ProjectReference Include="..\$ext_projectname$.Data\$ext_projectname$.Data.csproj" />
     <ProjectReference Include="..\$ext_projectname$.Entities\$ext_projectname$.Entities.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Mediator" />
   </ItemGroup>
 
 </Project>

@@ -1,7 +1,7 @@
 <VSTemplate Version="3.0.0" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" Type="Project">
   <TemplateData>
     <Name>Calabonga.Microservice.Module.Web</Name>
-    <Description>API service for microservice</Description>
+    <Description>API for microservice</Description>
     <ProjectType>CSharp</ProjectType>
     <ProjectSubType>
     </ProjectSubType>
@@ -12,7 +12,7 @@
     <LocationField>Enabled</LocationField>
     <EnableLocationBrowseButton>true</EnableLocationBrowseButton>
     <CreateInPlace>true</CreateInPlace>
-    <Icon>__TemplateIcon.ico</Icon>
+    <Icon>__TemplateIcon.png</Icon>
     <PreviewImage>__PreviewImage.png</PreviewImage>
   </TemplateData>
   <TemplateContent>
@@ -27,10 +27,12 @@
         </Folder>
         <Folder Name="ConfigureServices" TargetFolderName="ConfigureServices">
           <ProjectItem ReplaceParameters="true" TargetFileName="ConfigureServicesAuthentication.cs">ConfigureServicesAuthentication.cs</ProjectItem>
-          <ProjectItem ReplaceParameters="true" TargetFileName="ConfigureServicesCommon.cs">ConfigureServicesCommon.cs</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="ConfigureServicesBase.cs">ConfigureServicesBase.cs</ProjectItem>
           <ProjectItem ReplaceParameters="true" TargetFileName="ConfigureServicesControllers.cs">ConfigureServicesControllers.cs</ProjectItem>
           <ProjectItem ReplaceParameters="true" TargetFileName="ConfigureServicesCors.cs">ConfigureServicesCors.cs</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="ConfigureServicesMediator.cs">ConfigureServicesMediator.cs</ProjectItem>
           <ProjectItem ReplaceParameters="true" TargetFileName="ConfigureServicesSwagger.cs">ConfigureServicesSwagger.cs</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="ConfigureServicesValidators.cs">ConfigureServicesValidators.cs</ProjectItem>
         </Folder>
         <Folder Name="SwaggerFilters" TargetFolderName="SwaggerFilters">
           <ProjectItem ReplaceParameters="true" TargetFileName="ApplySummariesOperationFilter.cs">ApplySummariesOperationFilter.cs</ProjectItem>
@@ -40,6 +42,7 @@
         <ProjectItem ReplaceParameters="true" TargetFileName="LogsReadonly2Controller.cs">LogsReadonly2Controller.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="LogsReadonlyController.cs">LogsReadonlyController.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="LogsWritable2Controller.cs">LogsWritable2Controller.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="LogsWritableController.cs">LogsWritableController.cs</ProjectItem>
       </Folder>
       <Folder Name="Extensions" TargetFolderName="Extensions">
         <ProjectItem ReplaceParameters="true" TargetFileName="ApplicationBuilderExtensions.cs">ApplicationBuilderExtensions.cs</ProjectItem>
@@ -106,6 +109,9 @@
         </Folder>
       </Folder>
       <Folder Name="Mediator" TargetFolderName="Mediator">
+        <Folder Name="Behaviors" TargetFolderName="Behaviors">
+          <ProjectItem ReplaceParameters="true" TargetFileName="ValidationBehavior.cs">ValidationBehavior.cs</ProjectItem>
+        </Folder>
         <Folder Name="LogsReadonly" TargetFolderName="LogsReadonly">
           <ProjectItem ReplaceParameters="true" TargetFileName="GetRoles.cs">GetRoles.cs</ProjectItem>
           <ProjectItem ReplaceParameters="true" TargetFileName="LogGetById.cs">LogGetById.cs</ProjectItem>

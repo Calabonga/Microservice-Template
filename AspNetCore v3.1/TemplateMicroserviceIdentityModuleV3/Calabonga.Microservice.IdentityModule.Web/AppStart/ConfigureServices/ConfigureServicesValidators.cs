@@ -1,20 +1,21 @@
-﻿using Calabonga.AspNetCore.Controllers.Extensions;
+﻿using $safeprojectname$.ViewModels.AccountViewModels;
+using FluentValidation;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace $safeprojectname$.AppStart.ConfigureServices
 {
     /// <summary>
-    /// Configure controllers
+    /// ASP.NET Core services registration and configurations
     /// </summary>
-    public static class ConfigureServicesControllers
+    public static class ConfigureServicesValidators
     {
         /// <summary>
-        /// Configure services
+        /// ConfigureServices Services
         /// </summary>
         /// <param name="services"></param>
         public static void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers();
+            services.AddValidatorsFromAssembly(typeof(Startup).Assembly);
         }
     }
 }

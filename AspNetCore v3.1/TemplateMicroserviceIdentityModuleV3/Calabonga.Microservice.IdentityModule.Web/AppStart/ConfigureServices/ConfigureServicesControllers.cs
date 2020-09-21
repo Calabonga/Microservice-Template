@@ -1,6 +1,4 @@
-﻿using System.Reflection;
-using Calabonga.AspNetCore.Controllers.Extensions;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 
 namespace $safeprojectname$.AppStart.ConfigureServices
 {
@@ -16,8 +14,6 @@ namespace $safeprojectname$.AppStart.ConfigureServices
         public static void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-
-            services.AddCommandAndQueries(typeof(Startup).Assembly);
         }
     }
 }

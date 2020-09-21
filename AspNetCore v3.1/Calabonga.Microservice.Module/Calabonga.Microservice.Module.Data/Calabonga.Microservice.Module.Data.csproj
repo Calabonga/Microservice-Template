@@ -24,7 +24,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Calabonga.Microservice.Module.Models\Calabonga.Microservice.Module.Entities.csproj" />
+    <ProjectReference Include="..\Calabonga.Microservice.Module.Entities\Calabonga.Microservice.Module.Entities.csproj" />
   </ItemGroup>
 
 </Project>

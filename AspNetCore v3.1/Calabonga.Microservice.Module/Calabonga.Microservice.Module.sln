@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Calabonga.Microservice.Modu
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Calabonga.Microservice.Module.Core", "Calabonga.Microservice.Module.Core\Calabonga.Microservice.Module.Core.csproj", "{516E0183-749E-4931-B297-21BBD45F0161}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Calabonga.Microservice.Module.Entities", "Calabonga.Microservice.Module.Models\Calabonga.Microservice.Module.Entities.csproj", "{6A4B1E96-3932-4737-95E1-BB1D081DC5AB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Calabonga.Microservice.Module.Entities", "Calabonga.Microservice.Module.Entities\Calabonga.Microservice.Module.Entities.csproj", "{6A4B1E96-3932-4737-95E1-BB1D081DC5AB}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Calabonga.Microservice.Module.Data", "Calabonga.Microservice.Module.Data\Calabonga.Microservice.Module.Data.csproj", "{2376C6FA-BFFB-4050-B187-CC918C10E09C}"
 EndProject

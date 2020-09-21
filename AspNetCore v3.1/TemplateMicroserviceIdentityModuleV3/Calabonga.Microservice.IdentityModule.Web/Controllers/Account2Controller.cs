@@ -36,7 +36,7 @@ namespace $safeprojectname$.Controllers
         [HttpPost("[action]")]
         [AllowAnonymous]
         [ProducesResponseType(200, Type = typeof(OperationResult<UserProfileViewModel>))]
-        public async Task<ActionResult<OperationResult<UserProfileViewModel>>> Register(RegisterViewModel model)
+        public async Task<ActionResult<OperationResult<UserProfileViewModel>>> Register([FromBody]RegisterViewModel model)
         {
             if (!ModelState.IsValid)
             {
