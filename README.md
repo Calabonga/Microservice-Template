@@ -59,6 +59,10 @@ Visual Studio project template for microservice module base on ASP.NET Core
 
 # Инструкции и дополнительные материалы
 
+[Calabonga.AspNetCore.Controllers](https://github.com/Calabonga/Calabonga.AspNetCore.Controllers/) nuget-пакет на базе Mediatr
+
+[Calabonga.UnitOfWork.Controllers](https://github.com/Calabonga/Calabonga.UnitOfWork.Controllers) nuget-пакет на base Readonly/Writable controllers
+
 [Микросервисы: Шаблон для микросервиса](https://www.calabonga.net/blog/post/microservises-template)
 
 [Микросервисы: Управление доступом](https://www.calabonga.net/blog/post/mikroservisy-3-centralizovannoe-upravlenie-dostupom)
