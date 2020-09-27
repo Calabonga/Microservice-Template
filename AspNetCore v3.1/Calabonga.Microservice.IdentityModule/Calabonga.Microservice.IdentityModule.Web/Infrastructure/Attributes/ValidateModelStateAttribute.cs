@@ -1,5 +1,5 @@
 ﻿using System.Linq;
-using Calabonga.OperationResultsCore;
+using Calabonga.OperationResults;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 

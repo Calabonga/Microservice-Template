@@ -4,7 +4,7 @@ using AutoMapper;
 using Calabonga.Microservice.IdentityModule.Data;
 using Calabonga.Microservice.IdentityModule.Entities;
 using Calabonga.Microservice.IdentityModule.Web.ViewModels.LogViewModels;
-using Calabonga.OperationResultsCore;
+using Calabonga.OperationResults;
 using Calabonga.UnitOfWork;
 using Calabonga.UnitOfWork.Controllers.Factories;
 using Microsoft.Extensions.Logging;

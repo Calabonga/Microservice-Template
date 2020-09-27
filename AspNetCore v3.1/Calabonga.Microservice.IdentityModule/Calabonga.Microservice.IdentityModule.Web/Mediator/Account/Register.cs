@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using Calabonga.AspNetCore.Controllers.Base;
 using Calabonga.Microservice.IdentityModule.Web.Infrastructure.Services;
 using Calabonga.Microservice.IdentityModule.Web.ViewModels.AccountViewModels;
-using Calabonga.OperationResultsCore;
+using Calabonga.OperationResults;
 
 namespace Calabonga.Microservice.IdentityModule.Web.Mediator.Account
 {
@@ -32,6 +32,7 @@ namespace Calabonga.Microservice.IdentityModule.Web.Mediator.Account
         {
             _accountService = accountService;
         }
+
         public override Task<OperationResult<UserProfileViewModel>> Handle(RegisterRequest request, CancellationToken cancellationToken)
         {
             return _accountService.RegisterAsync(request.Model);

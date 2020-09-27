@@ -3,7 +3,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Calabonga.AspNetCore.Controllers.Base;
-using Calabonga.OperationResultsCore;
+using Calabonga.OperationResults;
 using FluentValidation;
 using MediatR;
 

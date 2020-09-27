@@ -6,7 +6,7 @@ using Calabonga.Microservice.Module.Web.Infrastructure.Settings;
 using Calabonga.Microservice.Module.Web.ViewModels.LogViewModels;
 using Calabonga.Microservices.Core.QueryParams;
 using Calabonga.Microservices.Core.Validators;
-using Calabonga.OperationResultsCore;
+using Calabonga.OperationResults;
 using Calabonga.UnitOfWork;
 using Calabonga.UnitOfWork.Controllers.Controllers;
 using Calabonga.UnitOfWork.Controllers.Factories;

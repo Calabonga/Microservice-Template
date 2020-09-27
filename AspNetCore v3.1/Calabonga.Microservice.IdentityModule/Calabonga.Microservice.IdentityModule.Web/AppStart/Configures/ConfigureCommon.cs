@@ -1,7 +1,7 @@
 ﻿using Calabonga.Microservice.IdentityModule.Core;
 using Calabonga.Microservice.IdentityModule.Web.AppStart.ConfigureServices;
+using Calabonga.Microservice.IdentityModule.Web.Infrastructure.Auth;
 using Calabonga.Microservice.IdentityModule.Web.Middlewares;
-using Calabonga.Microservices.Web.Core;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
