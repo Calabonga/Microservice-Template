@@ -3,7 +3,7 @@ using Calabonga.AspNetCore.Controllers.Handlers;
 using Calabonga.AspNetCore.Controllers.Queries;
 using $ext_projectname$.Entities;
 using $safeprojectname$.ViewModels.LogViewModels;
-using Calabonga.OperationResultsCore;
+using Calabonga.OperationResults;
 using Calabonga.UnitOfWork;
 
 namespace $safeprojectname$.Mediator.LogsWritable

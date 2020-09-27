@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.Extensions.Options;
 
-namespace Calabonga.Microservices.Web.Core
+namespace $safeprojectname$.Infrastructure.Auth
 {
     /// <summary>
     /// 

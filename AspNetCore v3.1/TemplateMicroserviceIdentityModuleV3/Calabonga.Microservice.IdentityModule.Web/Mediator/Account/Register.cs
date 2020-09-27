@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using Calabonga.AspNetCore.Controllers.Base;
 using $safeprojectname$.Infrastructure.Services;
 using $safeprojectname$.ViewModels.AccountViewModels;
-using Calabonga.OperationResultsCore;
+using Calabonga.OperationResults;
 
 namespace $safeprojectname$.Mediator.Account
 {
@@ -32,6 +32,7 @@ namespace $safeprojectname$.Mediator.Account
         {
             _accountService = accountService;
         }
+
         public override Task<OperationResult<UserProfileViewModel>> Handle(RegisterRequest request, CancellationToken cancellationToken)
         {
             return _accountService.RegisterAsync(request.Model);

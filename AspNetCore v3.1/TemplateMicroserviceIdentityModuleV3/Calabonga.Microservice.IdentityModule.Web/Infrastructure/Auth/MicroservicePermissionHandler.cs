@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using Calabonga.Microservices.Core;
 using Microsoft.AspNetCore.Authorization;
 
-namespace Calabonga.Microservices.Web.Core
+namespace $safeprojectname$.Infrastructure.Auth
 {
     /// <summary>
     /// Permission handler for custom authorization implementations

@@ -6,7 +6,7 @@
 
   <ItemGroup>
     <PackageReference Include="Calabonga.EntityFrameworkCore.Entities.Base" Version="2.1.0" />
-    <PackageReference Include="Calabonga.UnitOfWork" Version="1.0.6" />
+    <PackageReference Include="Calabonga.UnitOfWork" Version="1.0.7" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.8" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.8">
       <PrivateAssets>all</PrivateAssets>

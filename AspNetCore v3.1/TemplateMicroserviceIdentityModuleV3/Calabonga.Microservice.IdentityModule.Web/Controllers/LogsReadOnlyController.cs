@@ -7,7 +7,7 @@ using $safeprojectname$.Mediator.LogsReadonly;
 using $safeprojectname$.ViewModels.LogViewModels;
 using Calabonga.Microservices.Core;
 using Calabonga.Microservices.Core.QueryParams;
-using Calabonga.OperationResultsCore;
+using Calabonga.OperationResults;
 using Calabonga.UnitOfWork;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;

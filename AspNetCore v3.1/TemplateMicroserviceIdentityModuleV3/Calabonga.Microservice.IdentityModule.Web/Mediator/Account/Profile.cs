@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using Calabonga.AspNetCore.Controllers.Base;
 using $safeprojectname$.Infrastructure.Services;
 using $safeprojectname$.ViewModels.AccountViewModels;
-using Calabonga.OperationResultsCore;
+using Calabonga.OperationResults;
 
 using IdentityServer4.Extensions;
 

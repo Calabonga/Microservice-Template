@@ -1,7 +1,7 @@
 ﻿using $ext_projectname$.Core;
 using $safeprojectname$.AppStart.ConfigureServices;
+using $safeprojectname$.Infrastructure.Auth;
 using $safeprojectname$.Middlewares;
-using Calabonga.Microservices.Web.Core;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;

@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Calabonga.Microservices.Web.Core
+namespace $safeprojectname$.Infrastructure.Auth
 {
     /// <summary>
     /// Authorization Policy registration

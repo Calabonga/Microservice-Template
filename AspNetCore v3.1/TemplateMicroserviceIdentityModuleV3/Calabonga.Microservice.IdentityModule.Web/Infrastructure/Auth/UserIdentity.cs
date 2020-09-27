@@ -5,7 +5,7 @@ using System.Security.Principal;
 using Calabonga.Microservices.Core.Exceptions;
 using Microsoft.AspNetCore.Http;
 
-namespace Calabonga.Microservices.Web.Core
+namespace $safeprojectname$.Infrastructure.Auth
 {
     /// <summary>
     /// Identity helper for Requests operations

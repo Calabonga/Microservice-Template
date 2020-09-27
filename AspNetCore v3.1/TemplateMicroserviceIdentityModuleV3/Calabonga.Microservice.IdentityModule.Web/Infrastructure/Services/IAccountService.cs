@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using $ext_projectname$.Data;
 using $safeprojectname$.ViewModels.AccountViewModels;
 using Calabonga.Microservices.Core.Validators;
-using Calabonga.OperationResultsCore;
+using Calabonga.OperationResults;
 
 namespace $safeprojectname$.Infrastructure.Services
 {

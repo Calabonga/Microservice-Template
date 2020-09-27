@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using $safeprojectname$.Mediator.Account;
 using $safeprojectname$.ViewModels.AccountViewModels;
-using Calabonga.OperationResultsCore;
+using Calabonga.OperationResults;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;

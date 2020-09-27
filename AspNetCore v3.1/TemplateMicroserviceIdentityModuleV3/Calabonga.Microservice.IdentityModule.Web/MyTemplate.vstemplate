@@ -44,7 +44,7 @@
         <ProjectItem ReplaceParameters="true" TargetFileName="Account2Controller.cs">Account2Controller.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="AccountController.cs">AccountController.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="LogsReadonly2Controller.cs">LogsReadonly2Controller.cs</ProjectItem>
-        <ProjectItem ReplaceParameters="true" TargetFileName="LogsReadonlyController.cs">LogsReadonlyController.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="LogsReadOnlyController.cs">LogsReadOnlyController.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="LogsWritable2Controller.cs">LogsWritable2Controller.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="LogsWritableController.cs">LogsWritableController.cs</ProjectItem>
       </Folder>
@@ -63,7 +63,12 @@
         </Folder>
         <Folder Name="Auth" TargetFolderName="Auth">
           <ProjectItem ReplaceParameters="true" TargetFileName="ApplicationClaimsPrincipalFactory.cs">ApplicationClaimsPrincipalFactory.cs</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="AuthorizationPolicyExtensions.cs">AuthorizationPolicyExtensions.cs</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="AuthorizationPolicyProvider.cs">AuthorizationPolicyProvider.cs</ProjectItem>
           <ProjectItem ReplaceParameters="true" TargetFileName="IdentityServerCorsPolicy.cs">IdentityServerCorsPolicy.cs</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="MicroservicePermissionHandler.cs">MicroservicePermissionHandler.cs</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="PermissionRequirement.cs">PermissionRequirement.cs</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="UserIdentity.cs">UserIdentity.cs</ProjectItem>
         </Folder>
         <Folder Name="DependencyInjection" TargetFolderName="DependencyInjection">
           <ProjectItem ReplaceParameters="true" TargetFileName="CommonRegistrations.cs">CommonRegistrations.cs</ProjectItem>

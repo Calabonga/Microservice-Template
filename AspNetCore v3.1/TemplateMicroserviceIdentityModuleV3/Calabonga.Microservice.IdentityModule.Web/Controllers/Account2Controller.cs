@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using $safeprojectname$.Infrastructure.Services;
 using $safeprojectname$.ViewModels.AccountViewModels;
 using Calabonga.Microservices.Core.Exceptions;
-using Calabonga.OperationResultsCore;
+using Calabonga.OperationResults;
 using Calabonga.UnitOfWork.Controllers.Controllers;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
