@@ -22,7 +22,6 @@ namespace Calabonga.Microservice.IdentityModule.Web.Infrastructure.DependencyInj
             services.AddScoped<ApplicationClaimsPrincipalFactory>();
 
             // services
-            services.AddTransient<ILogService, LogService>();
             services.AddTransient<IAccountService, AccountService>();
             services.AddTransient<IProfileService, IdentityProfileService>();
             services.AddTransient<ICacheService, CacheService>();

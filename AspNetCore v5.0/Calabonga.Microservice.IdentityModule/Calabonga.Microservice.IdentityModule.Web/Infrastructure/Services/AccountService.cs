@@ -1,20 +1,27 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
+
 using AutoMapper;
+
 using Calabonga.Microservice.IdentityModule.Core;
 using Calabonga.Microservice.IdentityModule.Data;
 using Calabonga.Microservice.IdentityModule.Web.Infrastructure.Auth;
+using Calabonga.Microservice.IdentityModule.Web.Infrastructure.EventLogs;
 using Calabonga.Microservice.IdentityModule.Web.ViewModels.AccountViewModels;
 using Calabonga.Microservices.Core.Exceptions;
 using Calabonga.Microservices.Core.Extensions;
 using Calabonga.Microservices.Core.Validators;
 using Calabonga.OperationResults;
 using Calabonga.UnitOfWork;
+
 using IdentityModel;
+
 using IdentityServer4.Extensions;
+
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
@@ -110,6 +117,7 @@ namespace Calabonga.Microservice.IdentityModule.Web.Infrastructure.Services
                     operation.AddSuccess(AppData.Messages.UserSuccessfullyRegistered);
                     _logger.LogInformation(operation.GetMetadataMessages());
                     transaction.Commit();
+                    _logger.MicroserviceUserRegistration(model.Email);
                     return await Task.FromResult(operation);
                 }
             }
@@ -117,6 +125,7 @@ namespace Calabonga.Microservice.IdentityModule.Web.Infrastructure.Services
             operation.AddError(string.Join(", ", errors));
             operation.Exception = _unitOfWork.LastSaveChangesResult.Exception;
             transaction.Rollback();
+            _logger.MicroserviceUserRegistration(model.Email, operation.Exception);
             return await Task.FromResult(operation);
         }
 
