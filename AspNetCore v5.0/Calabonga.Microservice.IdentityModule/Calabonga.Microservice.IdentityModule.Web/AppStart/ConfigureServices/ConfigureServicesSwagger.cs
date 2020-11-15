@@ -15,7 +15,7 @@ namespace Calabonga.Microservice.IdentityModule.Web.AppStart.ConfigureServices
     /// </summary>
     public static class ConfigureServicesSwagger
     {
-        private const string AppTitle = "Microservice API (with IdentityServer4)";
+        private const string AppTitle = "Microservice API with IdentityServer4";
         private static readonly string AppVersion = $"{ThisAssembly.Git.SemVer.Major}.{ThisAssembly.Git.SemVer.Minor}.{ThisAssembly.Git.SemVer.Patch}";
         private const string SwaggerConfig = "/swagger/v1/swagger.json";
         private const string SwaggerUrl = "api/manual";
@@ -33,7 +33,7 @@ namespace Calabonga.Microservice.IdentityModule.Web.AppStart.ConfigureServices
                 {
                     Title = AppTitle,
                     Version = AppVersion,
-                    Description = "Microservice API (with IdentityServer4) module API documentation. This template based on ASP.NET Core 3.1."
+                    Description = "Microservice module API with IdentityServer4. This template based on .NET 5.0"
                 });
                 options.ResolveConflictingActions(x => x.First());
 
@@ -86,6 +86,7 @@ namespace Calabonga.Microservice.IdentityModule.Web.AppStart.ConfigureServices
         {
             settings.SwaggerEndpoint(SwaggerConfig, $"{AppTitle} v.{AppVersion}");
             settings.RoutePrefix = SwaggerUrl;
+            settings.HeadContent = $"{ThisAssembly.Git.Branch.ToUpper()} {ThisAssembly.Git.Commit.ToUpper()}";
             settings.DocumentTitle = "Microservice API";
             settings.DefaultModelExpandDepth(0);
             settings.DefaultModelRendering(ModelRendering.Model);
@@ -95,7 +96,7 @@ namespace Calabonga.Microservice.IdentityModule.Web.AppStart.ConfigureServices
             settings.OAuthScopeSeparator(" ");
             settings.OAuthClientSecret("secret");
             settings.DisplayRequestDuration();
-            settings.OAuthAppName("Microservice API (with IdentityServer4) module API documentation");
+            settings.OAuthAppName("Microservice module API with IdentityServer4");
         }
     }
 }
