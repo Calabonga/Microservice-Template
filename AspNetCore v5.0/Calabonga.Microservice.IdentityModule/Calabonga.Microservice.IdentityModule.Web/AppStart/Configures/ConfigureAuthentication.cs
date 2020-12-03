@@ -13,6 +13,7 @@ namespace Calabonga.Microservice.IdentityModule.Web.AppStart.Configures
         /// <param name="app"></param>
         public static void Configure(IApplicationBuilder app)
         {
+            app.UseRouting();
             app.UseCors("CorsPolicy");
             app.UseAuthentication();
             app.UseAuthorization();

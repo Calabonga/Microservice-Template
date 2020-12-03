@@ -55,6 +55,8 @@ namespace Calabonga.Microservice.IdentityModule.Web.AppStart.Configures
 
             // Singleton setup for User Identity
             UserIdentity.Instance.Configure(app.ApplicationServices.GetService<IHttpContextAccessor>()!);
+
+            
         }
     }
 }

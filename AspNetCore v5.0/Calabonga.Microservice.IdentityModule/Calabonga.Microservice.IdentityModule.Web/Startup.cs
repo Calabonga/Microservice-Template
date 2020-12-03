@@ -2,6 +2,7 @@ using Calabonga.Microservice.IdentityModule.Web.AppStart.Configures;
 using Calabonga.Microservice.IdentityModule.Web.AppStart.ConfigureServices;
 using Calabonga.Microservice.IdentityModule.Web.Infrastructure.DependencyInjection;
 using Calabonga.UnitOfWork.Controllers.DependencyContainer;
+
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -37,7 +38,7 @@ namespace Calabonga.Microservice.IdentityModule.Web
             ConfigureServicesControllers.ConfigureServices(services);
             ConfigureServicesMediator.ConfigureServices(services);
             ConfigureServicesValidators.ConfigureServices(services);
-            
+
             DependencyContainer.Common(services);
             NimbleDependencyContainer.ConfigureServices(services);
         }

@@ -55,8 +55,8 @@ namespace Calabonga.Microservice.IdentityModule.Web.AppStart
                         IdentityServerConstants.StandardScopes.Address,
                         "api1"
                     },
-                    RedirectUris = { "https://localhost:8001/authentication/login-callback" },
-                    PostLogoutRedirectUris = { "https://localhost:8001" },
+                    RedirectUris = { "https://localhost:5001/authentication/login-callback" },
+                    PostLogoutRedirectUris = { "https://localhost:5001" },
                 }
             };
         }

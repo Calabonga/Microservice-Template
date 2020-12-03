@@ -1,8 +1,10 @@
-﻿using Calabonga.Microservice.IdentityModule.Data;
+﻿using Calabonga.Microservice.IdentityModule.Core;
+using Calabonga.Microservice.IdentityModule.Data;
 using Calabonga.Microservice.IdentityModule.Web.Infrastructure.Services;
 
 using IdentityServer4.AccessTokenValidation;
 
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -23,8 +25,16 @@ namespace Calabonga.Microservice.IdentityModule.Web.AppStart.ConfigureServices
         public static void ConfigureServices(IServiceCollection services, IConfiguration configuration)
         {
             var url = configuration.GetSection("IdentityServer").GetValue<string>("Url");
-
             services.AddAuthentication(IdentityServerAuthenticationDefaults.AuthenticationScheme)
+            // services.AddAuthentication(
+                // options =>
+                // {
+                    // options.DefaultScheme = IdentityServerAuthenticationDefaults.AuthenticationScheme;
+                    // options.DefaultAuthenticateScheme = IdentityServerAuthenticationDefaults.AuthenticationScheme;
+                    // options.DefaultChallengeScheme = IdentityServerAuthenticationDefaults.AuthenticationScheme;
+                    // options.DefaultSignInScheme = IdentityServerAuthenticationDefaults.AuthenticationScheme;
+                    // options.DefaultSignOutScheme = IdentityServerAuthenticationDefaults.AuthenticationScheme;
+                // })
                 .AddIdentityServerAuthentication(
                     options =>
                     {
