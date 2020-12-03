@@ -1,0 +1,13 @@
+{
+  "profiles": {
+    "Calabonga.Microservice.IdentityModule.Web": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "launchUrl": "api/manual",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "https://localhost:10001;http://localhost:10000"
+    }
+  }
+}
