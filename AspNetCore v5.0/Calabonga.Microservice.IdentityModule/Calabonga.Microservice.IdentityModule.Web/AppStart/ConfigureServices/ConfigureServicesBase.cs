@@ -76,7 +76,7 @@ namespace Calabonga.Microservice.IdentityModule.Web.AppStart.ConfigureServices
             services.AddLocalization();
             services.AddHttpContextAccessor();
             services.AddResponseCaching();
-            services.AddAuthorization();
+            
         }
     }
 }

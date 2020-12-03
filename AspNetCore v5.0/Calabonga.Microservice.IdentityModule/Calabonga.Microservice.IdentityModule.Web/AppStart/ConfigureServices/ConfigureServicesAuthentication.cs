@@ -1,7 +1,10 @@
 ﻿using Calabonga.Microservice.IdentityModule.Core;
 using Calabonga.Microservice.IdentityModule.Data;
+using Calabonga.Microservice.IdentityModule.Web.Infrastructure.Auth;
 using Calabonga.Microservice.IdentityModule.Web.Infrastructure.Services;
+
 using IdentityServer4.AccessTokenValidation;
+
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -21,32 +24,31 @@ namespace Calabonga.Microservice.IdentityModule.Web.AppStart.ConfigureServices
         /// <param name="configuration"></param>
         public static void ConfigureServices(IServiceCollection services, IConfiguration configuration)
         {
-             var url = configuration.GetSection("IdentityServer").GetValue<string>("Url");
-            services.AddAuthentication(options =>
-            {
-                options.DefaultScheme = IdentityServerAuthenticationDefaults.AuthenticationScheme;
-                options.DefaultAuthenticateScheme = IdentityServerAuthenticationDefaults.AuthenticationScheme;
-                options.DefaultChallengeScheme = IdentityServerAuthenticationDefaults.AuthenticationScheme;
-                options.DefaultSignInScheme = IdentityServerAuthenticationDefaults.AuthenticationScheme;
-                options.DefaultSignOutScheme = IdentityServerAuthenticationDefaults.AuthenticationScheme;
-            })
-               .AddIdentityServerAuthentication(options =>
-               {
-                   options.SupportedTokens = SupportedTokens.Jwt;
-                   options.Authority = url;
-                   options.EnableCaching = true;
-                   options.RequireHttpsMetadata = false;
-               });
+            var url = configuration.GetSection("IdentityServer").GetValue<string>("Url");
 
-            services.AddIdentityServer(options =>
-                {
-                    options.Authentication.CookieSlidingExpiration = true;
-                    options.IssuerUri = url;
-                    options.Events.RaiseErrorEvents = true;
-                    options.Events.RaiseInformationEvents = true;
-                    options.Events.RaiseFailureEvents = true;
-                    options.Events.RaiseSuccessEvents = true;
-                })
+            services.AddAuthentication(IdentityServerAuthenticationDefaults.AuthenticationScheme)
+                .AddIdentityServerAuthentication(
+                    options =>
+                    {
+                        options.SupportedTokens = SupportedTokens.Jwt;
+                        options.Authority = url;
+                        options.EnableCaching = true;
+                        options.RequireHttpsMetadata = false;
+                    });
+
+            services.AddIdentityServer(
+                    options =>
+                    {
+                        options.Authentication.CookieSlidingExpiration = true;
+                        options.IssuerUri = url;
+                        options.Events.RaiseErrorEvents = true;
+                        options.Events.RaiseInformationEvents = true;
+                        options.Events.RaiseFailureEvents = true;
+                        options.Events.RaiseSuccessEvents = true;
+                        options.LowerCaseIssuerUri = true;
+                        options.UserInteraction.LoginUrl = "/identification/login";
+                        options.UserInteraction.LogoutUrl = "/identification/logout";
+                    })
                 .AddInMemoryPersistedGrants()
                 .AddDeveloperSigningCredential()
                 .AddInMemoryIdentityResources(IdentityServerConfig.GetIdentityResources())
@@ -56,6 +58,8 @@ namespace Calabonga.Microservice.IdentityModule.Web.AppStart.ConfigureServices
                 .AddAspNetIdentity<ApplicationUser>()
                 .AddJwtBearerClientAuthentication()
                 .AddProfileService<IdentityProfileService>();
+
+            services.AddAuthorization();
         }
     }
 }
