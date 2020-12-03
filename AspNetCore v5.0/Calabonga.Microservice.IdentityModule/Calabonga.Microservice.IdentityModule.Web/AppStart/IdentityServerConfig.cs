@@ -44,7 +44,6 @@ namespace Calabonga.Microservice.IdentityModule.Web.AppStart
                 new Client
                 {
                     ClientId = "blazor_web_assembly",
-                    //AllowAccessTokensViaBrowser = true,
                     AllowedGrantTypes = GrantTypes.Code,
                     RequireClientSecret = false,
                     RequireConsent = false,
