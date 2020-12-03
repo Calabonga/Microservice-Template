@@ -50,6 +50,7 @@ namespace Calabonga.Microservice.IdentityModule.Web
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, AutoMapper.IConfigurationProvider mapper)
         {
             ConfigureCommon.Configure(app, env, mapper);
+            ConfigureAuthentication.Configure(app);
             ConfigureEndpoints.Configure(app);
         }
     }
