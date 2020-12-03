@@ -34,10 +34,5 @@ namespace Calabonga.Microservice.IdentityModule.Core
                 yield return ManagerRoleName;
             }
         }
-
-        /// <summary>
-        /// IdentityServer4 path
-        /// </summary>
-        public const string AuthUrl = "/auth";
     }
 }

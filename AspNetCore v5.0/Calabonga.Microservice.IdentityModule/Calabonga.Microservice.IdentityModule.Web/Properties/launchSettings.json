@@ -2,7 +2,7 @@
   "profiles": {
     "Kestrel": {
       "commandName": "Project",
-      "launchBrowser": false,
+      "launchBrowser": true,
       "launchUrl": "api/manual/",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"

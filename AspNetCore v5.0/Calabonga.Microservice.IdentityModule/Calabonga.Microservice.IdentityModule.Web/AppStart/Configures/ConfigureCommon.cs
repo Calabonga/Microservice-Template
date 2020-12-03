@@ -45,18 +45,16 @@ namespace Calabonga.Microservice.IdentityModule.Web.AppStart.Configures
 
             app.UseETagger();
 
-            //app.Map($"{AppData.AuthUrl}", authServer => { authServer.UseIdentityServer(); });
-
             app.UseIdentityServer();
 
             app.UseMiddleware(typeof(ErrorHandlingMiddleware));
 
+            
+            app.UseSwagger();
             app.UseSwaggerUI(ConfigureServicesSwagger.SwaggerSettings);
 
-            app.UseSwagger();
-
             // Singleton setup for User Identity
-            UserIdentity.Instance.Configure(app.ApplicationServices.GetService<IHttpContextAccessor>());
+            UserIdentity.Instance.Configure(app.ApplicationServices.GetService<IHttpContextAccessor>()!);
         }
     }
 }

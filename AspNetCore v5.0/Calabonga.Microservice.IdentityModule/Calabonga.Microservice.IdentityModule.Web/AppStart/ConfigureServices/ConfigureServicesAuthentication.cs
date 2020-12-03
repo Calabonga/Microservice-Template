@@ -33,7 +33,7 @@ namespace Calabonga.Microservice.IdentityModule.Web.AppStart.ConfigureServices
                .AddIdentityServerAuthentication(options =>
                {
                    options.SupportedTokens = SupportedTokens.Jwt;
-                   options.Authority = $"{url}{AppData.AuthUrl}";
+                   options.Authority = url;
                    options.EnableCaching = true;
                    options.RequireHttpsMetadata = false;
                });
@@ -41,7 +41,7 @@ namespace Calabonga.Microservice.IdentityModule.Web.AppStart.ConfigureServices
             services.AddIdentityServer(options =>
                 {
                     options.Authentication.CookieSlidingExpiration = true;
-                    options.IssuerUri = $"{url}{AppData.AuthUrl}";
+                    options.IssuerUri = url;
                     options.Events.RaiseErrorEvents = true;
                     options.Events.RaiseInformationEvents = true;
                     options.Events.RaiseFailureEvents = true;

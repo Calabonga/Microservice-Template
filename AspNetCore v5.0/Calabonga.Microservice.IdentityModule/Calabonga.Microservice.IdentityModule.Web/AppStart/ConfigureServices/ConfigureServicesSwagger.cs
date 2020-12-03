@@ -46,7 +46,7 @@ namespace Calabonga.Microservice.IdentityModule.Web.AppStart.ConfigureServices
                     {
                         Password = new OpenApiOAuthFlow
                         {
-                            TokenUrl = new Uri($"{url}/auth/connect/token", UriKind.Absolute),
+                            TokenUrl = new Uri($"{url}/connect/token", UriKind.Absolute),
                             Scopes = new Dictionary<string, string>
                             {
                                 { "api1", "Default scope" }
