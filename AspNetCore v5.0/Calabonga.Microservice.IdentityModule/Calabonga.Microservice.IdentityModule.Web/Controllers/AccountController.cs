@@ -1,8 +1,11 @@
 ﻿using System.Threading.Tasks;
+using Calabonga.Microservice.IdentityModule.Web.Infrastructure.Auth;
 using Calabonga.Microservice.IdentityModule.Web.Mediator.Account;
 using Calabonga.Microservice.IdentityModule.Web.ViewModels.AccountViewModels;
 using Calabonga.OperationResults;
+
 using MediatR;
+
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -12,7 +15,7 @@ namespace Calabonga.Microservice.IdentityModule.Web.Controllers
     /// Account Controller
     /// </summary>
     [Route("api/[controller]")]
-    [Authorize]
+    [Authorize(AuthenticationSchemes = AuthData.AuthSchemes)]
     public class AccountController : ControllerBase
     {
         private readonly IMediator _mediator;
@@ -33,7 +36,7 @@ namespace Calabonga.Microservice.IdentityModule.Web.Controllers
         [HttpPost("[action]")]
         [AllowAnonymous]
         [ProducesResponseType(200, Type = typeof(OperationResult<UserProfileViewModel>))]
-        public async Task<ActionResult<OperationResult<UserProfileViewModel>>> Register([FromBody]RegisterViewModel model)
+        public async Task<ActionResult<OperationResult<UserProfileViewModel>>> Register([FromBody] RegisterViewModel model)
         {
             return Ok(await _mediator.Send(new RegisterRequest(model), HttpContext.RequestAborted));
         }

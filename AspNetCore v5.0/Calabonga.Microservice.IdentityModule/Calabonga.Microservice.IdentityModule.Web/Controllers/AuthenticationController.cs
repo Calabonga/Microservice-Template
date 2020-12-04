@@ -1,8 +1,8 @@
 ﻿using System.Threading.Tasks;
-
 using Calabonga.Microservice.IdentityModule.Data;
 using Calabonga.Microservice.IdentityModule.Web.ViewModels.AccountViewModels;
 using IdentityServer4.Services;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -10,14 +10,15 @@ using Microsoft.AspNetCore.Mvc;
 namespace Calabonga.Microservice.IdentityModule.Web.Controllers
 {
     [AllowAnonymous]
+    [ApiExplorerSettings(IgnoreApi = true)]
     [Route("[controller]")]
-    public class IdentificationController : Controller
+    public class AuthenticationController : Controller
     {
         private readonly IIdentityServerInteractionService _interaction;
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly UserManager<ApplicationUser> _userManager;
 
-        public IdentificationController(
+        public AuthenticationController(
             IIdentityServerInteractionService interaction,
             SignInManager<ApplicationUser> signInManager,
             UserManager<ApplicationUser> userManager)
@@ -61,6 +62,7 @@ namespace Calabonga.Microservice.IdentityModule.Web.Controllers
         }
 
         [HttpGet("[action]")]
+        [Authorize(AuthenticationSchemes = CookieAuthenticationDefaults.AuthenticationScheme)]
         public async Task<IActionResult> Logout(string logoutId)
         {
             var logout = await _interaction.GetLogoutContextAsync(logoutId);

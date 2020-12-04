@@ -1,14 +1,9 @@
 ﻿using System;
-using System.Security.Claims;
-using System.Threading;
 using System.Threading.Tasks;
-using Calabonga.Microservice.IdentityModule.Core;
+using Calabonga.Microservice.IdentityModule.Entities.Core;
+using Calabonga.Microservice.IdentityModule.Web.Infrastructure.Auth;
 using Calabonga.Microservice.IdentityModule.Web.Mediator.LogsReadonly;
-using Calabonga.Microservice.IdentityModule.Web.ViewModels.LogViewModels;
-using Calabonga.Microservices.Core;
 using Calabonga.Microservices.Core.QueryParams;
-using Calabonga.OperationResults;
-using Calabonga.UnitOfWork;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -19,7 +14,7 @@ namespace Calabonga.Microservice.IdentityModule.Web.Controllers
     /// ReadOnlyController Demo
     /// </summary>
     [Route("api/[controller]")]
-    [Authorize]
+    [Authorize(AuthenticationSchemes = AuthData.AuthSchemes)]
     public class LogsReadonlyController : ControllerBase
     {
         private readonly IMediator _mediator;

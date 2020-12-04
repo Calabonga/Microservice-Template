@@ -1,4 +1,4 @@
-﻿namespace Calabonga.Microservice.IdentityModule.Core
+﻿namespace Calabonga.Microservice.IdentityModule.Entities.Core
 {
     public static partial class AppData
     {

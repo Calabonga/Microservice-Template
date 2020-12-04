@@ -18,8 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Calabonga.Microservice.IdentityModule.Core\Calabonga.Microservice.IdentityModule.Core.csproj" />
-    <ProjectReference Include="..\Calabonga.Microservice.IdentityModule.Models\Calabonga.Microservice.IdentityModule.Entities.csproj" />
+    <ProjectReference Include="..\Calabonga.Microservice.IdentityModule.Entities\Calabonga.Microservice.IdentityModule.Entities.csproj" />
   </ItemGroup>
 
 </Project>

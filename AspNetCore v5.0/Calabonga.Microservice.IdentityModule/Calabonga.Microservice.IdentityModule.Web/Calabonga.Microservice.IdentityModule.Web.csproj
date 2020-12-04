@@ -37,7 +37,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Calabonga.Microservice.IdentityModule.Core\Calabonga.Microservice.IdentityModule.Core.csproj" />
     <ProjectReference Include="..\Calabonga.Microservice.IdentityModule.Data\Calabonga.Microservice.IdentityModule.Data.csproj" />
   </ItemGroup>
 

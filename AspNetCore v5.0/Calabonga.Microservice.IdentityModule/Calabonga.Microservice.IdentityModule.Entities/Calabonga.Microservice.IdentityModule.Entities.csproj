@@ -6,4 +6,8 @@
     <AnalysisLevel>5.0</AnalysisLevel>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Calabonga.EntityFrameworkCore.Entities.Base" Version="2.1.1" />
+  </ItemGroup>
+
 </Project>

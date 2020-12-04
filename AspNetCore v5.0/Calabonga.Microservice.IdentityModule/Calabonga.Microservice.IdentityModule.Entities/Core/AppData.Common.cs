@@ -1,7 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
-namespace Calabonga.Microservice.IdentityModule.Core
+namespace Calabonga.Microservice.IdentityModule.Entities.Core
 {
     /// <summary>
     /// Static data container
