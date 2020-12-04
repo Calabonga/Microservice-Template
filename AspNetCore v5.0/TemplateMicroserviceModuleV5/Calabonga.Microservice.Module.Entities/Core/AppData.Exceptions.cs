@@ -1,4 +1,4 @@
-﻿namespace $safeprojectname$
+﻿namespace $ext_projectname$.Core
 {
     public static partial class AppData
     {

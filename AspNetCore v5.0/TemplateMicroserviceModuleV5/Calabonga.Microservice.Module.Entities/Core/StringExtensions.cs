@@ -3,7 +3,7 @@ using System.Diagnostics;
 using System.Globalization;
 using System.Text.RegularExpressions;
 
-namespace $safeprojectname$
+namespace $ext_projectname$.Core
 {
     public static class StringExtensions
     {

@@ -1,6 +1,8 @@
 ﻿using Calabonga.Microservice.Module.Core;
+using Calabonga.Microservice.Module.Web.Infrastructure.Auth;
 using IdentityServer4.AccessTokenValidation;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -37,6 +39,8 @@ namespace Calabonga.Microservice.Module.Web.AppStart.ConfigureServices
                 });
 
             services.AddAuthorization();
+            
+            services.AddSingleton<IAuthorizationHandler, MicroservicePermissionHandler>();
         }
     }
 }

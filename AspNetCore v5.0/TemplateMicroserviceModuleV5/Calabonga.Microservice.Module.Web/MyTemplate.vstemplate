@@ -1,7 +1,7 @@
 <VSTemplate Version="3.0.0" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" Type="Project">
   <TemplateData>
     <Name>Calabonga.Microservice.Module.Web</Name>
-    <Description>API for microservice</Description>
+    <Description>Microservice API with Swagger</Description>
     <ProjectType>CSharp</ProjectType>
     <ProjectSubType>
     </ProjectSubType>
@@ -55,6 +55,11 @@
           <ProjectItem ReplaceParameters="true" TargetFileName="SwaggerFormAttribute.cs">SwaggerFormAttribute.cs</ProjectItem>
           <ProjectItem ReplaceParameters="true" TargetFileName="SwaggerGroupAttribute.cs">SwaggerGroupAttribute.cs</ProjectItem>
           <ProjectItem ReplaceParameters="true" TargetFileName="ValidateModelStateAttribute.cs">ValidateModelStateAttribute.cs</ProjectItem>
+        </Folder>
+        <Folder Name="Auth" TargetFolderName="Auth">
+          <ProjectItem ReplaceParameters="true" TargetFileName="IdentityHelper.cs">IdentityHelper.cs</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="MicroservicePermissionHandler.cs">MicroservicePermissionHandler.cs</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="PermissionRequirement.cs">PermissionRequirement.cs</ProjectItem>
         </Folder>
         <Folder Name="DependencyInjection" TargetFolderName="DependencyInjection">
           <ProjectItem ReplaceParameters="true" TargetFileName="CommonRegistrations.cs">CommonRegistrations.cs</ProjectItem>

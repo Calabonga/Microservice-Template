@@ -21,7 +21,6 @@
       <ProjectTemplateLink ProjectName="$projectname$.Web" CopyParameters="true">Calabonga.Microservice.Module.Web\MyTemplate.vstemplate</ProjectTemplateLink>
       <ProjectTemplateLink ProjectName="$projectname$.Data" CopyParameters="true">Calabonga.Microservice.Module.Data\MyTemplate.vstemplate</ProjectTemplateLink>
       <ProjectTemplateLink ProjectName="$projectname$.Entities" CopyParameters="true">Calabonga.Microservice.Module.Entities\MyTemplate.vstemplate</ProjectTemplateLink>
-      <ProjectTemplateLink ProjectName="$projectname$.Core" CopyParameters="true">Calabonga.Microservice.Module.Core\MyTemplate.vstemplate</ProjectTemplateLink>
     </ProjectCollection>
   </TemplateContent>
 </VSTemplate>

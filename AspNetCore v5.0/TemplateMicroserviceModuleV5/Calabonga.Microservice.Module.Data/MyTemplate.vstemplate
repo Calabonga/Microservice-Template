@@ -1,7 +1,7 @@
 <VSTemplate Version="3.0.0" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" Type="Project">
   <TemplateData>
     <Name>Calabonga.Microservice.Module.Data</Name>
-    <Description>Application database context (DbContext)</Description>
+    <Description>DbContext (EntityFramework) for microservice API</Description>
     <ProjectType>CSharp</ProjectType>
     <ProjectSubType>
     </ProjectSubType>

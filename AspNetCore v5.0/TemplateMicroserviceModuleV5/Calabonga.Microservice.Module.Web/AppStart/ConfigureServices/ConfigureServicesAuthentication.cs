@@ -1,6 +1,8 @@
 ﻿using $ext_projectname$.Core;
+using $safeprojectname$.Infrastructure.Auth;
 using IdentityServer4.AccessTokenValidation;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -31,12 +33,14 @@ namespace $safeprojectname$.AppStart.ConfigureServices
                 .AddIdentityServerAuthentication(options =>
                 {
                     options.SupportedTokens = SupportedTokens.Jwt;
-                    options.Authority = $"{url}{AppData.AuthUrl}";
+                    options.Authority = $"{url}";
                     options.EnableCaching = true;
                     options.RequireHttpsMetadata = false;
                 });
 
             services.AddAuthorization();
+            
+            services.AddSingleton<IAuthorizationHandler, MicroservicePermissionHandler>();
         }
     }
 }

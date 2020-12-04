@@ -1,7 +1,7 @@
 ﻿using System;
-using $ext_projectname$.Core.Exceptions;
 using $ext_projectname$.Data;
 using $ext_projectname$.Entities;
+using Calabonga.Microservices.Core.Exceptions;
 using Calabonga.UnitOfWork;
 using Microsoft.Extensions.Logging;
 
@@ -14,12 +14,15 @@ namespace $safeprojectname$.Infrastructure.Services
     {
         private readonly IUnitOfWork<ApplicationDbContext> _unitOfWork;
 
-        /// <inheritdoc />
         public LogService(IUnitOfWork<ApplicationDbContext> unitOfWork)
         {
             _unitOfWork = unitOfWork;
         }
-        /// <inheritdoc />
+
+        /// <summary>
+        /// Log information message
+        /// </summary>
+        /// <param name="message"></param>
         public void LogInformation(string message)
         {
             Log(LogLevel.Information, message);

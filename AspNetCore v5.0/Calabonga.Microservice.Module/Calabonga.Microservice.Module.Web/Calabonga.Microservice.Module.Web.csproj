@@ -19,7 +19,6 @@
     <PackageReference Include="Calabonga.AspNetCore.Controllers" Version="1.1.2" />
     <PackageReference Include="Calabonga.EntityFrameworkCore.UnitOfWork" Version="2.0.2" />
     <PackageReference Include="Calabonga.Microservices.Core" Version="2.1.5" />
-    <PackageReference Include="Calabonga.Microservices.Web.Core" Version="2.0.2" />
     <PackageReference Include="Calabonga.UnitOfWork" Version="1.0.7" />
     <PackageReference Include="Calabonga.UnitOfWork.Controllers" Version="1.2.3" />
     <PackageReference Include="FluentValidation" Version="9.3.0" />

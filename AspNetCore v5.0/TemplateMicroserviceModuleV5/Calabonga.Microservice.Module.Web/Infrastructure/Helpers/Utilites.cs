@@ -4,7 +4,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using $ext_projectname$.Core.Exceptions;
+using Calabonga.Microservices.Core.Exceptions;
 
 namespace $safeprojectname$.Infrastructure.Helpers
 {
