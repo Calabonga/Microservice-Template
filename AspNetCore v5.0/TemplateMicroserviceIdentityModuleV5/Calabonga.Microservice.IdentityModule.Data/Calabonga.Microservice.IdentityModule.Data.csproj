@@ -18,7 +18,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\$ext_projectname$.Core\$ext_projectname$.Core.csproj" />
     <ProjectReference Include="..\$ext_projectname$.Entities\$ext_projectname$.Entities.csproj" />
   </ItemGroup>
 

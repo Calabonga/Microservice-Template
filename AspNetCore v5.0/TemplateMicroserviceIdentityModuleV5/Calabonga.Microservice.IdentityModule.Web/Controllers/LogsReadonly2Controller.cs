@@ -1,10 +1,10 @@
 ﻿using System.Security.Claims;
 
 using AutoMapper;
-
-using $ext_projectname$.Core;
 using $ext_projectname$.Data;
 using $ext_projectname$.Entities;
+using $ext_projectname$.Entities.Core;
+using $safeprojectname$.Infrastructure.Auth;
 using $safeprojectname$.Infrastructure.Settings;
 using $safeprojectname$.ViewModels.LogViewModels;
 using Calabonga.Microservices.Core;
@@ -23,7 +23,7 @@ namespace $safeprojectname$.Controllers
     /// ReadOnlyController Demo
     /// </summary>
     [Route("api/[controller]")]
-    [Authorize]
+    [Authorize(AuthenticationSchemes = AuthData.AuthSchemes)]
     public class LogsReadonly2Controller : ReadOnlyController<Log, LogViewModel, PagedListQueryParams>
     {
         private readonly CurrentAppSettings _appSettings;

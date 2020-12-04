@@ -1,5 +1,4 @@
-﻿using $ext_projectname$.Core;
-using $safeprojectname$.AppStart.ConfigureServices;
+﻿using $safeprojectname$.AppStart.ConfigureServices;
 using $safeprojectname$.Infrastructure.Auth;
 using $safeprojectname$.Middlewares;
 using Microsoft.AspNetCore.Builder;
@@ -46,16 +45,18 @@ namespace $safeprojectname$.AppStart.Configures
 
             app.UseETagger();
 
-            app.Map($"{AppData.AuthUrl}", authServer => { authServer.UseIdentityServer(); });
+            app.UseIdentityServer();
 
             app.UseMiddleware(typeof(ErrorHandlingMiddleware));
 
+            
+            app.UseSwagger();
             app.UseSwaggerUI(ConfigureServicesSwagger.SwaggerSettings);
 
-            app.UseSwagger();
-
             // Singleton setup for User Identity
-            UserIdentity.Instance.Configure(app.ApplicationServices.GetService<IHttpContextAccessor>());
+            UserIdentity.Instance.Configure(app.ApplicationServices.GetService<IHttpContextAccessor>()!);
+
+            
         }
     }
 }

@@ -1,7 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
-namespace $safeprojectname$
+namespace $safeprojectname$.Core
 {
     /// <summary>
     /// Static data container
@@ -34,10 +33,5 @@ namespace $safeprojectname$
                 yield return ManagerRoleName;
             }
         }
-
-        /// <summary>
-        /// IdentityServer4 path
-        /// </summary>
-        public const string AuthUrl = "/auth";
     }
 }

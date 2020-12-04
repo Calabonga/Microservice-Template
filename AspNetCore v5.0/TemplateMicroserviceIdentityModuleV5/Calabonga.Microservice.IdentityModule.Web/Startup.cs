@@ -2,6 +2,7 @@ using $safeprojectname$.AppStart.Configures;
 using $safeprojectname$.AppStart.ConfigureServices;
 using $safeprojectname$.Infrastructure.DependencyInjection;
 using Calabonga.UnitOfWork.Controllers.DependencyContainer;
+
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -37,7 +38,7 @@ namespace $safeprojectname$
             ConfigureServicesControllers.ConfigureServices(services);
             ConfigureServicesMediator.ConfigureServices(services);
             ConfigureServicesValidators.ConfigureServices(services);
-            
+
             DependencyContainer.Common(services);
             NimbleDependencyContainer.ConfigureServices(services);
         }
@@ -50,6 +51,7 @@ namespace $safeprojectname$
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, AutoMapper.IConfigurationProvider mapper)
         {
             ConfigureCommon.Configure(app, env, mapper);
+            ConfigureAuthentication.Configure(app);
             ConfigureEndpoints.Configure(app);
         }
     }

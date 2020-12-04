@@ -1,7 +1,7 @@
 <VSTemplate Version="3.0.0" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" Type="Project">
   <TemplateData>
     <Name>Calabonga.Microservice.IdentityModule.Web</Name>
-    <Description>API for microservice</Description>
+    <Description>Microservice API with Swagger</Description>
     <ProjectType>CSharp</ProjectType>
     <ProjectSubType>
     </ProjectSubType>
@@ -22,6 +22,7 @@
       </Folder>
       <Folder Name="AppStart" TargetFolderName="AppStart">
         <Folder Name="Configures" TargetFolderName="Configures">
+          <ProjectItem ReplaceParameters="true" TargetFileName="ConfigureAuthentication.cs">ConfigureAuthentication.cs</ProjectItem>
           <ProjectItem ReplaceParameters="true" TargetFileName="ConfigureCommon.cs">ConfigureCommon.cs</ProjectItem>
           <ProjectItem ReplaceParameters="true" TargetFileName="ConfigureEndpoints.cs">ConfigureEndpoints.cs</ProjectItem>
         </Folder>
@@ -43,6 +44,7 @@
       <Folder Name="Controllers" TargetFolderName="Controllers">
         <ProjectItem ReplaceParameters="true" TargetFileName="Account2Controller.cs">Account2Controller.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="AccountController.cs">AccountController.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="AuthenticationController.cs">AuthenticationController.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="LogsReadonly2Controller.cs">LogsReadonly2Controller.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="LogsReadOnlyController.cs">LogsReadOnlyController.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="LogsWritable2Controller.cs">LogsWritable2Controller.cs</ProjectItem>
@@ -63,6 +65,7 @@
         </Folder>
         <Folder Name="Auth" TargetFolderName="Auth">
           <ProjectItem ReplaceParameters="true" TargetFileName="ApplicationClaimsPrincipalFactory.cs">ApplicationClaimsPrincipalFactory.cs</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="AuthData.cs">AuthData.cs</ProjectItem>
           <ProjectItem ReplaceParameters="true" TargetFileName="AuthorizationPolicyExtensions.cs">AuthorizationPolicyExtensions.cs</ProjectItem>
           <ProjectItem ReplaceParameters="true" TargetFileName="AuthorizationPolicyProvider.cs">AuthorizationPolicyProvider.cs</ProjectItem>
           <ProjectItem ReplaceParameters="true" TargetFileName="IdentityServerCorsPolicy.cs">IdentityServerCorsPolicy.cs</ProjectItem>
@@ -139,6 +142,7 @@
       </Folder>
       <Folder Name="ViewModels" TargetFolderName="ViewModels">
         <Folder Name="AccountViewModels" TargetFolderName="AccountViewModels">
+          <ProjectItem ReplaceParameters="true" TargetFileName="LoginViewModel.cs">LoginViewModel.cs</ProjectItem>
           <ProjectItem ReplaceParameters="true" TargetFileName="RegisterViewModel.cs">RegisterViewModel.cs</ProjectItem>
           <ProjectItem ReplaceParameters="true" TargetFileName="RegisterViewModelValidator.cs">RegisterViewModelValidator.cs</ProjectItem>
           <ProjectItem ReplaceParameters="true" TargetFileName="UserProfileViewModel.cs">UserProfileViewModel.cs</ProjectItem>
@@ -148,6 +152,16 @@
           <ProjectItem ReplaceParameters="true" TargetFileName="LogUpdateViewModel.cs">LogUpdateViewModel.cs</ProjectItem>
           <ProjectItem ReplaceParameters="true" TargetFileName="LogViewModel.cs">LogViewModel.cs</ProjectItem>
         </Folder>
+      </Folder>
+      <Folder Name="Views" TargetFolderName="Views">
+        <Folder Name="Authentication" TargetFolderName="Authentication">
+          <ProjectItem ReplaceParameters="true" TargetFileName="Login.cshtml">Login.cshtml</ProjectItem>
+        </Folder>
+        <Folder Name="Shared" TargetFolderName="Shared">
+          <ProjectItem ReplaceParameters="true" TargetFileName="_Layout.cshtml">_Layout.cshtml</ProjectItem>
+        </Folder>
+        <ProjectItem ReplaceParameters="true" TargetFileName="_ViewImports.cshtml">_ViewImports.cshtml</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="_ViewStart.cshtml">_ViewStart.cshtml</ProjectItem>
       </Folder>
       <ProjectItem ReplaceParameters="true" TargetFileName="appsettings.json">appsettings.json</ProjectItem>
       <ProjectItem ReplaceParameters="true" TargetFileName="appsettings.Development.json">appsettings.Development.json</ProjectItem>

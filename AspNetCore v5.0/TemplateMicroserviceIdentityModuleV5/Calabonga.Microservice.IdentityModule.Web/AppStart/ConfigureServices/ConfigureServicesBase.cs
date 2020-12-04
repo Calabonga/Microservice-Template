@@ -76,7 +76,7 @@ namespace $safeprojectname$.AppStart.ConfigureServices
             services.AddLocalization();
             services.AddHttpContextAccessor();
             services.AddResponseCaching();
-            services.AddAuthorization();
+            
         }
     }
 }

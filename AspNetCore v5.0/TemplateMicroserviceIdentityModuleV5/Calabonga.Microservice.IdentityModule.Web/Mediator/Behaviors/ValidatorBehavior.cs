@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using Calabonga.AspNetCore.Controllers.Base;
 using Calabonga.Microservices.Core.Exceptions;
 using Calabonga.OperationResults;
 using FluentValidation;

@@ -1,7 +1,9 @@
-﻿using $ext_projectname$.Core;
-using $ext_projectname$.Data;
+﻿using $ext_projectname$.Data;
 using $safeprojectname$.Infrastructure.Services;
+
 using IdentityServer4.AccessTokenValidation;
+
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -21,31 +23,28 @@ namespace $safeprojectname$.AppStart.ConfigureServices
         /// <param name="configuration"></param>
         public static void ConfigureServices(IServiceCollection services, IConfiguration configuration)
         {
-             var url = configuration.GetSection("IdentityServer").GetValue<string>("Url");
-            services.AddAuthentication(options =>
-            {
-                options.DefaultScheme = IdentityServerAuthenticationDefaults.AuthenticationScheme;
-                options.DefaultAuthenticateScheme = IdentityServerAuthenticationDefaults.AuthenticationScheme;
-                options.DefaultChallengeScheme = IdentityServerAuthenticationDefaults.AuthenticationScheme;
-                options.DefaultSignInScheme = IdentityServerAuthenticationDefaults.AuthenticationScheme;
-                options.DefaultSignOutScheme = IdentityServerAuthenticationDefaults.AuthenticationScheme;
-            })
-               .AddIdentityServerAuthentication(options =>
-               {
-                   options.SupportedTokens = SupportedTokens.Jwt;
-                   options.Authority = $"{url}{AppData.AuthUrl}";
-                   options.EnableCaching = true;
-                   options.RequireHttpsMetadata = false;
-               });
+            var url = configuration.GetSection("IdentityServer").GetValue<string>("Url");
+            services.AddAuthentication()
+                .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme)
+                .AddIdentityServerAuthentication(
+                    options =>
+                    {
+                        options.SupportedTokens = SupportedTokens.Jwt;
+                        options.Authority = url;
+                        options.EnableCaching = true;
+                        options.RequireHttpsMetadata = false;
+                    });
 
             services.AddIdentityServer(options =>
                 {
                     options.Authentication.CookieSlidingExpiration = true;
-                    options.IssuerUri = $"{url}{AppData.AuthUrl}";
+                    options.IssuerUri = url;
                     options.Events.RaiseErrorEvents = true;
                     options.Events.RaiseInformationEvents = true;
                     options.Events.RaiseFailureEvents = true;
                     options.Events.RaiseSuccessEvents = true;
+                    options.UserInteraction.LoginUrl = "/Authentication/Login";
+                    options.UserInteraction.LogoutUrl = "/Authentication/Logout";
                 })
                 .AddInMemoryPersistedGrants()
                 .AddDeveloperSigningCredential()

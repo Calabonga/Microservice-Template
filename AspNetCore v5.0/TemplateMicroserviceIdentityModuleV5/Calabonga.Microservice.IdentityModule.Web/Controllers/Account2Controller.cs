@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
+using $safeprojectname$.Infrastructure.Auth;
 using $safeprojectname$.Infrastructure.Services;
 using $safeprojectname$.ViewModels.AccountViewModels;
 using Calabonga.Microservices.Core.Exceptions;
@@ -14,7 +15,7 @@ namespace $safeprojectname$.Controllers
     /// Account Controller
     /// </summary>
     [Route("api/[controller]")]
-    [Authorize]
+    [Authorize(AuthenticationSchemes = AuthData.AuthSchemes)]
     public class Account2Controller : OperationResultController
     {
         private readonly IAccountService _accountService;

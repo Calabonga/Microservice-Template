@@ -1,5 +1,4 @@
-﻿using $safeprojectname$.ViewModels.AccountViewModels;
-using FluentValidation;
+﻿using FluentValidation;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace $safeprojectname$.AppStart.ConfigureServices

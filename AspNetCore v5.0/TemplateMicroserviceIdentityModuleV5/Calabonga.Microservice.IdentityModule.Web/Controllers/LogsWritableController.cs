@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
+using $safeprojectname$.Infrastructure.Auth;
 using $safeprojectname$.Mediator.LogsReadonly;
 using $safeprojectname$.Mediator.LogsWritable;
 using $safeprojectname$.ViewModels.LogViewModels;
@@ -14,7 +15,7 @@ namespace $safeprojectname$.Controllers
     /// WritableController Demo
     /// </summary>
     [Route("api/[controller]")]
-    [Authorize]
+    [Authorize(AuthenticationSchemes = AuthData.AuthSchemes)]
     public class LogsWritableController : ControllerBase
     {
         private readonly IMediator _mediator;

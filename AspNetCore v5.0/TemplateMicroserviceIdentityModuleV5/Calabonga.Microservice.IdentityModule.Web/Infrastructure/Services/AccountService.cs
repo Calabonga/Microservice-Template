@@ -1,14 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 
 using AutoMapper;
-
-using $ext_projectname$.Core;
 using $ext_projectname$.Data;
+using $ext_projectname$.Entities.Core;
 using $safeprojectname$.Infrastructure.Auth;
 using $safeprojectname$.Infrastructure.EventLogs;
 using $safeprojectname$.ViewModels.AccountViewModels;

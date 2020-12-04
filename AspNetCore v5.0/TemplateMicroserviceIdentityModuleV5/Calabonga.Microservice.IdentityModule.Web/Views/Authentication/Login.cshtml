@@ -1,0 +1,28 @@
+﻿@model $safeprojectname$.ViewModels.AccountViewModels.LoginViewModel
+
+    <div class="row">
+
+        <div class="col-md-6 offset-md-3">
+
+            <h1>Enter zone</h1>
+
+            <form asp-action="Login" method="post">
+
+                <input hidden asp-for="ReturnUrl" />
+
+                <div class="form-group">
+                    <label asp-for="UserName"></label>
+                    <input class="form-control" type="text" asp-for="UserName" />
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Password"></label>
+                    <input class="form-control" type="password" asp-for="Password" />
+                </div>
+                <p>
+                    <button class="btn btn-primary" type="submit">Log in</button>
+                </p>
+
+            </form>
+        </div>
+    </div>

@@ -22,13 +22,15 @@ namespace $safeprojectname$.Infrastructure.Auth
             IsInitialized = true;
         }
 
-        public IIdentity User
+        public IIdentity? User
         {
             get
             {
                 if (IsInitialized)
                 {
-                    return ContextAccessor.HttpContext.User.Identity.IsAuthenticated
+                    return ContextAccessor.HttpContext!.User.Identity != null 
+                           && ContextAccessor.HttpContext != null 
+                           && ContextAccessor.HttpContext.User.Identity.IsAuthenticated
                         ? ContextAccessor.HttpContext.User.Identity
                         : null;
                 }
@@ -42,7 +44,7 @@ namespace $safeprojectname$.Infrastructure.Auth
             {
                 if (User != null)
                 {
-                    return ContextAccessor.HttpContext.User.Claims;
+                    return ContextAccessor.HttpContext!.User.Claims;
                 }
                 return null;
             }
@@ -52,7 +54,7 @@ namespace $safeprojectname$.Infrastructure.Auth
 
         private bool IsInitialized { get; set; }
 
-        private static IHttpContextAccessor ContextAccessor { get; set; }
+        private static IHttpContextAccessor ContextAccessor { get; set; } = null!;
 
     }
 }
