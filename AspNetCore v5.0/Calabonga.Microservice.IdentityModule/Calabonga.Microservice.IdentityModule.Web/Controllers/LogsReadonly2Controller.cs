@@ -1,10 +1,10 @@
 ﻿using System.Security.Claims;
 
 using AutoMapper;
-
-using Calabonga.Microservice.IdentityModule.Core;
 using Calabonga.Microservice.IdentityModule.Data;
 using Calabonga.Microservice.IdentityModule.Entities;
+using Calabonga.Microservice.IdentityModule.Entities.Core;
+using Calabonga.Microservice.IdentityModule.Web.Infrastructure.Auth;
 using Calabonga.Microservice.IdentityModule.Web.Infrastructure.Settings;
 using Calabonga.Microservice.IdentityModule.Web.ViewModels.LogViewModels;
 using Calabonga.Microservices.Core;
@@ -23,7 +23,7 @@ namespace Calabonga.Microservice.IdentityModule.Web.Controllers
     /// ReadOnlyController Demo
     /// </summary>
     [Route("api/[controller]")]
-    [Authorize]
+    [Authorize(AuthenticationSchemes = AuthData.AuthSchemes)]
     public class LogsReadonly2Controller : ReadOnlyController<Log, LogViewModel, PagedListQueryParams>
     {
         private readonly CurrentAppSettings _appSettings;

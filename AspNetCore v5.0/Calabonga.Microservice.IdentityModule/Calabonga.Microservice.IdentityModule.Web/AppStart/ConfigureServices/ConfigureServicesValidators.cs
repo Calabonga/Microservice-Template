@@ -1,5 +1,4 @@
-﻿using Calabonga.Microservice.IdentityModule.Web.ViewModels.AccountViewModels;
-using FluentValidation;
+﻿using FluentValidation;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Calabonga.Microservice.IdentityModule.Web.AppStart.ConfigureServices

@@ -13,7 +13,7 @@ namespace Calabonga.Microservice.IdentityModule.Web.AppStart.ConfigureServices
         /// <param name="services"></param>
         public static void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers();
+            services.AddControllersWithViews();
         }
     }
 }

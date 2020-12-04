@@ -1,5 +1,4 @@
-﻿using Calabonga.Microservice.IdentityModule.Core;
-using Calabonga.Microservice.IdentityModule.Web.AppStart.ConfigureServices;
+﻿using Calabonga.Microservice.IdentityModule.Web.AppStart.ConfigureServices;
 using Calabonga.Microservice.IdentityModule.Web.Infrastructure.Auth;
 using Calabonga.Microservice.IdentityModule.Web.Middlewares;
 using Microsoft.AspNetCore.Builder;
@@ -46,16 +45,18 @@ namespace Calabonga.Microservice.IdentityModule.Web.AppStart.Configures
 
             app.UseETagger();
 
-            app.Map($"{AppData.AuthUrl}", authServer => { authServer.UseIdentityServer(); });
+            app.UseIdentityServer();
 
             app.UseMiddleware(typeof(ErrorHandlingMiddleware));
 
+            
+            app.UseSwagger();
             app.UseSwaggerUI(ConfigureServicesSwagger.SwaggerSettings);
 
-            app.UseSwagger();
-
             // Singleton setup for User Identity
-            UserIdentity.Instance.Configure(app.ApplicationServices.GetService<IHttpContextAccessor>());
+            UserIdentity.Instance.Configure(app.ApplicationServices.GetService<IHttpContextAccessor>()!);
+
+            
         }
     }
 }

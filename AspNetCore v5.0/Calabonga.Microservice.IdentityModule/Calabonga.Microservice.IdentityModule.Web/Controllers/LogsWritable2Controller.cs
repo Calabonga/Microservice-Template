@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Calabonga.Microservice.IdentityModule.Data;
 using Calabonga.Microservice.IdentityModule.Entities;
+using Calabonga.Microservice.IdentityModule.Web.Infrastructure.Auth;
 using Calabonga.Microservice.IdentityModule.Web.Infrastructure.Settings;
 using Calabonga.Microservice.IdentityModule.Web.ViewModels.LogViewModels;
 using Calabonga.Microservices.Core.QueryParams;
@@ -18,7 +19,7 @@ namespace Calabonga.Microservice.IdentityModule.Web.Controllers
     /// WritableController Demo
     /// </summary>
     [Route("api/[controller]")]
-    [Authorize]
+    [Authorize(AuthenticationSchemes = AuthData.AuthSchemes)]
     public class LogsWritable2Controller : WritableController<LogViewModel, Log, LogCreateViewModel, LogUpdateViewModel, PagedListQueryParams>
     {
         private readonly CurrentAppSettings _appSettings;

@@ -40,6 +40,23 @@ namespace Calabonga.Microservice.IdentityModule.Web.AppStart
                         IdentityServerConstants.StandardScopes.Address,
                         "api1"
                     }
+                },
+                new Client
+                {
+                    ClientId = "blazor_web_assembly",
+                    AllowedGrantTypes = GrantTypes.Code,
+                    RequireClientSecret = false,
+                    RequireConsent = false,
+                    RequirePkce = true,
+                    AllowedScopes = {
+                        IdentityServerConstants.StandardScopes.OpenId,
+                        IdentityServerConstants.StandardScopes.Profile,
+                        IdentityServerConstants.StandardScopes.Email,
+                        IdentityServerConstants.StandardScopes.Address,
+                        "api1"
+                    },
+                    RedirectUris = { "https://localhost:5001/authentication/login-callback" },
+                    PostLogoutRedirectUris = { "https://localhost:5001" },
                 }
             };
         }

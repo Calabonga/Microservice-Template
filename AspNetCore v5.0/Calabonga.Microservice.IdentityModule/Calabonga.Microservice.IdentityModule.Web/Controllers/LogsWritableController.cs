@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
+using Calabonga.Microservice.IdentityModule.Web.Infrastructure.Auth;
 using Calabonga.Microservice.IdentityModule.Web.Mediator.LogsReadonly;
 using Calabonga.Microservice.IdentityModule.Web.Mediator.LogsWritable;
 using Calabonga.Microservice.IdentityModule.Web.ViewModels.LogViewModels;
@@ -14,7 +15,7 @@ namespace Calabonga.Microservice.IdentityModule.Web.Controllers
     /// WritableController Demo
     /// </summary>
     [Route("api/[controller]")]
-    [Authorize]
+    [Authorize(AuthenticationSchemes = AuthData.AuthSchemes)]
     public class LogsWritableController : ControllerBase
     {
         private readonly IMediator _mediator;

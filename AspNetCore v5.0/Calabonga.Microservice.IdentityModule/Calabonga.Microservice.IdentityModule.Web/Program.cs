@@ -1,15 +1,26 @@
 // ---------------------------------------
-// Name: Microservice Template
-// Author: Calabonga (calabonga.net)
+// Name: Microservice Template for ASP.NET Core API
+// Author: Calabonga © Calabonga SOFT
 // Version: 5.0.0
 // Based on: .NET 5.0
 // Created Date: 2019-10-06
-// Updated Date 2020-11-15
+// Updated Date 2020-12-04
+// ---------------------------------------
+// Contacts
+// ---------------------------------------
+// Blog: https://www.calabonga.net
+// GitHub: https://github.com/Calabonga
+// YouTube: https://youtube.com/sergeicalabonga
+// ---------------------------------------
+// Description:
+// ---------------------------------------
+// This template implements Web API and IdentityServer functionality.
+// Also, support two type Authentications: Cookie and Bearer.
 // ---------------------------------------
 
 using System;
-using Calabonga.Microservice.IdentityModule.Core;
 using Calabonga.Microservice.IdentityModule.Data.DatabaseInitialization;
+using Calabonga.Microservice.IdentityModule.Entities.Core;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;

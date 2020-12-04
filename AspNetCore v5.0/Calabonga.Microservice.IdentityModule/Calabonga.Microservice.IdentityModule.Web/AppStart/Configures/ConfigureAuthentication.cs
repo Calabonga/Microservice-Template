@@ -5,7 +5,7 @@ namespace Calabonga.Microservice.IdentityModule.Web.AppStart.Configures
     /// <summary>
     /// Configure pipeline
     /// </summary>
-    public static class ConfigureEndpoints
+    public static class ConfigureAuthentication
     {
         /// <summary>
         /// Configure Routing
@@ -13,10 +13,10 @@ namespace Calabonga.Microservice.IdentityModule.Web.AppStart.Configures
         /// <param name="app"></param>
         public static void Configure(IApplicationBuilder app)
         {
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapDefaultControllerRoute();
-            });
+            app.UseRouting();
+            app.UseCors("CorsPolicy");
+            app.UseAuthentication();
+            app.UseAuthorization();
         }
     }
 }

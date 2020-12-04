@@ -1,14 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 
 using AutoMapper;
-
-using Calabonga.Microservice.IdentityModule.Core;
 using Calabonga.Microservice.IdentityModule.Data;
+using Calabonga.Microservice.IdentityModule.Entities.Core;
 using Calabonga.Microservice.IdentityModule.Web.Infrastructure.Auth;
 using Calabonga.Microservice.IdentityModule.Web.Infrastructure.EventLogs;
 using Calabonga.Microservice.IdentityModule.Web.ViewModels.AccountViewModels;
