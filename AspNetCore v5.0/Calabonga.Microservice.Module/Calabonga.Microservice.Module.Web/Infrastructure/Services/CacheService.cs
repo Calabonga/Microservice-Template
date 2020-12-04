@@ -1,5 +1,5 @@
 ﻿using System;
-using Calabonga.Microservice.Module.Core.Exceptions;
+using Calabonga.Microservices.Core.Exceptions;
 using Microsoft.Extensions.Caching.Memory;
 
 namespace Calabonga.Microservice.Module.Web.Infrastructure.Services
@@ -12,13 +12,17 @@ namespace Calabonga.Microservice.Module.Web.Infrastructure.Services
         private readonly IMemoryCache _cache;
         private readonly TimeSpan _defaultSlidingExpiration = TimeSpan.FromSeconds(60);
 
-        /// <inheritdoc />
+        
         public CacheService(IMemoryCache cache)
         {
             _cache = cache;
         }
 
-        /// <inheritdoc />
+        /// <summary>
+        /// Get the entry from the cache
+        /// </summary>
+        /// <typeparam name="TEntry"></typeparam>
+        /// <returns></returns>
         public TEntry Get<TEntry>(object key)
         {
             if (key == null)
@@ -29,13 +33,23 @@ namespace Calabonga.Microservice.Module.Web.Infrastructure.Services
             return _cache.Get<TEntry>(key);
         }
 
-        /// <inheritdoc />
+        /// <summary>
+        /// Sets entry cache for one minute sliding expiration
+        /// </summary>
+        /// <typeparam name="TEntry"></typeparam>
+        /// <param name="key"></param>
+        /// <param name="cacheEntry"></param>
         public void SetForMinute<TEntry>(object key, TEntry cacheEntry)
         {
             SetWithSlidingExpiration(key, cacheEntry, _defaultSlidingExpiration);
         }
 
-        /// <inheritdoc />
+        /// <summary>
+        /// Sets entry cache for 30 minutes sliding expiration
+        /// </summary>
+        /// <typeparam name="TEntry"></typeparam>
+        /// <param name="key"></param>
+        /// <param name="cacheEntry"></param>
         public void SetForThirtyMinutes<TEntry>(object key, TEntry cacheEntry)
         {
             SetWithSlidingExpiration(key, cacheEntry, TimeSpan.FromMinutes(30));
@@ -70,7 +84,14 @@ namespace Calabonga.Microservice.Module.Web.Infrastructure.Services
             _cache.Set(key, cacheEntry, options);
         }
 
-        /// <inheritdoc />
+        /// <summary>
+        /// Returns already exist entry or first put it to the cache and then return entry
+        /// </summary>
+        /// <typeparam name="TEntry"></typeparam>
+        /// <typeparam name="TKey"></typeparam>
+        /// <param name="key"></param>
+        /// <param name="findIfNotFoundFunc"></param>
+        /// <returns></returns>
         public TEntry GetOrCreate<TKey, TEntry>(TKey key, Func<ICacheEntry, TEntry> findIfNotFoundFunc)
         {
             return _cache.GetOrCreate(key, findIfNotFoundFunc);

@@ -87,7 +87,7 @@ namespace Calabonga.Microservice.IdentityModule.Web.AppStart.ConfigureServices
             settings.SwaggerEndpoint(SwaggerConfig, $"{AppTitle} v.{AppVersion}");
             settings.RoutePrefix = SwaggerUrl;
             settings.HeadContent = $"{ThisAssembly.Git.Branch.ToUpper()} {ThisAssembly.Git.Commit.ToUpper()}";
-            settings.DocumentTitle = "Microservice API";
+            settings.DocumentTitle = $"{AppTitle}";
             settings.DefaultModelExpandDepth(0);
             settings.DefaultModelRendering(ModelRendering.Model);
             settings.DefaultModelsExpandDepth(0);

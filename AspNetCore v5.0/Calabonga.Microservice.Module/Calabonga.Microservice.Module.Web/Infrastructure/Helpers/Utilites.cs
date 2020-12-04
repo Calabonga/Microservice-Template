@@ -4,7 +4,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using Calabonga.Microservice.Module.Core.Exceptions;
+using Calabonga.Microservices.Core.Exceptions;
 
 namespace Calabonga.Microservice.Module.Web.Infrastructure.Helpers
 {

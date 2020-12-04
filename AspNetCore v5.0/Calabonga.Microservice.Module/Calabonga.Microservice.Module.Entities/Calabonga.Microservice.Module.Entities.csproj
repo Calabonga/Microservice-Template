@@ -10,8 +10,4 @@
     <PackageReference Include="Calabonga.EntityFrameworkCore.Entities.Base" Version="2.1.0" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Calabonga.Microservice.Module.Core\Calabonga.Microservice.Module.Core.csproj" />
-  </ItemGroup>
-
 </Project>

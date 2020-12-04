@@ -1,7 +1,7 @@
 ﻿using System;
-using Calabonga.Microservice.Module.Core.Exceptions;
 using Calabonga.Microservice.Module.Data;
 using Calabonga.Microservice.Module.Entities;
+using Calabonga.Microservices.Core.Exceptions;
 using Calabonga.UnitOfWork;
 using Microsoft.Extensions.Logging;
 
@@ -14,12 +14,15 @@ namespace Calabonga.Microservice.Module.Web.Infrastructure.Services
     {
         private readonly IUnitOfWork<ApplicationDbContext> _unitOfWork;
 
-        /// <inheritdoc />
         public LogService(IUnitOfWork<ApplicationDbContext> unitOfWork)
         {
             _unitOfWork = unitOfWork;
         }
-        /// <inheritdoc />
+
+        /// <summary>
+        /// Log information message
+        /// </summary>
+        /// <param name="message"></param>
         public void LogInformation(string message)
         {
             Log(LogLevel.Information, message);

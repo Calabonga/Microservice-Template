@@ -31,7 +31,7 @@ namespace Calabonga.Microservice.Module.Web.AppStart.ConfigureServices
                 .AddIdentityServerAuthentication(options =>
                 {
                     options.SupportedTokens = SupportedTokens.Jwt;
-                    options.Authority = $"{url}{AppData.AuthUrl}";
+                    options.Authority = $"{url}";
                     options.EnableCaching = true;
                     options.RequireHttpsMetadata = false;
                 });
