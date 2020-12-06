@@ -60,6 +60,7 @@
           <ProjectItem ReplaceParameters="true" TargetFileName="IdentityHelper.cs">IdentityHelper.cs</ProjectItem>
           <ProjectItem ReplaceParameters="true" TargetFileName="MicroservicePermissionHandler.cs">MicroservicePermissionHandler.cs</ProjectItem>
           <ProjectItem ReplaceParameters="true" TargetFileName="PermissionRequirement.cs">PermissionRequirement.cs</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="AuthorizationPolicyProvider.cs">AuthorizationPolicyProvider.cs</ProjectItem>
         </Folder>
         <Folder Name="DependencyInjection" TargetFolderName="DependencyInjection">
           <ProjectItem ReplaceParameters="true" TargetFileName="CommonRegistrations.cs">CommonRegistrations.cs</ProjectItem>

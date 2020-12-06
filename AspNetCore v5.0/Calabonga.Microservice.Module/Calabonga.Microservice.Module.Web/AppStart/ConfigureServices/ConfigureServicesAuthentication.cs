@@ -39,7 +39,7 @@ namespace Calabonga.Microservice.Module.Web.AppStart.ConfigureServices
                 });
 
             services.AddAuthorization();
-            
+            services.AddSingleton<IAuthorizationPolicyProvider, AuthorizationPolicyProvider>();
             services.AddSingleton<IAuthorizationHandler, MicroservicePermissionHandler>();
         }
     }

@@ -39,7 +39,7 @@ namespace $safeprojectname$.AppStart.ConfigureServices
                 });
 
             services.AddAuthorization();
-            
+            services.AddSingleton<IAuthorizationPolicyProvider, AuthorizationPolicyProvider>();
             services.AddSingleton<IAuthorizationHandler, MicroservicePermissionHandler>();
         }
     }
