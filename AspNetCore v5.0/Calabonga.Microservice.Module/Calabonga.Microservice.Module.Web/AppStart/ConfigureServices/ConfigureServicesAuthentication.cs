@@ -1,5 +1,4 @@
-﻿using Calabonga.Microservice.Module.Core;
-using Calabonga.Microservice.Module.Web.Infrastructure.Auth;
+﻿using Calabonga.Microservice.Module.Web.Infrastructure.Auth;
 using IdentityServer4.AccessTokenValidation;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;

@@ -22,7 +22,7 @@
     <PackageReference Include="Calabonga.UnitOfWork" Version="1.0.7" />
     <PackageReference Include="Calabonga.UnitOfWork.Controllers" Version="3.0.0" />
     <PackageReference Include="FluentValidation" Version="9.4.0" />
-    <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="9.3.0" />
+    <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="9.4.0" />
     <PackageReference Include="GitInfo" Version="2.1.2">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>

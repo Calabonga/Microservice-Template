@@ -1,4 +1,4 @@
-namespace $ext_projectname$.Core
+namespace $safeprojectname$.Core
 {
     /// <summary>
     /// Mail message interface

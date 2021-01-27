@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Calabonga.Microservice.Module.Core
+namespace Calabonga.Microservice.Module.Entities.Core
 {
     /// <summary>
     /// Static data container

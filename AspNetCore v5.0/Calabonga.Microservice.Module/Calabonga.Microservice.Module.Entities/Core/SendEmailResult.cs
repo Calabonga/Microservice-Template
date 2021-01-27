@@ -1,6 +1,6 @@
 using System;
 
-namespace Calabonga.Microservice.Module.Core
+namespace Calabonga.Microservice.Module.Entities.Core
 {
     /// <summary>
     /// MailKit send result

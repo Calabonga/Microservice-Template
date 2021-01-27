@@ -57,10 +57,10 @@
           <ProjectItem ReplaceParameters="true" TargetFileName="ValidateModelStateAttribute.cs">ValidateModelStateAttribute.cs</ProjectItem>
         </Folder>
         <Folder Name="Auth" TargetFolderName="Auth">
+          <ProjectItem ReplaceParameters="true" TargetFileName="AuthorizationPolicyProvider.cs">AuthorizationPolicyProvider.cs</ProjectItem>
           <ProjectItem ReplaceParameters="true" TargetFileName="IdentityHelper.cs">IdentityHelper.cs</ProjectItem>
           <ProjectItem ReplaceParameters="true" TargetFileName="MicroservicePermissionHandler.cs">MicroservicePermissionHandler.cs</ProjectItem>
           <ProjectItem ReplaceParameters="true" TargetFileName="PermissionRequirement.cs">PermissionRequirement.cs</ProjectItem>
-          <ProjectItem ReplaceParameters="true" TargetFileName="AuthorizationPolicyProvider.cs">AuthorizationPolicyProvider.cs</ProjectItem>
         </Folder>
         <Folder Name="DependencyInjection" TargetFolderName="DependencyInjection">
           <ProjectItem ReplaceParameters="true" TargetFileName="CommonRegistrations.cs">CommonRegistrations.cs</ProjectItem>
@@ -138,9 +138,6 @@
       <Folder Name="Middlewares" TargetFolderName="Middlewares">
         <ProjectItem ReplaceParameters="true" TargetFileName="ErrorHandle.cs">ErrorHandle.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="ETagMiddleware.cs">ETagMiddleware.cs</ProjectItem>
-      </Folder>
-      <Folder Name="Properties" TargetFolderName="Properties">
-        <ProjectItem ReplaceParameters="true" TargetFileName="launchSettings.json">launchSettings.json</ProjectItem>
       </Folder>
       <Folder Name="ViewModels" TargetFolderName="ViewModels">
         <Folder Name="LogViewModels" TargetFolderName="LogViewModels">

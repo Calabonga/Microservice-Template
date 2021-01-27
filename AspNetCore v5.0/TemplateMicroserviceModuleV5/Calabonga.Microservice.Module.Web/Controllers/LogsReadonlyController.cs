@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
-using $ext_projectname$.Core;
+using $ext_projectname$.Entities.Core;
 using $safeprojectname$.Mediator.LogsReadonly;
 using Calabonga.Microservices.Core.QueryParams;
 using MediatR;

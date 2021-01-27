@@ -19,8 +19,8 @@
 
 
 using System;
-using $ext_projectname$.Core;
 using $ext_projectname$.Data.DatabaseInitialization;
+using $ext_projectname$.Entities.Core;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;

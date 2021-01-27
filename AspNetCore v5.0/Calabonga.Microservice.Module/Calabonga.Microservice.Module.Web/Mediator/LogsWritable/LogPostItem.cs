@@ -3,8 +3,8 @@
 using Calabonga.AspNetCore.Controllers;
 using Calabonga.AspNetCore.Controllers.Handlers;
 using Calabonga.AspNetCore.Controllers.Queries;
-using Calabonga.Microservice.IdentityModule.Web.Infrastructure.EventLogs;
 using Calabonga.Microservice.Module.Entities;
+using Calabonga.Microservice.Module.Web.Infrastructure.EventLogs;
 using Calabonga.Microservice.Module.Web.ViewModels.LogViewModels;
 using Calabonga.OperationResults;
 using Calabonga.UnitOfWork;
