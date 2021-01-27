@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
-using Calabonga.Microservice.Module.Core;
+using Calabonga.Microservice.Module.Entities.Core;
 using Calabonga.Microservice.Module.Web.Mediator.LogsReadonly;
 using Calabonga.Microservices.Core.QueryParams;
 using MediatR;

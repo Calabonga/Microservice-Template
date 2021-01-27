@@ -1,6 +1,6 @@
 using System;
 
-namespace $ext_projectname$.Core
+namespace $safeprojectname$.Core
 {
     /// <summary>
     /// MailKit send result

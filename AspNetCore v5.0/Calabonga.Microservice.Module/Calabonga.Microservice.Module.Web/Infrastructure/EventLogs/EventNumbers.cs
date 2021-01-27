@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
 
-namespace Calabonga.Microservice.IdentityModule.Web.Infrastructure.EventLogs
+namespace Calabonga.Microservice.Module.Web.Infrastructure.EventLogs
 {
     /// <summary>
     /// The number identifiers for events in the microservices

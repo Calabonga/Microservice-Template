@@ -3,7 +3,7 @@ using System.Diagnostics;
 using System.Globalization;
 using System.Text.RegularExpressions;
 
-namespace Calabonga.Microservice.Module.Core
+namespace Calabonga.Microservice.Module.Entities.Core
 {
     public static class StringExtensions
     {

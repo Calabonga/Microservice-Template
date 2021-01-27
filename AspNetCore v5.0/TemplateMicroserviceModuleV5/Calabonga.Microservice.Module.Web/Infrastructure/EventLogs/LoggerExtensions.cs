@@ -1,8 +1,7 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using System;
+using Microsoft.Extensions.Logging;
 
-using System;
-
-namespace Calabonga.Microservice.IdentityModule.Web.Infrastructure.EventLogs
+namespace $safeprojectname$.Infrastructure.EventLogs
 {
     /// <summary>
     /// Event logging as ILogger extension.

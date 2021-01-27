@@ -1,5 +1,4 @@
-﻿using $ext_projectname$.Core;
-using $safeprojectname$.Infrastructure.Auth;
+﻿using $safeprojectname$.Infrastructure.Auth;
 using IdentityServer4.AccessTokenValidation;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;

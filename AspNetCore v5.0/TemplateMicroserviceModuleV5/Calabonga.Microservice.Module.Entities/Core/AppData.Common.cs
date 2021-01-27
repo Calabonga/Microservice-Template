@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace $ext_projectname$.Core
+namespace $safeprojectname$.Core
 {
     /// <summary>
     /// Static data container

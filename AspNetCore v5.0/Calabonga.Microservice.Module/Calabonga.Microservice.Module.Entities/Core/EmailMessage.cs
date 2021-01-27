@@ -1,4 +1,4 @@
-﻿namespace Calabonga.Microservice.Module.Core
+﻿namespace Calabonga.Microservice.Module.Entities.Core
 {
     /// <summary>
     /// Mail Message to send

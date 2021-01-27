@@ -19,8 +19,8 @@
 
 
 using System;
-using Calabonga.Microservice.Module.Core;
 using Calabonga.Microservice.Module.Data.DatabaseInitialization;
+using Calabonga.Microservice.Module.Entities.Core;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Calabonga.Microservice.Module.Core;
+using Calabonga.Microservice.Module.Entities.Core;
 
 namespace Calabonga.Microservice.Module.Web.Infrastructure.Helpers
 {
