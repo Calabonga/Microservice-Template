@@ -3,8 +3,6 @@
     <Name>Microservice Template</Name>
     <Description>This template gives you a possibility to start developing a microservices system with integrated UI (Swagger), Mediatr, Automapper. Template developed for .NET 5.0.</Description>
     <ProjectType>CSharp</ProjectType>
-    <ProjectSubType></ProjectSubType>
-    <SortOrder>1000</SortOrder>
     <CreateNewFolder>true</CreateNewFolder>
     <DefaultName>Calabonga.Microservice.Module</DefaultName>
     <ProvideDefaultName>true</ProvideDefaultName>
