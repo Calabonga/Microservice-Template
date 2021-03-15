@@ -32,9 +32,6 @@ namespace Calabonga.Microservice.IdentityModule.Web.Controllers
         [ProducesResponseType(200)]
         public async Task<IActionResult> GetPaged([FromQuery] PagedListQueryParams queryParams) => Ok(await _mediator.Send(new LogGetPagedRequest(queryParams), HttpContext.RequestAborted));
 
-        [HttpGet("[action]")]
-        public async Task<IActionResult> GetViewmodelForCreation() => Ok(await _mediator.Send(new LogCreateViewModelRequest(), HttpContext.RequestAborted));
-
         [HttpGet("[action]/{id:guid}")]
         public async Task<IActionResult> GetViewmodelForEditing(Guid id) => Ok(await _mediator.Send(new LogUpdateViewModelRequest(id), HttpContext.RequestAborted));
 

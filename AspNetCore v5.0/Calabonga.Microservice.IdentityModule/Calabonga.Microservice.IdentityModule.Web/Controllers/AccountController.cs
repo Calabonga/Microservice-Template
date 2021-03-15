@@ -33,7 +33,8 @@ namespace Calabonga.Microservice.IdentityModule.Web.Controllers
         [HttpPost("[action]")]
         [AllowAnonymous]
         [ProducesResponseType(200, Type = typeof(OperationResult<UserProfileViewModel>))]
-        public async Task<ActionResult<OperationResult<UserProfileViewModel>>> Register([FromBody] RegisterViewModel model) => Ok(await _mediator.Send(new RegisterRequest(model), HttpContext.RequestAborted));
+        public async Task<ActionResult<OperationResult<UserProfileViewModel>>> Register([FromBody] RegisterViewModel model) =>
+            Ok(await _mediator.Send(new RegisterRequest(model), HttpContext.RequestAborted));
 
         /// <summary>
         /// Returns profile information for authenticated user
@@ -41,6 +42,7 @@ namespace Calabonga.Microservice.IdentityModule.Web.Controllers
         /// <returns></returns>
         [HttpGet("[action]")]
         [ProducesResponseType(200, Type = typeof(OperationResult<UserProfileViewModel>))]
-        public async Task<ActionResult<OperationResult<UserProfileViewModel>>> Profile() => await _mediator.Send(new ProfileRequest(), HttpContext.RequestAborted);
+        public async Task<ActionResult<OperationResult<UserProfileViewModel>>> Profile() =>
+            await _mediator.Send(new ProfileRequest(), HttpContext.RequestAborted);
     }
 }
