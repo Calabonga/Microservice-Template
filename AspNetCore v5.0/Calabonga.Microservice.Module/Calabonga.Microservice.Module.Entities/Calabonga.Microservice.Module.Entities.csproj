@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Calabonga.EntityFrameworkCore.Entities.Base" Version="3.0.0" />
+    <PackageReference Include="Calabonga.EntityFrameworkCore.Entities.Base" Version="3.0.1" />
   </ItemGroup>
 
 </Project>

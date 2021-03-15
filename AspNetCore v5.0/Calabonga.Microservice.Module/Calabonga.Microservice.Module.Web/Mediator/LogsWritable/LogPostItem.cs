@@ -1,14 +1,13 @@
-﻿using AutoMapper;
-
-using Calabonga.AspNetCore.Controllers;
-using Calabonga.AspNetCore.Controllers.Handlers;
-using Calabonga.AspNetCore.Controllers.Queries;
+﻿using System.Threading;
+using System.Threading.Tasks;
+using AutoMapper;
+using Calabonga.AspNetCore.Controllers.Base;
 using Calabonga.Microservice.Module.Entities;
-using Calabonga.Microservice.Module.Web.Infrastructure.EventLogs;
 using Calabonga.Microservice.Module.Web.ViewModels.LogViewModels;
+using Calabonga.Microservices.Core;
+using Calabonga.Microservices.Core.Exceptions;
 using Calabonga.OperationResults;
 using Calabonga.UnitOfWork;
-
 using Microsoft.Extensions.Logging;
 
 namespace Calabonga.Microservice.Module.Web.Mediator.LogsWritable
@@ -16,38 +15,64 @@ namespace Calabonga.Microservice.Module.Web.Mediator.LogsWritable
     /// <summary>
     /// Request: Log creation
     /// </summary>
-    public class LogPostItemRequest : PostItemQuery<Log, LogViewModel, LogCreateViewModel>
+    public class LogPostItemRequest : OperationResultRequestBase<LogViewModel>
     {
-        public LogPostItemRequest(LogCreateViewModel model) : base(model)
+        public LogPostItemRequest(LogCreateViewModel model)
         {
+            Model = model;
         }
+
+        public LogCreateViewModel Model { get; }
     }
 
     /// <summary>
     /// Request: Log creation
     /// </summary>
-    public class LogPostItemRequestHandler : PostItemHandlerBase<Log, LogViewModel, LogCreateViewModel>
+    public class LogPostItemRequestHandler : OperationResultRequestHandlerBase<LogPostItemRequest, LogViewModel>
     {
+        private readonly IUnitOfWork _unitOfWork;
+        private readonly IMapper _mapper;
         private readonly ILogger<LogPostItemRequestHandler> _logger;
 
+
         public LogPostItemRequestHandler(IUnitOfWork unitOfWork, IMapper mapper, ILogger<LogPostItemRequestHandler> logger)
-            : base(unitOfWork, mapper)
         {
+            _unitOfWork = unitOfWork;
+            _mapper = mapper;
             _logger = logger;
         }
 
-        protected override OperationResult<LogViewModel> OperationResultBeforeReturn(HandlerStep step, OperationResult<LogViewModel> operationResult)
+        public override async Task<OperationResult<LogViewModel>> Handle(LogPostItemRequest request, CancellationToken cancellationToken)
         {
-            if (operationResult.Ok)
+            var operation = OperationResult.CreateResult<LogViewModel>();
+            await using var transaction = await _unitOfWork.BeginTransactionAsync();
+
+            var entity = _mapper.Map<LogCreateViewModel, Log>(request.Model);
+            if (entity == null)
             {
-                _logger.MicroservicePostItem(nameof(Log));
+                await transaction.RollbackAsync(cancellationToken);
+                operation.AddError(new MicroserviceUnauthorizedException(AppContracts.Exceptions.MappingException));
+                return operation;
             }
-            else
+            
+            await _unitOfWork.GetRepository<Log>().InsertAsync(entity, cancellationToken);
+            await _unitOfWork.SaveChangesAsync();
+
+            var lastResult = _unitOfWork.LastSaveChangesResult;
+            if (lastResult.IsOk)
             {
-                _logger.MicroservicePostItem(nameof(Log), operationResult.Exception);
+
+                var mapped = _mapper.Map<Log, LogViewModel>(entity);
+
+                operation.Result = mapped;
+                operation.AddSuccess("Successfully created");
+                return operation;
             }
 
-            return base.OperationResultBeforeReturn(step, operationResult);
+            await transaction.RollbackAsync(cancellationToken);
+            operation.AddError(lastResult.Exception);
+            operation.AppendLog("Something went wrong");
+            return operation;
         }
     }
 }
