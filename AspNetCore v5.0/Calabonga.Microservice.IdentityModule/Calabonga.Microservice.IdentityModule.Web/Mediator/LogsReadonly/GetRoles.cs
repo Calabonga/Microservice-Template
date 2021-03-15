@@ -18,10 +18,7 @@ namespace Calabonga.Microservice.IdentityModule.Web.Mediator.LogsReadonly
     {
         private readonly IHttpContextAccessor _httpContextAccessor;
 
-        public GetRolesRequestHandler(IHttpContextAccessor httpContextAccessor)
-        {
-            _httpContextAccessor = httpContextAccessor;
-        }
+        public GetRolesRequestHandler(IHttpContextAccessor httpContextAccessor) => _httpContextAccessor = httpContextAccessor;
 
         protected override string Handle(GetRolesRequest request)
         {

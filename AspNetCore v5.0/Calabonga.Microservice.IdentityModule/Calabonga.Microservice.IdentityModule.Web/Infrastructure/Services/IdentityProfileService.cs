@@ -17,10 +17,7 @@ namespace Calabonga.Microservice.IdentityModule.Web.Infrastructure.Services
         /// Identity Profile Service
         /// </summary>
         /// <param name="accountService"></param>
-        public IdentityProfileService(IAccountService accountService)
-        {
-            _accountService = accountService;
-        }
+        public IdentityProfileService(IAccountService accountService) => _accountService = accountService;
 
         /// <summary>
         /// This method is called whenever claims about the user are requested (e.g. during token creation or via the user info endpoint)

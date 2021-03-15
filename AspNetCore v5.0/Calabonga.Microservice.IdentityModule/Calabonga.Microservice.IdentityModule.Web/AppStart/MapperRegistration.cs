@@ -12,12 +12,9 @@ namespace Calabonga.Microservice.IdentityModule.Web.AppStart
     /// </summary>
     public static class MapperRegistration
     {
-        private static List<Type> GetProfiles()
-        {
-            return (from t in typeof(Startup).GetTypeInfo().Assembly.GetTypes()
-                    where typeof(IAutoMapper).IsAssignableFrom(t) && !t.GetTypeInfo().IsAbstract
-                    select t).ToList();
-        }
+        private static List<Type> GetProfiles() => (from t in typeof(Startup).GetTypeInfo().Assembly.GetTypes()
+            where typeof(IAutoMapper).IsAssignableFrom(t) && !t.GetTypeInfo().IsAbstract
+            select t).ToList();
 
         /// <summary>
         /// Create and build mapper profiles

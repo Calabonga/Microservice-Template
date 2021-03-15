@@ -1,7 +1,7 @@
-﻿using System;
+﻿using Calabonga.Microservice.IdentityModule.Web.Mediator.Handlers;
+using Calabonga.Microservice.IdentityModule.Web.Mediator.Queries;
+using System;
 using System.Threading.Tasks;
-using Calabonga.AspNetCore.Controllers.Handlers;
-using Calabonga.AspNetCore.Controllers.Queries;
 using Calabonga.Microservice.IdentityModule.Web.ViewModels.LogViewModels;
 using Microsoft.Extensions.Logging;
 
@@ -20,16 +20,13 @@ namespace Calabonga.Microservice.IdentityModule.Web.Mediator.LogsWritable
     /// </summary>
     public class LogCreateViewModelRequestHandler : CreateViewModelHandlerBase<LogCreateViewModelRequest, LogCreateViewModel>
     {
-        protected override ValueTask<LogCreateViewModel> GenerateCreateViewModel()
+        protected override ValueTask<LogCreateViewModel> GenerateCreateViewModel() => new ValueTask<LogCreateViewModel>(new LogCreateViewModel
         {
-            return new ValueTask<LogCreateViewModel>(new LogCreateViewModel
-            {
-                CreatedAt = DateTime.UtcNow,
-                Level = LogLevel.Information.ToString(),
-                Message = "Generated automatically",
-                Logger = "LogCreateViewModelRequestHandler",
-                ThreadId = "0"
-            });
-        }
+            CreatedAt = DateTime.UtcNow,
+            Level = LogLevel.Information.ToString(),
+            Message = "Generated automatically",
+            Logger = "LogCreateViewModelRequestHandler",
+            ThreadId = "0"
+        });
     }
 }

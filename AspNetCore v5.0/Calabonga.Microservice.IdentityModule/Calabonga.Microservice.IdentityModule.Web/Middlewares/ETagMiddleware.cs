@@ -17,10 +17,7 @@ namespace Calabonga.Microservice.IdentityModule.Web.Middlewares
         /// Use Custom middleware
         /// </summary>
         /// <param name="app"></param>
-        public static void UseETagger(this IApplicationBuilder app)
-        {
-            app.UseMiddleware<ETagMiddleware>();
-        }
+        public static void UseETagger(this IApplicationBuilder app) => app.UseMiddleware<ETagMiddleware>();
     }
 
     /// <summary>
@@ -32,10 +29,7 @@ namespace Calabonga.Microservice.IdentityModule.Web.Middlewares
         private readonly RequestDelegate _next;
 
         /// <inheritdoc />
-        public ETagMiddleware(RequestDelegate next)
-        {
-            _next = next;
-        }
+        public ETagMiddleware(RequestDelegate next) => _next = next;
 
         /// <summary>
         /// Invoke middleware entry point
@@ -74,14 +68,20 @@ namespace Calabonga.Microservice.IdentityModule.Web.Middlewares
         private static bool IsEtagSupported(HttpResponse response)
         {
             if (response.StatusCode != StatusCodes.Status200OK)
+            {
                 return false;
+            }
 
             // The 100kb length limit is not based in science. Feel free to change
             if (response.Body.Length > 100 * 1024)
+            {
                 return false;
+            }
 
             if (response.Headers.ContainsKey(HeaderNames.ETag))
+            {
                 return false;
+            }
 
             return true;
         }

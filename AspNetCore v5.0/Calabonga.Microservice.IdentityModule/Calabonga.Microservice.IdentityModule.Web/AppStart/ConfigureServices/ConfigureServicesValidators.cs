@@ -12,9 +12,6 @@ namespace Calabonga.Microservice.IdentityModule.Web.AppStart.ConfigureServices
         /// ConfigureServices Services
         /// </summary>
         /// <param name="services"></param>
-        public static void ConfigureServices(IServiceCollection services)
-        {
-            services.AddValidatorsFromAssembly(typeof(Startup).Assembly);
-        }
+        public static void ConfigureServices(IServiceCollection services) => services.AddValidatorsFromAssembly(typeof(Startup).Assembly);
     }
 }

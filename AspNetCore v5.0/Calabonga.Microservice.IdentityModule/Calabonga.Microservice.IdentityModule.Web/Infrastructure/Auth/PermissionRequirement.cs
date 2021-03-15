@@ -7,10 +7,7 @@ namespace Calabonga.Microservice.IdentityModule.Web.Infrastructure.Auth
     /// </summary>
     public class PermissionRequirement : IAuthorizationRequirement
     {
-        public PermissionRequirement(string permissionName)
-        {
-            PermissionName = permissionName;
-        }
+        public PermissionRequirement(string permissionName) => PermissionName = permissionName;
 
         /// <summary>
         /// Permission name

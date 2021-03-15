@@ -11,12 +11,9 @@ namespace Calabonga.Microservice.IdentityModule.Web.AppStart.Configures
         /// Configure Routing
         /// </summary>
         /// <param name="app"></param>
-        public static void Configure(IApplicationBuilder app)
+        public static void Configure(IApplicationBuilder app) => app.UseEndpoints(endpoints =>
         {
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapDefaultControllerRoute();
-            });
-        }
+            endpoints.MapDefaultControllerRoute();
+        });
     }
 }

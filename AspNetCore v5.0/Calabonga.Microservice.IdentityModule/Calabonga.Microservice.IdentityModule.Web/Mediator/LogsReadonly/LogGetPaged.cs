@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
-using Calabonga.AspNetCore.Controllers.Handlers;
-using Calabonga.AspNetCore.Controllers.Queries;
 using Calabonga.Microservice.IdentityModule.Entities;
+using Calabonga.Microservice.IdentityModule.Web.Mediator.Handlers;
+using Calabonga.Microservice.IdentityModule.Web.Mediator.Queries;
 using Calabonga.Microservice.IdentityModule.Web.ViewModels.LogViewModels;
 using Calabonga.Microservices.Core.QueryParams;
 using Calabonga.UnitOfWork;

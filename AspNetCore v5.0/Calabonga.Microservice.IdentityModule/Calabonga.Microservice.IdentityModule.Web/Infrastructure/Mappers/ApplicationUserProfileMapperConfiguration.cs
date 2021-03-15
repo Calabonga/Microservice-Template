@@ -10,10 +10,7 @@ namespace Calabonga.Microservice.IdentityModule.Web.Infrastructure.Mappers
     public class ApplicationUserProfileMapperConfiguration : MapperConfigurationBase
     {
         /// <inheritdoc />
-        public ApplicationUserProfileMapperConfiguration()
-        {
-            CreateMap<RegisterViewModel, ApplicationUserProfile>()
-                .ForAllOtherMembers(x => x.Ignore());
-        }
+        public ApplicationUserProfileMapperConfiguration() => CreateMap<RegisterViewModel, ApplicationUserProfile>()
+            .ForAllOtherMembers(x => x.Ignore());
     }
 }

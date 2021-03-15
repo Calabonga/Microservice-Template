@@ -1,10 +1,9 @@
 ﻿using AutoMapper;
-
-using Calabonga.AspNetCore.Controllers;
-using Calabonga.AspNetCore.Controllers.Handlers;
-using Calabonga.AspNetCore.Controllers.Queries;
 using Calabonga.Microservice.IdentityModule.Entities;
 using Calabonga.Microservice.IdentityModule.Web.Infrastructure.EventLogs;
+using Calabonga.Microservice.IdentityModule.Web.Mediator.Base;
+using Calabonga.Microservice.IdentityModule.Web.Mediator.Handlers;
+using Calabonga.Microservice.IdentityModule.Web.Mediator.Queries;
 using Calabonga.Microservice.IdentityModule.Web.ViewModels.LogViewModels;
 using Calabonga.OperationResults;
 using Calabonga.UnitOfWork;
@@ -33,9 +32,7 @@ namespace Calabonga.Microservice.IdentityModule.Web.Mediator.LogsWritable
 
         public LogPostItemRequestHandler(IUnitOfWork unitOfWork, IMapper mapper, ILogger<LogPostItemRequestHandler> logger)
             : base(unitOfWork, mapper)
-        {
-            _logger = logger;
-        }
+            => _logger = logger;
 
         protected override OperationResult<LogViewModel> OperationResultBeforeReturn(HandlerStep step, OperationResult<LogViewModel> operationResult)
         {
