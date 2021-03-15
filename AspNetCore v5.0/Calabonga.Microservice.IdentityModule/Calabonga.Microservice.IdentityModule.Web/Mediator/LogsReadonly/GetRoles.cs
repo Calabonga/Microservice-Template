@@ -22,7 +22,7 @@ namespace Calabonga.Microservice.IdentityModule.Web.Mediator.LogsReadonly
 
         protected override string Handle(GetRolesRequest request)
         {
-            var user = _httpContextAccessor.HttpContext.User;
+            var user = _httpContextAccessor.HttpContext!.User;
             var roles = ClaimsHelper.GetValues<string>((ClaimsIdentity)user.Identity, "role");
             return $"Current user ({user.Identity.Name}) have following roles: {string.Join("|", roles)}";
         }
