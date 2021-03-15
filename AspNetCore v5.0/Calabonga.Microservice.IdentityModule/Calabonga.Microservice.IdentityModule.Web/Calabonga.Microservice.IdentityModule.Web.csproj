@@ -7,13 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Infrastructure\QueryParams\**" />
-    <Content Remove="Infrastructure\QueryParams\**" />
-    <EmbeddedResource Remove="Infrastrucdotnet tool install --global dotnet-efture\QueryParams\**" />
-    <None Remove="Infrastructure\QueryParams\**" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="AutoMapper" Version="10.1.1" />
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.1.1" />
     <PackageReference Include="Calabonga.AspNetCore.Controllers" Version="3.0.0" />
