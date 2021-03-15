@@ -15,10 +15,7 @@ namespace Calabonga.Microservice.IdentityModule.Web.Extensions
         /// <typeparam name="T"></typeparam>
         /// <param name="assembly"></param>
         /// <returns></returns>
-        public static List<Type> GetTypesAssignableFrom<T>(this Assembly assembly)
-        {
-            return assembly.GetTypesAssignableFrom(typeof(T));
-        }
+        public static List<Type> GetTypesAssignableFrom<T>(this Assembly assembly) => assembly.GetTypesAssignableFrom(typeof(T));
 
         private static List<Type> GetTypesAssignableFrom(this Assembly assembly, Type compareType)
         {

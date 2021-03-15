@@ -15,10 +15,7 @@ namespace Calabonga.Microservice.IdentityModule.Web
     /// </summary>
     public class Startup
     {
-        public Startup(IConfiguration configuration)
-        {
-            Configuration = configuration;
-        }
+        public Startup(IConfiguration configuration) => Configuration = configuration;
 
         /// <summary>
         /// Configuration

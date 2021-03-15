@@ -16,9 +16,6 @@ namespace Calabonga.Microservice.IdentityModule.Web.Extensions
         /// <param name="source"></param>
         /// <param name="userId"></param>
         /// <returns></returns>
-        public static bool IsOwner(this IIdentity source, Guid userId)
-        {
-            return source.GetSubjectId().ToGuid() == userId;
-        }
+        public static bool IsOwner(this IIdentity source, Guid userId) => source.GetSubjectId().ToGuid() == userId;
     }
 }

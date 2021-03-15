@@ -15,10 +15,7 @@ namespace Calabonga.Microservice.IdentityModule.Web.Mediator.Account
     {
         public RegisterViewModel Model { get; }
 
-        public RegisterRequest(RegisterViewModel model)
-        {
-            Model = model;
-        }
+        public RegisterRequest(RegisterViewModel model) => Model = model;
     }
 
     /// <summary>
@@ -28,14 +25,8 @@ namespace Calabonga.Microservice.IdentityModule.Web.Mediator.Account
     {
         private readonly IAccountService _accountService;
 
-        public RegisterRequestHandler(IAccountService accountService)
-        {
-            _accountService = accountService;
-        }
+        public RegisterRequestHandler(IAccountService accountService) => _accountService = accountService;
 
-        public override Task<OperationResult<UserProfileViewModel>> Handle(RegisterRequest request, CancellationToken cancellationToken)
-        {
-            return _accountService.RegisterAsync(request.Model);
-        }
+        public override Task<OperationResult<UserProfileViewModel>> Handle(RegisterRequest request, CancellationToken cancellationToken) => _accountService.RegisterAsync(request.Model);
     }
 }

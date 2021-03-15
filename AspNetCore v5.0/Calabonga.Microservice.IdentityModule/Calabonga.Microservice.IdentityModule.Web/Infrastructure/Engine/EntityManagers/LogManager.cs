@@ -20,9 +20,6 @@ namespace Calabonga.Microservice.IdentityModule.Web.Infrastructure.Engine.Entity
         {
         }
 
-        protected override IIdentity? GetIdentity()
-        {
-            return null;
-        }
+        protected override IIdentity? GetIdentity() => null;
     }
 }

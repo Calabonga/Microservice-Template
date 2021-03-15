@@ -34,9 +34,7 @@ namespace Calabonga.Microservice.IdentityModule.Web.Controllers
             IUnitOfWork<ApplicationDbContext> unitOfWork,
             IMapper mapper)
             : base(unitOfWork, mapper)
-        {
-            _appSettings = appSettings.Value;
-        }
+            => _appSettings = appSettings.Value;
 
         [HttpGet("[action]")]
         [Authorize(Policy = "Logs:UserRoles:View", Roles = AppData.SystemAdministratorRoleName)]

@@ -1,5 +1,4 @@
 ﻿using System;
-using AutoMapper;
 using Calabonga.Microservice.IdentityModule.Data;
 using Calabonga.Microservice.IdentityModule.Web.Extensions;
 using Calabonga.Microservice.IdentityModule.Web.Infrastructure.Settings;

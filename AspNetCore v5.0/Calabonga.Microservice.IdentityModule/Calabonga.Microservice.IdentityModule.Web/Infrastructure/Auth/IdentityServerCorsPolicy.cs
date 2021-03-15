@@ -9,10 +9,6 @@ namespace Calabonga.Microservice.IdentityModule.Web.Infrastructure.Auth
     public class IdentityServerCorsPolicy : ICorsPolicyService
     {
         /// <inheritdoc />
-        public Task<bool> IsOriginAllowedAsync(string origin)
-        {
-            return Task.FromResult(true);
-        }
-
+        public Task<bool> IsOriginAllowedAsync(string origin) => Task.FromResult(true);
     }
 }
