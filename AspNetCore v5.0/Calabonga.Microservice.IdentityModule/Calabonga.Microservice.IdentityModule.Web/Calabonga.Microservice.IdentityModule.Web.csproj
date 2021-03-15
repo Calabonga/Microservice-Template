@@ -40,4 +40,8 @@
     <ProjectReference Include="..\Calabonga.Microservice.IdentityModule.Data\Calabonga.Microservice.IdentityModule.Data.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Mediator\Handlers\" />
+  </ItemGroup>
+
 </Project>
