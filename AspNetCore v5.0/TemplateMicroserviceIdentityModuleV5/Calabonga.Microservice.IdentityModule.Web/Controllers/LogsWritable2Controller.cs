@@ -31,9 +31,7 @@ namespace $safeprojectname$.Controllers
             IUnitOfWork<ApplicationDbContext> unitOfWork,
             IMapper mapper)
             : base(entityManagerFactory, unitOfWork, mapper)
-        {
-            _appSettings = appSettings.Value;
-        }
+            => _appSettings = appSettings.Value;
 
         /// <inheritdoc />
         protected override PermissionValidationResult ValidateQueryParams(PagedListQueryParams queryParams)

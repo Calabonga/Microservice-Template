@@ -10,10 +10,7 @@ namespace $safeprojectname$.Infrastructure.Attributes
     public class SwaggerGroupAttribute : Attribute
     {
         /// <inheritdoc />
-        public SwaggerGroupAttribute(string groupName)
-        {
-            GroupName = groupName;
-        }
+        public SwaggerGroupAttribute(string groupName) => GroupName = groupName;
 
         /// <summary>
         /// Group name

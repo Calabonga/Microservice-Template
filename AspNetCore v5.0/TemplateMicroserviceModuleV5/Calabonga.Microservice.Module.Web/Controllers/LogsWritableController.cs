@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
+using Calabonga.Microservice.IdentityModule.Web.Mediator.LogsReadonly;
 using $safeprojectname$.Mediator.LogsReadonly;
 using $safeprojectname$.Mediator.LogsWritable;
 using $safeprojectname$.ViewModels.LogViewModels;
@@ -39,19 +40,7 @@ namespace $safeprojectname$.Controllers
         {
             return Ok(await _mediator.Send(new LogGetPagedRequest(queryParams), HttpContext.RequestAborted));
         }
-
-        [HttpGet("[action]")]
-        public async Task<IActionResult> GetViewmodelForCreation()
-        {
-            return Ok(await _mediator.Send(new LogCreateViewModelRequest(), HttpContext.RequestAborted));
-        }
         
-        [HttpGet("[action]/{id:guid}")]
-        public async Task<IActionResult> GetViewmodelForEditing(Guid id)
-        {
-            return Ok(await _mediator.Send(new LogUpdateViewModelRequest(id), HttpContext.RequestAborted));
-        }
-
         [HttpPost("[action]")]
         public async Task<IActionResult> PostItem([FromBody]LogCreateViewModel model)
         {

@@ -13,10 +13,7 @@ namespace $safeprojectname$.Infrastructure.Services
         private readonly TimeSpan _defaultSlidingExpiration = TimeSpan.FromSeconds(60);
 
         /// <inheritdoc />
-        public CacheService(IMemoryCache cache)
-        {
-            _cache = cache;
-        }
+        public CacheService(IMemoryCache cache) => _cache = cache;
 
         /// <inheritdoc />
         public TEntry Get<TEntry>(object key)
@@ -30,16 +27,10 @@ namespace $safeprojectname$.Infrastructure.Services
         }
 
         /// <inheritdoc />
-        public void SetForMinute<TEntry>(object key, TEntry cacheEntry)
-        {
-            SetWithSlidingExpiration(key, cacheEntry, _defaultSlidingExpiration);
-        }
+        public void SetForMinute<TEntry>(object key, TEntry cacheEntry) => SetWithSlidingExpiration(key, cacheEntry, _defaultSlidingExpiration);
 
         /// <inheritdoc />
-        public void SetForThirtyMinutes<TEntry>(object key, TEntry cacheEntry)
-        {
-            SetWithSlidingExpiration(key, cacheEntry, TimeSpan.FromMinutes(30));
-        }
+        public void SetForThirtyMinutes<TEntry>(object key, TEntry cacheEntry) => SetWithSlidingExpiration(key, cacheEntry, TimeSpan.FromMinutes(30));
 
         /// <summary>
         /// Default set mechanism
@@ -71,9 +62,6 @@ namespace $safeprojectname$.Infrastructure.Services
         }
 
         /// <inheritdoc />
-        public TEntry GetOrCreate<TKey, TEntry>(TKey key, Func<ICacheEntry, TEntry> findIfNotFoundFunc)
-        {
-            return _cache.GetOrCreate(key, findIfNotFoundFunc);
-        }
+        public TEntry GetOrCreate<TKey, TEntry>(TKey key, Func<ICacheEntry, TEntry> findIfNotFoundFunc) => _cache.GetOrCreate(key, findIfNotFoundFunc);
     }
 }

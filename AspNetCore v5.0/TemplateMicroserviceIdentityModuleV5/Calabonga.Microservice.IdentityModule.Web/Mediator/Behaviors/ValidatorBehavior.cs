@@ -20,10 +20,7 @@ namespace $safeprojectname$.Mediator.Behaviors
     {
         private readonly IEnumerable<IValidator<TRequest>> _validators;
 
-        public ValidatorBehavior(IEnumerable<IValidator<TRequest>> validators)
-        {
-            _validators = validators;
-        }
+        public ValidatorBehavior(IEnumerable<IValidator<TRequest>> validators) => _validators = validators;
 
         /// <summary>
         /// Pipeline handler. Perform any additional behavior and await the <paramref name="next" /> delegate as necessary
@@ -40,7 +37,10 @@ namespace $safeprojectname$.Mediator.Behaviors
                 .Where(x => x != null)
                 .ToList();
 
-            if (!failures.Any()) return next();
+            if (!failures.Any())
+            {
+                return next();
+            }
 
             var type = typeof(TResponse);
             if (!type.IsSubclassOf(typeof(OperationResult)))

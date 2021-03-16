@@ -1,5 +1,4 @@
 ﻿using System;
-using AutoMapper;
 using $ext_projectname$.Data;
 using $safeprojectname$.Extensions;
 using $safeprojectname$.Infrastructure.Settings;

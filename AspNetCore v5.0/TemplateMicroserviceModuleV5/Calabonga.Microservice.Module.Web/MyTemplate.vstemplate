@@ -128,11 +128,9 @@
           <ProjectItem ReplaceParameters="true" TargetFileName="LogGetPaged.cs">LogGetPaged.cs</ProjectItem>
         </Folder>
         <Folder Name="LogsWritable" TargetFolderName="LogsWritable">
-          <ProjectItem ReplaceParameters="true" TargetFileName="LogCreateViewModel.cs">LogCreateViewModel.cs</ProjectItem>
           <ProjectItem ReplaceParameters="true" TargetFileName="LogDeleteItem.cs">LogDeleteItem.cs</ProjectItem>
           <ProjectItem ReplaceParameters="true" TargetFileName="LogPostItem.cs">LogPostItem.cs</ProjectItem>
           <ProjectItem ReplaceParameters="true" TargetFileName="LogPutItem.cs">LogPutItem.cs</ProjectItem>
-          <ProjectItem ReplaceParameters="true" TargetFileName="LogUpdateViewModel.cs">LogUpdateViewModel.cs</ProjectItem>
         </Folder>
       </Folder>
       <Folder Name="Middlewares" TargetFolderName="Middlewares">

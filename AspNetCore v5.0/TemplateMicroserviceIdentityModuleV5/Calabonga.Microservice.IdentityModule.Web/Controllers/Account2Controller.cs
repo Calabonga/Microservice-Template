@@ -24,10 +24,7 @@ namespace $safeprojectname$.Controllers
         /// Register controller
         /// </summary>
         /// <param name="accountService"></param>
-        public Account2Controller(IAccountService accountService)
-        {
-            _accountService = accountService;
-        }
+        public Account2Controller(IAccountService accountService) => _accountService = accountService;
 
         /// <summary>
         /// Register new user. Success registration returns UserProfile for new user.

@@ -13,10 +13,6 @@ namespace $safeprojectname$.Extensions
         /// </summary>
         /// <param name="source"></param>
         /// <returns></returns>
-        public static ValidationContext GetResult(this List<ValidationResult> source)
-        {
-            return new ValidationContext(source);
-        }
-
+        public static ValidationContext GetResult(this List<ValidationResult> source) => new ValidationContext(source);
     }
 }

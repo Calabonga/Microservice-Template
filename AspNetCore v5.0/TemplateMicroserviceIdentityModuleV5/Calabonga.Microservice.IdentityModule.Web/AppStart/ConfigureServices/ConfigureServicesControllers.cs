@@ -11,9 +11,6 @@ namespace $safeprojectname$.AppStart.ConfigureServices
         /// Configure services
         /// </summary>
         /// <param name="services"></param>
-        public static void ConfigureServices(IServiceCollection services)
-        {
-            services.AddControllersWithViews();
-        }
+        public static void ConfigureServices(IServiceCollection services) => services.AddControllersWithViews();
     }
 }

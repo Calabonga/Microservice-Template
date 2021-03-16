@@ -29,10 +29,7 @@ namespace $safeprojectname$.Controllers
         }
 
         [HttpGet("[action]")]
-        public async Task<IActionResult> Login(string returnUrl)
-        {
-            return View();
-        }
+        public async Task<IActionResult> Login(string returnUrl) => View();
 
         [HttpPost("[action]")]
 

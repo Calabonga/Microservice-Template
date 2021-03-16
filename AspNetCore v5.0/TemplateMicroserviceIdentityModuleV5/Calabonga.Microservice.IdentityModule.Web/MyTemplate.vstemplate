@@ -129,19 +129,14 @@
           <ProjectItem ReplaceParameters="true" TargetFileName="LogGetPaged.cs">LogGetPaged.cs</ProjectItem>
         </Folder>
         <Folder Name="LogsWritable" TargetFolderName="LogsWritable">
-          <ProjectItem ReplaceParameters="true" TargetFileName="LogCreateViewModel.cs">LogCreateViewModel.cs</ProjectItem>
           <ProjectItem ReplaceParameters="true" TargetFileName="LogDeleteItem.cs">LogDeleteItem.cs</ProjectItem>
           <ProjectItem ReplaceParameters="true" TargetFileName="LogPostItem.cs">LogPostItem.cs</ProjectItem>
           <ProjectItem ReplaceParameters="true" TargetFileName="LogPutItem.cs">LogPutItem.cs</ProjectItem>
-          <ProjectItem ReplaceParameters="true" TargetFileName="LogUpdateViewModel.cs">LogUpdateViewModel.cs</ProjectItem>
         </Folder>
       </Folder>
       <Folder Name="Middlewares" TargetFolderName="Middlewares">
         <ProjectItem ReplaceParameters="true" TargetFileName="ErrorHandle.cs">ErrorHandle.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="ETagMiddleware.cs">ETagMiddleware.cs</ProjectItem>
-      </Folder>
-      <Folder Name="Properties" TargetFolderName="Properties">
-        <ProjectItem ReplaceParameters="true" TargetFileName="launchSettings.json">launchSettings.json</ProjectItem>
       </Folder>
       <Folder Name="ViewModels" TargetFolderName="ViewModels">
         <Folder Name="AccountViewModels" TargetFolderName="AccountViewModels">

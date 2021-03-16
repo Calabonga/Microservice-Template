@@ -25,58 +25,55 @@ namespace $safeprojectname$.AppStart.ConfigureServices
         /// </summary>
         /// <param name="services"></param>
         /// <param name="configuration"></param>
-        public static void ConfigureServices(IServiceCollection services, IConfiguration configuration)
+        public static void ConfigureServices(IServiceCollection services, IConfiguration configuration) => services.AddSwaggerGen(options =>
         {
-            services.AddSwaggerGen(options =>
+            options.SwaggerDoc("v1", new OpenApiInfo
             {
-                options.SwaggerDoc("v1", new OpenApiInfo
-                {
-                    Title = AppTitle,
-                    Version = AppVersion,
-                    Description = "Microservice module API with IdentityServer4. This template based on .NET 5.0"
-                });
-                options.ResolveConflictingActions(x => x.First());
+                Title = AppTitle,
+                Version = AppVersion,
+                Description = "Microservice module API with IdentityServer4. This template based on .NET 5.0"
+            });
+            options.ResolveConflictingActions(x => x.First());
 
-                var url = configuration.GetSection("IdentityServer").GetValue<string>("Url");
+            var url = configuration.GetSection("IdentityServer").GetValue<string>("Url");
 
-                options.AddSecurityDefinition("oauth2", new OpenApiSecurityScheme
+            options.AddSecurityDefinition("oauth2", new OpenApiSecurityScheme
+            {
+                Type = SecuritySchemeType.OAuth2,
+                Flows = new OpenApiOAuthFlows
                 {
-                    Type = SecuritySchemeType.OAuth2,
-                    Flows = new OpenApiOAuthFlows
+                    Password = new OpenApiOAuthFlow
                     {
-                        Password = new OpenApiOAuthFlow
+                        TokenUrl = new Uri($"{url}/connect/token", UriKind.Absolute),
+                        Scopes = new Dictionary<string, string>
                         {
-                            TokenUrl = new Uri($"{url}/connect/token", UriKind.Absolute),
-                            Scopes = new Dictionary<string, string>
-                            {
-                                { "api1", "Default scope" }
-                            }
+                            { "api1", "Default scope" }
                         }
                     }
-                });
-
-                options.AddSecurityRequirement(new OpenApiSecurityRequirement
-                {
-                    {
-                        new OpenApiSecurityScheme
-                        {
-                            Reference = new OpenApiReference
-                            {
-                                Type = ReferenceType.SecurityScheme,
-                                Id = "oauth2"
-                            },
-                            Scheme = "oauth2",
-                            Name = "Bearer",
-                            In = ParameterLocation.Header,
-
-                        },
-                        new List<string>()
-                    }
-                });
-
-                options.OperationFilter<ApplySummariesOperationFilter>();
+                }
             });
-        }
+
+            options.AddSecurityRequirement(new OpenApiSecurityRequirement
+            {
+                {
+                    new OpenApiSecurityScheme
+                    {
+                        Reference = new OpenApiReference
+                        {
+                            Type = ReferenceType.SecurityScheme,
+                            Id = "oauth2"
+                        },
+                        Scheme = "oauth2",
+                        Name = "Bearer",
+                        In = ParameterLocation.Header,
+
+                    },
+                    new List<string>()
+                }
+            });
+
+            options.OperationFilter<ApplySummariesOperationFilter>();
+        });
 
         /// <summary>
         /// Set up some properties for swagger UI

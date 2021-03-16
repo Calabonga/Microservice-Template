@@ -42,10 +42,7 @@ namespace $safeprojectname$.Extensions
         /// <param name="dateFrom"></param>
         /// <param name="dateTo"></param>
         /// <returns></returns>
-        public static IEnumerable<DateTime> EachDayTo(this DateTime dateFrom, DateTime dateTo)
-        {
-            return EachDay(dateFrom, dateTo);
-        }
+        public static IEnumerable<DateTime> EachDayTo(this DateTime dateFrom, DateTime dateTo) => EachDay(dateFrom, dateTo);
 
         /// <summary>
         /// Enumerates all months in period
@@ -53,10 +50,7 @@ namespace $safeprojectname$.Extensions
         /// <param name="dateFrom"></param>
         /// <param name="dateTo"></param>
         /// <returns></returns>
-        public static IEnumerable<DateTime> EachMonthTo(this DateTime dateFrom, DateTime dateTo)
-        {
-            return EachMonth(dateFrom, dateTo);
-        }
+        public static IEnumerable<DateTime> EachMonthTo(this DateTime dateFrom, DateTime dateTo) => EachMonth(dateFrom, dateTo);
 
 
         /// <summary>
@@ -65,10 +59,6 @@ namespace $safeprojectname$.Extensions
         /// <param name="start"></param>
         /// <param name="end"></param>
         /// <returns></returns>
-        public static int TotalMonths(this DateTime start, DateTime end)
-        {
-            return (start.Year * 12 + start.Month) - (end.Year * 12 + end.Month);
-        }
-
+        public static int TotalMonths(this DateTime start, DateTime end) => (start.Year * 12 + start.Month) - (end.Year * 12 + end.Month);
     }
 }

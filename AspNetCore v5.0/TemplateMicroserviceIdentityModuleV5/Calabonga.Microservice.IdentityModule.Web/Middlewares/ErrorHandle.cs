@@ -14,10 +14,7 @@ namespace $safeprojectname$.Middlewares
         private readonly RequestDelegate _next;
 
         /// <inheritdoc />
-        public ErrorHandlingMiddleware(RequestDelegate next)
-        {
-            _next = next;
-        }
+        public ErrorHandlingMiddleware(RequestDelegate next) => _next = next;
 
         /// <summary>
         /// Invoke middle ware. Entry point
