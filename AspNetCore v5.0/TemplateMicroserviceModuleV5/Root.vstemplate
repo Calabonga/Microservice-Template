@@ -1,7 +1,7 @@
 <VSTemplate Version="3.0.0" Type="ProjectGroup" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005">
   <TemplateData>
     <Name>Microservice Template</Name>
-    <Description>This template gives you a possibility to start developing a microservices system with integrated UI (Swagger), Mediatr, Automapper. Template developed for .NET 5.0.</Description>
+    <Description>Nimble Microservice Framework. This template gives you a possibility to start developing a microservices system with integrated UI (Swagger), Mediatr, Automapper. Template developed for .NET 5.0.</Description>
     <ProjectType>CSharp</ProjectType>
     <CreateNewFolder>true</CreateNewFolder>
     <DefaultName>Calabonga.Microservice.Module</DefaultName>

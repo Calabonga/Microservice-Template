@@ -1,0 +1,45 @@
+{
+    "$schema": "http://json.schemastore.org/template",
+    "author": "Calabonga SOFT",
+    "classifications": [
+        "Web",
+        "WebAPI"
+    ],
+    "name": "Calabonga.Microservice.Module",
+    "description": "Nimble is a microservice temlate for ASP.NET Core API as backend",
+    "identity": "Calabonga.Microservice.Module",
+    "shortName": "nimblem",
+    "tags": {
+        "language": "C#",
+        "type": "project"
+    },
+    "sourceName": "Calabonga.Microservice.Module",
+    "preferNameDirectory": "true",
+    "symbols": {
+        "Framework": {
+            "type": "parameter",
+            "description": "The target framework for the project.",
+            "datatype": "choice",
+            "choices": [
+                {
+                    "choice": "net5.0"
+                }
+            ],
+            "defaultValue": "net5.0"
+        }
+    },
+    "sources": [
+        {
+            "modifiers": [
+                {
+                    "exclude": [
+                        ".vs/**",
+                        ".idea/**",
+                        "_ReSharper.Caches/**",
+                        ".template_config/**"
+                    ]
+                }
+            ]
+        }
+    ]
+}
