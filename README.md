@@ -92,6 +92,8 @@ Visual Studio project template for microservice module base on ASP.NET Core
 
 # Инструкции и дополнительные материалы
 
+[Установка Nimble Templates](https://www.calabonga.net/blog/post/install-nimble-framework-version-5)
+
 [Calabonga.AspNetCore.Controllers](https://github.com/Calabonga/Calabonga.AspNetCore.Controllers/) nuget-пакет на базе Mediatr
 
 [Calabonga.UnitOfWork.Controllers](https://github.com/Calabonga/Calabonga.UnitOfWork.Controllers) nuget-пакет на base Readonly/Writable controllers
