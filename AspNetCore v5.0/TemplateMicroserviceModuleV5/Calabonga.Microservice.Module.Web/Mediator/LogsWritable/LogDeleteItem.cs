@@ -2,7 +2,8 @@
 using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
-using Calabonga.AspNetCore.Controllers.Base;
+using Calabonga.AspNetCore.Controllers;
+using Calabonga.AspNetCore.Controllers.Records;
 using $ext_projectname$.Entities;
 using $safeprojectname$.ViewModels.LogViewModels;
 using Calabonga.Microservices.Core.Exceptions;
@@ -14,15 +15,7 @@ namespace $safeprojectname$.Mediator.LogsWritable
     /// <summary>
     /// Request: Log delete
     /// </summary>
-    public class LogDeleteItemRequest : OperationResultRequestBase<LogViewModel>
-    {
-        public LogDeleteItemRequest(Guid id)
-        {
-            Id = id;
-        }
-
-        public Guid Id { get; }
-    }
+    public record LogDeleteItemRequest(Guid Id) : OperationResultRequestBase<LogViewModel>;
 
     /// <summary>
     /// Request: Log delete

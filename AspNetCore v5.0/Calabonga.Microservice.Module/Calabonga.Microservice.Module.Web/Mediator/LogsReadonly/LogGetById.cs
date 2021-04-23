@@ -1,28 +1,21 @@
-﻿using System;
-using AutoMapper;
-using Calabonga.AspNetCore.Controllers.Base;
+﻿using AutoMapper;
+using Calabonga.AspNetCore.Controllers;
+using Calabonga.AspNetCore.Controllers.Records;
+using Calabonga.Microservice.Module.Entities;
+using Calabonga.Microservice.Module.Web.ViewModels.LogViewModels;
 using Calabonga.Microservices.Core.Exceptions;
 using Calabonga.OperationResults;
 using Calabonga.UnitOfWork;
+using System;
 using System.Threading;
 using System.Threading.Tasks;
-using Calabonga.Microservice.Module.Entities;
-using Calabonga.Microservice.Module.Web.ViewModels.LogViewModels;
 
-namespace Calabonga.Microservice.IdentityModule.Web.Mediator.LogsReadonly
+namespace Calabonga.Microservice.Module.Web.Mediator.LogsReadonly
 {
     /// <summary>
     /// Request for Log by Identifier
     /// </summary>
-    public class LogGetByIdRequest : OperationResultRequestBase<LogViewModel>
-    {
-        public LogGetByIdRequest(Guid id)
-        {
-            Id = id;
-        }
-
-        public Guid Id { get; }
-    }
+    public record LogGetByIdRequest(Guid Id) : OperationResultRequestBase<LogViewModel>;
 
     /// <summary>
     /// Response for  Request for Log by Identifier

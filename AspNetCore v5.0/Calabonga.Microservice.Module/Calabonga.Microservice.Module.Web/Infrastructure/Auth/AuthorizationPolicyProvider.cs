@@ -21,7 +21,11 @@ namespace Calabonga.Microservice.Module.Web.Infrastructure.Auth
         public override async Task<AuthorizationPolicy> GetPolicyAsync(string policyName)
         {
             var policyExists = await base.GetPolicyAsync(policyName);
-            if (policyExists != null) return policyExists;
+            if (policyExists != null)
+            {
+                return policyExists;
+            }
+
             policyExists = new AuthorizationPolicyBuilder().AddRequirements(new PermissionRequirement(policyName)).Build();
             _options.AddPolicy(policyName, policyExists);
             return policyExists;

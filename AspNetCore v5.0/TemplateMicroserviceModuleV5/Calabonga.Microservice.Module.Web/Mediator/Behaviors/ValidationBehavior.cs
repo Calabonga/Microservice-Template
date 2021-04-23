@@ -39,7 +39,10 @@ namespace $safeprojectname$.Mediator.Behaviors
                 .Where(x => x != null)
                 .ToList();
 
-            if (!failures.Any()) return next();
+            if (!failures.Any())
+            {
+                return next();
+            }
 
             if (request is RequestBase<OperationResult<TResponse>>)
             {

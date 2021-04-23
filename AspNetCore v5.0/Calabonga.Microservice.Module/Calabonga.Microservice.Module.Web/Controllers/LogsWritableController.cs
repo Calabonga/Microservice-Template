@@ -1,8 +1,7 @@
-﻿using System;
-using System.Threading.Tasks;
-using Calabonga.Microservice.IdentityModule.Web.Mediator.LogsReadonly;
-using Calabonga.Microservice.Module.Web.Mediator.LogsReadonly;
+﻿using Calabonga.Microservice.Module.Web.Mediator.LogsReadonly;
 using Calabonga.Microservice.Module.Web.Mediator.LogsWritable;
+using System;
+using System.Threading.Tasks;
 using Calabonga.Microservice.Module.Web.ViewModels.LogViewModels;
 using Calabonga.Microservices.Core.QueryParams;
 using MediatR;

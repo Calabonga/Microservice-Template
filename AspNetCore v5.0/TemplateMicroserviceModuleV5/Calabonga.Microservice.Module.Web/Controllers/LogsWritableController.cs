@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Threading.Tasks;
-using Calabonga.Microservice.IdentityModule.Web.Mediator.LogsReadonly;
 using $safeprojectname$.Mediator.LogsReadonly;
 using $safeprojectname$.Mediator.LogsWritable;
 using $safeprojectname$.ViewModels.LogViewModels;

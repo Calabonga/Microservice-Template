@@ -1,7 +1,7 @@
 ﻿using System;
 using AutoMapper;
 using Calabonga.AspNetCore.Controllers;
-using Calabonga.AspNetCore.Controllers.Record;
+using Calabonga.AspNetCore.Controllers.Records;
 using $ext_projectname$.Entities;
 using $safeprojectname$.ViewModels.LogViewModels;
 using Calabonga.Microservices.Core.Exceptions;

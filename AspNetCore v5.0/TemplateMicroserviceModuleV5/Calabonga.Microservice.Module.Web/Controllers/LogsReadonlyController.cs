@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Threading.Tasks;
-using Calabonga.Microservice.IdentityModule.Web.Mediator.LogsReadonly;
 using $ext_projectname$.Entities.Core;
 using $safeprojectname$.Mediator.LogsReadonly;
 using Calabonga.Microservices.Core.QueryParams;

@@ -1,6 +1,7 @@
 ﻿using System;
 using AutoMapper;
-using Calabonga.AspNetCore.Controllers.Base;
+using Calabonga.AspNetCore.Controllers;
+using Calabonga.AspNetCore.Controllers.Records;
 using Calabonga.Microservices.Core.Exceptions;
 using Calabonga.OperationResults;
 using Calabonga.UnitOfWork;
@@ -9,20 +10,12 @@ using System.Threading.Tasks;
 using $ext_projectname$.Entities;
 using $safeprojectname$.ViewModels.LogViewModels;
 
-namespace Calabonga.Microservice.IdentityModule.Web.Mediator.LogsReadonly
+namespace $safeprojectname$.Mediator.LogsReadonly
 {
     /// <summary>
     /// Request for Log by Identifier
     /// </summary>
-    public class LogGetByIdRequest : OperationResultRequestBase<LogViewModel>
-    {
-        public LogGetByIdRequest(Guid id)
-        {
-            Id = id;
-        }
-
-        public Guid Id { get; }
-    }
+    public record LogGetByIdRequest(Guid Id) : OperationResultRequestBase<LogViewModel>;
 
     /// <summary>
     /// Response for  Request for Log by Identifier

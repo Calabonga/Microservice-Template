@@ -19,7 +19,11 @@ namespace $safeprojectname$.AppStart.SwaggerFilters
             }
 
             var actionName = controllerActionDescriptor.ActionName;
-            if (actionName != "GetPaged") return;
+            if (actionName != "GetPaged")
+            {
+                return;
+            }
+            
             var resourceName = controllerActionDescriptor.ControllerName;
             operation.Summary = $"Returns paged list of the {resourceName} as IPagedList wrapped with OperationResult";
         }

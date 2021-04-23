@@ -1,28 +1,21 @@
-﻿using System.Threading;
-using System.Threading.Tasks;
-using AutoMapper;
-using Calabonga.AspNetCore.Controllers.Base;
+﻿using AutoMapper;
+using Calabonga.AspNetCore.Controllers;
+using Calabonga.AspNetCore.Controllers.Records;
 using Calabonga.Microservice.Module.Entities;
 using Calabonga.Microservice.Module.Web.ViewModels.LogViewModels;
 using Calabonga.Microservices.Core;
 using Calabonga.Microservices.Core.Exceptions;
 using Calabonga.OperationResults;
 using Calabonga.UnitOfWork;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Calabonga.Microservice.Module.Web.Mediator.LogsWritable
 {
     /// <summary>
     /// Request: Log edit
     /// </summary>
-    public class LogPutItemRequest : OperationResultRequestBase<LogViewModel>
-    {
-        public LogPutItemRequest(LogUpdateViewModel model)
-        {
-            Model = model;
-        }
-
-        public LogUpdateViewModel Model { get; }
-    }
+    public record LogPutItemRequest(LogUpdateViewModel Model) : OperationResultRequestBase<LogViewModel>;
 
     /// <summary>
     /// Request: Log creation

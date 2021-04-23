@@ -1,10 +1,10 @@
-// ---------------------------------------
+﻿// ---------------------------------------
 // Name: Microservice Template for ASP.NET Core API
 // Author: Calabonga © Calabonga SOFT
-// Version: 5.0.3
+// Version: 5.0.4
 // Based on: .NET 5.0.x
 // Created Date: 2019-10-06
-// Updated Date 2021-03-16
+// Updated Date 2021-04-23
 // ---------------------------------------
 // Contacts
 // ---------------------------------------
@@ -24,24 +24,52 @@ using Calabonga.Microservice.Module.Entities.Core;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Serilog;
+using Serilog.Events;
+using System.Threading.Tasks;
 
 namespace Calabonga.Microservice.Module.Web
 {
     public class Program
     {
-        public static void Main(string[] args)
+        public static async Task<int> Main(string[] args)
         {
-            var webHost = CreateHostBuilder(args).Build();
-            using (var scope = webHost.Services.CreateScope())
+            Log.Logger = new LoggerConfiguration()
+                .MinimumLevel.Debug()
+                .MinimumLevel.Override("Microsoft", LogEventLevel.Information)
+                .Enrich.FromLogContext()
+                .WriteTo.Console()
+                .CreateLogger();
+
+            try
             {
-                DatabaseInitializer.Seed(scope.ServiceProvider);
+                var webHost = CreateHostBuilder(args).Build();
+                using (var scope = webHost.Services.CreateScope())
+                {
+                    DatabaseInitializer.Seed(scope.ServiceProvider);
+                }
+
+                Console.Title = $"{AppData.ServiceName} v.{ThisAssembly.Git.SemVer.Major}.{ThisAssembly.Git.SemVer.Minor}.{ThisAssembly.Git.SemVer.Patch}";
+                await webHost.RunAsync();
+                return 0;
             }
-            Console.Title = $"{AppData.ServiceName} v.{ThisAssembly.Git.SemVer.Major}.{ThisAssembly.Git.SemVer.Minor}.{ThisAssembly.Git.SemVer.Patch}";
-            webHost.Run();
+            catch (Exception ex)
+            {
+                Log.Fatal(ex, "Host terminated unexpectedly");
+                return 1;
+            }
+            finally
+            {
+                Log.CloseAndFlush();
+            }
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
-                .ConfigureWebHostDefaults(webBuilder => webBuilder.UseStartup<Startup>());
+                .UseSerilog()
+                .ConfigureWebHostDefaults(webBuilder =>
+                {
+                    webBuilder.UseStartup<Startup>();
+                });
     }
 }

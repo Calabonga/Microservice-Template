@@ -1,24 +1,20 @@
-﻿using System.Threading;
-using System.Threading.Tasks;
-using AutoMapper;
-using Calabonga.AspNetCore.Controllers.Base;
+﻿using AutoMapper;
+using Calabonga.AspNetCore.Controllers;
+using Calabonga.AspNetCore.Controllers.Records;
 using Calabonga.Microservice.Module.Entities;
 using Calabonga.Microservice.Module.Web.ViewModels.LogViewModels;
 using Calabonga.Microservices.Core.QueryParams;
 using Calabonga.OperationResults;
 using Calabonga.UnitOfWork;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Calabonga.Microservice.Module.Web.Mediator.LogsReadonly
 {
     /// <summary>
     /// Request for paged list of Logs
     /// </summary>
-    public class LogGetPagedRequest : OperationResultRequestBase<IPagedList<LogViewModel>>
-    {
-        public LogGetPagedRequest(PagedListQueryParams queryParams) => QueryParams = queryParams;
-
-        public PagedListQueryParams QueryParams { get; }
-    }
+    public record LogGetPagedRequest(PagedListQueryParams QueryParams) : OperationResultRequestBase<IPagedList<LogViewModel>>;
 
     /// <summary>
     /// Request for paged list of Logs

@@ -1,18 +1,15 @@
-﻿using System.Security.Claims;
-using Calabonga.AspNetCore.Controllers.Base;
+﻿using Calabonga.AspNetCore.Controllers.Records;
 using Calabonga.Microservices.Core;
 using MediatR;
 using Microsoft.AspNetCore.Http;
+using System.Security.Claims;
 
-namespace Calabonga.Microservice.IdentityModule.Web.Mediator.LogsReadonly
+namespace Calabonga.Microservice.Module.Web.Mediator.LogsReadonly
 {
     /// <summary>
     /// Request: Returns user roles 
     /// </summary>
-    public class GetRolesRequest: RequestBase<string>
-    {
-        
-    }
+    public record GetRolesRequest : RequestBase<string>;
 
     public class GetRolesRequestHandler : RequestHandler<GetRolesRequest, string>
     {

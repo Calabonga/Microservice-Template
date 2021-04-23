@@ -18,7 +18,11 @@ namespace Calabonga.Microservice.Module.Web.Infrastructure.Mappers.Base {
         /// <param name="context">Resolution context</param>
         /// <returns>Destination object</returns>
         public IPagedList<TMapTo> Convert(IPagedList<TMapFrom> source, IPagedList<TMapTo> destination, ResolutionContext context) {
-            if (source == null) return null;
+            if (source == null)
+            {
+                return null;
+            }
+
             var vm = source.Items.Select(m => context.Mapper.Map<TMapFrom, TMapTo>(m)).ToList();
 
 

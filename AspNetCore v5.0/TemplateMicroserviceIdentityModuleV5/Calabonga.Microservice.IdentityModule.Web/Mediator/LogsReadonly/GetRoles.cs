@@ -1,5 +1,5 @@
 ﻿using System.Security.Claims;
-using Calabonga.AspNetCore.Controllers.Record;
+using Calabonga.AspNetCore.Controllers.Records;
 using Calabonga.Microservices.Core;
 using MediatR;
 using Microsoft.AspNetCore.Http;

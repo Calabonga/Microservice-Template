@@ -1,7 +1,8 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
-using Calabonga.AspNetCore.Controllers.Base;
+using Calabonga.AspNetCore.Controllers;
+using Calabonga.AspNetCore.Controllers.Records;
 using $ext_projectname$.Entities;
 using $safeprojectname$.ViewModels.LogViewModels;
 using Calabonga.Microservices.Core;
@@ -14,15 +15,9 @@ namespace $safeprojectname$.Mediator.LogsWritable
     /// <summary>
     /// Request: Log edit
     /// </summary>
-    public class LogPutItemRequest : OperationResultRequestBase<LogViewModel>
-    {
-        public LogPutItemRequest(LogUpdateViewModel model)
-        {
-            Model = model;
-        }
+    public record LogPutItemRequest(LogUpdateViewModel Model) : OperationResultRequestBase<LogViewModel>;
 
-        public LogUpdateViewModel Model { get; }
-    }
+
 
     /// <summary>
     /// Request: Log creation
