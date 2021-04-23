@@ -1,4 +1,5 @@
-﻿using System.Threading;
+﻿using Calabonga.AspNetCore.Controllers;
+using System.Threading;
 using System.Threading.Tasks;
 
 using Calabonga.AspNetCore.Controllers.Base;

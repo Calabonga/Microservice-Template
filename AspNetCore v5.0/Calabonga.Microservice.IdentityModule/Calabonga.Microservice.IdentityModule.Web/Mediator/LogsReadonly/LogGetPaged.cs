@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
-using Calabonga.AspNetCore.Controllers.Base;
+using Calabonga.AspNetCore.Controllers;
+using Calabonga.AspNetCore.Controllers.Records;
 using Calabonga.Microservice.IdentityModule.Entities;
 using Calabonga.Microservice.IdentityModule.Web.ViewModels.LogViewModels;
 using Calabonga.Microservices.Core.QueryParams;
@@ -13,12 +14,7 @@ namespace Calabonga.Microservice.IdentityModule.Web.Mediator.LogsReadonly
     /// <summary>
     /// Request for paged list of Logs
     /// </summary>
-    public class LogGetPagedRequest : OperationResultRequestBase<IPagedList<LogViewModel>>
-    {
-        public LogGetPagedRequest(PagedListQueryParams queryParams) => QueryParams = queryParams;
-
-        public PagedListQueryParams QueryParams { get; }
-    }
+    public record LogGetPagedRequest(PagedListQueryParams QueryParams) : OperationResultRequestBase<IPagedList<LogViewModel>>;
 
     /// <summary>
     /// Request for paged list of Logs
