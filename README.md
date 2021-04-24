@@ -3,7 +3,7 @@
 
 # История версий Nimble Framework
 
-v.5.0.4 от 16.03.2021:
+v.5.0.4 от 23.03.2021:
 1. Стандартный logger заменен на Serilog. Теперь читать логи стало проще.
 2. Исправлено несколько опечаток.
 3. Обновились сборки для ASP.NET Core и EntityFrameworkCore. А также nuget-пакеты OperationResultCore, Calabonga.Microservices.Core и другие.
