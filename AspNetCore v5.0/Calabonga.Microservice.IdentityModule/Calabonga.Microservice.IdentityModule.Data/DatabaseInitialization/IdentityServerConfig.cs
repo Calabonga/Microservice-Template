@@ -1,8 +1,8 @@
-﻿using System.Collections.Generic;
-using IdentityServer4;
+﻿using IdentityServer4;
 using IdentityServer4.Models;
+using System.Collections.Generic;
 
-namespace Calabonga.Microservice.IdentityModule.Web.AppStart
+namespace Calabonga.Microservice.IdentityModule.Data.DatabaseInitialization
 {
     /// <summary>
     /// IdentityServer configuration

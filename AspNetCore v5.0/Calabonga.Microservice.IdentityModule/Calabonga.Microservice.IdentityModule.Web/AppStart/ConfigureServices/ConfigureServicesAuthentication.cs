@@ -1,4 +1,5 @@
 ﻿using Calabonga.Microservice.IdentityModule.Data;
+using Calabonga.Microservice.IdentityModule.Data.DatabaseInitialization;
 using Calabonga.Microservice.IdentityModule.Web.Infrastructure.Services;
 
 using IdentityServer4.AccessTokenValidation;
