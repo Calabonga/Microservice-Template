@@ -63,7 +63,7 @@ namespace Calabonga.Microservice.IdentityModule.Web.Controllers
                 return BadRequest();
             }
 
-            var claimsOperationResult = await _accountService.GetProfileAsync(userId.ToString());
+            var claimsOperationResult = await _accountService.GetProfileByIdAsync(userId.ToString());
             return Ok(claimsOperationResult);
         }
     }

@@ -132,10 +132,23 @@ namespace $safeprojectname$.Infrastructure.Services
         /// </summary>
         /// <param name="identifier"></param>
         /// <returns></returns>
-        public async Task<OperationResult<UserProfileViewModel>> GetProfileAsync(string identifier)
+        public async Task<OperationResult<UserProfileViewModel>> GetProfileByIdAsync(string identifier)
         {
             var operation = OperationResult.CreateResult<UserProfileViewModel>();
-            var claimsPrincipal = await GetUserClaimsAsync(identifier);
+            var claimsPrincipal = await GetUserClaimsByIdAsync(identifier);
+            operation.Result = _mapper.Map<UserProfileViewModel>(claimsPrincipal.Identity);
+            return await Task.FromResult(operation);
+        }
+
+        /// <summary>
+        /// Returns user profile
+        /// </summary>
+        /// <param name="email"></param>
+        /// <returns></returns>
+        public async Task<OperationResult<UserProfileViewModel>> GetProfileByEmailAsync(string email)
+        {
+            var operation = OperationResult.CreateResult<UserProfileViewModel>();
+            var claimsPrincipal = await GetUserClaimsByEmailAsync(email);
             operation.Result = _mapper.Map<UserProfileViewModel>(claimsPrincipal.Identity);
             return await Task.FromResult(operation);
         }
@@ -145,7 +158,7 @@ namespace $safeprojectname$.Infrastructure.Services
         /// </summary>
         /// <param name="identifier"></param>
         /// <returns></returns>
-        public async Task<ClaimsPrincipal> GetUserClaimsAsync(string identifier)
+        public async Task<ClaimsPrincipal> GetUserClaimsByIdAsync(string identifier)
         {
             if (string.IsNullOrEmpty(identifier))
             {
@@ -153,6 +166,28 @@ namespace $safeprojectname$.Infrastructure.Services
             }
             var userManager = _userManager;
             var user = await userManager.FindByIdAsync(identifier);
+            if (user == null)
+            {
+                throw new MicroserviceUserNotFoundException();
+            }
+
+            var defaultClaims = await _claimsFactory.CreateAsync(user);
+            return defaultClaims;
+        }
+
+        /// <summary>
+        /// Returns ClaimPrincipal by user identity
+        /// </summary>
+        /// <param name="email"></param>
+        /// <returns></returns>
+        public async Task<ClaimsPrincipal> GetUserClaimsByEmailAsync(string email)
+        {
+            if (string.IsNullOrEmpty(email))
+            {
+                throw new MicroserviceException();
+            }
+            var userManager = _userManager;
+            var user = await userManager.FindByEmailAsync(email);
             if (user == null)
             {
                 throw new MicroserviceUserNotFoundException();

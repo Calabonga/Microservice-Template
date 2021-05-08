@@ -27,7 +27,7 @@ namespace $safeprojectname$.Infrastructure.Services
         public async Task GetProfileDataAsync(ProfileDataRequestContext context)
         {
             var identifier = context.Subject.GetSubjectId();
-            var profile = await _accountService.GetUserClaimsAsync(identifier);
+            var profile = await _accountService.GetUserClaimsByIdAsync(identifier);
             context.IssuedClaims = profile.Claims.ToList();
         }
 
