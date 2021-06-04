@@ -38,10 +38,10 @@ namespace Calabonga.Microservice.IdentityModule.Web.Mediator.Account
 
         public override async Task<OperationResult<UserProfileViewModel>> Handle(ProfileRequest request, CancellationToken cancellationToken)
         {
-            var user = _httpContextAccessor.HttpContext.User;
+            var user = _httpContextAccessor.HttpContext?.User;
             if (user != null)
             {
-                return await _accountService.GetProfileAsync(user.Identity.GetSubjectId());
+                return await _accountService.GetProfileByIdAsync(user.Identity.GetSubjectId());
             }
 
             var operation = OperationResult.CreateResult<UserProfileViewModel>();

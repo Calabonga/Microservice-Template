@@ -39,7 +39,14 @@ namespace $safeprojectname$.Infrastructure.Services
         /// </summary>
         /// <param name="identifier"></param>
         /// <returns></returns>
-        Task<OperationResult<UserProfileViewModel>> GetProfileAsync(string identifier);
+        Task<OperationResult<UserProfileViewModel>> GetProfileByIdAsync(string identifier);
+
+        /// <summary>
+        /// Returns user profile
+        /// </summary>
+        /// <param name="email"></param>
+        /// <returns></returns>
+        Task<OperationResult<UserProfileViewModel>> GetProfileByEmailAsync(string email);
 
         /// <summary>
         /// Returns User by user identifier
@@ -53,7 +60,14 @@ namespace $safeprojectname$.Infrastructure.Services
         /// </summary>
         /// <param name="identifier"></param>
         /// <returns></returns>
-        Task<ClaimsPrincipal> GetUserClaimsAsync(string identifier);
+        Task<ClaimsPrincipal> GetUserClaimsByIdAsync(string identifier);
+
+        /// <summary>
+        /// Returns ClaimPrincipal by user identity
+        /// </summary>
+        /// <param name="email"></param>
+        /// <returns></returns>
+        Task<ClaimsPrincipal> GetUserClaimsByEmailAsync(string emial);
 
         /// <summary>
         /// Returns current user account information or null when user does not logged in
