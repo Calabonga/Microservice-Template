@@ -142,5 +142,7 @@ Visual Studio project template for microservice module base on ASP.NET Core
 
 ![marketplace](https://github.com/Calabonga/Microservice-Template/blob/master/Whatnot/vs-extension-market-view.png)
 
+[Посмотреть marketplace](https://marketplace.visualstudio.com/items?itemName=Calabonga.microserivce-templates)
+
 Также можно установить прямо из Visual Studio 
 ![extension](https://github.com/Calabonga/Microservice-Template/blob/master/Whatnot/vs-extension.png)
