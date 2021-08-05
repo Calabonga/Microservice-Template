@@ -1,3 +1,5 @@
+# Информация
+Справочная информация по фреймворку есть в [Wiki](https://github.com/Calabonga/Microservice-Template/wiki) и на [сайте разработчика](https://www.calabonga.net/blog/post/microservice-templates).
 # Внимание
 Перед выбором версии платформы, пожалуйста, ознакомьтесь с  [изменениями в шаблонах](https://github.com/Calabonga/Microservice-Template/wiki/%D0%98%D0%B7%D0%BC%D0%B5%D0%BD%D0%B5%D0%BD%D0%B8%D1%8F-%D0%B2-%D1%88%D0%B0%D0%B1%D0%BB%D0%BE%D0%BD%D0%B0%D1%85)
 
