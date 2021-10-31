@@ -17,16 +17,16 @@ namespace $safeprojectname$.DatabaseInitialization
             using var scope = serviceProvider.CreateScope();
             await using var context = scope.ServiceProvider.GetService<ApplicationDbContext>();
 
-            // Should be uncomment when using UseSqlServer() settings or any other provider.
+            // It should be uncomment when using UseSqlServer() settings or any other providers.
             // This is should not be used when UseInMemoryDatabase()
-            // context.Database.Migrate();
+            // await context!.Database.MigrateAsync();
 
             var roles = AppData.Roles.ToArray();
 
             foreach (var role in roles)
             {
                 var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<ApplicationRole>>();
-                if (!context.Roles.Any(r => r.Name == role))
+                if (!context!.Roles.Any(r => r.Name == role))
                 {
                     await roleManager.CreateAsync(new ApplicationRole { Name = role, NormalizedName = role.ToUpper() });
                 }
@@ -52,7 +52,7 @@ namespace $safeprojectname$.DatabaseInitialization
                     CreatedBy = "SEED",
                     Permissions = new List<MicroservicePermission>
                     {
-                        new MicroservicePermission
+                        new()
                         {
                             CreatedAt = DateTime.Now,
                             CreatedBy = "SEED",   
@@ -63,13 +63,13 @@ namespace $safeprojectname$.DatabaseInitialization
                 }
             };
             
-            if (!context.Users.Any(u => u.UserName == developer1.UserName))
+            if (!context!.Users.Any(u => u.UserName == developer1.UserName))
             {
                 var password = new PasswordHasher<ApplicationUser>();
                 var hashed = password.HashPassword(developer1, "123qwe!@#");
                 developer1.PasswordHash = hashed;
                 var userStore = scope.ServiceProvider.GetService<ApplicationUserStore>();
-                var result = await userStore.CreateAsync(developer1);
+                var result = await userStore!.CreateAsync(developer1);
                 if (!result.Succeeded)
                 {
                     throw new InvalidOperationException("Cannot create account");

@@ -25,25 +25,18 @@ namespace $safeprojectname$.Controllers
     {
         private readonly CurrentAppSettings _appSettings;
 
-        /// <inheritdoc />
         public LogsWritable2Controller(
             IOptions<CurrentAppSettings> appSettings,
             IEntityManagerFactory entityManagerFactory,
             IUnitOfWork<ApplicationDbContext> unitOfWork,
             IMapper mapper)
-            : base(entityManagerFactory, unitOfWork, mapper)
-        {
-            _appSettings = appSettings.Value;
-        }
+            : base(entityManagerFactory, unitOfWork, mapper) =>
+            _appSettings = appSettings.Value;        
 
-        /// <inheritdoc />
         [Authorize(Policy = "LogsWritable:GetCreateViewModelAsync:View")] 
-        public override Task<ActionResult<OperationResult<LogCreateViewModel>>> GetViewmodelForCreation()
-        {
+        public override Task<ActionResult<OperationResult<LogCreateViewModel>>> GetViewmodelForCreation() =>
             return base.GetViewmodelForCreation();
-        }
 
-        /// <inheritdoc />
         protected override PermissionValidationResult ValidateQueryParams(PagedListQueryParams queryParams)
         {
             if (queryParams.PageSize <= 0)

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Calabonga.Microservice.IdentityModule.Entities.Core;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Calabonga.Microservice.IdentityModule.Data.DatabaseInitialization
@@ -17,16 +18,16 @@ namespace Calabonga.Microservice.IdentityModule.Data.DatabaseInitialization
             using var scope = serviceProvider.CreateScope();
             await using var context = scope.ServiceProvider.GetService<ApplicationDbContext>();
 
-            // Should be uncomment when using UseSqlServer() settings or any other provider.
+            // It should be uncomment when using UseSqlServer() settings or any other providers.
             // This is should not be used when UseInMemoryDatabase()
-            // context.Database.Migrate();
+            // await context!.Database.MigrateAsync();
 
             var roles = AppData.Roles.ToArray();
 
             foreach (var role in roles)
             {
                 var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<ApplicationRole>>();
-                if (!context.Roles.Any(r => r.Name == role))
+                if (!context!.Roles.Any(r => r.Name == role))
                 {
                     await roleManager.CreateAsync(new ApplicationRole { Name = role, NormalizedName = role.ToUpper() });
                 }
@@ -52,7 +53,7 @@ namespace Calabonga.Microservice.IdentityModule.Data.DatabaseInitialization
                     CreatedBy = "SEED",
                     Permissions = new List<MicroservicePermission>
                     {
-                        new MicroservicePermission
+                        new()
                         {
                             CreatedAt = DateTime.Now,
                             CreatedBy = "SEED",   
@@ -63,13 +64,13 @@ namespace Calabonga.Microservice.IdentityModule.Data.DatabaseInitialization
                 }
             };
             
-            if (!context.Users.Any(u => u.UserName == developer1.UserName))
+            if (!context!.Users.Any(u => u.UserName == developer1.UserName))
             {
                 var password = new PasswordHasher<ApplicationUser>();
                 var hashed = password.HashPassword(developer1, "123qwe!@#");
                 developer1.PasswordHash = hashed;
                 var userStore = scope.ServiceProvider.GetService<ApplicationUserStore>();
-                var result = await userStore.CreateAsync(developer1);
+                var result = await userStore!.CreateAsync(developer1);
                 if (!result.Succeeded)
                 {
                     throw new InvalidOperationException("Cannot create account");
@@ -78,7 +79,7 @@ namespace Calabonga.Microservice.IdentityModule.Data.DatabaseInitialization
                 var userManager = scope.ServiceProvider.GetService<UserManager<ApplicationUser>>();
                 foreach (var role in roles)
                 {
-                    var roleAdded = await userManager.AddToRoleAsync(developer1, role);
+                    var roleAdded = await userManager!.AddToRoleAsync(developer1, role);
                     if (roleAdded.Succeeded)
                     {
                         await context.SaveChangesAsync();

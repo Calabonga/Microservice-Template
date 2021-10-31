@@ -5,6 +5,11 @@
 
 # История версий Nimble Framework
 
+v.5.0.8 от 31.10.2021:
+1. Обновились сборки для ASP.NET Core, EntityFrameworkCore и Swagger (OpenAPI). А также nuget-пакет FluentValidation и другие.
+2. Конструкции некоторых методов переведин на lambda-выражения, чтобы следовать моде.
+3. Обновилось расширение VSIX-расширения для Visual Studio.
+
 v.5.0.7 от 06.09.2021:
 1. Обновились сборки для ASP.NET Core, EntityFrameworkCore и Swagger (OpenAPI). А также nuget-пакеты Calabonga.Microservices.Core, FluentValidation и другие.
 2. Добавлено несколько комментариев в код для обеспечения определенности в действиях

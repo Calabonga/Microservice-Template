@@ -15,11 +15,11 @@ namespace $safeprojectname$.DatabaseInitialization
 
             // Should be uncomment when using UseSqlServer() settings or any other provider.
             // This is should not be used when UseInMemoryDatabase()
-            // context.Database.Migrate();
+            // await context!.Database.MigrateAsync();
 
             // TODO: Add your seed data here
             
-            if (context.ChangeTracker.HasChanges())
+            if (context!.ChangeTracker.HasChanges())
             {
                 await context.SaveChangesAsync();
             }

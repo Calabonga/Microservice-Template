@@ -24,7 +24,6 @@ namespace $safeprojectname$.Controllers
     {
         private readonly CurrentAppSettings _appSettings;
 
-        /// <inheritdoc />
         public LogsWritable2Controller(
             IOptions<CurrentAppSettings> appSettings,
             IEntityManagerFactory entityManagerFactory,
@@ -33,7 +32,6 @@ namespace $safeprojectname$.Controllers
             : base(entityManagerFactory, unitOfWork, mapper)
             => _appSettings = appSettings.Value;
 
-        /// <inheritdoc />
         protected override PermissionValidationResult ValidateQueryParams(PagedListQueryParams queryParams)
         {
             if (queryParams.PageSize <= 0)

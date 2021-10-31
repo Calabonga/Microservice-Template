@@ -3,9 +3,7 @@ using $safeprojectname$.Infrastructure.Auth;
 using $safeprojectname$.Mediator.Account;
 using $safeprojectname$.ViewModels.AccountViewModels;
 using Calabonga.OperationResults;
-
 using MediatR;
-
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 

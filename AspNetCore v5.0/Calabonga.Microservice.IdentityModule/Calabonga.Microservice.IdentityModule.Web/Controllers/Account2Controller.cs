@@ -34,15 +34,10 @@ namespace Calabonga.Microservice.IdentityModule.Web.Controllers
         [HttpPost("[action]")]
         [AllowAnonymous]
         [ProducesResponseType(200, Type = typeof(OperationResult<UserProfileViewModel>))]
-        public async Task<ActionResult<OperationResult<UserProfileViewModel>>> Register([FromBody]RegisterViewModel model)
-        {
-            if (!ModelState.IsValid)
-            {
-                return ValidationProblem(ModelState);
-            }
-
-            return OperationResultResponse(await _accountService.RegisterAsync(model));
-        }
+        public async Task<ActionResult<OperationResult<UserProfileViewModel>>> Register([FromBody]RegisterViewModel model) =>
+            !ModelState.IsValid 
+                ? ValidationProblem(ModelState) 
+                : OperationResultResponse(await _accountService.RegisterAsync(model));
 
         /// <summary>
         /// Returns profile information for authenticated user

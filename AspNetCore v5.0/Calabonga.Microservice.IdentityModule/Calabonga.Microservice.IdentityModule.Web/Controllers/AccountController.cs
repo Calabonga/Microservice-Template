@@ -3,9 +3,7 @@ using Calabonga.Microservice.IdentityModule.Web.Infrastructure.Auth;
 using Calabonga.Microservice.IdentityModule.Web.Mediator.Account;
 using Calabonga.Microservice.IdentityModule.Web.ViewModels.AccountViewModels;
 using Calabonga.OperationResults;
-
 using MediatR;
-
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 

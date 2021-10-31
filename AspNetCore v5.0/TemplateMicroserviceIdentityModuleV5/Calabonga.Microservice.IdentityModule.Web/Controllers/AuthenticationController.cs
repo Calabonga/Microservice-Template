@@ -29,10 +29,9 @@ namespace $safeprojectname$.Controllers
         }
 
         [HttpGet("[action]")]
-        public async Task<IActionResult> Login(string returnUrl) => View();
+        public IActionResult Login(string returnUrl) => View();
 
         [HttpPost("[action]")]
-
         public async Task<IActionResult> Login(LoginViewModel model)
         {
             if (!ModelState.IsValid)

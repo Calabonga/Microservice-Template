@@ -29,11 +29,13 @@ namespace $safeprojectname$.Controllers
 
         [HttpGet("[action]/{id:guid}")]
         [ProducesResponseType(200)]
-        public async Task<IActionResult> GetById(Guid id) => Ok(await _mediator.Send(new LogGetByIdRequest(id), HttpContext.RequestAborted));
-
+        public async Task<IActionResult> GetById(Guid id) => 
+            Ok(await _mediator.Send(new LogGetByIdRequest(id), HttpContext.RequestAborted));
+            
 
         [HttpGet("[action]")]
         [ProducesResponseType(200)]
-        public async Task<IActionResult> GetPaged([FromQuery] PagedListQueryParams queryParams) => Ok(await _mediator.Send(new LogGetPagedRequest(queryParams), HttpContext.RequestAborted));
+        public async Task<IActionResult> GetPaged([FromQuery] PagedListQueryParams queryParams) =>
+            Ok(await _mediator.Send(new LogGetPagedRequest(queryParams), HttpContext.RequestAborted));
     }
 }

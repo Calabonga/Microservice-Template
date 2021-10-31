@@ -1,5 +1,4 @@
 ﻿using System.Security.Claims;
-
 using AutoMapper;
 using Calabonga.Microservice.IdentityModule.Data;
 using Calabonga.Microservice.IdentityModule.Entities;
@@ -12,7 +11,6 @@ using Calabonga.Microservices.Core.QueryParams;
 using Calabonga.Microservices.Core.Validators;
 using Calabonga.UnitOfWork;
 using Calabonga.UnitOfWork.Controllers.Controllers;
-
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
@@ -28,7 +26,6 @@ namespace Calabonga.Microservice.IdentityModule.Web.Controllers
     {
         private readonly CurrentAppSettings _appSettings;
 
-        /// <inheritdoc />
         public LogsReadonly2Controller(
             IOptions<CurrentAppSettings> appSettings,
             IUnitOfWork<ApplicationDbContext> unitOfWork,
@@ -45,7 +42,6 @@ namespace Calabonga.Microservice.IdentityModule.Web.Controllers
             return Ok($"Current user ({User.Identity.Name}) have following roles: {string.Join("|", roles)}");
         }
 
-        /// <inheritdoc />
         protected override PermissionValidationResult ValidateQueryParams(PagedListQueryParams queryParams)
         {
             if (queryParams.PageSize <= 0)

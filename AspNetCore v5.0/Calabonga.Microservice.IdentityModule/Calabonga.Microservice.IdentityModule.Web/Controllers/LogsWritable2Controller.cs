@@ -33,7 +33,6 @@ namespace Calabonga.Microservice.IdentityModule.Web.Controllers
             : base(entityManagerFactory, unitOfWork, mapper)
             => _appSettings = appSettings.Value;
 
-        /// <inheritdoc />
         protected override PermissionValidationResult ValidateQueryParams(PagedListQueryParams queryParams)
         {
             if (queryParams.PageSize <= 0)
