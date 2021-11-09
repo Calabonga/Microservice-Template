@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <AnalysisLevel>5.0</AnalysisLevel>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Calabonga.EntityFrameworkCore.Entities.Base" Version="3.0.1" />
+  </ItemGroup>
+
+</Project>
