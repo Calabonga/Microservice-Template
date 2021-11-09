@@ -180,14 +180,9 @@ namespace Calabonga.Microservice.IdentityModule.Data.Base
                 var createdAt = entry.Property("CreatedAt").CurrentValue;
                 if (createdAt != null)
                 {
-                    if (DateTime.Parse(createdAt.ToString()).Year > 1970)
-                    {
-                        entry.Property("CreatedAt").CurrentValue = ((DateTime)createdAt).ToUniversalTime();
-                    }
-                    else
-                    {
-                        entry.Property("CreatedAt").CurrentValue = creationDate;
-                    }
+                    entry.Property("CreatedAt").CurrentValue = DateTime.Parse(createdAt.ToString() ?? string.Empty).Year > 1970 
+                        ? ((DateTime)createdAt).ToUniversalTime() 
+                        : creationDate;
                 }
                 else
                 {
@@ -196,7 +191,7 @@ namespace Calabonga.Microservice.IdentityModule.Data.Base
 
                 if (updatedAt != null)
                 {
-                    if (DateTime.Parse(updatedAt.ToString()).Year > 1970)
+                    if (DateTime.Parse(updatedAt.ToString() ?? string.Empty).Year > 1970)
                     {
                         entry.Property("UpdatedAt").CurrentValue = ((DateTime)updatedAt).ToUniversalTime();
                     }

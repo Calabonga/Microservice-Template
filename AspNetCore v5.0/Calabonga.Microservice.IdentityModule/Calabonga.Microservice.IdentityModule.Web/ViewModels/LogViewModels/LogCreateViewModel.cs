@@ -15,36 +15,36 @@ namespace Calabonga.Microservice.IdentityModule.Web.ViewModels.LogViewModels
         /// </summary>
         [Required]
         public DateTime CreatedAt { get; set; }
-        
+
         /// <summary>
         /// Service name or provider
         /// </summary>
         [Required]
         [StringLength(255)]
-        public string Logger { get; set; }
+        public string Logger { get; set; } = null!;
 
         /// <summary>
         /// Log level for logging. See <see cref="LogLevel"/>
         /// </summary>
         [Required]
         [StringLength(50)]
-        public string Level { get; set; }
+        public string Level { get; set; } = null!;
 
         /// <summary>
         /// Log Message
         /// </summary>
         [Required]
         [StringLength(4000)]
-        public string Message { get; set; }
+        public string Message { get; set; } = null!;
 
         /// <summary>
         /// Thread identifier
         /// </summary>
-        public string ThreadId { get; set; }
+        public string? ThreadId { get; set; }
 
         /// <summary>
         /// Exception message
         /// </summary>
-        public string ExceptionMessage { get; set; }
+        public string? ExceptionMessage { get; set; }
     }
 }

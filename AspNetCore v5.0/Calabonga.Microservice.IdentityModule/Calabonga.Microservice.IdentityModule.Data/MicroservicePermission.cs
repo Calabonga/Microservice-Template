@@ -16,16 +16,16 @@ namespace Calabonga.Microservice.IdentityModule.Data
         /// <summary>
         /// Application User Profile
         /// </summary>
-        public virtual ApplicationUserProfile ApplicationUserProfile { get; set; }
+        public virtual ApplicationUserProfile? ApplicationUserProfile { get; set; } 
 
         /// <summary>
         /// Authorize attribute policy name
         /// </summary>
-        public string PolicyName { get; set; }
+        public string PolicyName { get; set; } = null!;
 
         /// <summary>
         /// Description for current permission
         /// </summary>
-        public string Description { get; set; }
+        public string? Description { get; set; }
     }
 }
