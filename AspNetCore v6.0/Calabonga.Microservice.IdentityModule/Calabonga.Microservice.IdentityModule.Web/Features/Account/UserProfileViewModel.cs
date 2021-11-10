@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Calabonga.Microservice.IdentityModule.Web.ViewModels.AccountViewModels;
+namespace Calabonga.Microservice.IdentityModule.Web.Features.Account;
 
 /// <summary>
 /// Application User Profile
@@ -16,30 +16,30 @@ public class UserProfileViewModel
     /// <summary>
     /// FirstName
     /// </summary>
-    public string FirstName { get; set; }
+    public string FirstName { get; set; } = null!;
 
     /// <summary>
     /// LastName
     /// </summary>
-    public string LastName { get; set; }
+    public string LastName { get; set; } = null!;
 
     /// <summary>
     /// Email
     /// </summary>
-    public string Email { get; set; }
+    public string Email { get; set; } = null!;
 
     /// <summary>
     /// User Roles
     /// </summary>
-    public List<string> Roles { get; set; }
+    public List<string>? Roles { get; set; }
 
     /// <summary>
     /// User PhoneNumber
     /// </summary>
-    public string PhoneNumber { get; set; }
+    public string? PhoneNumber { get; set; }
 
     /// <summary>
     /// Position Name
     /// </summary>
-    public string PositionName { get; set; }
+    public string? PositionName { get; set; }
 }

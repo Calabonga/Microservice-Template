@@ -2,7 +2,6 @@
 using Calabonga.AspNetCore.Controllers.Base;
 using Calabonga.Microservice.IdentityModule.Web.Infrastructure.Attributes;
 using Calabonga.Microservice.IdentityModule.Web.Infrastructure.Auth;
-using Calabonga.Microservice.IdentityModule.Web.ViewModels.AccountViewModels;
 using Calabonga.OperationResults;
 using IdentityServer4.Extensions;
 using MediatR;
@@ -44,9 +43,7 @@ public class GetProfileController : ControllerBase
 /// <summary>
 /// Request: Profile
 /// </summary>
-public class ProfileRequest : RequestBase<OperationResult<UserProfileViewModel>>
-{
-}
+public class ProfileRequest : RequestBase<OperationResult<UserProfileViewModel>> { }
 
 /// <summary>
 /// Response: Profile

@@ -3,7 +3,6 @@ using Calabonga.AspNetCore.Controllers.Base;
 using Calabonga.Microservice.IdentityModule.Data;
 using Calabonga.Microservice.IdentityModule.Web.Infrastructure.Attributes;
 using Calabonga.Microservice.IdentityModule.Web.Infrastructure.Mappers.Base;
-using Calabonga.Microservice.IdentityModule.Web.ViewModels.AccountViewModels;
 using Calabonga.Microservices.Core;
 using Calabonga.OperationResults;
 using FluentValidation;

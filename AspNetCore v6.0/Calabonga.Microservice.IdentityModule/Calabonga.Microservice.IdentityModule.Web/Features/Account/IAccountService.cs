@@ -1,5 +1,4 @@
 ﻿using Calabonga.Microservice.IdentityModule.Data;
-using Calabonga.Microservice.IdentityModule.Web.ViewModels.AccountViewModels;
 using Calabonga.Microservices.Core.Validators;
 using Calabonga.OperationResults;
 using System;
