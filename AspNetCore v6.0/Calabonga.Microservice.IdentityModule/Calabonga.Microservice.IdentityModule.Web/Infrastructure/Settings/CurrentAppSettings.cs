@@ -1,13 +1,12 @@
-﻿namespace Calabonga.Microservice.IdentityModule.Web.Infrastructure.Settings
+﻿namespace Calabonga.Microservice.IdentityModule.Web.Infrastructure.Settings;
+
+/// <summary>
+/// Represents configuration file with current application settings
+/// </summary>
+public class CurrentAppSettings
 {
     /// <summary>
-    /// Represents configuration file with current application settings
+    /// Default page size
     /// </summary>
-    public class CurrentAppSettings
-    {
-        /// <summary>
-        /// Default page size
-        /// </summary>
-        public int PageSize { get; set; }
-    }
+    public int PageSize { get; set; }
 }

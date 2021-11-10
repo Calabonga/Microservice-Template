@@ -10,47 +10,46 @@ using Calabonga.UnitOfWork;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Calabonga.Microservice.IdentityModule.Web.Mediator.LogsWritable
+namespace Calabonga.Microservice.IdentityModule.Web.Mediator.LogsWritable;
+
+/// <summary>
+/// Request: Log delete
+/// </summary>
+public record LogDeleteItemRequest(Guid Id) : OperationResultRequestBase<LogViewModel>;
+
+/// <summary>
+/// Request: Log delete
+/// </summary>
+public class LogDeleteItemRequestHandler : OperationResultRequestHandlerBase<LogDeleteItemRequest, LogViewModel>
 {
-    /// <summary>
-    /// Request: Log delete
-    /// </summary>
-    public record LogDeleteItemRequest(Guid Id) : OperationResultRequestBase<LogViewModel>;
+    private readonly IUnitOfWork _unitOfWork;
 
-    /// <summary>
-    /// Request: Log delete
-    /// </summary>
-    public class LogDeleteItemRequestHandler : OperationResultRequestHandlerBase<LogDeleteItemRequest, LogViewModel>
+    private readonly IMapper _mapper;
+
+    public LogDeleteItemRequestHandler(IUnitOfWork unitOfWork, IMapper mapper)
     {
-        private readonly IUnitOfWork _unitOfWork;
+        _unitOfWork = unitOfWork;
+        _mapper = mapper;
+    }
 
-        private readonly IMapper _mapper;
-
-        public LogDeleteItemRequestHandler(IUnitOfWork unitOfWork, IMapper mapper)
+    public override async Task<OperationResult<LogViewModel>> Handle(LogDeleteItemRequest request, CancellationToken cancellationToken)
+    {
+        var operation = OperationResult.CreateResult<LogViewModel>();
+        var repository = _unitOfWork.GetRepository<Log>();
+        var entity = await repository.FindAsync(request.Id);
+        if (entity == null)
         {
-            _unitOfWork = unitOfWork;
-            _mapper = mapper;
-        }
-
-        public override async Task<OperationResult<LogViewModel>> Handle(LogDeleteItemRequest request, CancellationToken cancellationToken)
-        {
-            var operation = OperationResult.CreateResult<LogViewModel>();
-            var repository = _unitOfWork.GetRepository<Log>();
-            var entity = await repository.FindAsync(request.Id);
-            if (entity == null)
-            {
-                operation.AddError(new MicroserviceNotFoundException("Entity not found"));
-                return operation;
-            }
-            repository.Delete(entity);
-            await _unitOfWork.SaveChangesAsync();
-            if (_unitOfWork.LastSaveChangesResult.IsOk)
-            {
-                operation.Result = _mapper.Map<LogViewModel>(entity);
-                return operation;
-            }
-            operation.AddError(_unitOfWork.LastSaveChangesResult.Exception);
+            operation.AddError(new MicroserviceNotFoundException("Entity not found"));
             return operation;
         }
+        repository.Delete(entity);
+        await _unitOfWork.SaveChangesAsync();
+        if (_unitOfWork.LastSaveChangesResult.IsOk)
+        {
+            operation.Result = _mapper.Map<LogViewModel>(entity);
+            return operation;
+        }
+        operation.AddError(_unitOfWork.LastSaveChangesResult.Exception);
+        return operation;
     }
 }

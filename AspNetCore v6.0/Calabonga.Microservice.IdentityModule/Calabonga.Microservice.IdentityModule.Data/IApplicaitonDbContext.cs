@@ -3,31 +3,30 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 
-namespace Calabonga.Microservice.IdentityModule.Data
+namespace Calabonga.Microservice.IdentityModule.Data;
+
+/// <summary>
+/// Abstraction for Database (EntityFramework)
+/// </summary>
+public interface IApplicationDbContext
 {
-    /// <summary>
-    /// Abstraction for Database (EntityFramework)
-    /// </summary>
-    public interface IApplicationDbContext
-    {
-        #region System
+    #region System
         
-        DbSet<Log> Logs { get; set; }
+    DbSet<Log> Logs { get; set; }
 
-        DbSet<ApplicationUser> Users { get; set; }
+    DbSet<ApplicationUser> Users { get; set; }
 
-        DbSet<ApplicationUserProfile> Profiles { get; set; }
+    DbSet<ApplicationUserProfile> Profiles { get; set; }
 
-        DbSet<MicroservicePermission> Permissions { get; set; }
+    DbSet<MicroservicePermission> Permissions { get; set; }
 
-        DatabaseFacade Database { get; }
+    DatabaseFacade Database { get; }
 
-        ChangeTracker ChangeTracker { get; }
+    ChangeTracker ChangeTracker { get; }
 
-        DbSet<TEntity> Set<TEntity>() where TEntity : class;
+    DbSet<TEntity> Set<TEntity>() where TEntity : class;
 
-        int SaveChanges();
+    int SaveChanges();
 
-        #endregion
-    }
+    #endregion
 }

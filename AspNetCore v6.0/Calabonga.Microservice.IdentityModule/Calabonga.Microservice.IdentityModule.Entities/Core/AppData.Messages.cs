@@ -1,16 +1,15 @@
-﻿namespace Calabonga.Microservice.IdentityModule.Entities.Core
+﻿namespace Calabonga.Microservice.IdentityModule.Entities.Core;
+
+public static partial class AppData
 {
-    public static partial class AppData
+    /// <summary>
+    /// Common messages
+    /// </summary>
+    public static class Messages
     {
         /// <summary>
-        /// Common messages
+        /// "User successfully registered"
         /// </summary>
-        public static class Messages
-        {
-            /// <summary>
-            /// "User successfully registered"
-            /// </summary>
-            public static string UserSuccessfullyRegistered => "User successfully registered";
-        }
+        public static string UserSuccessfullyRegistered => "User successfully registered";
     }
 }

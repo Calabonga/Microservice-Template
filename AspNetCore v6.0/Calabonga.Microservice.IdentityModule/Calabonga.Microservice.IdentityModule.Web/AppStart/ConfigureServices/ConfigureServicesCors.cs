@@ -3,48 +3,47 @@ using Calabonga.Microservice.IdentityModule.Web.Infrastructure.Auth;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Calabonga.Microservice.IdentityModule.Web.AppStart.ConfigureServices
+namespace Calabonga.Microservice.IdentityModule.Web.AppStart.ConfigureServices;
+
+/// <summary>
+/// Cors configurations
+/// </summary>
+public class ConfigureServicesCors
 {
     /// <summary>
-    /// Cors configurations
+    /// ConfigureServices
     /// </summary>
-    public class ConfigureServicesCors
+    /// <param name="services"></param>
+    /// <param name="configuration"></param>
+    public static void ConfigureServices(IServiceCollection services, IConfiguration configuration)
     {
-        /// <summary>
-        /// ConfigureServices
-        /// </summary>
-        /// <param name="services"></param>
-        /// <param name="configuration"></param>
-        public static void ConfigureServices(IServiceCollection services, IConfiguration configuration)
+        var origins = configuration.GetSection("Cors")?.GetSection("Origins")?.Value?.Split(',');
+        services.AddCors(options =>
         {
-            var origins = configuration.GetSection("Cors")?.GetSection("Origins")?.Value?.Split(',');
-            services.AddCors(options =>
+            options.AddPolicy("CorsPolicy", builder =>
             {
-                options.AddPolicy("CorsPolicy", builder =>
+                builder.AllowAnyHeader();
+                builder.AllowAnyMethod();
+                if (origins != null && origins.Length > 0)
                 {
-                    builder.AllowAnyHeader();
-                    builder.AllowAnyMethod();
-                    if (origins != null && origins.Length > 0)
+                    if (origins.Contains("*"))
                     {
-                        if (origins.Contains("*"))
+                        builder.AllowAnyHeader();
+                        builder.AllowAnyMethod();
+                        builder.SetIsOriginAllowed(host => true);
+                        builder.AllowCredentials();
+                    }
+                    else
+                    {
+                        foreach (var origin in origins)
                         {
-                            builder.AllowAnyHeader();
-                            builder.AllowAnyMethod();
-                            builder.SetIsOriginAllowed(host => true);
-                            builder.AllowCredentials();
-                        }
-                        else
-                        {
-                            foreach (var origin in origins)
-                            {
-                                builder.WithOrigins(origin);
-                            }
+                            builder.WithOrigins(origin);
                         }
                     }
-                });
+                }
             });
+        });
 
-            services.UseMicroserviceAuthorizationPolicy();
-        }
+        services.UseMicroserviceAuthorizationPolicy();
     }
 }

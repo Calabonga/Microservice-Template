@@ -2,20 +2,20 @@
 using IdentityServer4;
 using IdentityServer4.Models;
 
-namespace Calabonga.Microservice.IdentityModule.Web.AppStart
+namespace Calabonga.Microservice.IdentityModule.Web.AppStart;
+
+/// <summary>
+/// IdentityServer configuration
+/// </summary>
+public class IdentityServerConfig
 {
     /// <summary>
-    /// IdentityServer configuration
+    /// clients want to access resources (aka scopes)
     /// </summary>
-    public class IdentityServerConfig
-    {
-        /// <summary>
-        /// clients want to access resources (aka scopes)
-        /// </summary>
-        /// <returns></returns>
-        public static IEnumerable<Client> GetClients() =>
-            // client credentials client
-            new List<Client>
+    /// <returns></returns>
+    public static IEnumerable<Client> GetClients() =>
+        // client credentials client
+        new List<Client>
         {
             // resource owner password grant client
             // you can create your own client
@@ -59,29 +59,28 @@ namespace Calabonga.Microservice.IdentityModule.Web.AppStart
             }
         };
 
-        /// <summary>
-        /// scopes define the resources in your system
-        /// </summary>
-        /// <returns></returns>
-        public static IEnumerable<IdentityResource> GetIdentityResources() => new List<IdentityResource>
-        {
-            new IdentityResources.OpenId(),
-            new IdentityResources.Email(),
-            new IdentityResources.Profile()
-        };
+    /// <summary>
+    /// scopes define the resources in your system
+    /// </summary>
+    /// <returns></returns>
+    public static IEnumerable<IdentityResource> GetIdentityResources() => new List<IdentityResource>
+    {
+        new IdentityResources.OpenId(),
+        new IdentityResources.Email(),
+        new IdentityResources.Profile()
+    };
 
-        /// <summary>
-        /// IdentityServer4 API resources
-        /// </summary>
-        /// <returns></returns>
-        public static IEnumerable<ApiResource> GetApiResources() => new List<ApiResource>
-        {
-            new ApiResource("api1", "API Default")
-        };
+    /// <summary>
+    /// IdentityServer4 API resources
+    /// </summary>
+    /// <returns></returns>
+    public static IEnumerable<ApiResource> GetApiResources() => new List<ApiResource>
+    {
+        new ApiResource("api1", "API Default")
+    };
 
-        public static IEnumerable<ApiScope> GetAPiScopes()
-        {
-            yield return new ApiScope("api1");
-        }
+    public static IEnumerable<ApiScope> GetAPiScopes()
+    {
+        yield return new ApiScope("api1");
     }
 }

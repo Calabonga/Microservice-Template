@@ -3,21 +3,20 @@ using Calabonga.Microservice.IdentityModule.Web.Mediator.Behaviors;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Calabonga.Microservice.IdentityModule.Web.AppStart.ConfigureServices
+namespace Calabonga.Microservice.IdentityModule.Web.AppStart.ConfigureServices;
+
+/// <summary>
+/// ASP.NET Core services registration and configurations
+/// </summary>
+public static class ConfigureServicesMediator
 {
     /// <summary>
-    /// ASP.NET Core services registration and configurations
+    /// ConfigureServices Services
     /// </summary>
-    public static class ConfigureServicesMediator
+    /// <param name="services"></param>
+    public static void ConfigureServices(IServiceCollection services)
     {
-        /// <summary>
-        /// ConfigureServices Services
-        /// </summary>
-        /// <param name="services"></param>
-        public static void ConfigureServices(IServiceCollection services)
-        {
-            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidatorBehavior<,>));
-            services.AddCommandAndQueries(typeof(Startup).Assembly);
-        }
+        services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidatorBehavior<,>));
+        services.AddCommandAndQueries(typeof(Startup).Assembly);
     }
 }

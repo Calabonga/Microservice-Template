@@ -7,56 +7,55 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Calabonga.Microservice.IdentityModule.Web.AppStart.Configures
+namespace Calabonga.Microservice.IdentityModule.Web.AppStart.Configures;
+
+/// <summary>
+/// Pipeline configuration
+/// </summary>
+public static class ConfigureCommon
 {
     /// <summary>
-    /// Pipeline configuration
+    /// Configure pipeline
     /// </summary>
-    public static class ConfigureCommon
+    /// <param name="app"></param>
+    /// <param name="env"></param>
+    /// <param name="mapper"></param>
+    public static void Configure(IApplicationBuilder app, IWebHostEnvironment env, AutoMapper.IConfigurationProvider mapper)
     {
-        /// <summary>
-        /// Configure pipeline
-        /// </summary>
-        /// <param name="app"></param>
-        /// <param name="env"></param>
-        /// <param name="mapper"></param>
-        public static void Configure(IApplicationBuilder app, IWebHostEnvironment env, AutoMapper.IConfigurationProvider mapper)
+        if (env.IsDevelopment())
         {
-            if (env.IsDevelopment())
-            {
-                mapper.AssertConfigurationIsValid();
-                app.UseDeveloperExceptionPage();
-            }
-            else
-            {
-                mapper.CompileMappings();
-            }
-
-            app.UseDefaultFiles();
-            app.UseStaticFiles(new StaticFileOptions
-            {
-                OnPrepareResponse = ctx =>
-                {
-                    ctx.Context.Response.Headers.Append("Cache-Control", "public,max-age=600");
-                }
-            });
-
-            app.UseResponseCaching();
-
-            app.UseETagger();
-
-            app.UseIdentityServer();
-
-            app.UseMiddleware(typeof(ErrorHandlingMiddleware));
-
-            
-            app.UseSwagger();
-            app.UseSwaggerUI(ConfigureServicesSwagger.SwaggerSettings);
-
-            // Singleton setup for User Identity
-            UserIdentity.Instance.Configure(app.ApplicationServices.GetService<IHttpContextAccessor>()!);
-
-            
+            mapper.AssertConfigurationIsValid();
+            app.UseDeveloperExceptionPage();
         }
+        else
+        {
+            mapper.CompileMappings();
+        }
+
+        app.UseDefaultFiles();
+        app.UseStaticFiles(new StaticFileOptions
+        {
+            OnPrepareResponse = ctx =>
+            {
+                ctx.Context.Response.Headers.Append("Cache-Control", "public,max-age=600");
+            }
+        });
+
+        app.UseResponseCaching();
+
+        app.UseETagger();
+
+        app.UseIdentityServer();
+
+        app.UseMiddleware(typeof(ErrorHandlingMiddleware));
+
+            
+        app.UseSwagger();
+        app.UseSwaggerUI(ConfigureServicesSwagger.SwaggerSettings);
+
+        // Singleton setup for User Identity
+        UserIdentity.Instance.Configure(app.ApplicationServices.GetService<IHttpContextAccessor>()!);
+
+            
     }
 }

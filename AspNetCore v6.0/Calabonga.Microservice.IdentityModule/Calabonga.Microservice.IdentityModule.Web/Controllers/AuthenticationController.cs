@@ -7,63 +7,62 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Calabonga.Microservice.IdentityModule.Web.Controllers
+namespace Calabonga.Microservice.IdentityModule.Web.Controllers;
+
+[AllowAnonymous]
+[ApiExplorerSettings(IgnoreApi = true)]
+[Route("[controller]")]
+public class AuthenticationController : Controller
 {
-    [AllowAnonymous]
-    [ApiExplorerSettings(IgnoreApi = true)]
-    [Route("[controller]")]
-    public class AuthenticationController : Controller
+    private readonly IIdentityServerInteractionService _interaction;
+    private readonly SignInManager<ApplicationUser> _signInManager;
+    private readonly UserManager<ApplicationUser> _userManager;
+
+    public AuthenticationController(
+        IIdentityServerInteractionService interaction,
+        SignInManager<ApplicationUser> signInManager,
+        UserManager<ApplicationUser> userManager)
     {
-        private readonly IIdentityServerInteractionService _interaction;
-        private readonly SignInManager<ApplicationUser> _signInManager;
-        private readonly UserManager<ApplicationUser> _userManager;
+        _interaction = interaction;
+        _signInManager = signInManager;
+        _userManager = userManager;
+    }
 
-        public AuthenticationController(
-            IIdentityServerInteractionService interaction,
-            SignInManager<ApplicationUser> signInManager,
-            UserManager<ApplicationUser> userManager)
+    [HttpGet("[action]")]
+    public IActionResult Login(string returnUrl) => View();
+
+    [HttpPost("[action]")]
+    public async Task<IActionResult> Login(LoginViewModel model)
+    {
+        if (!ModelState.IsValid)
         {
-            _interaction = interaction;
-            _signInManager = signInManager;
-            _userManager = userManager;
+            ModelState.AddModelError("", "Please. Validate your credentials and try again.");
+            return View(model);
         }
 
-        [HttpGet("[action]")]
-        public IActionResult Login(string returnUrl) => View();
-
-        [HttpPost("[action]")]
-        public async Task<IActionResult> Login(LoginViewModel model)
+        var user = await _userManager.FindByNameAsync(model.UserName);
+        if (user == null)
         {
-            if (!ModelState.IsValid)
-            {
-                ModelState.AddModelError("", "Please. Validate your credentials and try again.");
-                return View(model);
-            }
-
-            var user = await _userManager.FindByNameAsync(model.UserName);
-            if (user == null)
-            {
-                ModelState.AddModelError("UserName", "User not found");
-                return View(model);
-            }
-
-            var signResult = await _signInManager.PasswordSignInAsync(user, model.Password, false, false);
-            if (!signResult.Succeeded)
-            {
-                ModelState.AddModelError("", "Something went wrong");
-                return View(model);
-            }
-
-            return Redirect(model.ReturnUrl);
+            ModelState.AddModelError("UserName", "User not found");
+            return View(model);
         }
 
-        [HttpGet("[action]")]
-        [Authorize(AuthenticationSchemes = CookieAuthenticationDefaults.AuthenticationScheme)]
-        public async Task<IActionResult> Logout(string logoutId)
+        var signResult = await _signInManager.PasswordSignInAsync(user, model.Password, false, false);
+        if (!signResult.Succeeded)
         {
-            var logout = await _interaction.GetLogoutContextAsync(logoutId);
-            await _signInManager.SignOutAsync();
-            return Redirect(logout.PostLogoutRedirectUri);
+            ModelState.AddModelError("", "Something went wrong");
+            return View(model);
         }
+
+        return Redirect(model.ReturnUrl);
+    }
+
+    [HttpGet("[action]")]
+    [Authorize(AuthenticationSchemes = CookieAuthenticationDefaults.AuthenticationScheme)]
+    public async Task<IActionResult> Logout(string logoutId)
+    {
+        var logout = await _interaction.GetLogoutContextAsync(logoutId);
+        await _signInManager.SignOutAsync();
+        return Redirect(logout.PostLogoutRedirectUri);
     }
 }

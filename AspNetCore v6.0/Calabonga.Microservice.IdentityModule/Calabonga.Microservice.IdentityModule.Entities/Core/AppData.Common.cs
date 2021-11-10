@@ -1,37 +1,36 @@
 ﻿using System.Collections.Generic;
 
-namespace Calabonga.Microservice.IdentityModule.Entities.Core
+namespace Calabonga.Microservice.IdentityModule.Entities.Core;
+
+/// <summary>
+/// Static data container
+/// </summary>
+public static partial class AppData
 {
     /// <summary>
-    /// Static data container
+    /// Current service name
     /// </summary>
-    public static partial class AppData
+    public const string ServiceName = "IdentityModule";
+
+    /// <summary>
+    /// "SystemAdministrator"
+    /// </summary>
+    public const string SystemAdministratorRoleName = "Administrator";
+
+    /// <summary>
+    /// "BusinessOwner"
+    /// </summary>
+    public const string ManagerRoleName = "Manager";
+
+    /// <summary>
+    /// Roles
+    /// </summary>
+    public static IEnumerable<string> Roles
     {
-        /// <summary>
-        /// Current service name
-        /// </summary>
-        public const string ServiceName = "IdentityModule";
-
-        /// <summary>
-        /// "SystemAdministrator"
-        /// </summary>
-        public const string SystemAdministratorRoleName = "Administrator";
-
-        /// <summary>
-        /// "BusinessOwner"
-        /// </summary>
-        public const string ManagerRoleName = "Manager";
-
-        /// <summary>
-        /// Roles
-        /// </summary>
-        public static IEnumerable<string> Roles
+        get
         {
-            get
-            {
-                yield return SystemAdministratorRoleName;
-                yield return ManagerRoleName;
-            }
+            yield return SystemAdministratorRoleName;
+            yield return ManagerRoleName;
         }
     }
 }

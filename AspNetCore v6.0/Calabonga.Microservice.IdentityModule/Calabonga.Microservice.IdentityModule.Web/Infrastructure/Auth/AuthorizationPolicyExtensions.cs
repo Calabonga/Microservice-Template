@@ -1,21 +1,20 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Calabonga.Microservice.IdentityModule.Web.Infrastructure.Auth
+namespace Calabonga.Microservice.IdentityModule.Web.Infrastructure.Auth;
+
+/// <summary>
+/// Authorization Policy registration
+/// </summary>
+public static class AuthorizationPolicyExtensions
 {
     /// <summary>
-    /// Authorization Policy registration
+    /// Registers custom <see cref="IAuthorizationHandler"/> for able to use authorization by policy 
     /// </summary>
-    public static class AuthorizationPolicyExtensions
+    /// <param name="services"></param>
+    public static void UseMicroserviceAuthorizationPolicy(this IServiceCollection services)
     {
-        /// <summary>
-        /// Registers custom <see cref="IAuthorizationHandler"/> for able to use authorization by policy 
-        /// </summary>
-        /// <param name="services"></param>
-        public static void UseMicroserviceAuthorizationPolicy(this IServiceCollection services)
-        {
-            services.AddSingleton<IAuthorizationPolicyProvider, AuthorizationPolicyProvider>();
-            services.AddSingleton<IAuthorizationHandler, MicroservicePermissionHandler>();
-        }
+        services.AddSingleton<IAuthorizationPolicyProvider, AuthorizationPolicyProvider>();
+        services.AddSingleton<IAuthorizationHandler, MicroservicePermissionHandler>();
     }
 }
