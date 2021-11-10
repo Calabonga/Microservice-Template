@@ -2,17 +2,39 @@
 using Calabonga.AspNetCore.Controllers;
 using Calabonga.AspNetCore.Controllers.Records;
 using Calabonga.Microservice.IdentityModule.Entities;
-using Calabonga.Microservice.IdentityModule.Web.ViewModels.LogViewModels;
+using Calabonga.Microservice.IdentityModule.Web.Infrastructure.Attributes;
+using Calabonga.Microservice.IdentityModule.Web.Infrastructure.Auth;
 using Calabonga.Microservices.Core;
 using Calabonga.Microservices.Core.Exceptions;
 using Calabonga.OperationResults;
 using Calabonga.UnitOfWork;
-
+using MediatR;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Calabonga.Microservice.IdentityModule.Web.Mediator.LogsWritable;
+namespace Calabonga.Microservice.IdentityModule.Web.Features.Logs;
+
+/// <summary>
+/// WritableController Demo
+/// </summary>
+[Route("api/logs")]
+[Authorize(AuthenticationSchemes = AuthData.AuthSchemes)]
+[Produces("application/json")]
+[FeatureGroupName("Logs")]
+public class PostLogController : ControllerBase
+{
+    private readonly IMediator _mediator;
+
+    public PostLogController(IMediator mediator) => _mediator = mediator;
+
+    [HttpPost("[action]")]
+    public async Task<IActionResult> PostLog([FromBody]LogCreateViewModel model) => 
+        Ok(await _mediator.Send(new LogPostItemRequest(model), HttpContext.RequestAborted));
+    
+}
 
 /// <summary>
 /// Request: Log creation
@@ -48,7 +70,7 @@ public class LogPostItemRequestHandler : OperationResultRequestHandlerBase<LogPo
             operation.AddError(new MicroserviceUnauthorizedException(AppContracts.Exceptions.MappingException));
             return operation;
         }
-            
+
         await _unitOfWork.GetRepository<Log>().InsertAsync(entity, cancellationToken);
         await _unitOfWork.SaveChangesAsync();
 

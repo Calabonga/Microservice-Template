@@ -23,7 +23,7 @@ namespace Calabonga.Microservice.IdentityModule.Web.Features.Account;
 /// </summary>
 [Produces("application/json")]
 [Route("api/account")]
-[SwaggerGroup("Account")]
+[FeatureGroupName("Account")]
 public class CreateUserController : ControllerBase
 {
     private readonly IMediator _mediator;

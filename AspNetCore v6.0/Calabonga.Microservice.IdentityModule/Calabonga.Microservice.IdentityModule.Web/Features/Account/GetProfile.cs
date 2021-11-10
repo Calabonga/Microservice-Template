@@ -19,7 +19,7 @@ namespace Calabonga.Microservice.IdentityModule.Web.Features.Account;
 [Authorize(AuthenticationSchemes = AuthData.AuthSchemes)]
 [Produces("application/json")]
 [Route("api/account")]
-[SwaggerGroup("Account")]
+[FeatureGroupName("Account")]
 public class GetProfileController : ControllerBase
 {
     private readonly IMediator _mediator;

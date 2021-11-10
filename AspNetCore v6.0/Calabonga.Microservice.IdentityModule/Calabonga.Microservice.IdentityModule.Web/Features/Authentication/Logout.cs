@@ -7,32 +7,31 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
-namespace Calabonga.Microservice.IdentityModule.Web.Features.Authentication
+namespace Calabonga.Microservice.IdentityModule.Web.Features.Authentication;
+
+[Produces("application/json")]
+[Authorize(AuthenticationSchemes = CookieAuthenticationDefaults.AuthenticationScheme)]
+[FeatureGroupName("Authentication")]
+[Route("api/authentication")]
+public class LogoutController : Controller
 {
-    [Produces("application/json")]
-    [Authorize(AuthenticationSchemes = CookieAuthenticationDefaults.AuthenticationScheme)]
-    [SwaggerGroup("Authentication")]
-    [Route("api/authentication")]
-    public class LogoutController : Controller
+    private readonly IIdentityServerInteractionService _interaction;
+    private readonly SignInManager<ApplicationUser> _signInManager;
+
+    public LogoutController(
+        IIdentityServerInteractionService interaction,
+        SignInManager<ApplicationUser> signInManager)
     {
-        private readonly IIdentityServerInteractionService _interaction;
-        private readonly SignInManager<ApplicationUser> _signInManager;
+        _interaction = interaction;
+        _signInManager = signInManager;
+    }
 
-        public LogoutController(
-            IIdentityServerInteractionService interaction,
-            SignInManager<ApplicationUser> signInManager)
-        {
-            _interaction = interaction;
-            _signInManager = signInManager;
-        }
-
-        [HttpGet("[action]")]
-        [Authorize(AuthenticationSchemes = CookieAuthenticationDefaults.AuthenticationScheme)]
-        public async Task<IActionResult> Logout(string logoutId)
-        {
-            var logout = await _interaction.GetLogoutContextAsync(logoutId);
-            await _signInManager.SignOutAsync();
-            return Redirect(logout.PostLogoutRedirectUri);
-        }
+    [HttpGet("[action]")]
+    [Authorize(AuthenticationSchemes = CookieAuthenticationDefaults.AuthenticationScheme)]
+    public async Task<IActionResult> Logout(string logoutId)
+    {
+        var logout = await _interaction.GetLogoutContextAsync(logoutId);
+        await _signInManager.SignOutAsync();
+        return Redirect(logout.PostLogoutRedirectUri);
     }
 }

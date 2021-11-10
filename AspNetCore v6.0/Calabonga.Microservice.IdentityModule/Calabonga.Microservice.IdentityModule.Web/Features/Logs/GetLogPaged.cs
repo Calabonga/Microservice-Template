@@ -2,14 +2,37 @@
 using Calabonga.AspNetCore.Controllers;
 using Calabonga.AspNetCore.Controllers.Records;
 using Calabonga.Microservice.IdentityModule.Entities;
-using Calabonga.Microservice.IdentityModule.Web.ViewModels.LogViewModels;
+using Calabonga.Microservice.IdentityModule.Web.Infrastructure.Attributes;
+using Calabonga.Microservice.IdentityModule.Web.Infrastructure.Auth;
 using Calabonga.Microservices.Core.QueryParams;
 using Calabonga.OperationResults;
 using Calabonga.UnitOfWork;
+using MediatR;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Calabonga.Microservice.IdentityModule.Web.Mediator.LogsReadonly;
+namespace Calabonga.Microservice.IdentityModule.Web.Features.Logs;
+
+/// <summary>
+/// ReadOnlyController Demo
+/// </summary>
+[Route("api/logs")]
+[Authorize(AuthenticationSchemes = AuthData.AuthSchemes)]
+[Produces("application/json")]
+[FeatureGroupName("Logs")]
+public class GetLogPagedController : ControllerBase
+{
+    private readonly IMediator _mediator;
+
+    public GetLogPagedController(IMediator mediator) => _mediator = mediator;
+    
+    [HttpGet("[action]")]
+    [ProducesResponseType(200)]
+    public async Task<IActionResult> GetPaged([FromQuery] PagedListQueryParams queryParams) =>
+        Ok(await _mediator.Send(new LogGetPagedRequest(queryParams), HttpContext.RequestAborted));
+}
 
 /// <summary>
 /// Request for paged list of Logs
@@ -34,7 +57,7 @@ public class LogGetPagedRequestHandler : OperationResultRequestHandlerBase<LogGe
         CancellationToken cancellationToken)
     {
         var operation = OperationResult.CreateResult<IPagedList<LogViewModel>>();
-            
+
         var pagedList = await _unitOfWork.GetRepository<Log>()
             .GetPagedListAsync(
                 pageIndex: request.QueryParams.PageIndex,

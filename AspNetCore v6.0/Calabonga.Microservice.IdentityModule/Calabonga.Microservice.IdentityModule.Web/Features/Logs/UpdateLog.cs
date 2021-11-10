@@ -2,15 +2,38 @@
 using Calabonga.AspNetCore.Controllers;
 using Calabonga.AspNetCore.Controllers.Records;
 using Calabonga.Microservice.IdentityModule.Entities;
-using Calabonga.Microservice.IdentityModule.Web.ViewModels.LogViewModels;
+using Calabonga.Microservice.IdentityModule.Web.Infrastructure.Attributes;
+using Calabonga.Microservice.IdentityModule.Web.Infrastructure.Auth;
 using Calabonga.Microservices.Core;
 using Calabonga.Microservices.Core.Exceptions;
 using Calabonga.OperationResults;
 using Calabonga.UnitOfWork;
+using MediatR;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Calabonga.Microservice.IdentityModule.Web.Mediator.LogsWritable;
+namespace Calabonga.Microservice.IdentityModule.Web.Features.Logs;
+
+/// <summary>
+/// Update log entity
+/// </summary>
+[Route("api/logs")]
+[Authorize(AuthenticationSchemes = AuthData.AuthSchemes)]
+[Produces("application/json")]
+[FeatureGroupName("Logs")]
+public class UpdateLogController : ControllerBase
+{
+    private readonly IMediator _mediator;
+
+    public UpdateLogController(IMediator mediator) => _mediator = mediator;
+
+    [HttpPut("[action]")]
+    public async Task<IActionResult> UpdateLog([FromBody] LogUpdateViewModel model) =>
+        Ok(await _mediator.Send(new LogPutItemRequest(model), HttpContext.RequestAborted));
+}
+
 
 /// <summary>
 /// Request: Log edit
@@ -43,7 +66,7 @@ public class LogPutItemRequestHandler : OperationResultRequestHandlerBase<LogPut
             operation.AddError(new MicroserviceNotFoundException(AppContracts.Exceptions.NotFoundException));
             return operation;
         }
-            
+
         _mapper.Map(request.Model, entity);
 
         repository.Update(entity);

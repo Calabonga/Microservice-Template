@@ -1,9 +1,9 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
-using Calabonga.EntityFrameworkCore.Entities.Base;
+﻿using Calabonga.EntityFrameworkCore.Entities.Base;
 using Microsoft.Extensions.Logging;
+using System;
+using System.ComponentModel.DataAnnotations;
 
-namespace Calabonga.Microservice.IdentityModule.Web.ViewModels.LogViewModels;
+namespace Calabonga.Microservice.IdentityModule.Web.Features.Logs;
 
 /// <summary>
 /// Data Transfer Object for Log entity

@@ -45,7 +45,7 @@ public static class ConfigureServicesSwagger
             string tag;
             if (api.ActionDescriptor is ControllerActionDescriptor descriptor)
             {
-                var attribute = descriptor.EndpointMetadata.OfType<SwaggerGroupAttribute>().FirstOrDefault();
+                var attribute = descriptor.EndpointMetadata.OfType<FeatureGroupNameAttribute>().FirstOrDefault();
                 tag = attribute?.GroupName ?? descriptor.ControllerName;
             }
             else

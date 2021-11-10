@@ -7,10 +7,10 @@ namespace Calabonga.Microservice.IdentityModule.Web.Infrastructure.Attributes;
 /// </summary>
 ///
 [AttributeUsage(AttributeTargets.Class)]
-public class SwaggerGroupAttribute : Attribute
+public class FeatureGroupNameAttribute : Attribute
 {
     /// <inheritdoc />
-    public SwaggerGroupAttribute(string groupName) => GroupName = groupName;
+    public FeatureGroupNameAttribute(string groupName) => GroupName = groupName;
 
     /// <summary>
     /// Group name

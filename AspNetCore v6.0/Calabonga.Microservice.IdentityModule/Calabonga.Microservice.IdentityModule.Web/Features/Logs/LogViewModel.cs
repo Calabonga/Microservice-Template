@@ -1,7 +1,7 @@
-﻿using System;
-using Calabonga.EntityFrameworkCore.Entities.Base;
+﻿using Calabonga.EntityFrameworkCore.Entities.Base;
+using System;
 
-namespace Calabonga.Microservice.IdentityModule.Web.ViewModels.LogViewModels;
+namespace Calabonga.Microservice.IdentityModule.Web.Features.Logs;
 
 /// <summary>
 /// Log ViewModel
@@ -16,25 +16,25 @@ public class LogViewModel: ViewModelBase
     /// <summary>
     /// Logger name
     /// </summary>
-    public string Logger { get; set; }
+    public string Logger { get; set; } = null!;
 
     /// <summary>
     /// Level
     /// </summary>
-    public string Level { get; set; }
+    public string Level { get; set; } = null!;
 
     /// <summary>
     /// Message text
     /// </summary>
-    public string Message { get; set; }
+    public string Message { get; set; } = null!;
 
     /// <summary>
     /// Thread ID
     /// </summary>
-    public string ThreadId { get; set; }
+    public string? ThreadId { get; set; }
 
     /// <summary>
     /// 
     /// </summary>
-    public string ExceptionMessage { get; set; }
+    public string? ExceptionMessage { get; set; }
 }
