@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using Calabonga.Microservice.Module.Web.AppStart.SwaggerFilters;
+using Calabonga.Microservice.Module.Web.Infrastructure.Attributes;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Mvc.Controllers;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
@@ -18,7 +20,6 @@ namespace Calabonga.Microservice.Module.Web.AppStart.ConfigureServices
         private const string AppTitle = "Microservice API";
         private static readonly string AppVersion = $"{ThisAssembly.Git.SemVer.Major}.{ThisAssembly.Git.SemVer.Minor}.{ThisAssembly.Git.SemVer.Patch}";
         private const string SwaggerConfig = "/swagger/v1/swagger.json";
-        private const string SwaggerUrl = "api/manual";
 
         /// <summary>
         /// ConfigureServices Swagger services
@@ -27,14 +28,37 @@ namespace Calabonga.Microservice.Module.Web.AppStart.ConfigureServices
         /// <param name="configuration"></param>
         public static void ConfigureServices(IServiceCollection services, IConfiguration configuration)
         {
-            services.AddSwaggerGen(options =>
+            services!.AddSwaggerGen(options =>
             {
                 options.SwaggerDoc("v1", new OpenApiInfo
                 {
                     Title = AppTitle,
                     Version = AppVersion,
-                    Description = "Microservice module API. This template based on .NET 5.0."
+                    Description = "Microservice module API. This template based on .NET 6.0."
                 });
+
+                options.TagActionsBy(api =>
+                {
+                    string tag;
+                    if (api.ActionDescriptor is ControllerActionDescriptor descriptor)
+                    {
+                        var attribute = descriptor.EndpointMetadata.OfType<FeatureGroupNameAttribute>().FirstOrDefault();
+                        tag = attribute?.GroupName ?? descriptor.ControllerName;
+                    }
+                    else
+                    {
+                        tag = api.RelativePath!;
+                    }
+
+                    var tags = new List<string>();
+                    if (!string.IsNullOrEmpty(tag))
+                    {
+                        tags.Add(tag);
+                    }
+                    return tags;
+                });
+
+
                 options.ResolveConflictingActions(x => x.First());
 
                 var url = configuration.GetSection("IdentityServer").GetValue<string>("Url");
@@ -85,7 +109,6 @@ namespace Calabonga.Microservice.Module.Web.AppStart.ConfigureServices
         public static void SwaggerSettings(SwaggerUIOptions settings)
         {
             settings.SwaggerEndpoint(SwaggerConfig, $"{AppTitle} v.{AppVersion}");
-            settings.RoutePrefix = SwaggerUrl;
             settings.HeadContent = $"{ThisAssembly.Git.Branch.ToUpper()} {ThisAssembly.Git.Commit.ToUpper()}";
             settings.DocumentTitle = $"{AppTitle}";
             settings.DefaultModelExpandDepth(0);

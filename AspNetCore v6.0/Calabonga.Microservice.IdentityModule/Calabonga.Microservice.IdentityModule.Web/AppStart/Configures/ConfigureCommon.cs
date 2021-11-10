@@ -49,13 +49,10 @@ public static class ConfigureCommon
 
         app.UseMiddleware(typeof(ErrorHandlingMiddleware));
 
-            
         app.UseSwagger();
         app.UseSwaggerUI(ConfigureServicesSwagger.SwaggerSettings);
 
         // Singleton setup for User Identity
-        UserIdentity.Instance.Configure(app.ApplicationServices.GetService<IHttpContextAccessor>()!);
-
-            
+        UserIdentity.Instance.Configure(app.ApplicationServices.GetService<IHttpContextAccessor>()!);            
     }
 }
