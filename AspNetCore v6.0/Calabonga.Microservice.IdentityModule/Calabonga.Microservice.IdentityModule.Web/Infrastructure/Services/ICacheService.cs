@@ -1,5 +1,5 @@
-﻿using System;
-using Microsoft.Extensions.Caching.Memory;
+﻿using Microsoft.Extensions.Caching.Memory;
+using System;
 
 namespace Calabonga.Microservice.IdentityModule.Web.Infrastructure.Services;
 

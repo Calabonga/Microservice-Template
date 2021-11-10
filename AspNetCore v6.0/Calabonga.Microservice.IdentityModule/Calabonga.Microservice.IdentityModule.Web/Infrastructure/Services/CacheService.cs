@@ -12,7 +12,6 @@ public class CacheService : ICacheService
     private readonly IMemoryCache _cache;
     private readonly TimeSpan _defaultSlidingExpiration = TimeSpan.FromSeconds(60);
 
-    /// <inheritdoc />
     public CacheService(IMemoryCache cache) => _cache = cache;
 
     /// <inheritdoc />
