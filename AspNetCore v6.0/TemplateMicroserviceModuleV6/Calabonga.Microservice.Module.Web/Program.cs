@@ -19,8 +19,8 @@
 
 
 using System;
-using Calabonga.Microservice.Module.Data.DatabaseInitialization;
-using Calabonga.Microservice.Module.Entities.Core;
+using $ext_projectname$.Data.DatabaseInitialization;
+using $ext_projectname$.Entities.Core;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -28,7 +28,7 @@ using Serilog;
 using Serilog.Events;
 using System.Threading.Tasks;
 
-namespace Calabonga.Microservice.Module.Web
+namespace $safeprojectname$
 {
     public class Program
     {
