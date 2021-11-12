@@ -1,0 +1,47 @@
+{
+    "$schema": "http://json.schemastore.org/template",
+    "author": "Calabonga SOFT",
+    "classifications": [
+        "Web",
+        "API",
+        "Backend",
+        "Microservice"
+    ],
+    "identity": "Calabonga.Microservice.IdentityModule",
+    "sourceName": "Calabonga.Microservice.IdentityModule",
+    "name": "Microservice with IdentityServer4",
+    "description": "Nimble Microservice Framework v6.0. This template gives you a possibility to start developing a microservices system with integrated UI (Swagger), Mediatr, Automapper and Authorization Server (IdentityServer4). Template developed for .NET 6.0",
+    "shortName": "nimbleis4",
+    "tags": {
+        "language": "C#",
+        "type": "project"
+    },
+    "preferNameDirectory": true,
+    "symbols": {
+        "Framework": {
+            "type": "parameter",
+            "description": "The target framework for the project.",
+            "datatype": "choice",
+            "choices": [
+                {
+                    "choice": "net6.0"
+                }
+            ],
+            "defaultValue": "net6.0"
+        }
+    },
+    "sources": [
+        {
+            "modifiers": [
+                {
+                    "exclude": [
+                        ".vs/**",
+                        ".idea/**",
+                        "_ReSharper.Caches/**",
+                        ".template_config/**"
+                    ]
+                }
+            ]
+        }
+    ]
+}

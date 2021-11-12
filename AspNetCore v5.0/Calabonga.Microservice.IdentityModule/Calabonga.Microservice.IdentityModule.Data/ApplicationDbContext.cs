@@ -14,12 +14,12 @@ namespace Calabonga.Microservice.IdentityModule.Data
 
         #region System
 
-        public DbSet<Log> Logs { get; set; }
+        public DbSet<Log> Logs { get; set; } = null!;
 
-        public DbSet<ApplicationUserProfile> Profiles { get; set; }
+        public DbSet<ApplicationUserProfile> Profiles { get; set; } = null!;
 
         /// <inheritdoc />
-        public DbSet<MicroservicePermission> Permissions { get; set; }
+        public DbSet<MicroservicePermission> Permissions { get; set; } = null!;
 
         #endregion
     }

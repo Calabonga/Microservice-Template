@@ -13,7 +13,7 @@ namespace Calabonga.Microservice.IdentityModule.Web.ViewModels.AccountViewModels
         [Required]
         [StringLength(50, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 2)]
         [Display(Name = "First Name")]
-        public string FirstName { get; set; }
+        public string FirstName { get; set; } = null!;
 
         /// <summary>
         /// LastName
@@ -21,7 +21,7 @@ namespace Calabonga.Microservice.IdentityModule.Web.ViewModels.AccountViewModels
         [Required]
         [StringLength(50, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 2)]
         [Display(Name = "Last Name")]
-        public string LastName { get; set; }
+        public string LastName { get; set; } = null!;
 
         /// <summary>
         /// Email
@@ -29,7 +29,7 @@ namespace Calabonga.Microservice.IdentityModule.Web.ViewModels.AccountViewModels
         [Required]
         [EmailAddress]
         [Display(Name = "Email")]
-        public string Email { get; set; }
+        public string Email { get; set; } = null!;
 
         /// <summary>
         /// Password
@@ -38,7 +38,7 @@ namespace Calabonga.Microservice.IdentityModule.Web.ViewModels.AccountViewModels
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 6)]
         [DataType(DataType.Password)]
         [Display(Name = "Password")]
-        public string Password { get; set; }
+        public string Password { get; set; } = null!;
 
         /// <summary>
         /// Password confirmation
@@ -46,6 +46,6 @@ namespace Calabonga.Microservice.IdentityModule.Web.ViewModels.AccountViewModels
         [DataType(DataType.Password)]
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
-        public string ConfirmPassword { get; set; }
+        public string ConfirmPassword { get; set; } = null!;
     }
 }
