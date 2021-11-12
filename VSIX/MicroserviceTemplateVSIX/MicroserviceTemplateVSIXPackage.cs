@@ -1,10 +1,10 @@
-﻿using System;
+﻿using Microsoft.VisualStudio.Shell;
+using System;
 using System.Runtime.InteropServices;
 using System.Threading;
-using Microsoft.VisualStudio.Shell;
 using Task = System.Threading.Tasks.Task;
 
-namespace MicroserviceTemplate
+namespace MicroserviceTemplateVSIX
 {
     /// <summary>
     /// This is the class that implements the package exposed by this assembly.
@@ -24,13 +24,13 @@ namespace MicroserviceTemplate
     /// </para>
     /// </remarks>
     [PackageRegistration(UseManagedResourcesOnly = true, AllowsBackgroundLoading = true)]
-    [Guid(MicroserviceTemplate.PackageGuidString)]
-    public sealed class MicroserviceTemplate : AsyncPackage
+    [Guid(MicroserviceTemplateVSIXPackage.PackageGuidString)]
+    public sealed class MicroserviceTemplateVSIXPackage : AsyncPackage
     {
         /// <summary>
-        /// PackagePackage GUID string.
+        /// MicroserviceTemplateVSIXPackage GUID string.
         /// </summary>
-        public const string PackageGuidString = "9d54b71d-87ce-4c09-a411-dd3a8128bf8d";
+        public const string PackageGuidString = "01f49a18-333d-4a18-874b-d5b3016d00d2";
 
         #region Package Members
 

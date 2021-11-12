@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
     <Metadata>
-        <Identity Id="Package.76abdd13-e59c-df90-4cf4-076f290f8a6b" Version="5.0.8" Language="en-US" Publisher="Calabonga" />
+        <Identity Id="Package.76abdd13-e59c-df90-4cf4-076f290f8a6b" Version="6.0.0" Language="en-US" Publisher="Сalabonga" />
         <DisplayName>MicroserviceTemplate</DisplayName>
-        <Description xml:space="preserve">Microservice template gives you a possibility to start developing a microservice architecture with UI (Swagger Open API) and Mediatr (CQRS). Template Based on NET 5.x</Description>
+        <Description xml:space="preserve">Microservice template gives you a possibility to start developing a microservice architecture with UI (Swagger Open API) and Mediatr (CQRS). Template Based on NET 6.0.x</Description>
         <MoreInfo>https://github.com/Calabonga/Microservice-Template</MoreInfo>
         <License>License.txt</License>
         <GettingStartedGuide>GetStarted.txt</GettingStartedGuide>
@@ -13,13 +13,15 @@
         <Tags>calabonga microservice template nimble identity identityserver swagger</Tags>
     </Metadata>
     <Installation>
-        <InstallationTarget Id="Microsoft.VisualStudio.Community" Version="[16.0, 17.0)" />
+        <InstallationTarget Id="Microsoft.VisualStudio.Community" Version="[17.0, 18.0)">
+            <ProductArchitecture>amd64</ProductArchitecture>
+        </InstallationTarget>
     </Installation>
     <Dependencies>
         <Dependency Id="Microsoft.Framework.NDP" DisplayName="Microsoft .NET Framework" d:Source="Manual" Version="[4.5,)" />
     </Dependencies>
     <Prerequisites>
-        <Prerequisite Id="Microsoft.NetCore.Component.Runtime.5.0" Version="[16.9.31105.61,17.0)" DisplayName=".NET 5.0 Runtime" />
+        <Prerequisite Id="Microsoft.VisualStudio.Component.CoreEditor" Version="[17.0,18.0)" DisplayName="Visual Studio core editor" />
     </Prerequisites>
     <Assets>
         <Asset Type="Microsoft.VisualStudio.ProjectTemplate" d:Source="File" Path="ProjectTemplates" d:TargetPath="ProjectTemplates\1.zip" />
