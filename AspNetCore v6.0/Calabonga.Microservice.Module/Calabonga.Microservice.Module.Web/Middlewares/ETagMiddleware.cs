@@ -31,7 +31,6 @@ namespace Calabonga.Microservice.Module.Web.Middlewares
     {
         private readonly RequestDelegate _next;
 
-        /// <inheritdoc />
         public ETagMiddleware(RequestDelegate next)
         {
             _next = next;

@@ -10,7 +10,6 @@ namespace Calabonga.Microservice.Module.Web.Infrastructure.Mappers
     /// </summary>
     public class LogMapperConfiguration: MapperConfigurationBase
     {
-        /// <inheritdoc />
         public LogMapperConfiguration()
         {
             CreateMap<LogCreateViewModel, Log>()

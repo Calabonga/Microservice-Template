@@ -3,8 +3,10 @@ using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
+using Serilog;
 
 namespace Calabonga.Microservice.TemplateBuilder
 {
@@ -32,13 +34,13 @@ namespace Calabonga.Microservice.TemplateBuilder
         public async Task BuildAsync()
         {
             var items = LoadItemsFromRootPath();
-            Console.WriteLine($"Total {items.Count} items found");
+            Log.Logger.Information($"Total {items.Count} items found");
 
             var cancellationTokenSource = new CancellationTokenSource();
             var tasks = CreateTasks(items, cancellationTokenSource.Token).ToArray();
             await Task.WhenAll(tasks);
             _replaceService.Replace(_results, _templateOptions, cancellationTokenSource.Token);
-            Console.WriteLine($"Processing done ({_results.Sum(x=>x.Length)} bytes)");
+            Log.Logger.Information($"Processing done ({_results.Sum(x => x.Length)} bytes)");
 
             foreach (var result in _results)
             {
@@ -57,19 +59,20 @@ namespace Calabonga.Microservice.TemplateBuilder
             {
                 await _gate.WaitAsync(cancellationToken);
                 var data = await _readWriteService.LoadDataAsync(fileNameWithPath, cancellationToken);
-                _results.Add(new FileData
+                var loadedData = new FileData
                 {
                     FileName = fileNameWithPath,
                     FileExtension = Path.GetExtension(fileNameWithPath),
                     Content = data,
                     Length = data.Length
-                });
-                
+                };
+                _results.Add(loadedData);
+                Log.Logger.Information($"Loading {loadedData.ToString()}");
                 _gate.Release();
             }
-            catch (Exception)
+            catch (Exception exception)
             {
-
+                Log.Logger.Error(JsonSerializer.Serialize(exception));
                 throw;
             }
         }
@@ -79,7 +82,7 @@ namespace Calabonga.Microservice.TemplateBuilder
             var items = _fileService.ProcessFolder(_templateOptions.RootDirectoryPath, _templateOptions);
             if (items.Length == 0)
             {
-                Console.WriteLine("Nothing to replace");
+                Log.Logger.Information("Nothing to replace");
                 return new();
             }
 
@@ -98,5 +101,9 @@ namespace Calabonga.Microservice.TemplateBuilder
         public int Length { get; set; }
 
         public string Replaced { get; set; } = null!;
+
+        /// <summary>Returns a string that represents the current object.</summary>
+        /// <returns>A string that represents the current object.</returns>
+        public override string ToString() => $"{FileName} ({Length} bytes)";
     }
 }

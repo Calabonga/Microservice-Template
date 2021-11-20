@@ -9,7 +9,6 @@ namespace Calabonga.Microservice.Module.Web.AppStart.SwaggerFilters
     /// </summary>
     public class ApplySummariesOperationFilter : IOperationFilter
     {
-        /// <inheritdoc />
         public void Apply(OpenApiOperation operation, OperationFilterContext context)
         {
             var controllerActionDescriptor = context.ApiDescription.ActionDescriptor as ControllerActionDescriptor;

@@ -3,6 +3,8 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
+using Serilog;
+using Serilog.Core;
 
 namespace Calabonga.Microservice.TemplateBuilder
 {
@@ -10,32 +12,44 @@ namespace Calabonga.Microservice.TemplateBuilder
     {
         public static async Task Main(string[] args)
         {
-            Console.WriteLine("Microservice Template Builder v.1.0.0-beta1");
-            Console.WriteLine("Building configuration from aspsettings.json");
+            Log.Logger = new LoggerConfiguration()
+                .MinimumLevel.Verbose()
+                .WriteTo.Console()
+                .WriteTo.File("logs.txt")
+                .CreateLogger();
+
+
+            var configFile = "appsettings.json";
+            if (args.Any())
+            {
+                configFile = args[0];
+            }
+            Log.Logger.Information("Microservice Template Builder v.1.0.0-beta1");
+            Log.Logger.Information("Building configuration from aspsettings.json");
             var configuration = new ConfigurationBuilder()
-                .AddJsonFile("appsettings.json", optional: true)
+                .AddJsonFile(configFile, optional: true)
                 .Build();
 
             var projectsTemplates = configuration.Get<MicroserviceTemplates>();
 
             foreach (var projectsTemplate in projectsTemplates.TemplateOptions)
             {
-                Console.WriteLine($"Processing templates for {projectsTemplate.ProjectName}");
+                Log.Logger.Information($"Processing templates for {projectsTemplate.ProjectName}");
                 var templatePath = projectsTemplate.RootDirectoryPath;
-                Console.WriteLine($"Processing path: {templatePath}");
+                Log.Logger.Information($"Processing path: {templatePath}");
 
                 var directory = Directory.Exists(templatePath) ? new DirectoryInfo(templatePath) : null;
 
                 if (directory is null)
                 {
-                    Console.WriteLine("No directory was found");
+                    Log.Logger.Information("No directory was found");
                     return;
                 }
 
                 var projects = directory.GetDirectories();
                 if (!projects.Any())
                 {
-                    Console.WriteLine("No projects folder were found");
+                    Log.Logger.Information("No projects folder were found");
                     return;
                 }
 
@@ -48,8 +62,7 @@ namespace Calabonga.Microservice.TemplateBuilder
                 // run build process
                 await manager.BuildAsync();
 
-                Console.WriteLine("Work completed");
-                Console.ReadLine();
+                Log.Logger.Information("Work completed");
             }
         }
     }

@@ -9,7 +9,6 @@ namespace Calabonga.Microservice.Module.Web.Infrastructure.Attributes;
 [AttributeUsage(AttributeTargets.Class)]
 public class FeatureGroupNameAttribute : Attribute
 {
-    /// <inheritdoc />
     public FeatureGroupNameAttribute(string groupName) => GroupName = groupName;
 
     /// <summary>

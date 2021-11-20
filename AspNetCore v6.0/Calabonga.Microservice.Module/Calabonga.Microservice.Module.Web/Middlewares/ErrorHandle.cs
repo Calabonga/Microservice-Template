@@ -13,7 +13,6 @@ namespace Calabonga.Microservice.Module.Web.Middlewares
     {
         private readonly RequestDelegate _next;
 
-        /// <inheritdoc />
         public ErrorHandlingMiddleware(RequestDelegate next)
         {
             _next = next;

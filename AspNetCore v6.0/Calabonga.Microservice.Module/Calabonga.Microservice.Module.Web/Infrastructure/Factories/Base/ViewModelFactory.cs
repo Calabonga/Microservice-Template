@@ -15,10 +15,8 @@ namespace Calabonga.Microservice.Module.Web.Infrastructure.Factories.Base
         where TEntity : class, IHaveId
     {
 
-        /// <inheritdoc />
         public abstract TCreateViewModel GenerateForCreate();
 
-        /// <inheritdoc />
         public abstract TUpdateViewModel GenerateForUpdate(Guid id);
     }
 }

@@ -9,7 +9,6 @@ namespace Calabonga.Microservice.Module.Data
     /// </summary>
     public class ApplicationDbContext : DbContextBase<ApplicationDbContext>, IApplicationDbContext
     {
-        /// <inheritdoc />
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
         }

@@ -13,7 +13,6 @@ namespace Calabonga.Microservice.Module.Web.Infrastructure.Engine.EntityManagers
     /// </summary>
     public class LogManager: EntityManager<LogViewModel, Log, LogCreateViewModel, LogUpdateViewModel>
     {
-        /// <inheritdoc />
         public LogManager(IMapper mapper, IViewModelFactory<LogCreateViewModel, LogUpdateViewModel> viewModelFactory, IEntityValidator<Log> validator)
             : base(mapper, viewModelFactory, validator)
         {

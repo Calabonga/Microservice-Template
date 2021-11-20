@@ -11,13 +11,8 @@ namespace Calabonga.Microservice.Module.Web.Infrastructure.Auth
     {
         private readonly AuthorizationOptions _options;
 
-        /// <inheritdoc />
-        public AuthorizationPolicyProvider(IOptions<AuthorizationOptions> options) : base(options)
-        {
-            _options = options.Value;
-        }
+        public AuthorizationPolicyProvider(IOptions<AuthorizationOptions> options) : base(options) => _options = options.Value;
 
-        /// <inheritdoc />
         public override async Task<AuthorizationPolicy> GetPolicyAsync(string policyName)
         {
             var policyExists = await base.GetPolicyAsync(policyName);

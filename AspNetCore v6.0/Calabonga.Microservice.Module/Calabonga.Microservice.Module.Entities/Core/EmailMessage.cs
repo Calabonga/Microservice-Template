@@ -6,19 +6,15 @@
     public class EmailMessage : IEmailMessage
     {
 
-        /// <inheritdoc />
         public EmailMessage()
         {
             Result = new SendEmailResult();
         }
 
-        /// <inheritdoc />
         public string MailTo { get; set; }
 
-        /// <inheritdoc />
         public string Subject { get; set; }
 
-        /// <inheritdoc />
         public string Body { get; set; }
 
         /// <summary>
@@ -31,7 +27,6 @@
         /// </summary>
         public bool IsHtml { get; set; }
 
-        /// <inheritdoc />
         public string MailFrom { get; set; }
     }
 }

@@ -10,7 +10,6 @@ namespace Calabonga.Microservice.Module.Web.Infrastructure.Attributes
     /// </summary>
     public class ValidateModelStateAttribute : ActionFilterAttribute
     {
-        /// <inheritdoc />
         public override void OnActionExecuting(ActionExecutingContext context)
         {
             if (context.ModelState.IsValid)

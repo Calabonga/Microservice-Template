@@ -24,7 +24,6 @@ namespace Calabonga.Microservice.Module.Web.Infrastructure.Engine.ViewModelFacto
             _mapper = mapper;
         }
 
-        /// <inheritdoc />
         public override Task<OperationResult<LogCreateViewModel>> GenerateForCreateAsync()
         {
             var operation = OperationResult.CreateResult<LogCreateViewModel>();
@@ -38,7 +37,6 @@ namespace Calabonga.Microservice.Module.Web.Infrastructure.Engine.ViewModelFacto
             return Task.FromResult(operation);
         }
 
-        /// <inheritdoc />
         public override async Task<OperationResult<LogUpdateViewModel>> GenerateForUpdateAsync(Guid id)
         {
             var operation = OperationResult.CreateResult<LogUpdateViewModel>();

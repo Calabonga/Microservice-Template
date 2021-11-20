@@ -10,7 +10,6 @@ namespace Calabonga.Microservice.Module.Web.Infrastructure.Auth
     /// </summary>
     public class MicroservicePermissionHandler : AuthorizationHandler<PermissionRequirement>
     {
-        /// <inheritdoc />
         protected override Task HandleRequirementAsync(AuthorizationHandlerContext context, PermissionRequirement requirement)
         {
             var identity = (ClaimsIdentity) context.User.Identity!;

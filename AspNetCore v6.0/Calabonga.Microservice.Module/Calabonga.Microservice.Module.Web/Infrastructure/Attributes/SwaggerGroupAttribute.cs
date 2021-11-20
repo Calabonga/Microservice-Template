@@ -9,7 +9,6 @@ namespace Calabonga.Microservice.Module.Web.Infrastructure.Attributes
     [AttributeUsage(AttributeTargets.Class)]
     public class SwaggerGroupAttribute : Attribute
     {
-        /// <inheritdoc />
         public SwaggerGroupAttribute(string groupName)
         {
             GroupName = groupName;
