@@ -1,0 +1,1 @@
+﻿global using Calabonga.Microservice.IdentityModule.Domain.Base;

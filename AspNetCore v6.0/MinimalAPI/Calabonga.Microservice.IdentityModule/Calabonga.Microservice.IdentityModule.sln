@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31912.275
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calabonga.Microservice.IdentityModule.Domain", "Calabonga.Microservice.IdentityModule.Domain\Calabonga.Microservice.IdentityModule.Domain.csproj", "{787504CF-D00D-4D69-A5D9-8A19D94FD836}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calabonga.Microservice.IdentityModule.Infrastructure", "Calabonga.Microservice.IdentityModule.Infrastructure\Calabonga.Microservice.IdentityModule.Infrastructure.csproj", "{0B3AB526-4168-4856-BCAA-83DC3D4346E2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calabonga.Microservice.IdentityModule.Web", "Calabonga.Microservice.IdentityModule.Web\Calabonga.Microservice.IdentityModule.Web.csproj", "{46BA86D8-9B2F-4875-990E-81A1FEE80743}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{787504CF-D00D-4D69-A5D9-8A19D94FD836}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{787504CF-D00D-4D69-A5D9-8A19D94FD836}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{787504CF-D00D-4D69-A5D9-8A19D94FD836}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{787504CF-D00D-4D69-A5D9-8A19D94FD836}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0B3AB526-4168-4856-BCAA-83DC3D4346E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0B3AB526-4168-4856-BCAA-83DC3D4346E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0B3AB526-4168-4856-BCAA-83DC3D4346E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0B3AB526-4168-4856-BCAA-83DC3D4346E2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{46BA86D8-9B2F-4875-990E-81A1FEE80743}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{46BA86D8-9B2F-4875-990E-81A1FEE80743}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{46BA86D8-9B2F-4875-990E-81A1FEE80743}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{46BA86D8-9B2F-4875-990E-81A1FEE80743}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D943DDA9-307C-4FFF-8CAD-E4CA6ED24D61}
+	EndGlobalSection
+EndGlobal

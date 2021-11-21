@@ -1,0 +1,22 @@
+{
+    "TemplateOptions": [
+        {
+            "ProjectName": "Calabonga.Microservice.Module",
+            "PatternDefinitions": [
+                {
+                    "FileExtension": ".cs",
+                    "ContentType": "Csharp file",
+                    "SearchTextForReplace": "using Calabonga.Microservice.Module",
+                    "ReplaceTextWith": "using $ext_projectname$"
+                },
+                {
+                    "FileExtension": ".csproj",
+                    "ContentType": "Project file",
+                    "SearchTextForReplace": "Calabonga.Microservice.Module.",
+                    "ReplaceTextWith": "$ext_projectname$."
+                }
+            ],
+            "RootDirectoryPath": "D:\\Projects\\MicroserviceTemplate\\AspNetCore v6.0\\MinimalAPI\\TemplateMicroserviceModuleV6"
+        }
+    ]
+}
