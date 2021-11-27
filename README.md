@@ -177,3 +177,11 @@ Visual Studio project template for microservice module base on ASP.NET Core
 
 Также можно установить прямо из Visual Studio 
 ![extension](https://github.com/Calabonga/Microservice-Template/blob/master/Whatnot/vs-extension.png)
+
+# Дополнительные материалы по Nimble Framework
+
+[Микросервисы: Nimble Framework v.2](https://youtu.be/bTxruvbhDss)
+
+[Nimble: Создание микросервиса](https://youtu.be/7nw8Naxf2U0)
+
+Nimble Framework для NET6 Готовится
