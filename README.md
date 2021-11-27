@@ -107,10 +107,6 @@ v2.0.0-beta1 от 02.02.2020:
 2. Обновились сборки для `ASP.NET Core` и `EntityFramework Core` (3.1.1)
 3. Обновился `Swagger` до версии 5.0.0
 
-![Logo](/Whatnot/MicriserviceArchitecture31.png)
-
->Винимание: Шаблоны (с сервером авторизации и без него) для версии ASP.NET Core 2.2 и ASP.NET Core 3.0 остаются также доступны для загрузки. 
-
 ![Logo](/Whatnot/MicriserviceArchitecture.png)
 
 # Документация
