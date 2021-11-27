@@ -16,7 +16,7 @@
                     "ReplaceTextWith": "$ext_projectname$."
                 }
             ],
-            "RootDirectoryPath": "D:\\Projects\\MicroserviceTemplate\\AspNetCore v6.0\\MinimalAPI\\TemplateMicroserviceModuleV6"
+            "RootDirectoryPath": "D:\\Projects\\MicroserviceTemplate\\AspNetCore v6.0\\MinimalAPI\\TemplateMicroserviceModuleMinV6"
         }
     ]
 }

@@ -5,8 +5,8 @@
     <ProjectType>CSharp</ProjectType>
     <CreateNewFolder>true</CreateNewFolder>
     <DefaultName>Calabonga.Microservice.Module</DefaultName>
-    <ProvideDefaultName>true</ProvideDefaultName>
     <LocationField>Enabled</LocationField>
+    <ProvideDefaultName>true</ProvideDefaultName>
     <EnableLocationBrowseButton>true</EnableLocationBrowseButton>
     <Icon>__TemplateIcon.png</Icon>
     <PreviewImage>__PreviewImage.png</PreviewImage>

@@ -1,15 +1,12 @@
-<VSTemplate Version="3.0.0" Type="ProjectGroup"
-  xmlns="http://schemas.microsoft.com/developer/vstemplate/2005">
+<VSTemplate Version="3.0.0" Type="ProjectGroup" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005">
   <TemplateData>
     <Name>Microservice API Template</Name>
     <Description>Nimble microservice template. This template gives you a possibility to start developing a microservices system with integrated Swagger, Mediatr, Automapper and other things. This template is using minimal API feature from .NET 6.0. That's why we implement a Vertical Slice Architecture approach used (Folding by Features)</Description>
     <ProjectType>CSharp</ProjectType>
-    <ProjectSubType></ProjectSubType>
-    <SortOrder>1000</SortOrder>
     <CreateNewFolder>true</CreateNewFolder>
     <DefaultName>Calabonga.Microservice.Module</DefaultName>
-    <ProvideDefaultName>true</ProvideDefaultName>
     <LocationField>Enabled</LocationField>
+    <ProvideDefaultName>true</ProvideDefaultName>
     <EnableLocationBrowseButton>true</EnableLocationBrowseButton>
     <Icon>__TemplateIcon.png</Icon>
     <PreviewImage>__PreviewImage.png</PreviewImage>
@@ -19,10 +16,9 @@
       <CustomParameter Name="$SolutionName$" Value="$projectname$"/>
     </CustomParameters>
     <ProjectCollection>
+      <ProjectTemplateLink ProjectName="$projectname$.Web" CopyParameters="true">Calabonga.Microservice.Module.Web\MyTemplate.vstemplate</ProjectTemplateLink>
       <ProjectTemplateLink ProjectName="$projectname$.Domain" CopyParameters="true">Calabonga.Microservice.Module.Domain\MyTemplate.vstemplate</ProjectTemplateLink>
       <ProjectTemplateLink ProjectName="$projectname$.Infrastructure" CopyParameters="true">Calabonga.Microservice.Module.Infrastructure\MyTemplate.vstemplate</ProjectTemplateLink>
-      <ProjectTemplateLink ProjectName="$projectname$.Web" CopyParameters="true">Calabonga.Microservice.Module.Web\MyTemplate.vstemplate</ProjectTemplateLink>
     </ProjectCollection>
   </TemplateContent>
 </VSTemplate>
-
