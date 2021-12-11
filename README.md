@@ -119,13 +119,12 @@ v2.0.0-beta1 от 02.02.2020:
 Visual Studio project template for microservice module base on ASP.NET Core
 
 # Скачать (Download)
-[ASP.NET Core 2.2](https://github.com/Calabonga/microservice-template/tree/master/Output/AspNetCore-v.2.2) - Шаблоны для версии ASP.NET Core 2.2
-
-[ASP NET Core 3.0](https://github.com/Calabonga/microservice-template/tree/master/Output/AspNetCore-v.3.0) - Шаблоны для версии ASP.NET Core 3.0
 
 [ASP NET Core 3.1](https://github.com/Calabonga/microservice-template/tree/master/Output/AspNetCore-v.3.1) - Шаблоны для версии ASP.NET Core 3.1
 
 [ASP NET Core 5.0](https://github.com/Calabonga/microservice-template/tree/master/Output/AspNetCore-v.5.0) - Шаблоны для версии ASP.NET Core 5.0
+
+[ASP NET Core 6.0](https://github.com/Calabonga/microservice-template/tree/master/Output/AspNetCore-v.6.0) - Шаблоны для версии ASP.NET Core 6.0
 
 # Инструкции и дополнительные материалы
 
@@ -144,6 +143,10 @@ Visual Studio project template for microservice module base on ASP.NET Core
 [Микросервисы: Прокси для frontend](https://www.calabonga.net/blog/post/odin-frontend-dolzhen-rabotat-tolko-so-svoim-backend)
 
 [Вопросы можно задать в блоге](https://www.calabonga.net/blog)
+
+# Видео по версии 6.0
+
+[Nimble Framework v.6](https://youtu.be/euOLhhNEcwg)
 
 # Видео по версии 3.1 (3.0)
 
