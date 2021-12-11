@@ -1,5 +1,5 @@
 # Информация
-Справочная информация по фреймворку есть в [Wiki](https://github.com/Calabonga/Microservice-Template/wiki) и на [сайте разработчика](https://www.calabonga.net/blog/post/microservice-templates).
+Справочная информация по фреймворку есть в [Wiki](https://github.com/Calabonga/Microservice-Template/wiki) и на [сайте разработчика](https://www.calabonga.net/blog/post/microservice-templates). Видео презентация новой версии [Nimble Framework v.6](https://youtu.be/euOLhhNEcwg).
 
 # Новости
 
