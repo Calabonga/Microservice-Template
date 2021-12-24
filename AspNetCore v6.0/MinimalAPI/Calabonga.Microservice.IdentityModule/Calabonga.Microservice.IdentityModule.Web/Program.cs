@@ -14,9 +14,9 @@ try
                 .CreateLogger();
 
     // created builder
+    
     var builder = WebApplication.CreateBuilder(args);
     builder.Host.UseSerilog();
-
     builder.Services.AddEndpointsToMicroservice(builder, typeof(Program));
     builder.Services.AddMicroserviceDefinitions(builder, typeof(Program));
 

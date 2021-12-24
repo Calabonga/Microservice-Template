@@ -73,8 +73,9 @@ namespace Calabonga.Microservice.IdentityModule.Web.Application.Services
         /// Returns <see cref="ApplicationUser"/> instance after successful registration
         /// </summary>
         /// <param name="model"></param>
+        /// <param name="cancellationToken"></param>
         /// <returns></returns>
-        public async Task<OperationResult<UserProfileViewModel>> RegisterAsync(RegisterViewModel model)
+        public async Task<OperationResult<UserProfileViewModel>> RegisterAsync(RegisterViewModel model, CancellationToken cancellationToken)
         {
             var operation = OperationResult.CreateResult<UserProfileViewModel>();
             var user = _mapper.Map<ApplicationUser>(model);
@@ -95,7 +96,7 @@ namespace Calabonga.Microservice.IdentityModule.Web.Application.Services
                 var profile = _mapper.Map<ApplicationUserProfile>(model);
                 var profileRepository = _unitOfWork.GetRepository<ApplicationUserProfile>();
 
-                await profileRepository.InsertAsync(profile);
+                await profileRepository.InsertAsync(profile, cancellationToken);
                 await _unitOfWork.SaveChangesAsync();
                 if (_unitOfWork.LastSaveChangesResult.IsOk)
                 {
@@ -103,7 +104,7 @@ namespace Calabonga.Microservice.IdentityModule.Web.Application.Services
                     operation.Result = _mapper.Map<UserProfileViewModel>(principal.Identity);
                     operation.AddSuccess(AppData.Messages.UserSuccessfullyRegistered);
                     _logger.LogInformation(operation.GetMetadataMessages());
-                    transaction.Commit();
+                    await transaction.CommitAsync(cancellationToken);
                     _logger.MicroserviceUserRegistration(model.Email);
                     return await Task.FromResult(operation);
                 }
@@ -111,7 +112,7 @@ namespace Calabonga.Microservice.IdentityModule.Web.Application.Services
             var errors = result.Errors.Select(x => $"{x.Code}: {x.Description}");
             operation.AddError(string.Join(", ", errors));
             operation.Exception = _unitOfWork.LastSaveChangesResult.Exception;
-            transaction.Rollback();
+            await transaction.RollbackAsync(cancellationToken);
             _logger.MicroserviceUserRegistration(model.Email, operation.Exception);
             return await Task.FromResult(operation);
         }

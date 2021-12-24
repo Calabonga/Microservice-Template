@@ -1,11 +1,13 @@
 ﻿using AutoMapper;
 using Calabonga.Microservice.IdentityModule.Domain;
+using Calabonga.Microservice.IdentityModule.Web.Application;
 using Calabonga.Microservice.IdentityModule.Web.Endpoints.EventItemsEndpoints.ViewModels;
 using Calabonga.OperationResults;
 using Calabonga.PredicatesBuilder;
 using Calabonga.UnitOfWork;
 using MediatR;
 using System.Linq.Expressions;
+using System.Reflection;
 
 namespace Calabonga.Microservice.IdentityModule.Web.Endpoints.EventItemsEndpoints.Queries
 {
@@ -19,18 +21,23 @@ namespace Calabonga.Microservice.IdentityModule.Web.Endpoints.EventItemsEndpoint
     /// </summary>
     public class GetEventItemPagedRequestHandler : IRequestHandler<GetEventItemPagedRequest, OperationResult<IPagedList<EventItemViewModel>>>
     {
+        private readonly ILogger<GetEventItemPagedRequest> _logger;
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
 
-        public GetEventItemPagedRequestHandler(IUnitOfWork unitOfWork, IMapper mapper)
+        public GetEventItemPagedRequestHandler(
+            ILogger<GetEventItemPagedRequest> logger,
+            IUnitOfWork unitOfWork,
+            IMapper mapper)
         {
+            _logger = logger;
             _unitOfWork = unitOfWork;
             _mapper = mapper;
         }
 
-        public async Task<OperationResult<IPagedList<EventItemViewModel>>> Handle(GetEventItemPagedRequest request,
-            CancellationToken cancellationToken)
+        public async Task<OperationResult<IPagedList<EventItemViewModel>>> Handle(GetEventItemPagedRequest request, CancellationToken cancellationToken)
         {
+            using var _ = _logger.ShowMillisecondsElapsed(nameof(GetEventItemPagedRequestHandler));
             var operation = OperationResult.CreateResult<IPagedList<EventItemViewModel>>();
             var predicate = GetPredicate(request.Search);
             var pagedList = await _unitOfWork.GetRepository<EventItem>()
