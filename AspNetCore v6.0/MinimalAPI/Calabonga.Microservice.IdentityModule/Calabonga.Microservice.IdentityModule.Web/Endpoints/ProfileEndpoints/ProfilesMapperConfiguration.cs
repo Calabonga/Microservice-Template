@@ -43,6 +43,7 @@ namespace Calabonga.Microservice.IdentityModule.Web.Endpoints.ProfileEndpoints
     {
         /// <inheritdoc />
         public ApplicationUserProfileMapperConfiguration()
-            => CreateMap<RegisterViewModel, ApplicationUserProfile>().ForAllOtherMembers(x => x.Ignore());
+            => CreateMap<RegisterViewModel, ApplicationUserProfile>()
+                .ForAllOtherMembers(x => x.Ignore());
     }
 }
