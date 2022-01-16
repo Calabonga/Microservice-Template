@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using Calabonga.Microservice.Module.Infrastructure;
 using Calabonga.Microservice.Module.Web.Endpoints.ProfileEndpoints.ViewModels;
 using Calabonga.Microservices.Core;
 using IdentityModel;
@@ -21,7 +20,6 @@ namespace Calabonga.Microservice.Module.Web.Endpoints.ProfileEndpoints
                 .ForMember(x => x.LastName, o => o.MapFrom(claims => ClaimsHelper.GetValue<string>(claims, ClaimTypes.Surname)))
                 .ForMember(x => x.Roles, o => o.MapFrom(claims => ClaimsHelper.GetValues<string>(claims, JwtClaimTypes.Role)))
                 .ForMember(x => x.Email, o => o.MapFrom(claims => ClaimsHelper.GetValue<string>(claims, JwtClaimTypes.Name)))
-                .ForMember(x => x.PhoneNumber, o => o.MapFrom(claims => ClaimsHelper.GetValue<string>(claims, JwtClaimTypes.PhoneNumber)))
-                .ForAllOtherMembers(x => x.Ignore());
+                .ForMember(x => x.PhoneNumber, o => o.MapFrom(claims => ClaimsHelper.GetValue<string>(claims, JwtClaimTypes.PhoneNumber)));
     }
 }
