@@ -19,21 +19,20 @@ namespace $safeprojectname$.Definitions.ErrorHandling
         public override void ConfigureApplication(IApplicationBuilder app, IWebHostEnvironment env) =>
             app.UseExceptionHandler(error => error.Run(async context =>
             {
-
                 context.Response.ContentType = "application/json";
                 var contextFeature = context.Features.Get<IExceptionHandlerFeature>();
                 if (contextFeature is not null)
                 {
-                // handling validation errors
-                if (contextFeature.Error is ValidationException failures)
+                    // handling validation errors
+                    if (contextFeature.Error is ValidationException failures)
                     {
                         await context.Response.WriteAsync(JsonSerializer.Serialize(failures.Errors));
                         context.Response.StatusCode = StatusCodes.Status400BadRequest;
                         return;
                     }
 
-                // handling all another errors 
-                Log.Error($"Something went wrong in the {contextFeature.Error}");
+                    // handling all another errors 
+                    Log.Error(contextFeature.Error, "Something went wrong in the");
                     context.Response.StatusCode = StatusCodes.Status500InternalServerError;
 
                     if (env.IsDevelopment())

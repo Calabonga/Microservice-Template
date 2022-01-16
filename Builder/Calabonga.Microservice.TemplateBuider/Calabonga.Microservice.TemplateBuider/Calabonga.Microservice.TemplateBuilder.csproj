@@ -18,10 +18,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="appsettings.new.json">
+    <None Update="appsettings.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="appsettings.old.json">
+    <None Update="module-first.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="module-second.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>

@@ -1,4 +1,5 @@
-﻿
+﻿using System.Diagnostics;
+
 namespace $safeprojectname$.Application
 {
     /// <summary>
@@ -37,7 +38,7 @@ namespace $safeprojectname$.Application
             }
         }
 
-        private static readonly Action<Microsoft.Extensions.Logging.ILogger, string, Exception?> UserRegistrationExecute =
+        private static readonly Action<ILogger, string, Exception?> UserRegistrationExecute =
             LoggerMessage.Define<string>(LogLevel.Information, EventNumbers.UserRegistrationId,
                 "User {userName} successfully registred");
 
@@ -72,5 +73,54 @@ namespace $safeprojectname$.Application
                 "The {entityName} saving failed");
 
         #endregion
+
+        #region LogTimeElapsed
+
+        /// <summary>
+        /// Elapsed milliseconds show in debug mode 
+        /// </summary>
+        /// <param name="logger"></param>
+        /// <param name="message"></param>
+        /// <param name="args"></param>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
+        internal static IDisposable ShowMillisecondsElapsed<T>(
+            this ILogger<T> logger,
+            string? message, params object?[] args)
+            => new LogElapsedOperation<T>(logger, LogLevel.Debug, message, args);
+
+        #endregion
+    }
+
+    /// <summary>
+    /// Logging for Elapsed milliseconds when operation executing
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    internal class LogElapsedOperation<T> : IDisposable
+    {
+        private readonly ILogger<T> _logger;
+        private readonly LogLevel _logLevel;
+        private readonly string? _message;
+        private readonly object?[] _arguments;
+        private readonly Stopwatch _stopwatch;
+
+        public LogElapsedOperation(
+            ILogger<T> logger,
+            LogLevel logLevel,
+            string? message,
+            object?[] arguments)
+        {
+            _logger = logger;
+            _logLevel = logLevel;
+            _message = message;
+            _arguments = arguments;
+            _stopwatch = Stopwatch.StartNew();
+        }
+
+        public void Dispose()
+        {
+            _stopwatch.Stop();
+            _logger.Log(_logLevel, $"{_message} completed in {_stopwatch.ElapsedMilliseconds}ms", _arguments);
+        }
     }
 }

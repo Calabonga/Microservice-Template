@@ -28,8 +28,9 @@ namespace $safeprojectname$.Application.Services
         /// Returns <see cref="ApplicationUser"/> instance after successful registration
         /// </summary>
         /// <param name="model"></param>
+        /// <param name="cancellationToken"></param>
         /// <returns></returns>
-        Task<OperationResult<UserProfileViewModel>> RegisterAsync(RegisterViewModel model);
+        Task<OperationResult<UserProfileViewModel>> RegisterAsync(RegisterViewModel model, CancellationToken cancellationToken);
 
         /// <summary>
         /// Returns user profile

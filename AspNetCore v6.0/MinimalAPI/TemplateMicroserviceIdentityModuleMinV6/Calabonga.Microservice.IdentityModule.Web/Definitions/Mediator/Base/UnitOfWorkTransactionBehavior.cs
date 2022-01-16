@@ -9,7 +9,7 @@ namespace $safeprojectname$.Definitions.Mediator.Base
     /// <typeparam name="TRequest"></typeparam>
     /// <typeparam name="TResponse"></typeparam>
     public class TransactionBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse>
-        where TRequest : notnull
+        where TRequest : IRequest<TResponse>
     {
         private readonly IUnitOfWork _unitOfWork;
 

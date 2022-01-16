@@ -1,6 +1,7 @@
-﻿using System;
+﻿using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text.Json;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
 using Serilog;
@@ -16,24 +17,36 @@ namespace Calabonga.Microservice.TemplateBuilder
                 .WriteTo.Console()
                 .WriteTo.File("Application.log")
                 .CreateLogger();
+            
+            Log.Logger.Information("Microservice Template Builder v.1.0.0-beta2");
 
+            var configFile = args.Any() ? args[0] : "appsettings.json";
 
-            if (!args.Any())
+            if (string.IsNullOrWhiteSpace(configFile))
             {
                 Log.Logger.Information("appSettings.json file not provided.");
-                return;
+                //return;
             }
-            Log.Logger.Information($"Using application settings from: {args[0]}");
-            var configFile = args[0];
-            Log.Logger.Information("Microservice Template Builder v.1.0.0-beta2");
-            Log.Logger.Information($"Building configuration from {configFile}");
+            Log.Logger.Information("Using application settings from: {0}", configFile);
+            Log.Logger.Information("Building configuration from {0}", configFile);
             var configuration = new ConfigurationBuilder()
-                .AddJsonFile(configFile, optional: true)
+                .AddJsonFile(configFile, optional: false)
                 .Build();
 
             var projectsTemplates = configuration.Get<MicroserviceTemplates>();
 
-            foreach (var projectsTemplate in projectsTemplates.TemplateOptions)
+            if (projectsTemplates is null)
+            {
+                Log.Logger.Information("{0} file not provided or configuration wrong.", configFile);
+                return;
+            }
+
+            await RunProcessAsync(projectsTemplates.TemplateOptions);
+        }
+
+        private static async Task RunProcessAsync(List<TemplateOptions> templates)
+        {
+            foreach (var projectsTemplate in templates)
             {
                 Log.Logger.Information($"Processing templates for {projectsTemplate.ProjectName}");
                 var templatePath = projectsTemplate.RootDirectoryPath;

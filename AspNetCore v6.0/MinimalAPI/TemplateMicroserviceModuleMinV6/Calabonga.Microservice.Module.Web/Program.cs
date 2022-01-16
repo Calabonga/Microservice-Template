@@ -1,4 +1,25 @@
-﻿using $safeprojectname$.Definitions.Base;
+﻿// --------------------------------------------------------------------
+// Name: Microservice Template for ASP.NET Core API without IdentityServer but using it
+// Author: Calabonga © 2005-2022 Calabonga SOFT
+// Version: 6.0.1
+// Based on: .NET 6.0.x
+// Created Date: 2021-11-09
+// Updated Date 2022-01-16
+// --------------------------------------------------------------------
+// Contacts
+// --------------------------------------------------------------------
+// Blog: https://www.calabonga.net
+// GitHub: https://github.com/Calabonga
+// YouTube: https://youtube.com/sergeicalabonga
+// --------------------------------------------------------------------
+// Description:
+// --------------------------------------------------------------------
+// Minimal API for NET6 used. 
+// This template implements Web API and IdentityServer functionality.
+// Also, support two type Authentications: Cookie and Bearer.
+// --------------------------------------------------------------------
+
+using $safeprojectname$.Definitions.Base;
 using $safeprojectname$.Endpoints.Base;
 using Serilog;
 using Serilog.Events;

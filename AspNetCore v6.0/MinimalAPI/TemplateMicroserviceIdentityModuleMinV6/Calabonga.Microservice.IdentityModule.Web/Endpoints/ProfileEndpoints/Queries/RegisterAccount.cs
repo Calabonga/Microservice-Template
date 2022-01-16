@@ -26,6 +26,6 @@ namespace $safeprojectname$.Endpoints.ProfileEndpoints.Queries
             => _accountService = accountService;
 
         public Task<OperationResult<UserProfileViewModel>> Handle(RegisterAccountRequest request, CancellationToken cancellationToken)
-            => _accountService.RegisterAsync(request.Model);
+            => _accountService.RegisterAsync(request.Model, cancellationToken);
     }
 }
