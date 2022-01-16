@@ -22,7 +22,19 @@ namespace Calabonga.Microservice.IdentityModule.Web.Endpoints.ProfileEndpoints
                 .ForMember(x => x.FirstName, o => o.MapFrom(p => p.FirstName))
                 .ForMember(x => x.LastName, o => o.MapFrom(p => p.LastName))
                 .ForMember(x => x.PhoneNumberConfirmed, o => o.MapFrom(src => true))
-                .ForAllOtherMembers(x => x.Ignore());
+                .ForMember(x => x.ApplicationUserProfileId, o => o.Ignore())
+                .ForMember(x => x.ApplicationUserProfile, o => o.Ignore())
+                .ForMember(x => x.Id, o => o.Ignore())
+                .ForMember(x => x.NormalizedUserName, o => o.Ignore())
+                .ForMember(x => x.NormalizedEmail, o => o.Ignore())
+                .ForMember(x => x.PasswordHash, o => o.Ignore())
+                .ForMember(x => x.SecurityStamp, o => o.Ignore())
+                .ForMember(x => x.ConcurrencyStamp, o => o.Ignore())
+                .ForMember(x => x.PhoneNumber, o => o.Ignore())
+                .ForMember(x => x.TwoFactorEnabled, o => o.Ignore())
+                .ForMember(x => x.LockoutEnd, o => o.Ignore())
+                .ForMember(x => x.LockoutEnabled, o => o.Ignore())
+                .ForMember(x => x.AccessFailedCount, o => o.Ignore());
 
             CreateMap<ClaimsIdentity, UserProfileViewModel>()
                 .ForMember(x => x.Id, o => o.MapFrom(claims => ClaimsHelper.GetValue<Guid>(claims, JwtClaimTypes.Subject)))
@@ -31,8 +43,7 @@ namespace Calabonga.Microservice.IdentityModule.Web.Endpoints.ProfileEndpoints
                 .ForMember(x => x.LastName, o => o.MapFrom(claims => ClaimsHelper.GetValue<string>(claims, ClaimTypes.Surname)))
                 .ForMember(x => x.Roles, o => o.MapFrom(claims => ClaimsHelper.GetValues<string>(claims, JwtClaimTypes.Role)))
                 .ForMember(x => x.Email, o => o.MapFrom(claims => ClaimsHelper.GetValue<string>(claims, JwtClaimTypes.Name)))
-                .ForMember(x => x.PhoneNumber, o => o.MapFrom(claims => ClaimsHelper.GetValue<string>(claims, JwtClaimTypes.PhoneNumber)))
-                .ForAllOtherMembers(x => x.Ignore());
+                .ForMember(x => x.PhoneNumber, o => o.MapFrom(claims => ClaimsHelper.GetValue<string>(claims, JwtClaimTypes.PhoneNumber)));
         }
     }
 
@@ -42,8 +53,14 @@ namespace Calabonga.Microservice.IdentityModule.Web.Endpoints.ProfileEndpoints
     public class ApplicationUserProfileMapperConfiguration : Profile
     {
         /// <inheritdoc />
-        public ApplicationUserProfileMapperConfiguration()
-            => CreateMap<RegisterViewModel, ApplicationUserProfile>()
-                .ForAllOtherMembers(x => x.Ignore());
+        public ApplicationUserProfileMapperConfiguration() =>
+            CreateMap<RegisterViewModel, ApplicationUserProfile>()
+                .ForMember(x => x.Id, o => o.Ignore())
+                .ForMember(x => x.Permissions, o => o.Ignore())
+                .ForMember(x => x.ApplicationUser, o => o.Ignore())
+                .ForMember(x => x.CreatedAt, o => o.Ignore())
+                .ForMember(x => x.CreatedBy, o => o.Ignore())
+                .ForMember(x => x.UpdatedAt, o => o.Ignore())
+                .ForMember(x => x.UpdatedBy, o => o.Ignore());
     }
 }
