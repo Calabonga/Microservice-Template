@@ -11,7 +11,7 @@
     "sourceName": "Calabonga.Microservice.IdentityModule",
     "name": "Microservice with IdentityServer4",
     "description": "Nimble Microservice Framework v6.0. This template gives you a possibility to start developing a microservices system with integrated UI (Swagger), Mediatr, Automapper and Authorization Server (IdentityServer4). Template developed for .NET 6.0",
-    "shortName": "nimbleis4",
+    "shortName": "nimblefullim",
     "tags": {
         "language": "C#",
         "type": "project"
