@@ -153,7 +153,7 @@ Nimble Framework для NET6 Готовится
 
 # Благодарности
 
-Благодарности помощь каналу принимаются:
-https://www.buymeacoffee.com/calabonga
-https://paypal.me/calabonga
-https://www.patreon.com/calabonga
+Благодарности помощь каналу принимаются (Support This Project):
+* https://www.buymeacoffee.com/calabonga
+* https://paypal.me/calabonga
+* https://www.patreon.com/calabonga
