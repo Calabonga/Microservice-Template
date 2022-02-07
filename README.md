@@ -150,3 +150,10 @@ Visual Studio project template for microservice module base on ASP.NET Core
 [Nimble: Создание микросервиса](https://youtu.be/7nw8Naxf2U0)
 
 Nimble Framework для NET6 Готовится
+
+# Благодарности
+
+Благодарности помощь каналу принимаются:
+https://www.buymeacoffee.com/calabonga
+https://paypal.me/calabonga
+https://www.patreon.com/calabonga
