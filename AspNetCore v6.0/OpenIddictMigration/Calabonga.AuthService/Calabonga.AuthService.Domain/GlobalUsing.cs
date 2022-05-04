@@ -1,0 +1,1 @@
+﻿global using Calabonga.AuthService.Domain.Base;
