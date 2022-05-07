@@ -1,9 +1,8 @@
-﻿namespace Calabonga.AuthService.Infrastructure
+﻿namespace Calabonga.AuthService.Infrastructure;
+
+/// <summary>
+/// Application role
+/// </summary>
+public class ApplicationRole : IdentityRole<Guid>
 {
-    /// <summary>
-    /// Application role
-    /// </summary>
-    public class ApplicationRole : IdentityRole<Guid>
-    {
-    }
 }

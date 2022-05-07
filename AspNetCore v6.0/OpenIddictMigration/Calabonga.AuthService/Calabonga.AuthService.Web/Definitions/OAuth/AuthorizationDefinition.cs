@@ -1,9 +1,9 @@
 ﻿using Calabonga.AuthService.Web.Definitions.Base;
 using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.IdentityModel.Protocols.OpenIdConnect;
 using Microsoft.IdentityModel.Tokens;
+using OpenIddict.Abstractions;
 
 namespace Calabonga.AuthService.Web.Definitions.OAuth
 {
@@ -22,9 +22,9 @@ namespace Calabonga.AuthService.Web.Definitions.OAuth
             services
                 .AddAuthentication(options =>
                 {
-                    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-                    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-                    options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+                    options.DefaultScheme = OpenIddictConstants.Schemes.Bearer;
+                    options.DefaultAuthenticateScheme =  OpenIddictConstants.Schemes.Bearer;
+                    options.DefaultChallengeScheme = OpenIddictConstants.Schemes.Bearer;
                 })
                 .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme)
                 .AddJwtBearer(cfg =>

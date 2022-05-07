@@ -14,6 +14,9 @@ namespace Calabonga.AuthService.Web.Definitions.DataSeeding
         /// <param name="app"></param>
         /// <param name="env"></param>
         public override void ConfigureApplication(WebApplication app, IWebHostEnvironment env)
-            => DatabaseInitializer.Seed(app.Services);
+        {
+            DatabaseInitializer.SeedUsers(app.Services);
+            DatabaseInitializer.SeedEvents(app.Services);
+        }
     }
 }
