@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.Extensions.Options;
 
-namespace Calabonga.AuthService.Web.Definitions.OAuth
+namespace Calabonga.AuthService.Web.Definitions.OpenIddict
 {
     /// <summary>
     /// Policy provider
@@ -14,7 +14,7 @@ namespace Calabonga.AuthService.Web.Definitions.OAuth
         public AuthorizationPolicyProvider(IOptions<AuthorizationOptions> options) : base(options) => _options = options.Value;
 
         /// <inheritdoc />
-        public override async Task<AuthorizationPolicy> GetPolicyAsync(string policyName)
+        public override async Task<AuthorizationPolicy?> GetPolicyAsync(string policyName)
         {
             var policyExists = await base.GetPolicyAsync(policyName);
             if (policyExists != null)

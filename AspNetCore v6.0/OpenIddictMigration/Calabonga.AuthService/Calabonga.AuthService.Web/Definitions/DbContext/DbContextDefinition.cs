@@ -1,7 +1,6 @@
 ﻿using Calabonga.AuthService.Infrastructure;
 using Calabonga.AuthService.Web.Definitions.Base;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using OpenIddict.Abstractions;
 
@@ -41,7 +40,14 @@ namespace Calabonga.AuthService.Web.Definitions.DbContext
                 // configure more options if you need
             });
 
-            services.AddIdentity<ApplicationUser, ApplicationRole>()
+            services.AddIdentity<ApplicationUser, ApplicationRole>(options =>
+                {
+                    options.Password.RequireDigit = false;
+                    options.Password.RequireLowercase = false;
+                    options.Password.RequireNonAlphanumeric = false;
+                    options.Password.RequiredLength = 8;
+                    options.Password.RequireUppercase = false;
+                })
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddSignInManager()
                 .AddUserStore<ApplicationUserStore>()

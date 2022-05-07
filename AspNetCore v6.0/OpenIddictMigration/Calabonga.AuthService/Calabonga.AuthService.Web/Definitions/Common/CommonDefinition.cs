@@ -18,6 +18,9 @@ namespace Calabonga.AuthService.Web.Definitions.Common
             services.AddHttpContextAccessor();
             services.AddResponseCaching();
             services.AddMemoryCache();
+
+            services.AddMvc();
+            services.AddRazorPages();
         }
         
         /// <summary>
@@ -26,6 +29,10 @@ namespace Calabonga.AuthService.Web.Definitions.Common
         /// <param name="app"></param>
         /// <param name="env"></param>
         public override void ConfigureApplication(WebApplication app, IWebHostEnvironment env)
-            => app.UseHttpsRedirection();
+        {
+            app.UseHttpsRedirection();
+            app.MapRazorPages();
+            app.MapDefaultControllerRoute();
+        }
     }
 }

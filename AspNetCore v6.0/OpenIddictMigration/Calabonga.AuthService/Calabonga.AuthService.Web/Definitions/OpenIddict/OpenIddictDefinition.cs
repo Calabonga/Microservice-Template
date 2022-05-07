@@ -3,9 +3,9 @@ using Calabonga.AuthService.Web.Definitions.Base;
 using Calabonga.AuthService.Web.HostedServices;
 using OpenIddict.Abstractions;
 
-namespace Calabonga.AuthService.Web.Definitions.OAuth
+namespace Calabonga.AuthService.Web.Definitions.OpenIddict
 {
-    public class OAuthDefinition : AppDefinition
+    public class OpenIddictDefinition : AppDefinition
     {
         public override void ConfigureServices(IServiceCollection services, IConfiguration configuration)
         {
@@ -33,7 +33,7 @@ namespace Calabonga.AuthService.Web.Definitions.OAuth
                     //  => Password flow
                     //  => Refresh token flow
                     options
-                        .AllowAuthorizationCodeFlow().RequireProofKeyForCodeExchange()
+                        .AllowAuthorizationCodeFlow()//.RequireProofKeyForCodeExchange()
                         .AllowPasswordFlow()
                         .AllowClientCredentialsFlow()
                         .AllowRefreshTokenFlow();
@@ -67,7 +67,7 @@ namespace Calabonga.AuthService.Web.Definitions.OAuth
                         OpenIddictConstants.Scopes.Email,
                         OpenIddictConstants.Scopes.Profile,
                         OpenIddictConstants.Scopes.Roles,
-                        "api", 
+                        "api",
                         "custom");
 
                     // Register the signing and encryption credentials.
@@ -78,9 +78,8 @@ namespace Calabonga.AuthService.Web.Definitions.OAuth
                     // Register the ASP.NET Core host and configure the ASP.NET Core options.
                     options
                         .UseAspNetCore()
-                        .EnableTokenEndpointPassthrough();
-                    // .EnableAuthorizationEndpointPassthrough()
-                    // .EnableUserinfoEndpointPassthrough();  
+                        .EnableTokenEndpointPassthrough()
+                        .EnableAuthorizationEndpointPassthrough();
                 })
 
                 // Register the OpenIddict validation components.

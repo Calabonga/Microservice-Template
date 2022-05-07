@@ -1,5 +1,5 @@
 ﻿using Calabonga.AuthService.Web.Definitions.Base;
-using Calabonga.AuthService.Web.Definitions.OAuth;
+using Calabonga.AuthService.Web.Definitions.OpenIddict;
 using Calabonga.AuthService.Web.Endpoints.ProfileEndpoints.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;

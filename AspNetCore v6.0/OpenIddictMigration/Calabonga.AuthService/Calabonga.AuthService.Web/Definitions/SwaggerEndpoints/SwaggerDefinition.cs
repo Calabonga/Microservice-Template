@@ -26,9 +26,9 @@ namespace Calabonga.AuthService.Web.Definitions.SwaggerEndpoints
                     settings.DefaultModelRendering(ModelRendering.Model);
                     settings.DefaultModelsExpandDepth(0);
                     settings.DocExpansion(DocExpansion.None);
-                    settings.OAuthClientId("microservice1");
+                    settings.OAuthClientId("thunder_client");
                     settings.OAuthScopeSeparator(" ");
-                    settings.OAuthClientSecret("secret");
+                    settings.OAuthClientSecret("thunder_client_secret");
                     settings.DisplayRequestDuration();
                     settings.OAuthAppName(_appTitle);
                 });
@@ -78,12 +78,12 @@ namespace Calabonga.AuthService.Web.Definitions.SwaggerEndpoints
                     Type = SecuritySchemeType.OAuth2,
                     Flows = new OpenApiOAuthFlows
                     {
-                        Password = new OpenApiOAuthFlow
+                        AuthorizationCode = new OpenApiOAuthFlow
                         {
                             TokenUrl = new Uri($"{url}/connect/token", UriKind.Absolute),
                             Scopes = new Dictionary<string, string>
                             {
-                                { "api1", "Default scope" }
+                                { "api", "Default scope" }
                             }
                         }
                     }

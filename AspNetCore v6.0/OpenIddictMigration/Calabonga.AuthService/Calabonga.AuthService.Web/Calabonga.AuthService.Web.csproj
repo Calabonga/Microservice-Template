@@ -27,5 +27,9 @@
     <ProjectReference Include="..\Calabonga.AuthService.Infrastructure\Calabonga.AuthService.Infrastructure.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\" />
+  </ItemGroup>
+
 
 </Project>

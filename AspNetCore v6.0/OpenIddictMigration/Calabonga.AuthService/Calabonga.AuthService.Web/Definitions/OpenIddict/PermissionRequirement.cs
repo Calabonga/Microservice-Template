@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 
-namespace Calabonga.AuthService.Web.Definitions.OAuth
+namespace Calabonga.AuthService.Web.Definitions.OpenIddict
 {
     /// <summary>
     /// Permission requirement for user or service authorization

@@ -1,7 +1,7 @@
 ﻿namespace Calabonga.AuthService.Domain.Base
 {
     /// <summary>
-    /// ViewModelBase for WritableController
+    /// ViewModelBase for 
     /// </summary>
     public class ViewModelBase : IViewModel, IHaveId
     {

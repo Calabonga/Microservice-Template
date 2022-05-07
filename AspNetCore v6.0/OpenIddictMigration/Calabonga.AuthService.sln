@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32421.90
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calabonga.AuthService.Web", "Calabonga.AuthService\Calabonga.AuthService.Web\Calabonga.AuthService.Web.csproj", "{82820971-C4DD-4107-A397-29DA07713E28}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Calabonga.AuthService.Web", "Calabonga.AuthService\Calabonga.AuthService.Web\Calabonga.AuthService.Web.csproj", "{82820971-C4DD-4107-A397-29DA07713E28}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calabonga.AuthService.Domain", "Calabonga.AuthService\Calabonga.AuthService.Domain\Calabonga.AuthService.Domain.csproj", "{F295EF4F-9873-49FC-983A-AC494F6131D2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Calabonga.AuthService.Domain", "Calabonga.AuthService\Calabonga.AuthService.Domain\Calabonga.AuthService.Domain.csproj", "{F295EF4F-9873-49FC-983A-AC494F6131D2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calabonga.AuthService.Infrastructure", "Calabonga.AuthService\Calabonga.AuthService.Infrastructure\Calabonga.AuthService.Infrastructure.csproj", "{6B046F2A-2EE0-413D-859E-1D4CD30D066A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Calabonga.AuthService.Infrastructure", "Calabonga.AuthService\Calabonga.AuthService.Infrastructure\Calabonga.AuthService.Infrastructure.csproj", "{6B046F2A-2EE0-413D-859E-1D4CD30D066A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

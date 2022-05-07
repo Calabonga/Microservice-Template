@@ -2,12 +2,12 @@
 using Microsoft.AspNetCore.Authorization;
 using System.Security.Claims;
 
-namespace Calabonga.AuthService.Web.Definitions.OAuth
+namespace Calabonga.AuthService.Web.Definitions.OpenIddict
 {
     /// <summary>
     /// Permission handler for custom authorization implementations
     /// </summary>
-    public class MicroservicePermissionHandler : AuthorizationHandler<PermissionRequirement>
+    public class AppPermissionHandler : AuthorizationHandler<PermissionRequirement>
     {
         /// <inheritdoc />
         protected override Task HandleRequirementAsync(AuthorizationHandlerContext context, PermissionRequirement requirement)

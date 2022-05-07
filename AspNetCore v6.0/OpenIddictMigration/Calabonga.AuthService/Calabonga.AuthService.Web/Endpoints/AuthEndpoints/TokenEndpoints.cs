@@ -8,16 +8,19 @@ using System.Security.Claims;
 
 namespace Calabonga.AuthService.Web.Endpoints.AuthEndpoints;
 
+/// <summary>
+/// // Calabonga: update summary (2022-05-07 01:01 TokenEndpoints)
+/// </summary>
 public class TokenEndpoints : AppDefinition
 {
     public override void ConfigureApplication(WebApplication app, IWebHostEnvironment environment) =>
         app.MapPost("~/connect/token", TokenAsync);
 
-    private IResult TokenAsync(HttpContext httpContext, IOpenIddictScopeManager manager)
+    private async Task<IResult> TokenAsync(HttpContext httpContext, IOpenIddictScopeManager manager)
     {
         var request = httpContext.GetOpenIddictServerRequest() ?? throw new InvalidOperationException("The OpenID Connect request cannot be retrieved.");
 
-        ClaimsPrincipal claimsPrincipal;
+        ClaimsPrincipal? claimsPrincipal;
 
         if (request.IsClientCredentialsGrantType())
         {
@@ -33,12 +36,16 @@ public class TokenEndpoints : AppDefinition
 
             claimsPrincipal.SetScopes(request.GetScopes());
         }
+        else if (request.IsAuthorizationCodeGrantType())
+        {
+            claimsPrincipal = (await httpContext.AuthenticateAsync(OpenIddictServerAspNetCoreDefaults.AuthenticationScheme)).Principal;
+        }
         else
         {
             throw new InvalidOperationException("The specified grant type is not supported.");
         }
 
         // Returning a SignInResult will ask OpenIddict to issue the appropriate access/identity tokens.
-        return Results.SignIn(claimsPrincipal, new AuthenticationProperties(), OpenIddictServerAspNetCoreDefaults.AuthenticationScheme);
+        return Results.SignIn(claimsPrincipal!, new AuthenticationProperties(), OpenIddictServerAspNetCoreDefaults.AuthenticationScheme);
     }
 }

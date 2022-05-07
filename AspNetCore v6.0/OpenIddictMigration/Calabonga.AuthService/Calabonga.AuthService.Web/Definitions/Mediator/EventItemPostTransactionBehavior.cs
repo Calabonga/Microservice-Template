@@ -6,8 +6,8 @@ using MediatR;
 
 namespace Calabonga.AuthService.Web.Definitions.Mediator
 {
-    public class LogPostTransactionBehavior : TransactionBehavior<IRequest<OperationResult<EventItemViewModel>>, OperationResult<EventItemViewModel>>
+    public class EventItemPostTransactionBehavior : TransactionBehavior<IRequest<OperationResult<EventItemViewModel>>, OperationResult<EventItemViewModel>>
     {
-        public LogPostTransactionBehavior(IUnitOfWork unitOfWork) : base(unitOfWork) { }
+        public EventItemPostTransactionBehavior(IUnitOfWork unitOfWork) : base(unitOfWork) { }
     }
 }
