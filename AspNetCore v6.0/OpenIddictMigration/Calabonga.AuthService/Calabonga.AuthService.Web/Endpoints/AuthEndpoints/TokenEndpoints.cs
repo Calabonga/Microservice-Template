@@ -4,6 +4,7 @@ using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Authentication;
 using OpenIddict.Abstractions;
 using OpenIddict.Server.AspNetCore;
+using OpenIddict.Validation.AspNetCore;
 using System.Security.Claims;
 
 namespace Calabonga.AuthService.Web.Endpoints.AuthEndpoints;
@@ -46,6 +47,6 @@ public class TokenEndpoints : AppDefinition
         }
 
         // Returning a SignInResult will ask OpenIddict to issue the appropriate access/identity tokens.
-        return Results.SignIn(claimsPrincipal!, new AuthenticationProperties(), OpenIddictServerAspNetCoreDefaults.AuthenticationScheme);
+        return Results.SignIn(claimsPrincipal!, new AuthenticationProperties(), OpenIddictConstants.Schemes.Bearer);
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Authentication.Cookies;
+using OpenIddict.Abstractions;
 using OpenIddict.Server.AspNetCore;
 
 namespace Calabonga.AuthService.Web.Definitions.OpenIddict

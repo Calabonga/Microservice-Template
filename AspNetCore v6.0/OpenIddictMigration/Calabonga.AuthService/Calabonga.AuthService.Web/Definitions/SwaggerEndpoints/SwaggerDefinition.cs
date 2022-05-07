@@ -81,10 +81,12 @@ namespace Calabonga.AuthService.Web.Definitions.SwaggerEndpoints
                         AuthorizationCode = new OpenApiOAuthFlow
                         {
                             TokenUrl = new Uri($"{url}/connect/token", UriKind.Absolute),
+                            AuthorizationUrl = new Uri($"{url}/connect/authorize", UriKind.Absolute),
                             Scopes = new Dictionary<string, string>
                             {
                                 { "api", "Default scope" }
-                            }
+                            },
+                            
                         }
                     }
                 });
@@ -98,9 +100,7 @@ namespace Calabonga.AuthService.Web.Definitions.SwaggerEndpoints
                                 Type = ReferenceType.SecurityScheme,
                                 Id = "oauth2"
                             },
-                            Scheme = "oauth2",
-                            Name = "Bearer",
-                            In = ParameterLocation.Header,
+                            In = ParameterLocation.Cookie
 
                         },
                         new List<string>()

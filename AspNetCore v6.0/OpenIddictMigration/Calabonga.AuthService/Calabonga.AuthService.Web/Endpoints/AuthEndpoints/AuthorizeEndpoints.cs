@@ -52,15 +52,11 @@ public class AuthorizeEndpoints : AppDefinition
             claim.SetDestinations(OpenIddictConstants.Destinations.AccessToken);
             claims.Add(claim);
         }
-
-        var claimsIdentity = new ClaimsIdentity(claims, OpenIddictServerAspNetCoreDefaults.AuthenticationScheme);
-
-        var claimsPrincipal = new ClaimsPrincipal(claimsIdentity);
-
+        
         // Set requested scopes (this is not done automatically)
-        claimsPrincipal.SetScopes(iddictRequest.GetScopes());
+        result.Principal.SetScopes(iddictRequest.GetScopes());
 
         // Signing in with the OpenIddict authentication scheme trigger OpenIddict to issue a code (which can be exchanged for an access token)
-        return Results.SignIn(claimsPrincipal, new AuthenticationProperties(), OpenIddictServerAspNetCoreDefaults.AuthenticationScheme);
+        return Results.SignIn(result.Principal, result.Properties, OpenIddictServerAspNetCoreDefaults.AuthenticationScheme);
     }
 }

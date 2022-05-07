@@ -2,9 +2,9 @@
 using Calabonga.AuthService.Web.Definitions.OpenIddict;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.IdentityModel.Protocols.OpenIdConnect;
-using Microsoft.IdentityModel.Tokens;
 using OpenIddict.Abstractions;
+using OpenIddict.Server.AspNetCore;
+using OpenIddict.Validation.AspNetCore;
 
 namespace Calabonga.AuthService.Web.Definitions.Authentication;
 
@@ -31,7 +31,13 @@ public class AuthorizationDefinition : AppDefinition
             {
                 options.LoginPath = "/Connect/Login";
                 options.LogoutPath = "/Connect/Logout";
-            });
+            })
+            // .AddJwtBearer(options =>
+            // {
+            // options.Authority = "https://localhost:20001";
+            // options.Audience = "https://localhost:20001";
+            // })
+            ;
 
         services.AddAuthorization();
         services.AddSingleton<IAuthorizationPolicyProvider, AuthorizationPolicyProvider>();
