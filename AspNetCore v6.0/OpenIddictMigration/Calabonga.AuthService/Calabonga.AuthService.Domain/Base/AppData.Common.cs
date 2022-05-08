@@ -11,6 +11,11 @@
         public const string ServiceName = "Module";
 
         /// <summary>
+        /// Default policy name
+        /// </summary>
+        public const string PolicyName = "CorsPolicy";
+
+        /// <summary>
         /// "SystemAdministrator"
         /// </summary>
         public const string SystemAdministratorRoleName = "Administrator";
@@ -19,6 +24,7 @@
         /// "BusinessOwner"
         /// </summary>
         public const string ManagerRoleName = "Manager";
+
 
         /// <summary>
         /// Roles

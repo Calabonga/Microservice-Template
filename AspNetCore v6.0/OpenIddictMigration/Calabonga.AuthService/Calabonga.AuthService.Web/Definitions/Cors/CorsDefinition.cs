@@ -1,4 +1,5 @@
-﻿using Calabonga.AuthService.Web.Definitions.Base;
+﻿using Calabonga.AuthService.Domain.Base;
+using Calabonga.AuthService.Web.Definitions.Base;
 
 namespace Calabonga.AuthService.Web.Definitions.Cors
 {
@@ -17,7 +18,7 @@ namespace Calabonga.AuthService.Web.Definitions.Cors
             var origins = configuration.GetSection("Cors")?.GetSection("Origins")?.Value?.Split(',');
             services.AddCors(options =>
             {
-                options.AddPolicy("CorsPolicy", builder =>
+                options.AddPolicy(AppData.PolicyName, builder =>
                 {
                     builder.AllowAnyHeader();
                     builder.AllowAnyMethod();

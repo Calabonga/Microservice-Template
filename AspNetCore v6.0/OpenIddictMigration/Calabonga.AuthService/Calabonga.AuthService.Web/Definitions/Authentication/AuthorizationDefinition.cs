@@ -27,50 +27,23 @@ public class AuthorizationDefinition : AppDefinition
         services
             .AddAuthentication(options =>
             {
-                // options.DefaultAuthenticateScheme = OpenIddictValidationAspNetCoreDefaults.AuthenticationScheme;
-                // options.DefaultChallengeScheme = OpenIddictValidationAspNetCoreDefaults.AuthenticationScheme;
-                // options.DefaultScheme = OpenIddictValidationAspNetCoreDefaults.AuthenticationScheme;
-                
                 options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
                 options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
                 options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
-                
-                // options.DefaultScheme = OpenIddictServerAspNetCoreDefaults.AuthenticationScheme;
-                // options.DefaultAuthenticateScheme =  OpenIddictServerAspNetCoreDefaults.AuthenticationScheme;
-                // options.DefaultChallengeScheme =OpenIddictServerAspNetCoreDefaults.AuthenticationScheme;
             })
             .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme, options =>
             {
                 options.LoginPath = "/connect/login";
                 options.LogoutPath = "/connect/logout";
             })
-            .AddJwtBearer(cfg =>
-            {
-                cfg.Audience = "https://localhost:4200/";
-                cfg.Authority = "https://localhost:5000/";
-                cfg.RequireHttpsMetadata = false;
-                cfg.SaveToken = true;
-                cfg.TokenValidationParameters = new TokenValidationParameters();
-                cfg.Configuration = new OpenIdConnectConfiguration();  
-            });
-
-
-        //services
-        //    .AddAuthentication(options =>
-        //    {
-        //        options.DefaultScheme = OpenIddictConstants.Schemes.Bearer;
-        //        options.DefaultAuthenticateScheme = OpenIddictConstants.Schemes.Bearer;
-        //        options.DefaultChallengeScheme = OpenIddictConstants.Schemes.Bearer;
-        //    })
-        //    .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme, options =>
-        //    {
-        //        options.LoginPath = "/Connect/Login";
-        //        options.LogoutPath = "/Connect/Logout";
-        //    })
-            // .AddJwtBearer(options =>
+            // .AddJwtBearer(cfg =>
             // {
-            // options.Authority = "https://localhost:20001";
-            // options.Audience = "https://localhost:20001";
+                // cfg.Audience = "https://localhost:4200/";
+                // cfg.Authority = "https://localhost:5000/";
+                // cfg.RequireHttpsMetadata = false;
+                // cfg.SaveToken = true;
+                // cfg.TokenValidationParameters = new TokenValidationParameters();
+                // cfg.Configuration = new OpenIdConnectConfiguration();  
             // })
             ;
 
