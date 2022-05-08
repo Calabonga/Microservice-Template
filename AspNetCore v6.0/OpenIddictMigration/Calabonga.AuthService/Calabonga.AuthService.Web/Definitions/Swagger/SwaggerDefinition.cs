@@ -1,4 +1,5 @@
-﻿using Calabonga.AuthService.Web.Definitions.Base;
+﻿using Calabonga.AuthService.Web.Application;
+using Calabonga.AuthService.Web.Definitions.Base;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Abstractions;
 using Microsoft.OpenApi.Models;

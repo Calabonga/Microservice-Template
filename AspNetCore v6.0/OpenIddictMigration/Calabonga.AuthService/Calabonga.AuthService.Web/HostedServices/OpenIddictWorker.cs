@@ -42,6 +42,9 @@ namespace Calabonga.AuthService.Web.HostedServices
             
             if (await manager.FindByClientIdAsync("authorization-flow", cancellationToken) is null)
             {
+                var url = _serviceProvider.GetRequiredService<IConfiguration>().GetValue<string>("AuthServer:Url");
+
+
                 await manager.CreateAsync(new OpenIddictApplicationDescriptor
                 {
                     ClientId = "thunder_client",
@@ -49,7 +52,7 @@ namespace Calabonga.AuthService.Web.HostedServices
                     DisplayName = "Thunder Client with Authorization Code Flow demonstration",
                     RedirectUris = {
                         new Uri("https://www.thunderclient.com/oauth/callback"),
-                        new Uri("https://localhost:20001/swagger/oauth2-redirect.html")
+                        new Uri($"{url}/swagger/oauth2-redirect.html")
                     },
 
                     Permissions =

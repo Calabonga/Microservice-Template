@@ -1,4 +1,4 @@
-﻿namespace Calabonga.AuthService.Web
+﻿namespace Calabonga.AuthService.Web.Application
 {
     /// <summary>
     /// Swagger controller group attribute

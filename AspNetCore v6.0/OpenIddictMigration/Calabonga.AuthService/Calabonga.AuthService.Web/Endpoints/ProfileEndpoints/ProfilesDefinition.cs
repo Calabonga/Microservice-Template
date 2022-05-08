@@ -1,4 +1,5 @@
-﻿using Calabonga.AuthService.Web.Definitions.Base;
+﻿using Calabonga.AuthService.Web.Application;
+using Calabonga.AuthService.Web.Definitions.Base;
 using Calabonga.AuthService.Web.Definitions.OpenIddict;
 using Calabonga.AuthService.Web.Endpoints.ProfileEndpoints.Queries;
 using MediatR;
