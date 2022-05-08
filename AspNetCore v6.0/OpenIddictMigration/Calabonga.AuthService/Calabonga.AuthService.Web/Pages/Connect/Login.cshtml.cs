@@ -53,9 +53,14 @@ namespace Calabonga.AuthService.Web.Pages.Connect
             var signInResult = await _signInManager.PasswordSignInAsync(user, Input.Password, true, false);
             if (signInResult.Succeeded)
             {
-                var cla = await _accountService.GetUserClaimsByIdAsync(user.Id.ToString());
-                await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(cla));
-                return Redirect(Input.ReturnUrl);
+                var userClaims = await _accountService.GetUserClaimsByIdAsync(user.Id.ToString());
+                await HttpContext.SignInAsync(new ClaimsPrincipal(userClaims));
+                
+                if (Url.IsLocalUrl(ReturnUrl))
+                {
+                    return Redirect(ReturnUrl);
+                }
+                return RedirectToPage("/swagger");
             }
 
             ModelState.AddModelError("UserName", "Пользователь не найден");

@@ -43,12 +43,13 @@ public class AuthorizeEndpoints : AppDefinition
         // Create a new claims principal
         var claims = new List<Claim>
         {
-            new Claim(OpenIddictConstants.Claims.Subject, result.Principal!.Identity!.Name),
+            new Claim(OpenIddictConstants.Claims.Subject, result.Principal!.Identity!.Name!),
             new Claim("some claim", "some value").SetDestinations(OpenIddictConstants.Destinations.AccessToken)
         };
 
         foreach (var claim in result.Principal.Claims)
         {
+            // Calabonga: refactor later (2022-05-08 06:59 AuthorizeEndpoints)
             claim.SetDestinations(OpenIddictConstants.Destinations.AccessToken);
             claims.Add(claim);
         }

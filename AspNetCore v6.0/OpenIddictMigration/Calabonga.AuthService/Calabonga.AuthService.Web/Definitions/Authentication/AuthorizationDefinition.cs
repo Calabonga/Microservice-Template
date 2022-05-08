@@ -1,10 +1,12 @@
 ﻿using Calabonga.AuthService.Web.Definitions.Base;
 using Calabonga.AuthService.Web.Definitions.OpenIddict;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.IdentityModel.Protocols.OpenIdConnect;
+using Microsoft.IdentityModel.Tokens;
 using OpenIddict.Abstractions;
 using OpenIddict.Server.AspNetCore;
-using OpenIddict.Validation.AspNetCore;
 
 namespace Calabonga.AuthService.Web.Definitions.Authentication;
 
@@ -20,18 +22,41 @@ public class AuthorizationDefinition : AppDefinition
     /// <param name="configuration"></param>
     public override void ConfigureServices(IServiceCollection services, IConfiguration configuration)
     {
+
         services
             .AddAuthentication(options =>
             {
-                options.DefaultScheme = OpenIddictConstants.Schemes.Bearer;
-                options.DefaultAuthenticateScheme = OpenIddictConstants.Schemes.Bearer;
-                options.DefaultChallengeScheme = OpenIddictConstants.Schemes.Bearer;
+                //options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                // options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+                // options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultScheme = OpenIddictServerAspNetCoreDefaults.AuthenticationScheme;
+                options.DefaultAuthenticateScheme =  OpenIddictServerAspNetCoreDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme =OpenIddictServerAspNetCoreDefaults.AuthenticationScheme;
             })
-            .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme, options =>
+            .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme)
+            .AddJwtBearer(cfg =>
             {
-                options.LoginPath = "/Connect/Login";
-                options.LogoutPath = "/Connect/Logout";
-            })
+                cfg.Audience = "https://localhost:4200/";
+                cfg.Authority = "https://localhost:5000/";
+                cfg.RequireHttpsMetadata = false;
+                cfg.SaveToken = true;
+                cfg.TokenValidationParameters = new TokenValidationParameters();
+                cfg.Configuration = new OpenIdConnectConfiguration();  
+            });
+
+
+        //services
+        //    .AddAuthentication(options =>
+        //    {
+        //        options.DefaultScheme = OpenIddictConstants.Schemes.Bearer;
+        //        options.DefaultAuthenticateScheme = OpenIddictConstants.Schemes.Bearer;
+        //        options.DefaultChallengeScheme = OpenIddictConstants.Schemes.Bearer;
+        //    })
+        //    .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme, options =>
+        //    {
+        //        options.LoginPath = "/Connect/Login";
+        //        options.LogoutPath = "/Connect/Logout";
+        //    })
             // .AddJwtBearer(options =>
             // {
             // options.Authority = "https://localhost:20001";
