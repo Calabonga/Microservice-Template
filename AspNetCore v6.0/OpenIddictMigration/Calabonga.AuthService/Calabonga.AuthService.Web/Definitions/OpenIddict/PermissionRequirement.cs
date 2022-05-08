@@ -1,17 +1,16 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 
-namespace Calabonga.AuthService.Web.Definitions.OpenIddict
-{
-    /// <summary>
-    /// Permission requirement for user or service authorization
-    /// </summary>
-    public class PermissionRequirement : IAuthorizationRequirement
-    {
-        public PermissionRequirement(string permissionName) => PermissionName = permissionName;
+namespace Calabonga.AuthService.Web.Definitions.OpenIddict;
 
-        /// <summary>
-        /// Permission name
-        /// </summary>
-        public string PermissionName { get; }
-    }
+/// <summary>
+/// Permission requirement for user or service authorization
+/// </summary>
+public class PermissionRequirement : IAuthorizationRequirement
+{
+    public PermissionRequirement(string permissionName) => PermissionName = permissionName;
+
+    /// <summary>
+    /// Permission name
+    /// </summary>
+    public string PermissionName { get; }
 }

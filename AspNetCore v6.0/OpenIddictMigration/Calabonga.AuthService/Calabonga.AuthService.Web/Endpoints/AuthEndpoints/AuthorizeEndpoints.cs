@@ -9,17 +9,17 @@ using System.Security.Claims;
 namespace Calabonga.AuthService.Web.Endpoints.AuthEndpoints;
 
 /// <summary>
-/// // Calabonga: update summary (2022-05-07 01:01 AuthorizeEndpoints)
+/// Authorize Endpoint for OpenIddict
 /// You can test your authorization server https://oidcdebugger.com/
 /// </summary>
 public class AuthorizeEndpoints : AppDefinition
 {
     public override void ConfigureApplication(WebApplication app, IWebHostEnvironment environment)
     {
-        app.MapGet("~/connect/authorize", AuthorizeAsync);
-        app.MapPost("~/connect/authorize", AuthorizeAsync);
+        app.MapGet("~/connect/authorize", AuthorizeAsync).ExcludeFromDescription();
+        app.MapPost("~/connect/authorize", AuthorizeAsync).ExcludeFromDescription();
     }
-
+    
     private async Task<IResult> AuthorizeAsync(HttpContext httpContext, IOpenIddictScopeManager manager)
     {
         var request = httpContext.Request;

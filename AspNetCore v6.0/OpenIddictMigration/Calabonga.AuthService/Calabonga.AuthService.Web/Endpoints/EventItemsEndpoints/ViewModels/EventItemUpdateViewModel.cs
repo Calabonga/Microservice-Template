@@ -1,13 +1,12 @@
 ﻿using Calabonga.AuthService.Domain.Base;
 
-namespace Calabonga.AuthService.Web.Endpoints.EventItemsEndpoints.ViewModels
+namespace Calabonga.AuthService.Web.Endpoints.EventItemsEndpoints.ViewModels;
+
+public class EventItemUpdateViewModel : ViewModelBase
 {
-    public class EventItemUpdateViewModel : ViewModelBase
-    {
-        public string Logger { get; set; } = null!;
+    public string Logger { get; set; } = null!;
 
-        public string Level { get; set; } = null!;
+    public string Level { get; set; } = null!;
 
-        public string Message { get; set; } = null!;
-    }
+    public string Message { get; set; } = null!;
 }

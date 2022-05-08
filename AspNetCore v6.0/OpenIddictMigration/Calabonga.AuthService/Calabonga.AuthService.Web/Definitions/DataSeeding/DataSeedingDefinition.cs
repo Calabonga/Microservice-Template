@@ -1,22 +1,21 @@
 ﻿using Calabonga.AuthService.Infrastructure.DatabaseInitialization;
 using Calabonga.AuthService.Web.Definitions.Base;
 
-namespace Calabonga.AuthService.Web.Definitions.DataSeeding
+namespace Calabonga.AuthService.Web.Definitions.DataSeeding;
+
+/// <summary>
+/// Seeding DbContext for default data for EntityFrameworkCore
+/// </summary>
+public class DataSeedingDefinition : AppDefinition
 {
     /// <summary>
-    /// Seeding DbContext for default data for EntityFrameworkCore
+    /// Configure application for current application
     /// </summary>
-    public class DataSeedingDefinition : AppDefinition
+    /// <param name="app"></param>
+    /// <param name="env"></param>
+    public override void ConfigureApplication(WebApplication app, IWebHostEnvironment env)
     {
-        /// <summary>
-        /// Configure application for current application
-        /// </summary>
-        /// <param name="app"></param>
-        /// <param name="env"></param>
-        public override void ConfigureApplication(WebApplication app, IWebHostEnvironment env)
-        {
-            DatabaseInitializer.SeedUsers(app.Services);
-            DatabaseInitializer.SeedEvents(app.Services);
-        }
+        DatabaseInitializer.SeedUsers(app.Services);
+        DatabaseInitializer.SeedEvents(app.Services);
     }
 }

@@ -4,10 +4,9 @@ using Calabonga.OperationResults;
 using Calabonga.UnitOfWork;
 using MediatR;
 
-namespace Calabonga.AuthService.Web.Definitions.Mediator
+namespace Calabonga.AuthService.Web.Definitions.Mediator;
+
+public class EventItemPostTransactionBehavior : TransactionBehavior<IRequest<OperationResult<EventItemViewModel>>, OperationResult<EventItemViewModel>>
 {
-    public class EventItemPostTransactionBehavior : TransactionBehavior<IRequest<OperationResult<EventItemViewModel>>, OperationResult<EventItemViewModel>>
-    {
-        public EventItemPostTransactionBehavior(IUnitOfWork unitOfWork) : base(unitOfWork) { }
-    }
+    public EventItemPostTransactionBehavior(IUnitOfWork unitOfWork) : base(unitOfWork) { }
 }

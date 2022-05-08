@@ -1,13 +1,12 @@
-﻿namespace Calabonga.AuthService.Domain.Base
+﻿namespace Calabonga.AuthService.Domain.Base;
+
+/// <summary>
+/// Identifier
+/// </summary>
+public abstract class Identity : IHaveId
 {
     /// <summary>
     /// Identifier
     /// </summary>
-    public abstract class Identity : IHaveId
-    {
-        /// <summary>
-        /// Identifier
-        /// </summary>
-        public Guid Id { get; set; }
-    }
+    public Guid Id { get; set; }
 }

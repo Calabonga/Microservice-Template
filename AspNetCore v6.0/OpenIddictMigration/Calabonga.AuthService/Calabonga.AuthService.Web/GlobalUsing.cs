@@ -21,6 +21,4 @@
 //global using Serilog;
 //global using System.Text.Json;
 
-namespace Calabonga.AuthService.Web
-{
-}
+namespace Calabonga.AuthService.Web;

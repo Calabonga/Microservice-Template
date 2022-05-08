@@ -3,13 +3,8 @@ using Calabonga.AuthService.Web.Definitions.OpenIddict;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.IdentityModel.Protocols.OpenIdConnect;
-using Microsoft.IdentityModel.Tokens;
-using OpenIddict.Abstractions;
-using OpenIddict.Server.AspNetCore;
-using OpenIddict.Validation.AspNetCore;
 
-namespace Calabonga.AuthService.Web.Definitions.Authentication;
+namespace Calabonga.AuthService.Web.Definitions.Identity;
 
 /// <summary>
 /// Authorization Policy registration

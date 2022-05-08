@@ -2,7 +2,7 @@
 using System.Security.Claims;
 using System.Security.Principal;
 
-namespace Calabonga.AuthService.Web.Definitions.Authentication;
+namespace Calabonga.AuthService.Web.Definitions.Identity;
 
 /// <summary>
 /// Identity helper for Requests operations

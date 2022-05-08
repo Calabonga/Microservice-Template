@@ -1,41 +1,40 @@
-﻿namespace Calabonga.AuthService.Domain.Base
+﻿namespace Calabonga.AuthService.Domain.Base;
+
+/// <summary>
+/// Static data container
+/// </summary>
+public static partial class AppData
 {
     /// <summary>
-    /// Static data container
+    /// Current service name
     /// </summary>
-    public static partial class AppData
+    public const string ServiceName = "Identity Microservice";
+
+    /// <summary>
+    /// Default policy name
+    /// </summary>
+    public const string PolicyName = "CorsPolicy";
+
+    /// <summary>
+    /// "SystemAdministrator"
+    /// </summary>
+    public const string SystemAdministratorRoleName = "Administrator";
+
+    /// <summary>
+    /// "BusinessOwner"
+    /// </summary>
+    public const string ManagerRoleName = "Manager";
+
+
+    /// <summary>
+    /// Roles
+    /// </summary>
+    public static IEnumerable<string> Roles
     {
-        /// <summary>
-        /// Current service name
-        /// </summary>
-        public const string ServiceName = "Module";
-
-        /// <summary>
-        /// Default policy name
-        /// </summary>
-        public const string PolicyName = "CorsPolicy";
-
-        /// <summary>
-        /// "SystemAdministrator"
-        /// </summary>
-        public const string SystemAdministratorRoleName = "Administrator";
-
-        /// <summary>
-        /// "BusinessOwner"
-        /// </summary>
-        public const string ManagerRoleName = "Manager";
-
-
-        /// <summary>
-        /// Roles
-        /// </summary>
-        public static IEnumerable<string> Roles
+        get
         {
-            get
-            {
-                yield return SystemAdministratorRoleName;
-                yield return ManagerRoleName;
-            }
+            yield return SystemAdministratorRoleName;
+            yield return ManagerRoleName;
         }
     }
 }

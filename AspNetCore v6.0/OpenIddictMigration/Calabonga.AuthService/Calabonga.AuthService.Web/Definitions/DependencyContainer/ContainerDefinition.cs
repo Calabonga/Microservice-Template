@@ -1,5 +1,6 @@
 ﻿using Calabonga.AuthService.Web.Application.Services;
 using Calabonga.AuthService.Web.Definitions.Base;
+using Calabonga.AuthService.Web.Definitions.Identity;
 
 namespace Calabonga.AuthService.Web.Definitions.DependencyContainer;
 

@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Calabonga.AuthService.Domain.Base;
 using Calabonga.AuthService.Infrastructure;
+using Calabonga.AuthService.Web.Definitions.Identity;
 using Calabonga.AuthService.Web.Endpoints.ProfileEndpoints.ViewModels;
 using Calabonga.Microservices.Core.Exceptions;
 using Calabonga.Microservices.Core.Extensions;

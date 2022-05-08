@@ -1,13 +1,12 @@
-﻿namespace Calabonga.AuthService.Domain.Base
+﻿namespace Calabonga.AuthService.Domain.Base;
+
+/// <summary>
+/// ViewModelBase for 
+/// </summary>
+public class ViewModelBase : IViewModel, IHaveId
 {
     /// <summary>
-    /// ViewModelBase for 
+    /// Identifier
     /// </summary>
-    public class ViewModelBase : IViewModel, IHaveId
-    {
-        /// <summary>
-        /// Identifier
-        /// </summary>
-        public Guid Id { get; set; }
-    }
+    public Guid Id { get; set; }
 }

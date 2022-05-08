@@ -2,7 +2,6 @@
 using Calabonga.AuthService.Web.Definitions.Base;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Authentication.Cookies;
 using OpenIddict.Abstractions;
 using OpenIddict.Server.AspNetCore;
 using System.Security.Claims;
@@ -10,12 +9,12 @@ using System.Security.Claims;
 namespace Calabonga.AuthService.Web.Endpoints.AuthEndpoints;
 
 /// <summary>
-/// // Calabonga: update summary (2022-05-07 01:01 TokenEndpoints)
+/// Token Endpoint for OpenIddict
 /// </summary>
 public class TokenEndpoints : AppDefinition
 {
     public override void ConfigureApplication(WebApplication app, IWebHostEnvironment environment) =>
-        app.MapPost("~/connect/token", TokenAsync);
+        app.MapPost("~/connect/token", TokenAsync).ExcludeFromDescription();
 
     private async Task<IResult> TokenAsync(HttpContext httpContext, IOpenIddictScopeManager manager)
     {
