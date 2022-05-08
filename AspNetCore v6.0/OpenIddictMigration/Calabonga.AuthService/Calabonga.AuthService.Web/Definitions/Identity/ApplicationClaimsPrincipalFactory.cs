@@ -6,7 +6,7 @@ using System.Security.Claims;
 namespace Calabonga.AuthService.Web.Definitions.Identity;
 
 /// <summary>
-/// // Calabonga: move to folder (2022-05-07 11:11 IAccountService)
+/// User Claims Principal Factory override from Microsoft Identity framework
 /// </summary>
 public class ApplicationClaimsPrincipalFactory : UserClaimsPrincipalFactory<ApplicationUser, ApplicationRole>
 {
@@ -15,10 +15,7 @@ public class ApplicationClaimsPrincipalFactory : UserClaimsPrincipalFactory<Appl
         UserManager<ApplicationUser> userManager,
         RoleManager<ApplicationRole> roleManager,
         IOptions<IdentityOptions> optionsAccessor)
-        : base(userManager, roleManager, optionsAccessor)
-    {
-
-    }
+        : base(userManager, roleManager, optionsAccessor) { }
 
     /// <summary>
     /// Creates a <see cref="T:System.Security.Claims.ClaimsPrincipal" /> from an user asynchronously.

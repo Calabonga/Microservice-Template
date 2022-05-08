@@ -4,7 +4,6 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using OpenIddict.Abstractions;
 using OpenIddict.Server.AspNetCore;
-using System.Security.Claims;
 
 namespace Calabonga.AuthService.Web.Endpoints.AuthEndpoints;
 
@@ -19,7 +18,7 @@ public class AuthorizeEndpoints : AppDefinition
         app.MapGet("~/connect/authorize", AuthorizeAsync).ExcludeFromDescription();
         app.MapPost("~/connect/authorize", AuthorizeAsync).ExcludeFromDescription();
     }
-    
+
     private async Task<IResult> AuthorizeAsync(HttpContext httpContext, IOpenIddictScopeManager manager)
     {
         var request = httpContext.Request;
@@ -33,27 +32,17 @@ public class AuthorizeEndpoints : AppDefinition
         {
             return Results.Challenge(new AuthenticationProperties
             {
-                RedirectUri = request.PathBase + request.Path + QueryString.Create(request.HasFormContentType
-                    ? request.Form.ToList()
-                    : request.Query.ToList())
+                RedirectUri = request.PathBase + request.Path + QueryString.Create(request.HasFormContentType ? request.Form.ToList() : request.Query.ToList())
             },
                 new List<string> { CookieAuthenticationDefaults.AuthenticationScheme });
         }
 
-        // Create a new claims principal
-        var claims = new List<Claim>
-        {
-            new Claim(OpenIddictConstants.Claims.Subject, result.Principal!.Identity!.Name!),
-            new Claim("some claim", "some value").SetDestinations(OpenIddictConstants.Destinations.AccessToken)
-        };
 
         foreach (var claim in result.Principal.Claims)
         {
-            // Calabonga: refactor later (2022-05-08 06:59 AuthorizeEndpoints)
             claim.SetDestinations(OpenIddictConstants.Destinations.AccessToken);
-            claims.Add(claim);
         }
-        
+
         // Set requested scopes (this is not done automatically)
         result.Principal.SetScopes(iddictRequest.GetScopes());
 
