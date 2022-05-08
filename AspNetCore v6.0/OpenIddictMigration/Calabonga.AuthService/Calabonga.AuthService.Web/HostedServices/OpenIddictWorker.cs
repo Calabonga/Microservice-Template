@@ -21,6 +21,8 @@ namespace Calabonga.AuthService.Web.HostedServices
 
             if (await manager.FindByClientIdAsync("service-to-service", cancellationToken) is null)
             {
+                var url = _serviceProvider.GetRequiredService<IConfiguration>().GetValue<string>("AuthServer:Url");
+
                 await manager.CreateAsync(new OpenIddictApplicationDescriptor
                 {
                     ClientId = "client_id_sts",
@@ -66,6 +68,7 @@ namespace Calabonga.AuthService.Web.HostedServices
 
                         // Scope permissions
                         OpenIddictConstants.Permissions.Prefixes.Scope + "api",
+                        OpenIddictConstants.Permissions.Prefixes.Scope + "custom",
 
                         // Response types
                         OpenIddictConstants.Permissions.ResponseTypes.Code,

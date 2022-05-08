@@ -22,15 +22,16 @@ public class TokenEndpoints : AppDefinition
         var request = httpContext.GetOpenIddictServerRequest() ?? throw new InvalidOperationException("The OpenID Connect request cannot be retrieved.");
 
         ClaimsPrincipal? claimsPrincipal;
+        AuthenticationProperties? properties = null;
 
-        if (request.IsClientCredentialsGrantType())
+        if (request.IsClientCredentialsGrantType() || request.IsPasswordGrantType())
         {
             var identity = new ClaimsIdentity(OpenIddictServerAspNetCoreDefaults.AuthenticationScheme);
 
             // Subject or sub is a required field, we use the client id as the subject identifier here.
             identity.AddClaim(OpenIddictConstants.Claims.Subject, AppData.ServiceName);
 
-            // Add some claim, don't forget to add destination otherwise it won't be added to the access token.
+            // Don't forget to add destination otherwise it won't be added to the access token.
             identity.AddClaim("nimble", "framework", OpenIddictConstants.Destinations.AccessToken);
 
             claimsPrincipal = new ClaimsPrincipal(identity);
@@ -39,7 +40,9 @@ public class TokenEndpoints : AppDefinition
         }
         else if (request.IsAuthorizationCodeGrantType())
         {
-            claimsPrincipal = (await httpContext.AuthenticateAsync(OpenIddictServerAspNetCoreDefaults.AuthenticationScheme)).Principal;
+            var authenticateResult = await httpContext.AuthenticateAsync(OpenIddictServerAspNetCoreDefaults.AuthenticationScheme);
+            properties = authenticateResult.Properties;
+            claimsPrincipal = authenticateResult.Principal;
         }
         else
         {
@@ -47,6 +50,6 @@ public class TokenEndpoints : AppDefinition
         }
 
         // Returning a SignInResult will ask OpenIddict to issue the appropriate access/identity tokens.
-        return Results.SignIn(claimsPrincipal!, new AuthenticationProperties(), OpenIddictServerAspNetCoreDefaults.AuthenticationScheme);
+        return Results.SignIn(claimsPrincipal!, properties ?? new AuthenticationProperties(), OpenIddictServerAspNetCoreDefaults.AuthenticationScheme);
     }
 }

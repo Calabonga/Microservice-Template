@@ -17,22 +17,24 @@ namespace Calabonga.AuthService.Web.Definitions.Swagger
         {
             if (app.Environment.IsDevelopment())
             {
+                var url =  app.Services.GetRequiredService<IConfiguration>().GetValue<string>("AuthServer:Url");
+
                 app.UseSwagger();
                 app.UseSwaggerUI(settings =>
                 {
                     settings.SwaggerEndpoint(_swaggerConfig, $"{_appTitle} v.{_appVersion}");
                     settings.HeadContent = $"{ThisAssembly.Git.Branch.ToUpper()} {ThisAssembly.Git.Commit.ToUpper()}";
                     settings.DocumentTitle = $"{_appTitle}";
-                    settings.OAuth2RedirectUrl("https://localhost:20001/swagger/oauth2-redirect.html");
                     settings.DefaultModelExpandDepth(0);
                     settings.DefaultModelRendering(ModelRendering.Model);
                     settings.DefaultModelsExpandDepth(0);
                     settings.DocExpansion(DocExpansion.None);
-                    settings.OAuthClientId("thunder_client");
                     settings.OAuthScopeSeparator(" ");
-                    settings.OAuthClientSecret("thunder_client_secret");
+                    settings.OAuthClientId("client_id_code");
+                    settings.OAuthClientSecret("client_secret_code");
                     settings.DisplayRequestDuration();
                     settings.OAuthAppName(_appTitle);
+                    settings.OAuth2RedirectUrl($"{url}/swagger/oauth2-redirect.html");
                 });
             }
         }
@@ -102,7 +104,8 @@ namespace Calabonga.AuthService.Web.Definitions.Swagger
                                 Type = ReferenceType.SecurityScheme,
                                 Id = "oauth2"
                             },
-                            In = ParameterLocation.Cookie
+                            In = ParameterLocation.Cookie,
+                            Type = SecuritySchemeType.OAuth2
 
                         },
                         new List<string>()
