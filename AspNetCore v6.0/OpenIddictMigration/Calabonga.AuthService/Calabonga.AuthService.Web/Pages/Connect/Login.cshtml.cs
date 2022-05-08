@@ -54,7 +54,7 @@ namespace Calabonga.AuthService.Web.Pages.Connect
             if (signInResult.Succeeded)
             {
                 var userClaims = await _accountService.GetUserClaimsByIdAsync(user.Id.ToString());
-                await HttpContext.SignInAsync(new ClaimsPrincipal(userClaims));
+                await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(userClaims));
                 
                 if (Url.IsLocalUrl(ReturnUrl))
                 {

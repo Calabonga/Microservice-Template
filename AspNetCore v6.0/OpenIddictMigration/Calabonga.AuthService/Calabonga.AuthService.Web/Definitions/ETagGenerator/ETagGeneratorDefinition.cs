@@ -1,6 +1,7 @@
 ﻿using Calabonga.AuthService.Web.Definitions.Base;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Net.Http.Headers;
+using System.Diagnostics;
 using System.Security.Cryptography;
 
 namespace Calabonga.AuthService.Web.Definitions.ETagGenerator
@@ -8,6 +9,7 @@ namespace Calabonga.AuthService.Web.Definitions.ETagGenerator
     /// <summary>
     /// ETag Generator
     /// </summary>
+    [DebuggerStepThrough]
     public class ETagGeneratorDefinition : AppDefinition
     {
         /// <summary>
