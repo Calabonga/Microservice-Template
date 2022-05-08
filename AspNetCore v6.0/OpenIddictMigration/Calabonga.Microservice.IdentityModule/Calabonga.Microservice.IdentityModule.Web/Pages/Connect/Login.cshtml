@@ -1,0 +1,30 @@
+﻿@page
+@model Calabonga.Microservice.IdentityModule.Web.Pages.Connect.LoginModel
+
+<div class="row">
+
+    <div class="col-md-4 offset-4">
+
+        <form method="post">
+
+            <input type="hidden" asp-for="@Model.Input.ReturnUrl)" />
+
+            <div class="mb-3 row">
+                <label class="form-label" asp-for="@Model.Input.UserName"></label>
+                <input type="email" class="form-control" asp-for="@Model.Input.UserName">
+                
+            </div>
+
+
+            <div class="mb-3 row">
+                <label class="form-label" asp-for="@Model.Input.Password"></label>
+                <input class="form-control" type="password" asp-for="@Model.Input.Password" />
+                
+            </div>
+            <div class ="text-center" >
+                <button class="btn btn-primary" type="submit">Вход</button>
+            </div>
+
+        </form>
+    </div>
+</div>
