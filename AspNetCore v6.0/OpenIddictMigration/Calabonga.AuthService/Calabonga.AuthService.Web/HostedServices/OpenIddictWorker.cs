@@ -47,7 +47,11 @@ namespace Calabonga.AuthService.Web.HostedServices
                     ClientId = "thunder_client",
                     ClientSecret = "thunder_client_secret",
                     DisplayName = "Thunder Client with Authorization Code Flow demonstration",
-                    RedirectUris = { new Uri("https://www.thunderclient.com/oauth/callback") },
+                    RedirectUris = {
+                        new Uri("https://www.thunderclient.com/oauth/callback"),
+                        new Uri("https://localhost:20001/swagger/oauth2-redirect.html")
+                    },
+
                     Permissions =
                     {
                         // Endpoint permissions

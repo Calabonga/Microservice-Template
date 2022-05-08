@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc.Abstractions;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.SwaggerUI;
 
-namespace Calabonga.AuthService.Web.Definitions.SwaggerEndpoints
+namespace Calabonga.AuthService.Web.Definitions.Swagger
 {
     public class SwaggerDefinition : AppDefinition
     {
@@ -22,6 +22,7 @@ namespace Calabonga.AuthService.Web.Definitions.SwaggerEndpoints
                     settings.SwaggerEndpoint(_swaggerConfig, $"{_appTitle} v.{_appVersion}");
                     settings.HeadContent = $"{ThisAssembly.Git.Branch.ToUpper()} {ThisAssembly.Git.Commit.ToUpper()}";
                     settings.DocumentTitle = $"{_appTitle}";
+                    settings.OAuth2RedirectUrl("https://localhost:20001/swagger/oauth2-redirect.html");
                     settings.DefaultModelExpandDepth(0);
                     settings.DefaultModelRendering(ModelRendering.Model);
                     settings.DefaultModelsExpandDepth(0);
