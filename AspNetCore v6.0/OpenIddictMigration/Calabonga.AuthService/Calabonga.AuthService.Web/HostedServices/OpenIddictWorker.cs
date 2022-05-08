@@ -23,8 +23,8 @@ namespace Calabonga.AuthService.Web.HostedServices
             {
                 await manager.CreateAsync(new OpenIddictApplicationDescriptor
                 {
-                    ClientId = "client_id",
-                    ClientSecret = "client_secret",
+                    ClientId = "client_id_sts",
+                    ClientSecret = "client_secret_sts",
                     DisplayName = "Service-To-Service demonstration",
                     Permissions =
                     {
@@ -43,16 +43,15 @@ namespace Calabonga.AuthService.Web.HostedServices
             if (await manager.FindByClientIdAsync("authorization-flow", cancellationToken) is null)
             {
                 var url = _serviceProvider.GetRequiredService<IConfiguration>().GetValue<string>("AuthServer:Url");
-
-
+                
                 await manager.CreateAsync(new OpenIddictApplicationDescriptor
                 {
-                    ClientId = "thunder_client",
-                    ClientSecret = "thunder_client_secret",
-                    DisplayName = "Thunder Client with Authorization Code Flow demonstration",
+                    ClientId = "client_id_code",
+                    ClientSecret = "client_secret_code",
+                    DisplayName = "API testing clients with Authorization Code Flow demonstration",
                     RedirectUris = {
-                        new Uri("https://www.thunderclient.com/oauth/callback"),
-                        new Uri($"{url}/swagger/oauth2-redirect.html")
+                        new Uri("https://www.thunderclient.com/oauth/callback"),        // https://www.thunderclient.com/
+                        new Uri($"{url}/swagger/oauth2-redirect.html")                  // https://swagger.io/
                     },
 
                     Permissions =
