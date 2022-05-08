@@ -7,6 +7,7 @@ using Microsoft.IdentityModel.Protocols.OpenIdConnect;
 using Microsoft.IdentityModel.Tokens;
 using OpenIddict.Abstractions;
 using OpenIddict.Server.AspNetCore;
+using OpenIddict.Validation.AspNetCore;
 
 namespace Calabonga.AuthService.Web.Definitions.Authentication;
 
@@ -26,9 +27,14 @@ public class AuthorizationDefinition : AppDefinition
         services
             .AddAuthentication(options =>
             {
+                // options.DefaultAuthenticateScheme = OpenIddictValidationAspNetCoreDefaults.AuthenticationScheme;
+                // options.DefaultChallengeScheme = OpenIddictValidationAspNetCoreDefaults.AuthenticationScheme;
+                // options.DefaultScheme = OpenIddictValidationAspNetCoreDefaults.AuthenticationScheme;
+                
                 options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
                 options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
                 options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+                
                 // options.DefaultScheme = OpenIddictServerAspNetCoreDefaults.AuthenticationScheme;
                 // options.DefaultAuthenticateScheme =  OpenIddictServerAspNetCoreDefaults.AuthenticationScheme;
                 // options.DefaultChallengeScheme =OpenIddictServerAspNetCoreDefaults.AuthenticationScheme;
