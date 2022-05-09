@@ -1,10 +1,11 @@
 ﻿using Calabonga.Microservice.Module.Domain.Base;
 using Calabonga.Microservice.Module.Web.Definitions.Base;
 using Calabonga.Microservice.Module.Web.Definitions.OpenIddict;
-using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.IdentityModel.Tokens;
+using OpenIddict.Server.AspNetCore;
+using System.Text;
 using System.Text.Json;
 
 namespace Calabonga.Microservice.Module.Web.Definitions.Identity;
@@ -24,18 +25,17 @@ public class AuthorizationDefinition : AppDefinition
         var url = configuration.GetSection("AuthServer").GetValue<string>("Url");
 
         services
-            .AddAuthentication(options =>
+            .AddAuthentication(OpenIddictServerAspNetCoreDefaults.AuthenticationScheme)
+            .AddJwtBearer(OpenIddictServerAspNetCoreDefaults.AuthenticationScheme, "Bearer", options =>
             {
-                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-                options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
-            })
-            .AddJwtBearer(options =>  {
+                options.SaveToken = true;
+                options.Audience = AppData.ServiceName;
                 options.Authority = url;
-                options.Audience = url;
-                options.TokenValidationParameters = new TokenValidationParameters()
+                options.RequireHttpsMetadata = false;
+                options.TokenValidationParameters = new TokenValidationParameters
                 {
-                    ClockSkew = new System.TimeSpan(0, 0, 30)
+                    ValidateAudience = false,
+                    ClockSkew = new TimeSpan(0, 0, 30)
                 };
                 options.Events = new JwtBearerEvents
                 {
@@ -60,8 +60,8 @@ public class AuthorizationDefinition : AppDefinition
                         if (context.AuthenticateFailure != null && context.AuthenticateFailure.GetType() == typeof(SecurityTokenExpiredException))
                         {
                             var authenticationException = context.AuthenticateFailure as SecurityTokenExpiredException;
-                            context.Response.Headers.Add("x-token-expired", authenticationException.Expires.ToString("o"));
-                            context.ErrorDescription = $"The token expired on {authenticationException.Expires.ToString("o")}";
+                            context.Response.Headers.Add("x-token-expired", authenticationException?.Expires.ToString("o"));
+                            context.ErrorDescription = $"The token expired on {authenticationException?.Expires:o}";
                         }
 
                         return context.Response.WriteAsync(JsonSerializer.Serialize(new
@@ -72,35 +72,54 @@ public class AuthorizationDefinition : AppDefinition
                     }
                 };
             });
-            /*.AddJwtBearer(options =>
-            {
-                options.RequireHttpsMetadata = false;
-                options.TokenValidationParameters = new TokenValidationParameters
-                {
-                    // укзывает, будет ли валидироваться издатель при валидации токена
-                    ValidateIssuer = true,
-                    
-                    // строка, представляющая издателя
-                    ValidIssuer = url,
- 
-                    // будет ли валидироваться потребитель токена
-                    ValidateAudience = true,
-                    
-                    // установка потребителя токена
-                    //ValidAudience = AuthOptions.AUDIENCE,
-                    
-                    // будет ли валидироваться время существования
-                    ValidateLifetime = true,
- 
-                    // установка ключа безопасности
-                    //IssuerSigningKey = AuthOptions.GetSymmetricSecurityKey(),
-                    
-                    // валидация ключа безопасности
-                    ValidateIssuerSigningKey = true,
-                };
-            })*/;
+
+        //.AddJwtBearer(options =>  {
+        //    options.Authority = url;
+        //    options.Audience = url;
+        //    options.TokenValidationParameters = new TokenValidationParameters()
+        //    {
+        //        ClockSkew = new System.TimeSpan(0, 0, 30)
+        //    };
+        //    options.Events = new JwtBearerEvents
+        //    {
+        //        OnChallenge = context =>
+        //        {
+        //            context.HandleResponse();
+        //            context.Response.StatusCode = StatusCodes.Status401Unauthorized;
+        //            context.Response.ContentType = "application/json";
+
+        //            // Ensure we always have an error and error description.
+        //            if (string.IsNullOrEmpty(context.Error))
+        //            {
+        //                context.Error = "invalid_token";
+        //            }
+
+        //            if (string.IsNullOrEmpty(context.ErrorDescription))
+        //            {
+        //                context.ErrorDescription = "This request requires a valid JWT access token to be provided";
+        //            }
+
+        //            // Add some extra context for expired tokens.
+        //            if (context.AuthenticateFailure != null && context.AuthenticateFailure.GetType() == typeof(SecurityTokenExpiredException))
+        //            {
+        //                var authenticationException = context.AuthenticateFailure as SecurityTokenExpiredException;
+        //                context.Response.Headers.Add("x-token-expired", authenticationException.Expires.ToString("o"));
+        //                context.ErrorDescription = $"The token expired on {authenticationException.Expires.ToString("o")}";
+        //            }
+
+        //            return context.Response.WriteAsync(JsonSerializer.Serialize(new
+        //            {
+        //                error = context.Error,
+        //                error_description = context.ErrorDescription
+        //            }));
+        //        }
+        //    };
+        //});
+
+
 
         services.AddAuthorization();
+
         services.AddSingleton<IAuthorizationPolicyProvider, AuthorizationPolicyProvider>();
         services.AddSingleton<IAuthorizationHandler, AppPermissionHandler>();
     }

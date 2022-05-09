@@ -1,14 +1,11 @@
 ﻿using Calabonga.Microservice.IdentityModule.Domain.Base;
 using Calabonga.Microservice.IdentityModule.Infrastructure;
-using Calabonga.Microservice.IdentityModule.Web.Application.Services;
 using Calabonga.Microservice.IdentityModule.Web.Definitions.Base;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore.Metadata.Conventions;
 using OpenIddict.Abstractions;
 using OpenIddict.Server.AspNetCore;
-using OpenIddict.Validation.AspNetCore;
 using System.Security.Claims;
 
 namespace Calabonga.Microservice.IdentityModule.Web.Endpoints.AuthEndpoints;
