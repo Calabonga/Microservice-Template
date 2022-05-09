@@ -58,14 +58,14 @@ public interface IAccountService
     /// </summary>
     /// <param name="identifier"></param>
     /// <returns></returns>
-    Task<ClaimsPrincipal> GetUserClaimsByIdAsync(string identifier);
+    Task<ClaimsPrincipal> GetClaimsPrincipalByIdAsync(string identifier);
 
     /// <summary>
     /// Returns ClaimPrincipal by user identity
     /// </summary>
     /// <param name="email"></param>
     /// <returns></returns>
-    Task<ClaimsPrincipal> GetUserClaimsByEmailAsync(string email);
+    Task<ClaimsPrincipal> GetClaimsPrincipalByEmailAsync(string email);
 
     /// <summary>
     /// Returns current user account information or null when user does not logged in

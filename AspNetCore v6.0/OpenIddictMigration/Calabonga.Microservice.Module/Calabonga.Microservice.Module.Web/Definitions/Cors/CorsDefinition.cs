@@ -22,21 +22,23 @@ public class CorsDefinition : AppDefinition
             {
                 builder.AllowAnyHeader();
                 builder.AllowAnyMethod();
-                if (origins != null && origins.Length > 0)
+                if (origins is not {Length: > 0})
                 {
-                    if (origins.Contains("*"))
+                    return;
+                }
+
+                if (origins.Contains("*"))
+                {
+                    builder.AllowAnyHeader();
+                    builder.AllowAnyMethod();
+                    builder.SetIsOriginAllowed(host => true);
+                    builder.AllowCredentials();
+                }
+                else
+                {
+                    foreach (var origin in origins)
                     {
-                        builder.AllowAnyHeader();
-                        builder.AllowAnyMethod();
-                        builder.SetIsOriginAllowed(host => true);
-                        builder.AllowCredentials();
-                    }
-                    else
-                    {
-                        foreach (var origin in origins)
-                        {
-                            builder.WithOrigins(origin);
-                        }
+                        builder.WithOrigins(origin);
                     }
                 }
             });

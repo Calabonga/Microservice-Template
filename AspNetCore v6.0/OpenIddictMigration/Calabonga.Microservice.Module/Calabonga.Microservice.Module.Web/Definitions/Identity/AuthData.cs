@@ -1,5 +1,4 @@
 ﻿using OpenIddict.Server.AspNetCore;
-using OpenIddict.Validation.AspNetCore;
 
 namespace Calabonga.Microservice.Module.Web.Definitions.Identity;
 

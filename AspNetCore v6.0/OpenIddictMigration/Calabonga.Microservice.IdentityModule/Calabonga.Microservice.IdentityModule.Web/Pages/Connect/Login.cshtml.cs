@@ -53,7 +53,7 @@ public class LoginModel : PageModel
         var signInResult = await _signInManager.PasswordSignInAsync(user, Input.Password, true, false);
         if (signInResult.Succeeded)
         {
-            var userClaims = await _accountService.GetUserClaimsByIdAsync(user.Id.ToString());
+            var userClaims = await _accountService.GetClaimsPrincipalByIdAsync(user.Id.ToString());
             await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(userClaims));
                 
             if (Url.IsLocalUrl(ReturnUrl))

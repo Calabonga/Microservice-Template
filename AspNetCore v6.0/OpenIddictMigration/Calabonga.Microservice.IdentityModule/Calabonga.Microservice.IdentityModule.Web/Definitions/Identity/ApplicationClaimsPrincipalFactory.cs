@@ -34,6 +34,7 @@ public class ApplicationClaimsPrincipalFactory : UserClaimsPrincipalFactory<Appl
                 permissions.ForEach(x => ((ClaimsIdentity)principal.Identity!).AddClaim(new Claim(x.PolicyName, ClaimTypes.Role)));
             }
         }
+
         if (!string.IsNullOrWhiteSpace(user.FirstName))
         {
             ((ClaimsIdentity)principal.Identity!).AddClaim(new Claim(ClaimTypes.GivenName, user.FirstName));

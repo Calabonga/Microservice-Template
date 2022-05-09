@@ -1,9 +1,12 @@
 ﻿using Calabonga.Microservice.IdentityModule.Domain.Base;
 using Calabonga.Microservice.IdentityModule.Infrastructure;
+using Calabonga.Microservice.IdentityModule.Web.Application.Services;
 using Calabonga.Microservice.IdentityModule.Web.Definitions.Base;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.IdentityModel.JsonWebTokens;
 using OpenIddict.Abstractions;
 using OpenIddict.Server.AspNetCore;
 using System.Security.Claims;
@@ -18,12 +21,16 @@ public class TokenEndpoints : AppDefinition
     public override void ConfigureApplication(WebApplication app, IWebHostEnvironment environment) =>
         app.MapPost("~/connect/token", TokenAsync).ExcludeFromDescription();
 
-    private async Task<IResult> TokenAsync(HttpContext httpContext, IOpenIddictScopeManager manager, UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager)
+    private async Task<IResult> TokenAsync(
+        HttpContext httpContext,
+        IOpenIddictScopeManager manager,
+        UserManager<ApplicationUser> userManager, 
+        SignInManager<ApplicationUser> signInManager,
+        IAccountService accountService)
     {
         var request = httpContext.GetOpenIddictServerRequest() ?? throw new InvalidOperationException("The OpenID Connect request cannot be retrieved.");
 
 
-        AuthenticationProperties? properties = null;
         if (request.IsClientCredentialsGrantType())
         {
             var identity = new ClaimsIdentity(OpenIddictServerAspNetCoreDefaults.AuthenticationScheme);
@@ -31,6 +38,7 @@ public class TokenEndpoints : AppDefinition
             // Subject or sub is a required field, we use the client id as the subject identifier here.
             identity.AddClaim(OpenIddictConstants.Claims.Subject, request.ClientId!);
             identity.AddClaim(OpenIddictConstants.Claims.ClientId, request.ClientId!);
+        
 
             // Don't forget to add destination otherwise it won't be added to the access token.
             identity.AddClaim(OpenIddictConstants.Claims.Scope, request.Scope!, OpenIddictConstants.Destinations.AccessToken);
@@ -39,7 +47,7 @@ public class TokenEndpoints : AppDefinition
             var claimsPrincipal = new ClaimsPrincipal(identity);
 
             claimsPrincipal.SetScopes(request.GetScopes());
-            return Results.SignIn(claimsPrincipal, properties ?? new AuthenticationProperties(), OpenIddictServerAspNetCoreDefaults.AuthenticationScheme);
+            return Results.SignIn(claimsPrincipal, new AuthenticationProperties(), OpenIddictServerAspNetCoreDefaults.AuthenticationScheme);
         }
 
 
@@ -81,17 +89,17 @@ public class TokenEndpoints : AppDefinition
                 await userManager.ResetAccessFailedCountAsync(user);
             }
 
+            var userClaims = await accountService.GetClaimsPrincipalByEmailAsync(user.Email);
             var identity = new ClaimsIdentity(OpenIddictServerAspNetCoreDefaults.AuthenticationScheme);
-
+            identity.AddClaim("nimble", "framework", OpenIddictConstants.Destinations.AccessToken);
 
             if (user.ApplicationUserProfile?.Permissions != null)
             {
                 identity.AddClaims(user.ApplicationUserProfile.Permissions.Select(permission =>
                     new Claim(
-                        ClaimTypes.Role,
+                        OpenIddictConstants.Claims.Role,
                         permission.PolicyName,
-                        OpenIddictConstants.Destinations.AccessToken, 
-                        AppData.ServiceName)));
+                        OpenIddictConstants.Destinations.AccessToken)));
             }
 
             // Look up the user's roles (if any)
@@ -118,15 +126,15 @@ public class TokenEndpoints : AppDefinition
             identity.AddClaim(ClaimTypes.Email, user.Email);
             identity.AddClaim(ClaimTypes.MobilePhone, user.PhoneNumber);
             identity.AddClaim(ClaimTypes.Name, $"{user.LastName} {user.FirstName}", OpenIddictConstants.Destinations.AccessToken, OpenIddictConstants.Destinations.IdentityToken);
-
+            
             var claimsPrincipal = new ClaimsPrincipal(identity);
-            return Results.SignIn(claimsPrincipal, properties ?? new AuthenticationProperties(), OpenIddictServerAspNetCoreDefaults.AuthenticationScheme);
+            return Results.SignIn(claimsPrincipal, new AuthenticationProperties(), OpenIddictServerAspNetCoreDefaults.AuthenticationScheme);
         }
 
         if (request.IsAuthorizationCodeGrantType())
         {
             var authenticateResult = await httpContext.AuthenticateAsync(OpenIddictServerAspNetCoreDefaults.AuthenticationScheme);
-            properties = authenticateResult.Properties;
+            var properties = authenticateResult.Properties;
             var claimsPrincipal = authenticateResult.Principal;
             return Results.SignIn(claimsPrincipal!, properties ?? new AuthenticationProperties(), OpenIddictServerAspNetCoreDefaults.AuthenticationScheme);
         }
