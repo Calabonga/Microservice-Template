@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 
 namespace Calabonga.Microservice.IdentityModule.Infrastructure;
 
@@ -29,5 +31,13 @@ public class ApplicationUserStore : UserStore<ApplicationUser, ApplicationRole, 
             .Include(x => x.ApplicationUserProfile)
             .ThenInclude(x => x.Permissions)
             .FirstOrDefaultAsync(u => u.Id.ToString() == userId, cancellationToken: cancellationToken)!;
+    }
+
+    public override Task<ApplicationUser> FindByNameAsync(string normalizedUserName, CancellationToken cancellationToken = new CancellationToken())
+    {
+        return Users
+            .Include(x => x.ApplicationUserProfile)
+            .ThenInclude(x => x.Permissions)
+            .FirstOrDefaultAsync(u => u.NormalizedUserName.ToString() == normalizedUserName, cancellationToken: cancellationToken)!;
     }
 }

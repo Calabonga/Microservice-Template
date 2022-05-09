@@ -21,8 +21,6 @@ public class OpenIddictWorker : IHostedService
 
         if (await manager.FindByClientIdAsync("service-to-service", cancellationToken) is null)
         {
-            var url = _serviceProvider.GetRequiredService<IConfiguration>().GetValue<string>("AuthServer:Url");
-
             await manager.CreateAsync(new OpenIddictApplicationDescriptor
             {
                 ClientId = "client_id_sts",
@@ -35,6 +33,7 @@ public class OpenIddictWorker : IHostedService
 
                     // Grant type permissions
                     OpenIddictConstants.Permissions.GrantTypes.ClientCredentials,
+                    OpenIddictConstants.Permissions.GrantTypes.Password,
                         
                     // Scope permissions
                     OpenIddictConstants.Permissions.Prefixes.Scope + "api"

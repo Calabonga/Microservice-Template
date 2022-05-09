@@ -7,6 +7,9 @@ using Swashbuckle.AspNetCore.SwaggerUI;
 
 namespace Calabonga.Microservice.IdentityModule.Web.Definitions.Swagger;
 
+/// <summary>
+/// Swagger definition for application
+/// </summary>
 public class SwaggerDefinition : AppDefinition
 {
         
@@ -51,7 +54,7 @@ public class SwaggerDefinition : AppDefinition
             {
                 Title = AppData.ServiceName,
                 Version = _appVersion,
-                Description = "Nimble Framework Microservice Template with integrated OpenIddict for OpenID Connect server and Token Validation"
+                Description = AppData.ServiceDescription
             });
 
             options.ResolveConflictingActions(x => x.First());
