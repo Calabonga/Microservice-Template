@@ -9,10 +9,10 @@ namespace Calabonga.Microservice.IdentityModule.Web.Definitions.Identity;
 /// <summary>
 /// User Claims Principal Factory override from Microsoft Identity framework
 /// </summary>
-public class ApplicationClaimsPrincipalFactory : UserClaimsPrincipalFactory<ApplicationUser, ApplicationRole>
+public class ApplicationUserClaimsPrincipalFactory : UserClaimsPrincipalFactory<ApplicationUser, ApplicationRole>
 {
     /// <inheritdoc />
-    public ApplicationClaimsPrincipalFactory(
+    public ApplicationUserClaimsPrincipalFactory(
         UserManager<ApplicationUser> userManager,
         RoleManager<ApplicationRole> roleManager,
         IOptions<IdentityOptions> optionsAccessor)
@@ -34,7 +34,7 @@ public class ApplicationClaimsPrincipalFactory : UserClaimsPrincipalFactory<Appl
             var permissions = user.ApplicationUserProfile.Permissions.ToList();
             if (permissions.Any())
             {
-                permissions.ForEach(x => ((ClaimsIdentity)principal.Identity!).AddClaim(new Claim(OpenIddictConstants.Claims.Role, x.PolicyName)));
+                permissions.ForEach(x => ((ClaimsIdentity)principal.Identity!).AddClaim(new Claim(x.PolicyName, nameof(x.PolicyName).ToLower())));
             }
         }
 

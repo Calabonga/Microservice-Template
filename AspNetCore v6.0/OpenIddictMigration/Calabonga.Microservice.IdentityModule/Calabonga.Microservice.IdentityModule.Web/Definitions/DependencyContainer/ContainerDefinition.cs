@@ -12,6 +12,6 @@ public class ContainerDefinition: AppDefinition
     public override void ConfigureServices(IServiceCollection services, IConfiguration configuration)
     {
         services.AddTransient<IAccountService, AccountService>();
-        services.AddTransient<ApplicationClaimsPrincipalFactory>();
+        services.AddTransient<ApplicationUserClaimsPrincipalFactory>();
     }
 }

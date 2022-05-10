@@ -58,7 +58,7 @@ public class DbContextDefinition : AppDefinition
             .AddUserStore<ApplicationUserStore>()
             .AddRoleStore<ApplicationRoleStore>()
             .AddUserManager<UserManager<ApplicationUser>>()
-            .AddClaimsPrincipalFactory<ApplicationClaimsPrincipalFactory>()
+            .AddClaimsPrincipalFactory<ApplicationUserClaimsPrincipalFactory>()
             .AddDefaultTokenProviders();
 
         services.AddTransient<ApplicationUserStore>();

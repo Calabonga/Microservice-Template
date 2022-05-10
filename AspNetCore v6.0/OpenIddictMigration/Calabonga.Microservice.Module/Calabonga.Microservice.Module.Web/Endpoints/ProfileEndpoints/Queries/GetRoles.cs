@@ -18,7 +18,7 @@ public class GetRolesRequestHandler : RequestHandler<GetRolesRequest, string>
     protected override string Handle(GetRolesRequest request)
     {
         var user = _httpContextAccessor.HttpContext!.User;
-        var roles = ClaimsHelper.GetValues<string>((ClaimsIdentity)user.Identity!, "role");
+        var roles = ClaimsHelper.GetValues<string>((ClaimsIdentity)user.Identity!, ClaimTypes.Role);
         return $"Current user ({user.Identity!.Name}) have following roles: {string.Join("|", roles)}";
     }
 }

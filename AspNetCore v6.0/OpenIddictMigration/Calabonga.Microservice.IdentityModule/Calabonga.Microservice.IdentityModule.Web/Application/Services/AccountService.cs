@@ -23,7 +23,7 @@ public class AccountService : IAccountService
 {
     private readonly IUnitOfWork<ApplicationDbContext> _unitOfWork;
     private readonly ILogger<AccountService> _logger;
-    private readonly ApplicationClaimsPrincipalFactory _claimsFactory;
+    private readonly ApplicationUserClaimsPrincipalFactory _claimsFactory;
     private readonly IHttpContextAccessor _httpContext;
     private readonly IMapper _mapper;
     private readonly UserManager<ApplicationUser> _userManager;
@@ -43,7 +43,7 @@ public class AccountService : IAccountService
         IUnitOfWork<ApplicationDbContext> unitOfWork,
         ILogger<AccountService> logger,
         ILogger<UserManager<ApplicationUser>> loggerUser,
-        ApplicationClaimsPrincipalFactory claimsFactory,
+        ApplicationUserClaimsPrincipalFactory claimsFactory,
         IHttpContextAccessor httpContext,
         IMapper mapper)
     {
@@ -91,7 +91,7 @@ public class AccountService : IAccountService
                 return await Task.FromResult(operation);
             }
             await _userManager.AddToRoleAsync(user, role);
-            await AddClaimsToUser(_userManager, user, role);
+            // await AddClaimsToUser(_userManager, user, role);
             var profile = _mapper.Map<ApplicationUserProfile>(model);
             var profileRepository = _unitOfWork.GetRepository<ApplicationUserProfile>();
 

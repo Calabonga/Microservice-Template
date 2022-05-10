@@ -2,8 +2,6 @@
 using Calabonga.Microservice.IdentityModule.Web.Definitions.Base;
 using Calabonga.Microservice.IdentityModule.Web.HostedServices;
 using OpenIddict.Abstractions;
-using OpenIddict.Server;
-using System.IdentityModel.Tokens.Jwt;
 
 namespace Calabonga.Microservice.IdentityModule.Web.Definitions.OpenIddict;
 

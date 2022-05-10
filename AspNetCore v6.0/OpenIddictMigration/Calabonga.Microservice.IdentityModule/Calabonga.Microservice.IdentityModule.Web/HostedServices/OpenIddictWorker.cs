@@ -69,7 +69,8 @@ public class OpenIddictWorker : IHostedService
                     OpenIddictConstants.Permissions.Prefixes.Scope + "custom",
 
                     // Response types
-                    OpenIddictConstants.Permissions.ResponseTypes.CodeIdTokenToken
+                    OpenIddictConstants.Permissions.ResponseTypes.Code,
+                    OpenIddictConstants.Permissions.ResponseTypes.IdToken
                 }
             }, cancellationToken);
         }
