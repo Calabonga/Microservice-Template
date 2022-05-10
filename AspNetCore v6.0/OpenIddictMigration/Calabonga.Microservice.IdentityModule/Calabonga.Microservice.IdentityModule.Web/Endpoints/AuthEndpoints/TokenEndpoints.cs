@@ -89,46 +89,11 @@ public class TokenEndpoints : AppDefinition
                 await userManager.ResetAccessFailedCountAsync(user);
             }
 
-            var userClaims = await accountService.GetClaimsPrincipalByEmailAsync(user.Email);
-            var identity = new ClaimsIdentity(OpenIddictServerAspNetCoreDefaults.AuthenticationScheme);
-            identity.AddClaim("nimble", "framework", OpenIddictConstants.Destinations.AccessToken);
-
-            if (user.ApplicationUserProfile?.Permissions != null)
-            {
-                identity.AddClaims(user.ApplicationUserProfile.Permissions.Select(permission =>
-                    new Claim(
-                        OpenIddictConstants.Claims.Role,
-                        permission.PolicyName,
-                        OpenIddictConstants.Destinations.AccessToken)));
-            }
-
-            // Look up the user's roles (if any)
-            var roles = Array.Empty<string>();
-            if (userManager.SupportsUserRole)
-            {
-                roles = (await userManager.GetRolesAsync(user)).ToArray();
-            }
-
-            if (roles.Any())
-            {
-                identity
-                    .AddClaims(roles
-                        .Select(role => new Claim(
-                            ClaimTypes.Role,
-                            role,
-                            OpenIddictConstants.Destinations.AccessToken,
-                            OpenIddictConstants.Destinations.IdentityToken))
-                        .ToList());
-            }
-
-            // Subject or sub is a required field, we use the client id as the subject identifier here.
-            identity.AddClaim(OpenIddictConstants.Claims.Subject, request.Username!);
-            identity.AddClaim(ClaimTypes.Email, user.Email);
-            identity.AddClaim(ClaimTypes.MobilePhone, user.PhoneNumber);
-            identity.AddClaim(ClaimTypes.Name, $"{user.LastName} {user.FirstName}", OpenIddictConstants.Destinations.AccessToken, OpenIddictConstants.Destinations.IdentityToken);
+            var principal = await accountService.GetClaimsPrincipalByEmailAsync(user.Email);
+            //var identity = new ClaimsIdentity(principal.Claims, OpenIddictServerAspNetCoreDefaults.AuthenticationScheme);
             
-            var claimsPrincipal = new ClaimsPrincipal(identity);
-            return Results.SignIn(claimsPrincipal, new AuthenticationProperties(), OpenIddictServerAspNetCoreDefaults.AuthenticationScheme);
+            //var claimsPrincipal = new ClaimsPrincipal(identity);
+            return Results.SignIn(principal, new AuthenticationProperties(), OpenIddictServerAspNetCoreDefaults.AuthenticationScheme);
         }
 
         if (request.IsAuthorizationCodeGrantType())

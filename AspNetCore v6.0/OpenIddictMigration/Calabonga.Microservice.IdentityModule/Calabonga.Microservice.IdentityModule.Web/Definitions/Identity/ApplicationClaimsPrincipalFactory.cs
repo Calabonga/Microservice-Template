@@ -1,6 +1,8 @@
 ﻿using Calabonga.Microservice.IdentityModule.Infrastructure;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Options;
+using OpenIddict.Abstractions;
+using OpenIddict.Server.AspNetCore;
 using System.Security.Claims;
 
 namespace Calabonga.Microservice.IdentityModule.Web.Definitions.Identity;
@@ -26,23 +28,53 @@ public class ApplicationClaimsPrincipalFactory : UserClaimsPrincipalFactory<Appl
     {
         var principal = await base.CreateAsync(user);
 
+        // For this sample, just include all claims in all token types.
+        // In reality, claims' destinations would probably differ by token type and depending on the scopes requested.
+        // OpenIddictConstants.Destinations.AccessToken
+        // OpenIddictConstants.Destinations.IdentityToken
+
         if (user.ApplicationUserProfile?.Permissions != null)
         {
             var permissions = user.ApplicationUserProfile.Permissions.ToList();
             if (permissions.Any())
             {
-                permissions.ForEach(x => ((ClaimsIdentity)principal.Identity!).AddClaim(new Claim(x.PolicyName, ClaimTypes.Role)));
+                permissions
+                    .ForEach(x => ((ClaimsIdentity)principal.Identity!)
+                        .AddClaim(new Claim(
+                            x.PolicyName,
+                            ClaimTypes.Role,
+                            OpenIddictConstants.Destinations.AccessToken,
+                            OpenIddictConstants.Destinations.IdentityToken)));
             }
         }
 
+
+        ((ClaimsIdentity)principal.Identity!)
+            .AddClaim(new Claim(
+                "nimble", 
+                "framework",
+                OpenIddictConstants.Destinations.AccessToken,
+                OpenIddictConstants.Destinations.IdentityToken));
+
+
         if (!string.IsNullOrWhiteSpace(user.FirstName))
         {
-            ((ClaimsIdentity)principal.Identity!).AddClaim(new Claim(ClaimTypes.GivenName, user.FirstName));
+            ((ClaimsIdentity)principal.Identity!)
+                .AddClaim(new Claim(
+                    ClaimTypes.GivenName,
+                    user.FirstName,
+                    OpenIddictConstants.Destinations.AccessToken,
+                    OpenIddictConstants.Destinations.IdentityToken));
         }
 
         if (!string.IsNullOrWhiteSpace(user.LastName))
         {
-            ((ClaimsIdentity)principal.Identity!).AddClaim(new Claim(ClaimTypes.Surname, user.LastName));
+            ((ClaimsIdentity)principal.Identity!)
+                .AddClaim(new Claim(
+                    ClaimTypes.Surname,
+                    user.LastName,
+                    OpenIddictConstants.Destinations.AccessToken,
+                    OpenIddictConstants.Destinations.IdentityToken));
         }
 
         return principal;

@@ -8,6 +8,8 @@
         <form method="post">
 
             <input type="hidden" asp-for="@Model.Input.ReturnUrl)" />
+            
+            <div asp-validation-summary="All" class="text-danger"></div>
 
             <div class="mb-3 row">
                 <label class="form-label" asp-for="@Model.Input.UserName"></label>
