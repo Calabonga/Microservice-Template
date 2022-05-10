@@ -27,51 +27,35 @@ public class ApplicationClaimsPrincipalFactory : UserClaimsPrincipalFactory<Appl
     {
         var principal = await base.CreateAsync(user);
 
-        // For this sample, just include all claims in all token types.
-        // In reality, claims' destinations would probably differ by token type and depending on the scopes requested.
-        // OpenIddictConstants.Destinations.AccessToken
-        // OpenIddictConstants.Destinations.IdentityToken
+        
 
         if (user.ApplicationUserProfile?.Permissions != null)
         {
             var permissions = user.ApplicationUserProfile.Permissions.ToList();
             if (permissions.Any())
             {
-                permissions
-                    .ForEach(x => ((ClaimsIdentity)principal.Identity!)
-                        .AddClaim(new Claim(
-                            x.PolicyName,
-                            OpenIddictConstants.Claims.Role,
-                            OpenIddictConstants.Destinations.AccessToken,
-                            OpenIddictConstants.Destinations.IdentityToken)));
+                permissions.ForEach(x => ((ClaimsIdentity)principal.Identity!).AddClaim(new Claim(OpenIddictConstants.Claims.Role, x.PolicyName)));
             }
         }
 
-        ((ClaimsIdentity)principal.Identity!)
-            .AddClaim(new Claim(
-                "nimble", 
-                "framework",
-                OpenIddictConstants.Destinations.AccessToken,
-                OpenIddictConstants.Destinations.IdentityToken));
+        ((ClaimsIdentity)principal.Identity!).AddClaim(new Claim("framework", "nimble"));
 
         if (!string.IsNullOrWhiteSpace(user.FirstName))
         {
-            ((ClaimsIdentity)principal.Identity!)
-                .AddClaim(new Claim(
-                    ClaimTypes.GivenName,
-                    user.FirstName,
-                    OpenIddictConstants.Destinations.AccessToken,
-                    OpenIddictConstants.Destinations.IdentityToken));
+            ((ClaimsIdentity)principal.Identity!).AddClaim(new Claim(ClaimTypes.GivenName, user.FirstName));
         }
 
         if (!string.IsNullOrWhiteSpace(user.LastName))
         {
-            ((ClaimsIdentity)principal.Identity!)
-                .AddClaim(new Claim(
-                    ClaimTypes.Surname,
-                    user.LastName,
-                    OpenIddictConstants.Destinations.AccessToken,
-                    OpenIddictConstants.Destinations.IdentityToken));
+            ((ClaimsIdentity)principal.Identity!).AddClaim(new Claim(ClaimTypes.Surname, user.LastName));
+        }
+        
+        // For this sample, just include all claims in all token types.
+        // In reality, claims' destinations would probably differ by token type and depending on the scopes requested.
+        // In our case (demo) we're using OpenIddictConstants.Destinations.AccessToken and OpenIddictConstants.Destinations.IdentityToken
+        foreach (var principalClaim in principal.Claims)
+        {
+            principalClaim.SetDestinations(OpenIddictConstants.Destinations.AccessToken, OpenIddictConstants.Destinations.IdentityToken);
         }
 
         return principal;

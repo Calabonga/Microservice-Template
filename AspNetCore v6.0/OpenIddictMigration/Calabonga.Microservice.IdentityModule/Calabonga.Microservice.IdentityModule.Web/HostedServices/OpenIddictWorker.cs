@@ -40,11 +40,11 @@ public class OpenIddictWorker : IHostedService
                 }
             }, cancellationToken);
         }
-            
+
         if (await manager.FindByClientIdAsync("authorization-flow", cancellationToken) is null)
         {
             var url = _serviceProvider.GetRequiredService<IConfiguration>().GetValue<string>("AuthServer:Url");
-                
+
             await manager.CreateAsync(new OpenIddictApplicationDescriptor
             {
                 ClientId = "client_id_code",
@@ -63,15 +63,13 @@ public class OpenIddictWorker : IHostedService
 
                     // Grant type permissions
                     OpenIddictConstants.Permissions.GrantTypes.AuthorizationCode,
-                    OpenIddictConstants.Permissions.GrantTypes.ClientCredentials,
 
                     // Scope permissions
                     OpenIddictConstants.Permissions.Prefixes.Scope + "api",
                     OpenIddictConstants.Permissions.Prefixes.Scope + "custom",
 
                     // Response types
-                    OpenIddictConstants.Permissions.ResponseTypes.Code,
-                    OpenIddictConstants.Permissions.ResponseTypes.IdToken
+                    OpenIddictConstants.Permissions.ResponseTypes.CodeIdTokenToken
                 }
             }, cancellationToken);
         }
