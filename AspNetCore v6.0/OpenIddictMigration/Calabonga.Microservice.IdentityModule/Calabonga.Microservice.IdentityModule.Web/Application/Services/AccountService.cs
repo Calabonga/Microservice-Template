@@ -124,7 +124,7 @@ public class AccountService : IAccountService
     public async Task<OperationResult<UserProfileViewModel>> GetProfileByIdAsync(string identifier)
     {
         var operation = OperationResult.CreateResult<UserProfileViewModel>();
-        var claimsPrincipal = await GetClaimsPrincipalByIdAsync(identifier);
+        var claimsPrincipal = await GetPrincipalByIdAsync(identifier);
         operation.Result = _mapper.Map<UserProfileViewModel>(claimsPrincipal.Identity);
         return await Task.FromResult(operation);
     }
@@ -137,7 +137,7 @@ public class AccountService : IAccountService
     public async Task<OperationResult<UserProfileViewModel>> GetProfileByEmailAsync(string email)
     {
         var operation = OperationResult.CreateResult<UserProfileViewModel>();
-        var claimsPrincipal = await GetClaimsPrincipalByEmailAsync(email);
+        var claimsPrincipal = await GetPrincipalByEmailAsync(email);
         operation.Result = _mapper.Map<UserProfileViewModel>(claimsPrincipal.Identity);
         return await Task.FromResult(operation);
     }
@@ -147,7 +147,7 @@ public class AccountService : IAccountService
     /// </summary>
     /// <param name="identifier"></param>
     /// <returns></returns>
-    public async Task<ClaimsPrincipal> GetClaimsPrincipalByIdAsync(string identifier)
+    public async Task<ClaimsPrincipal> GetPrincipalByIdAsync(string identifier)
     {
         if (string.IsNullOrEmpty(identifier))
         {
@@ -169,7 +169,7 @@ public class AccountService : IAccountService
     /// </summary>
     /// <param name="email"></param>
     /// <returns></returns>
-    public async Task<ClaimsPrincipal> GetClaimsPrincipalByEmailAsync(string email)
+    public async Task<ClaimsPrincipal> GetPrincipalByEmailAsync(string email)
     {
         if (string.IsNullOrEmpty(email))
         {

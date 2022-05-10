@@ -46,7 +46,6 @@ public class TokenEndpoints : AppDefinition
             return Results.SignIn(claimsPrincipal, new AuthenticationProperties(), OpenIddictServerAspNetCoreDefaults.AuthenticationScheme);
         }
 
-
         if (request.IsPasswordGrantType())
         {
             var user = await userManager.FindByNameAsync(request.Username);
@@ -85,7 +84,7 @@ public class TokenEndpoints : AppDefinition
                 await userManager.ResetAccessFailedCountAsync(user);
             }
 
-            var principal = await accountService.GetClaimsPrincipalByEmailAsync(user.Email);
+            var principal = await accountService.GetPrincipalByEmailAsync(user.Email);
             return Results.SignIn(principal, new AuthenticationProperties(), OpenIddictServerAspNetCoreDefaults.AuthenticationScheme);
         }
 
