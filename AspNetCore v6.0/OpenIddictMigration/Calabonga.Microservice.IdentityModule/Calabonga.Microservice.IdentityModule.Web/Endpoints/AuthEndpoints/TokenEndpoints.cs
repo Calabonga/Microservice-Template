@@ -1,12 +1,9 @@
-﻿using Calabonga.Microservice.IdentityModule.Domain.Base;
-using Calabonga.Microservice.IdentityModule.Infrastructure;
+﻿using Calabonga.Microservice.IdentityModule.Infrastructure;
 using Calabonga.Microservice.IdentityModule.Web.Application.Services;
 using Calabonga.Microservice.IdentityModule.Web.Definitions.Base;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.IdentityModel.JsonWebTokens;
 using OpenIddict.Abstractions;
 using OpenIddict.Server.AspNetCore;
 using System.Security.Claims;
@@ -29,8 +26,7 @@ public class TokenEndpoints : AppDefinition
         IAccountService accountService)
     {
         var request = httpContext.GetOpenIddictServerRequest() ?? throw new InvalidOperationException("The OpenID Connect request cannot be retrieved.");
-
-
+        
         if (request.IsClientCredentialsGrantType())
         {
             var identity = new ClaimsIdentity(OpenIddictServerAspNetCoreDefaults.AuthenticationScheme);
@@ -56,20 +52,20 @@ public class TokenEndpoints : AppDefinition
             var user = await userManager.FindByNameAsync(request.Username);
             if (user == null)
             {
-                throw new InvalidOperationException();
+                return Results.Problem("Invalid operation");
             }
 
             // Ensure the user is allowed to sign in
             if (!await signInManager.CanSignInAsync(user))
             {
-                throw new InvalidOperationException();
+                return Results.Problem("Invalid operation");
             }
 
 
             // Ensure the user is not already locked out
             if (userManager.SupportsUserLockout && await userManager.IsLockedOutAsync(user))
             {
-                throw new InvalidOperationException();
+                return Results.Problem("Invalid operation");
             }
 
             // Ensure the password is valid
@@ -80,7 +76,7 @@ public class TokenEndpoints : AppDefinition
                     await userManager.AccessFailedAsync(user);
                 }
 
-                throw new InvalidOperationException();
+                return Results.Problem("Invalid operation");
             }
 
             // Reset the lockout count
@@ -90,9 +86,6 @@ public class TokenEndpoints : AppDefinition
             }
 
             var principal = await accountService.GetClaimsPrincipalByEmailAsync(user.Email);
-            //var identity = new ClaimsIdentity(principal.Claims, OpenIddictServerAspNetCoreDefaults.AuthenticationScheme);
-            
-            //var claimsPrincipal = new ClaimsPrincipal(identity);
             return Results.SignIn(principal, new AuthenticationProperties(), OpenIddictServerAspNetCoreDefaults.AuthenticationScheme);
         }
 
@@ -104,6 +97,6 @@ public class TokenEndpoints : AppDefinition
             return Results.SignIn(claimsPrincipal!, properties ?? new AuthenticationProperties(), OpenIddictServerAspNetCoreDefaults.AuthenticationScheme);
         }
 
-        throw new InvalidOperationException("The specified grant type is not supported.");
+        return Results.Problem("The specified grant type is not supported.");
     }
 }

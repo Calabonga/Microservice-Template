@@ -1,8 +1,12 @@
 ﻿using Calabonga.Microservice.IdentityModule.Infrastructure;
 using Calabonga.Microservice.IdentityModule.Web.Definitions.Base;
+using Calabonga.Microservice.IdentityModule.Web.Definitions.Identity;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 using OpenIddict.Abstractions;
+using System.Security.Claims;
 
 namespace Calabonga.Microservice.IdentityModule.Web.Definitions.DbContext;
 
@@ -37,6 +41,7 @@ public class DbContextDefinition : AppDefinition
             options.ClaimsIdentity.UserNameClaimType = OpenIddictConstants.Claims.Name;
             options.ClaimsIdentity.UserIdClaimType = OpenIddictConstants.Claims.Subject;
             options.ClaimsIdentity.RoleClaimType = OpenIddictConstants.Claims.Role;
+            options.ClaimsIdentity.EmailClaimType = OpenIddictConstants.Claims.Email;
             // configure more options if you need
         });
 
@@ -48,11 +53,13 @@ public class DbContextDefinition : AppDefinition
                 options.Password.RequiredLength = 8;
                 options.Password.RequireUppercase = false;
             })
-            .AddEntityFrameworkStores<ApplicationDbContext>()
             .AddSignInManager()
+            .AddEntityFrameworkStores<ApplicationDbContext>()
             .AddUserStore<ApplicationUserStore>()
             .AddRoleStore<ApplicationRoleStore>()
-            .AddUserManager<UserManager<ApplicationUser>>();
+            .AddUserManager<UserManager<ApplicationUser>>()
+            .AddClaimsPrincipalFactory<ApplicationClaimsPrincipalFactory>()
+            .AddDefaultTokenProviders();
 
         services.AddTransient<ApplicationUserStore>();
     }

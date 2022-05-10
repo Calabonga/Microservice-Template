@@ -2,7 +2,6 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Options;
 using OpenIddict.Abstractions;
-using OpenIddict.Server.AspNetCore;
 using System.Security.Claims;
 
 namespace Calabonga.Microservice.IdentityModule.Web.Definitions.Identity;
@@ -42,12 +41,11 @@ public class ApplicationClaimsPrincipalFactory : UserClaimsPrincipalFactory<Appl
                     .ForEach(x => ((ClaimsIdentity)principal.Identity!)
                         .AddClaim(new Claim(
                             x.PolicyName,
-                            ClaimTypes.Role,
+                            OpenIddictConstants.Claims.Role,
                             OpenIddictConstants.Destinations.AccessToken,
                             OpenIddictConstants.Destinations.IdentityToken)));
             }
         }
-
 
         ((ClaimsIdentity)principal.Identity!)
             .AddClaim(new Claim(
@@ -55,7 +53,6 @@ public class ApplicationClaimsPrincipalFactory : UserClaimsPrincipalFactory<Appl
                 "framework",
                 OpenIddictConstants.Destinations.AccessToken,
                 OpenIddictConstants.Destinations.IdentityToken));
-
 
         if (!string.IsNullOrWhiteSpace(user.FirstName))
         {
