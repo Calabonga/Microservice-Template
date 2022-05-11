@@ -15,7 +15,7 @@ public class PagedListConverter<TMapFrom, TMapTo> : ITypeConverter<IPagedList<TM
     /// <param name="destination">Destination object</param>
     /// <param name="context">Resolution context</param>
     /// <returns>Destination object</returns>
-    public IPagedList<TMapTo> Convert(IPagedList<TMapFrom> source, IPagedList<TMapTo> destination, ResolutionContext context) =>
+    public IPagedList<TMapTo> Convert(IPagedList<TMapFrom>? source, IPagedList<TMapTo> destination, ResolutionContext context) =>
         // ReSharper disable once ConditionIsAlwaysTrueOrFalse
         source == null
             ? PagedList.Empty<TMapTo>()

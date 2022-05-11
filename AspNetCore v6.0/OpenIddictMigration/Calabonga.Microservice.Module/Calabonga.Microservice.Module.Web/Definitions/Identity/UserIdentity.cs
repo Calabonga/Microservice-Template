@@ -11,7 +11,7 @@ public sealed class UserIdentity
 {
     private UserIdentity() { }
 
-    public static UserIdentity Instance => Lazy.Value;
+    public static UserIdentity Instance => _lazy.Value;
 
     public void Configure(IHttpContextAccessor httpContextAccessor)
     {
@@ -47,7 +47,7 @@ public sealed class UserIdentity
         }
     }
 
-    private static readonly Lazy<UserIdentity> Lazy = new Lazy<UserIdentity>(() => new UserIdentity());
+    private static readonly Lazy<UserIdentity> _lazy = new(() => new UserIdentity());
 
     private bool IsInitialized { get; set; }
 

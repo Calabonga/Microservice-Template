@@ -29,18 +29,7 @@ public class AuthorizationDefinition : AppDefinition
             .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme, options =>
             {
                 options.LoginPath = "/connect/login";
-                options.LogoutPath = "/connect/logout";
-            })
-            // .AddJwtBearer(cfg =>
-            // {
-                // cfg.Audience = "https://localhost:4200/";
-                // cfg.Authority = "https://localhost:5000/";
-                // cfg.RequireHttpsMetadata = false;
-                // cfg.SaveToken = true;
-                // cfg.TokenValidationParameters = new TokenValidationParameters();
-                // cfg.Configuration = new OpenIdConnectConfiguration();  
-            // })
-            ;
+            });
 
         services.AddAuthorization();
         services.AddSingleton<IAuthorizationPolicyProvider, AuthorizationPolicyProvider>();

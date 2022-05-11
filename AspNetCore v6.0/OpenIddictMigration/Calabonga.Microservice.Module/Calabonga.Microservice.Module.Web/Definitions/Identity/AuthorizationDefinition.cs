@@ -5,7 +5,6 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.IdentityModel.Tokens;
 using OpenIddict.Server.AspNetCore;
-using System.Text;
 using System.Text.Json;
 
 namespace Calabonga.Microservice.Module.Web.Definitions.Identity;

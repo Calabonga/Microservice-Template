@@ -18,9 +18,6 @@ public class MediatorDefinition : AppDefinition
     public override void ConfigureServices(IServiceCollection services, IConfiguration configuration)
     {
         services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidatorBehavior<,>));
-
-        //services.AddScoped<IPipelineBehavior<PostEventItemRequest, OperationResult<EventItemViewModel>>, TransactionBehavior<PostEventItemRequest, OperationResult<EventItemViewModel>>>();
-
         services.AddMediatR(Assembly.GetExecutingAssembly());
     }
 }

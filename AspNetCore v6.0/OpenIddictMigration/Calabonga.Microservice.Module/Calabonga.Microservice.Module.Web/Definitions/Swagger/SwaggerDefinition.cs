@@ -39,7 +39,6 @@ public class SwaggerDefinition : AppDefinition
             settings.OAuthClientSecret("client_secret_sts");
             settings.DisplayRequestDuration();
             settings.OAuthAppName(AppData.ServiceName);
-            //settings.OAuth2RedirectUrl($"{url}/swagger/oauth2-redirect.html");
         });
     }
 
@@ -114,41 +113,6 @@ public class SwaggerDefinition : AppDefinition
                     new List<string>()
                 }
             });
-
-            //options.AddSecurityDefinition("oauth2", new OpenApiSecurityScheme
-            //{
-            //    Type = SecuritySchemeType.OAuth2,
-            //    Flows = new OpenApiOAuthFlows
-            //    {
-            //        AuthorizationCode = new OpenApiOAuthFlow
-            //        {
-            //            TokenUrl = new Uri($"{url}/connect/token", UriKind.Absolute),
-            //            AuthorizationUrl = new Uri($"{url}/connect/authorize", UriKind.Absolute),
-            //            Scopes = new Dictionary<string, string>
-            //            {
-            //                { "api", "Default scope" }
-            //            },
-                            
-            //        }
-            //    }
-            //});
-            //options.AddSecurityRequirement(new OpenApiSecurityRequirement
-            //{
-            //    {
-            //        new OpenApiSecurityScheme
-            //        {
-            //            Reference = new OpenApiReference
-            //            {
-            //                Type = ReferenceType.SecurityScheme,
-            //                Id = "oauth2"
-            //            },
-            //            In = ParameterLocation.Cookie,
-            //            Type = SecuritySchemeType.OAuth2
-
-            //        },
-            //        new List<string>()
-            //    }
-            //});
         });
     }
 }

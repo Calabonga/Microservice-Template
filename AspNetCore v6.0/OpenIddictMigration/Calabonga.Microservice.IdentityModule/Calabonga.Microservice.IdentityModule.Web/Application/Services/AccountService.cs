@@ -90,8 +90,9 @@ public class AccountService : IAccountService
                 operation.AddError(AppData.Exceptions.UserNotFoundException);
                 return await Task.FromResult(operation);
             }
+            
             await _userManager.AddToRoleAsync(user, role);
-            // await AddClaimsToUser(_userManager, user, role);
+            
             var profile = _mapper.Map<ApplicationUserProfile>(model);
             var profileRepository = _unitOfWork.GetRepository<ApplicationUserProfile>();
 

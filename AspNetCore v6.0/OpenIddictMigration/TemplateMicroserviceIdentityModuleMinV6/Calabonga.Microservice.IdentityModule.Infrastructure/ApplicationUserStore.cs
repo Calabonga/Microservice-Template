@@ -24,10 +24,12 @@ public class ApplicationUserStore : UserStore<ApplicationUser, ApplicationRole, 
     /// The <see cref="T:System.Threading.Tasks.Task" /> that represents the asynchronous operation, containing the user matching the specified <paramref name="userId" /> if it exists.
     /// </returns>
     public override Task<ApplicationUser> FindByIdAsync(string userId, CancellationToken cancellationToken = default)
-    {
-        return Users
-            .Include(x => x.ApplicationUserProfile)
-            .ThenInclude(x => x.Permissions)
+        => Users
+            .Include(x => x.ApplicationUserProfile).ThenInclude(x => x.Permissions)
             .FirstOrDefaultAsync(u => u.Id.ToString() == userId, cancellationToken: cancellationToken)!;
-    }
+
+    public override Task<ApplicationUser> FindByNameAsync(string normalizedUserName, CancellationToken cancellationToken = default)
+        => Users
+            .Include(x => x.ApplicationUserProfile).ThenInclude(x => x.Permissions)
+            .FirstOrDefaultAsync(u => u.NormalizedUserName.ToString() == normalizedUserName, cancellationToken: cancellationToken)!;
 }

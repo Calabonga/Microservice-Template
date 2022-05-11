@@ -1,4 +1,5 @@
-﻿using $safeprojectname$.Definitions.Base;
+﻿using $safeprojectname$.Application.Services;
+using $safeprojectname$.Definitions.Base;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
@@ -13,6 +14,8 @@ namespace $safeprojectname$.Endpoints.AuthEndpoints;
 /// </summary>
 public class AuthorizeEndpoints : AppDefinition
 {
+    private readonly IAccountService _accountService;
+
     public override void ConfigureApplication(WebApplication app, IWebHostEnvironment environment)
     {
         app.MapGet("~/connect/authorize", AuthorizeAsync).ExcludeFromDescription();

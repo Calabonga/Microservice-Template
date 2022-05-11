@@ -11,6 +11,7 @@ using Calabonga.UnitOfWork;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
+using OpenIddict.Abstractions;
 using System.Security.Claims;
 
 namespace $safeprojectname$.Application.Services;
@@ -22,7 +23,7 @@ public class AccountService : IAccountService
 {
     private readonly IUnitOfWork<ApplicationDbContext> _unitOfWork;
     private readonly ILogger<AccountService> _logger;
-    private readonly ApplicationClaimsPrincipalFactory _claimsFactory;
+    private readonly ApplicationUserClaimsPrincipalFactory _claimsFactory;
     private readonly IHttpContextAccessor _httpContext;
     private readonly IMapper _mapper;
     private readonly UserManager<ApplicationUser> _userManager;
@@ -42,7 +43,7 @@ public class AccountService : IAccountService
         IUnitOfWork<ApplicationDbContext> unitOfWork,
         ILogger<AccountService> logger,
         ILogger<UserManager<ApplicationUser>> loggerUser,
-        ApplicationClaimsPrincipalFactory claimsFactory,
+        ApplicationUserClaimsPrincipalFactory claimsFactory,
         IHttpContextAccessor httpContext,
         IMapper mapper)
     {
@@ -89,8 +90,9 @@ public class AccountService : IAccountService
                 operation.AddError(AppData.Exceptions.UserNotFoundException);
                 return await Task.FromResult(operation);
             }
+            
             await _userManager.AddToRoleAsync(user, role);
-            await AddClaimsToUser(_userManager, user, role);
+            
             var profile = _mapper.Map<ApplicationUserProfile>(model);
             var profileRepository = _unitOfWork.GetRepository<ApplicationUserProfile>();
 
@@ -123,7 +125,7 @@ public class AccountService : IAccountService
     public async Task<OperationResult<UserProfileViewModel>> GetProfileByIdAsync(string identifier)
     {
         var operation = OperationResult.CreateResult<UserProfileViewModel>();
-        var claimsPrincipal = await GetUserClaimsByIdAsync(identifier);
+        var claimsPrincipal = await GetPrincipalByIdAsync(identifier);
         operation.Result = _mapper.Map<UserProfileViewModel>(claimsPrincipal.Identity);
         return await Task.FromResult(operation);
     }
@@ -136,7 +138,7 @@ public class AccountService : IAccountService
     public async Task<OperationResult<UserProfileViewModel>> GetProfileByEmailAsync(string email)
     {
         var operation = OperationResult.CreateResult<UserProfileViewModel>();
-        var claimsPrincipal = await GetUserClaimsByEmailAsync(email);
+        var claimsPrincipal = await GetPrincipalByEmailAsync(email);
         operation.Result = _mapper.Map<UserProfileViewModel>(claimsPrincipal.Identity);
         return await Task.FromResult(operation);
     }
@@ -146,7 +148,7 @@ public class AccountService : IAccountService
     /// </summary>
     /// <param name="identifier"></param>
     /// <returns></returns>
-    public async Task<ClaimsPrincipal> GetUserClaimsByIdAsync(string identifier)
+    public async Task<ClaimsPrincipal> GetPrincipalByIdAsync(string identifier)
     {
         if (string.IsNullOrEmpty(identifier))
         {
@@ -168,7 +170,7 @@ public class AccountService : IAccountService
     /// </summary>
     /// <param name="email"></param>
     /// <returns></returns>
-    public async Task<ClaimsPrincipal> GetUserClaimsByEmailAsync(string email)
+    public async Task<ClaimsPrincipal> GetPrincipalByEmailAsync(string email)
     {
         if (string.IsNullOrEmpty(email))
         {
@@ -265,11 +267,11 @@ public class AccountService : IAccountService
 
     private async Task AddClaimsToUser(UserManager<ApplicationUser> userManager, ApplicationUser user, string role)
     {
-        await userManager.AddClaimAsync(user, new Claim(ClaimTypes.Name, user.UserName));
-        await userManager.AddClaimAsync(user, new Claim(ClaimTypes.GivenName, user.FirstName));
-        await userManager.AddClaimAsync(user, new Claim(ClaimTypes.Surname, user.LastName));
-        await userManager.AddClaimAsync(user, new Claim(ClaimTypes.Email, user.Email));
-        await userManager.AddClaimAsync(user, new Claim(ClaimTypes.Role, role));
+        await userManager.AddClaimAsync(user, new Claim(OpenIddictConstants.Claims.Name, user.UserName));
+        await userManager.AddClaimAsync(user, new Claim(ClaimTypes.GivenName, user.FirstName ?? "John"));
+        await userManager.AddClaimAsync(user, new Claim(ClaimTypes.Surname, user.LastName?? "Doe"));
+        await userManager.AddClaimAsync(user, new Claim(OpenIddictConstants.Claims.Email, user.Email));
+        await userManager.AddClaimAsync(user, new Claim(OpenIddictConstants.Claims.Role, role));
     }
 
     #endregion

@@ -29,7 +29,6 @@ public class AuthorizationDefinition : AppDefinition
             .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme, options =>
             {
                 options.LoginPath = "/connect/login";
-                options.LogoutPath = "/connect/logout"; // Calabonga: not implemented (2022-05-10 07:44 AuthorizationDefinition)
             });
 
         services.AddAuthorization();

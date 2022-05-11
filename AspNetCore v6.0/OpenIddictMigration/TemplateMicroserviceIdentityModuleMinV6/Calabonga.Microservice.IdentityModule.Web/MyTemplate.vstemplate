@@ -20,6 +20,7 @@
       <Folder Name="Properties" TargetFolderName="Properties">
         <ProjectItem ReplaceParameters="true" TargetFileName="launchSettings.json">launchSettings.json</ProjectItem>
       </Folder>
+      <Folder Name="wwwroot" TargetFolderName="wwwroot" />
       <Folder Name="Application" TargetFolderName="Application">
         <Folder Name="Services" TargetFolderName="Services">
           <ProjectItem ReplaceParameters="true" TargetFileName="AccountService.cs">AccountService.cs</ProjectItem>
@@ -60,7 +61,7 @@
           <ProjectItem ReplaceParameters="true" TargetFileName="FluentValidationDefinition.cs">FluentValidationDefinition.cs</ProjectItem>
         </Folder>
         <Folder Name="Identity" TargetFolderName="Identity">
-          <ProjectItem ReplaceParameters="true" TargetFileName="ApplicationClaimsPrincipalFactory.cs">ApplicationClaimsPrincipalFactory.cs</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="ApplicationUserClaimsPrincipalFactory.cs">ApplicationUserClaimsPrincipalFactory.cs</ProjectItem>
           <ProjectItem ReplaceParameters="true" TargetFileName="AuthorizationDefinition.cs">AuthorizationDefinition.cs</ProjectItem>
           <ProjectItem ReplaceParameters="true" TargetFileName="UserIdentity.cs">UserIdentity.cs</ProjectItem>
         </Folder>
@@ -139,7 +140,6 @@
         <ProjectItem ReplaceParameters="true" TargetFileName="_ViewImports.cshtml">_ViewImports.cshtml</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="_ViewStart.cshtml">_ViewStart.cshtml</ProjectItem>
       </Folder>
-      <Folder Name="wwwroot" TargetFolderName="wwwroot" />
       <ProjectItem ReplaceParameters="true" TargetFileName="appsettings.json">appsettings.json</ProjectItem>
       <ProjectItem ReplaceParameters="true" TargetFileName="appsettings.Development.json">appsettings.Development.json</ProjectItem>
       <ProjectItem ReplaceParameters="true" TargetFileName="Program.cs">Program.cs</ProjectItem>

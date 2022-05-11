@@ -4,7 +4,7 @@
         "Kestrel": {
             "commandName": "Project",
             "dotnetRunMessages": true,
-            "launchBrowser": false,
+            "launchBrowser": true,
             "launchUrl": "swagger",
             "applicationUrl": "https://localhost:10001",
             "environmentVariables": {

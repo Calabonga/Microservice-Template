@@ -7,10 +7,10 @@
         "Backend",
         "Microservice"
     ],
+    "name": "Calabonga.Microservice.Module v6.1.0",
+    "description": "Nimble Microservice Framework. This template gives you a possibility to start developing a microservice architecture with integrated UI (Swagger), Mediatr, Automapper. Template developed for .NET 6.0.x.",
     "identity": "Calabonga.Microservice.Module",
     "sourceName": "Calabonga.Microservice.Module",
-    "name": "Calabonga.Microservice.Module (minimal API)",
-    "description": "Nimble Microservice Framework v6.0. This template gives you a possibility to start developing a microservices system with integrated UI (Swagger), Mediatr, Automapper. Template developed for .NET 6.0",
     "shortName": "nimbleminm",
     "tags": {
         "language": "C#",

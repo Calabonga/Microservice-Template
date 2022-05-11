@@ -80,6 +80,30 @@ public class OpenIddictDefinition : AppDefinition
                     .UseAspNetCore()
                     .EnableTokenEndpointPassthrough()
                     .EnableAuthorizationEndpointPassthrough();
+
+                //JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
+                //JwtSecurityTokenHandler.DefaultOutboundClaimTypeMap.Clear();
+
+                //options.AddEventHandler<OpenIddictServerEvents.ProcessSignInContext>(builder =>
+                //{
+                //    builder.SetOrder(OpenIddictServerHandlers.GenerateIdentityModelRefreshToken.Descriptor.Order - 1)
+                //        .AddFilter<OpenIddictServerHandlerFilters.RequireRefreshTokenGenerated>()
+                //        .SetType(OpenIddictServerHandlerType.Custom)
+                //        .UseInlineHandler(context =>
+                //        {
+                //            context.RefreshTokenPrincipal = context.RefreshTokenPrincipal.Clone(
+                //                claim => claim.Type is (
+                //                    OpenIddictConstants.Claims.Private.AuthorizationId or
+                //                    OpenIddictConstants.Claims.Private.Presenter or
+                //                    OpenIddictConstants.Claims.Private.TokenId or
+                //                    OpenIddictConstants.Claims.Private.Scope or
+                //                    OpenIddictConstants.Claims.Subject or
+                //                    OpenIddictConstants.Claims.ExpiresAt
+                //                    )
+                //            );
+                //            return default;
+                //        });
+                //});
             })
 
             // Register the OpenIddict validation components.
