@@ -1,20 +1,21 @@
-﻿namespace Calabonga.Microservice.IdentityModule.Domain
+﻿using Calabonga.Microservice.IdentityModule.Domain.Base;
+
+namespace Calabonga.Microservice.IdentityModule.Domain;
+
+/// <summary>
+/// EventItem entity for demo purposes only
+/// </summary>
+public class EventItem : Identity
 {
-    /// <summary>
-    /// EventItem entity for demo purposes only
-    /// </summary>
-    public class EventItem : Identity
-    {
-        public DateTime CreatedAt { get; set; }
+    public DateTime CreatedAt { get; set; }
 
-        public string Logger { get; set; } = null!;
+    public string Logger { get; set; } = null!;
 
-        public string Level { get; set; } = null!;
+    public string Level { get; set; } = null!;
 
-        public string Message { get; set; } = null!;
+    public string Message { get; set; } = null!;
 
-        public string? ThreadId { get; set; }
+    public string? ThreadId { get; set; }
 
-        public string? ExceptionMessage { get; set; }
-    }
+    public string? ExceptionMessage { get; set; }
 }

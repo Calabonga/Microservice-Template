@@ -6,9 +6,19 @@
     public static partial class AppData
     {
         /// <summary>
+        /// CORS Policy name
+        /// </summary>
+        public const string PolicyName = "CorsPolicy";
+
+        /// <summary>
         /// Current service name
         /// </summary>
-        public const string ServiceName = "Module";
+        public const string ServiceName = "Microservice Template";
+
+        /// <summary>
+        /// Nimble Framework Microservice Template with integrated OpenIddict for OpenID Connect server and Token Validation
+        /// </summary>
+        public const string ServiceDescription = "Nimble Framework Microservice Template with integrated OpenIddict for OpenID Connect server and Token Validation";
 
         /// <summary>
         /// "SystemAdministrator"

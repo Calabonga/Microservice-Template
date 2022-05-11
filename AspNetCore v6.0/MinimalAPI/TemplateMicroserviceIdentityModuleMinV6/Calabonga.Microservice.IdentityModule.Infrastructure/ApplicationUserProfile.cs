@@ -1,18 +1,19 @@
-﻿namespace $safeprojectname$
+﻿using $ext_projectname$.Domain.Base;
+
+namespace $safeprojectname$;
+
+/// <summary>
+/// Represent person with login information (ApplicationUser)
+/// </summary>
+public class ApplicationUserProfile : Auditable
 {
     /// <summary>
-    /// Represent person with login information (ApplicationUser)
+    /// Account
     /// </summary>
-    public class ApplicationUserProfile : Auditable
-    {
-        /// <summary>
-        /// Account
-        /// </summary>
-        public virtual ApplicationUser ApplicationUser { get; set; }
+    public virtual ApplicationUser? ApplicationUser { get; set; }
 
-        /// <summary>
-        /// Microservice permission for policy-based authorization
-        /// </summary>
-        public ICollection<MicroservicePermission> Permissions { get; set; }
-    }
+    /// <summary>
+    /// Application permission for policy-based authorization
+    /// </summary>
+    public List<AppPermission>? Permissions { get; set; }
 }

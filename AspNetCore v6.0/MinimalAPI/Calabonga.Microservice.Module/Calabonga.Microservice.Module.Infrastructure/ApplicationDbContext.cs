@@ -1,5 +1,4 @@
-﻿using Calabonga.Microservice.Module.Domain;
-using Calabonga.Microservice.Module.Infrastructure.Base;
+﻿using Calabonga.Microservice.Module.Infrastructure.Base;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 

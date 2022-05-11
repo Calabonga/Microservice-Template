@@ -3,8 +3,8 @@
 | Name         | Description                                |
 | ------------ | ------------------------------------------ |
 | Name         | Microservice Template for ASP.NET Core API |
-| Author       | Calabonga SOFT © 2005-2021 Calabonga SOFT  |
-| Created Date | 2021-11-21                                 |
+| Author       | Calabonga SOFT © 2005-2022 Calabonga SOFT  |
+| Created Date | 2019-04-13 3:28:39 PM                      |
 | Updated Date | 2021-11-21                                 |
 
 # Versions

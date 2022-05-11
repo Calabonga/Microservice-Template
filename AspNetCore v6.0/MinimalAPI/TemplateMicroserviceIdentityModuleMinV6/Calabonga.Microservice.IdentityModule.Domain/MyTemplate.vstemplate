@@ -33,7 +33,6 @@
         <ProjectItem ReplaceParameters="true" TargetFileName="ViewModelBase.cs">ViewModelBase.cs</ProjectItem>
       </Folder>
       <ProjectItem ReplaceParameters="true" TargetFileName="EventItem.cs">EventItem.cs</ProjectItem>
-      <ProjectItem ReplaceParameters="true" TargetFileName="GlobalUsing.cs">GlobalUsing.cs</ProjectItem>
     </Project>
   </TemplateContent>
 </VSTemplate>

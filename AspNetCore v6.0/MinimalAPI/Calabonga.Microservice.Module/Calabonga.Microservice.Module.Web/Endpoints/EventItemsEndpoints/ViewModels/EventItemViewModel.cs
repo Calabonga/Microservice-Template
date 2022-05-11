@@ -1,19 +1,18 @@
-﻿namespace Calabonga.Microservice.Module.Web.Endpoints.EventItemsEndpoints.ViewModels
+﻿namespace Calabonga.Microservice.Module.Web.Endpoints.EventItemsEndpoints.ViewModels;
+
+public class EventItemViewModel
 {
-    public class EventItemViewModel
-    {
-        public Guid Id { get; set; }
+    public Guid Id { get; set; }
 
-        public DateTime CreatedAt { get; set; }
+    public DateTime CreatedAt { get; set; }
 
-        public string Logger { get; set; } = null!;
+    public string Logger { get; set; } = null!;
 
-        public string Level { get; set; } = null!;
+    public string Level { get; set; } = null!;
 
-        public string Message { get; set; } = null!;
+    public string Message { get; set; } = null!;
 
-        public string? ThreadId { get; set; }
+    public string? ThreadId { get; set; }
 
-        public string? ExceptionMessage { get; set; }
-    }
+    public string? ExceptionMessage { get; set; }
 }

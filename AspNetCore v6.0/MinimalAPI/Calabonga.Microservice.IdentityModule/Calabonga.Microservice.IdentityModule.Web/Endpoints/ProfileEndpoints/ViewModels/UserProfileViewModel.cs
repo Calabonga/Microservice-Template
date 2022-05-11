@@ -1,43 +1,42 @@
-﻿namespace Calabonga.Microservice.IdentityModule.Web.Endpoints.ProfileEndpoints.ViewModels
+﻿namespace Calabonga.Microservice.IdentityModule.Web.Endpoints.ProfileEndpoints.ViewModels;
+
+/// <summary>
+/// Application User Profile
+/// </summary>
+public class UserProfileViewModel
 {
     /// <summary>
-    /// Application User Profile
+    /// Identifier
     /// </summary>
-    public class UserProfileViewModel
-    {
-        /// <summary>
-        /// Identifier
-        /// </summary>
-        public Guid Id { get; set; }
+    public Guid Id { get; set; }
 
-        /// <summary>
-        /// FirstName
-        /// </summary>
-        public string FirstName { get; set; } = null!;
+    /// <summary>
+    /// FirstName
+    /// </summary>
+    public string FirstName { get; set; } = null!;
 
-        /// <summary>
-        /// LastName
-        /// </summary>
-        public string LastName { get; set; } = null!;
+    /// <summary>
+    /// LastName
+    /// </summary>
+    public string LastName { get; set; } = null!;
 
-        /// <summary>
-        /// Email
-        /// </summary>
-        public string Email { get; set; } = null!;
+    /// <summary>
+    /// Email
+    /// </summary>
+    public string Email { get; set; } = null!;
 
-        /// <summary>
-        /// User Roles
-        /// </summary>
-        public List<string>? Roles { get; set; }
+    /// <summary>
+    /// User Roles
+    /// </summary>
+    public List<string>? Roles { get; set; }
 
-        /// <summary>
-        /// User PhoneNumber
-        /// </summary>
-        public string? PhoneNumber { get; set; }
+    /// <summary>
+    /// User PhoneNumber
+    /// </summary>
+    public string? PhoneNumber { get; set; }
 
-        /// <summary>
-        /// Position Name
-        /// </summary>
-        public string? PositionName { get; set; }
-    }
+    /// <summary>
+    /// Position Name
+    /// </summary>
+    public string? PositionName { get; set; }
 }

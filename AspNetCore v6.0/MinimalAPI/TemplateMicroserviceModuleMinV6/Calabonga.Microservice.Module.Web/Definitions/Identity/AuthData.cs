@@ -1,10 +1,8 @@
-﻿using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
+﻿using OpenIddict.Server.AspNetCore;
 
-namespace $safeprojectname$.Definitions.Identity
+namespace $safeprojectname$.Definitions.Identity;
+
+public static class AuthData
 {
-    public static class AuthData
-    {
-        public const string AuthSchemes = CookieAuthenticationDefaults.AuthenticationScheme + "," + JwtBearerDefaults.AuthenticationScheme;
-    }
+    public const string AuthSchemes = OpenIddictServerAspNetCoreDefaults.AuthenticationScheme;
 }

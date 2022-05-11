@@ -1,18 +1,17 @@
-﻿namespace Calabonga.Microservice.Module.Web
-{
-    /// <summary>
-    /// Swagger controller group attribute
-    /// </summary>
-    ///
-    [AttributeUsage(AttributeTargets.Method)]
-    public class FeatureGroupNameAttribute : Attribute
-    {
-        /// <inheritdoc />
-        public FeatureGroupNameAttribute(string groupName) => GroupName = groupName;
+﻿namespace Calabonga.Microservice.Module.Web;
 
-        /// <summary>
-        /// Group name
-        /// </summary>
-        public string GroupName { get; }
-    }
+/// <summary>
+/// Swagger controller group attribute
+/// </summary>
+///
+[AttributeUsage(AttributeTargets.Method)]
+public class FeatureGroupNameAttribute : Attribute
+{
+    /// <inheritdoc />
+    public FeatureGroupNameAttribute(string groupName) => GroupName = groupName;
+
+    /// <summary>
+    /// Group name
+    /// </summary>
+    public string GroupName { get; }
 }

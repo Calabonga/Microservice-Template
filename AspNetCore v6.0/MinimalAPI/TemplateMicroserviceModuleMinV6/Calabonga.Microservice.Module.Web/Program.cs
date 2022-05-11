@@ -1,10 +1,11 @@
 ﻿// --------------------------------------------------------------------
-// Name: Microservice Template for ASP.NET Core API without IdentityServer but using it
+// Name: Template for Micro service on ASP.NET Core API with
+// OpenIddict (OAuth2.0)
 // Author: Calabonga © 2005-2022 Calabonga SOFT
-// Version: 6.0.1
+// Version: 6.1.0
 // Based on: .NET 6.0.x
-// Created Date: 2021-11-09
-// Updated Date 2022-01-16
+// Created Date: 2019-04-13 3:28:39 PM
+// Updated Date 2022-05-11
 // --------------------------------------------------------------------
 // Contacts
 // --------------------------------------------------------------------
@@ -15,12 +16,12 @@
 // Description:
 // --------------------------------------------------------------------
 // Minimal API for NET6 used. 
-// This template implements Web API and IdentityServer functionality.
-// Also, support two type Authentications: Cookie and Bearer.
+// This template implements Web API and OpenIddict (OAuth2.0)
+// functionality. Also, support two type of Authentication:
+// Cookie and Bearer
 // --------------------------------------------------------------------
 
 using $safeprojectname$.Definitions.Base;
-using $safeprojectname$.Endpoints.Base;
 using Serilog;
 using Serilog.Events;
 
@@ -38,13 +39,11 @@ try
     var builder = WebApplication.CreateBuilder(args);
     builder.Host.UseSerilog();
 
-    builder.Services.AddEndpointsToMicroservice(builder, typeof(Program));
-    builder.Services.AddMicroserviceDefinitions(builder, typeof(Program));
+    builder.Services.AddDefinitions(builder, typeof(Program));
 
     // create application
     var app = builder.Build();
-    app.UseEndpointsInMicroservice();
-    app.UseMicroserviceDefinitions();
+    app.UseDefinitions();
 
     // start application
     app.Run();

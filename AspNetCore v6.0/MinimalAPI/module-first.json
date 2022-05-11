@@ -15,7 +15,7 @@
                     "ReplaceTextWith": "$ext_projectname$."
                 }
             ],
-            "RootDirectoryPath": "C:\\Projects\\Microservice-Template\\AspNetCore v6.0\\MinimalAPI\\TemplateMicroserviceIdentityModuleMinV6",
+            "RootDirectoryPath": "C:\\Projects\\Microservice-Template\\AspNetCore v6.0\\OpenIddictMigration\\TemplateMicroserviceIdentityModuleMinV6",
             "ProjectName": "Calabonga.Microservice.IdentityModule"
         }
     ]

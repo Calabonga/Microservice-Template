@@ -1,13 +1,12 @@
-﻿namespace $safeprojectname$.Base
+﻿namespace $safeprojectname$.Base;
+
+/// <summary>
+/// Identifier common interface
+/// </summary>
+public interface IHaveId
 {
     /// <summary>
-    /// Identifier common interface
+    /// Identifier
     /// </summary>
-    public interface IHaveId
-    {
-        /// <summary>
-        /// Identifier
-        /// </summary>
-        Guid Id { get; set; }
-    }
+    Guid Id { get; set; }
 }

@@ -25,11 +25,11 @@
       </Folder>
       <ProjectItem ReplaceParameters="true" TargetFileName="ApplicationDbContext.cs">ApplicationDbContext.cs</ProjectItem>
       <ProjectItem ReplaceParameters="true" TargetFileName="ApplicationRole.cs">ApplicationRole.cs</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="ApplicationRoleStore.cs">ApplicationRoleStore.cs</ProjectItem>
       <ProjectItem ReplaceParameters="true" TargetFileName="ApplicationUser.cs">ApplicationUser.cs</ProjectItem>
       <ProjectItem ReplaceParameters="true" TargetFileName="ApplicationUserProfile.cs">ApplicationUserProfile.cs</ProjectItem>
       <ProjectItem ReplaceParameters="true" TargetFileName="ApplicationUserStore.cs">ApplicationUserStore.cs</ProjectItem>
-      <ProjectItem ReplaceParameters="true" TargetFileName="GlobalUsing.cs">GlobalUsing.cs</ProjectItem>
-      <ProjectItem ReplaceParameters="true" TargetFileName="MicroservicePermission.cs">MicroservicePermission.cs</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="AppPermission.cs">AppPermission.cs</ProjectItem>
     </Project>
   </TemplateContent>
 </VSTemplate>

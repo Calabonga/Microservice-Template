@@ -1,22 +1,21 @@
 ﻿using $safeprojectname$.Endpoints.EventItemsEndpoints.ViewModels;
 using FluentValidation;
 
-namespace $safeprojectname$.Endpoints.EventItemsEndpoints
-{
-    /// <summary>
-    /// RegisterViewModel Validator
-    /// </summary>
-    public class EventItemCreateRequestValidator : AbstractValidator<EventItemCreateViewModel>
-    {
-        public EventItemCreateRequestValidator() => RuleSet("default", () =>
-        {
-            RuleFor(x => x.CreatedAt).NotNull();
-            RuleFor(x => x.Message).NotEmpty().NotNull().MaximumLength(4000);
-            RuleFor(x => x.Level).NotEmpty().NotNull().MaximumLength(50);
-            RuleFor(x => x.Logger).NotNull().NotEmpty().MaximumLength(255);
+namespace $safeprojectname$.Endpoints.EventItemsEndpoints;
 
-            RuleFor(x => x.ThreadId).MaximumLength(50);
-            RuleFor(x => x.ExceptionMessage).MaximumLength(4000);
-        });
-    }
+/// <summary>
+/// RegisterViewModel Validator
+/// </summary>
+public class EventItemCreateRequestValidator : AbstractValidator<EventItemCreateViewModel>
+{
+    public EventItemCreateRequestValidator() => RuleSet("default", () =>
+    {
+        RuleFor(x => x.CreatedAt).NotNull();
+        RuleFor(x => x.Message).NotEmpty().NotNull().MaximumLength(4000);
+        RuleFor(x => x.Level).NotEmpty().NotNull().MaximumLength(50);
+        RuleFor(x => x.Logger).NotNull().NotEmpty().MaximumLength(255);
+
+        RuleFor(x => x.ThreadId).MaximumLength(50);
+        RuleFor(x => x.ExceptionMessage).MaximumLength(4000);
+    });
 }

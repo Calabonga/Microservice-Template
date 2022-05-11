@@ -1,23 +1,22 @@
-﻿namespace $safeprojectname$.Base
+﻿namespace $safeprojectname$.Base;
+
+/// <summary>
+/// Some helpful methods for Type manipulations
+/// </summary>
+public static class TypeHelper
 {
     /// <summary>
-    /// Some helpful methods for Type manipulations
+    /// Check type before converting
     /// </summary>
-    public static class TypeHelper
+    /// <param name="value"></param>
+    /// <param name="conversionType"></param>
+    /// <returns></returns>
+    public static bool CanChangeType(object value, Type conversionType)
     {
-        /// <summary>
-        /// Check type before converting
-        /// </summary>
-        /// <param name="value"></param>
-        /// <param name="conversionType"></param>
-        /// <returns></returns>
-        public static bool CanChangeType(object value, Type conversionType)
+        if (conversionType == null)
         {
-            if (conversionType == null)
-            {
-                return false;
-            }
-            return value is IConvertible;
+            return false;
         }
+        return value is IConvertible;
     }
 }

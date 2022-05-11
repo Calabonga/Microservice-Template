@@ -1,5 +1,4 @@
-﻿using $ext_projectname$.Domain;
-using $safeprojectname$.Base;
+﻿using $safeprojectname$.Base;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 
