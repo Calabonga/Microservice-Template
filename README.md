@@ -6,8 +6,7 @@
 ### 2022-05-14
 На платформе NET6 (В папке AspNetCore v6.1) можно найти новую версию Nimble Framework, который предназначен для быстрого создания микросервисной архитектуры. Nimble Framework содержит IdentityModule (AuthServer) и Module (microservice). Новая версия доступна для скачивания. 
 
-[В статье блога](https://www.calabonga.net/blog/post/nimble-framework-v-6-1)
-[Видео презентация](https://youtu.be/xijBGwMEL8E)
+[В статье блога](https://www.calabonga.net/blog/post/nimble-framework-v-6-1) и [Видео презентация](https://youtu.be/xijBGwMEL8E)
 
 ### 2022-05-11
 Реализация OpenIddict в шаблонах завершена, теперь формируются шаблоны для Visual Studio. =
