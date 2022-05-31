@@ -130,7 +130,8 @@ Visual Studio project template for microservice module base on ASP.NET Core
 
 # Видео по версии 6.0
 
-[Nimble Framework v.6](https://youtu.be/euOLhhNEcwg)
+[Nimble Framework v6.1](https://youtu.be/xijBGwMEL8E)
+[Nimble Framework v6.0](https://youtu.be/euOLhhNEcwg)
 
 # Видео по версии 3.1 (3.0)
 
