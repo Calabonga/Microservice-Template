@@ -1,87 +1,100 @@
 История версий Nimble Framework
 
-v.6.0.0 от 12.11.2022
+v6.1.1 от 2022-07-04
+
+* Обновлены nuget-пакеты, которые использованы в шаблонах (EntityFramework, FluentValidation).
+* Удалены старые проекты.
+* Обновлены собранные архивы для Visual Studio в папке OUTPUT.
+
+v6.1.0 от 2022-05-14
+* Удален IdentityServer4 как основа для аутентификации и авторизации на базе OAuth2.0. Теперь Nimble Framework использует для шаблона с сервером авторизации OpenIddict, который также реализует спецификации OAuth2.0.
+* Обновлен механизм авторизации на странице swagger. Теперь используется Authorization Code Flow, который реализует форму входа. Это позволит использовать шаблон "из коробки".
+* Обновлен механизм авторизации для второстепенных сервисов (механизм передачи ролей в токен)
+* Обновлены почти все сборки (переведены на NET6), которые использованы в шаблонах
+* Реализована система Definitions
+
+v6.0.0 от 12.11.2022
 1. Шаблоны микросервисов переведены на новую версию NET6. Обновлены почти все файлы, использованы новые "фишки", которые появились в C#.
 2. Обновились сборки для ASP.NET Core, EntityFrameworkCore и Swagger (OpenAPI). Теперь используются версии NET6.
 3. Удалены дубликаты контроллеров, которые демонстрировали использовать подхода Readonly/Writable (Calabonga.UnitOfWork.Controllers). Теперь остался только один пример, построенный на базе Mediatr.
 4. Обновлена инфраструктура папок. Использована Vertical Slice Architecture, которую представил Jimmy Bogard.
 5. Обновилось расширение VSIX-расширения для Visual Studio.
 
-v.5.0.8 от 31.10.2021:
+v5.0.8 от 31.10.2021:
 1. Обновились сборки для ASP.NET Core, EntityFrameworkCore и Swagger (OpenAPI). А также nuget-пакет FluentValidation и другие.
 2. Конструкции некоторых методов переведин на lambda-выражения, чтобы следовать моде.
 3. Обновилось расширение VSIX-расширения для Visual Studio.
 
-v.5.0.7 от 06.09.2021:
+v5.0.7 от 06.09.2021:
 1. Обновились сборки для ASP.NET Core, EntityFrameworkCore и Swagger (OpenAPI). А также nuget-пакеты Calabonga.Microservices.Core, FluentValidation и другие.
 2. Добавлено несколько комментариев в код для обеспечения определенности в действиях
 3. Обновилось расширение VSIX-расширения для Visual Studio.
 
-v.5.0.6 от 09.08.2021:
+v5.0.6 от 09.08.2021:
 1. Обновились сборки для ASP.NET Core и EntityFrameworkCore. А также nuget-пакеты OperationResultCore, Calabonga.Microservices.Core, Swagger, FluentValidation и другие.
 2. Обновились метаданные, используемые для VSIX-расширения для Visual Studio.
 
-v.5.0.5 от 04.06.2021:
+v5.0.5 от 04.06.2021:
 1. Исправлено несколько опечаток.
 2. Обновились сборки для ASP.NET Core и EntityFrameworkCore. А также nuget-пакеты OperationResultCore, Calabonga.Microservices.Core, Swagger, FluentValidation и другие.
 
-v.5.0.4 от 16.03.2021:
+v5.0.4 от 16.03.2021:
 1. Стандартный logger заменен на Serilog. Теперь читать логи стало проще.
 2. Исправлено несколько опечаток.
 3. Обновились сборки для ASP.NET Core и EntityFrameworkCore. А также nuget-пакеты OperationResultCore, Calabonga.Microservices.Core и другие.
 4. Реализация Mediatr-запросов (Request) из классов превратились в записи (class -> record) С#.
 
-v.5.0.3 от 16.03.2021:
+v5.0.3 от 16.03.2021:
 1. Удалена зависимость от некоторых сборок, которые вынесены на более высокий уровень. Это позволит обновлять их отдельно.
 2. Исправлено несколько опечаток.
 3. Обновились сборки для ASP.NET Core и EntityFrameworkCore до версий (5.0.4). А также nuget-пакеты OperationResultCore, Calabonga.Microservices.Core и другие.
 4. Реализация Mediatr-запросов из контроллеров перенесены в проекты шаблонов из сборки Calabonga.AspNetCore.Controllers, чтобы примеры использования были доступны разработчику.
 
-v.5.0.2 от 27.01.2021:
+v5.0.2 от 27.01.2021:
 1. Применены языковые *фишки* из C# 9.0. Другими словами, был неслабый рефакторинг кода для оптимизации.
 2. Исправлено несколько опечаток.
 3. Обновились сборки для ASP.NET Core и EntityFrameworkCore до версий (5.0.2). А также nuget-пакеты OperationResultCore, Calabonga.Microservices.Core и другие.
 
-v.5.0.1 от 04.12.2020:
+v5.0.1 от 04.12.2020:
 1. В шаблоне микросервиса с IdentityServer4 и шаблоне без него удалены проекты xxx.Core. Файлы из этих проектов перенесены в проект xxx.Entities. Ссылки на Exceptions вынесены в nuget-пакет Calabonga.Microservices.Core.
 2. В шаблоне микросервиса с IdentityServer4 добавлена возможность аутентификации как для Cookie типа, так и для Bearer. Да! Теперь настроено два типа аутентификации.
 3. Применены языковые фишки из C# 8.0. Другими словами, был неслабый рефакторинг кода для оптимизации.
 4. Исправлено множество опечаток.
 
-v.5.0.0 от 15.11.2020:
+v5.0.0 от 15.11.2020:
 1. Все проекты во всех решениях (solutions) обновились до версии .NET 5.0.
 2. Обновились nuget-сборки для ASP.NET Core и EntityFramework Core (5.0.0).
 3. Добавилась реализация логирования, как пример использования, который описан на видео ILogger в ASP.NET Core
 4. На страницу API (Swagger) выведена информация о названии ветки (branch) и номер публикации (commit).
 
-v.2.2.0 от 27.09.2020:
+v2.2.0 от 27.09.2020:
 1. Проведен небольшой рефакторинг с целью уменьшения количества зависимых сборок (nuget-пакетов).
 2. Обновились все сборки от `Swagger` до версии 5.6.3
 3. Обновились сборки для ASP.NET Core и EntityFramework Core (3.1.8)
 
-v.2.1.1 от 21.09.2020:
+v2.1.1 от 21.09.2020:
 1. Обновились все сборки от `Swagger` до версии 5.6.1
 2. Подключена сборка FluentValidation для того, чтобы вынести логику валидации с уровня Web API на уровень Domain (Clean Architecture).
 3. Добавлены примеры для сущности Log на базе Mediator (CQRS).
 
-v.2.1.0 от 17.09.2020:
+v2.1.0 от 17.09.2020:
 1. Обновились сборки для `ASP.NET Core` и `EntityFramework Core` (3.1.8)
 2. Обновились все сборки от `Swagger` до версии 5.6.0
 3. Обновились примеры (контроллеры) использования сборки Calabonga.UnitOfWork.Controllers, которая имеет базовые реализации для контроллеров ReadonlyOntroller и WritableController.
 4. Добавлены примеры (контроллеры и методы) и Calabonga.AspNetCore.Controllers, которая реализована на базе Mediatr, где базовыми являются принципы CQRS и Vertical Slice Architecture.
 
-v.2.0.4 от 04.09.2020:
+v2.0.4 от 04.09.2020:
 1. Обновились сборки для ASP.NET Core и EntityFramework Core (3.1.7)
 
-v.2.0.3 от 22.07.2020:
+v2.0.3 от 22.07.2020:
 1. Обновились сборки для ASP.NET Core и EntityFramework Core (3.1.6)
 
-v.2.0.1 от 14.04.2020:
+v2.0.1 от 14.04.2020:
 1. Обновились сборки для `ASP.NET Core` и `EntityFramework Core` (3.1.3)
 2. Обновились все сборки от `Swagger` до версии 5.3.1
 3. Обновились `Calabonga.UnitOfWork.Controllers` до версии 1.1.3
 
-v.2.0.0 от 13.03.2020:
+v2.0.0 от 13.03.2020:
 1. Обновились сборки для `ASP.NET Core` и `EntityFramework Core` (3.1.2)
 2. Обновился `Swagger` до версии 5.1.0
 
@@ -90,7 +103,7 @@ v2.0.0-beta1 от 02.02.2020:
 2. Обновились сборки для `ASP.NET Core` и `EntityFramework Core` (3.1.1)
 3. Обновился `Swagger` до версии 5.0.0
 
-More information: 
+More information:
 1. GitHub (https://github.com/Calabonga/Microservice-Template)
 2. https://www.calabonga.net/
 3. https://www.youtube.com/playlist?list=PLIB8be7sunXMh9dckizdXz65hLX_HRzlc
