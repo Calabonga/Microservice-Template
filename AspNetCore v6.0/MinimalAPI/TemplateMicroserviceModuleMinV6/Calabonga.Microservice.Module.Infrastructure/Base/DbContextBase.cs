@@ -253,8 +253,6 @@ namespace $safeprojectname$.Base
                     break;
                 }
             }
-
-            builder.EnableAutoHistory(2048);
         }
     }
 }

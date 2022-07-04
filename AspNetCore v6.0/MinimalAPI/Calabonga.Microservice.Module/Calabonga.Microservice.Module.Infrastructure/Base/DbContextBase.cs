@@ -253,8 +253,6 @@ namespace Calabonga.Microservice.Module.Infrastructure.Base
                     break;
                 }
             }
-
-            builder.EnableAutoHistory(2048);
         }
     }
 }

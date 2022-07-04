@@ -20,7 +20,6 @@
       <Folder Name="Properties" TargetFolderName="Properties">
         <ProjectItem ReplaceParameters="true" TargetFileName="launchSettings.json">launchSettings.json</ProjectItem>
       </Folder>
-      <Folder Name="wwwroot" TargetFolderName="wwwroot" />
       <Folder Name="Application" TargetFolderName="Application">
         <Folder Name="Services" TargetFolderName="Services">
           <ProjectItem ReplaceParameters="true" TargetFileName="AccountService.cs">AccountService.cs</ProjectItem>
