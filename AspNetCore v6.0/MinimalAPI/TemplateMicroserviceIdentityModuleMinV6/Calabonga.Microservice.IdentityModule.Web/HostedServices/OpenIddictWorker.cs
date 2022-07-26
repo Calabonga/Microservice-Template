@@ -7,8 +7,7 @@ public class OpenIddictWorker : IHostedService
 {
     private readonly IServiceProvider _serviceProvider;
 
-    public OpenIddictWorker(IServiceProvider serviceProvider)
-        => _serviceProvider = serviceProvider;
+    public OpenIddictWorker(IServiceProvider serviceProvider) => _serviceProvider = serviceProvider;
 
     public async Task StartAsync(CancellationToken cancellationToken)
     {
@@ -19,12 +18,14 @@ public class OpenIddictWorker : IHostedService
 
         var manager = scope.ServiceProvider.GetRequiredService<IOpenIddictApplicationManager>();
 
-        if (await manager.FindByClientIdAsync("service-to-service", cancellationToken) is null)
+        // credentials password
+        const string client_id1 = "client-id-sts";
+        if (await manager.FindByClientIdAsync(client_id1, cancellationToken) is null)
         {
             await manager.CreateAsync(new OpenIddictApplicationDescriptor
             {
-                ClientId = "client_id_sts",
-                ClientSecret = "client_secret_sts",
+                ClientId = client_id1,
+                ClientSecret = "client-secret-sts",
                 DisplayName = "Service-To-Service demonstration",
                 Permissions =
                 {
@@ -34,21 +35,22 @@ public class OpenIddictWorker : IHostedService
                     // Grant type permissions
                     OpenIddictConstants.Permissions.GrantTypes.ClientCredentials,
                     OpenIddictConstants.Permissions.GrantTypes.Password,
-                        
+
                     // Scope permissions
                     OpenIddictConstants.Permissions.Prefixes.Scope + "api"
                 }
             }, cancellationToken);
         }
 
-        if (await manager.FindByClientIdAsync("authorization-flow", cancellationToken) is null)
+        const string client_id2 = "client-id-code";
+        if (await manager.FindByClientIdAsync(client_id2, cancellationToken) is null)
         {
             var url = _serviceProvider.GetRequiredService<IConfiguration>().GetValue<string>("AuthServer:Url");
 
             await manager.CreateAsync(new OpenIddictApplicationDescriptor
             {
-                ClientId = "client_id_code",
-                ClientSecret = "client_secret_code",
+                ClientId = client_id2,
+                ClientSecret = "client-secret-code",
                 DisplayName = "API testing clients with Authorization Code Flow demonstration",
                 RedirectUris = {
                     new Uri("https://www.thunderclient.com/oauth/callback"),        // https://www.thunderclient.com/

@@ -31,5 +31,5 @@ public class ApplicationUserStore : UserStore<ApplicationUser, ApplicationRole, 
     public override Task<ApplicationUser> FindByNameAsync(string normalizedUserName, CancellationToken cancellationToken = default)
         => Users
             .Include(x => x.ApplicationUserProfile).ThenInclude(x => x.Permissions)
-            .FirstOrDefaultAsync(u => u.NormalizedUserName.ToString() == normalizedUserName, cancellationToken: cancellationToken)!;
+            .FirstOrDefaultAsync(u => u.NormalizedUserName == normalizedUserName, cancellationToken: cancellationToken)!;
 }

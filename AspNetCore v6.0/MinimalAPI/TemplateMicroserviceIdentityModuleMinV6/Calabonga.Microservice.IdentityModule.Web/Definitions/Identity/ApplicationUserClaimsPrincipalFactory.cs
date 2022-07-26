@@ -27,7 +27,7 @@ public class ApplicationUserClaimsPrincipalFactory : UserClaimsPrincipalFactory<
     {
         var principal = await base.CreateAsync(user);
 
-        
+
 
         if (user.ApplicationUserProfile?.Permissions != null)
         {
@@ -54,10 +54,10 @@ public class ApplicationUserClaimsPrincipalFactory : UserClaimsPrincipalFactory<
         {
             ((ClaimsIdentity)principal.Identity!).AddClaim(new Claim(ClaimTypes.Surname, user.LastName));
         }
-        
-        // For this sample, just include all claims in all token types.
-        // In reality, claims' destinations would probably differ by token type and depending on the scopes requested.
-        // In our case (demo) we're using OpenIddictConstants.Destinations.AccessToken and OpenIddictConstants.Destinations.IdentityToken
+
+        //// For this sample, just include all claims in all token types.
+        //// In reality, claims' destinations would probably differ by token type and depending on the scopes requested.
+        //// In our case (demo) we're using OpenIddictConstants.Destinations.AccessToken and OpenIddictConstants.Destinations.IdentityToken
         foreach (var principalClaim in principal.Claims)
         {
             principalClaim.SetDestinations(OpenIddictConstants.Destinations.AccessToken, OpenIddictConstants.Destinations.IdentityToken);

@@ -1,12 +1,9 @@
 ﻿using $ext_projectname$.Infrastructure;
 using $safeprojectname$.Definitions.Base;
 using $safeprojectname$.Definitions.Identity;
-using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Options;
 using OpenIddict.Abstractions;
-using System.Security.Claims;
 
 namespace $safeprojectname$.Definitions.DbContext;
 
@@ -25,10 +22,12 @@ public class DbContextDefinition : AppDefinition
         services.AddDbContext<ApplicationDbContext>(config =>
         {
             // UseInMemoryDatabase - This for demo purposes only!
-            // Should uninstall package "Microsoft.EntityFrameworkCore.InMemory" and install what you need. 
+            // Should uninstall package "Microsoft.EntityFrameworkCore.InMemory" and install what you need.
             // For example: "Microsoft.EntityFrameworkCore.SqlServer"
-            // uncomment line below to use UseSqlServer(). Don't forget setup connection string in appSettings.json 
             config.UseInMemoryDatabase("DEMO-PURPOSES-ONLY");
+
+            // uncomment line below to use UseSqlServer(). Don't forget setup connection string in appSettings.json
+            //config.UseSqlServer(configuration.GetConnectionString(nameof(ApplicationDbContext)));
 
             // Register the entity sets needed by OpenIddict.
             // Note: use the generic overload if you need to replace the default OpenIddict entities.

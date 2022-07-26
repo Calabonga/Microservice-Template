@@ -9,7 +9,7 @@ public static partial class AppData
     /// Current service name
     /// </summary>
     public const string ServiceName = "Microservice Template with OpenIddict";
-    
+
     /// <summary>
     /// Nimble Framework Microservice Template with integrated OpenIddict
     /// for OpenID Connect server and Token Validation
