@@ -15,7 +15,7 @@
 // --------------------------------------------------------------------
 // Description:
 // --------------------------------------------------------------------
-// Minimal API for NET6 used. 
+// Minimal API for NET6 used.
 // This template implements Web API and OpenIddict (OAuth2.0)
 // functionality. Also, support two type of Authentication:
 // Cookie and Bearer
@@ -55,7 +55,13 @@ try
 }
 catch (Exception ex)
 {
-    Log.Fatal(ex, "Host terminated unexpectedly");
+    var type = ex.GetType().Name;
+    if (type.Equals("StopTheHostException", StringComparison.Ordinal))
+    {
+        throw;
+    }
+
+    Log.Fatal(ex, "Unhandled exception");
     return 1;
 }
 finally

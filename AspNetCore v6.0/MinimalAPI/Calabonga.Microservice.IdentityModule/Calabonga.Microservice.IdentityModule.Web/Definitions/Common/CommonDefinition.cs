@@ -22,7 +22,7 @@ public class CommonDefinition : AppDefinition
         services.AddMvc();
         services.AddRazorPages();
     }
-        
+
     /// <summary>
     /// Configure application for current application
     /// </summary>

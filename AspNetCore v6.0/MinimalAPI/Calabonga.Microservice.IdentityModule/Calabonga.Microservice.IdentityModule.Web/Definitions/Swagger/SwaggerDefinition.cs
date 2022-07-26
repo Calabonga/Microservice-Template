@@ -12,7 +12,7 @@ namespace Calabonga.Microservice.IdentityModule.Web.Definitions.Swagger;
 /// </summary>
 public class SwaggerDefinition : AppDefinition
 {
-        
+
     private const string _appVersion = $"{ThisAssembly.Git.SemVer.Major}.{ThisAssembly.Git.SemVer.Minor}.{ThisAssembly.Git.SemVer.Patch}";
     private const string _swaggerConfig = "/swagger/v1/swagger.json";
 
@@ -36,8 +36,8 @@ public class SwaggerDefinition : AppDefinition
             settings.DefaultModelsExpandDepth(0);
             settings.DocExpansion(DocExpansion.None);
             settings.OAuthScopeSeparator(" ");
-            settings.OAuthClientId("client_id_code");
-            settings.OAuthClientSecret("client_secret_code");
+            settings.OAuthClientId("client-id-code");
+            settings.OAuthClientSecret("client-secret-code");
             settings.DisplayRequestDuration();
             settings.OAuthAppName(AppData.ServiceName);
             settings.OAuth2RedirectUrl($"{url}/swagger/oauth2-redirect.html");
@@ -95,7 +95,7 @@ public class SwaggerDefinition : AppDefinition
                         {
                             { "api", "Default scope" }
                         },
-                            
+
                     }
                 }
             });

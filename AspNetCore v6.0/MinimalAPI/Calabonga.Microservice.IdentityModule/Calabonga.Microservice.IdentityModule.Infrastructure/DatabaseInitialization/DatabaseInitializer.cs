@@ -1,6 +1,7 @@
 ﻿using Calabonga.Microservice.IdentityModule.Domain;
 using Calabonga.Microservice.IdentityModule.Domain.Base;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Calabonga.Microservice.IdentityModule.Infrastructure.DatabaseInitialization;
@@ -19,13 +20,22 @@ public static class DatabaseInitializer
     {
         using var scope = serviceProvider.CreateScope();
         await using var context = scope.ServiceProvider.GetService<ApplicationDbContext>();
+        await context!.Database.EnsureCreatedAsync();
+        var pending = await context.Database.GetPendingMigrationsAsync();
+        if (pending.Any())
+        {
+            // ATTENTION!
+            // -----------------------------------------------------------------------------
+            // This is should not be used when UseInMemoryDatabase()
+            // It should be uncomment when using UseSqlServer() settings or any other providers.
+            // await context!.Database.MigrateAsync();
+            // -----------------------------------------------------------------------------
+        }
 
-        // ATTENTION!
-        // -----------------------------------------------------------------------------
-        // It should be uncomment when using UseSqlServer() settings or any other providers.
-        // This is should not be used when UseInMemoryDatabase()
-        // await context!.Database.MigrateAsync();
-        // -----------------------------------------------------------------------------
+        if (context.Users.Any())
+        {
+            return;
+        }
 
         var roles = AppData.Roles.ToArray();
 
@@ -94,15 +104,6 @@ public static class DatabaseInitializer
 
         #endregion
 
-        await context.EventItems.AddAsync(new EventItem
-        {
-            CreatedAt = DateTime.UtcNow,
-            Id = Guid.Parse("1b830921-dfab-4093-4b97-99df0136c55f"),
-            Level = "Information",
-            Logger = "SEED",
-            Message = "Seed method some entities successfully save to ApplicationDbContext"
-        });
-
         await context.SaveChangesAsync();
     }
 
@@ -114,12 +115,27 @@ public static class DatabaseInitializer
     {
         using var scope = serviceProvider.CreateScope();
         await using var context = scope.ServiceProvider.GetService<ApplicationDbContext>();
+        await context!.Database.EnsureCreatedAsync();
+        var pending = await context.Database.GetPendingMigrationsAsync();
+        if (pending.Any())
+        {
+            // ATTENTION!
+            // -----------------------------------------------------------------------------
+            // This is should not be used when UseInMemoryDatabase()
+            // It should be uncomment when using UseSqlServer() settings or any other providers.
+            // await context!.Database.MigrateAsync();
+            // -----------------------------------------------------------------------------
+        }
 
         // It should be uncomment when using UseSqlServer() settings or any other providers.
         // This is should not be used when UseInMemoryDatabase()
-        // await context!.Database.MigrateAsync();
 
-        await context!.EventItems.AddAsync(new EventItem
+        if (context.EventItems.Any())
+        {
+            return;
+        }
+
+        await context.EventItems.AddAsync(new EventItem
         {
             CreatedAt = DateTime.UtcNow,
             Id = Guid.Parse("1467a5b9-e61f-82b0-425b-7ec75f5c5029"),

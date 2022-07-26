@@ -35,7 +35,7 @@ public class OpenIddictWorker : IHostedService
                     // Grant type permissions
                     OpenIddictConstants.Permissions.GrantTypes.ClientCredentials,
                     OpenIddictConstants.Permissions.GrantTypes.Password,
-                        
+
                     // Scope permissions
                     OpenIddictConstants.Permissions.Prefixes.Scope + "api"
                 }
