@@ -15,11 +15,11 @@ public class EventItemEndpoints : AppDefinition
 {
     public override void ConfigureApplication(WebApplication app, IWebHostEnvironment environment)
     {
-        app.MapGet("/api/logs/{id}", LogGetById);
-        app.MapGet("/api/logs/paged", LogGetPaged);
-        app.MapPost("/api/logs/", PostLog);
-        app.MapPut("/api/logs/{id}", PutLog);
-        app.MapDelete("/api/logs/{id}", LogDelete);
+        app.MapGet("/api/event-items/{id:guid}", LogGetById);
+        app.MapGet("/api/event-items/paged", LogGetPaged);
+        app.MapPost("/api/event-items/", PostLog);
+        app.MapPut("/api/event-items/{id:guid}", PutLog);
+        app.MapDelete("/api/event-items/{id:guid}", LogDelete);
     }
 
     [ProducesResponseType(200)]
