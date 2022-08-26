@@ -189,3 +189,15 @@ Nimble Framework для NET6 Готовится
 
 Благодарности помощь каналу принимаются (Support This Project):
 * https://www.calabonga.net/site/thanks
+
+## Комментарии, пожелания, замечания
+
+Пишите комментарии к видео на сайте [www.calabonga.net](https://www.calabonga.net)
+
+# Автор
+
+Сергей Калабонга (Calabonga)
+
+![Author](https://www.calabonga.net/images/Calabonga.gif)
+
+[Блог по программированию](https://www.calabonga.net)
