@@ -47,7 +47,9 @@ public class AuthorizeEndpoints : AppDefinition
             new List<string> { CookieAuthenticationDefaults.AuthenticationScheme });
         }
 
+        // ATTENTION:  If you use are "IN-Memory" mode, then system cannot track user that recreated every time on start. You should clear cookies (site data) in browser.
         var user = await userManager.GetUserAsync(result.Principal) ?? throw new InvalidOperationException("The user details cannot be retrieved.");
+
         var application = await applicationManager.FindByClientIdAsync(iRequest.ClientId!) ?? throw new InvalidOperationException("Details concerning the calling client application cannot be found.");
         var applicationId = await applicationManager.GetIdAsync(application);
         var userId = await userManager.GetUserIdAsync(user);
