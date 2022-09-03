@@ -5,7 +5,6 @@
 | Name         | Microservice Template for ASP.NET Core API |
 | Author       | Calabonga SOFT © 2005-2022 Calabonga SOFT  |
 | Created Date | 2019-04-13 3:28:39 PM                      |
-| Updated Date | 2021-11-21                                 |
 
 # Versions
 
@@ -19,6 +18,7 @@ You can contact me by using the next opportunities:
 * Blog: https://www.calabonga.net
 * GitHub: https://github.com/Calabonga
 * YouTube: https://youtube.com/sergeicalabonga
+* Zen: https://zen.yandex.ru/calabonga
 
 # Description:
 

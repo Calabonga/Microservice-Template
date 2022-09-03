@@ -50,6 +50,7 @@ public class OpenIddictWorker : IHostedService
             await manager.CreateAsync(new OpenIddictApplicationDescriptor
             {
                 ClientId = client_id2,
+                ConsentType = OpenIddictConstants.ConsentTypes.Implicit,
                 ClientSecret = "client-secret-code",
                 DisplayName = "API testing clients with Authorization Code Flow demonstration",
                 RedirectUris = {
@@ -65,6 +66,7 @@ public class OpenIddictWorker : IHostedService
 
                     // Grant type permissions
                     OpenIddictConstants.Permissions.GrantTypes.AuthorizationCode,
+                    OpenIddictConstants.Permissions.GrantTypes.RefreshToken,
 
                     // Scope permissions
                     OpenIddictConstants.Permissions.Prefixes.Scope + "api",
