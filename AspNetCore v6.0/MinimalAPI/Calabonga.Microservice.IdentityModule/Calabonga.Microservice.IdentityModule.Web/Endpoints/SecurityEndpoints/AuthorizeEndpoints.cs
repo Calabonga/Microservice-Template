@@ -11,7 +11,8 @@ namespace Calabonga.Microservice.IdentityModule.Web.Endpoints.SecurityEndpoints;
 
 /// <summary>
 /// Authorize Endpoint for OpenIddict
-/// You can test your authorization server https://oidcdebugger.com/
+/// You can test your authorization server with https://oidcdebugger.com/
+/// You can mock your authorization flow with https://oauth.mocklab.io/
 /// </summary>
 public class AuthorizeEndpoints : AppDefinition
 {
