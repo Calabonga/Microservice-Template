@@ -8,7 +8,7 @@
 
 # Versions
 
-Nimble Framework Templates build on .NET 6.0. That`s why it have the same major version. But the all improvements will increment minor versions. 
+Nimble Framework Templates build on .NET 7.0. That`s why it have the same major version. But the all improvements will increment minor versions. 
 Current version: 7.0.0
 
 # Contacts

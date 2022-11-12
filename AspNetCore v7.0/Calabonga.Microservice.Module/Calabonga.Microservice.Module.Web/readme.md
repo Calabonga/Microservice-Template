@@ -8,8 +8,8 @@
 
 # Versions
 
-Nimble Framework Templates build on .NET 6.0. That`s why it have the same major version. But the all improvements will increment minor versions. 
-Current version: 6.1.1
+Nimble Framework Templates build on .NET 7.0. That`s why it have the same major version. But the all improvements will increment minor versions. 
+Current version: 7.0.0
 
 # Contacts
 
@@ -22,4 +22,4 @@ You can contact me by using the next opportunities:
 
 # Description:
 
-This template implements Web API functionality using minmal API feature from NET 6.0
+This template implements Web API functionality using minmal API feature from NET 7.0
