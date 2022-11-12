@@ -1,0 +1,39 @@
+<VSTemplate Version="3.0.0" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" Type="Project">
+  <TemplateData>
+    <Name>Calabonga.Microservice.Module.Domain</Name>
+    <Description>&lt;No description available&gt;</Description>
+    <ProjectType>CSharp</ProjectType>
+    <ProjectSubType>
+    </ProjectSubType>
+    <SortOrder>1000</SortOrder>
+    <CreateNewFolder>true</CreateNewFolder>
+    <DefaultName>Calabonga.Microservice.Module.Domain</DefaultName>
+    <ProvideDefaultName>true</ProvideDefaultName>
+    <LocationField>Enabled</LocationField>
+    <EnableLocationBrowseButton>true</EnableLocationBrowseButton>
+    <CreateInPlace>true</CreateInPlace>
+    <Icon>__TemplateIcon.png</Icon>
+    <PreviewImage>__PreviewImage.png</PreviewImage>
+  </TemplateData>
+  <TemplateContent>
+    <Project TargetFileName="Calabonga.Microservice.Module.Domain.csproj" File="Calabonga.Microservice.Module.Domain.csproj" ReplaceParameters="true">
+      <Folder Name="Base" TargetFolderName="Base">
+        <ProjectItem ReplaceParameters="true" TargetFileName="AppData.Common.cs">AppData.Common.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="AppData.Exceptions.cs">AppData.Exceptions.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="AppData.Messages.cs">AppData.Messages.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="Auditable.cs">Auditable.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="IAuditable.cs">IAuditable.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="Identity.cs">Identity.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="IHaveId.cs">IHaveId.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="IViewModel.cs">IViewModel.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="NamedAuditable.cs">NamedAuditable.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="NamedIdentity.cs">NamedIdentity.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="Sortable.cs">Sortable.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="TypeHelper.cs">TypeHelper.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="ViewModelBase.cs">ViewModelBase.cs</ProjectItem>
+      </Folder>
+      <ProjectItem ReplaceParameters="true" TargetFileName="EventItem.cs">EventItem.cs</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="GlobalUsing.cs">GlobalUsing.cs</ProjectItem>
+    </Project>
+  </TemplateContent>
+</VSTemplate>

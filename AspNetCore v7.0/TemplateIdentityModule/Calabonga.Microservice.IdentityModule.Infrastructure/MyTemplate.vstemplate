@@ -1,0 +1,35 @@
+<VSTemplate Version="3.0.0" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" Type="Project">
+  <TemplateData>
+    <Name>Calabonga.Microservice.IdentityModule.Infrastructure</Name>
+    <Description>&lt;No description available&gt;</Description>
+    <ProjectType>CSharp</ProjectType>
+    <ProjectSubType>
+    </ProjectSubType>
+    <SortOrder>1000</SortOrder>
+    <CreateNewFolder>true</CreateNewFolder>
+    <DefaultName>Calabonga.Microservice.IdentityModule.Infrastructure</DefaultName>
+    <ProvideDefaultName>true</ProvideDefaultName>
+    <LocationField>Enabled</LocationField>
+    <EnableLocationBrowseButton>true</EnableLocationBrowseButton>
+    <CreateInPlace>true</CreateInPlace>
+    <Icon>__TemplateIcon.png</Icon>
+    <PreviewImage>__PreviewImage.png</PreviewImage>
+  </TemplateData>
+  <TemplateContent>
+    <Project TargetFileName="Calabonga.Microservice.IdentityModule.Infrastructure.csproj" File="Calabonga.Microservice.IdentityModule.Infrastructure.csproj" ReplaceParameters="true">
+      <Folder Name="Base" TargetFolderName="Base">
+        <ProjectItem ReplaceParameters="true" TargetFileName="DbContextBase.cs">DbContextBase.cs</ProjectItem>
+      </Folder>
+      <Folder Name="DatabaseInitialization" TargetFolderName="DatabaseInitialization">
+        <ProjectItem ReplaceParameters="true" TargetFileName="DatabaseInitializer.cs">DatabaseInitializer.cs</ProjectItem>
+      </Folder>
+      <ProjectItem ReplaceParameters="true" TargetFileName="ApplicationDbContext.cs">ApplicationDbContext.cs</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="ApplicationRole.cs">ApplicationRole.cs</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="ApplicationRoleStore.cs">ApplicationRoleStore.cs</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="ApplicationUser.cs">ApplicationUser.cs</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="ApplicationUserProfile.cs">ApplicationUserProfile.cs</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="ApplicationUserStore.cs">ApplicationUserStore.cs</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="AppPermission.cs">AppPermission.cs</ProjectItem>
+    </Project>
+  </TemplateContent>
+</VSTemplate>
