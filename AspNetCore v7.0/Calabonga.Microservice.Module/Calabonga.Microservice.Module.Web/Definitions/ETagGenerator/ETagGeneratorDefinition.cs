@@ -10,6 +10,12 @@ namespace Calabonga.Microservice.Module.Web.Definitions.ETagGenerator;
 /// </summary>
 public class ETagGeneratorDefinition : AppDefinition
 {
+#if DEBUG
+    public override bool Enabled => false;
+#else
+    public override bool Enabled => true;
+#endif
+
     /// <summary>
     /// Configure application for current microservice
     /// </summary>

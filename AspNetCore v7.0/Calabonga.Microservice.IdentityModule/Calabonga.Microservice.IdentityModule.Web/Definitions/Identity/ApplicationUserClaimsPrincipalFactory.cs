@@ -1,7 +1,6 @@
 ﻿using Calabonga.Microservice.IdentityModule.Infrastructure;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Options;
-using OpenIddict.Abstractions;
 using System.Security.Claims;
 
 namespace Calabonga.Microservice.IdentityModule.Web.Definitions.Identity;
@@ -27,8 +26,6 @@ public class ApplicationUserClaimsPrincipalFactory : UserClaimsPrincipalFactory<
     {
         var principal = await base.CreateAsync(user);
 
-
-
         if (user.ApplicationUserProfile?.Permissions != null)
         {
             var permissions = user.ApplicationUserProfile.Permissions.ToList();
@@ -53,14 +50,6 @@ public class ApplicationUserClaimsPrincipalFactory : UserClaimsPrincipalFactory<
         if (!string.IsNullOrWhiteSpace(user.LastName))
         {
             ((ClaimsIdentity)principal.Identity!).AddClaim(new Claim(ClaimTypes.Surname, user.LastName));
-        }
-
-        //// For this sample, just include all claims in all token types.
-        //// In reality, claims' destinations would probably differ by token type and depending on the scopes requested.
-        //// In our case (demo) we're using OpenIddictConstants.Destinations.AccessToken and OpenIddictConstants.Destinations.IdentityToken
-        foreach (var principalClaim in principal.Claims)
-        {
-            principalClaim.SetDestinations(OpenIddictConstants.Destinations.AccessToken, OpenIddictConstants.Destinations.IdentityToken);
         }
 
         return principal;

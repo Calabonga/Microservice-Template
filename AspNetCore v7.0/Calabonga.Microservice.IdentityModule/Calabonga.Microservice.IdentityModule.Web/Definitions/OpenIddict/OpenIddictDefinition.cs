@@ -50,11 +50,14 @@ public class OpenIddictDefinition : AppDefinition
                 // => options.SetRefreshTokenLifetime(TimeSpan.FromDays(7));
 
                 // Enable the token endpoint.
-                options
-                    .SetAuthorizationEndpointUris("/connect/authorize")
-                    .SetLogoutEndpointUris("/connect/logout")
-                    .SetTokenEndpointUris("/connect/token")
-                    .SetUserinfoEndpointUris("/connect/userinfo");
+                options.SetAuthorizationEndpointUris("connect/authorize")
+                    //.RequireProofKeyForCodeExchange() // enable PKCE
+                    //.SetDeviceEndpointUris("connect/device")
+                    //.SetIntrospectionEndpointUris("connect/introspect")
+                    .SetLogoutEndpointUris("connect/logout")
+                    .SetTokenEndpointUris("connect/token")
+                    //.SetVerificationEndpointUris("connect/verify"),
+                    .SetUserinfoEndpointUris("connect/userinfo");
 
                 // Encryption and signing of tokens
                 options

@@ -18,7 +18,6 @@ public class AuthorizationDefinition : AppDefinition
     /// <param name="builder"></param>
     public override void ConfigureServices(IServiceCollection services, WebApplicationBuilder builder)
     {
-
         services
             .AddAuthentication(options =>
             {

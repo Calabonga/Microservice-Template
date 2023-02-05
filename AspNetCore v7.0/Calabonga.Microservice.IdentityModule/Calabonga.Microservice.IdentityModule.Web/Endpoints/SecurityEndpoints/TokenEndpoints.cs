@@ -1,6 +1,7 @@
 ﻿using Calabonga.AspNetCore.AppDefinitions;
 using Calabonga.Microservice.IdentityModule.Infrastructure;
 using Calabonga.Microservice.IdentityModule.Web.Application.Services;
+using Calabonga.Microservices.Core.Extensions;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Identity;
@@ -21,12 +22,16 @@ public class TokenEndpoints : AppDefinition
     private async Task<IResult> TokenAsync(
         HttpContext httpContext,
         IOpenIddictScopeManager manager,
-        UserManager<ApplicationUser> userManager, 
+        UserManager<ApplicationUser> userManager,
         SignInManager<ApplicationUser> signInManager,
         IAccountService accountService)
     {
         var request = httpContext.GetOpenIddictServerRequest() ?? throw new InvalidOperationException("The OpenID Connect request cannot be retrieved.");
-        
+        //if (request.Scope is null)
+        //{
+        //    return Results.Problem("The specified grant type is not supported.");
+        //}
+
         if (request.IsClientCredentialsGrantType())
         {
             var identity = new ClaimsIdentity(OpenIddictServerAspNetCoreDefaults.AuthenticationScheme);
@@ -34,10 +39,13 @@ public class TokenEndpoints : AppDefinition
             // Subject or sub is a required field, we use the client id as the subject identifier here.
             identity.AddClaim(OpenIddictConstants.Claims.Subject, request.ClientId!);
             identity.AddClaim(OpenIddictConstants.Claims.ClientId, request.ClientId!);
-        
 
             // Don't forget to add destination otherwise it won't be added to the access token.
-            identity.AddClaim(OpenIddictConstants.Claims.Scope, request.Scope!, OpenIddictConstants.Destinations.AccessToken);
+            if (request.Scope.IsNotEmpty())
+            {
+                identity.AddClaim(OpenIddictConstants.Claims.Scope, request.Scope!, OpenIddictConstants.Destinations.AccessToken);
+            }
+
             identity.AddClaim("nimble", "framework", OpenIddictConstants.Destinations.AccessToken);
 
             var claimsPrincipal = new ClaimsPrincipal(identity);
@@ -84,16 +92,15 @@ public class TokenEndpoints : AppDefinition
                 await userManager.ResetAccessFailedCountAsync(user);
             }
 
-            var principal = await accountService.GetPrincipalByEmailAsync(user.Email);
-            return Results.SignIn(principal, new AuthenticationProperties(), OpenIddictServerAspNetCoreDefaults.AuthenticationScheme);
+            var principal = await accountService.GetPrincipalForUserAsync(user);
+            return Results.SignIn(principal, null, OpenIddictServerAspNetCoreDefaults.AuthenticationScheme);
         }
 
         if (request.IsAuthorizationCodeGrantType())
         {
             var authenticateResult = await httpContext.AuthenticateAsync(OpenIddictServerAspNetCoreDefaults.AuthenticationScheme);
-            var properties = authenticateResult.Properties;
             var claimsPrincipal = authenticateResult.Principal;
-            return Results.SignIn(claimsPrincipal!, properties ?? new AuthenticationProperties(), OpenIddictServerAspNetCoreDefaults.AuthenticationScheme);
+            return Results.SignIn(claimsPrincipal!, null, OpenIddictServerAspNetCoreDefaults.AuthenticationScheme);
         }
 
         return Results.Problem("The specified grant type is not supported.");

@@ -73,7 +73,7 @@ public class AccountService : IAccountService
     /// </summary>
     /// <param name="model"></param>
     /// <param name="cancellationToken"></param>
-    /// <returns></returns>
+
     public async Task<OperationResult<UserProfileViewModel>> RegisterAsync(RegisterViewModel model, CancellationToken cancellationToken)
     {
         var operation = OperationResult.CreateResult<UserProfileViewModel>();
@@ -118,36 +118,10 @@ public class AccountService : IAccountService
     }
 
     /// <summary>
-    /// Returns user profile
-    /// </summary>
-    /// <param name="identifier"></param>
-    /// <returns></returns>
-    public async Task<OperationResult<UserProfileViewModel>> GetProfileByIdAsync(string identifier)
-    {
-        var operation = OperationResult.CreateResult<UserProfileViewModel>();
-        var claimsPrincipal = await GetPrincipalByIdAsync(identifier);
-        operation.Result = _mapper.Map<UserProfileViewModel>(claimsPrincipal.Identity);
-        return await Task.FromResult(operation);
-    }
-
-    /// <summary>
-    /// Returns user profile
-    /// </summary>
-    /// <param name="email"></param>
-    /// <returns></returns>
-    public async Task<OperationResult<UserProfileViewModel>> GetProfileByEmailAsync(string email)
-    {
-        var operation = OperationResult.CreateResult<UserProfileViewModel>();
-        var claimsPrincipal = await GetPrincipalByEmailAsync(email);
-        operation.Result = _mapper.Map<UserProfileViewModel>(claimsPrincipal.Identity);
-        return await Task.FromResult(operation);
-    }
-
-    /// <summary>
     /// Returns ClaimPrincipal by user identity
     /// </summary>
     /// <param name="identifier"></param>
-    /// <returns></returns>
+
     public async Task<ClaimsPrincipal> GetPrincipalByIdAsync(string identifier)
     {
         if (string.IsNullOrEmpty(identifier))
@@ -165,33 +139,17 @@ public class AccountService : IAccountService
         return defaultClaims;
     }
 
+
     /// <summary>
     /// Returns ClaimPrincipal by user identity
     /// </summary>
-    /// <param name="email"></param>
-    /// <returns></returns>
-    public async Task<ClaimsPrincipal> GetPrincipalByEmailAsync(string email)
-    {
-        if (string.IsNullOrEmpty(email))
-        {
-            throw new MicroserviceException();
-        }
-        var userManager = _userManager;
-        var user = await userManager.FindByEmailAsync(email);
-        if (user == null)
-        {
-            throw new MicroserviceUserNotFoundException();
-        }
-
-        var defaultClaims = await _claimsFactory.CreateAsync(user);
-        return defaultClaims;
-    }
+    /// <param name="user"></param>
+    public Task<ClaimsPrincipal> GetPrincipalForUserAsync(ApplicationUser user) => _claimsFactory.CreateAsync(user);
 
     /// <summary>
     /// Returns user by his identifier
     /// </summary>
     /// <param name="id"></param>
-    /// <returns></returns>
     public Task<ApplicationUser> GetByIdAsync(Guid id)
     {
         var userManager = _userManager;
@@ -201,7 +159,7 @@ public class AccountService : IAccountService
     /// <summary>
     /// Returns current user account information or null when user does not logged in
     /// </summary>
-    /// <returns></returns>
+
     public async Task<ApplicationUser> GetCurrentUserAsync()
     {
         var userManager = _userManager;
@@ -210,7 +168,10 @@ public class AccountService : IAccountService
         return user;
     }
 
-    /// <inheritdoc />
+    /// <summary>
+    /// Returns a collection of the <see cref="ApplicationUser"/> by emails
+    /// </summary>
+    /// <param name="emails"></param>
     public async Task<IEnumerable<ApplicationUser>> GetUsersByEmailsAsync(IEnumerable<string> emails)
     {
         var userManager = _userManager;
@@ -230,7 +191,7 @@ public class AccountService : IAccountService
     /// Check roles for current user
     /// </summary>
     /// <param name="roleNames"></param>
-    /// <returns></returns>
+
     public async Task<PermissionValidationResult> IsInRolesAsync(string[] roleNames)
     {
         var userManager = _userManager;
@@ -269,7 +230,7 @@ public class AccountService : IAccountService
     {
         await userManager.AddClaimAsync(user, new Claim(OpenIddictConstants.Claims.Name, user.UserName));
         await userManager.AddClaimAsync(user, new Claim(ClaimTypes.GivenName, user.FirstName ?? "John"));
-        await userManager.AddClaimAsync(user, new Claim(ClaimTypes.Surname, user.LastName?? "Doe"));
+        await userManager.AddClaimAsync(user, new Claim(ClaimTypes.Surname, user.LastName ?? "Doe"));
         await userManager.AddClaimAsync(user, new Claim(OpenIddictConstants.Claims.Email, user.Email));
         await userManager.AddClaimAsync(user, new Claim(OpenIddictConstants.Claims.Role, role));
     }

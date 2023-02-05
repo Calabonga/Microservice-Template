@@ -2,6 +2,7 @@
 using FluentValidation;
 using Microsoft.AspNetCore.Diagnostics;
 using Serilog;
+using System.Diagnostics;
 using System.Text.Json;
 
 namespace Calabonga.Microservice.IdentityModule.Web.Definitions.ErrorHandling;
@@ -11,11 +12,17 @@ namespace Calabonga.Microservice.IdentityModule.Web.Definitions.ErrorHandling;
 /// </summary>
 public class ErrorHandlingDefinition : AppDefinition
 {
+
+#if DEBUG
+    public override bool Enabled => false;
+#else
+    public override bool Enabled => true;
+#endif
+
     /// <summary>
     /// Configure application for current application
     /// </summary>
     /// <param name="app"></param>
-    /// <param name="env"></param>
     public override void ConfigureApplication(WebApplication app) =>
         app.UseExceptionHandler(error => error.Run(async context =>
         {
