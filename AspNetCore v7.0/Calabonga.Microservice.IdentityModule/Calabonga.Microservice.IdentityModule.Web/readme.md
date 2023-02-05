@@ -22,4 +22,4 @@ You can contact me by using the next opportunities:
 
 # Description:
 
-This template implements Web API functionality using minmal API feature from NET 7.0
+This template implements Web API functionality using minimal API feature from NET 7.0
