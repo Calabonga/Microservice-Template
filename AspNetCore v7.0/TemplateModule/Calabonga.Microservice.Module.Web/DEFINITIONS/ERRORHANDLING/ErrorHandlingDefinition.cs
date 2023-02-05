@@ -11,6 +11,12 @@ namespace $safeprojectname$.Definitions.ErrorHandling;
 /// </summary>
 public class ErrorHandlingDefinition : AppDefinition
 {
+#if DEBUG
+    public override bool Enabled => false;
+#else
+    public override bool Enabled => true;
+#endif
+
     /// <summary> 
     /// Configure application for current microservice
     /// </summary>

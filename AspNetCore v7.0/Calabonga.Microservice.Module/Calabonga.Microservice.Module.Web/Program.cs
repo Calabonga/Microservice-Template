@@ -2,17 +2,17 @@
 // Name: Template for Micro service on ASP.NET Core API with
 // OpenIddict (OAuth2.0)
 // Author: Calabonga © 2005-2022 Calabonga SOFT
-// Version: 7.0.0
+// Version: 7.0.1
 // Based on: .NET 7.0.x
-// Created Date: 2022-11-12 9:29:12 PM
-// Updated Date: 2022-11-12 9:29:12 PM
+// Created Date: 2022-11-12 09:29
+// Updated Date: 2023-02-05 12:39
 // --------------------------------------------------------------------
 // Contacts
 // --------------------------------------------------------------------
-// Blog: https://www.calabonga.net
-// GitHub: https://github.com/Calabonga
+// Blog: https://www.calabonga.net/blog/post/nimble-framework-7
+// GitHub: https://github.com/Calabonga/Microservice-Template
 // YouTube: https://youtube.com/sergeicalabonga
-// Zen: https://zen.yandex.ru/calabonga
+// DZen: https://dzen.ru/calabonga
 // --------------------------------------------------------------------
 // Description:
 // --------------------------------------------------------------------

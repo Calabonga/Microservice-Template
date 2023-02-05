@@ -23,7 +23,7 @@ public class SwaggerDefinition : AppDefinition
             return;
         }
 
-        var url =  app.Services.GetRequiredService<IConfiguration>().GetValue<string>("AuthServer:Url");
+        var url = app.Services.GetRequiredService<IConfiguration>().GetValue<string>("AuthServer:Url");
 
         app.UseSwagger();
         app.UseSwaggerUI(settings =>
@@ -94,11 +94,11 @@ public class SwaggerDefinition : AppDefinition
                         Scopes = new Dictionary<string, string>
                         {
                             { "api", "Default scope" }
-                        },
-
+                        }
                     }
                 }
             });
+
             options.AddSecurityRequirement(new OpenApiSecurityRequirement
             {
                 {

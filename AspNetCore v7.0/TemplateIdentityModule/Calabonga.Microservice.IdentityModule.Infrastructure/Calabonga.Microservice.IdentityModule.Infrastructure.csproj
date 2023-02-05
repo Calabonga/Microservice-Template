@@ -7,18 +7,18 @@
   </PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Calabonga.UnitOfWork" Version="3.0.0" />
-		<PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="7.0.0" />
-		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.0">
+		<PackageReference Include="Calabonga.UnitOfWork" Version="3.0.1" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="7.0.2" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.2">
 		  <PrivateAssets>all</PrivateAssets>
 		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
-		<PackageReference Include="OpenIddict.EntityFrameworkCore" Version="3.1.1" />
-		<PackageReference Include="OperationResultCore" Version="4.0.0" />
-		<PackageReference Include="Calabonga.PredicatesBuilder" Version="2.0.0" />
+		<PackageReference Include="OpenIddict.EntityFrameworkCore" Version="4.0.0" />
+		<PackageReference Include="OperationResultCore" Version="4.0.1" />
+		<PackageReference Include="Calabonga.PredicatesBuilder" Version="2.0.1" />
 		<PackageReference Include="Calabonga.Microservices.Core" Version="4.0.0" />
-		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.0" />
-		<PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="7.0.0" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.2" />
+		<PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="7.0.2" />
 	</ItemGroup>
 
   <ItemGroup>

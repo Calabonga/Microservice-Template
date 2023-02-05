@@ -9,9 +9,15 @@ namespace $safeprojectname$.Definitions.ETagGenerator;
 /// <summary>
 /// ETag Generator
 /// </summary>
-[DebuggerStepThrough]
 public class ETagGeneratorDefinition : AppDefinition
 {
+
+#if DEBUG
+    public override bool Enabled => false;
+#else
+    public override bool Enabled => true;
+#endif
+
     /// <summary>
     /// Configure application for current application
     /// </summary>
