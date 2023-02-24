@@ -15,7 +15,7 @@
                     "ReplaceTextWith": "$ext_projectname$."
                 }
             ],
-            "RootDirectoryPath": "D:\\Projects\\MicroserviceTemplate\\AspNetCore v6.0\\MinimalAPI\\TemplateMicroserviceModuleMinV6",
+            "RootDirectoryPath": "C:\\Projects\\Microservice-Template\\AspNetCore v7.0\\TemplateModule",
             "ProjectName": "Calabonga.Microservice.Module"
         }
     ]

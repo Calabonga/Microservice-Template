@@ -1,7 +1,6 @@
 ﻿using Calabonga.AspNetCore.AppDefinitions;
 using $safeprojectname$.Application;
 using MediatR;
-using System.Reflection;
 
 namespace $safeprojectname$.Definitions.Mediator;
 
@@ -18,6 +17,6 @@ public class MediatorDefinition : AppDefinition
     public override void ConfigureServices(IServiceCollection services, WebApplicationBuilder builder)
     {
         services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidatorBehavior<,>));
-        services.AddMediatR(Assembly.GetExecutingAssembly());
+        services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblyContaining<Program>());
     }
 }

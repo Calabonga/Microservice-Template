@@ -3,6 +3,18 @@
 
 # Новости Nimble Framework
 
+## 2023-02-24
+
+Версия 7.0.2 получила следующие изменения:
+ * Новая версия `Mediatr` получила обновление, в том числе была удалена зависимость от nuget-пакета `MediatR.Extensions.Microsoft.DependencyInjection`. А также изменилась регистрация зависимости.
+
+``` diff
+- services.AddMediatR(Assembly.GetExecutingAssembly());
++ services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblyContaining<Program>());
+```
+
+* Обновились сборки `EntityFramework`.
+
 ## 2023-02-05
 
 Новое в версии 7.0.1:
