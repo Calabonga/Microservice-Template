@@ -1,7 +1,21 @@
+# Внимание | Attention
+
+Пожалуйста, ознакомьтесь со всеми комментариями с надписью "ATTENTION!", потому что эти места потребуют от вас некоторых решений и/или действий.
+Please find out all comments with 'ATTENTION!' because that is required some decisions or actions from you.
+
 # Информация
 Справочная информация по фреймворку есть в [Wiki](https://github.com/Calabonga/Microservice-Template/wiki) и на [сайте разработчика](https://www.calabonga.net/blog/post/microservice-templates). Видео презентация новой версии [Nimble Framework v.6](https://youtu.be/euOLhhNEcwg).
 
 # Новости Nimble Framework
+
+## 2023-03-11
+
+Версия 7.0.3:
+
+* Обновлены сборки (nuget) для OpenIddict (OAuth2.0).
+* Из шаблона удалена сборка `GitInfo`, которая позволяла использовать версионирование на основе GIT, потому что при создании проекта вне папки репозитория появлялась ошибка: `NETSDK1018 Invalid NuGet version string: '0.0.0+main.'.`. Пожалуйста, ознакомьтесь со всеми комментариями с надписью "ATTENTION!", потому что эти места потребует от вас некоторых решений или действий. Например, использовать или не использовать версионирование на основе GIT возможностей.
+* Исправлена работа `FluentValidation` для `EventItemValidator`.
+* Исправлена работа `ErrorHandlerMiddleware` для отображения ошибок валидации.
 
 ## 2023-02-24
 

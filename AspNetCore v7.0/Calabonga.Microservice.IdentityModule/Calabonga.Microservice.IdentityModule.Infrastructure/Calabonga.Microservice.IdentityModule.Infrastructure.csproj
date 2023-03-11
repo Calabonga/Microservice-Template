@@ -13,7 +13,7 @@
 		  <PrivateAssets>all</PrivateAssets>
 		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
-		<PackageReference Include="OpenIddict.EntityFrameworkCore" Version="4.0.0" />
+		<PackageReference Include="OpenIddict.EntityFrameworkCore" Version="4.1.0" />
 		<PackageReference Include="OperationResultCore" Version="4.0.1" />
 		<PackageReference Include="Calabonga.PredicatesBuilder" Version="2.0.1" />
 		<PackageReference Include="Calabonga.Microservices.Core" Version="4.0.0" />

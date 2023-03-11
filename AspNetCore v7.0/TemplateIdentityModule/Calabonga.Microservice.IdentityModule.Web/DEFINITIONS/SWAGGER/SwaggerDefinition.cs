@@ -12,8 +12,13 @@ namespace $safeprojectname$.Definitions.Swagger;
 /// </summary>
 public class SwaggerDefinition : AppDefinition
 {
+    // ATTENTION!
+    // If you use are git repository then you can uncomment line with "ThisAssembly" below for versioning by GIT possibilities
+    // Otherwise, you can change versions of your API by manually.
+    // If you are going to use git-versioning, do not forget install package "GitInfo"
+    // private const string _appVersion = $"{ThisAssembly.Git.SemVer.Major}.{ThisAssembly.Git.SemVer.Minor}.{ThisAssembly.Git.SemVer.Patch}";
+    private const string _appVersion = "1.0.0";
 
-    private const string _appVersion = $"{ThisAssembly.Git.SemVer.Major}.{ThisAssembly.Git.SemVer.Minor}.{ThisAssembly.Git.SemVer.Patch}";
     private const string _swaggerConfig = "/swagger/v1/swagger.json";
 
     public override void ConfigureApplication(WebApplication app)
@@ -29,7 +34,11 @@ public class SwaggerDefinition : AppDefinition
         app.UseSwaggerUI(settings =>
         {
             settings.SwaggerEndpoint(_swaggerConfig, $"{AppData.ServiceName} v.{_appVersion}");
-            settings.HeadContent = $"{ThisAssembly.Git.Branch.ToUpper()} {ThisAssembly.Git.Commit.ToUpper()}";
+
+            // ATTENTION!
+            // If you use are git repository then you can uncomment line with "ThisAssembly" below for versioning by GIT possibilities.
+            // settings.HeadContent = $"{ThisAssembly.Git.Branch.ToUpper()} {ThisAssembly.Git.Commit.ToUpper()}";
+
             settings.DocumentTitle = $"{AppData.ServiceName}";
             settings.DefaultModelExpandDepth(0);
             settings.DefaultModelRendering(ModelRendering.Model);

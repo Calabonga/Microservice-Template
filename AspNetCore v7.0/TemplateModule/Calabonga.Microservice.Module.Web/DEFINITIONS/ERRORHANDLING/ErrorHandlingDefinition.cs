@@ -2,7 +2,8 @@
 using FluentValidation;
 using Microsoft.AspNetCore.Diagnostics;
 using Serilog;
-using System.Text.Json;
+using System.Net;
+using System.Security.Authentication;
 
 namespace $safeprojectname$.Definitions.ErrorHandling;
 
@@ -11,14 +12,15 @@ namespace $safeprojectname$.Definitions.ErrorHandling;
 /// </summary>
 public class ErrorHandlingDefinition : AppDefinition
 {
+
 #if DEBUG
     public override bool Enabled => false;
 #else
-    public override bool Enabled => true;
+        public override bool Enabled => true;
 #endif
 
-    /// <summary> 
-    /// Configure application for current microservice
+    /// <summary>
+    /// Configure application for current application
     /// </summary>
     /// <param name="app"></param>
     public override void ConfigureApplication(WebApplication app) =>
@@ -32,8 +34,9 @@ public class ErrorHandlingDefinition : AppDefinition
                 // handling validation errors
                 if (contextFeature.Error is ValidationException failures)
                 {
-                    await context.Response.WriteAsync(JsonSerializer.Serialize(failures.Errors));
-                    context.Response.StatusCode = StatusCodes.Status400BadRequest;
+                    context.Response.StatusCode = (int)GetErrorCode(contextFeature.Error);
+
+                    await context.Response.WriteAsync(contextFeature.Error.Message);
                     return;
                 }
 
@@ -51,4 +54,13 @@ public class ErrorHandlingDefinition : AppDefinition
                 }
             }
         }));
+
+    private static HttpStatusCode GetErrorCode(Exception e)
+        => e switch
+        {
+            ValidationException _ => HttpStatusCode.BadRequest,
+            AuthenticationException _ => HttpStatusCode.Forbidden,
+            NotImplementedException _ => HttpStatusCode.NotImplemented,
+            _ => HttpStatusCode.InternalServerError
+        };
 }
