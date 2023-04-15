@@ -1,4 +1,5 @@
-﻿using FluentValidation;
+﻿using Calabonga.OperationResults;
+using FluentValidation;
 using MediatR;
 
 namespace $safeprojectname$.Application;
@@ -35,7 +36,14 @@ public class ValidatorBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest
             return next();
         }
 
-        // return new ProblemDetails();
-        throw new ValidationException(failures);
+        var type = typeof(TResponse);
+        if (!type.IsSubclassOf(typeof(OperationResult)))
+        {
+            throw new ValidationException(failures);
+        }
+
+        var result = Activator.CreateInstance(type);
+        ((OperationResult)result!).AddError(new ValidationException(failures));
+        return Task.FromResult((TResponse)result!);
     }
 }

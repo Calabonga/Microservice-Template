@@ -3,3 +3,4 @@ More information:
 2. Calabonga's blog about .NET https://www.calabonga.net/
 3. Nimble Framework playlist "https://www.youtube.com/playlist?list=PLIB8be7sunXMhdxAYk0My8UNG0zvOkWwK"
 4. Микросервисы "https://www.youtube.com/playlist?list=PLIB8be7sunXMXTZKptqEtXAACpsYZdzi_"
+5. Video blog https://dzen.ru/calabonga

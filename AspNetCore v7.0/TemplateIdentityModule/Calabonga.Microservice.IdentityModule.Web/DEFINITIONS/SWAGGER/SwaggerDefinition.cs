@@ -13,9 +13,9 @@ namespace $safeprojectname$.Definitions.Swagger;
 public class SwaggerDefinition : AppDefinition
 {
     // ATTENTION!
-    // If you use are git repository then you can uncomment line with "ThisAssembly" below for versioning by GIT possibilities
+    // If you use are git repository then you can uncomment line with "ThisAssembly" below for versioning by GIT possibilities.
     // Otherwise, you can change versions of your API by manually.
-    // If you are going to use git-versioning, do not forget install package "GitInfo"
+    // If you are not going to use git-versioning, do not forget install package "GitInfo" 
     // private const string _appVersion = $"{ThisAssembly.Git.SemVer.Major}.{ThisAssembly.Git.SemVer.Minor}.{ThisAssembly.Git.SemVer.Patch}";
     private const string _appVersion = "1.0.0";
 
