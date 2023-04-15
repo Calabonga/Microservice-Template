@@ -1,4 +1,5 @@
-﻿using FluentValidation;
+﻿using Calabonga.OperationResults;
+using FluentValidation;
 using MediatR;
 
 namespace Calabonga.Microservice.IdentityModule.Web.Application;

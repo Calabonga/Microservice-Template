@@ -48,15 +48,14 @@ public class PostEventItemRequestHandler : IRequestHandler<PostEventItemRequest,
         var lastResult = _unitOfWork.LastSaveChangesResult;
         if (lastResult.IsOk)
         {
-
             var mapped = _mapper.Map<EventItem, EventItemViewModel>(entity);
-
             operation.Result = mapped;
             operation.AddSuccess("Successfully created");
+            _logger.LogInformation("EventItem {@EventItem} successfully created", entity);
             return operation;
         }
 
-        operation.AddError(lastResult.Exception?? new ApplicationException("Something went wrong"));
+        operation.AddError(lastResult.Exception ?? new ApplicationException("Something went wrong"));
 
         return operation;
     }

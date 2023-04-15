@@ -105,7 +105,7 @@ public class AccountService : IAccountService
                 operation.AddSuccess(AppData.Messages.UserSuccessfullyRegistered);
                 _logger.LogInformation(operation.GetMetadataMessages());
                 await transaction.CommitAsync(cancellationToken);
-                _logger.MicroserviceUserRegistration(model.Email);
+                _logger.LogInformation("User {@User} successfully created with {@Role}", model, role);
                 return await Task.FromResult(operation);
             }
         }
@@ -113,7 +113,7 @@ public class AccountService : IAccountService
         operation.AddError(string.Join(", ", errors));
         operation.Exception = _unitOfWork.LastSaveChangesResult.Exception;
         await transaction.RollbackAsync(cancellationToken);
-        _logger.MicroserviceUserRegistration(model.Email, operation.Exception);
+        _logger.LogError(operation.Exception, "User {@User} creation failed", model);
         return await Task.FromResult(operation);
     }
 

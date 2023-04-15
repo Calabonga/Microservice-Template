@@ -8,6 +8,14 @@ Please find out all comments with 'ATTENTION!' because that is required some dec
 
 # Новости Nimble Framework
 
+## 2023-04-15
+Версия 7.0.4:
+* Обновлены сборки (nuget) для `AutoMapper`, `FluentValidation`, `Microsoft.AspNetCore.Authentication`,`Serilog`.
+* Конфигурация для `Serilog` вынесена в `appSettings.json`
+* `LoggerExtensions` удалены, потому что подключено Structural logging на базе `Serilog`.
+* Потому как `StopTheHostException` переименован `HostAbortedException` перехватывать его теперь стали по-новому.
+* Перехват исключений `ValidationException` теперь работает через `OperationResult`, для этого обновлен `ValidatorBehavior`.
+
 ## 2023-03-11
 
 Версия 7.0.3:
@@ -28,7 +36,7 @@ Please find out all comments with 'ATTENTION!' because that is required some dec
 ```
 
 * Обновились сборки `EntityFramework`.
-* Обновилась версия для расширение для Visual Studio (VSIX). 
+* Обновилась версия для расширение для Visual Studio (VSIX).
 
 ## 2023-02-05
 
@@ -174,3 +182,102 @@ Please find out all comments with 'ATTENTION!' because that is required some dec
 2. Обновились nuget-сборки для `ASP.NET Core` и `EntityFramework Core` (5.0.0).
 3. Добавилась реализация логирования, как пример использования, который описан на видео [ILogger в ASP.NET Core](https://youtu.be/09EVKgHgwnM)
 4. На страницу API (`Swagger`) выведена информация о названии ветки (branch) и номер публикации (commit).
+
+# Документация
+Документация доступна на GitHub в разделе [Wiki](https://github.com/Calabonga/Microservice-Template/wiki/Nimble-Microservice-Templates) (в режиме наполнения).
+
+# Микросервисы
+Шаблон (template) для Visual Studio для построения инфраструктуры микросервисов на базе ASP.NET Core.
+
+# Microservices
+Visual Studio project template for microservice module base on ASP.NET Core
+
+# Скачать (Download)
+
+[ASP NET Core 3.1](https://github.com/Calabonga/microservice-template/tree/master/Output/AspNetCore-v.3.1) - Шаблоны для версии ASP.NET Core 3.1
+
+[ASP NET Core 5.0](https://github.com/Calabonga/microservice-template/tree/master/Output/AspNetCore-v.5.0) - Шаблоны для версии ASP.NET Core 5.0
+
+[ASP NET Core 6.0](https://github.com/Calabonga/microservice-template/tree/master/Output/AspNetCore-v.6.0) - Шаблоны для версии ASP.NET Core 6.0
+
+# Инструкции и дополнительные материалы
+
+[Установка Nimble Templates](https://www.calabonga.net/blog/post/install-nimble-framework-version-5)
+
+[Calabonga.AspNetCore.Controllers](https://github.com/Calabonga/Calabonga.AspNetCore.Controllers/) nuget-пакет на базе Mediatr
+
+[Calabonga.UnitOfWork.Controllers](https://github.com/Calabonga/Calabonga.UnitOfWork.Controllers) nuget-пакет на base Readonly/Writable controllers
+
+[Микросервисы: Шаблон для микросервиса](https://www.calabonga.net/blog/post/microservises-template)
+
+[Микросервисы: Управление доступом](https://www.calabonga.net/blog/post/mikroservisy-3-centralizovannoe-upravlenie-dostupom)
+
+[Микросервисы: Обмен данными между микросервисами](https://www.calabonga.net/blog/post/reshenie-obmen-dannym-mezhdu-mikroservisami)
+
+[Микросервисы: Прокси для frontend](https://www.calabonga.net/blog/post/odin-frontend-dolzhen-rabotat-tolko-so-svoim-backend)
+
+[Вопросы можно задать в блоге](https://www.calabonga.net/blog)
+
+# Видео
+
+Про NimbleFramework можно найти следующие видео ролики. Они разделятся по версиям, но для всеобщего понимания настоятельно рекомендуется
+
+## по версии 6.0
+
+[Nimble Framework v6.1](https://youtu.be/xijBGwMEL8E)
+
+[Nimble Framework v6.0](https://youtu.be/euOLhhNEcwg)
+
+## по версии 3.1 (3.0)
+
+Часть 0. [Nimble: Установка шаблонов для микросервисов](https://youtu.be/rc0wvL0jlzc)
+
+Часть 1. [Nimble: Демонстрация шаблона микросервиса на примере](https://youtu.be/N0dRGGV2iEg)
+
+Часть 2. [Nimble: Установка шаблонов для микросервисов](https://youtu.be/rc0wvL0jlzc)
+
+Часть 3. [Nimble: Основные и базовые понятия](https://youtu.be/WbSwp1Aa7hM)
+
+Часть 4. [Nimble: Создаем свой Query и Handler для IMediator](https://youtu.be/wUfT5aLHVV8)
+
+[Микросервисы 2](https://www.youtube.com/playlist?list=PLIB8be7sunXMh9dckizdXz65hLX_HRzlc) (плей-лист)
+
+##о по версии 2.2
+
+[Микросервисы](https://www.youtube.com/playlist?list=PLIB8be7sunXMXTZKptqEtXAACpsYZdzi_) (плей-лист)
+
+# Visual Studio Extensions
+
+Теперь шаблоны для генерации микросервисов доступны также и в Visual Studio Marketplace
+
+![marketplace](https://github.com/Calabonga/Microservice-Template/blob/master/Whatnot/vs-extension-market-view.png)
+
+[Посмотреть marketplace](https://marketplace.visualstudio.com/items?itemName=Calabonga.microserivce-templates)
+
+Также можно установить прямо из Visual Studio
+![extension](https://github.com/Calabonga/Microservice-Template/blob/master/Whatnot/vs-extension.png)
+
+# Дополнительные материалы по Nimble Framework
+
+[Микросервисы: Nimble Framework v.2](https://youtu.be/bTxruvbhDss)
+
+[Nimble: Создание микросервиса](https://youtu.be/7nw8Naxf2U0)
+
+Nimble Framework для NET6 Готовится
+
+# Благодарности
+
+Благодарности помощь каналу принимаются (Support This Project):
+* https://www.calabonga.net/site/thanks
+
+## Комментарии, пожелания, замечания
+
+Пишите комментарии к видео на сайте [www.calabonga.net](https://www.calabonga.net)
+
+# Автор
+
+Сергей Калабонга (Calabonga)
+
+![Author](https://www.calabonga.net/images/Calabonga.gif)
+
+[Блог по программированию](https://www.calabonga.net)

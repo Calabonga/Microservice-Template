@@ -8,6 +8,14 @@ Please find out all comments with 'ATTENTION!' because that is required some dec
 
 # Новости Nimble Framework
 
+## 2023-04-15
+Версия 7.0.4:
+* Обновлены сборки (nuget) для `AutoMapper`, `FluentValidation`, `Microsoft.AspNetCore.Authentication`,`Serilog`.
+* Конфигурация для `Serilog` вынесена в `appSettings.json`
+* `LoggerExtensions` удалены, потому что подключено Structural logging на базе `Serilog`.
+* Потому как `StopTheHostException` переименован `HostAbortedException` перехватывать его теперь стали по-новому.
+* Перехват исключений `ValidationException` теперь работает через `OperationResult`, для этого обновлен `ValidatorBehavior`.
+
 ## 2023-03-11
 
 Версия 7.0.3:
