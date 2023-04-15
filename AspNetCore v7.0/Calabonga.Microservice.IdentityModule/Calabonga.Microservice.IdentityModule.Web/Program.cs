@@ -2,10 +2,10 @@
 // Name: Template for Micro service on ASP.NET Core API with
 // OpenIddict (OAuth2.0)
 // Author: Calabonga © 2005-2023 Calabonga SOFT
-// Version: 7.0.3
+// Version: 7.0.4
 // Based on: .NET 7.0.x
 // Created Date: 2022-11-12 09:29
-// Updated Date: 2023-03-11 13:25
+// Updated Date: 2023-04-15 08:17
 // --------------------------------------------------------------------
 // Contacts
 // --------------------------------------------------------------------
@@ -38,7 +38,8 @@ try
 
     // created builder
     var builder = WebApplication.CreateBuilder(args);
-    builder.Host.UseSerilog();
+    builder.Host.UseSerilog((context, configuration) =>
+        configuration.ReadFrom.Configuration(context.Configuration));
 
     // adding definitions for application
     builder.Services.AddDefinitions(builder, typeof(Program));
@@ -48,6 +49,9 @@ try
 
     // using definition for application
     app.UseDefinitions();
+
+    // using Serilog request logging
+    app.UseSerilogRequestLogging();
 
     // start application
     app.Run();
