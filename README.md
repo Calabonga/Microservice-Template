@@ -8,6 +8,10 @@ Please find out all comments with 'ATTENTION!' because that is required some dec
 
 # Новости Nimble Framework
 
+## 2023-05-22
+
+[Пример использования шаблона для построения backend (API) для каталога товаров](https://github.com/Calabonga/Calabonga.Catalog). В этом репозитории "пошаговая" реализация, которая записана на видео. Можно посмотреть примеры (examples of using) разных механизмов: Validation, Transactions, Notification and etc.
+
 ## 2023-04-15
 Версия 7.0.4:
 * Обновлены сборки (nuget) для `AutoMapper`, `FluentValidation`, `Microsoft.AspNetCore.Authentication`,`Serilog`.
@@ -17,7 +21,6 @@ Please find out all comments with 'ATTENTION!' because that is required some dec
 * Перехват исключений `ValidationException` теперь работает через `OperationResult`, для этого обновлен `ValidatorBehavior`.
 
 ## 2023-03-11
-
 Версия 7.0.3:
 
 * Обновлены сборки (nuget) для OpenIddict (OAuth2.0).
