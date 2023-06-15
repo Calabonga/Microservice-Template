@@ -11,45 +11,50 @@ namespace Calabonga.Microservice.IdentityModule.Web.Endpoints.EventItemsEndpoint
 /// <summary>
 /// Request: EventItem delete
 /// </summary>
-public record DeleteEventItemRequest(Guid Id) : IRequest<OperationResult<EventItemViewModel>>;
-
-/// <summary>
-/// Request: EventItem delete
-/// </summary>
-public class DeleteEventItemRequestHandler : IRequestHandler<DeleteEventItemRequest, OperationResult<EventItemViewModel>>
+public class DeleteEventItem
 {
-    private readonly IUnitOfWork _unitOfWork;
+    public record Request(Guid Id) : IRequest<OperationResult<EventItemViewModel>>;
 
-    private readonly IMapper _mapper;
-
-    public DeleteEventItemRequestHandler(IUnitOfWork unitOfWork, IMapper mapper)
+    /// <summary>
+    /// Request: EventItem delete
+    /// </summary>
+    public class Handler : IRequestHandler<Request, OperationResult<EventItemViewModel>>
     {
-        _unitOfWork = unitOfWork;
-        _mapper = mapper;
-    }
+        private readonly IUnitOfWork _unitOfWork;
 
-    /// <summary>Handles a request</summary>
-    /// <param name="request">The request</param>
-    /// <param name="cancellationToken">Cancellation token</param>
-    /// <returns>Response from the request</returns>
-    public async Task<OperationResult<EventItemViewModel>> Handle(DeleteEventItemRequest request, CancellationToken cancellationToken)
-    {
-        var operation = OperationResult.CreateResult<EventItemViewModel>();
-        var repository = _unitOfWork.GetRepository<EventItem>();
-        var entity = await repository.FindAsync(request.Id);
-        if (entity == null)
+        private readonly IMapper _mapper;
+
+        public Handler(IUnitOfWork unitOfWork, IMapper mapper)
         {
-            operation.AddError(new MicroserviceNotFoundException("Entity not found"));
+            _unitOfWork = unitOfWork;
+            _mapper = mapper;
+        }
+
+        /// <summary>Handles a request</summary>
+        /// <param name="request">The request</param>
+        /// <param name="cancellationToken">Cancellation token</param>
+        /// <returns>Response from the request</returns>
+        public async Task<OperationResult<EventItemViewModel>> Handle(Request request, CancellationToken cancellationToken)
+        {
+            var operation = OperationResult.CreateResult<EventItemViewModel>();
+            var repository = _unitOfWork.GetRepository<EventItem>();
+            var entity = await repository.FindAsync(request.Id);
+            if (entity == null)
+            {
+                operation.AddError(new MicroserviceNotFoundException("Entity not found"));
+                return operation;
+            }
+
+            repository.Delete(entity);
+            await _unitOfWork.SaveChangesAsync();
+            if (_unitOfWork.LastSaveChangesResult.IsOk)
+            {
+                operation.Result = _mapper.Map<EventItemViewModel>(entity);
+                return operation;
+            }
+
+            operation.AddError(_unitOfWork.LastSaveChangesResult.Exception);
             return operation;
         }
-        repository.Delete(entity);
-        await _unitOfWork.SaveChangesAsync();
-        if (_unitOfWork.LastSaveChangesResult.IsOk)
-        {
-            operation.Result = _mapper.Map<EventItemViewModel>(entity);
-            return operation;
-        }
-        operation.AddError(_unitOfWork.LastSaveChangesResult.Exception);
-        return operation;
     }
 }

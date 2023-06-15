@@ -6,7 +6,7 @@ namespace Calabonga.Microservice.IdentityModule.Web.Endpoints.EventItemsEndpoint
 /// <summary>
 /// RegisterViewModel Validator
 /// </summary>
-public class EventItemCreateRequestValidator : AbstractValidator<PostEventItemRequest>
+public class EventItemCreateRequestValidator : AbstractValidator<PostEventItem.Request>
 {
     public EventItemCreateRequestValidator() => RuleSet("default", () =>
     {

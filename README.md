@@ -8,12 +8,17 @@ Please find out all comments with 'ATTENTION!' because that is required some dec
 
 # Новости Nimble Framework
 
+## 2023-06-15
+Версия 7.0.5:
+
+* Немного изменена структура классов для наследников от `IRequest` и `IRequestHandler`. Теперь запросы с перехватчиками объединены в один класс, что на самом деле гораздо удобнее.
 ## 2023-05-22
 
 [Пример использования шаблона для построения backend (API) для каталога товаров](https://github.com/Calabonga/Calabonga.Catalog). В этом репозитории "пошаговая" реализация, которая записана на видео. Можно посмотреть примеры (examples of using) разных механизмов: Validation, Transactions, Notification and etc.
 
 ## 2023-04-15
 Версия 7.0.4:
+
 * Обновлены сборки (nuget) для `AutoMapper`, `FluentValidation`, `Microsoft.AspNetCore.Authentication`,`Serilog`.
 * Конфигурация для `Serilog` вынесена в `appSettings.json`
 * `LoggerExtensions` удалены, потому что подключено Structural logging на базе `Serilog`.

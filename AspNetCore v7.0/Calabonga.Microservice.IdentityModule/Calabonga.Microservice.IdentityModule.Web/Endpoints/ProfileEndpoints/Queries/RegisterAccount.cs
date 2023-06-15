@@ -5,26 +5,29 @@ using MediatR;
 
 namespace Calabonga.Microservice.IdentityModule.Web.Endpoints.ProfileEndpoints.Queries;
 
-/// <summary>
-/// Request: Register new account
-/// </summary>
-public class RegisterAccountRequest : IRequest<OperationResult<UserProfileViewModel>>
+public class RegisterAccount
 {
-    public RegisterAccountRequest(RegisterViewModel model) => Model = model;
+    /// <summary>
+    /// Request: Register new account
+    /// </summary>
+    public class Request : IRequest<OperationResult<UserProfileViewModel>>
+    {
+        public Request(RegisterViewModel model) => Model = model;
 
-    public RegisterViewModel Model { get; }
-}
+        public RegisterViewModel Model { get; }
+    }
 
-/// <summary>
-/// Response: Register new account
-/// </summary>
-public class RegisterAccountRequestHandler : IRequestHandler<RegisterAccountRequest, OperationResult<UserProfileViewModel>>
-{
-    private readonly IAccountService _accountService;
+    /// <summary>
+    /// Response: Register new account
+    /// </summary>
+    public class Handler : IRequestHandler<Request, OperationResult<UserProfileViewModel>>
+    {
+        private readonly IAccountService _accountService;
 
-    public RegisterAccountRequestHandler(IAccountService accountService)
-        => _accountService = accountService;
+        public Handler(IAccountService accountService)
+            => _accountService = accountService;
 
-    public Task<OperationResult<UserProfileViewModel>> Handle(RegisterAccountRequest request, CancellationToken cancellationToken)
-        => _accountService.RegisterAsync(request.Model, cancellationToken);
+        public Task<OperationResult<UserProfileViewModel>> Handle(Request request, CancellationToken cancellationToken)
+            => _accountService.RegisterAsync(request.Model, cancellationToken);
+    }
 }

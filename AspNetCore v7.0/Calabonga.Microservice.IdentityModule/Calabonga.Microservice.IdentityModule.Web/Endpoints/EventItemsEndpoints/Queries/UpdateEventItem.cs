@@ -9,51 +9,54 @@ using MediatR;
 
 namespace Calabonga.Microservice.IdentityModule.Web.Endpoints.EventItemsEndpoints.Queries;
 
-/// <summary>
-/// Request: EventItem edit
-/// </summary>
-public record PutEventItemRequest(Guid Id, EventItemUpdateViewModel Model) : IRequest<OperationResult<EventItemViewModel>>;
-
-/// <summary>
-/// Request: EventItem creation
-/// </summary>
-public class PutEventItemRequestHandler : IRequestHandler<PutEventItemRequest, OperationResult<EventItemViewModel>>
+public class PutEventItem
 {
-    private readonly IUnitOfWork _unitOfWork;
-    private readonly IMapper _mapper;
+    /// <summary>
+    /// Request: EventItem edit
+    /// </summary>
+    public record Request(Guid Id, EventItemUpdateViewModel Model) : IRequest<OperationResult<EventItemViewModel>>;
 
-    public PutEventItemRequestHandler(IUnitOfWork unitOfWork, IMapper mapper)
+    /// <summary>
+    /// Request: EventItem creation
+    /// </summary>
+    public class Handler : IRequestHandler<Request, OperationResult<EventItemViewModel>>
     {
-        _unitOfWork = unitOfWork;
-        _mapper = mapper;
-    }
+        private readonly IUnitOfWork _unitOfWork;
+        private readonly IMapper _mapper;
 
-    public async Task<OperationResult<EventItemViewModel>> Handle(PutEventItemRequest eventItemRequest, CancellationToken cancellationToken)
-    {
-        var operation = OperationResult.CreateResult<EventItemViewModel>();
-        var repository = _unitOfWork.GetRepository<EventItem>();
-        var entity = await repository.GetFirstOrDefaultAsync(predicate: x => x.Id == eventItemRequest.Id, disableTracking: false);
-        if (entity == null)
+        public Handler(IUnitOfWork unitOfWork, IMapper mapper)
         {
-            operation.AddError(new MicroserviceNotFoundException(AppContracts.Exceptions.NotFoundException));
-            return operation;
+            _unitOfWork = unitOfWork;
+            _mapper = mapper;
         }
 
-        _mapper.Map(eventItemRequest.Model, entity);
-
-        repository.Update(entity);
-        await _unitOfWork.SaveChangesAsync();
-
-        var lastResult = _unitOfWork.LastSaveChangesResult;
-        if (lastResult.IsOk)
+        public async Task<OperationResult<EventItemViewModel>> Handle(Request eventItemRequest, CancellationToken cancellationToken)
         {
-            var mapped = _mapper.Map<EventItem, EventItemViewModel>(entity);
-            operation.Result = mapped;
-            operation.AddSuccess("Successfully updated");
+            var operation = OperationResult.CreateResult<EventItemViewModel>();
+            var repository = _unitOfWork.GetRepository<EventItem>();
+            var entity = await repository.GetFirstOrDefaultAsync(predicate: x => x.Id == eventItemRequest.Id, disableTracking: false);
+            if (entity == null)
+            {
+                operation.AddError(new MicroserviceNotFoundException(AppContracts.Exceptions.NotFoundException));
+                return operation;
+            }
+
+            _mapper.Map(eventItemRequest.Model, entity);
+
+            repository.Update(entity);
+            await _unitOfWork.SaveChangesAsync();
+
+            var lastResult = _unitOfWork.LastSaveChangesResult;
+            if (lastResult.IsOk)
+            {
+                var mapped = _mapper.Map<EventItem, EventItemViewModel>(entity);
+                operation.Result = mapped;
+                operation.AddSuccess("Successfully updated");
+                return operation;
+            }
+
+            operation.AddError(lastResult.Exception ?? new ApplicationException("Something went wrong"));
             return operation;
         }
-
-        operation.AddError(lastResult.Exception ?? new ApplicationException("Something went wrong"));
-        return operation;
     }
 }

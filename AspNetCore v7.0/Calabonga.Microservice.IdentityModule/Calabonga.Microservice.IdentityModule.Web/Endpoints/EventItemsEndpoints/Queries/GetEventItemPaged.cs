@@ -9,67 +9,71 @@ using System.Linq.Expressions;
 
 namespace Calabonga.Microservice.IdentityModule.Web.Endpoints.EventItemsEndpoints.Queries;
 
-/// <summary>
-/// Request for paged list of EventItems
-/// </summary>
-public record GetEventItemPagedRequest(int PageIndex, int PageSize, string? Search) : IRequest<OperationResult<IPagedList<EventItemViewModel>>>;
-
-/// <summary>
-/// Request for paged list of EventItems
-/// </summary>
-public class GetEventItemPagedRequestHandler : IRequestHandler<GetEventItemPagedRequest, OperationResult<IPagedList<EventItemViewModel>>>
+public class GetEventItemPaged
 {
-    private readonly IUnitOfWork _unitOfWork;
-    private readonly IMapper _mapper;
+    /// <summary>
+    /// Request for paged list of EventItems
+    /// </summary>
+    public record Request(int PageIndex, int PageSize, string? Search) : IRequest<OperationResult<IPagedList<EventItemViewModel>>>;
 
-    public GetEventItemPagedRequestHandler(IUnitOfWork unitOfWork, IMapper mapper)
+    /// <summary>
+    /// Request for paged list of EventItems
+    /// </summary>
+    public class Handler : IRequestHandler<Request, OperationResult<IPagedList<EventItemViewModel>>>
     {
-        _unitOfWork = unitOfWork;
-        _mapper = mapper;
-    }
+        private readonly IUnitOfWork _unitOfWork;
+        private readonly IMapper _mapper;
 
-    public async Task<OperationResult<IPagedList<EventItemViewModel>>> Handle(GetEventItemPagedRequest request,
-        CancellationToken cancellationToken)
-    {
-        var operation = OperationResult.CreateResult<IPagedList<EventItemViewModel>>();
-        var predicate = GetPredicate(request.Search);
-        var pagedList = await _unitOfWork.GetRepository<EventItem>()
-            .GetPagedListAsync(
-                predicate: predicate,
-                pageIndex: request.PageIndex,
-                pageSize: request.PageSize,
-                cancellationToken: cancellationToken);
-
-        if (pagedList == null)
+        public Handler(IUnitOfWork unitOfWork, IMapper mapper)
         {
-            operation.Result = PagedList.Empty<EventItemViewModel>();
-            operation.AddWarning("Response does not return the result for pagination.");
+            _unitOfWork = unitOfWork;
+            _mapper = mapper;
+        }
+
+        public async Task<OperationResult<IPagedList<EventItemViewModel>>> Handle(
+            Request request,
+            CancellationToken cancellationToken)
+        {
+            var operation = OperationResult.CreateResult<IPagedList<EventItemViewModel>>();
+            var predicate = GetPredicate(request.Search);
+            var pagedList = await _unitOfWork.GetRepository<EventItem>()
+                .GetPagedListAsync(
+                    predicate: predicate,
+                    pageIndex: request.PageIndex,
+                    pageSize: request.PageSize,
+                    cancellationToken: cancellationToken);
+
+            if (pagedList == null)
+            {
+                operation.Result = PagedList.Empty<EventItemViewModel>();
+                operation.AddWarning("Response does not return the result for pagination.");
+                return operation;
+            }
+
+            if (pagedList.PageIndex > pagedList.TotalPages)
+            {
+                pagedList = await _unitOfWork.GetRepository<EventItem>()
+                    .GetPagedListAsync(
+                        pageIndex: 0,
+                        pageSize: request.PageSize, cancellationToken: cancellationToken);
+            }
+
+            operation.Result = _mapper.Map<IPagedList<EventItemViewModel>>(pagedList);
             return operation;
         }
 
-        if (pagedList.PageIndex > pagedList.TotalPages)
+        private Expression<Func<EventItem, bool>> GetPredicate(string? search)
         {
-            pagedList = await _unitOfWork.GetRepository<EventItem>()
-                .GetPagedListAsync(
-                    pageIndex: 0,
-                    pageSize: request.PageSize, cancellationToken: cancellationToken);
-        }
+            var predicate = PredicateBuilder.True<EventItem>();
+            if (search is null)
+            {
+                return predicate;
+            }
 
-        operation.Result = _mapper.Map<IPagedList<EventItemViewModel>>(pagedList);
-        return operation;
-    }
-
-    private Expression<Func<EventItem, bool>> GetPredicate(string? search)
-    {
-        var predicate = PredicateBuilder.True<EventItem>();
-        if (search is null)
-        {
+            predicate = predicate.And(x => x.Message.Contains(search));
+            predicate = predicate.Or(x => x.Logger.Contains(search));
+            predicate = predicate.Or(x => x.Level.Contains(search));
             return predicate;
         }
-
-        predicate = predicate.And(x => x.Message.Contains(search));
-        predicate = predicate.Or(x => x.Logger.Contains(search));
-        predicate = predicate.Or(x => x.Level.Contains(search));
-        return predicate;
     }
 }
