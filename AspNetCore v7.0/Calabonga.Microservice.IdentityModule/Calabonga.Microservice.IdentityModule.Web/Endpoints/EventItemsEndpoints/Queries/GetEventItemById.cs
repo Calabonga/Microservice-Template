@@ -8,16 +8,13 @@ using MediatR;
 
 namespace Calabonga.Microservice.IdentityModule.Web.Endpoints.EventItemsEndpoints.Queries;
 
+/// <summary>
+/// EventItem by Identifier
+/// </summary>
 public class GetEventItemById
 {
-    /// <summary>
-    /// Request for EventItem by Identifier
-    /// </summary>
     public record Request(Guid Id) : IRequest<OperationResult<EventItemViewModel>>;
 
-    /// <summary>
-    /// Response for  Request for EventItem by Identifier
-    /// </summary>
     public class Handler : IRequestHandler<Request, OperationResult<EventItemViewModel>>
     {
         private readonly IUnitOfWork _unitOfWork;

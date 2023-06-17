@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
     <Metadata>
-        <Identity Id="Package.76abdd13-e59c-df90-4cf4-076f290f8a6b" Version="7.0.4" Language="en-US" Publisher="Сalabonga" />
+        <Identity Id="Package.76abdd13-e59c-df90-4cf4-076f290f8a6b" Version="7.0.5" Language="en-US" Publisher="Сalabonga" />
         <DisplayName>MicroserviceTemplate</DisplayName>
         <Description xml:space="preserve">Microservice template gives you a possibility to start developing a microservice architecture with UI (Swagger Open API) and Mediatr (CQRS). Template Based on NET 7.0.x</Description>
         <MoreInfo>https://github.com/Calabonga/Microservice-Template</MoreInfo>

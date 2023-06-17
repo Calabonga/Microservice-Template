@@ -41,7 +41,7 @@ public class TokenEndpoints : AppDefinition
             identity.AddClaim(OpenIddictConstants.Claims.ClientId, request.ClientId!);
 
             // Don't forget to add destination otherwise it won't be added to the access token.
-            if (request.Scope.IsNotEmpty())
+            if (request.Scope.IsNullOrEmpty())
             {
                 identity.AddClaim(OpenIddictConstants.Claims.Scope, request.Scope!, OpenIddictConstants.Destinations.AccessToken);
             }

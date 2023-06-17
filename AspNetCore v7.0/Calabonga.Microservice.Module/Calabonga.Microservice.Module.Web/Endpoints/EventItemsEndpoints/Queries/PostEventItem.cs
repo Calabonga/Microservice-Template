@@ -16,9 +16,6 @@ public class PostEventItem
 {
     public record Request(EventItemCreateViewModel Model) : IRequest<OperationResult<EventItemViewModel>>;
 
-    /// <summary>
-    /// Request: EventItem creation
-    /// </summary>
     public class Handler : IRequestHandler<Request, OperationResult<EventItemViewModel>>
     {
         private readonly IUnitOfWork _unitOfWork;

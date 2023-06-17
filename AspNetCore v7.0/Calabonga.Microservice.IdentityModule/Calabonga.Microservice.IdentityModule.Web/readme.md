@@ -18,6 +18,7 @@ Nimble Framework Templates build on .NET 7.0. That`s why it have the same major 
 
 You can contact me by using the next opportunities:
 
+* Donate: https://boosty.to/calabonga/donate
 * Blog: https://www.calabonga.net
 * GitHub: https://github.com/Calabonga
 * Zen: https://dzen.ru/calabonga

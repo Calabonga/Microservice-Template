@@ -15,9 +15,6 @@ public class DeleteEventItem
 {
     public record Request(Guid Id) : IRequest<OperationResult<EventItemViewModel>>;
 
-    /// <summary>
-    /// Request: EventItem delete
-    /// </summary>
     public class Handler : IRequestHandler<Request, OperationResult<EventItemViewModel>>
     {
         private readonly IUnitOfWork _unitOfWork;

@@ -4,11 +4,11 @@ using System.Security.Claims;
 
 namespace Calabonga.Microservice.Module.Web.Endpoints.ProfileEndpoints.Queries;
 
+/// <summary>
+/// Request: Returns user roles 
+/// </summary>
 public class GetProfile
 {
-    /// <summary>
-    /// Request: Returns user roles 
-    /// </summary>
     public record Request : IRequest<string>;
 
     public class Handler : IRequestHandler<Request, string>

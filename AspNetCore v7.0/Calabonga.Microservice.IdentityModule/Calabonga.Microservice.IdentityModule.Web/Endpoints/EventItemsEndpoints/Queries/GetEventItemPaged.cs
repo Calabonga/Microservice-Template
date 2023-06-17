@@ -9,16 +9,13 @@ using System.Linq.Expressions;
 
 namespace Calabonga.Microservice.IdentityModule.Web.Endpoints.EventItemsEndpoints.Queries;
 
+/// <summary>
+/// Request for paged list of EventItems
+/// </summary>
 public class GetEventItemPaged
 {
-    /// <summary>
-    /// Request for paged list of EventItems
-    /// </summary>
     public record Request(int PageIndex, int PageSize, string? Search) : IRequest<OperationResult<IPagedList<EventItemViewModel>>>;
 
-    /// <summary>
-    /// Request for paged list of EventItems
-    /// </summary>
     public class Handler : IRequestHandler<Request, OperationResult<IPagedList<EventItemViewModel>>>
     {
         private readonly IUnitOfWork _unitOfWork;

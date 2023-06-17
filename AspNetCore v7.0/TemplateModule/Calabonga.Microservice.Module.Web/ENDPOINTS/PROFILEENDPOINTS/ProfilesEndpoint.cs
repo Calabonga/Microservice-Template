@@ -17,5 +17,5 @@ public class ProfilesEndpointDefinition : AppDefinition
     [Authorize(AuthenticationSchemes = AuthData.AuthSchemes, Policy = "EventItems:UserRoles:View")]
     [FeatureGroupName("Profiles")]
     private async Task<string> GetRoles([FromServices] IMediator mediator, HttpContext context)
-        => await mediator.Send(new GetRolesRequest(), context.RequestAborted);
+        => await mediator.Send(new GetProfile.Request(), context.RequestAborted);
 }

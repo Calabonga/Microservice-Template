@@ -9,16 +9,13 @@ using MediatR;
 
 namespace Calabonga.Microservice.Module.Web.Endpoints.EventItemsEndpoints.Queries;
 
+/// <summary>
+/// Request: EventItem edit
+/// </summary>
 public class PutEventItem
 {
-    /// <summary>
-    /// Request: EventItem edit
-    /// </summary>
     public record Request(Guid Id, EventItemUpdateViewModel Model) : IRequest<OperationResult<EventItemViewModel>>;
 
-    /// <summary>
-    /// Request: EventItem creation
-    /// </summary>
     public class Handler : IRequestHandler<Request, OperationResult<EventItemViewModel>>
     {
         private readonly IUnitOfWork _unitOfWork;

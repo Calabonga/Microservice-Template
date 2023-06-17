@@ -9,15 +9,12 @@ using MediatR;
 namespace Calabonga.Microservice.IdentityModule.Web.Endpoints.EventItemsEndpoints.Queries;
 
 /// <summary>
-/// Request: EventItem delete
+/// EventItem delete
 /// </summary>
 public class DeleteEventItem
 {
     public record Request(Guid Id) : IRequest<OperationResult<EventItemViewModel>>;
 
-    /// <summary>
-    /// Request: EventItem delete
-    /// </summary>
     public class Handler : IRequestHandler<Request, OperationResult<EventItemViewModel>>
     {
         private readonly IUnitOfWork _unitOfWork;

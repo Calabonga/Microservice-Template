@@ -7,24 +7,30 @@ namespace $safeprojectname$.Endpoints.ProfileEndpoints.Queries;
 /// <summary>
 /// Request: Returns user roles 
 /// </summary>
-public record GetRolesRequest : IRequest<string>;
-
-public class GetRolesRequestHandler : IRequestHandler<GetRolesRequest, string>
+public class GetProfile
 {
-    private readonly IHttpContextAccessor _httpContextAccessor;
-    private readonly ILogger<GetRolesRequestHandler> _logger;
+    public record Request : IRequest<string>;
 
-    public GetRolesRequestHandler(IHttpContextAccessor httpContextAccessor, ILogger<GetRolesRequestHandler> logger)
+    public class Handler : IRequestHandler<Request, string>
     {
-        _httpContextAccessor = httpContextAccessor;
-        _logger = logger;
-    }
+        private readonly ILogger<Handler> _logger;
+        private readonly IHttpContextAccessor _httpContextAccessor;
 
-    public Task<string> Handle(GetRolesRequest request, CancellationToken cancellationToken)
-    {
-        var user = _httpContextAccessor.HttpContext!.User;
-        var roles = ClaimsHelper.GetValues<string>((ClaimsIdentity)user.Identity!, "role");
-        _logger.LogInformation("Current user {@UserName} have following roles {@Roles}", user.Identity.Name, roles);
-        return Task.FromResult($"Current user ({user.Identity!.Name}) have following roles: {string.Join("|", roles)}");
+        public Handler(
+            ILogger<Handler> logger,
+            IHttpContextAccessor httpContextAccessor)
+        {
+            _logger = logger;
+            _httpContextAccessor = httpContextAccessor;
+        }
+
+        public Task<string> Handle(Request request, CancellationToken cancellationToken)
+        {
+            var user = _httpContextAccessor.HttpContext!.User;
+            var roles = ClaimsHelper.GetValues<string>((ClaimsIdentity)user.Identity!, "role");
+            var message = $"Current user ({user.Identity!.Name}) have following roles: {string.Join("|", roles)}";
+            _logger.LogInformation(message);
+            return Task.FromResult(message);
+        }
     }
 }

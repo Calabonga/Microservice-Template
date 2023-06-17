@@ -12,51 +12,57 @@ namespace $safeprojectname$.Endpoints.EventItemsEndpoints.Queries;
 /// <summary>
 /// Request: EventItem creation
 /// </summary>
-public record PostEventItemRequest(EventItemCreateViewModel Model) : IRequest<OperationResult<EventItemViewModel>>;
-
-/// <summary>
-/// Request: EventItem creation
-/// </summary>
-public class PostEventItemRequestHandler : IRequestHandler<PostEventItemRequest, OperationResult<EventItemViewModel>>
+public class PostEventItem
 {
-    private readonly IUnitOfWork _unitOfWork;
-    private readonly IMapper _mapper;
-    private readonly ILogger<PostEventItemRequestHandler> _logger;
+    public record Request(EventItemCreateViewModel Model) : IRequest<OperationResult<EventItemViewModel>>;
 
-
-    public PostEventItemRequestHandler(IUnitOfWork unitOfWork, IMapper mapper, ILogger<PostEventItemRequestHandler> logger)
+    public class Handler : IRequestHandler<Request, OperationResult<EventItemViewModel>>
     {
-        _unitOfWork = unitOfWork;
-        _mapper = mapper;
-        _logger = logger;
-    }
+        private readonly IUnitOfWork _unitOfWork;
+        private readonly IMapper _mapper;
+        private readonly ILogger<Handler> _logger;
 
-    public async Task<OperationResult<EventItemViewModel>> Handle(PostEventItemRequest eventItemRequest, CancellationToken cancellationToken)
-    {
-        var operation = OperationResult.CreateResult<EventItemViewModel>();
 
-        var entity = _mapper.Map<EventItemCreateViewModel, EventItem>(eventItemRequest.Model);
-        if (entity == null)
+        public Handler(IUnitOfWork unitOfWork, IMapper mapper, ILogger<Handler> logger)
         {
-            operation.AddError(new MicroserviceUnauthorizedException(AppContracts.Exceptions.MappingException));
-            return operation;
+            _unitOfWork = unitOfWork;
+            _mapper = mapper;
+            _logger = logger;
         }
 
-        await _unitOfWork.GetRepository<EventItem>().InsertAsync(entity, cancellationToken);
-        await _unitOfWork.SaveChangesAsync();
-
-        var lastResult = _unitOfWork.LastSaveChangesResult;
-        if (lastResult.IsOk)
+        public async Task<OperationResult<EventItemViewModel>> Handle(Request eventItemRequest, CancellationToken cancellationToken)
         {
-            var mapped = _mapper.Map<EventItem, EventItemViewModel>(entity);
-            operation.Result = mapped;
-            operation.AddSuccess("Successfully created");
-            _logger.LogInformation("EventItem {@EventItem} successfully created", entity);
+            _logger.LogDebug("Creating new EventItem");
+
+            var operation = OperationResult.CreateResult<EventItemViewModel>();
+
+            var entity = _mapper.Map<EventItemCreateViewModel, EventItem>(eventItemRequest.Model);
+            if (entity == null)
+            {
+                var exceptionMapper = new MicroserviceUnauthorizedException(AppContracts.Exceptions.MappingException);
+                operation.AddError(exceptionMapper);
+                _logger.LogError(exceptionMapper, "Mapper not configured correctly or something went wrong");
+                return operation;
+            }
+
+            await _unitOfWork.GetRepository<EventItem>().InsertAsync(entity, cancellationToken);
+            await _unitOfWork.SaveChangesAsync();
+
+            var lastResult = _unitOfWork.LastSaveChangesResult;
+            if (lastResult.IsOk)
+            {
+                var mapped = _mapper.Map<EventItem, EventItemViewModel>(entity);
+                operation.Result = mapped;
+                operation.AddSuccess("Successfully created");
+                _logger.LogInformation("New entity {@EventItem} successfully created", entity);
+                return operation;
+            }
+
+            var exception = lastResult.Exception ?? new ApplicationException("Something went wrong");
+            operation.AddError(exception);
+            _logger.LogError(exception, "Error data saving to Database or something went wrong");
+
             return operation;
         }
-
-        operation.AddError(lastResult.Exception ?? new ApplicationException("Something went wrong"));
-
-        return operation;
     }
 }

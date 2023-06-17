@@ -6,7 +6,7 @@ namespace $safeprojectname$.Endpoints.EventItemsEndpoints;
 /// <summary>
 /// RegisterViewModel Validator
 /// </summary>
-public class EventItemCreateRequestValidator : AbstractValidator<PostEventItemRequest>
+public class EventItemCreateRequestValidator : AbstractValidator<PostEventItem.Request>
 {
     public EventItemCreateRequestValidator() => RuleSet("default", () =>
     {

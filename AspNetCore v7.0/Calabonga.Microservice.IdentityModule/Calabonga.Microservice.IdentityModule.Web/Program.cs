@@ -5,10 +5,11 @@
 // Version: 7.0.5
 // Based on: .NET 7.0.x
 // Created Date: 2022-11-12 09:29
-// Updated Date: 2023-04-15 08:17
+// Updated Date: 2023-06-17 11:52
 // --------------------------------------------------------------------
 // Contacts
 // --------------------------------------------------------------------
+// Donate: https://boosty.to/calabonga/donate
 // Blog: https://www.calabonga.net/blog/post/nimble-framework-7
 // GitHub: https://github.com/Calabonga/Microservice-Template
 // YouTube: https://youtube.com/sergeicalabonga
