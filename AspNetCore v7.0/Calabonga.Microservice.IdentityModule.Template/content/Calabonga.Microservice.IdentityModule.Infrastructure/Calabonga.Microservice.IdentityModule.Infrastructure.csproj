@@ -1,0 +1,29 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Calabonga.UnitOfWork" Version="3.1.0" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="7.0.7" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.7">
+		  <PrivateAssets>all</PrivateAssets>
+		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="OpenIddict.EntityFrameworkCore" Version="4.4.0" />
+		<PackageReference Include="OperationResultCore" Version="4.0.2" />
+		<PackageReference Include="Calabonga.PredicatesBuilder" Version="2.0.1" />
+		<PackageReference Include="Calabonga.Microservices.Core" Version="4.1.1" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.7" />
+		<PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="7.0.7" />
+	</ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Calabonga.Microservice.IdentityModule.Domain\Calabonga.Microservice.IdentityModule.Domain.csproj" />
+  </ItemGroup>
+
+
+</Project>
