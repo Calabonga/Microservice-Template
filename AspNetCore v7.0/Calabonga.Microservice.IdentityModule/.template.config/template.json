@@ -5,7 +5,7 @@
         "Web",
         "WebAPI"
     ],
-    "name": "Calabonga.Microservice.IdentityModule v6.1.0",
+    "name": "Calabonga.Microservice.IdentityModule v7.0.0",
     "description": "Nimble Microservice Framework. This template gives you a possibility to start developing a microservice architecture with integrated UI (Swagger), Mediatr, Automapper and Authorization Server (OpenIddict OAuth 2.0). Template developed for .NET 6.0.x.",
     "identity": "Calabonga.Microservice.IdentityModule",
     "shortName": "nimbleminim",
@@ -22,10 +22,10 @@
             "datatype": "choice",
             "choices": [
                 {
-                    "choice": "net6.0"
+                    "choice": "net7.0"
                 }
             ],
-            "defaultValue": "net6.0"
+            "defaultValue": "net7.0"
         }
     },
     "sources": [
