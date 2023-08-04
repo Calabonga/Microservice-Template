@@ -11,9 +11,17 @@ Please find out all comments with 'ATTENTION!' because that is required some dec
 
 Созданы шаблоны для `dotnet CLI`. Теперь можно установить шаблоны очень просто через команду `dotnet`. Например, чтобы установить шаблон для `Microservice Identity Module` достаточно выполнить команду:
 
+``` bash
+dotnet new install Calabonga.Microservice.IdentityModule.Template
+```
+
 ![Install identity module](https://github.com/Calabonga/Microservice-Template/blob/master/Whatnot/install_identity_module.png)
 
 А для установки `Microservice Module` нужно такую команду:
+
+``` bash
+dotnet new install Calabonga.Microservice.Module.Template
+```
 
 ![Install module](https://github.com/Calabonga/Microservice-Template/blob/master/Whatnot/install_module.png) 
 
