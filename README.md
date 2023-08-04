@@ -7,6 +7,27 @@ Please find out all comments with 'ATTENTION!' because that is required some dec
 
 ## Новости Nimble Framework
 
+### 2023-08-04
+
+Созданы шаблоны для `dotnet CLI`. Теперь можно установить шаблоны очень просто через команду `dotnet`. Например, чтобы установить шаблон для `Microservice Identity Module` достаточно выполнить команду:
+
+![Install identity module](https://github.com/Calabonga/Microservice-Template/blob/master/Whatnot/install_identity_module.png)
+
+А для установки `Microservice Module` нужно такую команду:
+
+![Install module](https://github.com/Calabonga/Microservice-Template/blob/master/Whatnot/install_module.png) 
+
+Проверить установлены ли шаблоны можно командой 
+``` bash
+dotnet new list
+```
+
+Команда выведет список всех установленных шаблонов:
+
+![template list](https://github.com/Calabonga/Microservice-Template/blob/master/Whatnot/templates_list.png)
+
+Также после установки шаблонов, они станут доступы в Visual Studio и JetBrains Rider.
+
 ### 2023-06-15
 
 Версия 7.0.5:
@@ -292,12 +313,12 @@ Visual Studio project template for microservice module base on ASP.NET Core
 
 Теперь шаблоны для генерации микросервисов доступны также и в Visual Studio Marketplace
 
-![marketplace](https://github.com/Calabonga/Microservice-Template/blob/master/Whatnot/vs-extension-market-view.png)
+![marketplace](Whatnot/vs-extension-market-view.png)
 
 [Посмотреть marketplace](https://marketplace.visualstudio.com/items?itemName=Calabonga.microserivce-templates)
 
 Также можно установить прямо из Visual Studio
-![extension](https://github.com/Calabonga/Microservice-Template/blob/master/Whatnot/vs-extension.png)
+![extension](Whatnot/vs-extension.png)
 
 # Дополнительные материалы по Nimble Framework
 
@@ -321,6 +342,6 @@ Nimble Framework для NET6 Готовится
 
 Сергей Калабонга (Calabonga)
 
-![Author](https://www.calabonga.net/images/Calabonga.gif)
+![Author](Whatnot/Calabonga.gif)
 
 [Блог по программированию](https://www.calabonga.net)

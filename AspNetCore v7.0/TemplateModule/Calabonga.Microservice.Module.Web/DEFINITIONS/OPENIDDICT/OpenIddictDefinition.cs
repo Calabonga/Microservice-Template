@@ -4,8 +4,8 @@ namespace $safeprojectname$.Definitions.OpenIddict;
 
 public class OpenIddictDefinition : AppDefinition
 {
-    public override void ConfigureServices(IServiceCollection services, WebApplicationBuilder builder) => 
-        services
+    public override void ConfigureServices(WebApplicationBuilder builder) =>
+        builder.Services
             .AddOpenIddict()
             .AddValidation(options =>
             {

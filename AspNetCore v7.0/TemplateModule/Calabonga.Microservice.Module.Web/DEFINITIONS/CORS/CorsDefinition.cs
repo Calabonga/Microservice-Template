@@ -13,10 +13,10 @@ public class CorsDefinition : AppDefinition
     /// </summary>
     /// <param name="services"></param>
     /// <param name="builder"></param>
-    public override void ConfigureServices(IServiceCollection services, WebApplicationBuilder builder)
+    public override void ConfigureServices( WebApplicationBuilder builder)
     {
         var origins = builder.Configuration.GetSection("Cors")?.GetSection("Origins")?.Value?.Split(',');
-        services.AddCors(options =>
+        builder.Services.AddCors(options =>
         {
             options.AddPolicy(AppData.PolicyName, builder =>
             {

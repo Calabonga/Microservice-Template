@@ -4,12 +4,12 @@
         <!-- The package metadata. Fill in the properties marked as TODO below -->
         <!-- Follow the instructions on https://learn.microsoft.com/en-us/nuget/create-packages/package-authoring-best-practices -->
         <PackageId>Calabonga.Microservice.IdentityModule.Template</PackageId>
-        <PackageVersion>1.0.0</PackageVersion>
+        <PackageVersion>1.0.1</PackageVersion>
         <Title>Microservice template with OpenIddict</Title>
         <Authors>Calabonga</Authors>
         <Copyright>Calabonga © 2016-2023</Copyright>
         <PackageIcon>logo.png</PackageIcon>
-        <Description>Microservice template with OpenIddict implementation for OAuth2.0</Description>
+        <Description>Microservice template with OpenIddict implementation for OAuth2.0 and also with Automapper, FluentValidation and other helpful thing</Description>
         <PackageTags>template, microservice, oauth2, calabonga, nimble, framework</PackageTags>
         <PackageProjectUrl>https://github.com/Calabonga/Microservice-Template</PackageProjectUrl>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
@@ -22,7 +22,7 @@
         <ContentTargetFolders>content</ContentTargetFolders>
         <NoWarn>$(NoWarn);NU5128</NoWarn>
         <NoDefaultExcludes>true</NoDefaultExcludes>
-        <PackageReleaseNotes>First release</PackageReleaseNotes>
+        <PackageReleaseNotes>Nuget packages updated</PackageReleaseNotes>
     </PropertyGroup>
 
     <PropertyGroup>
@@ -39,6 +39,13 @@
     <ItemGroup>
         <Content Include="content\**\*" Exclude="content\**\bin\**;content\**\obj\**;content\**\.vs\**" />
         <Compile Remove="**\*" />
+        <Compile Remove="content\_ReSharper.Caches\**" />
+        <Compile Remove="_ReSharper.Caches\**" />
+        <Content Remove="content\_ReSharper.Caches\**" />
+        <EmbeddedResource Remove="content\_ReSharper.Caches\**" />
+        <EmbeddedResource Remove="_ReSharper.Caches\**" />
+        <None Remove="content\_ReSharper.Caches\**" />
+        <None Remove="_ReSharper.Caches\**" />
     </ItemGroup>
 
     <ItemGroup>

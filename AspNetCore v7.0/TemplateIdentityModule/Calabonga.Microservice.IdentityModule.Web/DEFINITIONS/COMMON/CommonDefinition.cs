@@ -10,17 +10,15 @@ public class CommonDefinition : AppDefinition
     /// <summary>
     /// Configure services for current application
     /// </summary>
-    /// <param name="services"></param>
     /// <param name="builder"></param>
-    public override void ConfigureServices(IServiceCollection services, WebApplicationBuilder builder)
+    public override void ConfigureServices(WebApplicationBuilder builder)
     {
-        services.AddLocalization();
-        services.AddHttpContextAccessor();
-        services.AddResponseCaching();
-        services.AddMemoryCache();
-
-        services.AddMvc();
-        services.AddRazorPages();
+        builder.Services.AddLocalization();
+        builder.Services.AddHttpContextAccessor();
+        builder.Services.AddResponseCaching();
+        builder.Services.AddMemoryCache();
+        builder.Services.AddMvc();
+        builder.Services.AddRazorPages();
     }
 
     /// <summary>
