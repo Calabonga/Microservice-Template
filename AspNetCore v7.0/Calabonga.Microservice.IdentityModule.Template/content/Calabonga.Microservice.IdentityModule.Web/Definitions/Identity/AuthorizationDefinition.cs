@@ -14,11 +14,10 @@ public class AuthorizationDefinition : AppDefinition
     /// <summary>
     /// Configure services for current application
     /// </summary>
-    /// <param name="services"></param>
     /// <param name="builder"></param>
-    public override void ConfigureServices(IServiceCollection services, WebApplicationBuilder builder)
+    public override void ConfigureServices(WebApplicationBuilder builder)
     {
-        services
+        builder.Services
             .AddAuthentication(options =>
             {
                 options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -30,9 +29,9 @@ public class AuthorizationDefinition : AppDefinition
                 options.LoginPath = "/connect/login";
             });
 
-        services.AddAuthorization();
-        services.AddSingleton<IAuthorizationPolicyProvider, AuthorizationPolicyProvider>();
-        services.AddSingleton<IAuthorizationHandler, AppPermissionHandler>();
+        builder.Services.AddAuthorization();
+        builder.Services.AddSingleton<IAuthorizationPolicyProvider, AuthorizationPolicyProvider>();
+        builder.Services.AddSingleton<IAuthorizationHandler, AppPermissionHandler>();
     }
 
     /// <summary>

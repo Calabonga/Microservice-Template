@@ -14,6 +14,6 @@ public class UnitOfWorkDefinition : AppDefinition
     /// </summary>
     /// <param name="services"></param>
     /// <param name="builder"></param>
-    public override void ConfigureServices(IServiceCollection services, WebApplicationBuilder builder)
-        => services.AddUnitOfWork<ApplicationDbContext>();
+    public override void ConfigureServices( WebApplicationBuilder builder)
+        => builder.Services.AddUnitOfWork<ApplicationDbContext>();
 }

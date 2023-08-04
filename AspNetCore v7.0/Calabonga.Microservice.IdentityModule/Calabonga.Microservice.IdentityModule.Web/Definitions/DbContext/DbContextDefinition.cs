@@ -15,11 +15,10 @@ public class DbContextDefinition : AppDefinition
     /// <summary>
     /// Configure services for current application
     /// </summary>
-    /// <param name="services"></param>
     /// <param name="builder"></param>
-    public override void ConfigureServices(IServiceCollection services, WebApplicationBuilder builder)
+    public override void ConfigureServices(WebApplicationBuilder builder)
     {
-        services.AddDbContext<ApplicationDbContext>(config =>
+        builder.Services.AddDbContext<ApplicationDbContext>(config =>
         {
             // UseInMemoryDatabase - This for demo purposes only!
             // Should uninstall package "Microsoft.EntityFrameworkCore.InMemory" and install what you need.
@@ -35,7 +34,7 @@ public class DbContextDefinition : AppDefinition
         });
 
 
-        services.Configure<IdentityOptions>(options =>
+        builder.Services.Configure<IdentityOptions>(options =>
         {
             options.ClaimsIdentity.UserNameClaimType = OpenIddictConstants.Claims.Name;
             options.ClaimsIdentity.UserIdClaimType = OpenIddictConstants.Claims.Subject;
@@ -44,7 +43,7 @@ public class DbContextDefinition : AppDefinition
             // configure more options if you need
         });
 
-        services.AddIdentity<ApplicationUser, ApplicationRole>(options =>
+        builder.Services.AddIdentity<ApplicationUser, ApplicationRole>(options =>
             {
                 options.Password.RequireDigit = false;
                 options.Password.RequireLowercase = false;
@@ -60,6 +59,6 @@ public class DbContextDefinition : AppDefinition
             .AddClaimsPrincipalFactory<ApplicationUserClaimsPrincipalFactory>()
             .AddDefaultTokenProviders();
 
-        services.AddTransient<ApplicationUserStore>();
+        builder.Services.AddTransient<ApplicationUserStore>();
     }
 }

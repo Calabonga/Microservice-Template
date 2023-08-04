@@ -7,9 +7,9 @@ namespace $safeprojectname$.Definitions.OpenIddict;
 
 public class OpenIddictDefinition : AppDefinition
 {
-    public override void ConfigureServices(IServiceCollection services, WebApplicationBuilder builder)
+    public override void ConfigureServices(WebApplicationBuilder builder)
     {
-        services.AddOpenIddict()
+        builder.Services.AddOpenIddict()
             // Register the OpenIddict core components.
             .AddCore(options =>
             {
@@ -121,6 +121,6 @@ public class OpenIddictDefinition : AppDefinition
 
         // Register the worker responsible for seeding the database.
         // Note: in a real world application, this step should be part of a setup script.
-        services.AddHostedService<OpenIddictWorker>();
+        builder.Services.AddHostedService<OpenIddictWorker>();
     }
 }

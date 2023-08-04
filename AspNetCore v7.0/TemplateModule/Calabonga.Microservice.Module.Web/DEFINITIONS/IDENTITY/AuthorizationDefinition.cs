@@ -17,13 +17,12 @@ public class AuthorizationDefinition : AppDefinition
     /// <summary>
     /// Configure services for current microservice
     /// </summary>
-    /// <param name="services"></param>
     /// <param name="builder"></param>
-    public override void ConfigureServices(IServiceCollection services, WebApplicationBuilder builder)
+    public override void ConfigureServices(WebApplicationBuilder builder)
     {
         var url = builder.Configuration.GetSection("AuthServer").GetValue<string>("Url");
 
-        services
+        builder.Services
             .AddAuthentication(options =>
             {
                 options.DefaultScheme = OpenIddictServerAspNetCoreDefaults.AuthenticationScheme;
@@ -77,7 +76,7 @@ public class AuthorizationDefinition : AppDefinition
                 };
             });
 
-        services.AddAuthorization(options =>
+        builder.Services.AddAuthorization(options =>
         {
             options.AddPolicy(AuthData.AuthSchemes, policy =>
             {
@@ -86,8 +85,8 @@ public class AuthorizationDefinition : AppDefinition
             });
         });
 
-        services.AddSingleton<IAuthorizationPolicyProvider, AuthorizationPolicyProvider>();
-        services.AddSingleton<IAuthorizationHandler, AppPermissionHandler>();
+        builder.Services.AddSingleton<IAuthorizationPolicyProvider, AuthorizationPolicyProvider>();
+        builder.Services.AddSingleton<IAuthorizationHandler, AppPermissionHandler>();
     }
 
     /// <summary>

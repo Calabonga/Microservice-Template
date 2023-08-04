@@ -7,11 +7,11 @@ namespace Calabonga.Microservice.IdentityModule.Web.Definitions.DependencyContai
 /// <summary>
 /// Dependency container definition
 /// </summary>
-public class ContainerDefinition: AppDefinition
+public class ContainerDefinition : AppDefinition
 {
-    public override void ConfigureServices(IServiceCollection services, WebApplicationBuilder builder)
+    public override void ConfigureServices(WebApplicationBuilder builder)
     {
-        services.AddTransient<IAccountService, AccountService>();
-        services.AddTransient<ApplicationUserClaimsPrincipalFactory>();
+        builder.Services.AddTransient<IAccountService, AccountService>();
+        builder.Services.AddTransient<ApplicationUserClaimsPrincipalFactory>();
     }
 }

@@ -12,8 +12,8 @@ public class AutomapperDefinition : AppDefinition
     /// </summary>
     /// <param name="services"></param>
     /// <param name="builder"></param>
-    public override void ConfigureServices(IServiceCollection services, WebApplicationBuilder builder)
-        => services.AddAutoMapper(typeof(Program));
+    public override void ConfigureServices(WebApplicationBuilder builder)
+        => builder.Services.AddAutoMapper(typeof(Program));
 
     /// <summary>
     /// Configure application for current microservice
