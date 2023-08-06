@@ -1,5 +1,5 @@
 ﻿using Calabonga.AspNetCore.AppDefinitions;
-using Calabonga.Microservice.IdentityModule.Web.Application;
+using Calabonga.Microservice.IdentityModule.Web.Definitions.FluentValidating;
 using MediatR;
 
 namespace Calabonga.Microservice.IdentityModule.Web.Definitions.Mediator;

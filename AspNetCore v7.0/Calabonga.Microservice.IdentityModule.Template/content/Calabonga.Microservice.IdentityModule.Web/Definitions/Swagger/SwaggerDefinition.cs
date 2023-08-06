@@ -1,6 +1,6 @@
 ﻿using Calabonga.AspNetCore.AppDefinitions;
 using Calabonga.Microservice.IdentityModule.Domain.Base;
-using Calabonga.Microservice.IdentityModule.Web.Application;
+using Calabonga.Microservices.Core;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.SwaggerUI;
@@ -17,7 +17,7 @@ public class SwaggerDefinition : AppDefinition
     // Otherwise, you can change versions of your API by manually.
     // If you are not going to use git-versioning, do not forget install package "GitInfo" 
     // private const string _appVersion = $"{ThisAssembly.Git.SemVer.Major}.{ThisAssembly.Git.SemVer.Minor}.{ThisAssembly.Git.SemVer.Patch}";
-    private const string _appVersion = "7.0.6";
+    private const string _appVersion = "7.0.7";
 
     private const string _swaggerConfig = "/swagger/v1/swagger.json";
 

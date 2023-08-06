@@ -1,5 +1,5 @@
-﻿using Calabonga.Microservice.IdentityModule.Web.Definitions.Mediator.Base;
-using Calabonga.Microservice.IdentityModule.Web.Endpoints.EventItemsEndpoints.ViewModels;
+﻿using Calabonga.Microservice.IdentityModule.Web.Application.Messaging.EventItemsMessages.ViewModels;
+using Calabonga.Microservice.IdentityModule.Web.Definitions.Mediator.Base;
 using Calabonga.OperationResults;
 using Calabonga.UnitOfWork;
 using MediatR;
