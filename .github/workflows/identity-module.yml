@@ -1,4 +1,4 @@
-name: Calabonga.Microservice.IdentityModule Nuget
+name: IdentityModule Nuget
 
 on:
   workflow_dispatch:

@@ -1,4 +1,4 @@
-name: Calabonga.Microservice.Module Nuget
+name: Module Nuget
 
 on:
   workflow_dispatch:
