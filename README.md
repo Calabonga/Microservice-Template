@@ -36,6 +36,14 @@ dotnet new list
 
 Также после установки шаблонов, они станут доступы в Visual Studio и JetBrains Rider.
 
+### Visual Studio
+
+![Visual Studio]([/Whatnot](https://github.com/Calabonga/Microservice-Template/blob/master/Whatnot)/nimble_vs.png)
+
+### JetBrains Rider
+
+![Visual Studio]([/Whatnot](https://github.com/Calabonga/Microservice-Template/blob/master/Whatnot)/nimble_rider.png)
+
 ### 2023-06-15
 
 Версия 7.0.5:
