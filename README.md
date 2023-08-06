@@ -38,11 +38,11 @@ dotnet new list
 
 ### Visual Studio
 
-![Visual Studio]([/Whatnot](https://github.com/Calabonga/Microservice-Template/blob/master/Whatnot)/nimble_vs.png)
+![Visual Studio create new project screen](https://github.com/Calabonga/Microservice-Template/blob/master/Whatnot/nimble_vs.png)
 
 ### JetBrains Rider
 
-![Visual Studio]([/Whatnot](https://github.com/Calabonga/Microservice-Template/blob/master/Whatnot)/nimble_rider.png)
+![JetBrains Rider create new project screen](https://github.com/Calabonga/Microservice-Template/blob/master/Whatnot/nimble_rider.png)
 
 ### 2023-06-15
 
