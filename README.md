@@ -17,13 +17,15 @@ Please find out all comments with 'ATTENTION!' because that is required some dec
 
 ### 2023-08-04
 
+Версия 7.0.6:
+
 Созданы шаблоны для `dotnet CLI`. Теперь можно установить шаблоны очень просто через команду `dotnet`. Например, чтобы установить шаблон для `Microservice Identity Module` достаточно выполнить команду:
 
 ``` bash
 dotnet new install Calabonga.Microservice.IdentityModule.Template
 ```
 
-![Install identity module](https://github.com/Calabonga/Microservice-Template/blob/master/Whatnot/install_identity_module.png)
+![Install identity module](Whatnot/install_identity_module.png)
 
 А для установки `Microservice Module` нужно такую команду:
 
@@ -31,7 +33,7 @@ dotnet new install Calabonga.Microservice.IdentityModule.Template
 dotnet new install Calabonga.Microservice.Module.Template
 ```
 
-![Install module](https://github.com/Calabonga/Microservice-Template/blob/master/Whatnot/install_module.png) 
+![Install module](Whatnot/install_module.png) 
 
 Проверить установлены ли шаблоны можно командой 
 ``` bash
@@ -40,17 +42,17 @@ dotnet new list
 
 Команда выведет список всех установленных шаблонов:
 
-![template list](https://github.com/Calabonga/Microservice-Template/blob/master/Whatnot/templates_list.png)
+![template list](Whatnot/templates_list.png)
 
 Также после установки шаблонов, они станут доступы в Visual Studio и JetBrains Rider.
 
 ### Visual Studio
 
-![Visual Studio create new project screen](https://github.com/Calabonga/Microservice-Template/blob/master/Whatnot/nimble_vs.png)
+![Visual Studio create new project screen](Whatnot/nimble_vs.png)
 
 ### JetBrains Rider
 
-![JetBrains Rider create new project screen](https://github.com/Calabonga/Microservice-Template/blob/master/Whatnot/nimble_rider.png)
+![JetBrains Rider create new project screen](Whatnot/nimble_rider.png)
 
 ### 2023-06-15
 
