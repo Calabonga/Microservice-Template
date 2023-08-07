@@ -7,6 +7,14 @@ Please find out all comments with 'ATTENTION!' because that is required some dec
 
 ## Новости Nimble Framework
 
+### 2023-08-07
+
+Версия 7.0.7:
+
+* Сделан рефакторинг папок в проектах с целью добиться максимального соответствия концепции Clean Architecture, и в частности Vertical Slice Architecture. Выпущена
+* Обновлены nuget-пакеты некоторых базовых сборок
+* Исправлены мелкие недочеты (naming convention, syntax issies, etc.)
+
 ### 2023-08-04
 
 Созданы шаблоны для `dotnet CLI`. Теперь можно установить шаблоны очень просто через команду `dotnet`. Например, чтобы установить шаблон для `Microservice Identity Module` достаточно выполнить команду:
