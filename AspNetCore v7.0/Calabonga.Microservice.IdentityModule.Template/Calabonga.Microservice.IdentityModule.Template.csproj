@@ -13,6 +13,7 @@
         <PackageTags>template, microservice, oauth2, calabonga, nimble, framework</PackageTags>
         <PackageProjectUrl>https://github.com/Calabonga/Microservice-Template</PackageProjectUrl>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <PackageReleaseNotes>Application folders refactored (DDD)</PackageReleaseNotes>
 
         <!-- Keep package type as 'Template' to show the package as template package on nuget.org and make you template available in dotnet new search.-->
         <PackageType>Template</PackageType>
@@ -22,14 +23,10 @@
         <ContentTargetFolders>content</ContentTargetFolders>
         <NoWarn>$(NoWarn);NU5128</NoWarn>
         <NoDefaultExcludes>true</NoDefaultExcludes>
-        <PackageReleaseNotes>Application folders refactored (DDD)</PackageReleaseNotes>
-    </PropertyGroup>
-
-    <PropertyGroup>
-        <LocalizeTemplates>false</LocalizeTemplates>
+        <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
         <PackageReadmeFile>README.md</PackageReadmeFile>
-        <RepositoryUrl>https://github.com/Calabonga/Microservice-Template</RepositoryUrl>
         <RepositoryType>git</RepositoryType>
+        <RepositoryUrl>https://github.com/Calabonga/Microservice-Template</RepositoryUrl>
     </PropertyGroup>
 
     <ItemGroup>
