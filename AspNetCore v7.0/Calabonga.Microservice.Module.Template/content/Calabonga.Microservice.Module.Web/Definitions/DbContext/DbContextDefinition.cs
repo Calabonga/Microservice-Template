@@ -12,9 +12,8 @@ public class DbContextDefinition : AppDefinition
     /// <summary>
     /// Configure services for current microservice
     /// </summary>
-    /// <param name="services"></param>
     /// <param name="builder"></param>
-    public override void ConfigureServices( WebApplicationBuilder builder)
+    public override void ConfigureServices(WebApplicationBuilder builder)
         => builder.Services.AddDbContext<ApplicationDbContext>(config =>
         {
             // UseInMemoryDatabase - This for demo purposes only!

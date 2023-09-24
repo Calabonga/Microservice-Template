@@ -15,5 +15,5 @@ public class LoginViewModel
     public string Password { get; set; } = null!;
 
     [Required]
-    public string ReturnUrl { get; set; } = null!;
+    public string? ReturnUrl { get; set; } = null!;
 }

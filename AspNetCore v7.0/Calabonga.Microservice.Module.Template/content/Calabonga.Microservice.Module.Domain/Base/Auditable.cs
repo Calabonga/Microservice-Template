@@ -15,7 +15,7 @@
         /// User name who created entity.
         /// It's never changed
         /// </summary>
-        public string CreatedBy { get; set; }
+        public string CreatedBy { get; set; } = null!;
 
         /// <summary>
         /// Last date entity updated
@@ -25,7 +25,7 @@
         /// <summary>
         /// Author of last updated
         /// </summary>
-        public string UpdatedBy { get; set; }
+        public string? UpdatedBy { get; set; }
 
     }
 }

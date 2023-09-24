@@ -7,6 +7,57 @@ Please find out all comments with 'ATTENTION!' because that is required some dec
 
 ## Новости Nimble Framework
 
+### 2023-09-24
+
+Версия 7.0.8:
+
+* Из репозитория удалены исходные файлы для NET 5, а также готовые архивы для использования NET 5.
+* Обновлены nuget-пакеты
+* Небольшие правки по оптимизации `appSettings.json` для `develop` и `production` развертывания.
+* Добавлена обязательная проверка возможных NullReferenceException в файл проекта для каждого из шаблонов.
+    ``` diff
+    -    <PropertyGroup>
+    -        <TargetFramework>net7.0</TargetFramework>
+    -        <Nullable>enable</Nullable>
+    -        <ImplicitUsings>enable</ImplicitUsings>
+    -    </PropertyGroup>
+    +    <PropertyGroup>
+    +        <TargetFramework>net7.0</TargetFramework>
+    +        <Nullable>enable</Nullable>
+    +        <ImplicitUsings>enable</ImplicitUsings>
+    +        <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    +        <WarningsAsErrors>enable</WarningsAsErrors>
+    +    </PropertyGroup>
+    ```
+* Обновлена конфигурация `.editor.config`.
+
+    ``` diff
+    +[*.json]
+    +
+    +indent_size = 4
+    +indent_style = space
+    +tab_width = 4
+
+    # C# files
+    [*.cs]
+    @@ -218,10 +223,15 @@ dotnet_naming_style.instance_field_style.required_prefix = _
+
+    # ReSharper properties
+    max_line_length = 200
+    +resharper_arguments_anonymous_function = named
+    +resharper_blank_lines_after_multiline_statements = 1
+    +resharper_blank_lines_before_control_transfer_statements = 1
+    +resharper_csharp_keep_blank_lines_in_code = 1
+    resharper_csharp_max_line_length = 200
+    resharper_csharp_wrap_after_declaration_lpar = true
+    resharper_csharp_wrap_extends_list_style = chop_if_long
+    resharper_csharp_wrap_lines = false
+    +resharper_instance_members_qualify_declared_in = base_class
+    resharper_max_attribute_length_for_same_line = 300
+    resharper_place_type_constraints_on_same_line = true
+    resharper_wrap_before_arrow_with_expressions = true
+    ```
+
 ### 2023-08-07
 
 Версия 7.0.7:

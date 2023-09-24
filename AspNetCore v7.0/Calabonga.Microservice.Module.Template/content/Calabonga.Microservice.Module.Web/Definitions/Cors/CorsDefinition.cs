@@ -11,9 +11,8 @@ public class CorsDefinition : AppDefinition
     /// <summary>
     /// Configure services for current microservice
     /// </summary>
-    /// <param name="services"></param>
     /// <param name="builder"></param>
-    public override void ConfigureServices( WebApplicationBuilder builder)
+    public override void ConfigureServices(WebApplicationBuilder builder)
     {
         var origins = builder.Configuration.GetSection("Cors")?.GetSection("Origins")?.Value?.Split(',');
         builder.Services.AddCors(options =>
@@ -22,7 +21,7 @@ public class CorsDefinition : AppDefinition
             {
                 builder.AllowAnyHeader();
                 builder.AllowAnyMethod();
-                if (origins is not {Length: > 0})
+                if (origins is not { Length: > 0 })
                 {
                     return;
                 }

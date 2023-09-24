@@ -7,7 +7,7 @@ namespace Calabonga.Microservice.IdentityModule.Infrastructure;
 /// </summary>
 public class ApplicationRoleStore : RoleStore<ApplicationRole, ApplicationDbContext, Guid>
 {
-    public ApplicationRoleStore(ApplicationDbContext context, IdentityErrorDescriber describer = null) : base(context, describer)
+    public ApplicationRoleStore(ApplicationDbContext context, IdentityErrorDescriber? describer = null) : base(context, describer)
     {
     }
 }

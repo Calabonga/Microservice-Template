@@ -10,12 +10,12 @@ namespace Calabonga.Microservice.Module.Infrastructure
         /// <summary>
         /// FirstName
         /// </summary>
-        public string FirstName { get; set; }
+        public string FirstName { get; set; } = null!;
 
         /// <summary>
         /// LastName
         /// </summary>
-        public string LastName { get; set; }
+        public string LastName { get; set; } = null!;
 
         /// <summary>
         /// Profile identity
@@ -25,6 +25,6 @@ namespace Calabonga.Microservice.Module.Infrastructure
         /// <summary>
         /// User Profile
         /// </summary>
-        public virtual ApplicationUserProfile ApplicationUserProfile { get; set; }
+        public virtual ApplicationUserProfile? ApplicationUserProfile { get; set; }
     }
 }
