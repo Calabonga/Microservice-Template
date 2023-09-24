@@ -105,7 +105,7 @@ public class AuthorizeEndpoints : AppDefinition
                 {
                     // If the "profile" scope was granted, allow the "name" claim to be
                     // added to the access and identity tokens derived from the principal.
-                    OpenIddictConstants.Claims.Name when claim.Subject.HasScope(OpenIddictConstants.Scopes.Profile) => new[]
+                    OpenIddictConstants.Claims.Name when claim.Subject!.HasScope(OpenIddictConstants.Scopes.Profile) => new[]
                     {
                         OpenIddictConstants.Destinations.AccessToken, OpenIddictConstants.Destinations.IdentityToken
                     },

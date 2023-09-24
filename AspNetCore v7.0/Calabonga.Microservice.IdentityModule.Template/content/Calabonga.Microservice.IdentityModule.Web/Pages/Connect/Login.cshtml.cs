@@ -25,10 +25,10 @@ public class LoginModel : PageModel
     }
 
     [BindProperty(SupportsGet = true)]
-    public string ReturnUrl { get; set; }
+    public string? ReturnUrl { get; set; }
 
     [BindProperty]
-    public LoginViewModel Input { get; set; }
+    public LoginViewModel? Input { get; set; }
 
     public void OnGet() => Input = new LoginViewModel
     {
@@ -42,24 +42,27 @@ public class LoginModel : PageModel
             return Page();
         }
 
-        var user = await _userManager.FindByNameAsync(Input.UserName);
-        if (user == null)
+        if (Input != null)
         {
-            ModelState.AddModelError("UserName", "Пользователь не найден");
-            return Page();
-        }
-
-        var signInResult = await _signInManager.PasswordSignInAsync(user, Input.Password, true, false);
-        if (signInResult.Succeeded)
-        {
-            var principal = await _accountService.GetPrincipalByIdAsync(user.Id.ToString());
-            await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
-                
-            if (Url.IsLocalUrl(ReturnUrl))
+            var user = await _userManager.FindByNameAsync(Input.UserName);
+            if (user == null)
             {
-                return Redirect(ReturnUrl);
+                ModelState.AddModelError("UserName", "Пользователь не найден");
+                return Page();
             }
-            return RedirectToPage("/swagger");
+
+            var signInResult = await _signInManager.PasswordSignInAsync(user, Input.Password, true, false);
+            if (signInResult.Succeeded)
+            {
+                var principal = await _accountService.GetPrincipalByIdAsync(user.Id.ToString());
+                await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
+
+                if (Url.IsLocalUrl(ReturnUrl))
+                {
+                    return Redirect(ReturnUrl);
+                }
+                return RedirectToPage("/swagger");
+            }
         }
 
         ModelState.AddModelError("UserName", "Пользователь не найден");

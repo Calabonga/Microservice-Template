@@ -8,11 +8,11 @@
         /// <summary>
         /// Account
         /// </summary>
-        public virtual ApplicationUser ApplicationUser { get; set; }
+        public virtual ApplicationUser ApplicationUser { get; set; } = null!;
 
         /// <summary>
         /// Microservice permission for policy-based authorization
         /// </summary>
-        public ICollection<MicroservicePermission> Permissions { get; set; }
+        public ICollection<MicroservicePermission>? Permissions { get; set; }
     }
 }

@@ -7,6 +7,12 @@ Please find out all comments with 'ATTENTION!' because that is required some dec
 
 ## Новости Nimble Framework
 
+### 2023-09-24
+
+* Из репозитория удалены исходные файлы для NET 5, а также готовые архивы для использования NET 5.
+* Обновлены nuget-пакеты
+* Небольшие правки по оптимизации `appSettings.json` для `develop` и `production` развертывания.
+
 ### 2023-08-07
 
 Версия 7.0.7:

@@ -150,7 +150,7 @@ public class AccountService : IAccountService
     /// Returns user by his identifier
     /// </summary>
     /// <param name="id"></param>
-    public Task<ApplicationUser> GetByIdAsync(Guid id)
+    public Task<ApplicationUser?> GetByIdAsync(Guid id)
     {
         var userManager = _userManager;
         return userManager.FindByIdAsync(id.ToString());
@@ -160,7 +160,7 @@ public class AccountService : IAccountService
     /// Returns current user account information or null when user does not logged in
     /// </summary>
 
-    public async Task<ApplicationUser> GetCurrentUserAsync()
+    public async Task<ApplicationUser?> GetCurrentUserAsync()
     {
         var userManager = _userManager;
         var userId = GetCurrentUserId().ToString();
@@ -228,10 +228,18 @@ public class AccountService : IAccountService
 
     private async Task AddClaimsToUser(UserManager<ApplicationUser> userManager, ApplicationUser user, string role)
     {
-        await userManager.AddClaimAsync(user, new Claim(OpenIddictConstants.Claims.Name, user.UserName));
+        if (!string.IsNullOrEmpty(user.UserName))
+        {
+            await userManager.AddClaimAsync(user, new Claim(OpenIddictConstants.Claims.Name, user.UserName));
+        }
+
+        if (!string.IsNullOrEmpty(user.Email))
+        {
+            await userManager.AddClaimAsync(user, new Claim(OpenIddictConstants.Claims.Email, user.Email));
+        }
+
         await userManager.AddClaimAsync(user, new Claim(ClaimTypes.GivenName, user.FirstName ?? "John"));
         await userManager.AddClaimAsync(user, new Claim(ClaimTypes.Surname, user.LastName ?? "Doe"));
-        await userManager.AddClaimAsync(user, new Claim(OpenIddictConstants.Claims.Email, user.Email));
         await userManager.AddClaimAsync(user, new Claim(OpenIddictConstants.Claims.Role, role));
     }
 

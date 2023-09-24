@@ -1,5 +1,10 @@
 root = true
 # Remove the line below if you want to inherit .editorconfig settings from higher directories
+[*.json]
+
+indent_size = 4
+indent_style = space
+tab_width = 4
 
 # C# files
 [*.cs]
@@ -218,10 +223,15 @@ dotnet_naming_style.instance_field_style.required_prefix = _
 
 # ReSharper properties
 max_line_length = 200
+resharper_arguments_anonymous_function = named
+resharper_blank_lines_after_multiline_statements = 1
+resharper_blank_lines_before_control_transfer_statements = 1
+resharper_csharp_keep_blank_lines_in_code = 1
 resharper_csharp_max_line_length = 200
 resharper_csharp_wrap_after_declaration_lpar = true
 resharper_csharp_wrap_extends_list_style = chop_if_long
 resharper_csharp_wrap_lines = false
+resharper_instance_members_qualify_declared_in = base_class
 resharper_max_attribute_length_for_same_line = 300
 resharper_place_type_constraints_on_same_line = true
 resharper_wrap_before_arrow_with_expressions = true

@@ -16,8 +16,8 @@ public class SwaggerDefinition : AppDefinition
     // If you use are git repository then you can uncomment line with "ThisAssembly" below for versioning by GIT possibilities.
     // Otherwise, you can change versions of your API by manually.
     // If you are not going to use git-versioning, do not forget install package "GitInfo" 
-    // private const string _appVersion = $"{ThisAssembly.Git.SemVer.Major}.{ThisAssembly.Git.SemVer.Minor}.{ThisAssembly.Git.SemVer.Patch}";
-    private const string _appVersion = "7.0.7";
+    // private const string AppVersion = $"{ThisAssembly.Git.SemVer.Major}.{ThisAssembly.Git.SemVer.Minor}.{ThisAssembly.Git.SemVer.Patch}";
+    public const string AppVersion = "7.0.8";
 
     private const string _swaggerConfig = "/swagger/v1/swagger.json";
 
@@ -33,7 +33,7 @@ public class SwaggerDefinition : AppDefinition
         app.UseSwagger();
         app.UseSwaggerUI(settings =>
         {
-            settings.SwaggerEndpoint(_swaggerConfig, $"{AppData.ServiceName} v.{_appVersion}");
+            settings.SwaggerEndpoint(_swaggerConfig, $"{AppData.ServiceName} v.{AppVersion}");
 
             // ATTENTION!
             // If you use are git repository then you can uncomment line with "ThisAssembly" below for versioning by GIT possibilities.
@@ -62,7 +62,7 @@ public class SwaggerDefinition : AppDefinition
             options.SwaggerDoc("v1", new OpenApiInfo
             {
                 Title = AppData.ServiceName,
-                Version = _appVersion,
+                Version = AppVersion,
                 Description = AppData.ServiceDescription
             });
 

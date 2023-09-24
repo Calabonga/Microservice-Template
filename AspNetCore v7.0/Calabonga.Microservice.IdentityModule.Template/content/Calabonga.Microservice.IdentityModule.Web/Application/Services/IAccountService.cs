@@ -37,7 +37,7 @@ public interface IAccountService
     /// </summary>
     /// <param name="id"></param>
 
-    Task<ApplicationUser> GetByIdAsync(Guid id);
+    Task<ApplicationUser?> GetByIdAsync(Guid id);
 
     /// <summary>
     /// Returns ClaimPrincipal by user identity
@@ -57,7 +57,7 @@ public interface IAccountService
     /// Returns current user account information or null when user does not logged in
     /// </summary>
 
-    Task<ApplicationUser> GetCurrentUserAsync();
+    Task<ApplicationUser?> GetCurrentUserAsync();
 
     /// <summary>
     /// Check roles for current user
