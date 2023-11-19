@@ -5,18 +5,18 @@
                 {
                     "FileExtension": ".cs",
                     "ContentType": "Csharp file",
-                    "SearchTextForReplace": "using Calabonga.Microservice.Module",
+                    "SearchTextForReplace": "using Calabonga.Microservice.IdentityModule",
                     "ReplaceTextWith": "using $ext_projectname$"
                 },
                 {
                     "FileExtension": ".csproj",
                     "ContentType": "Project file",
-                    "SearchTextForReplace": "Calabonga.Microservice.Module.",
+                    "SearchTextForReplace": "Calabonga.Microservice.IdentityModule.",
                     "ReplaceTextWith": "$ext_projectname$."
                 }
             ],
-            "RootDirectoryPath": "C:\\Projects\\Microservice-Template\\AspNetCore v7.0\\TemplateModule",
-            "ProjectName": "Calabonga.Microservice.Module"
+            "RootDirectoryPath": "C:\\Projects\\Microservice-Template\\AspNetCore v8.0\\TemplateIdentityModule",
+            "ProjectName": "Calabonga.Microservice.IdentityModule"
         }
     ]
 }
