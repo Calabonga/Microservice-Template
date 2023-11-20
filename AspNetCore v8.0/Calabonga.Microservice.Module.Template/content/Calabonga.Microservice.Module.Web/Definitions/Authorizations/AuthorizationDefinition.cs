@@ -7,7 +7,7 @@ using Microsoft.IdentityModel.Tokens;
 using OpenIddict.Server.AspNetCore;
 using System.Text.Json;
 
-namespace Calabonga.Microservice.Module.Web.Definitions.Identity;
+namespace Calabonga.Microservice.Module.Web.Definitions.Authorizations;
 
 /// <summary>
 /// Authorization Policy registration
@@ -76,21 +76,7 @@ public class AuthorizationDefinition : AppDefinition
                 };
             });
 
-        builder.Services.AddAuthorization(options =>
-        {
-            // Policy by default all methods requires an authenticated user.
-            // That's mean that not anonymous user allowed and additional
-            // permission should be granted using AllowAnonymous()
-            options.FallbackPolicy = new AuthorizationPolicyBuilder()
-                .RequireAuthenticatedUser()
-                .Build();
-
-            options.AddPolicy(AuthData.AuthSchemes, policy =>
-            {
-                policy.RequireAuthenticatedUser();
-                policy.RequireClaim("scope", "api");
-            });
-        });
+        builder.Services.AddAuthorization();
 
         builder.Services.AddSingleton<IAuthorizationPolicyProvider, AuthorizationPolicyProvider>();
         builder.Services.AddSingleton<IAuthorizationHandler, AppPermissionHandler>();

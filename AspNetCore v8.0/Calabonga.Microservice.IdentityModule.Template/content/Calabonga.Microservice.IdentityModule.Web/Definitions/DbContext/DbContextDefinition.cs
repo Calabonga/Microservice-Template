@@ -1,6 +1,6 @@
 ﻿using Calabonga.AspNetCore.AppDefinitions;
 using Calabonga.Microservice.IdentityModule.Infrastructure;
-using Calabonga.Microservice.IdentityModule.Web.Definitions.Identity;
+using Calabonga.Microservice.IdentityModule.Web.Definitions.Authorizations;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using OpenIddict.Abstractions;
@@ -25,8 +25,8 @@ public class DbContextDefinition : AppDefinition
             // For example: "Microsoft.EntityFrameworkCore.SqlServer"
             config.UseInMemoryDatabase("DEMO-PURPOSES-ONLY");
 
-            // uncomment line below to use UseSqlServer(). Don't forget setup connection string in appSettings.json
-            //config.UseSqlServer(configuration.GetConnectionString(nameof(ApplicationDbContext)));
+            // uncomment line below to use UseNpgsql() or UseSqlServer(). Don't forget setup connection string in appSettings.json
+            //config.UseNpgsql(builder.Configuration.GetConnectionString(nameof(ApplicationDbContext)));
 
             // Register the entity sets needed by OpenIddict.
             // Note: use the generic overload if you need to replace the default OpenIddict entities.

@@ -2,7 +2,7 @@
 using System.Security.Claims;
 using System.Security.Principal;
 
-namespace Calabonga.Microservice.IdentityModule.Web.Definitions.Identity;
+namespace Calabonga.Microservice.IdentityModule.Web.Definitions.Authorizations;
 
 /// <summary>
 /// Identity helper for Requests operations

@@ -17,9 +17,14 @@ public static partial class AppData
     public const string ServiceDescription = "Nimble Framework Microservice Template with integrated OpenIddict for OpenID Connect server and Token Validation";
 
     /// <summary>
-    /// Default policy name
+    /// Default policy name for CORS
     /// </summary>
-    public const string PolicyName = "CorsPolicy";
+    public const string PolicyCorsName = "CorsPolicy";
+
+    /// <summary>
+    /// Default policy name for API
+    /// </summary>
+    public const string PolicyDefaultName = "DefaultPolicy";
 
     /// <summary>
     /// "SystemAdministrator"

@@ -37,7 +37,7 @@ public class LoginModel(
             var user = await userManager.FindByNameAsync(Input.UserName);
             if (user == null)
             {
-                ModelState.AddModelError("UserName", "Пользователь не найден");
+                ModelState.AddModelError("UserName", "User not found");
                 return Page();
             }
 
@@ -55,7 +55,7 @@ public class LoginModel(
             }
         }
 
-        ModelState.AddModelError("UserName", "Пользователь не найден");
+        ModelState.AddModelError("UserName", "User not found");
         return Page();
     }
 }

@@ -17,8 +17,9 @@ public sealed class GetProfile
         public Task<string> Handle(Request request, CancellationToken cancellationToken)
         {
             var user = httpContextAccessor.HttpContext!.User;
-            var roles = ClaimsHelper.GetValues<string>((ClaimsIdentity)user.Identity!, ClaimTypes.Role);
-            var message = $"Current user ({user.Identity!.Name}) have following roles: {string.Join("|", roles)}";
+            var claims = user.FindAll(x => x.Type == ClaimTypes.Role);
+            var roles = ClaimsHelper.GetValues<string>(new ClaimsIdentity(claims), ClaimTypes.Role);
+            var message = $"Current user ({user.Identity!.Name}) have following roles: {string.Join('|', roles)}";
             logger.LogInformation(message);
             return Task.FromResult(message);
         }

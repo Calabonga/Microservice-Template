@@ -43,7 +43,7 @@ public class ApplicationDbContext : DbContextBase
 //    public ApplicationDbContext CreateDbContext(string[] args)
 //    {
 //        var optionsBuilder = new DbContextOptionsBuilder<ApplicationDbContext>();
-//        optionsBuilder.UseSqlServer("Server=<SQL>;Database=<DatabaseName>;User ID=<UserName>;Password=<Password>");
+//        optionsBuilder.UseNpgsql("Server=<SQL>;Database=<DatabaseName>;User ID=<UserName>;Password=<Password>");
 //        return new ApplicationDbContext(optionsBuilder.Options);
 //    }
 //}

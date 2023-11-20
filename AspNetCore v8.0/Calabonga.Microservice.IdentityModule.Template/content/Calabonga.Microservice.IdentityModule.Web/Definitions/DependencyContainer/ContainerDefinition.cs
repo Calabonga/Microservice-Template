@@ -1,6 +1,6 @@
 ﻿using Calabonga.AspNetCore.AppDefinitions;
 using Calabonga.Microservice.IdentityModule.Web.Application.Services;
-using Calabonga.Microservice.IdentityModule.Web.Definitions.Identity;
+using Calabonga.Microservice.IdentityModule.Web.Definitions.Authorizations;
 
 namespace Calabonga.Microservice.IdentityModule.Web.Definitions.DependencyContainer;
 

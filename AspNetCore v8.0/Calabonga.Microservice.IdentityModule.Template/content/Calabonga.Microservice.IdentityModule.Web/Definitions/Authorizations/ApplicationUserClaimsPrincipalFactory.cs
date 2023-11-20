@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Options;
 using System.Security.Claims;
 
-namespace Calabonga.Microservice.IdentityModule.Web.Definitions.Identity;
+namespace Calabonga.Microservice.IdentityModule.Web.Definitions.Authorizations;
 
 /// <summary>
 /// User Claims Principal Factory override from Microsoft Identity framework

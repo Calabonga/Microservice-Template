@@ -141,5 +141,7 @@ public static class DatabaseInitializer
             Logger = "SEED",
             Message = "Seed method some entities successfully save to ApplicationDbContext"
         });
+
+        await context.SaveChangesAsync();
     }
 }

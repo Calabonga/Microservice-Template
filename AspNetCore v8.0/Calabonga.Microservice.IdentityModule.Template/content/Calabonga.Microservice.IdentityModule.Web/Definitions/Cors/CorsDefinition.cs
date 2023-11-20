@@ -17,7 +17,7 @@ public class CorsDefinition : AppDefinition
         var origins = builder.Configuration.GetSection("Cors")?.GetSection("Origins")?.Value?.Split(',');
         builder.Services.AddCors(options =>
         {
-            options.AddPolicy(AppData.PolicyName, policyBuilder =>
+            options.AddPolicy(AppData.PolicyCorsName, policyBuilder =>
             {
                 policyBuilder.AllowAnyHeader();
                 policyBuilder.AllowAnyMethod();

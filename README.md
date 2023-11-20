@@ -7,6 +7,26 @@ Please find out all comments with 'ATTENTION!' because that is required some dec
 
 ## Новости Nimble Framework
 
+### 2023-11-20
+
+Новая и первая версия шаблонов для микросервисов на платформе NET8.
+
+Версия 8.0.0:
+
+![Install module](Whatnot/v8-1.png) 
+
+* Произведен некоторый рефакторинг папок и, соответственно, namespace в шаблонах, чтобы соблюсти договоренности о именованиях.
+* Обновлены nuget-пакеты
+* `IdentityModule`: добавлена возможно авторизации и по `Bearer` вдобавок к `Cookie`.
+* `IdentityModule`: добавлена `PolicyCorsName` и `PolicyDefaultName`
+* `IdentityModule` и `Module`: обновлена реализация `EventItemEndpoints` и `ProfilesEndpoints` чтобы можно было использовать `Endpoint Explorer` для генерации `.http` файлов для вызова методов прямо из `Visual Studio`:
+
+    ![Install module](Whatnot/v8-2.png) ![Install module](Whatnot/v8-3.png)
+
+* Подключена сборка `Microsoft.AspNetCore.OpenApi` для полноценной реализации `OpenApi`. Удалены ненужные зависимости.
+* Произведены другие мелкие правки, в том числе синтаксические.
+
+
 ### 2023-09-24
 
 Версия 7.0.8:

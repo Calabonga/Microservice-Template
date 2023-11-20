@@ -1,6 +1,6 @@
 ﻿using OpenIddict.Server.AspNetCore;
 
-namespace Calabonga.Microservice.Module.Web.Definitions.Identity;
+namespace Calabonga.Microservice.Module.Web.Definitions.Authorizations;
 
 public static class AuthData
 {

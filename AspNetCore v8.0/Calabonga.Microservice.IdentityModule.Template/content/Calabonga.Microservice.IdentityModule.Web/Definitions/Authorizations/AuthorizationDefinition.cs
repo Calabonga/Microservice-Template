@@ -4,8 +4,10 @@ using Calabonga.Microservice.IdentityModule.Web.Definitions.OpenIddict;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.IdentityModel.Tokens;
+using System.Text.Json;
 
-namespace Calabonga.Microservice.IdentityModule.Web.Definitions.Identity;
+namespace Calabonga.Microservice.IdentityModule.Web.Definitions.Authorizations;
 
 /// <summary>
 /// Authorization Policy registration
@@ -21,29 +23,70 @@ public class AuthorizationDefinition : AppDefinition
         builder.Services
             .AddAuthentication(options =>
             {
-                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
                 options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-                options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultAuthenticateScheme = CookieAuthenticationDefaults.AuthenticationScheme;
             })
             .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme, options =>
             {
                 options.LoginPath = "/connect/login";
+            })
+            .AddJwtBearer(JwtBearerDefaults.AuthenticationScheme, "Bearer", options =>
+            {
+                var url = builder.Configuration.GetSection("AuthServer").GetValue<string>("Url");
+
+                options.SaveToken = true;
+                options.Audience = "client-id-code";
+                options.Authority = url;
+                options.RequireHttpsMetadata = false;
+                options.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateAudience = false, // Audience should be defined on the authorization server or disabled as shown
+                    ClockSkew = new TimeSpan(0, 0, 30)
+                };
+                options.Events = new JwtBearerEvents
+                {
+                    OnChallenge = context =>
+                    {
+                        context.HandleResponse();
+                        context.Response.StatusCode = StatusCodes.Status401Unauthorized;
+                        context.Response.ContentType = "application/json";
+
+                        // Ensure we always have an error and error description.
+                        if (string.IsNullOrEmpty(context.Error))
+                        {
+                            context.Error = "invalid_token";
+                        }
+
+                        if (string.IsNullOrEmpty(context.ErrorDescription))
+                        {
+                            context.ErrorDescription = "This request requires a valid JWT access token to be provided";
+                        }
+
+                        // Add some extra context for expired tokens.
+                        if (context.AuthenticateFailure != null && context.AuthenticateFailure.GetType() == typeof(SecurityTokenExpiredException))
+                        {
+                            var authenticationException = context.AuthenticateFailure as SecurityTokenExpiredException;
+                            context.Response.Headers.Append("x-token-expired", authenticationException?.Expires.ToString("o"));
+                            context.ErrorDescription = $"The token expired on {authenticationException?.Expires:o}";
+                        }
+
+                        return context.Response.WriteAsync(JsonSerializer.Serialize(new
+                        {
+                            error = context.Error,
+                            error_description = context.ErrorDescription
+                        }));
+                    }
+                };
             });
 
         builder.Services.AddAuthorization(options =>
         {
-            // Policy by default all methods requires an authenticated user.
-            // That's mean that not anonymous user allowed and additional
-            // permission should be granted using AllowAnonymous()
-            options.FallbackPolicy = new AuthorizationPolicyBuilder()
-                .RequireAuthenticatedUser()
-                .Build();
-
-            options.AddPolicy(AuthData.AuthSchemes, policy =>
-            {
-                policy.RequireAuthenticatedUser();
-                policy.RequireClaim("scope", "api");
-            });
+            options.AddPolicy(AppData.PolicyDefaultName, x =>
+                {
+                    x.AddAuthenticationSchemes(JwtBearerDefaults.AuthenticationScheme, CookieAuthenticationDefaults.AuthenticationScheme);
+                    x.RequireAuthenticatedUser();
+                });
         });
 
         builder.Services.AddSingleton<IAuthorizationPolicyProvider, AuthorizationPolicyProvider>();
@@ -58,7 +101,7 @@ public class AuthorizationDefinition : AppDefinition
     {
         app.UseHttpsRedirection();
         app.UseRouting();
-        app.UseCors(AppData.PolicyName);
+        app.UseCors(AppData.PolicyCorsName);
         app.UseAuthentication();
         app.UseAuthorization();
 

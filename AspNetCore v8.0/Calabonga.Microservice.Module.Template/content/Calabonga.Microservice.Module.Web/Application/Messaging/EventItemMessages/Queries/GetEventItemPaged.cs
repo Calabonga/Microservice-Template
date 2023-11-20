@@ -32,13 +32,6 @@ public sealed class GetEventItemPaged
                     pageSize: request.PageSize,
                     cancellationToken: cancellationToken);
 
-            if (pagedList == null)
-            {
-                operation.Result = PagedList.Empty<EventItemViewModel>();
-                operation.AddWarning("Response does not return the result for pagination.");
-                return operation;
-            }
-
             if (pagedList.PageIndex > pagedList.TotalPages)
             {
                 pagedList = await unitOfWork.GetRepository<EventItem>()

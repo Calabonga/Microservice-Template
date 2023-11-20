@@ -2,7 +2,7 @@
 using Calabonga.Microservice.IdentityModule.Domain.Base;
 using Calabonga.Microservice.IdentityModule.Infrastructure;
 using Calabonga.Microservice.IdentityModule.Web.Application.Messaging.ProfileMessages.ViewModels;
-using Calabonga.Microservice.IdentityModule.Web.Definitions.Identity;
+using Calabonga.Microservice.IdentityModule.Web.Definitions.Authorizations;
 using Calabonga.Microservices.Core.Exceptions;
 using Calabonga.Microservices.Core.Extensions;
 using Calabonga.Microservices.Core.Validators;

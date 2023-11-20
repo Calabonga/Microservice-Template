@@ -9,7 +9,7 @@ namespace Calabonga.Microservice.IdentityModule.Web.Application.Messaging.Profil
 /// <summary>
 /// Mapper Configuration for entity ApplicationUser
 /// </summary>
-public class ProfilesMapperConfiguration : Profile
+public sealed class ProfilesMapperConfiguration : Profile
 {
     /// <inheritdoc />
     public ProfilesMapperConfiguration()
