@@ -1,0 +1,46 @@
+{
+    "$schema": "http://json.schemastore.org/template",
+    "author": "Calabonga SOFT",
+    "classifications": [
+        "Common",
+        "Web",
+        "Web API"
+    ],
+    "name": "Microservice template with OpenIddict",
+    "description": "Nimble Microservice Framework on Minimal API. This template gives you a possibility to start developing a microservice architecture with integrated UI (Swagger), Mediatr, Automapper and Authorization Server (OpenIddict OAuth 2.0). Template developed for .NET 8.0.x.",
+    "identity": "Calabonga.Microservice.IdentityModule",
+    "shortName": "microservice-oidd",
+    "tags": {
+        "language": "C#",
+        "type": "project"
+    },
+    "sourceName": "Calabonga.Microservice.IdentityModule",
+    "preferNameDirectory": true,
+    "symbols": {
+        "Framework": {
+            "type": "parameter",
+            "description": "The target framework for the project.",
+            "datatype": "choice",
+            "choices": [
+                {
+                    "choice": "net8.0"
+                }
+            ],
+            "defaultValue": "net8.0"
+        }
+    },
+    "sources": [
+        {
+            "modifiers": [
+                {
+                    "exclude": [
+                        ".vs/**",
+                        ".idea/**",
+                        "_ReSharper.Caches/**",
+                        ".template_config/**"
+                    ]
+                }
+            ]
+        }
+    ]
+}
