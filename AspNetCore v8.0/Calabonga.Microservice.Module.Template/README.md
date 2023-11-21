@@ -2,8 +2,9 @@
 
 Справочная информация по фреймворку есть в [Wiki](https://github.com/Calabonga/Microservice-Template/wiki) и на [сайте разработчика](https://www.calabonga.net/blog/post/microservice-templates).
 
->Внимание (Attention)! Пожалуйста, ознакомьтесь со всеми комментариями с надписью "ATTENTION!", потому что эти места потребуют от вас некоторых решений и/или действий.
-Please find out all comments with 'ATTENTION!' because that is required some decisions or actions from you.
+> Внимание! Пожалуйста, ознакомьтесь со всеми комментариями с надписью "ATTENTION!", потому что эти места потребуют от вас некоторых решений и/или действий.
+
+> Attention! Please find out all comments with 'ATTENTION!' because that is required some decisions or actions from you.
 
 ## Как установить (How to install)
 

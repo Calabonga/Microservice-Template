@@ -3,11 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31912.275
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calabonga.Microservice.Module.Domain", "Calabonga.Microservice.Module.Domain\Calabonga.Microservice.Module.Domain.csproj", "{2DA97A11-5594-406B-8216-F46B29B41BF4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Calabonga.Microservice.Module.Domain", "Calabonga.Microservice.Module.Domain\Calabonga.Microservice.Module.Domain.csproj", "{2DA97A11-5594-406B-8216-F46B29B41BF4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calabonga.Microservice.Module.Infrastructure", "Calabonga.Microservice.Module.Infrastructure\Calabonga.Microservice.Module.Infrastructure.csproj", "{62AC64BB-F04B-445C-83A6-94C491C8F897}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Calabonga.Microservice.Module.Infrastructure", "Calabonga.Microservice.Module.Infrastructure\Calabonga.Microservice.Module.Infrastructure.csproj", "{62AC64BB-F04B-445C-83A6-94C491C8F897}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calabonga.Microservice.Module.Web", "Calabonga.Microservice.Module.Web\Calabonga.Microservice.Module.Web.csproj", "{9D94187D-B284-4069-8AC4-AEBD4D633A35}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Calabonga.Microservice.Module.Web", "Calabonga.Microservice.Module.Web\Calabonga.Microservice.Module.Web.csproj", "{9D94187D-B284-4069-8AC4-AEBD4D633A35}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution items", "Solution items", "{4B74F80A-934E-483D-B09D-84470C13C0F9}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+		..\README.md = ..\README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

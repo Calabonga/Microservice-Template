@@ -4,10 +4,10 @@
     "classifications": [
         "Common",
         "Web",
-        "WebAPI"
+        "Web API"
     ],
     "name": "Microservice template",
-    "description": "Nimble Microservice Framework. This template gives you a possibility to start developing a microservice architecture with integrated UI (Swagger), Mediatr, Automapper. Template developed for .NET 7.0.x.",
+    "description": "Nimble Microservice Framework on Minimal API. This template gives you a possibility to start developing a microservice architecture with integrated UI (Swagger), Mediatr, Automapper. Template developed for .NET 8.0.x.",
     "identity": "Calabonga.Microservice.Module",
     "shortName": "microservice",
     "tags": {
@@ -23,10 +23,10 @@
             "datatype": "choice",
             "choices": [
                 {
-                    "choice": "net7.0"
+                    "choice": "net8.0"
                 }
             ],
-            "defaultValue": "net7.0"
+            "defaultValue": "net8.0"
         }
     },
     "sources": [

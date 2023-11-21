@@ -9,15 +9,15 @@
         <Authors>Calabonga</Authors>
         <Copyright>Calabonga © 2016-2023</Copyright>
         <PackageIcon>logo.png</PackageIcon>
-        <Description>Microservice template with OpenIddict implementation for OAuth2.0 and also with Automapper, FluentValidation and other helpful thing</Description>
-        <PackageTags>template, microservice, oauth2, calabonga, nimble, framework</PackageTags>
+        <Description>Microservice template on Minimal API with OpenIddict implementation for OAuth2.0 and also with Automapper, FluentValidation and other helpful thing</Description>
+        <PackageTags>template, microservice, oauth2, calabonga, nimble, framework, minimal, api</PackageTags>
         <PackageProjectUrl>https://github.com/Calabonga/Microservice-Template</PackageProjectUrl>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
-        <PackageReleaseNotes>Big nullable supporting added</PackageReleaseNotes>
+        <PackageReleaseNotes>Migration to NET 8</PackageReleaseNotes>
 
         <!-- Keep package type as 'Template' to show the package as template package on nuget.org and make you template available in dotnet new search.-->
         <PackageType>Template</PackageType>
-        <TargetFramework>net7.0</TargetFramework>
+        <TargetFramework>net8.0</TargetFramework>
         <IncludeContentInPack>true</IncludeContentInPack>
         <IncludeBuildOutput>false</IncludeBuildOutput>
         <ContentTargetFolders>content</ContentTargetFolders>
