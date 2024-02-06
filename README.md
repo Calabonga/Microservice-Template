@@ -12,10 +12,10 @@ Please find out all comments with 'ATTENTION!' because that is required some dec
 
 Версия 8.0.1
 
-Вместо nuget-пакета [`OperationResultCore`](https://github.com/Calabonga/OperationResult) теперь используется более простая и современная реализация RFC7807 - [`Calabonga.Results`](https://github.com/Calabonga/Calabonga.Results), которая существенно "облегчила" сериализацию выдаваемых результатов повысив параметры производительности в несколько раз.
+Вместо nuget-пакета [`OperationResultCore`](https://github.com/Calabonga/OperationResult)в обоих шаблонах теперь используется более простая и современная реализация RFC7807 - [`Calabonga.Results`](https://github.com/Calabonga/Calabonga.Results), которая существенно "облегчила" сериализацию выдаваемых результатов повысив параметры производительности в несколько раз.
 
-* Сборка `OperationResultCore` удалена.
-* Сборка `Calabonga.Results` установлена.
+* Сборка `OperationResultCore` удалена из обоих шаблонов.
+* Сборка `Calabonga.Results` установлена из обоих шаблонов.
 * Обновились nuget-пакеты
 
 

@@ -4,10 +4,10 @@
         <!-- The package metadata. Fill in the properties marked as TODO below -->
         <!-- Follow the instructions on https://learn.microsoft.com/en-us/nuget/create-packages/package-authoring-best-practices -->
         <PackageId>Calabonga.Microservice.Module.Template</PackageId>
-        <PackageVersion>8.0.0</PackageVersion>
+        <PackageVersion>8.0.1</PackageVersion>
         <Title>Microservice template</Title>
         <Authors>Calabonga</Authors>
-        <Copyright>Calabonga SOFT © 2005-2023</Copyright>
+        <Copyright>Calabonga SOFT © 2001 - $([System.DateTime]::Now.ToString(yyyy))</Copyright>
         <PackageIcon>logo.png</PackageIcon>
         <Description>Microservice template on Minimal API  with Automapper, FluentValidation and other helpful thing</Description>
         <PackageTags>template, microservice, oauth2, calabonga, nimble, framework, minimal, api</PackageTags>
@@ -22,7 +22,7 @@
         <ContentTargetFolders>content</ContentTargetFolders>
         <NoWarn>$(NoWarn);NU5128</NoWarn>
         <NoDefaultExcludes>true</NoDefaultExcludes>
-        <PackageReleaseNotes>Migration to NET 8</PackageReleaseNotes>
+        <PackageReleaseNotes>Nuget OperationResult replaced with Calabonga.Results</PackageReleaseNotes>
     </PropertyGroup>
 
     <PropertyGroup>

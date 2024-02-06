@@ -9,12 +9,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Calabonga.Microservice.Modu
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Calabonga.Microservice.Module.Web", "Calabonga.Microservice.Module.Web\Calabonga.Microservice.Module.Web.csproj", "{9D94187D-B284-4069-8AC4-AEBD4D633A35}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution items", "Solution items", "{4B74F80A-934E-483D-B09D-84470C13C0F9}"
-	ProjectSection(SolutionItems) = preProject
-		.editorconfig = .editorconfig
-		..\README.md = ..\README.md
-	EndProjectSection
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
