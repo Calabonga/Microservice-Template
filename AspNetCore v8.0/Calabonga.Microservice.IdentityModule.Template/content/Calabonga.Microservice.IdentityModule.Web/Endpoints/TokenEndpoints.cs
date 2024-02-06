@@ -44,7 +44,7 @@ public sealed class TokenEndpoints : AppDefinition
                     var claimsPrincipal = new ClaimsPrincipal(identity);
 
                     claimsPrincipal.SetScopes(request.GetScopes());
-                    return Results.SignIn(claimsPrincipal, new AuthenticationProperties(), OpenIddictServerAspNetCoreDefaults.AuthenticationScheme);
+                    return Microsoft.AspNetCore.Http.Results.SignIn(claimsPrincipal, new AuthenticationProperties(), OpenIddictServerAspNetCoreDefaults.AuthenticationScheme);
                 }
 
                 if (request.IsPasswordGrantType())
@@ -54,20 +54,20 @@ public sealed class TokenEndpoints : AppDefinition
                         var user = await userManager.FindByNameAsync(request.Username);
                         if (user == null)
                         {
-                            return Results.Problem("Invalid operation");
+                            return Microsoft.AspNetCore.Http.Results.Problem("Invalid operation");
                         }
 
                         // Ensure the user is allowed to sign in
                         if (!await signInManager.CanSignInAsync(user))
                         {
-                            return Results.Problem("Invalid operation");
+                            return Microsoft.AspNetCore.Http.Results.Problem("Invalid operation");
                         }
 
 
                         // Ensure the user is not already locked out
                         if (userManager.SupportsUserLockout && await userManager.IsLockedOutAsync(user))
                         {
-                            return Results.Problem("Invalid operation");
+                            return Microsoft.AspNetCore.Http.Results.Problem("Invalid operation");
                         }
 
                         // Ensure the password is valid
@@ -78,7 +78,7 @@ public sealed class TokenEndpoints : AppDefinition
                                 await userManager.AccessFailedAsync(user);
                             }
 
-                            return Results.Problem("Invalid operation");
+                            return Microsoft.AspNetCore.Http.Results.Problem("Invalid operation");
                         }
 
                         // Reset the lockout count
@@ -88,7 +88,7 @@ public sealed class TokenEndpoints : AppDefinition
                         }
 
                         var principal = await accountService.GetPrincipalForUserAsync(user);
-                        return Results.SignIn(principal, null, OpenIddictServerAspNetCoreDefaults.AuthenticationScheme);
+                        return Microsoft.AspNetCore.Http.Results.SignIn(principal, null, OpenIddictServerAspNetCoreDefaults.AuthenticationScheme);
                     }
                 }
 
@@ -96,10 +96,10 @@ public sealed class TokenEndpoints : AppDefinition
                 {
                     var authenticateResult = await httpContext.AuthenticateAsync(OpenIddictServerAspNetCoreDefaults.AuthenticationScheme);
                     var claimsPrincipal = authenticateResult.Principal;
-                    return Results.SignIn(claimsPrincipal!, null, OpenIddictServerAspNetCoreDefaults.AuthenticationScheme);
+                    return Microsoft.AspNetCore.Http.Results.SignIn(claimsPrincipal!, null, OpenIddictServerAspNetCoreDefaults.AuthenticationScheme);
                 }
 
-                return Results.Problem("The specified grant type is not supported.");
+                return Microsoft.AspNetCore.Http.Results.Problem("The specified grant type is not supported.");
             })
             .ExcludeFromDescription()
             .AllowAnonymous();

@@ -1,5 +1,4 @@
-﻿using Calabonga.OperationResults;
-using FluentValidation;
+﻿using FluentValidation;
 using MediatR;
 
 namespace Calabonga.Microservice.IdentityModule.Web.Definitions.FluentValidating;
@@ -27,19 +26,8 @@ public class ValidatorBehavior<TRequest, TResponse>(IEnumerable<IValidator<TRequ
             .Where(x => x != null)
             .ToList();
 
-        if (!failures.Any())
-        {
-            return next();
-        }
-
-        var type = typeof(TResponse);
-        if (!type.IsSubclassOf(typeof(OperationResult)))
-        {
-            throw new ValidationException(failures);
-        }
-
-        var result = Activator.CreateInstance(type);
-        ((OperationResult)result!).AddError(new ValidationException(failures));
-        return Task.FromResult((TResponse)result!);
+        return failures.Any()
+            ? throw new ValidationException(failures)
+            : next();
     }
 }

@@ -5,7 +5,19 @@
 >Внимание (Attention)! Пожалуйста, ознакомьтесь со всеми комментариями с надписью "ATTENTION!", потому что эти места потребуют от вас некоторых решений и/или действий.
 Please find out all comments with 'ATTENTION!' because that is required some decisions or actions from you.
 
-## Новости Nimble Framework
+## История Nimble Framework
+
+
+### 2024-02-06
+
+Версия 8.0.1
+
+Вместо nuget-пакета [`OperationResultCore`](https://github.com/Calabonga/OperationResult) теперь используется более простая и современная реализация RFC7807 - [`Calabonga.Results`](https://github.com/Calabonga/Calabonga.Results), которая существенно "облегчила" сериализацию выдаваемых результатов повысив параметры производительности в несколько раз.
+
+* Сборка `OperationResultCore` удалена.
+* Сборка `Calabonga.Results` установлена.
+* Обновились nuget-пакеты
+
 
 ### 2023-11-20
 

@@ -56,5 +56,15 @@ public static partial class AppData
         /// "Argument out of range"
         /// </summary>
         public static string ArgumentOutOfRangeException => "Argument out of range";
+
+        /// <summary>
+        /// "Mapping failed"
+        /// </summary>
+        public static string MappingException => "Mapping failed";
+
+        /// <summary>
+        /// "Something went wrong"
+        /// </summary>
+        public static string SomethingWrong => "Something went wrong";
     }
 }
