@@ -15,7 +15,7 @@
                     "ReplaceTextWith": "$ext_projectname$."
                 }
             ],
-            "RootDirectoryPath": "C:\\Projects\\Microservice-Template\\AspNetCore v8.0\\TemplateIdentityModule",
+            "RootDirectoryPath": "C:\\Projects\\Calabonga\\Microservice-Template\\AspNetCore v8.0\\1",
             "ProjectName": "Calabonga.Microservice.IdentityModule"
         }
     ]
