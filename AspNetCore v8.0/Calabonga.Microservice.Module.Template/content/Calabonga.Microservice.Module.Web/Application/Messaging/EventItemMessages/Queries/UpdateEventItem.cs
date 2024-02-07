@@ -1,9 +1,9 @@
 ﻿using AutoMapper;
 using Calabonga.Microservice.Module.Domain;
+using Calabonga.Microservice.Module.Domain.Base;
 using Calabonga.Microservice.Module.Web.Application.Messaging.EventItemMessages.ViewModels;
 using Calabonga.Microservices.Core;
-using Calabonga.Microservices.Core.Exceptions;
-using Calabonga.OperationResults;
+using Calabonga.Results;
 using Calabonga.UnitOfWork;
 using MediatR;
 
@@ -14,20 +14,18 @@ namespace Calabonga.Microservice.Module.Web.Application.Messaging.EventItemMessa
 /// </summary>
 public sealed class PutEventItem
 {
-    public record Request(Guid Id, EventItemUpdateViewModel Model) : IRequest<OperationResult<EventItemViewModel>>;
+    public record Request(Guid Id, EventItemUpdateViewModel Model) : IRequest<Operation<EventItemViewModel, string>>;
 
     public class Handler(IUnitOfWork unitOfWork, IMapper mapper)
-        : IRequestHandler<Request, OperationResult<EventItemViewModel>>
+        : IRequestHandler<Request, Operation<EventItemViewModel, string>>
     {
-        public async Task<OperationResult<EventItemViewModel>> Handle(Request eventItemRequest, CancellationToken cancellationToken)
+        public async Task<Operation<EventItemViewModel, string>> Handle(Request eventItemRequest, CancellationToken cancellationToken)
         {
-            var operation = OperationResult.CreateResult<EventItemViewModel>();
             var repository = unitOfWork.GetRepository<EventItem>();
             var entity = await repository.GetFirstOrDefaultAsync(predicate: x => x.Id == eventItemRequest.Id, disableTracking: false);
             if (entity == null)
             {
-                operation.AddError(new MicroserviceNotFoundException(AppContracts.Exceptions.NotFoundException));
-                return operation;
+                return Operation.Error(AppContracts.Exceptions.NotFoundException);
             }
 
             mapper.Map(eventItemRequest.Model, entity);
@@ -39,13 +37,14 @@ public sealed class PutEventItem
             if (lastResult.IsOk)
             {
                 var mapped = mapper.Map<EventItem, EventItemViewModel>(entity);
-                operation.Result = mapped;
-                operation.AddSuccess("Successfully updated");
-                return operation;
+                return mapped is not null
+                    ? Operation.Result(mapped)
+                    : Operation.Error(AppData.Exceptions.MappingException);
             }
 
-            operation.AddError(lastResult.Exception ?? new ApplicationException("Something went wrong"));
-            return operation;
+            var errorMessage = lastResult.Exception?.Message ?? AppData.Exceptions.SomethingWrong;
+
+            return Operation.Error(errorMessage);
         }
     }
 }

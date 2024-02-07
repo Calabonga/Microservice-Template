@@ -1,8 +1,9 @@
 ﻿using AutoMapper;
 using Calabonga.Microservice.IdentityModule.Domain;
+using Calabonga.Microservice.IdentityModule.Domain.Base;
 using Calabonga.Microservice.IdentityModule.Web.Application.Messaging.EventItemMessages.ViewModels;
-using Calabonga.OperationResults;
 using Calabonga.PredicatesBuilder;
+using Calabonga.Results;
 using Calabonga.UnitOfWork;
 using MediatR;
 using System.Linq.Expressions;
@@ -14,16 +15,15 @@ namespace Calabonga.Microservice.IdentityModule.Web.Application.Messaging.EventI
 /// </summary>
 public sealed class GetEventItemPaged
 {
-    public record Request(int PageIndex, int PageSize, string? Search) : IRequest<OperationResult<IPagedList<EventItemViewModel>>>;
+    public record Request(int PageIndex, int PageSize, string? Search) : IRequest<Operation<IPagedList<EventItemViewModel>, string>>;
 
     public class Handler(IUnitOfWork unitOfWork, IMapper mapper)
-        : IRequestHandler<Request, OperationResult<IPagedList<EventItemViewModel>>>
+        : IRequestHandler<Request, Operation<IPagedList<EventItemViewModel>, string>>
     {
-        public async Task<OperationResult<IPagedList<EventItemViewModel>>> Handle(
+        public async Task<Operation<IPagedList<EventItemViewModel>, string>> Handle(
             Request request,
             CancellationToken cancellationToken)
         {
-            var operation = OperationResult.CreateResult<IPagedList<EventItemViewModel>>();
             var predicate = GetPredicate(request.Search);
             var pagedList = await unitOfWork.GetRepository<EventItem>()
                 .GetPagedListAsync(
@@ -40,8 +40,13 @@ public sealed class GetEventItemPaged
                         pageSize: request.PageSize, cancellationToken: cancellationToken);
             }
 
-            operation.Result = mapper.Map<IPagedList<EventItemViewModel>>(pagedList);
-            return operation;
+            var mapped = mapper.Map<IPagedList<EventItemViewModel>>(pagedList);
+            if (mapped is not null)
+            {
+                return Operation.Result(mapped);
+            }
+
+            return Operation.Error(AppData.Exceptions.MappingException);
         }
 
         private Expression<Func<EventItem, bool>> GetPredicate(string? search)

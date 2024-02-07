@@ -2,7 +2,6 @@
 
 namespace Calabonga.Microservice.IdentityModule.Web.Application.Messaging.EventItemMessages.ViewModels;
 
-
 public class EventItemCreateViewModel : IViewModel
 {
     /// <summary>

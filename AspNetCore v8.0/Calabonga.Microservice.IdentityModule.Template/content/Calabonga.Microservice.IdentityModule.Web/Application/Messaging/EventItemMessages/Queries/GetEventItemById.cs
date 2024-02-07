@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
 using Calabonga.Microservice.IdentityModule.Domain;
+using Calabonga.Microservice.IdentityModule.Domain.Base;
 using Calabonga.Microservice.IdentityModule.Web.Application.Messaging.EventItemMessages.ViewModels;
-using Calabonga.Microservices.Core.Exceptions;
-using Calabonga.OperationResults;
+using Calabonga.Results;
 using Calabonga.UnitOfWork;
 using MediatR;
 
@@ -13,29 +13,32 @@ namespace Calabonga.Microservice.IdentityModule.Web.Application.Messaging.EventI
 /// </summary>
 public sealed class GetEventItemById
 {
-    public record Request(Guid Id) : IRequest<OperationResult<EventItemViewModel>>;
+    public record Request(Guid Id) : IRequest<Operation<EventItemViewModel, string>>;
 
     public class Handler(IUnitOfWork unitOfWork, IMapper mapper)
-        : IRequestHandler<Request, OperationResult<EventItemViewModel>>
+        : IRequestHandler<Request, Operation<EventItemViewModel, string>>
     {
         /// <summary>Handles a request getting log by identifier</summary>
         /// <param name="request">The request</param>
         /// <param name="cancellationToken">Cancellation token</param>
         /// <returns>Response from the request</returns>
-        public async Task<OperationResult<EventItemViewModel>> Handle(Request request, CancellationToken cancellationToken)
+        public async Task<Operation<EventItemViewModel, string>> Handle(Request request, CancellationToken cancellationToken)
         {
             var id = request.Id;
-            var operation = OperationResult.CreateResult<EventItemViewModel>();
             var repository = unitOfWork.GetRepository<EventItem>();
             var entityWithoutIncludes = await repository.GetFirstOrDefaultAsync(predicate: x => x.Id == id);
             if (entityWithoutIncludes == null)
             {
-                operation.AddError(new MicroserviceNotFoundException($"Entity with identifier {id} not found"));
-                return operation;
+                return Operation.Error($"Entity with identifier {id} not found");
             }
 
-            operation.Result = mapper.Map<EventItemViewModel>(entityWithoutIncludes);
-            return operation;
+            var mapped = mapper.Map<EventItemViewModel>(entityWithoutIncludes);
+            if (mapped is not null)
+            {
+                return Operation.Result(mapped);
+            }
+
+            return Operation.Error(AppData.Exceptions.MappingException);
         }
     }
 }

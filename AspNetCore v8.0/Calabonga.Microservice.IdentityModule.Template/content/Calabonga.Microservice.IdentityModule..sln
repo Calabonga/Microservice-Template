@@ -9,11 +9,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Calabonga.Microservice.Iden
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Calabonga.Microservice.IdentityModule.Infrastructure", "Calabonga.Microservice.IdentityModule.Infrastructure\Calabonga.Microservice.IdentityModule.Infrastructure.csproj", "{6B046F2A-2EE0-413D-859E-1D4CD30D066A}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{6FB183A6-17FD-4AF0-B653-09A8FD1F6765}"
-	ProjectSection(SolutionItems) = preProject
-		.editorconfig = .editorconfig
-	EndProjectSection
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

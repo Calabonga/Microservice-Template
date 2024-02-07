@@ -1,9 +1,10 @@
 ﻿using AutoMapper;
 using Calabonga.Microservice.Module.Domain;
+using Calabonga.Microservice.Module.Domain.Base;
 using Calabonga.Microservice.Module.Web.Application.Messaging.EventItemMessages.ViewModels;
 using Calabonga.Microservices.Core;
 using Calabonga.Microservices.Core.Exceptions;
-using Calabonga.OperationResults;
+using Calabonga.Results;
 using Calabonga.UnitOfWork;
 using MediatR;
 
@@ -14,24 +15,22 @@ namespace Calabonga.Microservice.Module.Web.Application.Messaging.EventItemMessa
 /// </summary>
 public sealed class PostEventItem
 {
-    public record Request(EventItemCreateViewModel Model) : IRequest<OperationResult<EventItemViewModel>>;
+    public record Request(EventItemCreateViewModel Model) : IRequest<Operation<EventItemViewModel, string>>;
 
     public class Handler(IUnitOfWork unitOfWork, IMapper mapper, ILogger<Handler> logger)
-        : IRequestHandler<Request, OperationResult<EventItemViewModel>>
+        : IRequestHandler<Request, Operation<EventItemViewModel, string>>
     {
-        public async Task<OperationResult<EventItemViewModel>> Handle(Request eventItemRequest, CancellationToken cancellationToken)
+        public async Task<Operation<EventItemViewModel, string>> Handle(Request eventItemRequest, CancellationToken cancellationToken)
         {
             logger.LogDebug("Creating new EventItem");
-
-            var operation = OperationResult.CreateResult<EventItemViewModel>();
 
             var entity = mapper.Map<EventItemCreateViewModel, EventItem>(eventItemRequest.Model);
             if (entity == null)
             {
                 var exceptionMapper = new MicroserviceUnauthorizedException(AppContracts.Exceptions.MappingException);
-                operation.AddError(exceptionMapper);
                 logger.LogError(exceptionMapper, "Mapper not configured correctly or something went wrong");
-                return operation;
+
+                return Operation.Error(exceptionMapper.Message);
             }
 
             await unitOfWork.GetRepository<EventItem>().InsertAsync(entity, cancellationToken);
@@ -41,17 +40,16 @@ public sealed class PostEventItem
             if (lastResult.IsOk)
             {
                 var mapped = mapper.Map<EventItem, EventItemViewModel>(entity);
-                operation.Result = mapped;
-                operation.AddSuccess("Successfully created");
-                logger.LogInformation("New entity {@EventItem} successfully created", entity);
-                return operation;
+                logger.LogInformation("New entity {EventItem} successfully created", entity);
+                return mapped is not null
+                    ? Operation.Result(mapped)
+                    : Operation.Error(AppData.Exceptions.MappingException);
             }
 
-            var exception = lastResult.Exception ?? new ApplicationException("Something went wrong");
-            operation.AddError(exception);
-            logger.LogError(exception, "Error data saving to Database or something went wrong");
+            var errorMessage = lastResult.Exception?.Message ?? AppData.Exceptions.SomethingWrong;
+            logger.LogError(errorMessage, "Error data saving to Database or something went wrong");
 
-            return operation;
+            return Operation.Error(errorMessage);
         }
     }
 }

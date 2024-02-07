@@ -6,7 +6,6 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Identity;
 using OpenIddict.Abstractions;
 using OpenIddict.Server.AspNetCore;
-
 namespace Calabonga.Microservice.IdentityModule.Web.Endpoints;
 
 /// <summary>
@@ -38,7 +37,7 @@ public sealed class AuthorizeEndpoints : AppDefinition
 
         if (!result.Succeeded)
         {
-            return Results.Challenge(new AuthenticationProperties
+            return Microsoft.AspNetCore.Http.Results.Challenge(new AuthenticationProperties
             {
                 RedirectUri = request.PathBase + request.Path + QueryString.Create(request.HasFormContentType
                 ? request.Form.ToList()
@@ -66,7 +65,7 @@ public sealed class AuthorizeEndpoints : AppDefinition
             // If the consent is external (e.g when authorizations are granted by a sysadmin),
             // immediately return an error if no authorization can be found in the database.
             case OpenIddictConstants.ConsentTypes.External when !authorizations.Any():
-                return Results.Forbid(
+                return Microsoft.AspNetCore.Http.Results.Forbid(
                         authenticationSchemes: new[] { OpenIddictServerAspNetCoreDefaults.AuthenticationScheme },
                         properties: new AuthenticationProperties(new Dictionary<string, string>
                         {
@@ -121,13 +120,13 @@ public sealed class AuthorizeEndpoints : AppDefinition
 
 
 
-                return Results.SignIn(principal, null, OpenIddictServerAspNetCoreDefaults.AuthenticationScheme);
+                return Microsoft.AspNetCore.Http.Results.SignIn(principal, null, OpenIddictServerAspNetCoreDefaults.AuthenticationScheme);
 
             // At this point, no authorization was found in the database and an error must be returned
             // if the client application specified prompt=none in the authorization request.
             case OpenIddictConstants.ConsentTypes.Explicit when iddictRequest.HasPrompt(OpenIddictConstants.Prompts.None):
             case OpenIddictConstants.ConsentTypes.Systematic when iddictRequest.HasPrompt(OpenIddictConstants.Prompts.None):
-                return Results.Forbid(
+                return Microsoft.AspNetCore.Http.Results.Forbid(
                         authenticationSchemes: new[] { OpenIddictServerAspNetCoreDefaults.AuthenticationScheme },
                         properties: new AuthenticationProperties(new Dictionary<string, string>
                         {
@@ -138,7 +137,7 @@ public sealed class AuthorizeEndpoints : AppDefinition
 
             // In every other case, render the consent form.
             default:
-                return Results.Challenge(
+                return Microsoft.AspNetCore.Http.Results.Challenge(
                     authenticationSchemes: new[] { OpenIddictServerAspNetCoreDefaults.AuthenticationScheme },
                     properties: new AuthenticationProperties { RedirectUri = "/" });
         }

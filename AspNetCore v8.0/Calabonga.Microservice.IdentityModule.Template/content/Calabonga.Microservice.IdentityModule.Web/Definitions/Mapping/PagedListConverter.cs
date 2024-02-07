@@ -19,5 +19,5 @@ public class PagedListConverter<TMapFrom, TMapTo> : ITypeConverter<IPagedList<TM
         // ReSharper disable once ConditionIsAlwaysTrueOrFalse
         source == null
             ? PagedList.Empty<TMapTo>()
-            : PagedList.From(source, items => context.Mapper.Map<IEnumerable<TMapTo>>(items));
+            : PagedList.From(source, items => context.Mapper.Map<IEnumerable<TMapTo>>(items)!);
 }

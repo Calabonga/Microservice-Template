@@ -1,7 +1,7 @@
 ﻿using Calabonga.Microservice.IdentityModule.Infrastructure;
 using Calabonga.Microservice.IdentityModule.Web.Application.Messaging.ProfileMessages.ViewModels;
 using Calabonga.Microservices.Core.Validators;
-using Calabonga.OperationResults;
+using Calabonga.Results;
 using System.Security.Claims;
 
 namespace Calabonga.Microservice.IdentityModule.Web.Application.Services;
@@ -30,7 +30,7 @@ public interface IAccountService
     /// <param name="model"></param>
     /// <param name="cancellationToken"></param>
 
-    Task<OperationResult<UserProfileViewModel>> RegisterAsync(RegisterViewModel model, CancellationToken cancellationToken);
+    Task<Operation<UserProfileViewModel, string>> RegisterAsync(RegisterViewModel model, CancellationToken cancellationToken);
 
     /// <summary>
     /// Returns User by user identifier

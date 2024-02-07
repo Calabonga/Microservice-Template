@@ -6,7 +6,7 @@ using Calabonga.Microservice.IdentityModule.Web.Definitions.Authorizations;
 using Calabonga.Microservices.Core.Exceptions;
 using Calabonga.Microservices.Core.Extensions;
 using Calabonga.Microservices.Core.Validators;
-using Calabonga.OperationResults;
+using Calabonga.Results;
 using Calabonga.UnitOfWork;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
@@ -74,47 +74,46 @@ public class AccountService : IAccountService
     /// <param name="model"></param>
     /// <param name="cancellationToken"></param>
 
-    public async Task<OperationResult<UserProfileViewModel>> RegisterAsync(RegisterViewModel model, CancellationToken cancellationToken)
+    public async Task<Operation<UserProfileViewModel, string>> RegisterAsync(RegisterViewModel model, CancellationToken cancellationToken)
     {
-        var operation = OperationResult.CreateResult<UserProfileViewModel>();
         var user = _mapper.Map<ApplicationUser>(model);
         await using var transaction = await _unitOfWork.BeginTransactionAsync();
-        var result = await _userManager.CreateAsync(user, model.Password);
+        var result = await _userManager.CreateAsync(user!, model.Password);
         const string role = AppData.ManagerRoleName;
 
         if (result.Succeeded)
         {
             if (await _roleManager.FindByNameAsync(role) == null)
             {
-                operation.Exception = new MicroserviceUserNotFoundException();
-                operation.AddError(AppData.Exceptions.UserNotFoundException);
-                return await Task.FromResult(operation);
+                return await Task.FromResult(Operation.Error(AppData.Exceptions.UserNotFoundException));
             }
 
-            await _userManager.AddToRoleAsync(user, role);
+            await _userManager.AddToRoleAsync(user!, role);
 
             var profile = _mapper.Map<ApplicationUserProfile>(model);
             var profileRepository = _unitOfWork.GetRepository<ApplicationUserProfile>();
 
-            await profileRepository.InsertAsync(profile, cancellationToken);
+            await profileRepository.InsertAsync(profile!, cancellationToken);
             await _unitOfWork.SaveChangesAsync();
             if (_unitOfWork.LastSaveChangesResult.IsOk)
             {
-                var principal = await _claimsFactory.CreateAsync(user);
-                operation.Result = _mapper.Map<UserProfileViewModel>(principal.Identity);
-                operation.AddSuccess(AppData.Messages.UserSuccessfullyRegistered);
-                _logger.LogInformation(operation.GetMetadataMessages());
+                var principal = await _claimsFactory.CreateAsync(user!);
+                var mapped = _mapper.Map<UserProfileViewModel>(principal.Identity);
                 await transaction.CommitAsync(cancellationToken);
                 _logger.LogInformation("User {@User} successfully created with {@Role}", model, role);
-                return await Task.FromResult(operation);
+                if (mapped is not null)
+                {
+                    return Operation.Result(mapped);
+                }
+
+                return Operation.Error(AppData.Exceptions.MappingException);
             }
         }
         var errors = result.Errors.Select(x => $"{x.Code}: {x.Description}");
-        operation.AddError(string.Join(", ", errors));
-        operation.Exception = _unitOfWork.LastSaveChangesResult.Exception;
+        var errorMessage = string.Join(", ", errors);
         await transaction.RollbackAsync(cancellationToken);
-        _logger.LogError(operation.Exception, "User {@User} creation failed", model);
-        return await Task.FromResult(operation);
+        _logger.LogError("User {User} creation failed with {Errors}", model.Email, errorMessage);
+        return await Task.FromResult(Operation.Error(errorMessage));
     }
 
     /// <summary>

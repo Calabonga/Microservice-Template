@@ -1,17 +1,38 @@
 # Nimble Framework
 
-Справочная информация по фреймворку есть в [Wiki](https://github.com/Calabonga/Microservice-Template/wiki) и на [сайте разработчика](https://www.calabonga.net/blog/post/microservice-templates). Видео презентация новой версии [Nimble Framework v.6](https://youtu.be/euOLhhNEcwg).
+>Внимание! Пожалуйста, ознакомьтесь со всеми комментариями с надписью "ATTENTION!", потому что эти места потребуют от вас некоторых решений и/или действий.
 
->Внимание (Attention)! Пожалуйста, ознакомьтесь со всеми комментариями с надписью "ATTENTION!", потому что эти места потребуют от вас некоторых решений и/или действий.
-Please find out all comments with 'ATTENTION!' because that is required some decisions or actions from you.
+>Attention! Please find out all comments with 'ATTENTION!' because that is required some decisions or actions from you.
 
-## Новости Nimble Framework
+## Как установить 
 
-### 2023-11-20
+Для установки версии 8.x пожалуйста прочитайте статью [wiki](https://github.com/Calabonga/Microservice-Template/wiki), в которой описано как очень просто установить шаблоны при помощи одной команды из командной строки на ваш рабочий компьютер. Также вы можете использовать расширение для Visual Studio [Microservice-Template](https://marketplace.visualstudio.com/items?itemName=Calabonga.microserivce-templates) из marketplace.
+
+## How to install
+
+To install version 8.x please, read [wiki](https://github.com/Calabonga/Microservice-Template/wiki) where you can find information about a simple way using one command in command prompt to install templates on your workstation. Another way to install extension is use Visual Studio marketplace [Microservice-Template](https://marketplace.visualstudio.com/items?itemName=Calabonga.microserivce-templates).
+
+## Дополнительная информация (Additional info)
+
+* На [сайте разработчика](https://www.calabonga.net/blog/post/microservice-templates). 
+* Видео презентация новой версии [Nimble Framework v.6](https://youtu.be/euOLhhNEcwg).
+
+## История Nimble Framework
+
+### 2024-02-06 Версия 8.0.1
+
+Вместо nuget-пакета [`OperationResultCore`](https://github.com/Calabonga/OperationResult)в обоих шаблонах теперь используется более простая и современная реализация RFC7807 - [`Calabonga.Results`](https://github.com/Calabonga/Calabonga.Results), которая существенно "облегчила" сериализацию выдаваемых результатов повысив параметры производительности в несколько раз.
+
+* Сборка `OperationResultCore` удалена из обоих шаблонов.
+* Сборка `Calabonga.Results` установлена из обоих шаблонов.
+* Обновились nuget-пакеты
+* Удалены ненужные архивы старых версий на платформах ниже версии 8.x.
+* Удалены артефакты, которые позволяли генерировать шаблоны без использования template-проектов.
+ 
+
+### 2023-11-20 Версия 8.0.0
 
 Новая и первая версия шаблонов для микросервисов на платформе NET8.
-
-Версия 8.0.0:
 
 ![Install module](Whatnot/v8-1.png) 
 
@@ -27,9 +48,7 @@ Please find out all comments with 'ATTENTION!' because that is required some dec
 * Произведены другие мелкие правки, в том числе синтаксические.
 
 
-### 2023-09-24
-
-Версия 7.0.8:
+### 2023-09-24 Версия 7.0.8:
 
 * Из репозитория удалены исходные файлы для NET 5, а также готовые архивы для использования NET 5.
 * Обновлены nuget-пакеты
@@ -78,17 +97,13 @@ Please find out all comments with 'ATTENTION!' because that is required some dec
     resharper_wrap_before_arrow_with_expressions = true
     ```
 
-### 2023-08-07
-
-Версия 7.0.7:
+### 2023-08-07 Версия 7.0.7
 
 * Сделан рефакторинг папок в проектах с целью добиться максимального соответствия концепции Clean Architecture, и в частности Vertical Slice Architecture. Выпущена
 * Обновлены nuget-пакеты некоторых базовых сборок
 * Исправлены мелкие недочеты (naming convention, syntax issies, etc.)
 
-### 2023-08-04
-
-Версия 7.0.6:
+### 2023-08-04 Версия 7.0.6
 
 Созданы шаблоны для `dotnet CLI`. Теперь можно установить шаблоны очень просто через команду `dotnet`. Например, чтобы установить шаблон для `Microservice Identity Module` достаточно выполнить команду:
 
@@ -125,9 +140,7 @@ dotnet new list
 
 ![JetBrains Rider create new project screen](Whatnot/nimble_rider.png)
 
-### 2023-06-15
-
-Версия 7.0.5:
+### 2023-06-15 Версия 7.0.5
 
 * Обновлены nuget-пакеты
 * Немного изменена структура классов для наследников от `IRequest` и `IRequestHandler`. Теперь запросы с перехватчиками объединены в один класс, что на самом деле гораздо удобнее.
@@ -137,9 +150,7 @@ dotnet new list
 
 [Пример использования шаблона для построения backend (API) для каталога товаров](https://github.com/Calabonga/Calabonga.Catalog). В этом репозитории "пошаговая" реализация, которая записана на видео. Можно посмотреть примеры (examples of using) разных механизмов: Validation, Transactions, Notification and etc.
 
-### 2023-04-15
-
-Версия 7.0.4:
+### 2023-04-15 Версия 7.0.4
 
 * Обновлены сборки (nuget) для `AutoMapper`, `FluentValidation`, `Microsoft.AspNetCore.Authentication`,`Serilog`.
 * Конфигурация для `Serilog` вынесена в `appSettings.json`
@@ -147,18 +158,16 @@ dotnet new list
 * Потому как `StopTheHostException` переименован `HostAbortedException` перехватывать его теперь стали по-новому.
 * Перехват исключений `ValidationException` теперь работает через `OperationResult`, для этого обновлен `ValidatorBehavior`.
 
-### 2023-03-11
-
-Версия 7.0.3:
+### 2023-03-11 Версия 7.0.3
 
 * Обновлены сборки (nuget) для OpenIddict (OAuth2.0).
 * Из шаблона удалена сборка `GitInfo`, которая позволяла использовать версионирование на основе GIT, потому что при создании проекта вне папки репозитория появлялась ошибка: `NETSDK1018 Invalid NuGet version string: '0.0.0+main.'.`. Пожалуйста, ознакомьтесь со всеми комментариями с надписью "ATTENTION!", потому что эти места потребует от вас некоторых решений или действий. Например, использовать или не использовать версионирование на основе GIT возможностей.
 * Исправлена работа `FluentValidation` для `EventItemValidator`.
 * Исправлена работа `ErrorHandlerMiddleware` для отображения ошибок валидации.
 
-### 2023-02-24
+### 2023-02-24 Версия 7.0.2 
 
-Версия 7.0.2 получила следующие изменения:
+Версия получила следующие изменения:
 
 * Новая версия `Mediatr` получила обновление, в том числе была удалена зависимость от nuget-пакета `MediatR.Extensions.Microsoft.DependencyInjection`. А также изменилась регистрация зависимости.
 
@@ -170,9 +179,7 @@ dotnet new list
 * Обновились сборки `EntityFramework`.
 * Обновилась версия для расширение для Visual Studio (VSIX).
 
-### 2023-02-05
-
-Новое в версии 7.0.1:
+### 2023-02-05 Версия 7.0.1
 
 * Обновлены почти все nuget-пакеты, в том числе и один из самых важных `OpenIddict`:
 
@@ -203,17 +210,17 @@ dotnet new list
 * Удалены шаблоны, которые использовали IdentityServer4 в качестве сервера авторизации.
 * Добавлена сборка [Calabonga.AspNetCore.AppDefinitions](https://www.nuget.org/packages/Calabonga.AspNetCore.AppDefinitions/), которая подключает возможность использования AppDefinitions в проектах на платформе ASP.NET Core.
 
-### 2022-09-03
+### 2022-09-03 Версия 6.1.3
 
 В новой версии `6.1.3` обновился метод авторизации по `Authorization Code Flow`. Подключены механизмы, которые приведены в пример на сайте [OpenIddict Samples](https://github.com/openiddict/openiddict-samples). Теперь авторизация учитывает `Consent`, а также подключены более жесткие требования к формированию `id_token` и `access_token`, которые рекомендованы стандартами `OAuth2.0`.
 
 <img width="398" alt="image" src="https://user-images.githubusercontent.com/346209/188263945-5d40c8d2-1264-4351-b14e-ba9f223c66bf.png">
 
-### 2022-07-26
+### 2022-07-26 Версия 6.1.2
 
 В новой версии `6.1.2` добавлены некоторые инициализации для того, чтобы было проще подключить `EntityFramework` провайдер для  `Microsoft SQL Server` (UseSqlClient). Добавленные строки кода были закоментированы, чтобы можно было оставить функциональность для IN-MEMORY режима.
 
-### 2022-07-04
+### 2022-07-04 Версия 6.1.1
 
 В новой версии `6.1.1` удалены проекты из папки FullAPI (вместе с папкой). Версия с `IdentityServer` больше не будет получать обновления, но пока останется доступной. Вы можете ее найти в папке MinimalAPI-IS4. Если вам еще нужны эти проекты, настоятельно рекомендую сделать fork моего репозитория.
 
@@ -221,7 +228,7 @@ dotnet new list
 * Удалены старые проекты.
 * Обновлены собранные архивы для Visual Studio в папке OUTPUT.
 
-### 2022-05-14
+### 2022-05-14 Версия 6.1.0
 
 На платформе `NET6` (В папке AspNetCore v6.1) можно найти новую версию `Nimble Framework`, который предназначен для быстрого создания микросервисной архитектуры. `Nimble Framework` содержит `IdentityModule` (AuthServer) и Module (microservice). Новая версия доступна для скачивания.
 
@@ -231,9 +238,7 @@ dotnet new list
 * Обновлены почти все сборки (переведены на NET6), которые использованы в шаблонах
 * Реализована система Definitions
 
-### 2022-01-16
-
-Версия `v6.0.1`
+### 2022-01-16 Версия 6.0.1
 
 1. Обновлены nuget-пакеты Automapper и Mediatr
 2. Обновились сборки для ASP.NET Core, EntityFrameworkCore
@@ -265,75 +270,57 @@ dotnet new list
 1. Удалены старые шаблоны для версий NET Core 2.2 и NET Core 3.0.
 2. Началась разработка шаблонов для новой версии.
 
-### 2021-09-06
-
-Версия `v5.0.7`
+### 2021-09-06 Версия 5.0.7
 
 1. Обновились сборки для ASP.NET Core, EntityFrameworkCore и Swagger (OpenAPI). А также nuget-пакеты Calabonga.Microservices.Core, FluentValidation и другие.
 2. Добавлено несколько комментариев в код для обеспечения определенности в действиях
 3. Обновилось расширение VSIX-расширения для Visual Studio.
 4.
 
-## 2021-10-31
-
-Версия `v5.0.8`
+## 2021-10-31 Версия 5.0.8
 
 1. Обновились сборки для ASP.NET Core, EntityFrameworkCore и Swagger (OpenAPI). А также nuget-пакет FluentValidation и другие.
 2. Конструкции некоторых методов переведин на lambda-выражения, чтобы следовать моде.
 3. Обновилось расширение VSIX-расширения для Visual Studio.
 
-## 2021-09-08
-
-Версия `v5.0.6`
+## 2021-09-08 Версия 5.0.6
 
 1. Обновились сборки для ASP.NET Core и EntityFrameworkCore. А также nuget-пакеты OperationResultCore, Calabonga.Microservices.Core, Swagger, FluentValidation и другие.
 2. Обновились метаданные, используемые для VSIX-расширения для Visual Studio.
 
-## 2021-06-04
-
-Версия `v5.0.5`
+## 2021-06-04 Версия 5.0.5
 
 1. Исправлено несколько опечаток.
 2. Обновились сборки для ASP.NET Core и EntityFrameworkCore. А также nuget-пакеты OperationResultCore, Calabonga.Microservices.Core, Swagger, FluentValidation и другие.
 
-## 2021-03-23
-
-Версия `v5.0.4`
+## 2021-03-23 Версия 5.0.4
 
 1. Стандартный logger заменен на Serilog. Теперь читать логи стало проще.
 2. Исправлено несколько опечаток.
 3. Обновились сборки для ASP.NET Core и EntityFrameworkCore. А также nuget-пакеты OperationResultCore, Calabonga.Microservices.Core и другие.
 4. Реализация Mediatr-запросов (Request) из классов превратились в записи (class -> record) С#.
 
-## 2021-03-16
-
-Версия `v5.0.3`
+## 2021-03-16 Версия 5.0.3
 
 1. Удалена зависимость от некоторых сборок, которые вынесены на более высокий уровень. Это позволит обновлять их отдельно.
 2. Исправлено несколько опечаток.
 3. Обновились сборки для ASP.NET Core и EntityFrameworkCore до версий (5.0.4). А также nuget-пакеты OperationResultCore, Calabonga.Microservices.Core и другие.
 4. Реализация Mediatr-запросов из контроллеров перенесены в проекты шаблонов из сборки Calabonga.AspNetCore.Controllers, чтобы примеры использования были доступны разработчику.
 
-## 2021-01-27
-
-Версия `v5.0.2`
+## 2021-01-27 Версия 5.0.2
 
 1. Применены языковые *фишки* из C# 9.0. Другими словами, был неслабый рефакторинг кода для оптимизации.
 2. Исправлено несколько опечаток.
 3. Обновились сборки для `ASP.NET Core` и `EntityFramework Core` до версий (5.0.2). А также nuget-пакеты `OperationResultCore`, `Calabonga.Microservices.Core` и другие.
 
-## 2020-12-04
-
-Версия `v5.0.1`
+## 2020-12-04 Версия 5.0.1
 
 1. В шаблоне микросервиса с IdentityServer4 и шаблоне без него удалены проекты xxx.Core. Файлы из этих проектов перенесены в проект xxx.Entities. Ссылки на Exceptions вынесены в nuget-пакет `Calabonga.Microservices.Core`.
 2. В шаблоне микросервиса с IdentityServer4 добавлена возможность аутентификации как для Cookie типа, так и для Bearer. Да! Теперь настроено два типа аутентификации.
 3. Применены языковые *фишки* из C# 8.0. Другими словами, был неслабый рефакторинг кода для оптимизации.
 4. Исправлено множество опечаток.
 
-## 2020-11-15
-
-Версия `v5.0.0`
+## 2020-11-15 Версия 5.0.0
 
 1. Все проекты во всех решениях (solutions) обновились до версии .NET 5.0.
 2. Обновились nuget-сборки для `ASP.NET Core` и `EntityFramework Core` (5.0.0).
@@ -342,7 +329,7 @@ dotnet new list
 
 # Документация
 
-Документация доступна на GitHub в разделе [Wiki](https://github.com/Calabonga/Microservice-Template/wiki/Nimble-Microservice-Templates) (в режиме наполнения).
+Документация доступна на GitHub в разделе [Wiki](https://github.com/Calabonga/Microservice-Template/wiki/Nimble-Microservice-Templates)
 
 # Микросервисы
 
@@ -441,4 +428,7 @@ Nimble Framework для NET6 Готовится
 
 ![Author](Whatnot/Calabonga.gif)
 
-[Блог по программированию](https://www.calabonga.net)
+# Обратная связь
+
+* [Блог по программированию](https://www.calabonga.net)
+* [Видео канал Boosty.to/Calabonga](https://boosty.to/Calabonga)
