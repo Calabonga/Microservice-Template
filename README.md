@@ -6,15 +6,11 @@
 
 ## Как установить 
 
-Для установки версии 8.x пожалуйста прочитайте статью [wiki](https://github.com/Calabonga/Microservice-Template/wiki), в которой описано как очень просто установить шаблоны при помощи одной команды из командной строки на ваш рабочий компьютер.
-
-Также вы можете использовать расширение для Visual Studio [Microservice-Template](https://marketplace.visualstudio.com/items?itemName=Calabonga.microserivce-templates) из marketplace, но версия уже только v7.x.
+Для установки версии 8.x пожалуйста прочитайте статью [wiki](https://github.com/Calabonga/Microservice-Template/wiki), в которой описано как очень просто установить шаблоны при помощи одной команды из командной строки на ваш рабочий компьютер. Также вы можете использовать расширение для Visual Studio [Microservice-Template](https://marketplace.visualstudio.com/items?itemName=Calabonga.microserivce-templates) из marketplace.
 
 ## How to install
 
-To install version 8.x please, read [wiki](https://github.com/Calabonga/Microservice-Template/wiki) where you can find information about a simple way using one command in command prompt to install templates on your workstation.
-
-Another way to install extension is use Visual Studio marketplace [Microservice-Template](https://marketplace.visualstudio.com/items?itemName=Calabonga.microserivce-templates), but templates version is 7.x.
+To install version 8.x please, read [wiki](https://github.com/Calabonga/Microservice-Template/wiki) where you can find information about a simple way using one command in command prompt to install templates on your workstation. Another way to install extension is use Visual Studio marketplace [Microservice-Template](https://marketplace.visualstudio.com/items?itemName=Calabonga.microserivce-templates).
 
 ## Дополнительная информация (Additional info)
 
