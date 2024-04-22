@@ -19,6 +19,12 @@ To install version 8.x please, read [wiki](https://github.com/Calabonga/Microser
 
 ## История Nimble Framework
 
+### 2024-04-22 Версия 8.0.2
+
+* Обновились nuget-пакеты
+* Исправлены некоторые синтаксические ошибки.
+
+
 ### 2024-02-06 Версия 8.0.1
 
 Вместо nuget-пакета [`OperationResultCore`](https://github.com/Calabonga/OperationResult)в обоих шаблонах теперь используется более простая и современная реализация RFC7807 - [`Calabonga.Results`](https://github.com/Calabonga/Calabonga.Results), которая существенно "облегчила" сериализацию выдаваемых результатов повысив параметры производительности в несколько раз.
