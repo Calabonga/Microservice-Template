@@ -2,7 +2,7 @@
 // Name: Template for Micro service on ASP.NET Core API with
 // OpenIddict (OAuth2.0)
 // Author: Calabonga © 2005-2024 Calabonga SOFT
-// Version: 8.0.1
+// Version: 8.0.2
 // Based on: .NET 8.0.x
 // Created Date: 2023-11-19
 // Updated Date: 2024-02-05
@@ -69,7 +69,7 @@ catch (Exception ex)
     }
 
     Log.Fatal(ex, "Unhandled exception");
-    return 1;
+    throw;
 }
 finally
 {

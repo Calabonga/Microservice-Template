@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using Calabonga.UnitOfWork;
+using Calabonga.PagedListCore;
 
 namespace Calabonga.Microservice.IdentityModule.Web.Definitions.Mapping;
 
