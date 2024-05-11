@@ -16,7 +16,7 @@ public class SwaggerDefinition : AppDefinition
     // Otherwise, you can change versions of your API by manually.
     // If you are not going to use git-versioning, do not forget install package "GitInfo" 
     // private const string _appVersion = $"{ThisAssembly.Git.SemVer.Major}.{ThisAssembly.Git.SemVer.Minor}.{ThisAssembly.Git.SemVer.Patch}";
-    private const string _appVersion = "8.0.2";
+    private const string _appVersion = "8.0.3";
 
     private const string _swaggerConfig = "/swagger/v1/swagger.json";
 
