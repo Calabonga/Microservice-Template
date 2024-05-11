@@ -19,6 +19,14 @@ To install version 8.x please, read [wiki](https://github.com/Calabonga/Microser
 
 ## История Nimble Framework
 
+### 2024-05-11 Версия 8.0.3
+
+* Обновились nuget-пакеты в проекте `IdentityModule`
+* Обновились nuget-пакеты в проекте `Module`.
+* Исправлена ошибка генерации решения из шаблона: дублирование sln-файла. Спасибо [andrew-moiseyev](https://github.com/andrew-moiseyev).
+* Обновлены проекты nuget-templates для обоих tool CLI.
+
+
 ### 2024-04-22 Версия 8.0.2
 
 * Обновились nuget-пакеты
