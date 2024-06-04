@@ -2,7 +2,7 @@
 using Calabonga.Microservice.Module.Domain;
 using Calabonga.Microservice.Module.Web.Application.Messaging.EventItemMessages.ViewModels;
 using Calabonga.Microservice.Module.Web.Definitions.Mapping;
-using Calabonga.UnitOfWork;
+using Calabonga.PagedListCore;
 
 namespace Calabonga.Microservice.Module.Web.Application.Messaging.EventItemMessages;
 
