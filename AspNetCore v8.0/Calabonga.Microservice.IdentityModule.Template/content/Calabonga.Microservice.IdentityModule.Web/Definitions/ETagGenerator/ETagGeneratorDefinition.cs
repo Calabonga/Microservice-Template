@@ -1,7 +1,6 @@
 ﻿using Calabonga.AspNetCore.AppDefinitions;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Net.Http.Headers;
-using System.Diagnostics;
 using System.Security.Cryptography;
 
 namespace Calabonga.Microservice.IdentityModule.Web.Definitions.ETagGenerator;

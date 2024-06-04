@@ -1,6 +1,6 @@
 ﻿using Calabonga.Microservice.IdentityModule.Web.Application.Messaging.ProfileMessages.ViewModels;
 using Calabonga.Microservice.IdentityModule.Web.Application.Services;
-using Calabonga.Results;
+using Calabonga.OperationResults;
 using MediatR;
 
 namespace Calabonga.Microservice.IdentityModule.Web.Application.Messaging.ProfileMessages.Queries;

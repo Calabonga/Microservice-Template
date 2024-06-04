@@ -2,9 +2,9 @@
 using Calabonga.Microservice.IdentityModule.Domain;
 using Calabonga.Microservice.IdentityModule.Domain.Base;
 using Calabonga.Microservice.IdentityModule.Web.Application.Messaging.EventItemMessages.ViewModels;
+using Calabonga.OperationResults;
 using Calabonga.PagedListCore;
 using Calabonga.PredicatesBuilder;
-using Calabonga.Results;
 using Calabonga.UnitOfWork;
 using MediatR;
 using System.Linq.Expressions;
