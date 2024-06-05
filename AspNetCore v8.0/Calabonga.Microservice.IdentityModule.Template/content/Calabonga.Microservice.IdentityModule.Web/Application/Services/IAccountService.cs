@@ -1,7 +1,7 @@
 ﻿using Calabonga.Microservice.IdentityModule.Infrastructure;
 using Calabonga.Microservice.IdentityModule.Web.Application.Messaging.ProfileMessages.ViewModels;
 using Calabonga.Microservices.Core.Validators;
-using Calabonga.Results;
+using Calabonga.OperationResults;
 using System.Security.Claims;
 
 namespace Calabonga.Microservice.IdentityModule.Web.Application.Services;

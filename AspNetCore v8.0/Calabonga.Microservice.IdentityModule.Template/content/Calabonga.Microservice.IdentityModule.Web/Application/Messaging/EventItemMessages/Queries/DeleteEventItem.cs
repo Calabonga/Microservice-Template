@@ -2,7 +2,7 @@
 using Calabonga.Microservice.IdentityModule.Domain;
 using Calabonga.Microservice.IdentityModule.Domain.Base;
 using Calabonga.Microservice.IdentityModule.Web.Application.Messaging.EventItemMessages.ViewModels;
-using Calabonga.Results;
+using Calabonga.OperationResults;
 using Calabonga.UnitOfWork;
 using MediatR;
 

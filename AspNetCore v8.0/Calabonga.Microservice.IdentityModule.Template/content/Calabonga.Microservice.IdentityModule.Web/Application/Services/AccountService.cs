@@ -6,7 +6,7 @@ using Calabonga.Microservice.IdentityModule.Web.Definitions.Authorizations;
 using Calabonga.Microservices.Core.Exceptions;
 using Calabonga.Microservices.Core.Extensions;
 using Calabonga.Microservices.Core.Validators;
-using Calabonga.Results;
+using Calabonga.OperationResults;
 using Calabonga.UnitOfWork;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
