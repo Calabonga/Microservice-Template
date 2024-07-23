@@ -4,7 +4,7 @@ using Calabonga.Microservice.Module.Domain.Base;
 using Calabonga.Microservice.Module.Web.Application.Messaging.EventItemMessages.ViewModels;
 using Calabonga.Microservices.Core;
 using Calabonga.Microservices.Core.Exceptions;
-using Calabonga.Results;
+using Calabonga.OperationResults;
 using Calabonga.UnitOfWork;
 using MediatR;
 

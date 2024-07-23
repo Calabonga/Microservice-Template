@@ -12,15 +12,15 @@
 	<ItemGroup>
 		<PackageReference Include="Calabonga.Results" Version="1.1.0" />
 		<PackageReference Include="Calabonga.UnitOfWork" Version="4.0.0" />
-		<PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="8.0.6" />
-		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.6">
+		<PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="8.0.7" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.7">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
-		<PackageReference Include="OpenIddict.EntityFrameworkCore" Version="5.6.0" />
+		<PackageReference Include="OpenIddict.EntityFrameworkCore" Version="5.7.0" />
 		<PackageReference Include="Calabonga.PredicatesBuilder" Version="2.0.1" />
-		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.6" />
-		<PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.6" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.7" />
+		<PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.7" />
 	</ItemGroup>
 
 	<ItemGroup>
