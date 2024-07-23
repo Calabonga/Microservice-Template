@@ -2,10 +2,10 @@
 // Name: Template for Micro service on ASP.NET Core API with
 // OpenIddict (OAuth2.0)
 // Author: Calabonga © 2005-2023 Calabonga SOFT
-// Version: 8.0.4
+// Version: 8.0.5
 // Based on: .NET 8.0.x
 // Created Date: 2023-11-19
-// Updated Date: 2024-06-04
+// Updated Date: 2024-07-23
 // --------------------------------------------------------------------
 // Contacts
 // --------------------------------------------------------------------
@@ -23,6 +23,10 @@
 // functionality. Also, support two type of Authentication:
 // Cookie and Bearer
 // --------------------------------------------------------------------
+
+using Calabonga.AspNetCore.AppDefinitions;
+using Serilog;
+using Serilog.Events;
 
 try
 {
