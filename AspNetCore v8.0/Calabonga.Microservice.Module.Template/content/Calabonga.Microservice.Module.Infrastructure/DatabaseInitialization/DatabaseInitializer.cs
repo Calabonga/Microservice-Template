@@ -10,6 +10,7 @@
             using var scope = serviceProvider.CreateScope();
             await using var context = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
 
+            // ATTENTION!
             // It should be uncomment when using UseSqlServer() settings or any other providers.
             // This is should not be used when UseInMemoryDatabase()
             // await context!.Database.MigrateAsync();

@@ -18,11 +18,13 @@ public class DbContextDefinition : AppDefinition
     /// <param name="builder"></param>
     public override void ConfigureServices(WebApplicationBuilder builder)
     {
+        
         builder.Services.AddDbContext<ApplicationDbContext>(config =>
         {
-            // UseInMemoryDatabase - This for demo purposes only!
-            // Should uninstall package "Microsoft.EntityFrameworkCore.InMemory" and install what you need.
-            // For example: "Microsoft.EntityFrameworkCore.SqlServer"
+            // ATTENTION!
+            // UseInMemoryDatabase - This is for demo purposes only!
+            // Should uninstall package "Microsoft.EntityFrameworkCore.InMemory" and install what you need. 
+            // For example: "Npgsql.EntityFrameworkCore.PostgreSQL" or "Microsoft.EntityFrameworkCore.SqlServer"
             config.UseInMemoryDatabase("DEMO-PURPOSES-ONLY");
 
             // uncomment line below to use UseNpgsql() or UseSqlServer(). Don't forget setup connection string in appSettings.json

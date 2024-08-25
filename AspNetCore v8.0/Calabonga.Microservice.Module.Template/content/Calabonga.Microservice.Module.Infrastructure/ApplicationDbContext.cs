@@ -43,8 +43,9 @@ namespace Calabonga.Microservice.Module.Infrastructure
         /// </param>
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
+            // ATTENTION!
+            // It should be removed when using real Database (not in memory mode)
             optionsBuilder.ConfigureWarnings(x => x.Ignore(InMemoryEventId.TransactionIgnoredWarning));
-
             base.OnConfiguring(optionsBuilder);
         }
     }
@@ -59,7 +60,7 @@ namespace Calabonga.Microservice.Module.Infrastructure
 //    public ApplicationDbContext CreateDbContext(string[] args)
 //    {
 //        var optionsBuilder = new DbContextOptionsBuilder<ApplicationDbContext>();
-//        optionsBuilder.UseSqlServer("Server=<SQL>;Database=<DatabaseName>;User ID=<UserName>;Password=<Password>");
+//        optionsBuilder.UseNpgsql("Server=<SQL>;Database=<DatabaseName>;User ID=<UserName>;Password=<Password>");
 //        return new ApplicationDbContext(optionsBuilder.Options);
 //    }
 //}
