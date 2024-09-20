@@ -7,55 +7,65 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace Calabonga.Microservice.IdentityModule.Web.Pages.Connect;
-
-[AllowAnonymous]
-public class LoginModel(
-        IAccountService accountService,
-        SignInManager<ApplicationUser> signInManager,
-        UserManager<ApplicationUser> userManager)
-    : PageModel
+namespace Calabonga.Microservice.IdentityModule.Web.Pages.Connect
 {
-    [BindProperty(SupportsGet = true)] public string ReturnUrl { get; set; } = null!;
-
-    [BindProperty] public LoginViewModel? Input { get; set; }
-
-    public void OnGet() => Input = new LoginViewModel
+    [AllowAnonymous]
+    public class LoginModel : PageModel
     {
-        ReturnUrl = ReturnUrl
-    };
+        private readonly IAccountService _accountService;
+        private readonly SignInManager<ApplicationUser> _signInManager;
+        private readonly UserManager<ApplicationUser> _userManager;
 
-    public async Task<IActionResult> OnPostAsync()
-    {
-        if (!ModelState.IsValid)
+        public LoginModel(IAccountService accountService,
+            SignInManager<ApplicationUser> signInManager,
+            UserManager<ApplicationUser> userManager)
         {
-            return Page();
+            _accountService = accountService;
+            _signInManager = signInManager;
+            _userManager = userManager;
         }
 
-        if (Input != null)
+        [BindProperty(SupportsGet = true)] public string ReturnUrl { get; set; } = null!;
+
+        [BindProperty] public LoginViewModel? Input { get; set; }
+
+        public void OnGet() => Input = new LoginViewModel { ReturnUrl = ReturnUrl };
+
+        public async Task<IActionResult> OnPostAsync()
         {
-            var user = await userManager.FindByNameAsync(Input.UserName);
-            if (user == null)
+            if (!ModelState.IsValid)
             {
-                ModelState.AddModelError("UserName", "User not found");
                 return Page();
             }
 
-            var signInResult = await signInManager.PasswordSignInAsync(user, Input.Password, true, false);
-            if (signInResult.Succeeded)
+            if (Input != null)
             {
-                var principal = await accountService.GetPrincipalByIdAsync(user.Id.ToString());
-                await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
-
-                if (Url.IsLocalUrl(ReturnUrl))
+                var user = await _userManager.FindByNameAsync(Input.UserName);
+                if (user == null)
                 {
-                    return Redirect(ReturnUrl);
-                }
-                return RedirectToPage("/swagger");
-            }
-        }
+                    ModelState.AddModelError("UserName", "User not found");
 
-        ModelState.AddModelError("UserName", "User not found");
-        return Page();
+                    return Page();
+                }
+
+                var signInResult = await _signInManager.PasswordSignInAsync(user, Input.Password, true, false);
+                if (signInResult.Succeeded)
+                {
+                    var principal = await _accountService.GetPrincipalByIdAsync(user.Id.ToString());
+                    await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
+
+                    if (Url.IsLocalUrl(ReturnUrl))
+                    {
+                        return Redirect(ReturnUrl);
+                    }
+
+                    return RedirectToPage("/swagger");
+                }
+            }
+
+            ModelState.AddModelError("UserName", "User not found");
+
+            return Page();
+        }
     }
 }
