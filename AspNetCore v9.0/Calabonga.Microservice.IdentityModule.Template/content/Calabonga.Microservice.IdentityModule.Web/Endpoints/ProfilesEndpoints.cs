@@ -10,14 +10,8 @@ namespace Calabonga.Microservice.IdentityModule.Web.Endpoints;
 public sealed class ProfilesEndpointDefinition : AppDefinition
 {
     public override void ConfigureApplication(WebApplication app)
-        => app.MapProfilesEndpoints();
-}
-
-internal static class ProfilesEndpointDefinitionExtensions
-{
-    public static void MapProfilesEndpoints(this IEndpointRouteBuilder routes)
     {
-        var group = routes.MapGroup("/api/profiles").WithTags("Profiles");
+        var group = app.MapGroup("/api/profiles").WithTags("Profiles");
 
         group.MapGet("roles", async ([FromServices] IMediator mediator, HttpContext context)
                 => await mediator.Send(new GetProfile.Request(), context.RequestAborted))

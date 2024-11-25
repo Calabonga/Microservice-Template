@@ -10,16 +10,11 @@ namespace Calabonga.Microservice.IdentityModule.Web.Endpoints;
 
 public sealed class EventItemEndpoints : AppDefinition
 {
-    public override void ConfigureApplication(WebApplication app) => app.MapEventItemEndpoints();
-}
-
-internal static class EventItemEndpointsExtensions
-{
-    public static void MapEventItemEndpoints(this IEndpointRouteBuilder routes)
+    public override void ConfigureApplication(WebApplication app)
     {
-        var group = routes.MapGroup("/api/event-items/").WithTags(nameof(EventItem));
+        var group = app.MapGroup("/api/event-items/").WithTags(nameof(EventItem));
 
-        group.MapGet("paged/{pageIndex:int}", async ([FromServices] IMediator mediator, int pageIndex, string? search, HttpContext context, int pageSize = 10)
+        group.MapGet("paged/{pageIndex:int}", async ([FromServices] IMediator mediator, string? search, HttpContext context, int pageIndex = 0, int pageSize = 10)
                 => await mediator.Send(new GetEventItemPaged.Request(pageIndex, pageSize, search), context.RequestAborted))
             .RequireAuthorization(AppData.PolicyDefaultName)
             .Produces(200)
@@ -44,7 +39,7 @@ internal static class EventItemEndpointsExtensions
             .WithOpenApi();
 
         group.MapPost("", async ([FromServices] IMediator mediator, EventItemCreateViewModel model, HttpContext context)
-                    => await mediator.Send(new PostEventItem.Request(model), context.RequestAborted))
+                => await mediator.Send(new PostEventItem.Request(model), context.RequestAborted))
             .RequireAuthorization(AppData.PolicyDefaultName)
             .Produces(200)
             .ProducesProblem(401)
@@ -52,7 +47,7 @@ internal static class EventItemEndpointsExtensions
             .WithOpenApi();
 
         group.MapPut("{id:guid}", async ([FromServices] IMediator mediator, Guid id, EventItemUpdateViewModel model, HttpContext context)
-                    => await mediator.Send(new PutEventItem.Request(id, model), context.RequestAborted))
+                => await mediator.Send(new PutEventItem.Request(id, model), context.RequestAborted))
             .RequireAuthorization(AppData.PolicyDefaultName)
             .Produces(200)
             .ProducesProblem(401)

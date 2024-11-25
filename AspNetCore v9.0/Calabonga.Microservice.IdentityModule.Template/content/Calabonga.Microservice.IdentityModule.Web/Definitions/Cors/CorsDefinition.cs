@@ -14,7 +14,7 @@ public class CorsDefinition : AppDefinition
     /// <param name="builder"></param>
     public override void ConfigureServices(WebApplicationBuilder builder)
     {
-        var origins = builder.Configuration.GetSection("Cors")?.GetSection("Origins")?.Value?.Split(',');
+        var origins = builder.Configuration.GetSection("Cors").GetSection("Origins").Value?.Split(',');
         builder.Services.AddCors(options =>
         {
             options.AddPolicy(AppData.PolicyCorsName, policyBuilder =>

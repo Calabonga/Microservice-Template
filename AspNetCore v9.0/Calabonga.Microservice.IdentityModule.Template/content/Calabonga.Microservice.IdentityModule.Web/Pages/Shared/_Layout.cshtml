@@ -1,4 +1,4 @@
-﻿@using Calabonga.Microservice.IdentityModule.Web.Definitions.Swagger
+﻿@using Calabonga.Microservice.IdentityModule.Web.Definitions.OpenApi
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,7 +17,7 @@
                     Сервер авторизации
                 </h1>
                 <p class="small text-center text-muted">
-                    Version: @SwaggerDefinition.AppVersion
+                    Version: @OpenApiDefinition.AppVersion
                 </p>
             </div>
         </div>
@@ -27,7 +27,7 @@
         <div class="row mt-5">
             <div class="col">
                 <p class="small text-center text-muted">
-                    <a class="text-decoration-none text-muted" href="https://www.calabonga.net/blog/all/index/1?tag=nimble">Nimble Framework</a> 2023 &copy; Calabonga SOFT
+                    <a class="text-decoration-none text-muted" href="https://www.calabonga.net/blog/all/index/1?tag=nimble">Nimble Framework</a> 2019-@DateTime.Today.Year &copy; Calabonga SOFT
                 </p>
             </div>
         </div>

@@ -14,13 +14,13 @@ public class CorsDefinition : AppDefinition
     /// <param name="builder"></param>
     public override void ConfigureServices(WebApplicationBuilder builder)
     {
-        var origins = builder.Configuration.GetSection("Cors")?.GetSection("Origins")?.Value?.Split(',');
+        var origins = builder.Configuration.GetSection("Cors").GetSection("Origins").Value?.Split(',');
         builder.Services.AddCors(options =>
         {
-            options.AddPolicy(AppData.PolicyName, builder =>
+            options.AddPolicy(AppData.PolicyName, policyBuilder =>
             {
-                builder.AllowAnyHeader();
-                builder.AllowAnyMethod();
+                policyBuilder.AllowAnyHeader();
+                policyBuilder.AllowAnyMethod();
                 if (origins is not { Length: > 0 })
                 {
                     return;
@@ -28,16 +28,16 @@ public class CorsDefinition : AppDefinition
 
                 if (origins.Contains("*"))
                 {
-                    builder.AllowAnyHeader();
-                    builder.AllowAnyMethod();
-                    builder.SetIsOriginAllowed(host => true);
-                    builder.AllowCredentials();
+                    policyBuilder.AllowAnyHeader();
+                    policyBuilder.AllowAnyMethod();
+                    policyBuilder.SetIsOriginAllowed(host => true);
+                    policyBuilder.AllowCredentials();
                 }
                 else
                 {
                     foreach (var origin in origins)
                     {
-                        builder.WithOrigins(origin);
+                        policyBuilder.WithOrigins(origin);
                     }
                 }
             });
