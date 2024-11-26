@@ -101,6 +101,7 @@ public class AuthorizationDefinition : AppDefinition
     {
         app.UseHttpsRedirection();
         app.UseRouting();
+        app.UseCors(AppData.PolicyDefaultName);
         app.UseCors(AppData.PolicyCorsName);
         app.UseAuthentication();
         app.UseAuthorization();

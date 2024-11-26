@@ -89,7 +89,7 @@ public class AuthorizationDefinition : AppDefinition
     public override void ConfigureApplication(WebApplication app)
     {
         app.UseRouting();
-        app.UseCors(AppData.PolicyName);
+        app.UseCors(AppData.CorsPolicyName);
         app.UseAuthentication();
         app.UseAuthorization();
 

@@ -9,7 +9,7 @@ namespace Calabonga.Microservice.Module.Web.Definitions.Cors;
 public class CorsDefinition : AppDefinition
 {
     /// <summary>
-    /// Configure services for current microservice
+    /// Configure services for current application
     /// </summary>
     /// <param name="builder"></param>
     public override void ConfigureServices(WebApplicationBuilder builder)
@@ -17,10 +17,11 @@ public class CorsDefinition : AppDefinition
         var origins = builder.Configuration.GetSection("Cors").GetSection("Origins").Value?.Split(',');
         builder.Services.AddCors(options =>
         {
-            options.AddPolicy(AppData.PolicyName, policyBuilder =>
+            options.AddPolicy(AppData.CorsPolicyName, policyBuilder =>
             {
                 policyBuilder.AllowAnyHeader();
                 policyBuilder.AllowAnyMethod();
+
                 if (origins is not { Length: > 0 })
                 {
                     return;

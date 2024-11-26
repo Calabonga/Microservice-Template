@@ -58,7 +58,6 @@ public class OpenApiDefinition : AppDefinition
             settings.OAuthClientSecret("client-secret-code");
             settings.DisplayRequestDuration();
             settings.OAuthAppName(AppData.ServiceName);
-            settings.OAuth2RedirectUrl($"{url}/swagger/oauth2-redirect.html");
         });
     }
 }

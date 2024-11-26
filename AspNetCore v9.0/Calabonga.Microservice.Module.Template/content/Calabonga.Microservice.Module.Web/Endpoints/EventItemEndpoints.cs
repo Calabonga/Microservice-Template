@@ -19,7 +19,7 @@ internal static class EventItemEndpointsExtensions
     {
         var group = routes.MapGroup("/api/event-items/").WithTags(nameof(EventItem));
 
-        group.MapGet("paged/{pageIndex:int}", async ([FromServices] IMediator mediator, int pageIndex, string? search, HttpContext context, int pageSize = 10)
+        group.MapGet("paged/{pageIndex:int}", async ([FromServices] IMediator mediator, string? search, HttpContext context, int pageIndex = 0, int pageSize = 10)
                 => await mediator.Send(new GetEventItemPaged.Request(pageIndex, pageSize, search), context.RequestAborted))
             .RequireAuthorization(x => x.AddAuthenticationSchemes(AuthData.AuthSchemes).RequireAuthenticatedUser())
             .Produces(200)
@@ -44,7 +44,7 @@ internal static class EventItemEndpointsExtensions
             .WithOpenApi();
 
         group.MapPost("", async ([FromServices] IMediator mediator, EventItemCreateViewModel model, HttpContext context)
-                    => await mediator.Send(new PostEventItem.Request(model), context.RequestAborted))
+                => await mediator.Send(new PostEventItem.Request(model), context.RequestAborted))
             .RequireAuthorization(x => x.AddAuthenticationSchemes(AuthData.AuthSchemes).RequireAuthenticatedUser())
             .Produces(200)
             .ProducesProblem(401)
@@ -52,7 +52,7 @@ internal static class EventItemEndpointsExtensions
             .WithOpenApi();
 
         group.MapPut("{id:guid}", async ([FromServices] IMediator mediator, Guid id, EventItemUpdateViewModel model, HttpContext context)
-                    => await mediator.Send(new PutEventItem.Request(id, model), context.RequestAborted))
+                => await mediator.Send(new PutEventItem.Request(id, model), context.RequestAborted))
             .Produces(200)
             .ProducesProblem(401)
             .ProducesProblem(404)

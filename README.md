@@ -19,6 +19,14 @@ To install version 8.x please, read [wiki](https://github.com/Calabonga/Microser
 
 ## История Nimble Framework
 
+### 2024-11-26 Вервия 9.0.0
+
+* Обновилась версия платформы NET9.0, установлены nuget-пакеты, соответствующие версии.
+* Подключен `Microsoft.AspNetCore.OpenApi` как основной генератор документации.
+* `Swashbuckle.AspNetCore` nuget-пакет удален.
+* `Swashbuckle.AspNetCore.SwaggerUI` nuget-пакет установлен для использования как UI для интерактивного использования OpenApi документации (`openapi/v1.json`).
+* Настройки CORS обновлены
+
 ### 2024-09-20 Версия 8.0.6
 
 * Обновились nuget-пакеты в проекте `IdentityModule`
