@@ -4,9 +4,13 @@
 
 >Attention! Please find out all comments with 'ATTENTION!' because that is required some decisions or actions from you.
 
-## Как установить 
+## Как установить (Install)
 
 Для установки шаблонов в среду разработки (`Visual Studio`, `Rider`, `dotnet CLI`) пожалуйста прочитайте статью [wiki](https://github.com/Calabonga/Microservice-Template/wiki), в которой описано, как очень просто установить шаблоны при помощи одной команды из командной строки на ваш рабочий компьютер.
+
+* [Calabonga.Microservice.IdentityModule.Template](https://www.nuget.org/packages/Calabonga.Microservice.IdentityModule.Template/) nuget-пакет для установки шаблона микросервиса в среду разработки (`Visual Studio`, `Rider`, `dotnet CLI`) с OpenIddict.
+* [Calabonga.Microservice.Module.Template](https://www.nuget.org/packages/Calabonga.Microservice.Module.Template/) nuget-пакет для установки шаблона микросервиса в среду разработки (`Visual Studio`, `Rider`, `dotnet CLI`) без OpenIddict.
+
 
 ## How to install
 
