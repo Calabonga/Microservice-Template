@@ -88,6 +88,7 @@ public sealed class TokenEndpoints : AppDefinition
                         }
 
                         var principal = await accountService.GetPrincipalForUserAsync(user);
+
                         return Results.SignIn(principal, null, OpenIddictServerAspNetCoreDefaults.AuthenticationScheme);
                     }
                 }

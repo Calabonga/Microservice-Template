@@ -8,7 +8,7 @@
         /// <summary>
         /// CORS Policy name
         /// </summary>
-        public const string PolicyName = "CorsPolicy";
+        public const string CorsPolicyName = "CorsPolicy";
 
         /// <summary>
         /// Current service name

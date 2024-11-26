@@ -21,6 +21,7 @@ public class CorsDefinition : AppDefinition
             {
                 policyBuilder.AllowAnyHeader();
                 policyBuilder.AllowAnyMethod();
+
                 if (origins is not { Length: > 0 })
                 {
                     return;

@@ -81,6 +81,7 @@ public class OpenIddictDefinition : AppDefinition
                 // Register the ASP.NET Core host and configure the ASP.NET Core options.
                 options
                     .UseAspNetCore()
+                    //.DisableTransportSecurityRequirement() // disable HTTPS
                     .EnableTokenEndpointPassthrough()
                     .EnableAuthorizationEndpointPassthrough();
 
