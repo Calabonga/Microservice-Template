@@ -6,11 +6,11 @@
 
 ## Как установить 
 
-Для установки версии 8.x пожалуйста прочитайте статью [wiki](https://github.com/Calabonga/Microservice-Template/wiki), в которой описано как очень просто установить шаблоны при помощи одной команды из командной строки на ваш рабочий компьютер. Также вы можете использовать расширение для Visual Studio [Microservice-Template](https://marketplace.visualstudio.com/items?itemName=Calabonga.microserivce-templates) из marketplace.
+Для установки шаблонов в среду разработки (`Visual Studio`, `Rider`, `dotnet CLI`) пожалуйста прочитайте статью [wiki](https://github.com/Calabonga/Microservice-Template/wiki), в которой описано, как очень просто установить шаблоны при помощи одной команды из командной строки на ваш рабочий компьютер.
 
 ## How to install
 
-To install version 8.x please, read [wiki](https://github.com/Calabonga/Microservice-Template/wiki) where you can find information about a simple way using one command in command prompt to install templates on your workstation. Another way to install extension is use Visual Studio marketplace [Microservice-Template](https://marketplace.visualstudio.com/items?itemName=Calabonga.microserivce-templates).
+To install templates (`Visual Studio`, `Rider`, `dotnet CLI`) please, read [wiki](https://github.com/Calabonga/Microservice-Template/wiki) where you can find information about a simple way to use a command (command prompt) to install templates on your workstation. 
 
 ## Дополнительная информация (Additional info)
 
@@ -18,6 +18,19 @@ To install version 8.x please, read [wiki](https://github.com/Calabonga/Microser
 * Видео презентация новой версии [Nimble Framework v.6](https://youtu.be/euOLhhNEcwg).
 
 ## История Nimble Framework
+
+### 2024-11-26 Версия 9.0.0
+
+* Обновилась версия платформы NET9.0, установлены nuget-пакеты, соответствующие версии.
+* Подключен `Microsoft.AspNetCore.OpenApi` как основной генератор документации.
+* `Swashbuckle.AspNetCore` nuget-пакет удален.
+* `Swashbuckle.AspNetCore.SwaggerUI` nuget-пакет установлен для использования как UI для интерактивного использования OpenApi документации (`openapi/v1.json`).
+* Настройки CORS обновлены
+* Сборка CI/CD переведена на использование NET9,
+* Из репозитория удалена папка `Output`, где хранились собранные сборки предыдущих версий.
+* Из репозитория удален проект (папка `VSIX`) с расширением для `Visual Studio`, так поддерживать данный плагин нецелесообразно, в виду просты использования шаблонов для Visual Studio.
+* Из репозитория удалена папка `IdentityServer4Mvc`, где хранились формы MVC-проекта для IdentityServer4.
+* Из репозитория удален проект `Builder` (папка Builder), который позволял "вручную" собирать проекты шаблонов. Данный функционал больше не требуется.
 
 ### 2024-09-20 Версия 8.0.6
 
