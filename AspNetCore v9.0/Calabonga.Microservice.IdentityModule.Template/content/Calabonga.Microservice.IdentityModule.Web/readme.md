@@ -1,6 +1,6 @@
 ﻿# Attentions
 
-Please find out all comments with 'ATTENTION!' because that is required some decisions from you
+Please find out all comments with 'ATTENTION!' because that is required some decisions from you.
 
 # About
 
