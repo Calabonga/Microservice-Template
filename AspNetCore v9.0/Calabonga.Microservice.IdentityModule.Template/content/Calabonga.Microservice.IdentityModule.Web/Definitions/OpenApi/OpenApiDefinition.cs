@@ -57,6 +57,7 @@ public class OpenApiDefinition : AppDefinition
             settings.OAuthClientId("client-id-code");
             settings.OAuthClientSecret("client-secret-code");
             settings.DisplayRequestDuration();
+            settings.OAuthUsePkce();
             settings.OAuthAppName(AppData.ServiceName);
         });
     }

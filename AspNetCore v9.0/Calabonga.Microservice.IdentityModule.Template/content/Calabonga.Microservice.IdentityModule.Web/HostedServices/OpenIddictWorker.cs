@@ -50,15 +50,21 @@ public sealed class OpenIddictWorker(IServiceProvider serviceProvider) : IHosted
                 ClientSecret = "client-secret-code",
                 DisplayName = "API testing clients with Authorization Code Flow demonstration",
                 RedirectUris = {
+                    new Uri("https://localhost:7207/signin-oidc"),
                     new Uri("https://www.thunderclient.com/oauth/callback"),            // https://www.thunderclient.com/
                     new Uri($"{url}/swagger/oauth2-redirect.html"),                     // https://swagger.io/
                     new Uri("https://localhost:20001/swagger/oauth2-redirect.html")     // https://swagger.io/ for Module as Example
                 },
-
+                PostLogoutRedirectUris =
+                {
+                    new Uri("https://localhost:7207/signout-callback-oidc")
+                },
                 Permissions =
                 {
                     // Endpoint permissions
                     OpenIddictConstants.Permissions.Endpoints.Authorization,
+                    OpenIddictConstants.Permissions.Endpoints.Logout,
+                    OpenIddictConstants.Permissions.Endpoints.Introspection,
                     OpenIddictConstants.Permissions.Endpoints.Token,
 
                     // Grant type permissions
@@ -68,6 +74,10 @@ public sealed class OpenIddictWorker(IServiceProvider serviceProvider) : IHosted
                     // Scope permissions
                     OpenIddictConstants.Permissions.Prefixes.Scope + "api",
                     OpenIddictConstants.Permissions.Prefixes.Scope + "custom",
+                    OpenIddictConstants.Permissions.Scopes.Email,
+                    OpenIddictConstants.Permissions.Scopes.Address,
+                    OpenIddictConstants.Permissions.Scopes.Profile,
+                    OpenIddictConstants.Permissions.Scopes.Roles,
 
                     // Response types
                     OpenIddictConstants.Permissions.ResponseTypes.Code,

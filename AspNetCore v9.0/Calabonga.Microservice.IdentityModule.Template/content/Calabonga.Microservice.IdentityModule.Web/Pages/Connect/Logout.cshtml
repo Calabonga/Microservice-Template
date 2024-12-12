@@ -1,0 +1,25 @@
+﻿@page
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@using Microsoft.Extensions.Primitives
+@model Calabonga.Microservice.IdentityModule.Web.Pages.Connect.LogoutModel
+@{
+    var items = HttpContext.Request.HasFormContentType
+        ? (IEnumerable<KeyValuePair<string, StringValues>>)HttpContext.Request.Form
+        : HttpContext.Request.Query;
+}
+<div class="col-md-4 offset-4 text-center">
+
+    <p class="lead">Are you sure you want to exit?</p>
+
+    <form method="post">
+        
+        @foreach (var parameter in items)
+        {
+            <input type="hidden" name="@parameter.Key" value="@parameter.Value" />
+        }
+
+        <input class="btn btn-lg btn-success" name="Confirm" type="submit" value="Yes" />
+
+    </form>
+
+</div>
