@@ -33,7 +33,7 @@ public class OpenIddictDefinition : AppDefinition
                 //  => Password flow
                 //  => Refresh token flow
                 options
-                    .AllowAuthorizationCodeFlow()//.RequireProofKeyForCodeExchange()
+                    .AllowAuthorizationCodeFlow().RequireProofKeyForCodeExchange()
                     .AllowPasswordFlow()
                     .AllowClientCredentialsFlow()
                     .AllowRefreshTokenFlow();
@@ -50,10 +50,9 @@ public class OpenIddictDefinition : AppDefinition
                 // => options.SetRefreshTokenLifetime(TimeSpan.FromDays(7));
 
                 // Enable the token endpoint.
-                options.SetAuthorizationEndpointUris("connect/authorize")
-                    //.RequireProofKeyForCodeExchange() // enable PKCE
-                    //.SetDeviceEndpointUris("connect/device")
-                    //.SetIntrospectionEndpointUris("connect/introspect")
+                options.SetAuthorizationEndpointUris("connect/authorize").RequireProofKeyForCodeExchange() // enable PKCE
+                                                                                                           //.SetDeviceEndpointUris("connect/device")
+                    .SetIntrospectionEndpointUris("connect/introspect")
                     .SetLogoutEndpointUris("connect/logout")
                     .SetTokenEndpointUris("connect/token")
                     //.SetVerificationEndpointUris("connect/verify"),
@@ -81,12 +80,13 @@ public class OpenIddictDefinition : AppDefinition
                 // Register the ASP.NET Core host and configure the ASP.NET Core options.
                 options
                     .UseAspNetCore()
-                    //.DisableTransportSecurityRequirement() // disable HTTPS
+                    .EnableLogoutEndpointPassthrough()
                     .EnableTokenEndpointPassthrough()
-                    .EnableAuthorizationEndpointPassthrough();
+                    .EnableAuthorizationEndpointPassthrough()
+                    .DisableTransportSecurityRequirement();
 
-                //JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
-                //JwtSecurityTokenHandler.DefaultOutboundClaimTypeMap.Clear();
+                // JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
+                // JwtSecurityTokenHandler.DefaultOutboundClaimTypeMap.Clear();
 
                 //options.AddEventHandler<OpenIddictServerEvents.ProcessSignInContext>(builder =>
                 //{

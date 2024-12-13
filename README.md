@@ -23,6 +23,13 @@ To install templates (`Visual Studio`, `Rider`, `dotnet CLI`) please, read [wiki
 
 ## История Nimble Framework
 
+### 2024-12-13 Версия 9.0.1
+
+* Подключен `EnableLogoutEndpointPassthrough` endpoint, а также `SetIntrospectionEndpointUris`.
+* Подключена поддержка `PKCE` для `Authorization Code Flow`.
+* Обновились nuget-пакеты в проекте `IdentityModule`.
+* Обновились nuget-пакеты в проекте `Module`.
+
 ### 2024-11-26 Версия 9.0.0
 
 * Обновилась версия платформы NET9.0, установлены nuget-пакеты, соответствующие версии.

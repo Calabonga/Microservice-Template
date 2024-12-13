@@ -15,7 +15,7 @@ public class OpenApiDefinition : AppDefinition
     // Otherwise, you can change versions of your API by manually.
     // If you are not going to use git-versioning, do not forget install package "GitInfo" 
     // private const string AppVersion = $"{ThisAssembly.Git.SemVer.Major}.{ThisAssembly.Git.SemVer.Minor}.{ThisAssembly.Git.SemVer.Patch}";
-    public const string AppVersion = "9.0.0";
+    public const string AppVersion = "9.0.1";
 
     private const string _openApiConfig = "/openapi/v1.json";
 
@@ -57,6 +57,7 @@ public class OpenApiDefinition : AppDefinition
             settings.OAuthClientId("client-id-code");
             settings.OAuthClientSecret("client-secret-code");
             settings.DisplayRequestDuration();
+            settings.OAuthUsePkce();
             settings.OAuthAppName(AppData.ServiceName);
         });
     }
