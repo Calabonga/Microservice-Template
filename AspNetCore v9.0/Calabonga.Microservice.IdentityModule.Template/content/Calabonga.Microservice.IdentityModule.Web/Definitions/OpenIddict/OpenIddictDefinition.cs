@@ -85,8 +85,8 @@ public class OpenIddictDefinition : AppDefinition
                     .EnableAuthorizationEndpointPassthrough()
                     .DisableTransportSecurityRequirement();
 
-                //JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
-                //JwtSecurityTokenHandler.DefaultOutboundClaimTypeMap.Clear();
+                // JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
+                // JwtSecurityTokenHandler.DefaultOutboundClaimTypeMap.Clear();
 
                 //options.AddEventHandler<OpenIddictServerEvents.ProcessSignInContext>(builder =>
                 //{
