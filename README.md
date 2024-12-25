@@ -23,6 +23,18 @@ To install templates (`Visual Studio`, `Rider`, `dotnet CLI`) please, read [wiki
 
 ## История Nimble Framework
 
+### 2024-12-25 Версия 9.0.2
+
+* Обновились nuget-пакеты в проекте `IdentityModule`.
+  * `OpenIddict.EntityFrameworkCore 6.0.0`
+  * `OpenIddict.AspNetCore 6.0.0`
+* OpenIddict обновления для 6.0.0. Их много, но основное то, что `Logout` изменен на `EndSession`:
+    ```diff
+    - OpenIddictConstants.Permissions.Endpoints.Logout,
+    + OpenIddictConstants.Permissions.Endpoints.EndSession,
+    ```
+* Создана новая папка в репозитории `AuthClientSamples`, в которую добавлен проект `Calabonga.BlazorApp` на базе `Blazor Web App`, как демонстрация исползования `Calabonga.Microservice.IdentityModule` в качестве сервера авторизации Blazor-приложений.
+
 ### 2024-12-13 Версия 9.0.1
 
 * Подключен `EnableLogoutEndpointPassthrough` endpoint, а также `SetIntrospectionEndpointUris`.
