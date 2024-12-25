@@ -10,12 +10,17 @@ namespace Calabonga.Microservice.Module.Web.Definitions.OpenApi;
 /// </summary>
 public class OpenApiDefinition : AppDefinition
 {
+    // -------------------------------------------------------
     // ATTENTION!
+    // -------------------------------------------------------
     // If you use are git repository then you can uncomment line with "ThisAssembly" below for versioning by GIT possibilities.
     // Otherwise, you can change versions of your API by manually.
     // If you are not going to use git-versioning, do not forget install package "GitInfo" 
     // private const string AppVersion = $"{ThisAssembly.Git.SemVer.Major}.{ThisAssembly.Git.SemVer.Minor}.{ThisAssembly.Git.SemVer.Patch}";
-    public const string AppVersion = "9.0.1";
+    // -------------------------------------------------------
+
+
+    public const string AppVersion = "9.0.2";
 
     private const string _openApiConfig = "/openapi/v1.json";
 
