@@ -33,7 +33,7 @@ To install templates (`Visual Studio`, `Rider`, `dotnet CLI`) please, read [wiki
     - OpenIddictConstants.Permissions.Endpoints.Logout,
     + OpenIddictConstants.Permissions.Endpoints.EndSession,
     ```
-* Создана новая папка в репозитории `AuthClientSamples`, в которую добавлен проект `Calabonga.BlazorApp` на базе `Blazor Web App`, как демонстрация исползования `Calabonga.Microservice.IdentityModule` в качестве сервера авторизации Blazor-приложений.
+* Создана новая папка в репозитории `AuthClientSamples`, в которую добавлен проект `Calabonga.BlazorApp` на базе `Blazor Web App`, как демонстрация исползования `Calabonga.Microservice.IdentityModule` в качестве сервера авторизации Blazor-приложений.  Больше информации и c картинками на [Wiki](https://github.com/Calabonga/Microservice-Template/wiki/Blazor-Web-App-Sample).
 
 ### 2024-12-13 Версия 9.0.1
 
