@@ -52,17 +52,18 @@ public sealed class OpenIddictWorker(IServiceProvider serviceProvider) : IHosted
                 RedirectUris = {
                     new Uri("https://www.thunderclient.com/oauth/callback"),            // https://www.thunderclient.com/
                     new Uri($"{url}/swagger/oauth2-redirect.html"),                     // https://swagger.io/ for IdentityModule as Example
-                    new Uri("https://localhost:20001/swagger/oauth2-redirect.html")     // https://swagger.io/ for Module as Example
+                    new Uri("https://localhost:20001/swagger/oauth2-redirect.html"),    // https://swagger.io/ for Module as Example
+                    new Uri("https://localhost:7207/signin-oidc")                       // Calabonga.BlazorApp see folder ClientSamples in repository
                 },
                 PostLogoutRedirectUris =
                 {
-                    new Uri("https://localhost:7207/signout-callback-oidc")
+                    new Uri("https://localhost:7207/signout-callback-oidc")             // Calabonga.BlazorApp see folder ClientSamples in repository
                 },
                 Permissions =
                 {
                     // Endpoint permissions
                     OpenIddictConstants.Permissions.Endpoints.Authorization,
-                    OpenIddictConstants.Permissions.Endpoints.Logout,
+                    OpenIddictConstants.Permissions.Endpoints.EndSession,
                     OpenIddictConstants.Permissions.Endpoints.Introspection,
                     OpenIddictConstants.Permissions.Endpoints.Token,
 
