@@ -53,10 +53,10 @@ public class OpenIddictDefinition : AppDefinition
                 options.SetAuthorizationEndpointUris("connect/authorize").RequireProofKeyForCodeExchange() // enable PKCE
                                                                                                            //.SetDeviceEndpointUris("connect/device")
                     .SetIntrospectionEndpointUris("connect/introspect")
-                    .SetLogoutEndpointUris("connect/logout")
+                    .SetEndSessionEndpointUris("connect/logout")
                     .SetTokenEndpointUris("connect/token")
                     //.SetVerificationEndpointUris("connect/verify"),
-                    .SetUserinfoEndpointUris("connect/userinfo");
+                    .SetUserInfoEndpointUris("connect/userinfo");
 
                 // Encryption and signing of tokens
                 options
@@ -80,7 +80,7 @@ public class OpenIddictDefinition : AppDefinition
                 // Register the ASP.NET Core host and configure the ASP.NET Core options.
                 options
                     .UseAspNetCore()
-                    .EnableLogoutEndpointPassthrough()
+                    .EnableEndSessionEndpointPassthrough()
                     .EnableTokenEndpointPassthrough()
                     .EnableAuthorizationEndpointPassthrough()
                     .DisableTransportSecurityRequirement();

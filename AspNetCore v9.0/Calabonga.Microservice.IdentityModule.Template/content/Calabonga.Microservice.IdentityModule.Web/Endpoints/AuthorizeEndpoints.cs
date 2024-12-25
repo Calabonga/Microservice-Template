@@ -78,7 +78,7 @@ public sealed class AuthorizeEndpoints : AppDefinition
             // return an authorization response without displaying the consent form.
             case OpenIddictConstants.ConsentTypes.Implicit:
             case OpenIddictConstants.ConsentTypes.External when authorizations.Any():
-            case OpenIddictConstants.ConsentTypes.Explicit when authorizations.Any() && !iddictRequest.HasPrompt(OpenIddictConstants.Prompts.Consent):
+            case OpenIddictConstants.ConsentTypes.Explicit when authorizations.Any() && !iddictRequest.HasPromptValue(OpenIddictConstants.PromptValues.Consent):
 
                 var principal = await signInManager.CreateUserPrincipalAsync(user);
 
@@ -124,8 +124,8 @@ public sealed class AuthorizeEndpoints : AppDefinition
 
             // At this point, no authorization was found in the database and an error must be returned
             // if the client application specified prompt=none in the authorization request.
-            case OpenIddictConstants.ConsentTypes.Explicit when iddictRequest.HasPrompt(OpenIddictConstants.Prompts.None):
-            case OpenIddictConstants.ConsentTypes.Systematic when iddictRequest.HasPrompt(OpenIddictConstants.Prompts.None):
+            case OpenIddictConstants.ConsentTypes.Explicit when iddictRequest.HasPromptValue(OpenIddictConstants.PromptValues.None):
+            case OpenIddictConstants.ConsentTypes.Systematic when iddictRequest.HasPromptValue(OpenIddictConstants.PromptValues.None):
                 return Results.Forbid(
                         authenticationSchemes: new[] { OpenIddictServerAspNetCoreDefaults.AuthenticationScheme },
                         properties: new AuthenticationProperties(new Dictionary<string, string>
