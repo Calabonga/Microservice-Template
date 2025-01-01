@@ -318,3 +318,165 @@ On the NET6 platform (In the `AspNetCore v6.0` folder), there are now two types 
 4. Folder infrastructure has been updated. The Vertical Slice Architecture, presented by Jimmy Bogard, has been adopted.
 5. Updated the VSIX extension for Visual Studio.
 
+### 2021-11-01
+
+1. Old templates for NET Core 2.2 and NET Core 3.0 have been removed.
+2. Development of templates for the new version has started.
+
+### 2021-09-06 Version 5.0.7
+
+1. Updated assemblies for ASP.NET Core, EntityFrameworkCore, and Swagger (OpenAPI), as well as NuGet packages Calabonga.Microservices.Core, FluentValidation, and others.
+2. Added several comments in the code to ensure clarity in actions.
+3. Updated the VSIX extension for Visual Studio.
+
+### 2021-10-31 Version 5.0.8
+
+1. Updated assemblies for ASP.NET Core, EntityFrameworkCore, and Swagger (OpenAPI), as well as the NuGet package FluentValidation and others.
+2. Converted some method constructions to lambda expressions to follow current trends.
+3. Updated the VSIX extension for Visual Studio.
+
+### 2021-09-08 Version 5.0.6
+
+1. Updated assemblies for ASP.NET Core and EntityFrameworkCore, as well as NuGet packages OperationResultCore, Calabonga.Microservices.Core, Swagger, FluentValidation, and others.
+2. Updated metadata used for the VSIX extension for Visual Studio.
+
+### 2021-06-04 Version 5.0.5
+
+1. Fixed several typos.
+2. Updated assemblies for ASP.NET Core and EntityFrameworkCore, as well as NuGet packages OperationResultCore, Calabonga.Microservices.Core, Swagger, FluentValidation, and others.
+
+### 2021-03-23 Version 5.0.4
+
+1. The standard logger has been replaced with Serilog. It is now easier to read logs.
+2. Fixed several typos.
+3. Updated assemblies for ASP.NET Core and EntityFrameworkCore, as well as NuGet packages OperationResultCore, Calabonga.Microservices.Core, and others.
+4. The implementation of Mediatr requests (Request) from classes has been converted into records (class -> record) in C#.
+
+### 2021-03-16 Version 5.0.3
+
+1. Removed dependencies on some assemblies that have been moved to a higher level. This will allow them to be updated separately.
+2. Fixed several typos.
+3. Updated assemblies for ASP.NET Core and EntityFrameworkCore to versions (5.0.4), as well as NuGet packages OperationResultCore, Calabonga.Microservices.Core, and others.
+4. The implementation of Mediatr requests from controllers has been moved to template projects from the Calabonga.AspNetCore.Controllers assembly to make usage examples available to the developer.
+
+## 2021-01-27 Version 5.0.2
+
+1. Applied language features from C# 9.0. In other words, significant code refactoring for optimization.
+2. Fixed several typos.
+3. Updated assemblies for `ASP.NET Core` and `EntityFramework Core` to version (5.0.2). Also, updated NuGet packages `OperationResultCore`, `Calabonga.Microservices.Core`, and others.
+
+## 2020-12-04 Version 5.0.1
+
+1. In the microservice template with IdentityServer4 and the template without it, removed the xxx.Core projects. Files from these projects were moved to the xxx.Entities project. Links to Exceptions have been moved to the NuGet package `Calabonga.Microservices.Core`.
+2. In the microservice template with IdentityServer4, added the ability to authenticate both as Cookie type and Bearer. Yes! Now both authentication types are configured.
+3. Applied language features from C# 8.0. In other words, significant code refactoring for optimization.
+4. Fixed numerous typos.
+
+## 2020-11-15 Version 5.0.0
+
+1. All projects in all solutions have been updated to .NET 5.0.
+2. Updated NuGet packages for `ASP.NET Core` and `EntityFramework Core` (5.0.0).
+3. Added logging implementation as an example usage, which is described in the video [ILogger in ASP.NET Core](https://youtu.be/09EVKgHgwnM).
+4. Displayed branch name and commit number on the API page (`Swagger`).
+
+# Documentation
+
+The documentation is available on GitHub in the [Wiki](https://github.com/Calabonga/Microservice-Template/wiki/Nimble-Microservice-Templates).
+
+# Microservices
+
+Visual Studio project template for microservice module based on ASP.NET Core.
+
+# Download
+
+[ASP NET Core 3.1](https://github.com/Calabonga/microservice-template/tree/master/Output/AspNetCore-v.3.1) - Templates for ASP.NET Core 3.1 version
+
+[ASP NET Core 5.0](https://github.com/Calabonga/microservice-template/tree/master/Output/AspNetCore-v.5.0) - Templates for ASP.NET Core 5.0 version
+
+[ASP NET Core 6.0](https://github.com/Calabonga/microservice-template/tree/master/Output/AspNetCore-v.6.0) - Templates for ASP.NET Core 6.0 version
+
+# Instructions and Additional Materials
+
+[Installing Nimble Templates](https://www.calabonga.net/blog/post/install-nimble-framework-version-5)
+
+[Calabonga.AspNetCore.Controllers](https://github.com/Calabonga/Calabonga.AspNetCore.Controllers/) NuGet package based on Mediatr
+
+[Calabonga.UnitOfWork.Controllers](https://github.com/Calabonga/Calabonga.UnitOfWork.Controllers) NuGet package based on Readonly/Writable controllers
+
+[Microservices: Microservice Template](https://www.calabonga.net/blog/post/microservises-template)
+
+[Microservices: Access Management](https://www.calabonga.net/blog/post/mikroservisy-3-centralizovannoe-upravlenie-dostupom)
+
+[Microservices: Data Exchange Between Microservices](https://www.calabonga.net/blog/post/reshenie-obmen-dannym-mezhdu-mikroservisami)
+
+[Microservices: Proxy for frontend](https://www.calabonga.net/blog/post/odin-frontend-dolzhen-rabotat-tolko-so-svoim-backend)
+
+[You can ask questions in the blog](https://www.calabonga.net/blog)
+
+# Videos
+
+Here are the videos related to NimbleFramework. They are categorized by version, but for a better understanding, it is highly recommended to check out all of them.
+
+## Version 6.0
+
+[Nimble Framework v6.1](https://youtu.be/xijBGwMEL8E)
+
+[Nimble Framework v6.0](https://youtu.be/euOLhhNEcwg)
+
+## Version 3.1 (3.0)
+
+Part 0. [Nimble: Installing Templates for Microservices](https://youtu.be/rc0wvL0jlzc)
+
+Part 1. [Nimble: Demonstrating the Microservice Template Example](https://youtu.be/N0dRGGV2iEg)
+
+Part 2. [Nimble: Installing Templates for Microservices](https://youtu.be/rc0wvL0jlzc)
+
+Part 3. [Nimble: Basic Concepts](https://youtu.be/WbSwp1Aa7hM)
+
+Part 4. [Nimble: Creating Your Query and Handler for IMediator](https://youtu.be/wUfT5aLHVV8)
+
+[Microservices 2](https://www.youtube.com/playlist?list=PLIB8be7sunXMh9dckizdXz65hLX_HRzlc) (Playlist)
+
+## Version 2.2
+
+[Microservices](https://www.youtube.com/playlist?list=PLIB8be7sunXMXTZKptqEtXAACpsYZdzi_) (Playlist)
+
+# Visual Studio Extensions
+
+Now, microservice generation templates are also available in the Visual Studio Marketplace.
+
+![Marketplace](Whatnot/vs-extension-market-view.png)
+
+[View on Marketplace](https://marketplace.visualstudio.com/items?itemName=Calabonga.microserivce-templates)
+
+You can also install directly from Visual Studio:
+![Extension](Whatnot/vs-extension.png)
+
+# Additional Materials for Nimble Framework
+
+[Microservices: Nimble Framework v.2](https://youtu.be/bTxruvbhDss)
+
+[Nimble: Creating a Microservice](https://youtu.be/7nw8Naxf2U0)
+
+Nimble Framework for .NET6 is coming soon.
+
+# Acknowledgements
+
+Support for the channel is welcome:
+
+* <https://www.calabonga.net/site/thanks>
+
+## Comments, Suggestions, and Remarks
+
+Please leave your comments on the videos on the website [www.calabonga.net](https://www.calabonga.net)
+
+# Author
+
+Sergey Kalabonga (Calabonga)
+
+![Author](Whatnot/Calabonga.gif)
+
+# Contact Information
+
+* [Programming Blog](https://www.calabonga.net)
+* [Video Channel Boosty.to/Calabonga](https://boosty.to/Calabonga)

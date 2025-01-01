@@ -4,8 +4,6 @@
 
 >Внимание! Пожалуйста, ознакомьтесь со всеми комментариями с надписью "ATTENTION!", потому что эти места потребуют от вас некоторых решений и/или действий.
 
->Attention! Please find out all comments with 'ATTENTION!' because that is required some decisions or actions from you.
-
 ## Как установить (Install)
 
 Для установки шаблонов в среду разработки (`Visual Studio`, `Rider`, `dotnet CLI`) пожалуйста прочитайте статью [wiki](https://github.com/Calabonga/Microservice-Template/wiki), в которой описано, как очень просто установить шаблоны при помощи одной команды из командной строки на ваш рабочий компьютер.
@@ -13,12 +11,7 @@
 * [Calabonga.Microservice.IdentityModule.Template](https://www.nuget.org/packages/Calabonga.Microservice.IdentityModule.Template/) nuget-пакет для установки шаблона микросервиса в среду разработки (`Visual Studio`, `Rider`, `dotnet CLI`) с OpenIddict.
 * [Calabonga.Microservice.Module.Template](https://www.nuget.org/packages/Calabonga.Microservice.Module.Template/) nuget-пакет для установки шаблона микросервиса в среду разработки (`Visual Studio`, `Rider`, `dotnet CLI`) без OpenIddict.
 
-
-## How to install
-
-To install templates (`Visual Studio`, `Rider`, `dotnet CLI`) please, read [wiki](https://github.com/Calabonga/Microservice-Template/wiki) where you can find information about a simple way to use a command (command prompt) to install templates on your workstation. 
-
-## Дополнительная информация (Additional info)
+## Дополнительная информация
 
 * На [сайте разработчика](https://www.calabonga.net/blog/post/microservice-templates). 
 * Видео презентация новой версии [Nimble Framework v.6](https://youtu.be/euOLhhNEcwg).
@@ -402,11 +395,7 @@ dotnet new list
 
 Шаблон (template) для Visual Studio для построения инфраструктуры микросервисов на базе ASP.NET Core.
 
-# Microservices
-
-Visual Studio project template for microservice module base on ASP.NET Core
-
-# Скачать (Download)
+# Скачать
 
 [ASP NET Core 3.1](https://github.com/Calabonga/microservice-template/tree/master/Output/AspNetCore-v.3.1) - Шаблоны для версии ASP.NET Core 3.1
 
