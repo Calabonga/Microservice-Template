@@ -1,3 +1,5 @@
+[![English/EN](https://img.shields.io/badge/lang-en-red.svg)](https://github.com/Calabonga/Microservice-Template/README-en.md)
+
 # Nimble Framework
 
 >Внимание! Пожалуйста, ознакомьтесь со всеми комментариями с надписью "ATTENTION!", потому что эти места потребуют от вас некоторых решений и/или действий.
