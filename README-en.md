@@ -13,6 +13,11 @@ To install templates (`Visual Studio`, `Rider`, `dotnet CLI`) please, read [wiki
 
 ## Nimble Framework History
 
+### 2025-02-15 Version 9.0.3
+
+* Nuget-packages updated `IdentityModule`.
+* Nuget-packages updated `Module`.
+
 ### 2024-12-25 Version 9.0.2
 
 * Updated NuGet packages in the `IdentityModule` project:
