@@ -3,12 +3,12 @@
 Please find out all comments with 'ATTENTION!' because that is required some decisions from you.
 
 # About template
-| Name         | Description                                |
-| ------------ | ------------------------------------------ |
-| Name         | Microservice Template for ASP.NET Core API |
-| Author       | Calabonga SOFT © 2005-2024 Calabonga SOFT  |
-| Created Date | 2024-11-26                                 |
-| Create From  | Microservice-Template NET 8.0               |
+| Name           | Description                                |
+| -------------- | ------------------------------------------ |
+| Name           | Microservice Template for ASP.NET Core API |
+| Author         | Calabonga SOFT © 2005-2024 Calabonga SOFT  |
+| Created Date   | 2024-11-26                                 |
+| Migrated From  | Microservice-Template NET 8.0              |
 
 # Versions
 

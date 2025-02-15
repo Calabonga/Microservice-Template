@@ -20,7 +20,7 @@ public class OpenApiDefinition : AppDefinition
     // -------------------------------------------------------
 
 
-    public const string AppVersion = "9.0.2";
+    public const string AppVersion = "9.0.3";
 
     private const string _openApiConfig = "/openapi/v1.json";
 
