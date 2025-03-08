@@ -33,9 +33,9 @@ public static class DeleteEventItem
 
             repository.Delete(entity);
             await unitOfWork.SaveChangesAsync();
-            if (!unitOfWork.LastSaveChangesResult.IsOk)
+            if (!unitOfWork.Result.Ok)
             {
-                return Operation.Error(unitOfWork.LastSaveChangesResult.Exception?.Message ?? AppData.Exceptions.SomethingWrong);
+                return Operation.Error(unitOfWork.Result.Exception?.Message ?? AppData.Exceptions.SomethingWrong);
             }
 
             var mapped = mapper.Map<EventItemViewModel>(entity);

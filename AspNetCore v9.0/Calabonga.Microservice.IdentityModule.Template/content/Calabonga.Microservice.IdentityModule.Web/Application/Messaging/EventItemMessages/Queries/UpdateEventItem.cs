@@ -22,7 +22,7 @@ public static class PutEventItem
         public async Task<Operation<EventItemViewModel, string>> Handle(Request eventItemRequest, CancellationToken cancellationToken)
         {
             var repository = unitOfWork.GetRepository<EventItem>();
-            var entity = await repository.GetFirstOrDefaultAsync(predicate: x => x.Id == eventItemRequest.Id, disableTracking: false);
+            var entity = await repository.GetFirstOrDefaultAsync(predicate: x => x.Id == eventItemRequest.Id, trackingType: TrackingType.Tracking);
             if (entity == null)
             {
                 return Operation.Error(AppContracts.Exceptions.NotFoundException);
@@ -33,8 +33,8 @@ public static class PutEventItem
             repository.Update(entity);
             await unitOfWork.SaveChangesAsync();
 
-            var lastResult = unitOfWork.LastSaveChangesResult;
-            if (lastResult.IsOk)
+            var lastResult = unitOfWork.Result;
+            if (lastResult.Ok)
             {
                 var mapped = mapper.Map<EventItem, EventItemViewModel>(entity);
                 if (mapped is not null)

@@ -36,8 +36,8 @@ public static class PostEventItem
             await unitOfWork.GetRepository<EventItem>().InsertAsync(entity, cancellationToken);
             await unitOfWork.SaveChangesAsync();
 
-            var lastResult = unitOfWork.LastSaveChangesResult;
-            if (lastResult.IsOk)
+            var lastResult = unitOfWork.Result;
+            if (lastResult.Ok)
             {
                 var mapped = mapper.Map<EventItem, EventItemViewModel>(entity);
                 logger.LogInformation("New entity {EventItem} successfully created", entity);

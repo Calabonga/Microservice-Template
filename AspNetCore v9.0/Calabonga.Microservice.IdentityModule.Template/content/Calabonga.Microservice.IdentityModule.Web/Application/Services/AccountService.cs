@@ -95,7 +95,7 @@ public class AccountService : IAccountService
 
             await profileRepository.InsertAsync(profile!, cancellationToken);
             await _unitOfWork.SaveChangesAsync();
-            if (_unitOfWork.LastSaveChangesResult.IsOk)
+            if (_unitOfWork.Result.Ok)
             {
                 var principal = await _claimsFactory.CreateAsync(user!);
                 var mapped = _mapper.Map<UserProfileViewModel>(principal.Identity);
