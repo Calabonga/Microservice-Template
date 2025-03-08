@@ -7,7 +7,7 @@ namespace Calabonga.Microservice.Module.Web.Application.Messaging.ProfileMessage
 /// <summary>
 /// Request: Returns user roles 
 /// </summary>
-public sealed class GetProfile
+public static class GetProfile
 {
     public record Request : IRequest<string>;
 
