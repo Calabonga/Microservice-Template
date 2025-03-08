@@ -18,6 +18,15 @@
 
 ## История Nimble Framework
 
+### 2025-03-08 Версия 9.0.4
+
+* Обновились nuget-пакеты в проекте `IdentityModule`.
+    * `Calabonga.UnitOfWork` 6.0.0
+    * `Swashbuckle.AspNetCore.SwaggerUI` 7.3.1
+* Обновились nuget-пакеты в проекте `Module`.
+    * `Calabonga.UnitOfWork` 6.0.0
+    * `Swashbuckle.AspNetCore.SwaggerUI` 7.3.1
+
 ### 2025-02-15 Версия 9.0.3
 
 * Обновились nuget-пакеты в проекте `IdentityModule`.

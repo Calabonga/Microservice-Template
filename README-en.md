@@ -13,6 +13,15 @@ To install templates (`Visual Studio`, `Rider`, `dotnet CLI`) please, read [wiki
 
 ## Nimble Framework History
 
+### 2025-03-08 Версия 9.0.4
+
+* Nuget-packages `IdentityModule` were updated.
+    * `Calabonga.UnitOfWork` 6.0.0
+    * `Swashbuckle.AspNetCore.SwaggerUI` 7.3.1
+*  Nuget-packages `Module` were updated.
+    * `Calabonga.UnitOfWork` 6.0.0
+    * `Swashbuckle.AspNetCore.SwaggerUI` 7.3.1
+
 ### 2025-02-15 Version 9.0.3
 
 * Nuget-packages updated `IdentityModule`.
