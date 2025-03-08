@@ -11,7 +11,7 @@ namespace Calabonga.Microservice.IdentityModule.Web.Application.Messaging.EventI
 /// <summary>
 /// EventItem by Identifier
 /// </summary>
-public sealed class GetEventItemById
+public static class GetEventItemById
 {
     public record Request(Guid Id) : IRequest<Operation<EventItemViewModel, string>>;
 

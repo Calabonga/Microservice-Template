@@ -11,7 +11,7 @@ namespace Calabonga.Microservice.Module.Web.Application.Messaging.EventItemMessa
 /// <summary>
 /// Request: EventItem delete
 /// </summary>
-public sealed class DeleteEventItem
+public static class DeleteEventItem
 {
     public record Request(Guid Id) : IRequest<Operation<EventItemViewModel, string>>;
 

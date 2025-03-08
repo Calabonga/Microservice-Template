@@ -12,7 +12,7 @@ namespace Calabonga.Microservice.IdentityModule.Web.Application.Messaging.EventI
 /// <summary>
 /// Request: EventItem edit
 /// </summary>
-public sealed class PutEventItem
+public static class PutEventItem
 {
     public record Request(Guid Id, EventItemUpdateViewModel Model) : IRequest<Operation<EventItemViewModel, string>>;
 

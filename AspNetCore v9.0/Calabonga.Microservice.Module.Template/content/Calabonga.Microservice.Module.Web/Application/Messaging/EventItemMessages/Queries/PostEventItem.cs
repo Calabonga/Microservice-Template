@@ -13,7 +13,7 @@ namespace Calabonga.Microservice.Module.Web.Application.Messaging.EventItemMessa
 /// <summary>
 /// Request: EventItem creation
 /// </summary>
-public sealed class PostEventItem
+public static class PostEventItem
 {
     public record Request(EventItemCreateViewModel Model) : IRequest<Operation<EventItemViewModel, string>>;
 
