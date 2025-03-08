@@ -19,7 +19,7 @@ public class OpenApiDefinition : AppDefinition
     // private const string AppVersion = $"{ThisAssembly.Git.SemVer.Major}.{ThisAssembly.Git.SemVer.Minor}.{ThisAssembly.Git.SemVer.Patch}";
     // -------------------------------------------------------
 
-    public const string AppVersion = "9.0.3";
+    public const string AppVersion = "9.0.6";
 
     private const string _openApiConfig = "/openapi/v1.json";
 

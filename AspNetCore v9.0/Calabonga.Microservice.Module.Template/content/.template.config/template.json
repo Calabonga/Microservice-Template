@@ -14,6 +14,7 @@
         "language": "C#",
         "type": "solution"
     },
+    "defaultName": "Calabonga.Microservice.Module1",
     "sourceName": "Calabonga.Microservice.Module",
     "preferNameDirectory": true,
     "symbols": {
