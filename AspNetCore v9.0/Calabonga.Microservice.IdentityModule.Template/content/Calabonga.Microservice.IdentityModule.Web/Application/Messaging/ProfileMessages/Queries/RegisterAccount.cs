@@ -8,7 +8,7 @@ namespace Calabonga.Microservice.IdentityModule.Web.Application.Messaging.Profil
 /// <summary>
 /// Register new account
 /// </summary>
-public sealed class RegisterAccount
+public static class RegisterAccount
 {
     public class Request(RegisterViewModel model) : IRequest<Operation<UserProfileViewModel, string>>
     {

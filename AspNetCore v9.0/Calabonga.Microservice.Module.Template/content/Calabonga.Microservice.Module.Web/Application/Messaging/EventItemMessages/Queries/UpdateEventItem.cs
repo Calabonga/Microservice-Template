@@ -12,7 +12,7 @@ namespace Calabonga.Microservice.Module.Web.Application.Messaging.EventItemMessa
 /// <summary>
 /// Request: EventItem edit
 /// </summary>
-public sealed class PutEventItem
+public static class PutEventItem
 {
     public record Request(Guid Id, EventItemUpdateViewModel Model) : IRequest<Operation<EventItemViewModel, string>>;
 
@@ -22,7 +22,7 @@ public sealed class PutEventItem
         public async Task<Operation<EventItemViewModel, string>> Handle(Request eventItemRequest, CancellationToken cancellationToken)
         {
             var repository = unitOfWork.GetRepository<EventItem>();
-            var entity = await repository.GetFirstOrDefaultAsync(predicate: x => x.Id == eventItemRequest.Id, disableTracking: false);
+            var entity = await repository.GetFirstOrDefaultAsync(predicate: x => x.Id == eventItemRequest.Id, trackingType: TrackingType.Tracking);
             if (entity == null)
             {
                 return Operation.Error(AppContracts.Exceptions.NotFoundException);
@@ -33,8 +33,8 @@ public sealed class PutEventItem
             repository.Update(entity);
             await unitOfWork.SaveChangesAsync();
 
-            var lastResult = unitOfWork.LastSaveChangesResult;
-            if (lastResult.IsOk)
+            var lastResult = unitOfWork.Result;
+            if (lastResult.Ok)
             {
                 var mapped = mapper.Map<EventItem, EventItemViewModel>(entity);
                 return mapped is not null

@@ -11,7 +11,7 @@ namespace Calabonga.Microservice.Module.Web.Application.Messaging.EventItemMessa
 /// <summary>
 /// Request: EventItem delete
 /// </summary>
-public sealed class DeleteEventItem
+public static class DeleteEventItem
 {
     public record Request(Guid Id) : IRequest<Operation<EventItemViewModel, string>>;
 
@@ -33,9 +33,9 @@ public sealed class DeleteEventItem
 
             repository.Delete(entity);
             await unitOfWork.SaveChangesAsync();
-            if (!unitOfWork.LastSaveChangesResult.IsOk)
+            if (!unitOfWork.Result.Ok)
             {
-                return Operation.Error(unitOfWork.LastSaveChangesResult.Exception?.Message ?? AppData.Exceptions.SomethingWrong);
+                return Operation.Error(unitOfWork.Result.Exception?.Message ?? AppData.Exceptions.SomethingWrong);
             }
 
             var mapped = mapper.Map<EventItemViewModel>(entity);

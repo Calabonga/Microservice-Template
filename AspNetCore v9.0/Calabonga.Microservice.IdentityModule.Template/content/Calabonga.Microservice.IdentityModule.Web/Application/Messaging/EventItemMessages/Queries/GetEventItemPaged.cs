@@ -14,7 +14,7 @@ namespace Calabonga.Microservice.IdentityModule.Web.Application.Messaging.EventI
 /// <summary>
 /// Request for paged list of EventItems
 /// </summary>
-public sealed class GetEventItemPaged
+public static class GetEventItemPaged
 {
     public record Request(int PageIndex, int PageSize, string? Search) : IRequest<Operation<IPagedList<EventItemViewModel>, string>>;
 

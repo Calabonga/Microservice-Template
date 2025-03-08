@@ -12,7 +12,7 @@ namespace Calabonga.Microservice.IdentityModule.Web.Application.Messaging.EventI
 /// <summary>
 /// Request: EventItem creation
 /// </summary>
-public sealed class PostEventItem
+public static class PostEventItem
 {
     public record Request(EventItemCreateViewModel Model) : IRequest<Operation<EventItemViewModel, string>>;
 
@@ -33,8 +33,8 @@ public sealed class PostEventItem
             await unitOfWork.GetRepository<EventItem>().InsertAsync(entity, cancellationToken);
             await unitOfWork.SaveChangesAsync();
 
-            var lastResult = unitOfWork.LastSaveChangesResult;
-            if (lastResult.IsOk)
+            var lastResult = unitOfWork.Result;
+            if (lastResult.Ok)
             {
                 var mapped = mapper.Map<EventItem, EventItemViewModel>(entity);
                 if (mapped is not null)
