@@ -13,6 +13,30 @@ To install templates (`Visual Studio`, `Rider`, `dotnet CLI`) please, read [wiki
 
 ## Nimble Framework History
 
+### 2025-06-13 Version 9.0.7
+
+
+* Nuget-packages `IdentityModule` were updated.
+    * Microsoft.EntityFrameworkCore.Tools
+    * Microsoft.EntityFrameworkCore.InMemory
+    * OpenIddict.EntityFrameworkCore
+    * Microsoft.EntityFrameworkCore
+    * Microsoft.AspNetCore.Identity.EntityFrameworkCore*
+    * FluentValidation
+    
+*  Nuget-packages `Module` were updated.
+    * Microsoft.EntityFrameworkCore
+    * Microsoft.EntityFrameworkCore.InMemory
+    * Microsoft.AspNetCore.Identity.EntityFrameworkCore
+    * FluentValidation
+    * FluentValidation.DependencyInjectionExtensions
+    * MediatR
+    * Microsoft.AspNetCore.Authentication.OpenIdConnect
+    * Microsoft.AspNetCore.Authentication.JwtBearer
+    * Microsoft.AspNetCore.Components.QuickGrid.EntityFrameworkAdapter
+    * Microsoft.AspNetCore.OpenApi
+    * Microsoft.EntityFrameworkCore.Tools
+
 ### 2025-03-08 Version 9.0.6
 
 * Nuget-packages `IdentityModule` were updated.
