@@ -6,7 +6,7 @@ using Calabonga.OperationResults;
 using Calabonga.PagedListCore;
 using Calabonga.PredicatesBuilder;
 using Calabonga.UnitOfWork;
-using MediatR;
+using Mediator;
 using System.Linq.Expressions;
 
 namespace Calabonga.Microservice.IdentityModule.Web.Application.Messaging.EventItemMessages.Queries;
@@ -21,7 +21,7 @@ public static class GetEventItemPaged
     public class Handler(IUnitOfWork unitOfWork, IMapper mapper)
         : IRequestHandler<Request, Operation<IPagedList<EventItemViewModel>, string>>
     {
-        public async Task<Operation<IPagedList<EventItemViewModel>, string>> Handle(
+        public async ValueTask<Operation<IPagedList<EventItemViewModel>, string>> Handle(
             Request request,
             CancellationToken cancellationToken)
         {

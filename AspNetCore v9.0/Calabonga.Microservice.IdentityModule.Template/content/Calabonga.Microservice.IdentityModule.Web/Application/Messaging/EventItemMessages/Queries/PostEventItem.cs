@@ -5,7 +5,7 @@ using Calabonga.Microservice.IdentityModule.Web.Application.Messaging.EventItemM
 using Calabonga.Microservices.Core;
 using Calabonga.OperationResults;
 using Calabonga.UnitOfWork;
-using MediatR;
+using Mediator;
 
 namespace Calabonga.Microservice.IdentityModule.Web.Application.Messaging.EventItemMessages.Queries;
 
@@ -19,7 +19,7 @@ public static class PostEventItem
     public class Handler(IUnitOfWork unitOfWork, IMapper mapper, ILogger<Handler> logger)
         : IRequestHandler<Request, Operation<EventItemViewModel, string>>
     {
-        public async Task<Operation<EventItemViewModel, string>> Handle(Request eventItemRequest, CancellationToken cancellationToken)
+        public async ValueTask<Operation<EventItemViewModel, string>> Handle(Request eventItemRequest, CancellationToken cancellationToken)
         {
             logger.LogDebug("Creating new EventItem");
 

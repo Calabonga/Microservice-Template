@@ -2,7 +2,7 @@
 using Calabonga.Microservice.IdentityModule.Web.Definitions.Mediator.Base;
 using Calabonga.OperationResults;
 using Calabonga.UnitOfWork;
-using MediatR;
+using Mediator;
 
 namespace Calabonga.Microservice.IdentityModule.Web.Definitions.Mediator;
 

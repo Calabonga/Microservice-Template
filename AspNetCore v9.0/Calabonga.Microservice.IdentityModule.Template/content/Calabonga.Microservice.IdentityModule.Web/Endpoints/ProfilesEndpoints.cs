@@ -2,7 +2,7 @@
 using Calabonga.Microservice.IdentityModule.Domain.Base;
 using Calabonga.Microservice.IdentityModule.Web.Application.Messaging.ProfileMessages.Queries;
 using Calabonga.Microservice.IdentityModule.Web.Application.Messaging.ProfileMessages.ViewModels;
-using MediatR;
+using Mediator;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Calabonga.Microservice.IdentityModule.Web.Endpoints;

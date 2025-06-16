@@ -3,7 +3,7 @@ using Calabonga.Microservice.IdentityModule.Domain;
 using Calabonga.Microservice.IdentityModule.Domain.Base;
 using Calabonga.Microservice.IdentityModule.Web.Application.Messaging.EventItemMessages.Queries;
 using Calabonga.Microservice.IdentityModule.Web.Application.Messaging.EventItemMessages.ViewModels;
-using MediatR;
+using Mediator;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Calabonga.Microservice.IdentityModule.Web.Endpoints;

@@ -1,4 +1,4 @@
-# Nimble Framework
+﻿# Nimble Framework
 
 >Attention! Please find out all comments with 'ATTENTION!' because that is required some decisions or actions from you.
 
@@ -13,8 +13,12 @@ To install templates (`Visual Studio`, `Rider`, `dotnet CLI`) please, read [wiki
 
 ## Nimble Framework History
 
-### 2025-06-13 Version 9.0.7
+### 2025-06-16 Version 9.1.0
+* [MediatR](https://github.com/jbogard/MediatR) replaced with [Mediator.Net](https://github.com/mayuanyang/Mediator.Net) because ["MediatR is going commercial"](https://github.com/jbogard/MediatR/discussions/1105). Mediator.NET contains all that exists nuget MediatR, but using `SourceGenerator`. That's mean, there is no `Reflection` used. And in this case performance increased.
+* Some syntax errors were fixed.
+* Dependencies update (nuget-packages).
 
+### 2025-06-13 Version 9.0.7
 
 * Nuget-packages `IdentityModule` were updated.
     * Microsoft.EntityFrameworkCore.Tools

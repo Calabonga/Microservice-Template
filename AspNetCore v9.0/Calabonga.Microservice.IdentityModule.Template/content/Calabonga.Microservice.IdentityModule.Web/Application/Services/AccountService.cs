@@ -53,7 +53,7 @@ public class AccountService : IAccountService
         _httpContext = httpContext;
         _mapper = mapper;
 
-        // We need to created a custom instance for current service
+        // We need to create a custom instance for current service
         // It'll help to use Transaction in the Unit Of Work
         _userManager = new UserManager<ApplicationUser>(userStore, optionsAccessor, passwordHasher, userValidators, passwordValidators, keyNormalizer, errors, services, loggerUser);
         var roleStore = new RoleStore<ApplicationRole, ApplicationDbContext, Guid>(_unitOfWork.DbContext);
@@ -74,7 +74,7 @@ public class AccountService : IAccountService
     /// <param name="model"></param>
     /// <param name="cancellationToken"></param>
 
-    public async Task<Operation<UserProfileViewModel, string>> RegisterAsync(RegisterViewModel model, CancellationToken cancellationToken)
+    public async ValueTask<Operation<UserProfileViewModel, string>> RegisterAsync(RegisterViewModel model, CancellationToken cancellationToken)
     {
         var user = _mapper.Map<ApplicationUser>(model);
         await using var transaction = await _unitOfWork.BeginTransactionAsync();

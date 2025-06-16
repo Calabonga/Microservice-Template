@@ -4,7 +4,7 @@ using Calabonga.Microservice.IdentityModule.Domain.Base;
 using Calabonga.Microservice.IdentityModule.Web.Application.Messaging.EventItemMessages.ViewModels;
 using Calabonga.OperationResults;
 using Calabonga.UnitOfWork;
-using MediatR;
+using Mediator;
 
 namespace Calabonga.Microservice.IdentityModule.Web.Application.Messaging.EventItemMessages.Queries;
 
@@ -22,7 +22,7 @@ public static class DeleteEventItem
         /// <param name="request">The request</param>
         /// <param name="cancellationToken">Cancellation token</param>
         /// <returns>Response from the request</returns>
-        public async Task<Operation<EventItemViewModel, string>> Handle(Request request, CancellationToken cancellationToken)
+        public async ValueTask<Operation<EventItemViewModel, string>> Handle(Request request, CancellationToken cancellationToken)
         {
             var repository = unitOfWork.GetRepository<EventItem>();
             var entity = await repository.FindAsync(request.Id);

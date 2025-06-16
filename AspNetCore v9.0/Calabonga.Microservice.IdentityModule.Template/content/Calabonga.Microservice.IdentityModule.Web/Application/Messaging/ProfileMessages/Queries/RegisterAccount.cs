@@ -1,7 +1,7 @@
 ﻿using Calabonga.Microservice.IdentityModule.Web.Application.Messaging.ProfileMessages.ViewModels;
 using Calabonga.Microservice.IdentityModule.Web.Application.Services;
 using Calabonga.OperationResults;
-using MediatR;
+using Mediator;
 
 namespace Calabonga.Microservice.IdentityModule.Web.Application.Messaging.ProfileMessages.Queries;
 
@@ -18,7 +18,7 @@ public static class RegisterAccount
     public class Handler(IAccountService accountService)
         : IRequestHandler<Request, Operation<UserProfileViewModel, string>>
     {
-        public Task<Operation<UserProfileViewModel, string>> Handle(Request request, CancellationToken cancellationToken)
+        public ValueTask<Operation<UserProfileViewModel, string>> Handle(Request request, CancellationToken cancellationToken)
             => accountService.RegisterAsync(request.Model, cancellationToken);
     }
 }
