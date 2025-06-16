@@ -19,7 +19,7 @@ public interface IAccountService
     Task<IEnumerable<ApplicationUser>> GetUsersByEmailsAsync(IEnumerable<string> emails);
 
     /// <summary>
-    /// Get User Id from HttpContext
+    /// Get User Identifier from HttpContext
     /// </summary>
 
     Guid GetCurrentUserId();
@@ -30,7 +30,7 @@ public interface IAccountService
     /// <param name="model"></param>
     /// <param name="cancellationToken"></param>
 
-    Task<Operation<UserProfileViewModel, string>> RegisterAsync(RegisterViewModel model, CancellationToken cancellationToken);
+    ValueTask<Operation<UserProfileViewModel, string>> RegisterAsync(RegisterViewModel model, CancellationToken cancellationToken);
 
     /// <summary>
     /// Returns User by user identifier

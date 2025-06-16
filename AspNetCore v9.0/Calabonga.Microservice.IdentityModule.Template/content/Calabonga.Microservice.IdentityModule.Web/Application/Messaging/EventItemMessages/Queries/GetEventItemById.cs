@@ -1,10 +1,9 @@
-﻿using AutoMapper;
-using Calabonga.Microservice.IdentityModule.Domain;
+﻿using Calabonga.Microservice.IdentityModule.Domain;
 using Calabonga.Microservice.IdentityModule.Domain.Base;
 using Calabonga.Microservice.IdentityModule.Web.Application.Messaging.EventItemMessages.ViewModels;
 using Calabonga.OperationResults;
 using Calabonga.UnitOfWork;
-using MediatR;
+using Mediator;
 
 namespace Calabonga.Microservice.IdentityModule.Web.Application.Messaging.EventItemMessages.Queries;
 
@@ -15,14 +14,14 @@ public static class GetEventItemById
 {
     public record Request(Guid Id) : IRequest<Operation<EventItemViewModel, string>>;
 
-    public class Handler(IUnitOfWork unitOfWork, IMapper mapper)
+    public class Handler(IUnitOfWork unitOfWork)
         : IRequestHandler<Request, Operation<EventItemViewModel, string>>
     {
         /// <summary>Handles a request getting log by identifier</summary>
         /// <param name="request">The request</param>
         /// <param name="cancellationToken">Cancellation token</param>
         /// <returns>Response from the request</returns>
-        public async Task<Operation<EventItemViewModel, string>> Handle(Request request, CancellationToken cancellationToken)
+        public async ValueTask<Operation<EventItemViewModel, string>> Handle(Request request, CancellationToken cancellationToken)
         {
             var id = request.Id;
             var repository = unitOfWork.GetRepository<EventItem>();
@@ -32,7 +31,7 @@ public static class GetEventItemById
                 return Operation.Error($"Entity with identifier {id} not found");
             }
 
-            var mapped = mapper.Map<EventItemViewModel>(entityWithoutIncludes);
+            var mapped = entityWithoutIncludes.MapToViewModel();
             if (mapped is not null)
             {
                 return Operation.Result(mapped);

@@ -1,11 +1,10 @@
-﻿using AutoMapper;
-using Calabonga.Microservice.IdentityModule.Domain;
+﻿using Calabonga.Microservice.IdentityModule.Domain;
 using Calabonga.Microservice.IdentityModule.Domain.Base;
 using Calabonga.Microservice.IdentityModule.Web.Application.Messaging.EventItemMessages.ViewModels;
 using Calabonga.Microservices.Core;
 using Calabonga.OperationResults;
 using Calabonga.UnitOfWork;
-using MediatR;
+using Mediator;
 
 namespace Calabonga.Microservice.IdentityModule.Web.Application.Messaging.EventItemMessages.Queries;
 
@@ -16,14 +15,15 @@ public static class PostEventItem
 {
     public record Request(EventItemCreateViewModel Model) : IRequest<Operation<EventItemViewModel, string>>;
 
-    public class Handler(IUnitOfWork unitOfWork, IMapper mapper, ILogger<Handler> logger)
+    public class Handler(IUnitOfWork unitOfWork, ILogger<Handler> logger)
         : IRequestHandler<Request, Operation<EventItemViewModel, string>>
     {
-        public async Task<Operation<EventItemViewModel, string>> Handle(Request eventItemRequest, CancellationToken cancellationToken)
+        public async ValueTask<Operation<EventItemViewModel, string>> Handle(Request eventItemRequest, CancellationToken cancellationToken)
         {
             logger.LogDebug("Creating new EventItem");
 
-            var entity = mapper.Map<EventItemCreateViewModel, EventItem>(eventItemRequest.Model);
+
+            var entity = eventItemRequest.Model.MapToEventItem();
             if (entity == null)
             {
                 logger.LogError("Mapper not configured correctly or something went wrong");
@@ -36,14 +36,14 @@ public static class PostEventItem
             var lastResult = unitOfWork.Result;
             if (lastResult.Ok)
             {
-                var mapped = mapper.Map<EventItem, EventItemViewModel>(entity);
-                if (mapped is not null)
+                var mapped = entity.MapToViewModel();
+                if (mapped is null)
                 {
-                    logger.LogInformation("New entity {@EventItem} successfully created", entity);
-                    return Operation.Result(mapped);
+                    return Operation.Error(AppData.Exceptions.MappingException);
                 }
 
-                return Operation.Error(AppData.Exceptions.MappingException);
+                logger.LogInformation("New entity {@EventItem} successfully created", entity);
+                return Operation.Result(mapped);
             }
 
             var errorMessage = lastResult.Exception?.Message ?? "Something went wrong";

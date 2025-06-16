@@ -2,7 +2,7 @@
 using Calabonga.Microservice.IdentityModule.Domain.Base;
 using Calabonga.Microservice.IdentityModule.Web.Application.Messaging.ProfileMessages.Queries;
 using Calabonga.Microservice.IdentityModule.Web.Application.Messaging.ProfileMessages.ViewModels;
-using MediatR;
+using Mediator;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Calabonga.Microservice.IdentityModule.Web.Endpoints;
@@ -24,9 +24,10 @@ public sealed class ProfilesEndpointDefinition : AppDefinition
             .ProducesProblem(401)
             .WithOpenApi();
 
-        group.MapPost("register", async ([FromServices] IMediator mediator, RegisterViewModel model, HttpContext context)
+        group.MapPost("register", async ([FromServices] IMediator mediator, [FromBody] RegisterViewModel model, HttpContext context)
                 => await mediator.Send(new RegisterAccount.Request(model), context.RequestAborted))
             .Produces(200)
+            .Produces<RegisterViewModel>()
             .WithOpenApi()
             .AllowAnonymous();
     }

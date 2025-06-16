@@ -1,5 +1,5 @@
 ﻿using Calabonga.UnitOfWork;
-using MediatR;
+using Mediator;
 
 namespace Calabonga.Microservice.Module.Web.Definitions.Mediator.Base;
 
@@ -15,13 +15,12 @@ public class TransactionBehavior<TRequest, TResponse> : IPipelineBehavior<TReque
 
     public TransactionBehavior(IUnitOfWork unitOfWork) => _unitOfWork = unitOfWork;
 
-
-    public async Task<TResponse> Handle(TRequest request, RequestHandlerDelegate<TResponse> next, CancellationToken cancellationToken)
+    public async ValueTask<TResponse> Handle(TRequest message, CancellationToken cancellationToken, MessageHandlerDelegate<TRequest, TResponse> next)
     {
         await using var transaction = await _unitOfWork.BeginTransactionAsync();
         try
         {
-            var response = await next();
+            var response = await next(message, cancellationToken);
             await transaction.CommitAsync(cancellationToken);
             return response;
         }

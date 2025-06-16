@@ -1,5 +1,6 @@
-﻿using Calabonga.Utils.Extensions;
-using MediatR;
+﻿
+using Calabonga.Utils.Extensions;
+using Mediator;
 using System.Security.Claims;
 
 namespace Calabonga.Microservice.Module.Web.Application.Messaging.ProfileMessages.Queries;
@@ -14,14 +15,14 @@ public static class GetProfile
     public class Handler(ILogger<Handler> logger, IHttpContextAccessor httpContextAccessor)
         : IRequestHandler<Request, string>
     {
-        public Task<string> Handle(Request request, CancellationToken cancellationToken)
+        public ValueTask<string> Handle(Request request, CancellationToken cancellationToken)
         {
             var user = httpContextAccessor.HttpContext!.User;
             var claims = user.FindAll(x => x.Type == ClaimTypes.Role);
             var roles = ClaimsHelper.GetValues<string>(new ClaimsIdentity(claims), ClaimTypes.Role);
             var message = $"Current user ({user.Identity!.Name}) have following roles: {string.Join('|', roles)}";
             logger.LogInformation(message);
-            return Task.FromResult(message);
+            return ValueTask.FromResult(message);
         }
     }
 }
