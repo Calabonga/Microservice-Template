@@ -1,5 +1,4 @@
-﻿using AutoMapper;
-using Calabonga.Microservice.IdentityModule.Domain;
+﻿using Calabonga.Microservice.IdentityModule.Domain;
 using Calabonga.Microservice.IdentityModule.Domain.Base;
 using Calabonga.Microservice.IdentityModule.Web.Application.Messaging.EventItemMessages.ViewModels;
 using Calabonga.OperationResults;
@@ -15,7 +14,7 @@ public static class DeleteEventItem
 {
     public record Request(Guid Id) : IRequest<Operation<EventItemViewModel, string>>;
 
-    public class Handler(IUnitOfWork unitOfWork, IMapper mapper)
+    public class Handler(IUnitOfWork unitOfWork)
         : IRequestHandler<Request, Operation<EventItemViewModel, string>>
     {
         /// <summary>Handles a request</summary>
@@ -38,7 +37,7 @@ public static class DeleteEventItem
                 return Operation.Error(unitOfWork.Result.Exception?.Message ?? AppData.Exceptions.SomethingWrong);
             }
 
-            var mapped = mapper.Map<EventItemViewModel>(entity);
+            var mapped = entity.MapToViewModel();
             if (mapped is not null)
             {
                 return Operation.Result(mapped);

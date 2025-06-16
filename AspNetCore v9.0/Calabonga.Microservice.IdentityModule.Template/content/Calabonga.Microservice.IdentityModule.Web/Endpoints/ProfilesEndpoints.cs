@@ -24,9 +24,10 @@ public sealed class ProfilesEndpointDefinition : AppDefinition
             .ProducesProblem(401)
             .WithOpenApi();
 
-        group.MapPost("register", async ([FromServices] IMediator mediator, RegisterViewModel model, HttpContext context)
+        group.MapPost("register", async ([FromServices] IMediator mediator, [FromBody] RegisterViewModel model, HttpContext context)
                 => await mediator.Send(new RegisterAccount.Request(model), context.RequestAborted))
             .Produces(200)
+            .Produces<RegisterViewModel>()
             .WithOpenApi()
             .AllowAnonymous();
     }

@@ -1,6 +1,6 @@
-﻿using AutoMapper;
-using Calabonga.Microservice.IdentityModule.Domain.Base;
+﻿using Calabonga.Microservice.IdentityModule.Domain.Base;
 using Calabonga.Microservice.IdentityModule.Infrastructure;
+using Calabonga.Microservice.IdentityModule.Web.Application.Messaging.ProfileMessages;
 using Calabonga.Microservice.IdentityModule.Web.Application.Messaging.ProfileMessages.ViewModels;
 using Calabonga.Microservice.IdentityModule.Web.Definitions.Authorizations;
 using Calabonga.Microservices.Core.Exceptions;
@@ -25,7 +25,6 @@ public class AccountService : IAccountService
     private readonly ILogger<AccountService> _logger;
     private readonly ApplicationUserClaimsPrincipalFactory _claimsFactory;
     private readonly IHttpContextAccessor _httpContext;
-    private readonly IMapper _mapper;
     private readonly UserManager<ApplicationUser> _userManager;
     private readonly RoleManager<ApplicationRole> _roleManager;
 
@@ -44,14 +43,12 @@ public class AccountService : IAccountService
         ILogger<AccountService> logger,
         ILogger<UserManager<ApplicationUser>> loggerUser,
         ApplicationUserClaimsPrincipalFactory claimsFactory,
-        IHttpContextAccessor httpContext,
-        IMapper mapper)
+        IHttpContextAccessor httpContext)
     {
         _unitOfWork = unitOfWork;
         _logger = logger;
         _claimsFactory = claimsFactory;
         _httpContext = httpContext;
-        _mapper = mapper;
 
         // We need to create a custom instance for current service
         // It'll help to use Transaction in the Unit Of Work
@@ -76,7 +73,12 @@ public class AccountService : IAccountService
 
     public async ValueTask<Operation<UserProfileViewModel, string>> RegisterAsync(RegisterViewModel model, CancellationToken cancellationToken)
     {
-        var user = _mapper.Map<ApplicationUser>(model);
+        var user = model.MapToApplicationUser();
+        if (user is null)
+        {
+            return Operation.Error("RegisterViewModel is null");
+        }
+
         await using var transaction = await _unitOfWork.BeginTransactionAsync();
         var result = await _userManager.CreateAsync(user!, model.Password);
         const string role = AppData.ManagerRoleName;
@@ -90,7 +92,12 @@ public class AccountService : IAccountService
 
             await _userManager.AddToRoleAsync(user!, role);
 
-            var profile = _mapper.Map<ApplicationUserProfile>(model);
+            var profile = model.MapToApplicationUserProfile();
+            if (profile is null)
+            {
+                return Operation.Error("ApplicationUserProfile is null");
+            }
+
             var profileRepository = _unitOfWork.GetRepository<ApplicationUserProfile>();
 
             await profileRepository.InsertAsync(profile!, cancellationToken);
@@ -98,15 +105,16 @@ public class AccountService : IAccountService
             if (_unitOfWork.Result.Ok)
             {
                 var principal = await _claimsFactory.CreateAsync(user!);
-                var mapped = _mapper.Map<UserProfileViewModel>(principal.Identity);
-                await transaction.CommitAsync(cancellationToken);
-                _logger.LogInformation("User {@User} successfully created with {@Role}", model, role);
-                if (mapped is not null)
+                var mapped = principal.MapToProfileViewModel();
+                if (mapped is null)
                 {
-                    return Operation.Result(mapped);
+                    return Operation.Error(AppData.Exceptions.MappingException);
                 }
 
-                return Operation.Error(AppData.Exceptions.MappingException);
+                await transaction.CommitAsync(cancellationToken);
+                _logger.LogInformation("User {@User} successfully created with {@Role}", model, role);
+
+                return Operation.Result(mapped);
             }
         }
         var errors = result.Errors.Select(x => $"{x.Code}: {x.Description}");

@@ -19,7 +19,7 @@ public interface IAccountService
     Task<IEnumerable<ApplicationUser>> GetUsersByEmailsAsync(IEnumerable<string> emails);
 
     /// <summary>
-    /// Get User Id from HttpContext
+    /// Get User Identifier from HttpContext
     /// </summary>
 
     Guid GetCurrentUserId();

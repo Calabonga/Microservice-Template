@@ -1,5 +1,4 @@
-﻿using AutoMapper;
-using Calabonga.Microservice.IdentityModule.Domain;
+﻿using Calabonga.Microservice.IdentityModule.Domain;
 using Calabonga.Microservice.IdentityModule.Domain.Base;
 using Calabonga.Microservice.IdentityModule.Web.Application.Messaging.EventItemMessages.ViewModels;
 using Calabonga.Microservices.Core;
@@ -16,7 +15,7 @@ public static class PutEventItem
 {
     public record Request(Guid Id, EventItemUpdateViewModel Model) : IRequest<Operation<EventItemViewModel, string>>;
 
-    public class Handler(IUnitOfWork unitOfWork, IMapper mapper)
+    public class Handler(IUnitOfWork unitOfWork)
         : IRequestHandler<Request, Operation<EventItemViewModel, string>>
     {
         public async ValueTask<Operation<EventItemViewModel, string>> Handle(Request eventItemRequest, CancellationToken cancellationToken)
@@ -28,7 +27,7 @@ public static class PutEventItem
                 return Operation.Error(AppContracts.Exceptions.NotFoundException);
             }
 
-            mapper.Map(eventItemRequest.Model, entity);
+            entity.MapUpdatesFrom(eventItemRequest.Model);
 
             repository.Update(entity);
             await unitOfWork.SaveChangesAsync();
@@ -36,7 +35,7 @@ public static class PutEventItem
             var lastResult = unitOfWork.Result;
             if (lastResult.Ok)
             {
-                var mapped = mapper.Map<EventItem, EventItemViewModel>(entity);
+                var mapped = entity.MapToViewModel();
                 if (mapped is not null)
                 {
                     return Operation.Result(mapped);
