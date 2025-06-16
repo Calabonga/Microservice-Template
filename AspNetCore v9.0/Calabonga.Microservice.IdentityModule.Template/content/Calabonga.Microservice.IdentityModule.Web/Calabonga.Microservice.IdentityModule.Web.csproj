@@ -43,8 +43,4 @@
 		<ProjectReference Include="..\Calabonga.Microservice.IdentityModule.Infrastructure\Calabonga.Microservice.IdentityModule.Infrastructure.csproj" />
 	</ItemGroup>
 
-	<ItemGroup>
-	  <Folder Include="Definitions\Mapping\" />
-	</ItemGroup>
-
 </Project>

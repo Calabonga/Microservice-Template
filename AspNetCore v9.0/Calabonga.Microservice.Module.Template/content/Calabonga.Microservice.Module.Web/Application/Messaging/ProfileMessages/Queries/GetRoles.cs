@@ -1,4 +1,5 @@
-﻿using Calabonga.Utils.Extensions;
+﻿
+using Calabonga.Utils.Extensions;
 using Mediator;
 using System.Security.Claims;
 

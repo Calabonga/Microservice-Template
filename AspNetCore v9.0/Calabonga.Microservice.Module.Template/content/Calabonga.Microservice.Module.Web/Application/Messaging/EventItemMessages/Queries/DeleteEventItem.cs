@@ -1,5 +1,4 @@
-﻿using AutoMapper;
-using Calabonga.Microservice.Module.Domain;
+﻿using Calabonga.Microservice.Module.Domain;
 using Calabonga.Microservice.Module.Domain.Base;
 using Calabonga.Microservice.Module.Web.Application.Messaging.EventItemMessages.ViewModels;
 using Calabonga.OperationResults;
@@ -9,13 +8,13 @@ using Mediator;
 namespace Calabonga.Microservice.Module.Web.Application.Messaging.EventItemMessages.Queries;
 
 /// <summary>
-/// Request: EventItem delete
+/// EventItem delete
 /// </summary>
 public static class DeleteEventItem
 {
     public record Request(Guid Id) : IRequest<Operation<EventItemViewModel, string>>;
 
-    public class Handler(IUnitOfWork unitOfWork, IMapper mapper)
+    public class Handler(IUnitOfWork unitOfWork)
         : IRequestHandler<Request, Operation<EventItemViewModel, string>>
     {
         /// <summary>Handles a request</summary>
@@ -28,7 +27,7 @@ public static class DeleteEventItem
             var entity = await repository.FindAsync(request.Id);
             if (entity == null)
             {
-                return Operation.Error(AppData.Exceptions.NotFoundException);
+                return Operation.Error("Entity not found");
             }
 
             repository.Delete(entity);
@@ -38,11 +37,14 @@ public static class DeleteEventItem
                 return Operation.Error(unitOfWork.Result.Exception?.Message ?? AppData.Exceptions.SomethingWrong);
             }
 
-            var mapped = mapper.Map<EventItemViewModel>(entity);
+            var mapped = entity.MapToViewModel();
+            if (mapped is not null)
+            {
+                return Operation.Result(mapped);
+            }
 
-            return mapped is not null
-                ? Operation.Result(mapped)
-                : Operation.Error(AppData.Exceptions.MappingException);
+            return Operation.Error(AppData.Exceptions.MappingException);
+
         }
     }
 }

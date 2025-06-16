@@ -1,6 +1,4 @@
-﻿using AutoMapper;
-using Calabonga.Microservice.Module.Domain;
-using Calabonga.Microservice.Module.Domain.Base;
+﻿using Calabonga.Microservice.Module.Domain;
 using Calabonga.Microservice.Module.Web.Application.Messaging.EventItemMessages.ViewModels;
 using Calabonga.OperationResults;
 using Calabonga.PagedListCore;
@@ -8,6 +6,7 @@ using Calabonga.PredicatesBuilder;
 using Calabonga.UnitOfWork;
 using Mediator;
 using System.Linq.Expressions;
+using PredicateBuilder = Calabonga.PredicatesBuilder.PredicateBuilder;
 
 namespace Calabonga.Microservice.Module.Web.Application.Messaging.EventItemMessages.Queries;
 
@@ -18,7 +17,7 @@ public static class GetEventItemPaged
 {
     public record Request(int PageIndex, int PageSize, string? Search) : IRequest<Operation<IPagedList<EventItemViewModel>, string>>;
 
-    public class Handler(IUnitOfWork unitOfWork, IMapper mapper)
+    public class Handler(IUnitOfWork unitOfWork)
         : IRequestHandler<Request, Operation<IPagedList<EventItemViewModel>, string>>
     {
         public async ValueTask<Operation<IPagedList<EventItemViewModel>, string>> Handle(
@@ -44,10 +43,8 @@ public static class GetEventItemPaged
                         cancellationToken: cancellationToken);
             }
 
-            var mapped = mapper.Map<IPagedList<EventItemViewModel>>(pagedList);
-            return mapped is not null
-                ? Operation.Result(mapped)
-                : Operation.Error(AppData.Exceptions.MappingException);
+            var mapped = PagedList.From(pagedList, items => items.Select(item => item.MapToViewModel()!));
+            return Operation.Result(mapped);
         }
 
         private Expression<Func<EventItem, bool>> GetPredicate(string? search)
