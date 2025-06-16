@@ -1,6 +1,7 @@
 ﻿using Calabonga.AspNetCore.AppDefinitions;
 using Calabonga.Microservice.Module.Web.Definitions.FluentValidating;
-using MediatR;
+using Mediator;
+
 
 namespace Calabonga.Microservice.Module.Web.Definitions.Mediator;
 
@@ -16,6 +17,6 @@ public class MediatorDefinition : AppDefinition
     public override void ConfigureServices(WebApplicationBuilder builder)
     {
         builder.Services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidatorBehavior<,>));
-        builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblyContaining<Program>());
+        builder.Services.AddMediator(options => options.ServiceLifetime = ServiceLifetime.Scoped);
     }
 }

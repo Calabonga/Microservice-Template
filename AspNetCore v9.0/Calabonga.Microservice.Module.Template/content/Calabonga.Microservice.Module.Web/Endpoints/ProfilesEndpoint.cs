@@ -1,7 +1,7 @@
 ﻿using Calabonga.AspNetCore.AppDefinitions;
 using Calabonga.Microservice.Module.Web.Application.Messaging.ProfileMessages.Queries;
 using Calabonga.Microservice.Module.Web.Definitions.Authorizations;
-using MediatR;
+using Mediator;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Calabonga.Microservice.Module.Web.Endpoints;

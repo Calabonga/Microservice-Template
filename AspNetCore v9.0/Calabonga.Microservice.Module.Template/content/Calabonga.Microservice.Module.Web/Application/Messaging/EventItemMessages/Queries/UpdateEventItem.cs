@@ -5,7 +5,7 @@ using Calabonga.Microservice.Module.Web.Application.Messaging.EventItemMessages.
 using Calabonga.Microservices.Core;
 using Calabonga.OperationResults;
 using Calabonga.UnitOfWork;
-using MediatR;
+using Mediator;
 
 namespace Calabonga.Microservice.Module.Web.Application.Messaging.EventItemMessages.Queries;
 
@@ -19,7 +19,7 @@ public static class PutEventItem
     public class Handler(IUnitOfWork unitOfWork, IMapper mapper)
         : IRequestHandler<Request, Operation<EventItemViewModel, string>>
     {
-        public async Task<Operation<EventItemViewModel, string>> Handle(Request eventItemRequest, CancellationToken cancellationToken)
+        public async ValueTask<Operation<EventItemViewModel, string>> Handle(Request eventItemRequest, CancellationToken cancellationToken)
         {
             var repository = unitOfWork.GetRepository<EventItem>();
             var entity = await repository.GetFirstOrDefaultAsync(predicate: x => x.Id == eventItemRequest.Id, trackingType: TrackingType.Tracking);
