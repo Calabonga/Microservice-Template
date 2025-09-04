@@ -15,7 +15,7 @@ public class TransactionBehavior<TRequest, TResponse> : IPipelineBehavior<TReque
 
     public TransactionBehavior(IUnitOfWork unitOfWork) => _unitOfWork = unitOfWork;
 
-    public async ValueTask<TResponse> Handle(TRequest message, CancellationToken cancellationToken, MessageHandlerDelegate<TRequest, TResponse> next)
+    public async ValueTask<TResponse> Handle(TRequest message, MessageHandlerDelegate<TRequest, TResponse> next, CancellationToken cancellationToken)
     {
         await using var transaction = await _unitOfWork.BeginTransactionAsync();
         try
