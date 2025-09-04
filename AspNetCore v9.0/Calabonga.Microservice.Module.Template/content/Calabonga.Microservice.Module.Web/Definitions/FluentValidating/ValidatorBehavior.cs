@@ -15,7 +15,7 @@ public class ValidatorBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest
 
     public ValidatorBehavior(IEnumerable<IValidator<TRequest>> validators) => _validators = validators;
 
-    public ValueTask<TResponse> Handle(TRequest message, CancellationToken cancellationToken, MessageHandlerDelegate<TRequest, TResponse> next)
+    public ValueTask<TResponse> Handle(TRequest message, MessageHandlerDelegate<TRequest, TResponse> next, CancellationToken cancellationToken)
     {
         var failures = _validators
             .Select(x => x.Validate(new ValidationContext<TRequest>(message)))

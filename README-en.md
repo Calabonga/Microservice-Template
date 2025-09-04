@@ -13,6 +13,10 @@ To install templates (`Visual Studio`, `Rider`, `dotnet CLI`) please, read [wiki
 
 ## Nimble Framework History
 
+### 2025-09-04 Версия 9.1.1
+
+* Nugets пакеты обновлены
+
 ### 2025-06-16 Version 9.1.0
 * [MediatR](https://github.com/jbogard/MediatR) replaced with [Mediator.Net](https://github.com/mayuanyang/Mediator.Net) because ["MediatR is going commercial"](https://github.com/jbogard/MediatR/discussions/1105). Mediator.NET contains all that exists nuget MediatR, but using `SourceGenerator`. That's mean, there is no `Reflection` used. And in this case performance increased.
 * [Automapper](https://github.com/AutoMapper/AutoMapper) removed.

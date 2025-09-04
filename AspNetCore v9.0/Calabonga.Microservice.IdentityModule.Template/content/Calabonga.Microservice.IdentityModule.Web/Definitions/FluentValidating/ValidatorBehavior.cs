@@ -18,7 +18,7 @@ public sealed class ValidatorBehavior<TRequest, TResponse>(IEnumerable<IValidato
     /// <param name="cancellationToken">Cancellation token</param>
     /// <param name="next">Awaitable delegate for the next action in the pipeline. Eventually this delegate represents the handler.</param>
     /// <returns>Awaitable task returning the <typeparamref name="TResponse" /></returns>
-    public ValueTask<TResponse> Handle(TRequest message, CancellationToken cancellationToken, MessageHandlerDelegate<TRequest, TResponse> next)
+    public ValueTask<TResponse> Handle(TRequest message, MessageHandlerDelegate<TRequest, TResponse> next, CancellationToken cancellationToken)
     {
         var failures = validators
             .Select(x => x.Validate(new ValidationContext<TRequest>(message)))
@@ -30,4 +30,5 @@ public sealed class ValidatorBehavior<TRequest, TResponse>(IEnumerable<IValidato
             ? throw new ValidationException(failures)
             : next(message, cancellationToken);
     }
+
 }

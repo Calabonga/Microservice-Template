@@ -18,6 +18,10 @@
 
 ## История Nimble Framework
 
+### 2025-09-04 Версия 9.1.1
+
+* Nugets dependencies were updated
+
 ### 2025-06-16 Версия 9.1.0
 
 * Сборка [MediatR](https://github.com/jbogard/MediatR) заменена на подобную [Mediator.Net](https://github.com/mayuanyang/Mediator.Net) в связи с тем, что ["MediatR is going commercial"](https://github.com/jbogard/MediatR/discussions/1105). Mediator.NET реализует всё, что есть в MediatR, только при помощи `SourceGenerator` - что означает, что в принципе отсутстует `Reflection`, что, в свою очередь, существенно влияет на производительность в положительную сторону.
