@@ -18,6 +18,10 @@
 
 ## История Nimble Framework
 
+### 2025-09-11 Версия 9.2.0
+
+* New ASP.NET Core RazorPages template added `Calabonga.AspNetCoreRazorPages.Template`
+
 ### 2025-09-04 Версия 9.1.1
 
 * Nugets dependencies were updated

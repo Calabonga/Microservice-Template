@@ -1,4 +1,4 @@
-name: ASP.NET Core RazorPages Template
+name: ASP.NET Core RazorPages template
 
 on:
   workflow_dispatch:
