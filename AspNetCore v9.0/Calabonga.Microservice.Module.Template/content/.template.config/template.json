@@ -7,7 +7,7 @@
         "Web API"
     ],
     "name": "Microservice template",
-    "description": "Microservice Template. Nimble Framework based on Minimal API (.NET9). This template gives you a possibility to start developing a microservice architecture with and integrated other helpful things like a UI (Scalar), Mediatr, Automapper, Serilog, etc.",
+    "description": "Microservice Template. Nimble Framework based on Minimal API. This template gives you a possibility to start developing a microservice architecture with and integrated other helpful things like a UI (Scalar), Mediator, FluentValidations, Serilog, etc.",
     "identity": "Calabonga.Microservice.Module",
     "shortName": "microservice",
     "tags": {
