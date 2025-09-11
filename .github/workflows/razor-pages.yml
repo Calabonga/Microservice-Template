@@ -1,4 +1,4 @@
-name: Module Nuget
+name: ASP.NET Core RazorPages Template
 
 on:
   workflow_dispatch:
