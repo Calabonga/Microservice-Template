@@ -1,0 +1,53 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<!-- The package metadata. Fill in the properties marked as TODO below -->
+		<!-- Follow the instructions on https://learn.microsoft.com/en-us/nuget/create-packages/package-authoring-best-practices -->
+		<PackageId>Calabonga.AspNetCoreRazorPages.Template</PackageId>
+		<PackageVersion>9.2.0</PackageVersion>
+		<Authors>Calabonga</Authors>
+		<Copyright>Calabonga SOFT © 2019 - $([System.DateTime]::Now.ToString(yyyy))</Copyright>
+		<PackageIcon>logo.png</PackageIcon>
+		<Description>ASP.NET Core RazorPages template with OpenIddict implementation for OAuth2.0 and also with Mediator, FluentValidation and other helpful thing</Description>
+		<PackageTags>template, aspnetcore, microservice, oauth2, calabonga, nimble, framework</PackageTags>
+		<PackageProjectUrl>https://github.com/Calabonga/Microservice-Template</PackageProjectUrl>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<PackageReleaseNotes>New ASP.NET Core RazorPages template added</PackageReleaseNotes>
+
+		<!-- Keep package type as 'Template' to show the package as template package on nuget.org and make you template available in dotnet new search.-->
+		<PackageType>Template</PackageType>
+		<TargetFramework>net9.0</TargetFramework>
+		<IncludeContentInPack>true</IncludeContentInPack>
+		<IncludeBuildOutput>false</IncludeBuildOutput>
+		<ContentTargetFolders>content</ContentTargetFolders>
+		<NoWarn>$(NoWarn);NU5128</NoWarn>
+		<NoDefaultExcludes>true</NoDefaultExcludes>
+		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+		<RepositoryType>git</RepositoryType>
+		<RepositoryUrl>https://github.com/Calabonga/Microservice-Template</RepositoryUrl>
+	</PropertyGroup>
+
+	
+	
+	<ItemGroup>
+		<PackageReference Include="Microsoft.TemplateEngine.Tasks" Version="*" PrivateAssets="all" IsImplicitlyDefined="true" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Content Include="content\**\*" Exclude="content\**\bin\**;content\**\obj\**" />
+		<Compile Remove="**\*" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Include="README.md" Pack="true" PackagePath="" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Update="logo.png">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
+	</ItemGroup>
+
+</Project>

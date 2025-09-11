@@ -1,0 +1,24 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p class="mt-5">
+        Hi, 
+        @if (User.Identity?.IsAuthenticated == true)
+        {
+            <b class="text-success">@User.Identity.Name,</b>
+        }
+        else
+        {
+            <b class="text-danger">Anonymous,</b>
+
+        }
+        you can learn about <a href="https://learn.microsoft.com/aspnet/core">ASP.NET Core</a> and <a href="https://openiddict.com/">OpenIddict</a>.
+    </p>
+    
+</div>
+
