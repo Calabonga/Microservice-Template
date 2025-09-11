@@ -1,0 +1,28 @@
+name: ASP.NET Core RazorPages template
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up .NET Core
+        uses: actions/setup-dotnet@v2
+        with:
+          dotnet-version: 9.0.x
+
+      - name: Install dependencies
+        run: dotnet restore 'AspNetCore v9.0/Calabonga.AspNetCoreRazorPages.Template/Calabonga.AspNetCoreRazorPages.Template.csproj'
+
+      - name: Build the NuGet package
+        run: dotnet pack 'AspNetCore v9.0/Calabonga.AspNetCoreRazorPages.Template/Calabonga.AspNetCoreRazorPages.Template.csproj' --configuration Release --output ${{env.DOTNET_ROOT}}\Package
+
+      - name: Publish NuGet Package
+        run: dotnet nuget push ${{env.DOTNET_ROOT}}\Package\*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
