@@ -1,0 +1,47 @@
+{
+    "$schema": "http://json.schemastore.org/template",
+    "author": "Calabonga SOFT",
+    "classifications": [
+        "Common",
+        "Web",
+        "Web API"
+    ],
+    "name": "Microservice template",
+    "description": "Microservice Template. Nimble Framework based on Minimal API. This template gives you a possibility to start developing a microservice architecture with and integrated other helpful things like a UI (Scalar), Mediator, FluentValidations, Serilog, etc.",
+    "identity": "Calabonga.Microservice.Module",
+    "shortName": "microservice",
+    "tags": {
+        "language": "C#",
+        "type": "solution"
+    },
+    "defaultName": "Calabonga.Microservice.Module1",
+    "sourceName": "Calabonga.Microservice.Module",
+    "preferNameDirectory": true,
+    "symbols": {
+        "Framework": {
+            "type": "parameter",
+            "description": "The target framework for the project.",
+            "datatype": "choice",
+            "choices": [
+                {
+                    "choice": "net9.0"
+                }
+            ],
+            "defaultValue": "net9.0"
+        }
+    },
+    "sources": [
+        {
+            "modifiers": [
+                {
+                    "exclude": [
+                        ".vs/**",
+                        ".idea/**",
+                        "_ReSharper.Caches/**",
+                        ".template_config/**"
+                    ]
+                }
+            ]
+        }
+    ]
+}
