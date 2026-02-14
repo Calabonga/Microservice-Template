@@ -8,12 +8,12 @@ Please find out all comments with 'ATTENTION!' because that is required some dec
 | -------------- | ------------------------------------------ |
 | Name           | Microservice Template for ASP.NET Core API |
 | Author         | Calabonga SOFT © 2005-2024 Calabonga SOFT  |
-| Created Date   | 2024-11-26                                 |
-| Migrated From  | Microservice-Template NET 8.0              |
+| Created Date   | 2026-02-14                                 |
+| Migrated From  | Microservice-Template NET 9.0              |
 
 # Versions
 
-Nimble Framework Templates build on .NET 9.0. That`s why it have the same major version. But the all improvements will increment minor versions. 
+Nimble Framework Templates build on .NET 10.0. That`s why it have the same major version. But the all improvements will increment minor versions. 
 
 # Contacts
 
@@ -27,4 +27,4 @@ You can contact me by using the next opportunities:
 
 # Description:
 
-This template implements Web API functionality using minimal API feature from NET 9.0
+This template implements Web API functionality using minimal API feature from NET 10.0

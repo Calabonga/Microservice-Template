@@ -17,8 +17,8 @@ public static class GetProfile
         public ValueTask<string> Handle(Request request, CancellationToken cancellationToken)
         {
             var user = httpContextAccessor.HttpContext!.User;
-            var claims = user.FindAll(x => x.Type == ClaimTypes.Role);
-            var roles = ClaimsHelper.GetValues<string>(new ClaimsIdentity(claims), ClaimTypes.Role);
+            var claims = user.FindAll(x => x.Type == "role");
+            var roles = ClaimsHelper.GetValues<string>(new ClaimsIdentity(claims), "role");
             var message = $"Current user ({user.Identity!.Name}) have following roles: {string.Join('|', roles)}";
             logger.LogInformation(message);
             return ValueTask.FromResult(message);

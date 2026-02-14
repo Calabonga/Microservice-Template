@@ -66,7 +66,7 @@ public sealed class AuthorizeEndpoints : AppDefinition
             // immediately return an error if no authorization can be found in the database.
             case OpenIddictConstants.ConsentTypes.External when !authorizations.Any():
                 return Results.Forbid(
-                        authenticationSchemes: new[] { OpenIddictServerAspNetCoreDefaults.AuthenticationScheme },
+                        authenticationSchemes: [OpenIddictServerAspNetCoreDefaults.AuthenticationScheme],
                         properties: new AuthenticationProperties(new Dictionary<string, string>
                         {
                             [OpenIddictServerAspNetCoreConstants.Properties.Error] = OpenIddictConstants.Errors.ConsentRequired,

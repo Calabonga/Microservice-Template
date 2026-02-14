@@ -29,9 +29,9 @@ public class ApplicationUserStore : UserStore<ApplicationUser, ApplicationRole, 
             .FirstOrDefaultAsync(u => u.Id.ToString() == userId, cancellationToken: cancellationToken)!;
 
     /// <summary>
-    /// Finds and returns a user, if any, who has the specified normalized user name.
+    /// Finds and returns a user, if any, who has the specified normalized username.
     /// </summary>
-    /// <param name="normalizedUserName">The normalized user name to search for.</param>
+    /// <param name="normalizedUserName">The normalized username to search for.</param>
     /// <param name="cancellationToken">The <see cref="T:System.Threading.CancellationToken" /> used to propagate notifications that the operation should be canceled.</param>
     /// <returns>
     /// The <see cref="T:System.Threading.Tasks.Task" /> that represents the asynchronous operation, containing the user matching the specified <paramref name="normalizedUserName" /> if it exists.

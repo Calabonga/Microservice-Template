@@ -19,7 +19,7 @@ public class OpenApiDefinition : AppDefinition
     // private const string AppVersion = $"{ThisAssembly.Git.SemVer.Major}.{ThisAssembly.Git.SemVer.Minor}.{ThisAssembly.Git.SemVer.Patch}";
     // -------------------------------------------------------
 
-    public const string AppVersion = "9.0.6";
+    public const string AppVersion = "10.0.0";
 
     private const string _openApiConfig = "/openapi/v1.json";
 
@@ -29,7 +29,7 @@ public class OpenApiDefinition : AppDefinition
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddOpenApi(options =>
         {
-            options.AddDocumentTransformer<OAuth2SecuritySchemeTransformer>();
+            options.AddDocumentTransformer<SecuritySchemeTransformer>();
         });
     }
 
@@ -45,10 +45,6 @@ public class OpenApiDefinition : AppDefinition
         app.UseSwaggerUI(settings =>
         {
             settings.SwaggerEndpoint(_openApiConfig, $"{AppData.ServiceName} v.{AppVersion}");
-
-            // ATTENTION!
-            // If you use are git repository then you can uncomment line with "ThisAssembly" below for versioning by GIT possibilities.
-            // settings.HeadContent = $"{ThisAssembly.Git.Branch.ToUpper()} {ThisAssembly.Git.Commit.ToUpper()}";
 
             settings.DocumentTitle = $"{AppData.ServiceName}";
             settings.DefaultModelExpandDepth(0);

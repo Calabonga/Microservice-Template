@@ -21,14 +21,12 @@ public sealed class ProfilesEndpointDefinition : AppDefinition
                 x.RequireClaim("Profiles:Roles:Get");
             })
             .Produces(200)
-            .ProducesProblem(401)
-            .WithOpenApi();
+            .ProducesProblem(401);
 
         group.MapPost("register", async ([FromServices] IMediator mediator, [FromBody] RegisterViewModel model, HttpContext context)
                 => await mediator.Send(new RegisterAccount.Request(model), context.RequestAborted))
             .Produces(200)
             .Produces<RegisterViewModel>()
-            .WithOpenApi()
             .AllowAnonymous();
     }
 }

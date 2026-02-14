@@ -18,6 +18,25 @@
 
 ## История Nimble Framework
 
+### 2026-02-14 Версия 10.0.0
+
+* Проекты в решении переведены на NET10.
+* Nugets-пакеты обновлены в соотвествии с версией платформы.
+* Добавлена новая схема `Bearer` авторизации для OpenApi.
+* Обновлена схема `OAuth2.0` авторизации для OpenApi.
+* Скриншоты
+     
+    ![NET10](Whatnot/net10/2.png)
+    
+    ![NET10](Whatnot/net10/1.png)
+    
+    ![NET10](Whatnot/net10/3.png)
+    
+    ![NET10](Whatnot/net10/4.png)
+
+
+
+
 ### 2025-09-11 Версия 9.2.0
 
 * New ASP.NET Core RazorPages template added `Calabonga.AspNetCoreRazorPages.Template`
@@ -537,5 +556,5 @@ Nimble Framework для NET6 Готовится
 
 # Обратная связь
 
-* [Блог по программированию](https://www.calabonga.net)
+* [Блог о программировании](https://www.calabonga.net)
 * [Видео канал Boosty.to/Calabonga](https://boosty.to/Calabonga)

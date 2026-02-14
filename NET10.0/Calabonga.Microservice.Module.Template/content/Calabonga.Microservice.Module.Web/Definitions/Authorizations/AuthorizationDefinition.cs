@@ -1,6 +1,7 @@
 ﻿using Calabonga.AspNetCore.AppDefinitions;
 using Calabonga.Microservice.Module.Domain.Base;
 using Calabonga.Microservice.Module.Web.Definitions.OpenIddict;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.IdentityModel.Tokens;
@@ -20,8 +21,6 @@ public class AuthorizationDefinition : AppDefinition
     /// <param name="builder"></param>
     public override void ConfigureServices(WebApplicationBuilder builder)
     {
-        var url = builder.Configuration.GetSection("AuthServer").GetValue<string>("Url");
-
         builder.Services
             .AddAuthentication(options =>
             {
@@ -29,8 +28,10 @@ public class AuthorizationDefinition : AppDefinition
                 options.DefaultChallengeScheme = OpenIddictServerAspNetCoreDefaults.AuthenticationScheme;
                 options.DefaultAuthenticateScheme = OpenIddictServerAspNetCoreDefaults.AuthenticationScheme;
             })
-            .AddJwtBearer(OpenIddictServerAspNetCoreDefaults.AuthenticationScheme, "Bearer", options =>
+            .AddJwtBearer(OpenIddictServerAspNetCoreDefaults.AuthenticationScheme, "OAuth2.0", options =>
             {
+                var url = builder.Configuration.GetSection("AuthServer").GetValue<string>("Url");
+
                 options.SaveToken = true;
                 options.Audience = "client-id-code";
                 options.Authority = url;
@@ -76,7 +77,15 @@ public class AuthorizationDefinition : AppDefinition
                 };
             });
 
-        builder.Services.AddAuthorization();
+        builder.Services.AddAuthorization(options =>
+        {
+            options.AddPolicy(AppData.PolicyDefaultName, x =>
+                {
+                    x.AddAuthenticationSchemes(JwtBearerDefaults.AuthenticationScheme, CookieAuthenticationDefaults.AuthenticationScheme);
+                    x.RequireAuthenticatedUser();
+                });
+        });
+
 
         builder.Services.AddSingleton<IAuthorizationPolicyProvider, AuthorizationPolicyProvider>();
         builder.Services.AddSingleton<IAuthorizationHandler, AppPermissionHandler>();
@@ -92,8 +101,5 @@ public class AuthorizationDefinition : AppDefinition
         app.UseCors(AppData.CorsPolicyName);
         app.UseAuthentication();
         app.UseAuthorization();
-
-        // registering UserIdentity helper as singleton
-        UserIdentity.Instance.Configure(app.Services.GetService<IHttpContextAccessor>()!);
     }
 }

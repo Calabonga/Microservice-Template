@@ -26,6 +26,11 @@
         public const string SystemAdministratorRoleName = "Administrator";
 
         /// <summary>
+        /// Default policy name for API
+        /// </summary>
+        public const string PolicyDefaultName = "DefaultPolicy";
+
+        /// <summary>
         /// "BusinessOwner"
         /// </summary>
         public const string ManagerRoleName = "Manager";

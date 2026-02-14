@@ -33,7 +33,7 @@ try
     // configure logger (Serilog)
     Log.Logger = new LoggerConfiguration()
                 .MinimumLevel.Debug()
-                .MinimumLevel.Override("Microsoft", LogEventLevel.Information)
+                .MinimumLevel.Override("Microsoft", LogEventLevel.Verbose)
                 .Enrich.FromLogContext()
                 .WriteTo.Console()
                 .CreateLogger();

@@ -13,6 +13,23 @@ To install templates (`Visual Studio`, `Rider`, `dotnet CLI`) please, read [wiki
 
 ## Nimble Framework History
 
+### 2026-02-14 Version 10.0.0
+
+* All projects in solution were moved to NET10.
+* Nugets-packages were updated for NET10.
+* New scheme `Bearer` added for OpenApi.
+* Scheme `OAuth2.0` updated for OpenApi.
+* Screenshots
+     
+    ![NET10](Whatnot/net10/2.png)
+    
+    ![NET10](Whatnot/net10/1.png)
+    
+    ![NET10](Whatnot/net10/3.png)
+    
+    ![NET10](Whatnot/net10/4.png)
+
+
 ### 2025-09-11 Version 9.2.0
 
 * New ASP.NET Core RazorPages template added `Calabonga.AspNetCoreRazorPages.Template`

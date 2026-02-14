@@ -3,10 +3,10 @@
     "author": "Calabonga SOFT",
     "classifications": [
         "Common",
-        "Web",
-        "Web API"
+        "Web API",
+        "Templating"
     ],
-    "name": "Microservice template",
+    "name": "Microservice template (NET10)",
     "description": "Microservice Template. Nimble Framework based on Minimal API. This template gives you a possibility to start developing a microservice architecture with and integrated other helpful things like a UI (Scalar), Mediator, FluentValidations, Serilog, etc.",
     "identity": "Calabonga.Microservice.Module",
     "shortName": "microservice",
@@ -24,10 +24,10 @@
             "datatype": "choice",
             "choices": [
                 {
-                    "choice": "net9.0"
+                    "choice": "net10.0"
                 }
             ],
-            "defaultValue": "net9.0"
+            "defaultValue": "net10.0"
         }
     },
     "sources": [

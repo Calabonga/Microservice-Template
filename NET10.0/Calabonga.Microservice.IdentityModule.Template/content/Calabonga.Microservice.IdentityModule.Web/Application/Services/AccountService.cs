@@ -11,7 +11,6 @@ using Calabonga.Utils.Extensions;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
-using OpenIddict.Abstractions;
 using System.Security.Claims;
 
 namespace Calabonga.Microservice.IdentityModule.Web.Application.Services;
@@ -230,25 +229,4 @@ public class AccountService : IAccountService
         var userManager = _userManager;
         return await userManager.GetUsersInRoleAsync(roleName);
     }
-
-    #region privates
-
-    private async Task AddClaimsToUser(UserManager<ApplicationUser> userManager, ApplicationUser user, string role)
-    {
-        if (!string.IsNullOrEmpty(user.UserName))
-        {
-            await userManager.AddClaimAsync(user, new Claim(OpenIddictConstants.Claims.Name, user.UserName));
-        }
-
-        if (!string.IsNullOrEmpty(user.Email))
-        {
-            await userManager.AddClaimAsync(user, new Claim(OpenIddictConstants.Claims.Email, user.Email));
-        }
-
-        await userManager.AddClaimAsync(user, new Claim(ClaimTypes.GivenName, user.FirstName ?? "John"));
-        await userManager.AddClaimAsync(user, new Claim(ClaimTypes.Surname, user.LastName ?? "Doe"));
-        await userManager.AddClaimAsync(user, new Claim(OpenIddictConstants.Claims.Role, role));
-    }
-
-    #endregion
 }

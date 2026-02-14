@@ -31,7 +31,7 @@ public class AuthorizationDefinition : AppDefinition
             {
                 options.LoginPath = "/connect/login";
             })
-            .AddJwtBearer(JwtBearerDefaults.AuthenticationScheme, "Bearer", options =>
+            .AddJwtBearer("Bearer", options =>
             {
                 var url = builder.Configuration.GetSection("AuthServer").GetValue<string>("Url");
 

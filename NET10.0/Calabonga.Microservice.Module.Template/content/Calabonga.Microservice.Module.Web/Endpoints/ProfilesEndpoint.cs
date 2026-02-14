@@ -20,12 +20,12 @@ internal static class ProfilesEndpointDefinitionExtensions
 
         group.MapGet("roles", async ([FromServices] IMediator mediator, HttpContext context)
                 => await mediator.Send(new GetProfile.Request(), context.RequestAborted))
+            .RequireAuthorization(AuthData.AuthSchemes)
             .RequireAuthorization(x =>
-                x.AddAuthenticationSchemes(AuthData.AuthSchemes)
-                    .RequireAuthenticatedUser()
-                    .RequireClaim("Profiles:Roles:Get"))
+            {
+                x.RequireClaim("Profiles:Roles:Get");
+            })
             .Produces(200)
-            .ProducesProblem(401)
-            .WithOpenApi();
+            .ProducesProblem(401);
     }
 }
