@@ -1,7 +1,6 @@
 ﻿using Calabonga.AspNetCore.AppDefinitions;
 using Calabonga.Microservice.Module.Domain.Base;
 using Calabonga.Microservice.Module.Web.Definitions.OpenIddict;
-using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.IdentityModel.Tokens;
@@ -79,15 +78,7 @@ public class AuthorizationDefinition : AppDefinition
                 };
             });
 
-        builder.Services.AddAuthorization(options =>
-        {
-            options.AddPolicy(AppData.PolicyDefaultName, x =>
-                {
-                    x.AddAuthenticationSchemes(JwtBearerDefaults.AuthenticationScheme, CookieAuthenticationDefaults.AuthenticationScheme);
-                    x.RequireAuthenticatedUser();
-                });
-        });
-
+        builder.Services.AddAuthorization();
 
         builder.Services.AddSingleton<IAuthorizationPolicyProvider, AuthorizationPolicyProvider>();
         builder.Services.AddSingleton<IAuthorizationHandler, AppPermissionHandler>();

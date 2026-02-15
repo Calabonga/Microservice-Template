@@ -31,16 +31,13 @@ public class OpenApiDefinition : AppDefinition
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddOpenApi(options =>
         {
-            //options.AddDocumentTransformer<SecuritySchemeTransformer>();
-
-            options.AddDocumentTransformer((document, context, cancellationToken) =>
+            options.AddDocumentTransformer((document, _, _) =>
             {
                 var url = builder.Configuration.GetSection("AuthServer").GetValue<string>("Url");
 
                 // Ensure instances exist
                 document.Components ??= new OpenApiComponents();
                 document.Components.SecuritySchemes ??= new Dictionary<string, IOpenApiSecurityScheme>();
-
 
 
                 // Add OAuth2 security scheme (Authorization Code flow only)
