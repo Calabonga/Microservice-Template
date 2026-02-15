@@ -13,6 +13,23 @@ To install templates (`Visual Studio`, `Rider`, `dotnet CLI`) please, read [wiki
 
 ## Nimble Framework History
 
+### 2026-02-14 Version 10.0.0
+
+* All projects in solution were moved to NET10.
+* Nugets-packages were updated for NET10.
+* New scheme `Bearer` added for OpenApi.
+* Scheme `OAuth2.0` updated for OpenApi.
+* Screenshots
+     
+    ![NET10](Whatnot/net10/2.png)
+    
+    ![NET10](Whatnot/net10/1.png)
+    
+    ![NET10](Whatnot/net10/3.png)
+    
+    ![NET10](Whatnot/net10/4.png)
+
+
 ### 2025-09-11 Version 9.2.0
 
 * New ASP.NET Core RazorPages template added `Calabonga.AspNetCoreRazorPages.Template`
@@ -532,3 +549,20 @@ Sergey Kalabonga (Calabonga)
 
 * [Programming Blog](https://www.calabonga.net)
 * [Video Channel Boosty.to/Calabonga](https://boosty.to/Calabonga)
+
+
+# Rules
+
+The main types of commit are:
+
+* **test**: Shows the process of creating or modifying any test code. Example: Creating unit tests.
+* **feat**: Indicates that a new feature has been developed into the project. Example: Adding a service, functionality, endpoint, etc.
+* **refactor**: Used when there is a code refactoring that does not affect the system logic/rules. Example: Code changes after code review.
+* **style**: Used when code formatting and styling change and do not change the system in any way. Example: Changing the style guide, changing the lint rule, correcting indentations, removing white spaces, removing comments, etc.
+* **fix**: It is used to fix errors that create errors in the system. Example: Applying a commit to a function that doesn't behave as expected and returns an error.
+* **chore**: Indicates project changes that do not affect the system or test files. These are development changes. Example: change eslint rules, add prettier, add more file extensions to .gitignore
+* **docs**: Used when there are changes to documents in the project. Example: Adding information to API documentation, changing the README, etc.
+* **build**: Used to show changes that affect the project's build process or external dependencies. Example: Gulp, adding/removing npm dependencies, etc.
+* **perf**: Indicates a change that improves system performance. Example: Replacing ForEach with While, etc.
+* **ci**: Used for changes to CI configuration files. Example: Circle, Travis, BrowserStack, etc.
+* **revert**: Refers to undoing a previous transaction. Example: Undoing a pull request that was accidentally merged.

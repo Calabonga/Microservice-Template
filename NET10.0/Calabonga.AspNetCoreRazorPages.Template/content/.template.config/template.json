@@ -1,0 +1,47 @@
+{
+    "$schema": "http://json.schemastore.org/template",
+    "author": "Calabonga SOFT",
+    "classifications": [
+        "Common",
+        "Web",
+        "Templating"
+    ],
+    "name": "AspNetCore RazorPages with OpenIddict (NET10)",
+    "description": "AspNetCore RazorPages with OpenIddict (OAuth2.0). This is a part of the Nimble Framework based. Template built on ASP.NET Core RazorPages default template. But it integrated with OAuth2.0 on OpenIddict and other helpful things like AppDefinitions, Mediator, Serilog, etc.",
+    "identity": "Calabonga.AspNetCoreRazorPages",
+    "shortName": "microservice-razorpages",
+    "tags": {
+        "language": "C#",
+        "type": "solution"
+    },
+    "defaultName": "Calabonga.AspNetCoreRazorPages1",
+    "sourceName": "Calabonga.AspNetCoreRazorPages",
+    "preferNameDirectory": true,
+    "symbols": {
+        "Framework": {
+            "type": "parameter",
+            "description": "The target framework for the project.",
+            "datatype": "choice",
+            "choices": [
+                {
+                    "choice": "net10.0"
+                }
+            ],
+            "defaultValue": "net10.0"
+        }
+    },
+    "sources": [
+        {
+            "modifiers": [
+                {
+                    "exclude": [
+                        ".vs/**",
+                        ".idea/**",
+                        "_ReSharper.Caches/**",
+                        ".template_config/**"
+                    ]
+                }
+            ]
+        }
+    ]
+}
