@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="Calabonga.Microservice.IdentityModule.Domain/Calabonga.Microservice.IdentityModule.Domain.csproj" />
+  <Project Path="Calabonga.Microservice.IdentityModule.Infrastructure/Calabonga.Microservice.IdentityModule.Infrastructure.csproj" />
+  <Project Path="Calabonga.Microservice.IdentityModule.Web/Calabonga.Microservice.IdentityModule.Web.csproj" />
+</Solution>

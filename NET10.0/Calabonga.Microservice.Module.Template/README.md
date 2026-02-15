@@ -27,7 +27,6 @@ dotnet new list
 
 Также после установки шаблонов, они станут доступы в Visual Studio и JetBrains Rider.
 
-
 ## Благодарности
 
 Благодарности помощь каналу принимаются (Support This Project):
