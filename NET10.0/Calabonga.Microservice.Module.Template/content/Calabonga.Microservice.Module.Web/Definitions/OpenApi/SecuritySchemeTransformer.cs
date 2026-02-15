@@ -70,5 +70,41 @@ internal sealed class SecuritySchemeTransformer : IOpenApiDocumentTransformer
             Description = AppData.ServiceDescription,
             Contact = new() { Name = "Sergei Calabonga", Url = new("https://www.calabonga.net"), }
         };
+
+        //// Add OAuth2 security scheme (Authorization Code flow only)
+        //document.Components.SecuritySchemes.Add("oauth2", new OpenApiSecurityScheme
+        //{
+        //    Type = SecuritySchemeType.OAuth2,
+        //    Flows = new OpenApiOAuthFlows
+        //    {
+        //        AuthorizationCode = new OpenApiOAuthFlow
+        //        {
+        //            AuthorizationUrl = new Uri("https://demo.duendesoftware.com/connect/authorize"),
+        //            TokenUrl = new Uri("https://demo.duendesoftware.com/connect/token"),
+        //            Scopes = new Dictionary<string, string>
+        //            {
+        //                { "api", "Access the Weather API" },
+        //                { "openid", "Access the OpenID Connect user profile" },
+        //                { "email", "Access the user's email address" },
+        //                { "profile", "Access the user's profile" }
+        //            }
+        //        }
+        //    }
+        //});
+
+        // Apply security requirement globally
+        document.Security = [
+            new OpenApiSecurityRequirement
+            {
+                {
+                    new OpenApiSecuritySchemeReference("oauth2"),
+                    ["api", "profile", "email", "openid"]
+                }
+            }
+        ];
+
+        // Set the host document for all elements
+        // including the security scheme references
+        document.SetReferenceHostDocument();
     }
 }

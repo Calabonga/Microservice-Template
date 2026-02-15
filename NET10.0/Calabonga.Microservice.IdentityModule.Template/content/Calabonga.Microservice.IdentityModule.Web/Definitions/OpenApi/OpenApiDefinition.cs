@@ -1,6 +1,7 @@
 ﻿using Calabonga.AspNetCore.AppDefinitions;
 using Calabonga.Microservice.IdentityModule.Domain.Base;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.OpenApi;
 using Swashbuckle.AspNetCore.SwaggerUI;
 
 namespace Calabonga.Microservice.IdentityModule.Web.Definitions.OpenApi;
@@ -29,7 +30,54 @@ public class OpenApiDefinition : AppDefinition
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddOpenApi(options =>
         {
-            options.AddDocumentTransformer<SecuritySchemeTransformer>();
+            options.AddDocumentTransformer((document, context, cancellationToken) =>
+            {
+                var url = builder.Configuration.GetSection("AuthServer").GetValue<string>("Url");
+
+                // Ensure instances exist and create new if not
+                document.Components ??= new OpenApiComponents();
+                document.Components.SecuritySchemes ??= new Dictionary<string, IOpenApiSecurityScheme>();
+
+
+
+                // Add OAuth2 security scheme (Authorization Code flow only)
+                document.Components.SecuritySchemes.Add("oauth2", new OpenApiSecurityScheme
+                {
+                    Type = SecuritySchemeType.OAuth2,
+                    Flows = new OpenApiOAuthFlows
+                    {
+                        AuthorizationCode = new OpenApiOAuthFlow
+                        {
+                            AuthorizationUrl = new Uri($"{url}/connect/authorize"),
+                            TokenUrl = new Uri($"{url}/connect/token"),
+                            Scopes = new Dictionary<string, string>
+                            {
+                                { "api", "Access the Weather API" },
+                                { "openid", "Access the OpenID Connect user profile" },
+                                { "email", "Access the user's email address" },
+                                { "profile", "Access the user's profile" }
+                            }
+                        }
+                    }
+                });
+
+                // Apply security requirement globally
+                document.Security = [
+                    new OpenApiSecurityRequirement
+                    {
+                        {
+                            new OpenApiSecuritySchemeReference("oauth2"),
+                            ["api", "profile", "email", "openid"]
+                        }
+                    }
+                ];
+
+                // Set the host document for all elements
+                // including the security scheme references
+                document.SetReferenceHostDocument();
+
+                return Task.CompletedTask;
+            });
         });
     }
 

@@ -38,6 +38,8 @@ public class AuthorizationDefinition : AppDefinition
                 options.RequireHttpsMetadata = false;
                 options.TokenValidationParameters = new TokenValidationParameters
                 {
+                    NameClaimType = "name",
+                    RoleClaimType = "role",
                     ValidateAudience = false, // Audience should be defined on the authorization server or disabled as shown
                     ClockSkew = new TimeSpan(0, 0, 30)
                 };

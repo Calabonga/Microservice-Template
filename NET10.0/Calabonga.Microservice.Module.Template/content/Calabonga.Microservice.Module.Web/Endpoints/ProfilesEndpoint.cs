@@ -1,8 +1,8 @@
 ﻿using Calabonga.AspNetCore.AppDefinitions;
 using Calabonga.Microservice.Module.Web.Application.Messaging.ProfileMessages.Queries;
-using Calabonga.Microservice.Module.Web.Definitions.Authorizations;
 using Mediator;
 using Microsoft.AspNetCore.Mvc;
+using OpenIddict.Server.AspNetCore;
 
 namespace Calabonga.Microservice.Module.Web.Endpoints;
 
@@ -20,11 +20,7 @@ internal static class ProfilesEndpointDefinitionExtensions
 
         group.MapGet("roles", async ([FromServices] IMediator mediator, HttpContext context)
                 => await mediator.Send(new GetProfile.Request(), context.RequestAborted))
-            .RequireAuthorization(AuthData.AuthSchemes)
-            .RequireAuthorization(x =>
-            {
-                x.RequireClaim("Profiles:Roles:Get");
-            })
+            .RequireAuthorization(OpenIddictServerAspNetCoreDefaults.AuthenticationScheme)
             .Produces(200)
             .ProducesProblem(401);
     }
