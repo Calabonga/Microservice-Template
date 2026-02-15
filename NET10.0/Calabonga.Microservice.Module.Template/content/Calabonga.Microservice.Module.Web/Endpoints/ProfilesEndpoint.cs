@@ -20,7 +20,7 @@ internal static class ProfilesEndpointDefinitionExtensions
 
         group.MapGet("roles", async ([FromServices] IMediator mediator, HttpContext context)
                 => await mediator.Send(new GetProfile.Request(), context.RequestAborted))
-            .RequireAuthorization(OpenIddictServerAspNetCoreDefaults.AuthenticationScheme)
+            .RequireAuthorization(x => x.AddAuthenticationSchemes(OpenIddictServerAspNetCoreDefaults.AuthenticationScheme).RequireAuthenticatedUser())
             .Produces(200)
             .ProducesProblem(401);
     }
