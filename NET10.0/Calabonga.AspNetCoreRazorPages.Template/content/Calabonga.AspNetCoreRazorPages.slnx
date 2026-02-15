@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="Calabonga.AspNetCoreRazorPages.Domain/Calabonga.AspNetCoreRazorPages.Domain.csproj" />
+  <Project Path="Calabonga.AspNetCoreRazorPages.Infrastructure/Calabonga.AspNetCoreRazorPages.Infrastructure.csproj" />
+  <Project Path="Calabonga.AspNetCoreRazorPages.Web/Calabonga.AspNetCoreRazorPages.Web.csproj" />
+</Solution>
