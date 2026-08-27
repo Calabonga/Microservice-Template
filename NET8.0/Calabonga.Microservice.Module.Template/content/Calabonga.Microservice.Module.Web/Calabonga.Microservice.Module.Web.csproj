@@ -10,7 +10,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Automapper" Version="13.0.1" />
+		<PackageReference Include="Automapper" Version="15.1.3" />
 		<PackageReference Include="Calabonga.AspNetCore.AppDefinitions" Version="2.4.3" />
 		<PackageReference Include="FluentValidation" Version="11.10.0" />
 		<PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.10.0" />
