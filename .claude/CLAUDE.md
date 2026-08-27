@@ -1,19 +1,34 @@
 # CLAUDE.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+Этот файл содержит инструкции по использованию Claude Code (claude.ai).
 
 ## Что это за репозиторий
 
-Это **не приложение**, а набор шаблонов проектов `dotnet new` («Nimble Framework»), публикуемых как NuGet-пакеты. Каждый шаблон при установке генерирует полноценное решение микросервиса.
+Это **не приложение**, а набор шаблонов проектов `dotnet new` («Nimble Framework»), публикуемых как NuGet-пакеты. Каждый шаблон при установке генерирует полноценное решение микросервиса. Шаблоны находяться в папках:
+- **Calabonga.Microservice.IdentityModule.Template** — первый (основной) шаблон Web API. Созданный проект на базе этого шаблона "умеет" авторизовать себя и другие сервисы, созданные из шаблона `Calabonga.Microservice.Module.Template`
+- Calabonga.Microservice.Module.Template — второй шаблон Web API. Созданный проект на базе этого шаблона отправляет запросы на авторизацию проекту созданному на базе первого шаблона.
+- Calabonga.AspNetCoreRazorPages.Template — дополнительные шаблон ASP.NET Razor Pages, который создан для демонстрации того, что проект на базе первого шаблона может авторизовывать пользоватей.
 
-Шаблоны разложены по папкам под конкретную версию платформы. **Актуальна `NET10.0/`** (v10.0.0). `NET8.0/` и `NET9.0/` — замороженные копии старых релизов, оставленные для справки; не изменяйте их без явной просьбы.
+При помощи данных шаблонов можно построить микросервисную архитектуру из разных типов микросервисов, как Web API, так и ASP.NET RazorPages приложений.
+
+## Правила
+
+Обязательны к соблюдению (детали — в файлах):
+
+- @rules/architecture.md — слои и направление зависимостей
+- @rules/conventions.md — именование CQRS-операций, ViewModel, валидаторов, endpoints
+- @rules/code-styles.md — стиль C#, nullability, обработка ошибок, работа с БД, время
+- @rules/testing.md — договорённости по тестам (тест-проекта в репозитории пока нет)
+- @rules/workflow.md — ветки, коммиты, защищённые папки `*.Domain`
+
+Шаблоны разложены по папкам под конкретную версию платформы. **Текушая версия** `NET10.0/` (v10.0.0). **Предыдущие версии** `NET8.0/` и `NET9.0/` — замороженные копии старых релизов, оставленные для справки; не изменяйте их без явной просьбы.
 
 `NET10.0/` содержит три шаблона:
 
 | Папка | Короткое имя `dotnet new` | Назначение |
 | --- | --- | --- |
 | `Calabonga.Microservice.Module.Template` | `microservice` | Web API микросервис без сервера авторизации (проверяет токены, выданные извне) |
-| `Calabonga.Microservice.IdentityModule.Template` | `microservice-oidd` | То же плюс **сервер авторизации** OAuth2/OIDC на OpenIddict |
+| `Calabonga.Microservice.IdentityModule.Template` | `microservice-oidd` | Web API микросервис с **сервером авторизации** OAuth2/OIDC на OpenIddict |
 | `Calabonga.AspNetCoreRazorPages.Template` | `microservice-razorpages` | UI на Razor Pages, выступающий как OIDC-клиент |
 
 Каждая папка шаблона содержит:
@@ -89,7 +104,7 @@ public static class GetEventItemById
 Соглашения:
 - Возвращайте `Calabonga.OperationResults.Operation<TModel, TError>` — `Operation.Result(model)` при успехе, `Operation.Error("...")` при ошибке. Не бросайте исключения для ожидаемых ошибок.
 - Доступ к данным через `Calabonga.UnitOfWork` — `unitOfWork.GetRepository<TEntity>()`, затем `unitOfWork.SaveChangesAsync()` и проверка `unitOfWork.Result`.
-- Маппинг — рукописные extension-методы в `<Feature>Mapping.cs` (`MapToViewModel()`, `MapToEntity()`, `MapUpdatesFrom()`); каждый явно обрабатывает/возвращает `null`.
+- Маппинг — рукописные extension-методы в `<Feature>Mapping.cs` (`MapToViewModel()`, `MapTo[Entity]()` — напр. `MapToEventItem()`, `MapUpdatesFrom()`); каждый явно обрабатывает/возвращает `null`.
 - Валидация: валидаторы FluentValidation в `<Feature>Validator.cs`, глобально применяются через `ValidatorBehavior<,>` (это `IPipelineBehavior`), который бросает `ValidationException`.
 - Прочие pipeline behaviors: `TransactionBehavior` (оборачивает handler в транзакцию UoW), `LogPostTransaction` / `EventItemPostTransactionBehavior`.
 
