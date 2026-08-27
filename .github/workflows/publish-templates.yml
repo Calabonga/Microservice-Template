@@ -94,7 +94,17 @@ jobs:
         run: dotnet restore "${{ steps.proj.outputs.path }}"
 
       - name: Pack
-        run: dotnet pack "${{ steps.proj.outputs.path }}" --configuration Release --no-restore --output ${{ runner.temp }}/pkg
+        run: dotnet pack "${{ steps.proj.outputs.path }}" --configuration Release --no-restore --output "${{ runner.temp }}/pkg"
 
       - name: Push to nuget.org
-        run: dotnet nuget push "${{ runner.temp }}/pkg/*.nupkg" --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
+        shell: pwsh
+        # The runner shell is pwsh, which does not glob-expand the star pattern
+        # for the native command, and dotnet nuget push cannot resolve the
+        # wildcard itself on Windows. Enumerate the files and push one by one.
+        run: |
+          $dir = "${{ runner.temp }}/pkg"
+          $packages = Get-ChildItem -Path $dir -Filter *.nupkg
+          if (-not $packages) { throw "No .nupkg found in $dir" }
+          foreach ($package in $packages) {
+            dotnet nuget push $package.FullName --api-key "${{ secrets.NUGET_API_KEY }}" --source https://api.nuget.org/v3/index.json --skip-duplicate
+          }
