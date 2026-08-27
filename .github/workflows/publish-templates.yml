@@ -94,7 +94,11 @@ jobs:
         run: dotnet restore "${{ steps.proj.outputs.path }}"
 
       - name: Pack
-        run: dotnet pack "${{ steps.proj.outputs.path }}" --configuration Release --no-restore --output "${{ runner.temp }}/pkg"
+        # PublicRelease=true forces Nerdbank.GitVersioning to emit a clean version
+        # (10.0.x) with no -g<commit> pre-release suffix, regardless of how the run
+        # was triggered (push or manual workflow_dispatch, which checks out a
+        # detached HEAD that publicReleaseRefs cannot match on its own).
+        run: dotnet pack "${{ steps.proj.outputs.path }}" --configuration Release --no-restore -p:PublicRelease=true --output "${{ runner.temp }}/pkg"
 
       - name: Push to nuget.org
         shell: pwsh
