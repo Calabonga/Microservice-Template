@@ -10,6 +10,7 @@
 
 * [Calabonga.Microservice.IdentityModule.Template](https://www.nuget.org/packages/Calabonga.Microservice.IdentityModule.Template/) nuget-пакет для установки шаблона микросервиса в среду разработки (`Visual Studio`, `Rider`, `dotnet CLI`) с OpenIddict.
 * [Calabonga.Microservice.Module.Template](https://www.nuget.org/packages/Calabonga.Microservice.Module.Template/) nuget-пакет для установки шаблона микросервиса в среду разработки (`Visual Studio`, `Rider`, `dotnet CLI`) без OpenIddict.
+* [Calabonga.AspNetCoreRazorPages.Template](https://www.nuget.org/packages/Calabonga.AspNetCoreRazorPages.Template) nuget-пакет для создания приложения ASP.NET RazorPages.
 
 ## Дополнительная информация
 
