@@ -55,7 +55,9 @@ jobs:
               *)   echo 'packages=["${{ inputs.target }}"]'            >> "$GITHUB_OUTPUT" ;;
             esac
           else
-            echo "packages=${{ steps.filter.outputs.changes }}" >> "$GITHUB_OUTPUT"
+            # single quotes: the runner expands ${{ }}, bash must not touch the
+            # inner JSON quotes (double quotes here collapse ["a","b"] to [a,b]).
+            echo 'packages=${{ steps.filter.outputs.changes }}' >> "$GITHUB_OUTPUT"
           fi
 
   publish:
