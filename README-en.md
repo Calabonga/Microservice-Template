@@ -13,6 +13,28 @@ To install templates (`Visual Studio`, `Rider`, `dotnet CLI`) please, read [wiki
 
 ## Nimble Framework History
 
+### 2026-08-27
+
+The changes affect all three templates in the `NET10.0/` folder (`Calabonga.Microservice.Module.Template`, `Calabonga.Microservice.IdentityModule.Template`, `Calabonga.AspNetCoreRazorPages.Template`).
+
+* Updated NuGet packages in the `content/*.Infrastructure` and `content/*.Web` projects of all three templates:
+    * `Calabonga.AspNetCore.AppDefinitions` 4.0.0 → 10.0.0
+    * `Microsoft.EntityFrameworkCore.*` and `Microsoft.AspNetCore.*` 10.0.3 → 10.0.11
+    * `Microsoft.Extensions.Caching.StackExchangeRedis` 10.0.3 → 10.0.11
+    * `OpenIddict.AspNetCore` and `OpenIddict.EntityFrameworkCore` 7.2.0 → 7.6.1
+    * `Mediator.Abstractions` and `Mediator.SourceGenerator` 3.0.1 → 3.0.2
+    * `Swashbuckle.AspNetCore.SwaggerUI` 10.1.2 → 10.2.3
+    * `Calabonga.UnitOfWork` 10.0.0 → 10.0.1
+    * `System.Linq.Async` 7.0.0 → 7.0.1
+* Automated template publishing in CI:
+    * Three separate workflows (`module.yml`, `module-auth.yml`, `razor-pages.yml`) replaced with a single `publish-templates.yml`.
+    * Versioning via `Nerdbank.GitVersioning`: each package's patch number is derived from the height of commits touching that specific template's folder, so packages are incremented independently. Changing minor/major is done by editing `version` in `version.json`.
+    * Trigger — `push` to `master` with paths `NET10.0/**`; `dorny/paths-filter` detects the affected templates and a matrix job publishes only those. A manual `workflow_dispatch` with a target choice (`all` / `module` / `identity` / `razorpages`) is also available for a forced re-release.
+    * `nuget push --skip-duplicate` kept: a run without a version change is a no-op. Updated `actions/checkout` → v4 (`fetch-depth: 0`), `setup-dotnet` → v4.
+* Added the instructions file `.claude/CLAUDE.md` and a set of rules `.claude/rules/*` (architecture, naming conventions, C# style, testing, workflow) — context for working with the repository through Claude Code.
+* Added the `nuget-update` skill (`.claude/skills/nuget-update/`) that automates checking and bumping NuGet package versions in the `NET10.0` templates: a read-only script compares versions against nuget.org, then patch + minor are applied automatically, major only after confirmation, followed by building the three solutions and an end-to-end Module ↔ IdentityModule authorization test.
+* `README.md`: `Calabonga.AspNetCoreRazorPages.Template` added to the package list.
+
 ### 2026-02-14 Version 10.0.0
 
 * All projects in solution were moved to NET10.

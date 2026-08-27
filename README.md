@@ -19,6 +19,28 @@
 
 ## История Nimble Framework
 
+### 2026-08-27
+
+Изменения касаются всех трёх шаблонов в папке `NET10.0/` (`Calabonga.Microservice.Module.Template`, `Calabonga.Microservice.IdentityModule.Template`, `Calabonga.AspNetCoreRazorPages.Template`).
+
+* Обновлены NuGet-пакеты в проектах `content/*.Infrastructure` и `content/*.Web` всех трёх шаблонов:
+    * `Calabonga.AspNetCore.AppDefinitions` 4.0.0 → 10.0.0
+    * `Microsoft.EntityFrameworkCore.*` и `Microsoft.AspNetCore.*` 10.0.3 → 10.0.11
+    * `Microsoft.Extensions.Caching.StackExchangeRedis` 10.0.3 → 10.0.11
+    * `OpenIddict.AspNetCore` и `OpenIddict.EntityFrameworkCore` 7.2.0 → 7.6.1
+    * `Mediator.Abstractions` и `Mediator.SourceGenerator` 3.0.1 → 3.0.2
+    * `Swashbuckle.AspNetCore.SwaggerUI` 10.1.2 → 10.2.3
+    * `Calabonga.UnitOfWork` 10.0.0 → 10.0.1
+    * `System.Linq.Async` 7.0.0 → 7.0.1
+* Автоматическая публикация шаблонов в CI:
+    * Три отдельных workflow (`module.yml`, `module-auth.yml`, `razor-pages.yml`) заменены одним `publish-templates.yml`.
+    * Версионирование через `Nerdbank.GitVersioning`: patch-номер каждого пакета считается по высоте коммитов, затронувших папку конкретного шаблона, поэтому пакеты инкрементируются независимо. Смена minor/major — правкой `version` в `version.json`.
+    * Триггер — `push` в `master` с путями `NET10.0/**`; `dorny/paths-filter` определяет затронутые шаблоны, и matrix-job публикует только их. Также доступен ручной запуск `workflow_dispatch` с выбором цели (`all` / `module` / `identity` / `razorpages`) для форс-переиздания.
+    * `nuget push --skip-duplicate` сохранён: прогон без смены версии — no-op. Обновлены `actions/checkout` → v4 (`fetch-depth: 0`), `setup-dotnet` → v4.
+* Добавлен файл инструкций `.claude/CLAUDE.md` и набор правил `.claude/rules/*` (архитектура, соглашения об именовании, стиль C#, тестирование, рабочий процесс) — контекст для работы с репозиторием через Claude Code.
+* Добавлен скилл `nuget-update` (`.claude/skills/nuget-update/`) для автоматической проверки и подъёма версий NuGet-пакетов в шаблонах `NET10.0`: read-only-скрипт сверяет версии с nuget.org, затем patch + minor применяются автоматически, major — только с подтверждения, в конце — сборка трёх решений и сквозной тест авторизации Module ↔ IdentityModule.
+* `README.md`: в список пакетов добавлен `Calabonga.AspNetCoreRazorPages.Template`.
+
 ### 2026-02-14 Версия 10.0.0
 
 * Проекты в решении переведены на NET10.
