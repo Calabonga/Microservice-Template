@@ -55,8 +55,9 @@ jobs:
               *)   echo 'packages=["${{ inputs.target }}"]'            >> "$GITHUB_OUTPUT" ;;
             esac
           else
-            # single quotes: the runner expands ${{ }}, bash must not touch the
-            # inner JSON quotes (double quotes here collapse ["a","b"] to [a,b]).
+            # Single quotes on purpose: the runner substitutes the expression,
+            # and bash must not strip the JSON array quotes. With double quotes
+            # bash collapses [ "a", "b" ] into [ a, b ] and fromJSON() then fails.
             echo 'packages=${{ steps.filter.outputs.changes }}' >> "$GITHUB_OUTPUT"
           fi
 
