@@ -13,7 +13,7 @@
         <PackageTags>template, microservice, oauth2, calabonga, nimble, framework, minimal, api</PackageTags>
         <PackageProjectUrl>https://github.com/Calabonga/Microservice-Template</PackageProjectUrl>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
-        <PackageReleaseNotes>Migration to NET10</PackageReleaseNotes>
+        <PackageReleaseNotes>CI/CD was automated with AI. Package numbers increments automatically now.</PackageReleaseNotes>
 
         <!-- Keep package type as 'Template' to show the package as template package on nuget.org and make you template available in dotnet new search.-->
         <PackageType>Template</PackageType>
