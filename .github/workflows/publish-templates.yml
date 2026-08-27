@@ -1,0 +1,97 @@
+name: Publish templates
+
+# Publishes the NET10.0 template packages to nuget.org.
+#
+# Automatic:  a push to master that touches NET10.0/** republishes only the
+#             template(s) whose folder changed. The package version is produced
+#             by Nerdbank.GitVersioning (version.json + git height), so the patch
+#             number increments on its own; `nuget push --skip-duplicate` makes a
+#             run with an unchanged version a no-op.
+# Manual:     workflow_dispatch with a target choice, for a forced re-publish.
+
+on:
+  push:
+    branches: [ master ]
+    paths: [ 'NET10.0/**' ]
+  workflow_dispatch:
+    inputs:
+      target:
+        description: Which template(s) to (re)publish
+        type: choice
+        default: all
+        options: [ all, module, identity, razorpages ]
+
+permissions:
+  contents: read
+
+jobs:
+  changes:
+    runs-on: ubuntu-latest
+    outputs:
+      packages: ${{ steps.decide.outputs.packages }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Detect changed templates
+        id: filter
+        if: github.event_name == 'push'
+        uses: dorny/paths-filter@v4
+        with:
+          filters: |
+            module:
+              - 'NET10.0/Calabonga.Microservice.Module.Template/**'
+            identity:
+              - 'NET10.0/Calabonga.Microservice.IdentityModule.Template/**'
+            razorpages:
+              - 'NET10.0/Calabonga.AspNetCoreRazorPages.Template/**'
+
+      - name: Decide package list
+        id: decide
+        shell: bash
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            case "${{ inputs.target }}" in
+              all) echo 'packages=["module","identity","razorpages"]' >> "$GITHUB_OUTPUT" ;;
+              *)   echo 'packages=["${{ inputs.target }}"]'            >> "$GITHUB_OUTPUT" ;;
+            esac
+          else
+            echo "packages=${{ steps.filter.outputs.changes }}" >> "$GITHUB_OUTPUT"
+          fi
+
+  publish:
+    needs: changes
+    if: ${{ needs.changes.outputs.packages != '' && needs.changes.outputs.packages != '[]' }}
+    runs-on: windows-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        package: ${{ fromJSON(needs.changes.outputs.packages) }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0            # Nerdbank.GitVersioning needs the full history
+
+      - name: Set up .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.x
+
+      - name: Resolve project path
+        id: proj
+        shell: pwsh
+        run: |
+          $map = @{
+            module     = 'NET10.0/Calabonga.Microservice.Module.Template/Calabonga.Microservice.Module.Template.csproj'
+            identity   = 'NET10.0/Calabonga.Microservice.IdentityModule.Template/Calabonga.Microservice.IdentityModule.Template.csproj'
+            razorpages = 'NET10.0/Calabonga.AspNetCoreRazorPages.Template/Calabonga.AspNetCoreRazorPages.Template.csproj'
+          }
+          "path=$($map['${{ matrix.package }}'])" | Out-File -FilePath $env:GITHUB_OUTPUT -Append
+
+      - name: Restore
+        run: dotnet restore "${{ steps.proj.outputs.path }}"
+
+      - name: Pack
+        run: dotnet pack "${{ steps.proj.outputs.path }}" --configuration Release --no-restore --output ${{ runner.temp }}/pkg
+
+      - name: Push to nuget.org
+        run: dotnet nuget push "${{ runner.temp }}/pkg/*.nupkg" --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
