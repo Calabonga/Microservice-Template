@@ -19,7 +19,7 @@
 
 ## История Nimble Framework
 
-### 2026-08-27 Изменения после версии 10.0.0
+### 2026-08-27
 
 Изменения касаются всех трёх шаблонов в папке `NET10.0/` (`Calabonga.Microservice.Module.Template`, `Calabonga.Microservice.IdentityModule.Template`, `Calabonga.AspNetCoreRazorPages.Template`).
 
